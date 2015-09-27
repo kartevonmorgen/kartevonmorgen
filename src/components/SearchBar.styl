@@ -1,0 +1,57 @@
+// Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+
+@import 'nib'
+@require "Colors"
+@require "Header"
+
+.SearchBar
+  width         100%
+  box-sizing    border-box
+  border        1px solid $lightGray
+  height        $headerContentHeight
+  border-radius 4px
+  background    #f5f5f5
+
+  input, button, input
+    box-sizing  border-box
+    height      ($headerContentHeight - 2)
+    border      none
+
+  .search
+    position relative
+
+    input
+      padding-left  2em
+      background    transparent
+
+    .icon
+      display     inline-block
+      line-height ($headerContentHeight - 2)
+      position    absolute
+      left        0.6em
+      color       $darkGray
+
+  .filter
+    background transparent
+
+  button.filter
+    border-radius 0 4px 4px 0
+
+  .main-categories
+    font-size       10px
+    color           $darkGray
+
+    button
+      text-transform  uppercase
+
+    .active
+      color #fff
+
+    .initiative.active
+      background $initiative
+
+    .event.active
+      background $event
+
+    .company.active
+      background $company

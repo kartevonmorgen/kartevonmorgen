@@ -1,0 +1,70 @@
+# Karte von Morgen
+
+## Mapping for Good
+
+von morgen supports kindness, sustainability and joint action.
+Everything that brings a little happiness to our world.
+We believe that living in a de‐stressed, environmental‐friendly and
+trust‐worthy society, is already in progress.
+We want to support people in finding ways to embrace those values.
+
+The Map von morgen is a website and app, that allows users to share their
+favorite places in the world. Places that are forward‐thinking and inspiring.
+The goal is to collect projects, companies and events that make a world of
+tomorrow, already experienceable today.
+
+Demo: [kvm.markus-kohlhase.de](http://kvm.markus-kohlhase.de)
+
+## Development
+
+As a base for the development You'll need [Node.js](https://nodejs.org/) and of
+course this repo:
+
+    git clone https://github.com/flosse/kartevonmorgen
+
+Go to the root of it and install all the dependencies:
+
+    cd kartevonmorgen/
+    npm i
+
+### Build
+
+To build the web application run:
+
+    npm run pack
+
+The result can be found in `dist/`.
+During the development you don't want to do that manually on every file change,
+so just run
+
+    npm run dev
+
+and open the app in your browser `http://localhost:8080`.
+Now on every file change, the app will be build
+for you and the browser reloads automatically.
+
+### Tests
+
+All the tests can be found in the `spec/` folder.
+To run the tests type
+
+    npm t
+
+### Nix
+
+If you're using [Nix](http://nixos.org/nix/) or [NixOS](http://nixos.org/) you
+can get your complete development environment by just typing
+
+    nix-shell dev-env.nix
+
+### Backend
+
+The backend lives in a separate repository.
+You'll find here the link to the source code
+as soon as I finished an initial draft.
+
+## License
+
+Copyright (C) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+
+This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).

@@ -1,0 +1,41 @@
+# Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+
+u = require "updeep"
+
+{
+  SHOW_NEW_ENTRY
+  CLOSE_NEW_ENTRY
+  SET_MARKER
+  SET_MAP_CENTER
+  SET_ZOOM
+  NEW_ENTRY_RESULT
+
+} = require "../constants/ActionTypes"
+
+initialState =
+  zoom   : 13
+  center : { lat: 48.7784931, lng: 9.1800456 } # stuttgart
+  marker : null
+
+module.exports = (state=initialState, action={}) ->
+
+  switch action.type
+
+    when CLOSE_NEW_ENTRY, SHOW_NEW_ENTRY
+      u marker: null, state
+
+    when SET_MARKER
+      u marker: action.payload, state
+
+    when SET_MAP_CENTER
+      u center: action.payload, state
+
+    when SET_ZOOM
+      u zoom: action.payload, state
+
+    when NEW_ENTRY_RESULT
+      unless action.error
+        u marker: null, state
+      else state
+
+    else state
