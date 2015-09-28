@@ -31,9 +31,9 @@ have a look at the [developer guide](DEVELOPER_GUIDE.md).
 
 To be able to start development you'll need the following tools:
 
-[git](>https://www.git-scm.com/)
-[Node.js](https://nodejs.org/) version >= 0.10.40
-[npm](https://www.npmjs.com/package/npm)
+- [git](>https://www.git-scm.com/)
+- [Node.js](https://nodejs.org/) version >= 0.10.40
+- [npm](https://www.npmjs.com/package/npm)
 
 Now clone this repository:
 
