@@ -27,15 +27,22 @@ The following is a description of a quickstart.
 If you're looking for a more comprehensive introduction,
 have a look at the [developer guide](DEVELOPER_GUIDE.md).
 
-As a base for the development You'll need [Node.js](https://nodejs.org/) and of
-course this repo:
+### Dependencies
+
+To be able to start development you'll need the following tools:
+
+[git](>https://www.git-scm.com/)
+[Node.js](https://nodejs.org/) version >= 0.10.40
+[npm](https://www.npmjs.com/package/npm)
+
+Now clone this repository:
 
     git clone https://github.com/flosse/kartevonmorgen
 
 Go to the root of it and install all the dependencies:
 
     cd kartevonmorgen/
-    npm i
+    npm install
 
 ### Build
 
