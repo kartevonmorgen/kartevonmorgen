@@ -20,6 +20,9 @@ describe "Validation", ->
         t = ("a" for i in [1..50]).join ''
         F(title:t).title.should.have.string "Zu langer Titel"
 
+      it "should not throw error if valid", ->
+        should.not.exist F(title:"abc").title
+
     describe "description", ->
 
       it "should exist", ->
@@ -31,6 +34,10 @@ describe "Validation", ->
       it "should be at most 160 chars long", ->
         t = ("a" for i in [1..170]).join ''
         F(description:t).description.should.have.string "Zu lange Beschreibung"
+
+      it "should not throw error if valid", ->
+        t = ("a" for i in [1..50]).join ''
+        should.not.exist F(description:t).description
 
     describe "lat & lng", ->
 
@@ -44,6 +51,10 @@ describe "Validation", ->
         should.not.exist F(lat:"1").lat
         should.not.exist F(lng:"1").lng
 
+      it "should not throw error if valid", ->
+        should.not.exist F(lat:1).lat
+        should.not.exist F(lng:1).lng
+
     describe "category", ->
 
       it "should exist", ->
@@ -54,3 +65,6 @@ describe "Validation", ->
         F(category:"1.7").category.should.have.string "Ungültig"
         should.not.exist F(category:"1").category
         F(category:"-1").category.should.have.string "Ungültig"
+
+      it "should not throw error if valid", ->
+        should.not.exist F(category:1).category
