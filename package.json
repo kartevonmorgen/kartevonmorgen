@@ -47,6 +47,7 @@
     "coffee-script": "^1.10.0",
     "coffeelint": "^1.12.1",
     "css-loader": "^0.19.0",
+    "es5-shim": "^4.1.13",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.1",
     "json-loader": "^0.5.3",

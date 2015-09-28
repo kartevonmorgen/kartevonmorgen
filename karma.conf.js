@@ -4,7 +4,10 @@ module.exports = function(config) {
 
     frameworks: ['mocha', 'chai'],
 
-    files: [ 'spec/**/*.spec.coffee' ],
+    files: [
+      'node_modules/es5-shim/es5-shim.min.js',
+      'spec/**/*.spec.coffee'
+      ],
 
     preprocessors: { '**/*.spec.coffee': ['webpack'] },
 
