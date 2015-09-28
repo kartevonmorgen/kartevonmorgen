@@ -64,16 +64,11 @@ module.exports = React.createClass
               when COMPANY    then VMIcons.company
 
     React.createElement Map,
-      ref       : 'map'
       center    : @props.center
       zoom      : @props.zoom
       className : "map",
-      onLeafletMoveend: (ev) =>
-        c = @refs.map.getLeafletElement?()?.getCenter()
-        onMoveend c
-      onLeafletZoomend: (ev) =>
-        z = @refs.map.getLeafletElement?()?.getZoom()
-        onZoomend z
+      onLeafletMoveend: (ev) -> onMoveend ev.target.getCenter()
+      onLeafletZoomend: (ev) -> onZoomend ev.target.getZoom()
       onLeafletClick: (ev) -> onClick ev.latlng
       React.createElement TileLayer,
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
