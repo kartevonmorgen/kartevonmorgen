@@ -1,5 +1,7 @@
 # Karte von Morgen
 
+![Screenshot](https://raw.githubusercontent.com/flosse/kartevonmorgen/master/screenshot.png)
+
 ## Mapping for Good
 
 von morgen supports kindness, sustainability and joint action.
