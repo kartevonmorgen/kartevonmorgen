@@ -17,6 +17,9 @@ Demo: [kvm.markus-kohlhase.de](http://kvm.markus-kohlhase.de)
 
 ## Development
 
+[![Build Status](https://secure.travis-ci.org/flosse/kartevonmorgen.svg?branch=master)](http://travis-ci.org/flosse/kartevonmorgen)
+[![Dependency Status](https://gemnasium.com/flosse/kartevonmorgen.svg)](https://gemnasium.com/flosse/kartevonmorgen)
+
 As a base for the development You'll need [Node.js](https://nodejs.org/) and of
 course this repo:
 
