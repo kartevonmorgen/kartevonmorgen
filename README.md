@@ -22,6 +22,11 @@ Demo: [kvm.markus-kohlhase.de](http://kvm.markus-kohlhase.de)
 [![Build Status](https://secure.travis-ci.org/flosse/kartevonmorgen.svg?branch=master)](http://travis-ci.org/flosse/kartevonmorgen)
 [![Dependency Status](https://gemnasium.com/flosse/kartevonmorgen.svg)](https://gemnasium.com/flosse/kartevonmorgen)
 
+Are you're interested in contributing to KVM?
+The following is a description of a quickstart.
+If you're looking for a more comprehensive introduction,
+have a look at the [developer guide](DEVELOPER_GUIDE.md).
+
 As a base for the development You'll need [Node.js](https://nodejs.org/) and of
 course this repo:
 
