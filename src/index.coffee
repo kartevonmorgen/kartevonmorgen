@@ -11,12 +11,7 @@ store       = require "./Store"
 if __DEVELOPMENT__
   window.React = React
 
-ConnectedApp = (connect (s) ->
-  entries : s.entries
-  search  : s.search
-  map     : s.map
-  view    : s.view
-) App
+ConnectedApp = (connect (s) -> s) App
 
 rootElement  = document.querySelector 'body'
 

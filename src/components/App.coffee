@@ -28,10 +28,11 @@ module.exports = React.createClass
     view    : T.object.isRequired
     map     : T.object.isRequired
     search  : T.object.isRequired
+    form    : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, entries, map } = @props
+    { dispatch, search, view, entries, map, form } = @props
 
     { highlight } = search
 
@@ -59,9 +60,10 @@ module.exports = React.createClass
       div className: "main",
 
         React.createElement Map,
-          marker    : (@props.map.marker if view.panel is V.NEW)
-          center    : @props.map.center
-          zoom      : @props.map.zoom
+          marker    : (map.marker if view.panel is V.NEW)
+          center    : map.center
+          zoom      : map.zoom
+          category  : form.new?.category?.value
           highlight : highlight
           entries   : (resultEntries unless view.panel is V.NEW)
           onClick   : (latlng) -> dispatch Actions.setMarker latlng

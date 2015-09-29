@@ -41,6 +41,13 @@ module.exports = React.createClass
     onMoveend : T.func
     onZoomend : T.func
 
+  getIconById: (id) ->
+    switch id
+      when INITIATIVE then VMIcons.initiative
+      when EVENT      then VMIcons.event
+      when COMPANY    then VMIcons.company
+      else                 VMIcons.unknown
+
   render: ->
 
     markers = []
@@ -57,11 +64,7 @@ module.exports = React.createClass
             if (h = highlight).length > 0
               if e.id in h then 1 else 0.3
             else 1
-          icon:
-            switch e.categories?[0]
-              when INITIATIVE then VMIcons.initiative
-              when EVENT      then VMIcons.event
-              when COMPANY    then VMIcons.company
+          icon: @getIconById e.categories?[0]
 
     React.createElement Map,
       center    : @props.center
@@ -77,4 +80,4 @@ module.exports = React.createClass
       if (p = @props.marker)?
         React.createElement Marker,
           position  : p
-          icon      : VMIcons.initiative
+          icon      : @getIconById parseInt @props.category
