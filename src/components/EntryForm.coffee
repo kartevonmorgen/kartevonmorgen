@@ -61,6 +61,19 @@ Form = React.createClass
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
       div className: "pure-form pure-form-stacked",
+
+        fieldset null,
+          legend null, "Kategorie"
+          div className: "pure-g",
+            div className: "pure-u-1 pure-u-md-1-3",
+              select fieldProps.category,
+                option value: -1,                   "- auswählen -"
+                option value: IDS.INITIATIVE, "Initiative"
+                option value: IDS.EVENT, disabled: yes, "Event"
+                option value: IDS.COMPANY,   "Unternehmen"
+              category.error and category.touched and div className: "err",
+                category.error
+
         fieldset null,
           div className: "pure-g",
             div className: "pure-u-1",
@@ -91,18 +104,6 @@ Form = React.createClass
               label null, "Longitude"
               input fieldProps.lng
               lng.error and lng.touched and div className: "err", lng.error
-
-        fieldset null,
-          legend null, "Kategorie"
-          div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-3",
-              select fieldProps.category,
-                option value: -1,                   "- auswählen -"
-                option value: IDS.INITIATIVE, "Initiative"
-                option value: IDS.EVENT, disabled: yes, "Event"
-                option value: IDS.COMPANY,   "Unternehmen"
-              category.error and category.touched and div className: "err",
-                category.error
 
         fieldset null,
           legend null, ""
