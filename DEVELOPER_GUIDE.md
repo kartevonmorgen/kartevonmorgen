@@ -49,6 +49,13 @@ So let's have a look at some technologies used for KVM:
 Still boring for you? So go to the next section.
 Otherwise stop and learn!
 
+**Note**:
+I recommend to install [zeal](https://zealdocs.org/):
+
+    $ sudo add-apt-repository ppa:zeal-developers/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install zeal
+
 ## Learn more
 
 So know I assume you're a super React-Coffee-Stylus hacker that really want's to learn something new.
