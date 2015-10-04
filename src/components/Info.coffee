@@ -46,4 +46,4 @@ module.exports = React.createClass
       p null, a href: REPOSITORY, REPOSITORY
 
       p className: "version",
-        "Version dies Clients: v#{pkg.version}"
+        "Version dieses Clients: v#{pkg.version}"
