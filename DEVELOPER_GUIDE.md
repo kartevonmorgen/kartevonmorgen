@@ -58,10 +58,21 @@ I recommend to install [zeal](https://zealdocs.org/):
 
 ## Learn more
 
-So know I assume you're a super React-Coffee-Stylus hacker that really want's to learn something new.
-So go ahead an learn all about the [redux](https://github.com/rackt/redux)
-framework and the underlying [flux architecture](https://facebook.github.io/flux/).
-Now it should be easy for you to connect react with redux to use
+Now I assume you're a super React-Coffee-Stylus hacker that really want to
+learn something new.
+
+So go ahead an learn all about the [flux architecture](https://facebook.github.io/flux/).
+And don't miss the great
+[cartoon guide to flux](https://medium.com/code-cartoons/a-cartoon-guide-to-flux-6157355ab207).
+
+Then you should be prepared to have a look at the [redux](https://github.com/rackt/redux)
+framework.
+I recommend to read at least the
+[introduction](http://rackt.github.io/redux/docs/introduction/index.html) and
+the [basics](http://rackt.github.io/redux/docs/basics/index.html) sections as a
+first overview.
+
+Now I think it's easy for you to connect react and redux with
 [react-redux](https://github.com/gaearon/react-redux).
 
 Congratulations, your now a pro that can help other to hack the awesome KMV platform!
