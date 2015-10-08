@@ -11,9 +11,9 @@ module.exports =
       cb (new Error "invalid search text")
     else
       request
-        .get '/entries'
+        .get '/search'
         .use prefix
-        .query search: txt.trim().split ' '
+        .query entries: txt.trim().split ' '
         .query 'categories=' + cats.join ','
         .set 'Accept', 'application/json'
         .end cb
