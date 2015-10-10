@@ -5,3 +5,4 @@ module.exports =
   RESULT  : 'RESULT'
   ENTRY   : 'ENTRY'
   INFO    : 'INFO'
+  IMPRINT : 'IMPRINT'

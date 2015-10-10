@@ -7,6 +7,7 @@ module.exports =
 
   SHOW_NEW_ENTRY          : 'SHOW_NEW_ENTRY'
   SHOW_INFO               : 'SHOW_INFO'
+  SHOW_IMPRINT            : 'SHOW_IMPRINT'
 
   CLOSE_NEW_ENTRY         : 'CLOSE_NEW_ENTRY'
 

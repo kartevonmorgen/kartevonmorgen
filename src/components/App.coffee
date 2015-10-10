@@ -11,6 +11,7 @@ EntryDetails  = require "./EntryDetails"
 ResultList    = require "./ResultList"
 Header        = require "./Header"
 Info          = require "./Info"
+Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
 Map           = require "./Map"
 
@@ -56,6 +57,7 @@ module.exports = React.createClass
         onSearchTextReset   : -> dispatch Actions.setSearchText ''
         onShowInfo          : -> dispatch Actions.showInfo()
         onNewEntry          : -> dispatch Actions.showNewEntry()
+        onShowImprint       : -> dispatch Actions.showImprint()
 
       div className: "main",
 
@@ -91,6 +93,10 @@ module.exports = React.createClass
             when V.INFO
               div null,
                 React.createElement Info
+
+            when V.IMPRINT
+              div null,
+                React.createElement Imprint
 
             when V.NEW
               div className: "content pure-g",
