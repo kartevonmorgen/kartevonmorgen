@@ -63,17 +63,18 @@ Actions =
   closeNewEntry: ->
     type: C.CLOSE_NEW_ENTRY
 
-  saveNewEntry: (e) ->
+  saveEntry: (e) ->
+    saveFunc = if e.id then WebAPI.saveEntry else WebAPI.saveNewEntry
     (dispatch) ->
-      WebAPI.saveNewEntry e, (err, res) ->
+      saveFunc e, (err, res) ->
         unless err?
-          dispatch initialize 'new', {}
+          dispatch initialize 'edit', {}
           dispatch
             type    : C.NEW_ENTRY_RESULT
             payload : err or res?.body
             error   : err?
         else
-          dispatch stopSubmit 'new', { _error: err }
+          dispatch stopSubmit 'edit', { _error: err }
 
   setMarker: (latlng) ->
     type: C.SET_MARKER
@@ -95,5 +96,20 @@ Actions =
     id = [id] unless Array.isArray id
     type: C.HIGHLIGHT_ENTRIES
     payload: id
+
+  editCurrentEntry: () ->
+    (dispatch, getState) ->
+      dispatch type: C.SHOW_IO_WAIT
+      WebAPI.getEntries [getState().search.current], (err, res) ->
+        unless err?
+          dispatch
+            type    : C.ENTRIES_RESULT
+            payload : res?.body
+          state = getState()
+          dispatch
+            type: C.EDIT_CURRENT_ENTRY
+            payload : state.entries[state.search.current]
+        else
+          dispatch type: C.SHOW_MESSAGE, payload: 'could connect to server'
 
 module.exports = Actions
