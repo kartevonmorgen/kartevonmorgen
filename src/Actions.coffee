@@ -57,6 +57,9 @@ Actions =
   showInfo: ->
     type: C.SHOW_INFO
 
+  showImprint: ->
+    type: C.SHOW_IMPRINT
+
   closeNewEntry: ->
     type: C.CLOSE_NEW_ENTRY
 
