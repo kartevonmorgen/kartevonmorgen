@@ -10,6 +10,7 @@ u = require "updeep"
   SEARCH_RESULT
   SET_CURRENT_ENTRY
   HIGHLIGHT_ENTRIES
+  NEW_ENTRY_RESULT
 
 } = require "../constants/ActionTypes"
 
@@ -40,6 +41,12 @@ module.exports = (state=initialState, action={}) ->
       unless action.error
         u result: action.payload, state
       else state
+
+    when NEW_ENTRY_RESULT
+      unless action.error
+        o = {}
+        o[state.result.length] = action.payload
+        u result: o, state
 
     when SET_CURRENT_ENTRY
       if (p = action.payload)?
