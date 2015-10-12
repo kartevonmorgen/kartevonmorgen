@@ -13,17 +13,21 @@ Actions =
   search: ->
     (dispatch, getState) ->
       s = getState().search
+      m = getState().map
       cats = s.categories
+      sw = m.bbox.getSouthWest()
+      ne = m.bbox.getNorthEast()
+      bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
 
       return if (not s.text?) or (s.text.length < 1) or (cats.length < 1)
 
-      WebAPI.search s.text, cats, (err, res) ->
+      WebAPI.search s.text, cats, bbox, (err, res) ->
         dispatch
           type    : C.SEARCH_RESULT
-          payload : err or res?.body
+          payload : err or res?.body?.visible
           error   : err?
 
-        if (Array.isArray (ids = res?.body)) and ids.length > 0
+        if (Array.isArray (ids = res?.body?.visible)) and ids.length > 0
           { entries } = getState()
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
@@ -90,6 +94,10 @@ Actions =
   setZoom: (zoom) ->
     type: C.SET_ZOOM
     payload: zoom
+
+  setBbox: (bbox) ->
+    type: C.SET_BBOX
+    payload: bbox
 
   setCurrentEntry: (id) ->
     type: C.SET_CURRENT_ENTRY

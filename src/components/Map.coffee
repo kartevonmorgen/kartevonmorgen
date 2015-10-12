@@ -48,6 +48,11 @@ module.exports = React.createClass
       when COMPANY    then VMIcons.company
       else                 VMIcons.unknown
 
+  componentDidMount: ->
+    # workaround due to a bug in react-leaflet:
+    if (map = @refs.map)?
+      map.fireLeafletEvent 'load', map
+
   render: ->
 
     markers = []
@@ -67,12 +72,14 @@ module.exports = React.createClass
           icon: @getIconById e.categories?[0]
 
     React.createElement Map,
+      ref       : 'map'
       center    : @props.center
       zoom      : @props.zoom
       className : "map",
-      onLeafletMoveend: (ev) -> onMoveend ev.target.getCenter()
-      onLeafletZoomend: (ev) -> onZoomend ev.target.getZoom()
-      onLeafletClick: (ev) -> onClick ev.latlng
+      onLeafletLoad    : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
+      onLeafletMoveend : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
+      onLeafletZoomend : (e) -> onZoomend (t=e.target).getZoom(),  t.getBounds()
+      onLeafletClick   : (e) -> onClick e.latlng
       React.createElement TileLayer,
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         attribution: OSM_ATTR
