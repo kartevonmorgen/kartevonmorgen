@@ -9,6 +9,7 @@ u = require "updeep"
   SET_MAP_CENTER
   SET_ZOOM
   NEW_ENTRY_RESULT
+  EDIT_CURRENT_ENTRY
 
 } = require "../constants/ActionTypes"
 
@@ -26,6 +27,13 @@ module.exports = (state=initialState, action={}) ->
 
     when SET_MARKER
       u marker: action.payload, state
+
+    when EDIT_CURRENT_ENTRY
+      point = { lat: action.payload.lat, lng: action.payload.lon}
+      u
+        marker: point
+        center: point
+        state
 
     when SET_MAP_CENTER
       u center: action.payload, state

@@ -33,11 +33,20 @@ module.exports =
 
   saveNewEntry: (e, cb) ->
     request
-      .post '/entries/'
-      .use prefix
-      .set 'Accept', 'application/json'
-      .send e
-      .end cb
+    .post '/entries/'
+    .use prefix
+    .set 'Accept', 'application/json'
+    .send e
+    .end cb
+    undefined
+
+  saveEntry: (e, cb) ->
+    request
+    .put '/entries/' + e.id
+    .use prefix
+    .set 'Accept', 'application/json'
+    .send e
+    .end cb
     undefined
 
   getAllCategories: (cb) ->

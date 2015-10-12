@@ -37,9 +37,10 @@ Form = React.createClass
     fields        : T.object.isRequired
     onCancel      : T.func.isRequired
     handleSubmit  : T.func.isRequired
+    isEdit        : T.bool
 
   render: ->
-    { fields, handleSubmit, onCancel } = @props
+    { fields, handleSubmit, onCancel, isEdit} = @props
     { title, description, lat, lng, category } = fields
 
     fieldProps = udeep FIELD_PROPS, fields
@@ -57,7 +58,7 @@ Form = React.createClass
     fieldProps = udeep classes, fieldProps
 
     form onSubmit: handleSubmit, className: "add-entry-form pure-u-1",
-      h3 null, "Neuer Eintrag"
+      h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
       div className: "pure-form pure-form-stacked",
@@ -122,7 +123,7 @@ Form = React.createClass
                 className:"pure-u-23-24 pure-button", "abbrechen"
 
 module.exports = connectReduxForm(
-  form      : 'new'
+  form      : 'edit'
   fields    : ['title', 'description', 'lat', 'lng', 'category']
   validate  : validation.entryForm
 )(Form)
