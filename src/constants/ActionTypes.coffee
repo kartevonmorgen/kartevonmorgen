@@ -16,6 +16,7 @@ module.exports =
   SET_MARKER              : 'SET_MARKER'
   SET_MAP_CENTER          : 'SET_MAP_CENTER'
   SET_ZOOM                : 'SET_ZOOM'
+  SET_BBOX                : 'SET_BBOX'
   SET_CURRENT_ENTRY       : 'SET_CURRENT_ENTRY'
   SET_SEARCH_TEXT         : 'SET_SEARCH_TEXT'
 

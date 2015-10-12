@@ -15,3 +15,9 @@ describe "map reducer", ->
       { marker } =  R {}, action
       marker.lat.should.equal 5
       marker.lng.should.equal 7
+
+  describe "bounding box", ->
+    it "should be set when the action was fired", ->
+      action = Actions.setBbox { foo : "bar"}
+      { bbox } =  R {}, action
+      bbox.foo.should.equal "bar"

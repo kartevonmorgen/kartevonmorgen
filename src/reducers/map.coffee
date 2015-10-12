@@ -8,6 +8,7 @@ u = require "updeep"
   SET_MARKER
   SET_MAP_CENTER
   SET_ZOOM
+  SET_BBOX
   NEW_ENTRY_RESULT
   EDIT_CURRENT_ENTRY
 
@@ -17,6 +18,7 @@ initialState =
   zoom   : 13
   center : { lat: 48.7784931, lng: 9.1800456 } # stuttgart
   marker : null
+  bbox   : null
 
 module.exports = (state=initialState, action={}) ->
 
@@ -40,6 +42,9 @@ module.exports = (state=initialState, action={}) ->
 
     when SET_ZOOM
       u zoom: action.payload, state
+
+    when SET_BBOX
+      u bbox: action.payload, state
 
     when NEW_ENTRY_RESULT
       unless action.error
