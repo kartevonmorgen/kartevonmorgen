@@ -45,7 +45,7 @@ module.exports = (state=initialState, action={}) ->
       else state
 
     when SEARCH_RESULT
-      unless action.error
+      unless action.error or state.panel?
         u panel: V.RESULT, state
       else state
 
