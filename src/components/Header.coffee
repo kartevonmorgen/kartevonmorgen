@@ -43,3 +43,7 @@ module.exports = React.createClass
               icon    : "info-circle"
               label   : " Info"
               onClick : @props.onShowInfo
+            imprint:
+              icon    : "envelope"
+              label   : " Impressum"
+              onClick : @props.onShowImprint

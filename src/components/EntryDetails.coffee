@@ -27,3 +27,8 @@ module.exports = React.createClass
             onClick: @props.onClose
             className: "pure-button",
                "zurück"
+          " "
+          button
+            onClick: @props.onEdit
+            className: "pure-button",
+              "bearbeiten"

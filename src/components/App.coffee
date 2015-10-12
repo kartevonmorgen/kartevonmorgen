@@ -11,6 +11,7 @@ EntryDetails  = require "./EntryDetails"
 ResultList    = require "./ResultList"
 Header        = require "./Header"
 Info          = require "./Info"
+Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
 Map           = require "./Map"
 
@@ -37,7 +38,7 @@ module.exports = React.createClass
     { highlight } = search
 
     resultEntries   = (x for id in search.result when (x=@props.entries[id])?)
-    disabledHeader  = view.panel is V.NEW
+    disabledHeader  = view.panel is V.EDIT
     menuClz         = if view.menu then 'active-menu' else ''
 
     div className:"kvm app #{menuClz}",
@@ -56,16 +57,17 @@ module.exports = React.createClass
         onSearchTextReset   : -> dispatch Actions.setSearchText ''
         onShowInfo          : -> dispatch Actions.showInfo()
         onNewEntry          : -> dispatch Actions.showNewEntry()
+        onShowImprint       : -> dispatch Actions.showImprint()
 
       div className: "main",
 
         React.createElement Map,
-          marker    : (map.marker if view.panel is V.NEW)
+          marker    : (map.marker if view.panel is V.EDIT)
           center    : map.center
           zoom      : map.zoom
-          category  : form.new?.category?.value
+          category  : form.edit?.category?.value
           highlight : highlight
-          entries   : (resultEntries unless view.panel is V.NEW)
+          entries   : (resultEntries unless view.panel is V.EDIT)
           onClick   : (latlng) -> dispatch Actions.setMarker latlng
           onMoveend : (center) -> dispatch Actions.setCenter center
           onZoomend : (zoom)   -> dispatch Actions.setZoom zoom
@@ -87,21 +89,28 @@ module.exports = React.createClass
                 React.createElement EntryDetails,
                   entry   : entries[search.current]
                   onClose : -> dispatch Actions.setCurrentEntry()
+                  onEdit  : -> dispatch Actions.editCurrentEntry()
 
             when V.INFO
               div null,
                 React.createElement Info
 
-            when V.NEW
+            when V.IMPRINT
+              div null,
+                React.createElement Imprint
+
+            when V.EDIT
               div className: "content pure-g",
                 React.createElement EntryForm,
+                  isEdit: form.edit.id?
                   onSubmit: (data) ->
-                    dispatch Actions.saveNewEntry
+                    dispatch Actions.saveEntry
+                      id          : form.edit?.id?.value
                       title       : data.title
                       description : data.description
                       lat         : data.lat
                       lon         : data.lng
                       categories  : [data.category]
                   onCancel: ->
-                    dispatch initialize 'new', {}
+                    dispatch initialize 'edit', {}
                     dispatch Actions.closeNewEntry()

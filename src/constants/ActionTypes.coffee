@@ -7,6 +7,9 @@ module.exports =
 
   SHOW_NEW_ENTRY          : 'SHOW_NEW_ENTRY'
   SHOW_INFO               : 'SHOW_INFO'
+  SHOW_IMPRINT            : 'SHOW_IMPRINT'
+  SHOW_IO_WAIT            : 'SHOW_IO_WAIT'
+  SHOW_MESSAGE            : 'SHOW_MESSAGE'
 
   CLOSE_NEW_ENTRY         : 'CLOSE_NEW_ENTRY'
 
@@ -15,6 +18,8 @@ module.exports =
   SET_ZOOM                : 'SET_ZOOM'
   SET_CURRENT_ENTRY       : 'SET_CURRENT_ENTRY'
   SET_SEARCH_TEXT         : 'SET_SEARCH_TEXT'
+
+  EDIT_CURRENT_ENTRY      : 'EDIT_CURRENT_ENTRY'
 
   HIGHLIGHT_ENTRIES       : 'HIGHLIGHT_ENTRIES'
 

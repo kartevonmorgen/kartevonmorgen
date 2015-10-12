@@ -9,8 +9,10 @@ u  = require "updeep"
   NEW_ENTRY_RESULT
   CLOSE_NEW_ENTRY
   SHOW_INFO
+  SHOW_IMPRINT
   SET_CURRENT_ENTRY
   SEARCH_RESULT
+  EDIT_CURRENT_ENTRY
 
 } = require "../constants/ActionTypes"
 
@@ -28,8 +30,11 @@ module.exports = (state=initialState, action={}) ->
     when SHOW_INFO
       u { menu: no, panel: V.INFO }, state
 
-    when SHOW_NEW_ENTRY
-      u { menu: no, panel: V.NEW }, state
+    when SHOW_IMPRINT
+      u { menu: no, panel: V.IMPRINT }, state
+
+    when SHOW_NEW_ENTRY, EDIT_CURRENT_ENTRY
+      u { menu: no, panel: V.EDIT }, state
 
     when CLOSE_NEW_ENTRY
       u panel: null, state
