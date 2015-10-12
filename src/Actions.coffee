@@ -64,7 +64,7 @@ Actions =
     type: C.CLOSE_NEW_ENTRY
 
   saveEntry: (e) ->
-    saveFunc = if e.id then WebAPI.saveEntry else WebAPI.saveNewEntry
+    saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
     (dispatch, getState) ->
       saveFunc e, (err, res) ->
         unless err?
