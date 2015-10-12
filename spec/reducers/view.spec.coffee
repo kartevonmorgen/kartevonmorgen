@@ -9,11 +9,15 @@ describe "view reducer", ->
   it "should be a function", ->
     V.should.be.a "function"
 
-  view_store = V()
-
   describe "panel", ->
     it "is a key in view store", ->
-      view_store.should.have.ownProperty "panel"
+      V().should.have.ownProperty "panel"
 
-    it "should change to PV.IMPRINT after action SHOW_IMPRINT", ->
-      V(view_store,AT.SHOW_IMPRINT).panel == PV.IMPRINT
+    it "should change to IMPRINT view after action SHOW_IMPRINT", ->
+      V({},{type:AT.SHOW_IMPRINT}).panel.should.equal PV.IMPRINT
+
+    it "should change to RESULT view after action SEARCH_RESULT", ->
+      V({},{type:AT.SEARCH_RESULT}).panel.should.equal PV.RESULT
+
+    it "should not be changed after action SEARCH_RESULT if it exists", ->
+      V({panel:"foo"},{type:AT.SEARCH_RESULT}).panel.should.equal "foo"
