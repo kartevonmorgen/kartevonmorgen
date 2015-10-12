@@ -5,7 +5,7 @@ PureMixin = require "react-pure-render/mixin"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
-{ div, p, h3, button, span } = React.DOM
+{ div, p, h3, button, span, i } = React.DOM
 
 module.exports = React.createClass
 
@@ -26,9 +26,10 @@ module.exports = React.createClass
           button
             onClick: @props.onClose
             className: "pure-button",
-               "zurück"
-          " "
+              i className: "fa fa-chevron-left"
+              "zurück"
           button
             onClick: @props.onEdit
             className: "pure-button",
+              i className: "fa fa-pencil"
               "bearbeiten"

@@ -15,6 +15,7 @@ module.exports = React.createClass
     buttons = for key,v of @props when typeof v is "object" then do (key,v) ->
       li { key, className :"pure-menu-item" },
         a { onClick: v.onClick, className: "pure-menu-link"},
-          i className: "fa fa-#{v.icon}", v.label
+          i className: "fa fa-#{v.icon}"
+          v.label
     div className: "pure-menu pure-menu-horizontal",
       ul className:"pure-menu-list", buttons

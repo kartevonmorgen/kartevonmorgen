@@ -21,6 +21,7 @@ validation  = require "../util/validation"
   button,
   textarea,
   select,
+  i,
   option
 } = React.DOM
 
@@ -113,6 +114,7 @@ Form = React.createClass
               button
                 className: "pure-u-23-24 pure-button pure-button-primary"
                 type: "submit",
+                  i className: "fa fa-floppy-o"
                   "speichern"
 
             div className: "pure-u-1 pure-u-md-1-3",
@@ -120,7 +122,9 @@ Form = React.createClass
                 onClick: (ev) =>
                   ev.preventDefault()
                   @props.onCancel()
-                className:"pure-u-23-24 pure-button", "abbrechen"
+                className:"pure-u-23-24 pure-button",
+                  i className: "fa fa-ban"
+                  "abbrechen"
 
 module.exports = connectReduxForm(
   form      : 'edit'
