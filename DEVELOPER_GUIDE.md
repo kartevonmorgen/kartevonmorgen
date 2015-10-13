@@ -84,3 +84,15 @@ Nevertheless here are some more libs used and you should/could know about:
 - [superagent](https://github.com/visionmedia/superagent)
 - [purecss](http://purecss.io/)
 - [font-awesome](http://fontawesome.io/)
+
+## Style Guide
+
+- if.*else.*then in one line or each keyword in a separte line
+
+    if foo then bar else baz
+    #or
+    if foo
+      bar
+    else
+      baz
+
