@@ -68,7 +68,8 @@ module.exports = React.createClass
           opacity:
             if (h = highlight).length > 0
               if e.id in h then 1 else 0.3
-            else 1
+            else
+              1
           icon: @getIconById e.categories?[0]
 
     React.createElement Map,
