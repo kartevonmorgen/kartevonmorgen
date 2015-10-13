@@ -1,13 +1,13 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-C       = require "./constants/ActionTypes"
+T       = require "./constants/ActionTypes"
 WebAPI  = require "./WebAPI"
 { initialize, stopSubmit } = require "redux-form"
 
 Actions =
 
   setSearchText: (txt) ->
-    type    : C.SET_SEARCH_TEXT
+    type    : T.SET_SEARCH_TEXT
     payload : txt
 
   search: ->
@@ -23,7 +23,7 @@ Actions =
 
       WebAPI.search s.text, cats, bbox, (err, res) ->
         dispatch
-          type    : C.SEARCH_RESULT
+          type    : T.SEARCH_RESULT
           payload : err or res?.body?.visible
           error   : err?
 
@@ -36,7 +36,7 @@ Actions =
     (dispatch) ->
       WebAPI.getEntries ids, (err, res) ->
         dispatch
-          type    : C.ENTRIES_RESULT
+          type    : T.ENTRIES_RESULT
           payload : err or res?.body
           error   : err?
 
@@ -44,28 +44,28 @@ Actions =
     (dispatch) ->
       WebAPI.getAllCategories (err, res) ->
         dispatch
-          type    : C.CATEGORIES_RESULT
+          type    : T.CATEGORIES_RESULT
           payload : err or res?.body
           error   : err?
 
   toggleSearchCategory: (category) ->
-    type: C.TOGGLE_SEARCH_CATEGORY
+    type: T.TOGGLE_SEARCH_CATEGORY
     payload: category
 
   toggleMenu: ->
-    type: C.TOGGLE_MENU
+    type: T.TOGGLE_MENU
 
   showNewEntry: ->
-    type: C.SHOW_NEW_ENTRY
+    type: T.SHOW_NEW_ENTRY
 
   showInfo: ->
-    type: C.SHOW_INFO
+    type: T.SHOW_INFO
 
   showImprint: ->
-    type: C.SHOW_IMPRINT
+    type: T.SHOW_IMPRINT
 
   closeNewEntry: ->
-    type: C.CLOSE_NEW_ENTRY
+    type: T.CLOSE_NEW_ENTRY
 
   saveEntry: (e) ->
     saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
@@ -75,52 +75,52 @@ Actions =
           dispatch initialize 'edit', {}
           dispatch Actions.getEntries [res?.text] if !err
           dispatch
-            type    : C.NEW_ENTRY_RESULT
+            type    : T.NEW_ENTRY_RESULT
             payload : res?.text
           dispatch
-            type    : C.SET_CURRENT_ENTRY
+            type    : T.SET_CURRENT_ENTRY
             payload : getState().search.result.length - 1
         else
           dispatch stopSubmit 'edit', { _error: err }
 
   setMarker: (latlng) ->
-    type: C.SET_MARKER
+    type: T.SET_MARKER
     payload: latlng
 
   setCenter: (center) ->
-    type: C.SET_MAP_CENTER
+    type: T.SET_MAP_CENTER
     payload: center
 
   setZoom: (zoom) ->
-    type: C.SET_ZOOM
+    type: T.SET_ZOOM
     payload: zoom
 
   setBbox: (bbox) ->
-    type: C.SET_BBOX
+    type: T.SET_BBOX
     payload: bbox
 
   setCurrentEntry: (id) ->
-    type: C.SET_CURRENT_ENTRY
+    type: T.SET_CURRENT_ENTRY
     payload: id
 
   highlight: (id=[]) ->
     id = [id] unless Array.isArray id
-    type: C.HIGHLIGHT_ENTRIES
+    type: T.HIGHLIGHT_ENTRIES
     payload: id
 
   editCurrentEntry: () ->
     (dispatch, getState) ->
-      dispatch type: C.SHOW_IO_WAIT
+      dispatch type: T.SHOW_IO_WAIT
       WebAPI.getEntries [getState().search.current], (err, res) ->
         unless err?
           dispatch
-            type    : C.ENTRIES_RESULT
+            type    : T.ENTRIES_RESULT
             payload : res?.body
           state = getState()
           dispatch
-            type: C.EDIT_CURRENT_ENTRY
+            type: T.EDIT_CURRENT_ENTRY
             payload : state.entries[state.search.current]
         else
-          dispatch type: C.SHOW_MESSAGE, payload: 'could connect to server'
+          dispatch type: T.SHOW_MESSAGE, payload: 'could connect to server'
 
 module.exports = Actions
