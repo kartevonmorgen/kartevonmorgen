@@ -1,14 +1,12 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
+T = require "../constants/ActionTypes"
 u = require "updeep"
-
-{ ENTRIES_RESULT } = require "../constants/ActionTypes"
 
 module.exports = (state={}, action={}) ->
 
   switch action.type
-
-    when ENTRIES_RESULT
+    when T.ENTRIES_RESULT
       unless action.error or not (p = action.payload)?
         o = {}
         if Array.isArray p

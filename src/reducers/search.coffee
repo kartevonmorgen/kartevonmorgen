@@ -1,18 +1,9 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
 u = require "updeep"
+T = require "../constants/ActionTypes"
 
 { MAIN_IDS } = require "../constants/Categories"
-
-{
-  TOGGLE_SEARCH_CATEGORY
-  SET_SEARCH_TEXT
-  SEARCH_RESULT
-  SET_CURRENT_ENTRY
-  HIGHLIGHT_ENTRIES
-  NEW_ENTRY_RESULT
-
-} = require "../constants/ActionTypes"
 
 initialState =
   text       : null
@@ -25,7 +16,7 @@ module.exports = (state=initialState, action={}) ->
 
   switch action.type
 
-    when TOGGLE_SEARCH_CATEGORY
+    when T.TOGGLE_SEARCH_CATEGORY
       return state unless (c=action.payload)?
       cats =
         if c in state.categories
@@ -34,27 +25,27 @@ module.exports = (state=initialState, action={}) ->
           [c, state.categories...]
       u categories: cats, state
 
-    when SET_SEARCH_TEXT
+    when T.SET_SEARCH_TEXT
       u text: action.payload, state
 
-    when SEARCH_RESULT
+    when T.SEARCH_RESULT
       unless action.error
         u result: action.payload, state
       else state
 
-    when NEW_ENTRY_RESULT
+    when T.NEW_ENTRY_RESULT
       unless action.error
         o = {}
         o[state.result.length] = action.payload
         u result: o, state
 
-    when SET_CURRENT_ENTRY
+    when T.SET_CURRENT_ENTRY
       if (p = action.payload)?
         u { current : p, highlight: [p] }, state
       else
         u current: null, state
 
-    when HIGHLIGHT_ENTRIES
+    when T.HIGHLIGHT_ENTRIES
       u highlight: action.payload, state
 
     else state
