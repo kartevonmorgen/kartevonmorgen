@@ -82,6 +82,6 @@ as soon as I finished an initial draft.
 
 ## License
 
-Copyright (C) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).
