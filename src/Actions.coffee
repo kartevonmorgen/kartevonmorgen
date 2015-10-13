@@ -1,4 +1,4 @@
-# Copyright (C) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+# Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
 C       = require "./constants/ActionTypes"
 WebAPI  = require "./WebAPI"
