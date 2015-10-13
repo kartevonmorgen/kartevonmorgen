@@ -40,7 +40,8 @@ module.exports = (state=initialState, action={}) ->
     when SEARCH_RESULT
       unless action.error
         u result: action.payload, state
-      else state
+      else
+        state
 
     when NEW_ENTRY_RESULT
       unless action.error
@@ -57,4 +58,5 @@ module.exports = (state=initialState, action={}) ->
     when HIGHLIGHT_ENTRIES
       u highlight: action.payload, state
 
-    else state
+    else
+      state

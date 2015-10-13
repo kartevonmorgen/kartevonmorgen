@@ -49,6 +49,8 @@ module.exports = (state=initialState, action={}) ->
     when NEW_ENTRY_RESULT
       unless action.error
         u marker: null, state
-      else state
+      else
+        state
 
-    else state
+    else
+      state

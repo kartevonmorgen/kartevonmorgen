@@ -42,12 +42,14 @@ module.exports = (state=initialState, action={}) ->
     when NEW_ENTRY_RESULT
       unless action.error
         u panel: null, state
-      else state
+      else
+        state
 
     when SEARCH_RESULT
       unless action.error or state.panel?
         u panel: V.RESULT, state
-      else state
+      else
+        state
 
     when SET_CURRENT_ENTRY
       v = if action.payload? then V.ENTRY else V.RESULT

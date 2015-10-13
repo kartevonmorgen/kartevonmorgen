@@ -16,5 +16,7 @@ module.exports = (state={}, action={}) ->
         else
           o[p.id] = p
         u o, state
-      else state
-    else state
+      else
+        state
+    else
+      state
