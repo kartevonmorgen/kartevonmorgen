@@ -87,12 +87,4 @@ Nevertheless here are some more libs used and you should/could know about:
 
 ## Style Guide
 
-- if.*else.*then in one line or each keyword in a separte line
-
-    if foo then bar else baz
-    #or
-    if foo
-      bar
-    else
-      baz
-
+Please follow the coffeescript style guide from [polarmobile](https://github.com/polarmobile/coffeescript-style-guide)
