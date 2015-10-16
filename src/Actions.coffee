@@ -27,7 +27,7 @@ Actions =
           payload : err or res.visible
           error   : err?
 
-        if (Array.isArray (ids = res.visible)) and ids.length > 0
+        if (Array.isArray (ids = res?.visible)) and ids.length > 0
           { entries } = getState()
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
