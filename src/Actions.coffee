@@ -48,6 +48,14 @@ Actions =
           payload : err or res?.body
           error   : err?
 
+  getServerInfo: ->
+    (dispatch) ->
+      WebAPI.getServerInfo (err, res) ->
+        dispatch
+          type    : T.SERVER_INFO_RESULT
+          payload : err or version: res?.text
+          error   : err?
+
   toggleSearchCategory: (category) ->
     type: T.TOGGLE_SEARCH_CATEGORY
     payload: category

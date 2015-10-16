@@ -14,6 +14,7 @@ Info          = require "./Info"
 Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
 Map           = require "./Map"
+pkg           = require "json!../../package.json"
 
 { initialize }  = require "redux-form"
 { div }         = React.DOM
@@ -30,6 +31,7 @@ module.exports = React.createClass
     map     : T.object.isRequired
     search  : T.object.isRequired
     form    : T.object.isRequired
+    server  : T.object.isRequired
 
   render: ->
 
@@ -55,7 +57,9 @@ module.exports = React.createClass
           dispatch Actions.setSearchText txt
           dispatch Actions.search() if txt.length > 0
         onSearchTextReset   : -> dispatch Actions.setSearchText ''
-        onShowInfo          : -> dispatch Actions.showInfo()
+        onShowInfo          : ->
+          dispatch Actions.showInfo()
+          dispatch Actions.getServerInfo()
         onNewEntry          : -> dispatch Actions.showNewEntry()
         onShowImprint       : -> dispatch Actions.showImprint()
 
@@ -99,7 +103,9 @@ module.exports = React.createClass
 
             when V.INFO
               div null,
-                React.createElement Info
+                React.createElement Info,
+                  clientVersion: pkg.version
+                  serverVersion: @props.server.version
 
             when V.IMPRINT
               div null,
