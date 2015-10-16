@@ -2,15 +2,19 @@
 
 React = require "react"
 Pure  = require "react-pure-render/mixin"
+T     = React.PropTypes
 
 REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
-pkg = require "json!../../package.json"
 
 { div, p, a,  h3, h4, br }  = React.DOM
 
 module.exports = React.createClass
 
   displayName: "Info"
+
+  propTypes:
+    clientVersion : T.string
+    serverVersion : T.string
 
   mixins: [Pure]
 
@@ -46,4 +50,7 @@ module.exports = React.createClass
       p null, a href: REPOSITORY, REPOSITORY
 
       p className: "version",
-        "Version dieses Clients: v#{pkg.version}"
+        "Version dieses Clients: v#{@props.clientVersion}"
+      if (sv = @props.serverVersion)?
+        p className: "version",
+          "Version des Servers: v#{sv}"

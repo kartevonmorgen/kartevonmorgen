@@ -57,3 +57,11 @@ module.exports =
       .set 'Accept', 'application/json'
       .end cb
     undefined
+
+  getServerInfo: (cb) ->
+    request
+      .get '/server/version'
+      .set 'Accept', 'application/json'
+      .use prefix
+      .end cb
+    undefined
