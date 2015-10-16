@@ -86,14 +86,6 @@ Form = React.createClass
               title.error and title.touched and div className: "err",
                 title.error
 
-        fieldset null,
-          div className: "pure-g",
-            div className: "pure-u-1",
-              label null, "Homepage"
-              input fieldProps.www
-              www.error and www.touched and div className: "err",
-                www.error
-
         div className: "pure-g",
           div className: "pure-u-1",
             label null,
@@ -101,6 +93,14 @@ Form = React.createClass
             textarea fieldProps.description
             description.error and description.touched and div className:"err",
              description.error
+
+        fieldset null,
+          div className: "pure-g",
+            div className: "pure-u-1",
+              label null, "Homepage"
+              input fieldProps.www
+              www.error and www.touched and div className: "err",
+                www.error
 
         div className: "pure-g",
           div className: "pure-u-1",
