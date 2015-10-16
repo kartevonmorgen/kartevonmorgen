@@ -42,7 +42,7 @@ Form = React.createClass
 
   render: ->
     { fields, handleSubmit, onCancel, isEdit} = @props
-    { title, description, www, lat, lng, category } = fields
+    { title, description, www, phone, lat, lng, category } = fields
 
     fieldProps = udeep FIELD_PROPS, fields
 
@@ -50,6 +50,7 @@ Form = React.createClass
       title       : className: "pure-u-23-24"
       description : className: "pure-u-23-24"
       www         : className: "pure-u-23-24"
+      phone       : className: "pure-u-23-24"
       lat         : className: "pure-u-23-24"
       lng         : className: "pure-u-23-24"
       category    : className: ""
@@ -85,6 +86,14 @@ Form = React.createClass
               title.error and title.touched and div className: "err",
                 title.error
 
+        div className: "pure-g",
+          div className: "pure-u-1",
+            label null,
+              span className:"text","Beschreibung"
+            textarea fieldProps.description
+            description.error and description.touched and div className:"err",
+             description.error
+
         fieldset null,
           div className: "pure-g",
             div className: "pure-u-1",
@@ -95,11 +104,8 @@ Form = React.createClass
 
         div className: "pure-g",
           div className: "pure-u-1",
-            label null,
-              span className:"text","Beschreibung"
-            textarea fieldProps.description
-            description.error and description.touched and div className:"err",
-             description.error
+            label null, "Telefon"
+            input fieldProps.phone
 
         fieldset null,
           legend null,
@@ -137,6 +143,6 @@ Form = React.createClass
 
 module.exports = connectReduxForm(
   form      : 'edit'
-  fields    : ['title', 'description', 'www', 'lat', 'lng', 'category']
+  fields    : ['title', 'description', 'www', 'phone', 'lat', 'lng', 'category']
   validate  : validation.entryForm
 )(Form)
