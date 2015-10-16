@@ -22,6 +22,7 @@ module.exports = React.createClass
       div null,
         h3 null, entry.title
         p null, entry.description
+        p null, entry.www
         div null,
           button
             onClick: @props.onClose
