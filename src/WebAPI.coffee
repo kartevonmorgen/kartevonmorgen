@@ -4,6 +4,9 @@
 request = require "superagent/lib/client"
 prefix  = (require "superagent-prefix") URL
 
+jsonCallback = (cb) ->
+  (err, res) -> if err then cb err else cb null, res.body
+
 module.exports =
 
   search: (txt='', cats=[], bbox=[], cb) ->
@@ -17,7 +20,7 @@ module.exports =
         .query 'categories=' + cats.join ','
         .query 'bbox=' + bbox.join ','
         .set 'Accept', 'application/json'
-        .end cb
+        .end jsonCallback cb
     undefined
 
   getEntries: (ids=[], cb) ->
@@ -29,7 +32,7 @@ module.exports =
         .get '/entries/' + ids.join ','
         .use prefix
         .set 'Accept', 'application/json'
-        .end cb
+        .end jsonCallback cb
     undefined
 
   saveNewEntry: (e, cb) ->
@@ -38,7 +41,7 @@ module.exports =
     .use prefix
     .set 'Accept', 'application/json'
     .send e
-    .end cb
+    .end jsonCallback cb
     undefined
 
   saveEntry: (e, cb) ->
@@ -47,7 +50,7 @@ module.exports =
     .use prefix
     .set 'Accept', 'application/json'
     .send e
-    .end cb
+    .end jsonCallback cb
     undefined
 
   getAllCategories: (cb) ->
@@ -63,5 +66,5 @@ module.exports =
       .get '/server/version'
       .set 'Accept', 'application/json'
       .use prefix
-      .end cb
+      .end (err, res) -> if err then cb err else cb null, version: res.text
     undefined

@@ -24,10 +24,10 @@ Actions =
       WebAPI.search s.text, cats, bbox, (err, res) ->
         dispatch
           type    : T.SEARCH_RESULT
-          payload : err or res?.body?.visible
+          payload : err or res.visible
           error   : err?
 
-        if (Array.isArray (ids = res?.body?.visible)) and ids.length > 0
+        if (Array.isArray (ids = res.visible)) and ids.length > 0
           { entries } = getState()
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
@@ -37,7 +37,7 @@ Actions =
       WebAPI.getEntries ids, (err, res) ->
         dispatch
           type    : T.ENTRIES_RESULT
-          payload : err or res?.body
+          payload : err or res
           error   : err?
 
   getAllCategories: ->
@@ -45,7 +45,7 @@ Actions =
       WebAPI.getAllCategories (err, res) ->
         dispatch
           type    : T.CATEGORIES_RESULT
-          payload : err or res?.body
+          payload : err or res
           error   : err?
 
   getServerInfo: ->
@@ -53,7 +53,7 @@ Actions =
       WebAPI.getServerInfo (err, res) ->
         dispatch
           type    : T.SERVER_INFO_RESULT
-          payload : err or version: res?.text
+          payload : err or res
           error   : err?
 
   toggleSearchCategory: (category) ->
@@ -82,11 +82,11 @@ Actions =
         if err
           dispatch stopSubmit 'edit', { _error: err }
         else
-          id = e?.id or res.body
+          id = e?.id or res
           WebAPI.getEntries [id], (err, res) ->
             dispatch
               type    : T.ENTRIES_RESULT
-              payload : err or res?.body
+              payload : err or res
               error   : err?
             dispatch initialize 'edit', {}
             dispatch
@@ -129,7 +129,7 @@ Actions =
         unless err?
           dispatch
             type    : T.ENTRIES_RESULT
-            payload : res?.body
+            payload : res
           state = getState()
           dispatch
             type: T.EDIT_CURRENT_ENTRY
