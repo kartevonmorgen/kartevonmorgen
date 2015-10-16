@@ -71,17 +71,23 @@ Actions =
     saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
     (dispatch, getState) ->
       saveFunc e, (err, res) ->
-        unless err?
-          dispatch initialize 'edit', {}
-          dispatch Actions.getEntries [res?.text] if !err
-          dispatch
-            type    : T.NEW_ENTRY_RESULT
-            payload : res?.text
-          dispatch
-            type    : T.SET_CURRENT_ENTRY
-            payload : getState().search.result.length - 1
-        else
+        if err
           dispatch stopSubmit 'edit', { _error: err }
+        else
+          id = e?.id or res.body
+          WebAPI.getEntries [id], (err, res) ->
+            dispatch
+              type    : T.ENTRIES_RESULT
+              payload : err or res?.body
+              error   : err?
+            dispatch initialize 'edit', {}
+            dispatch
+              type    : T.SET_CURRENT_ENTRY
+              payload : id
+            unless e?.id
+              dispatch
+                type    : T.NEW_ENTRY_RESULT
+                payload : id
 
   setMarker: (latlng) ->
     type: T.SET_MARKER
