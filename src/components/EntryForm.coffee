@@ -143,6 +143,14 @@ Form = React.createClass
 
 module.exports = connectReduxForm(
   form      : 'edit'
-  fields    : ['title', 'description', 'homepage', 'phone', 'lat', 'lng', 'category']
+  fields    : [
+    'title',
+    'description',
+    'homepage',
+    'telephone',
+    'lat',
+    'lng',
+    'category'
+  ]
   validate  : validation.entryForm
 )(Form)
