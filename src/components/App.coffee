@@ -120,7 +120,7 @@ module.exports = React.createClass
                       id          : form.edit?.id?.value
                       title       : data.title
                       description : data.description
-                      www         : data.www
+                      homepage    : data.homepage
                       phone       : data.phone
                       lat         : data.lat
                       lon         : data.lng

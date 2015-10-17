@@ -22,7 +22,7 @@ module.exports = React.createClass
       div null,
         h3 null, entry.title
         p null, entry.description
-        p null, entry.www
+        p null, entry.homepage
         p null, entry.phone
         div null,
           button
