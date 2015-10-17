@@ -5,7 +5,7 @@ PureMixin = require "react-pure-render/mixin"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
-{ div, p, h3, button, span, i } = React.DOM
+{ div, p, h3, button, span, i, a } = React.DOM
 
 module.exports = React.createClass
 
@@ -22,7 +22,7 @@ module.exports = React.createClass
       div null,
         h3 null, entry.title
         p null, entry.description
-        p null, entry.www
+        p null, a href: entry.homepage, entry.homepage
         p null, entry.phone
         div null,
           button
