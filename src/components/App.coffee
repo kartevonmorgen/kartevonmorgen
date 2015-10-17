@@ -121,7 +121,7 @@ module.exports = React.createClass
                       title       : data.title
                       description : data.description
                       homepage    : data.homepage
-                      phone       : data.phone
+                      telephone   : data.telephone
                       lat         : data.lat
                       lon         : data.lng
                       categories  : [data.category]
