@@ -28,7 +28,9 @@ Actions =
           error   : err?
 
         ids = if Array.isArray (res?.visible)
-                if Array.isArray(res?.invisible) then res.visible.concat(res.invisible) else res.visible
+                if Array.isArray(res?.invisible)
+                  res.visible.concat(res.invisible)
+                else res.visible
               else res?.invisible
         if (Array.isArray (ids)) and ids.length > 0
           { entries } = getState()
