@@ -40,6 +40,7 @@ module.exports = React.createClass
     { highlight } = search
 
     resultEntries   = (x for id in search.result when (x=@props.entries[id])?)
+    invisibleEntries= (x for id in search.invisible when(x=@props.entries[id])?)
     disabledHeader  = view.panel is V.EDIT
     menuClz         = if view.menu then 'active-menu' else ''
 
@@ -93,6 +94,20 @@ module.exports = React.createClass
                   onClick     : (id) -> dispatch Actions.setCurrentEntry id
                   onMouseEnter: (id) -> dispatch Actions.highlight id
                   onMouseLeave: (id) -> dispatch Actions.highlight()
+                if invisibleEntries and invisibleEntries.length
+                  div null,
+                    div className: 'hdr-invisible',
+                      """
+                      Weitere Ergebnisse außerhalb
+                      des sichtbaren Bereichs der Karte:
+                      """
+                      React.createElement ResultList,
+                        entries     : invisibleEntries
+                        highlight   : highlight
+                        onClick     :
+                          (id) -> dispatch Actions.setCurrentEntry id
+                        onMouseEnter: (id) -> dispatch Actions.highlight id
+                        onMouseLeave: (id) -> dispatch Actions.highlight()
 
             when V.ENTRY
               div null,

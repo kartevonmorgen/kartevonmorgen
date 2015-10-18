@@ -11,6 +11,7 @@ initialState =
   current    : null
   categories : MAIN_IDS
   highlight  : []
+  invisible  : []
 
 module.exports = (state=initialState, action={}) ->
 
@@ -30,7 +31,8 @@ module.exports = (state=initialState, action={}) ->
 
     when T.SEARCH_RESULT
       unless action.error
-        u result: action.payload, state
+        u result: action.payload.visible, invisible: action.payload.invisible,
+          state
       else
         state
 
