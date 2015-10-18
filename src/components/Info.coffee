@@ -6,7 +6,7 @@ T     = React.PropTypes
 
 REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
 
-{ div, p, a,  h3, h4, br }  = React.DOM
+{ div, p, a,  h3, h4, br, button, i }  = React.DOM
 
 module.exports = React.createClass
 
@@ -54,3 +54,12 @@ module.exports = React.createClass
       if (sv = @props.serverVersion)?
         p className: "version",
           "Version des Servers: v#{sv}"
+
+      div className: "close-button",
+        button
+          onClick: (ev) =>
+            ev.preventDefault()
+            @props.onClose()
+          className:"pure-button",
+          i className: "fa fa-ban"
+          "schließen"

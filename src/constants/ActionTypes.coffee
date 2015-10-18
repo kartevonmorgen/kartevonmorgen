@@ -12,6 +12,8 @@ module.exports =
   SHOW_MESSAGE            : 'SHOW_MESSAGE'
 
   CLOSE_NEW_ENTRY         : 'CLOSE_NEW_ENTRY'
+  CLOSE_PANEL             : 'CLOSE_PANEL'
+  CANCEL_WAIT_IO          : 'CANCEL_WAIT_IO'
 
   SET_MARKER              : 'SET_MARKER'
   SET_MAP_CENTER          : 'SET_MAP_CENTER'

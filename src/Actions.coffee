@@ -80,6 +80,13 @@ Actions =
   closeNewEntry: ->
     type: T.CLOSE_NEW_ENTRY
 
+  closePanel: ->
+    type: T.CLOSE_PANEL
+
+  cancelWait: ->
+    type: T.CANCEL_WAIT_IO
+  # TODO: cancel asyn background api requests
+
   saveEntry: (e) ->
     saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
     (dispatch, getState) ->

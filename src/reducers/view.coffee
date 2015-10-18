@@ -24,7 +24,10 @@ module.exports = (state=initialState, action={}) ->
     when T.SHOW_NEW_ENTRY, T.EDIT_CURRENT_ENTRY
       u { menu: no, panel: V.EDIT }, state
 
-    when T.CLOSE_NEW_ENTRY
+    when T.SHOW_IO_WAIT
+      u panel: V.WAIT, state
+
+    when T.CLOSE_NEW_ENTRY, T.CLOSE_PANEL, T.CANCEL_WAIT_IO
       u panel: null, state
 
     when T.NEW_ENTRY_RESULT
