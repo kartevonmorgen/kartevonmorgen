@@ -42,7 +42,7 @@ Form = React.createClass
 
   render: ->
     { fields, handleSubmit, onCancel, isEdit} = @props
-    { title, description, homepage, phone, lat, lng, category } = fields
+    { title, description, homepage, telephone, lat, lng, category } = fields
 
     fieldProps = udeep FIELD_PROPS, fields
 
@@ -50,7 +50,7 @@ Form = React.createClass
       title       : className: "pure-u-23-24"
       description : className: "pure-u-23-24"
       homepage    : className: "pure-u-23-24"
-      phone       : className: "pure-u-23-24"
+      telephone   : className: "pure-u-23-24"
       lat         : className: "pure-u-23-24"
       lng         : className: "pure-u-23-24"
       category    : className: ""
@@ -105,7 +105,7 @@ Form = React.createClass
           div className: "pure-g",
             div className: "pure-u-1",
               label null, "Telefon"
-              input fieldProps.phone
+              input fieldProps.telephone
 
         fieldset null,
           legend null,
