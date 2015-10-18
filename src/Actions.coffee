@@ -24,10 +24,15 @@ Actions =
       WebAPI.search s.text, cats, bbox, (err, res) ->
         dispatch
           type    : T.SEARCH_RESULT
-          payload : err or res.visible
+          payload : err or res
           error   : err?
 
-        if (Array.isArray (ids = res?.visible)) and ids.length > 0
+        ids = if Array.isArray (res?.visible)
+                if Array.isArray(res?.invisible)
+                  res.visible.concat(res.invisible)
+                else res.visible
+              else res?.invisible
+        if (Array.isArray (ids)) and ids.length > 0
           { entries } = getState()
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
