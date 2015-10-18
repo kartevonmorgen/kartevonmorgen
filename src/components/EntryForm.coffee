@@ -112,12 +112,12 @@ Form = React.createClass
             span className:"text","Ort"
             span className:"desc","(Klick auf Karte)"
           div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-3",
+            div className: "pure-u-1 pure-u-md-1-2",
               label null, "Latitude"
               input fieldProps.lat
               lat.error and lat.touched and div className: "err", lat.error
 
-            div className: "pure-u-1 pure-u-md-1-3",
+            div className: "pure-u-1 pure-u-md-1-2",
               label null, "Longitude"
               input fieldProps.lng
               lng.error and lng.touched and div className: "err", lng.error
@@ -125,14 +125,14 @@ Form = React.createClass
         fieldset null,
           legend null, ""
           div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-3",
+            div className: "pure-u-1 pure-u-md-1-2",
               button
                 className: "pure-u-23-24 pure-button pure-button-primary"
                 type: "submit",
                   i className: "fa fa-floppy-o"
                   "speichern"
 
-            div className: "pure-u-1 pure-u-md-1-3",
+            div className: "pure-u-1 pure-u-md-1-2",
               button
                 onClick: (ev) =>
                   ev.preventDefault()

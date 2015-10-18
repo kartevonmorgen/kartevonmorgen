@@ -30,6 +30,7 @@ module.exports = React.createClass
             className: "pure-button",
               i className: "fa fa-chevron-left"
               "zurück"
+          " "
           button
             onClick: @props.onEdit
             className: "pure-button",

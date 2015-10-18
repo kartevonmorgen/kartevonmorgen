@@ -13,6 +13,7 @@ Header        = require "./Header"
 Info          = require "./Info"
 Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
+Wait          = require "./Wait"
 Map           = require "./Map"
 pkg           = require "json!../../package.json"
 
@@ -101,13 +102,13 @@ module.exports = React.createClass
                       Weitere Ergebnisse außerhalb
                       des sichtbaren Bereichs der Karte:
                       """
-                      React.createElement ResultList,
-                        entries     : invisibleEntries
-                        highlight   : highlight
-                        onClick     :
-                          (id) -> dispatch Actions.setCurrentEntry id
-                        onMouseEnter: (id) -> dispatch Actions.highlight id
-                        onMouseLeave: (id) -> dispatch Actions.highlight()
+                    React.createElement ResultList,
+                      entries     : invisibleEntries
+                      highlight   : highlight
+                      onClick     :
+                        (id) -> dispatch Actions.setCurrentEntry id
+                      onMouseEnter: (id) -> dispatch Actions.highlight id
+                      onMouseLeave: (id) -> dispatch Actions.highlight()
 
             when V.ENTRY
               div null,
@@ -121,10 +122,14 @@ module.exports = React.createClass
                 React.createElement Info,
                   clientVersion: pkg.version
                   serverVersion: @props.server.version
+                  onClose: ->
+                    dispatch Actions.closePanel()
 
             when V.IMPRINT
               div null,
-                React.createElement Imprint
+                React.createElement Imprint,
+                  onClose: ->
+                    dispatch Actions.closePanel()
 
             when V.EDIT
               div className: "content pure-g",
@@ -143,3 +148,7 @@ module.exports = React.createClass
                   onCancel: ->
                     dispatch initialize 'edit', {}
                     dispatch Actions.closeNewEntry()
+            when V.WAIT
+              React.createElement Wait,
+                onCancel: ->
+                  dispatch Actions.cancelWait()

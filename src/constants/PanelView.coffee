@@ -6,3 +6,4 @@ module.exports =
   ENTRY   : 'ENTRY'
   INFO    : 'INFO'
   IMPRINT : 'IMPRINT'
+  WAIT    : 'WAIT'
