@@ -10,6 +10,9 @@ config =
   output:
     path: 'dist/'
     filename: "app.js"
+  devServer:
+    hot: true
+    inline: true
   target: "web"
   cache: yes
   watch: false
@@ -93,6 +96,7 @@ else
   plugins.push new webpack.DefinePlugin
     __DEVTOOLS__            : no
     __DEVELOPMENT__         : yes
+  plugins.push new webpack.HotModuleReplacementPlugin()
 
 plugins.push new HTMLPlugin htmlPluginOptions
 

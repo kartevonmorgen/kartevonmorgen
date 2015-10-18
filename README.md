@@ -54,7 +54,7 @@ The result can be found in `dist/`.
 During the development you don't want to do that manually on every file change,
 so just run
 
-    npm run dev
+    npm start
 
 and open the app in your browser `http://localhost:8080`.
 Now on every file change, the app will be build
