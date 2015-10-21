@@ -20,7 +20,7 @@ config =
     loaders: [
       {
         test:   /\.coffee$/,
-        loader: "coffee"
+        loader: "react-hot!coffee"
       }
       {
         test:   /\.css$/,
