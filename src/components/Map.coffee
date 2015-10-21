@@ -32,14 +32,15 @@ module.exports = React.createClass
   mixins: [ PureMixin ]
 
   propTypes:
-    entries   : T.array
-    highlight : T.array
-    center    : T.object
-    zoom      : T.number
-    marker    : T.object
-    onClick   : T.func
-    onMoveend : T.func
-    onZoomend : T.func
+    entries       : T.array
+    highlight     : T.array
+    center        : T.object
+    zoom          : T.number
+    marker        : T.object
+    onClick       : T.func
+    onMoveend     : T.func
+    onZoomend     : T.func
+    onMarkerClick : T.func
 
   getIconById: (id) ->
     switch id
@@ -56,11 +57,12 @@ module.exports = React.createClass
   render: ->
 
     markers = []
-    { entries, highlight, onMoveend, onZoomend, onClick } = @props
+    { entries, highlight, onMoveend, onZoomend, onClick, onMarkerClick } = @props
 
     if entries?.length > 0
-      for e in entries
+      for e in entries then do (e) =>
         markers.push React.createElement Marker,
+          onClick: -> onMarkerClick e.id
           key: e.id
           position:
             lat: e.lat
