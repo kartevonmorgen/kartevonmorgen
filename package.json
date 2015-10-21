@@ -4,7 +4,7 @@
   "description": "Karte von Morgen",
   "scripts": {
     "lint": "coffeelint src/",
-    "test": "npm run lint && karma start",
+    "test": "npm run lint & karma start",
     "pack": "webpack --production",
     "start": "webpack-dev-server"
   },
