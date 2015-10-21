@@ -68,18 +68,19 @@ module.exports = React.createClass
       div className: "main",
 
         React.createElement Map,
-          marker    : (map.marker if view.panel is V.EDIT)
-          center    : map.center
-          zoom      : map.zoom
-          category  : form.edit?.category?.value
-          highlight : highlight
-          entries   : (resultEntries unless view.panel is V.EDIT)
-          onClick   : (latlng) -> dispatch Actions.setMarker latlng
-          onMoveend : (center, bbox) ->
+          marker        : (map.marker if view.panel is V.EDIT)
+          center        : map.center
+          zoom          : map.zoom
+          category      : form.edit?.category?.value
+          highlight     : highlight
+          entries       : (resultEntries unless view.panel is V.EDIT)
+          onClick       : (latlng) -> dispatch Actions.setMarker latlng
+          onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
+          onMoveend     : (center, bbox) ->
             dispatch Actions.setCenter center
             dispatch Actions.setBbox bbox
             dispatch Actions.search()
-          onZoomend : (zoom, bbox) ->
+          onZoomend     : (zoom, bbox) ->
             dispatch Actions.setZoom zoom
             dispatch Actions.setBbox bbox
             dispatch Actions.search()
