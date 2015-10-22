@@ -94,17 +94,21 @@ Actions =
         if err
           dispatch stopSubmit 'edit', { _error: err }
         else
-          id = e?.id or res
+          id = (e?.id or res) * 1
           WebAPI.getEntries [id], (err, res) ->
             dispatch
               type    : T.ENTRIES_RESULT
               payload : err or res
               error   : err?
             dispatch initialize 'edit', {}
-            unless e?.id
+            unless err
               dispatch
-                type    : T.NEW_ENTRY_RESULT
+                type    : T.SET_CURRENT_ENTRY
                 payload : id
+              unless e?.id
+                dispatch
+                  type    : T.NEW_ENTRY_RESULT
+                  payload : id
 
   setMarker: (latlng) ->
     type: T.SET_MARKER
