@@ -24,15 +24,3 @@ module.exports = React.createClass
         p null, entry.description
         p null, a href: entry.homepage, entry.homepage
         p null, entry.telephone
-        div null,
-          button
-            onClick: @props.onClose
-            className: "pure-button",
-              i className: "fa fa-chevron-left"
-              "zurück"
-          " "
-          button
-            onClick: @props.onEdit
-            className: "pure-button",
-              i className: "fa fa-pencil"
-              "bearbeiten"

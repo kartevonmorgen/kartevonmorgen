@@ -77,11 +77,11 @@ Actions =
   showImprint: ->
     type: T.SHOW_IMPRINT
 
-  closeNewEntry: ->
-    type: T.CLOSE_NEW_ENTRY
+  cancelNew: ->
+    type: T.CANCEL_NEW
 
-  closePanel: ->
-    type: T.CLOSE_PANEL
+  cancelEdit: ->
+    type: T.CANCEL_EDIT
 
   cancelWait: ->
     type: T.CANCEL_WAIT_IO
