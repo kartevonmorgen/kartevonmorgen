@@ -194,26 +194,28 @@ module.exports = React.createClass
               (if rightPanelIsOpen then "" else "Menu"),
                 i className: "fa fa-#{if rightPanelIsOpen then 'times' else 'bars'}"
 
-          div className: "logo"
+          if rightPanelIsOpen
+            div null,
+              div className: "logo"
 
-          div null,
-            React.createElement Menu,
-              info:
-                label   : " Info"
-                active  : view.right is V.INFO
-                onClick : ->
-                  dispatch Actions.showInfo()
-                  dispatch Actions.getServerInfo()
-              imprint:
-                label   : " Impressum"
-                active  : view.right is V.IMPRINT
-                onClick : -> dispatch Actions.showImprint()
-          div className: "content",
-            switch view.right
-              when V.INFO
-                React.createElement Info,
-                  clientVersion: pkg.version
-                  serverVersion: @props.server.version
+              div null,
+                React.createElement Menu,
+                  info:
+                    label   : " Info"
+                    active  : view.right is V.INFO
+                    onClick : ->
+                      dispatch Actions.showInfo()
+                      dispatch Actions.getServerInfo()
+                  imprint:
+                    label   : " Impressum"
+                    active  : view.right is V.IMPRINT
+                    onClick : -> dispatch Actions.showImprint()
+              div className: "content",
+                switch view.right
+                  when V.INFO
+                    React.createElement Info,
+                      clientVersion: pkg.version
+                      serverVersion: @props.server.version
 
-              when V.IMPRINT
-                React.createElement Imprint
+                  when V.IMPRINT
+                    React.createElement Imprint
