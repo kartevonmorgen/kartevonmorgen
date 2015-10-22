@@ -41,7 +41,7 @@ module.exports =
     .use prefix
     .set 'Accept', 'application/json'
     .send e
-    .end jsonCallback cb
+    .end (err, res) -> if err then cb err else cb null, res.text
     undefined
 
   saveEntry: (e, cb) ->
@@ -50,7 +50,7 @@ module.exports =
     .use prefix
     .set 'Accept', 'application/json'
     .send e
-    .end jsonCallback cb
+    .end (err, res) -> if err then cb err else cb null, res.text
     undefined
 
   getAllCategories: (cb) ->

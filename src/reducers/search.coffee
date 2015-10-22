@@ -39,8 +39,9 @@ module.exports = (state=initialState, action={}) ->
     when T.NEW_ENTRY_RESULT
       unless action.error
         o = {}
-        o[state.result.length] = action.payload
-        u result: o, state
+        id = action.payload
+        o[state.result.length] = id
+        u { result: o, current: id, highlight: [id]}, state
 
     when T.SET_CURRENT_ENTRY
       if (p = action.payload)?

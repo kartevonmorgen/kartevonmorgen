@@ -44,7 +44,7 @@ module.exports = (state=initialState, action={}) ->
 
     when T.NEW_ENTRY_RESULT
       unless action.error
-        u left: V.RESULT, state
+        u left: V.ENTRY, state
       else
         state
 

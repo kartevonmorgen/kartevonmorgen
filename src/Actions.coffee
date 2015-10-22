@@ -101,9 +101,6 @@ Actions =
               payload : err or res
               error   : err?
             dispatch initialize 'edit', {}
-            dispatch
-              type    : T.SET_CURRENT_ENTRY
-              payload : id
             unless e?.id
               dispatch
                 type    : T.NEW_ENTRY_RESULT
