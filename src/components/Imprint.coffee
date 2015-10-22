@@ -16,16 +16,7 @@ module.exports = React.createClass
       h3 null, "Impressum"
 
       p null,
-        "Thao Tran", br null,
-        "Gleimstraße 27", br null,
-        "10437 Berlin", br null,
+        "Markus Kohlhase", br null,
+        "Julius-Hölder-Str. 48", br null,
+        "7597 Stuttgart", br null,
         a({href:"mailto:info@kartevonmorgen.org"}, "info@kartevonmorgen.org")
-
-      div className: "close-button",
-        button
-          onClick: (ev) =>
-            ev.preventDefault()
-            @props.onClose()
-          className:"pure-button",
-          i className: "fa fa-ban"
-          "schließen"

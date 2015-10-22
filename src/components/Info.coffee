@@ -54,12 +54,3 @@ module.exports = React.createClass
       if (sv = @props.serverVersion)?
         p className: "version",
           "Version des Servers: v#{sv}"
-
-      div className: "close-button",
-        button
-          onClick: (ev) =>
-            ev.preventDefault()
-            @props.onClose()
-          className:"pure-button",
-          i className: "fa fa-ban"
-          "schließen"

@@ -61,12 +61,17 @@ module.exports = React.createClass
 
     { categories, disabled, toggleCat, searchText } = @props
 
-    div
-      style: { opacity: if disabled then 0.5 else 1 }
-      className:"SearchBar pure-g pure-form",
-      div className: "search pure-u-11-24 pure-g",
+    div className:"SearchBar pure-g",
+
+      div className: "main-categories pure-u-1 pure-g",
+        React.createElement CategoryButtons,
+          active    : categories
+          disabled  : disabled
+          onToggle  : toggleCat
+
+      div className: "pure-u-1",
         span
-          className: "icon",
+          className: "search-icon",
           i className: "fa fa-search"
         input
           onChange    : @onChange
@@ -76,8 +81,3 @@ module.exports = React.createClass
           className   : "pure-u-1"
           placeholder : "Wonach suchst du?"
 
-      div className: "main-categories pure-u-13-24 pure-g",
-        React.createElement CategoryButtons,
-          active    : categories
-          disabled  : disabled
-          onToggle  : toggleCat

@@ -9,16 +9,17 @@ V             = require "../constants/PanelView"
 Actions       = require "../Actions"
 EntryDetails  = require "./EntryDetails"
 ResultList    = require "./ResultList"
-Header        = require "./Header"
 Info          = require "./Info"
 Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
 Wait          = require "./Wait"
 Map           = require "./Map"
+SearchBar     = require "./SearchBar"
+Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
 
-{ initialize }  = require "redux-form"
-{ div }         = React.DOM
+{ initialize, touch       }  = require "redux-form"
+{ div, button, nav, li, i }  = React.DOM
 
 module.exports = React.createClass
 
@@ -40,116 +41,179 @@ module.exports = React.createClass
 
     { highlight } = search
 
-    resultEntries   = (x for id in search.result when (x=@props.entries[id])?)
-    invisibleEntries= (x for id in search.invisible when(x=@props.entries[id])?)
-    disabledHeader  = view.panel is V.EDIT
-    menuClz         = if view.menu then 'active-menu' else ''
+    resultEntries    = (x for id in search.result when (x=@props.entries[id])?)
+    invisibleEntries = (x for id in search.invisible when(x=@props.entries[id])?)
+    rightPanelIsOpen = view.menu or view.right?
 
-    div className:"kvm app #{menuClz}",
+    div className:"app",
 
-      React.createElement Header,
-        search              : search
-        disabled            : disabledHeader
-        onMenuToggle        : ->
-          dispatch Actions.toggleMenu() unless disabledHeader
-        onCatToggle         : (c) ->
-          dispatch Actions.toggleSearchCategory c
-          dispatch Actions.search()
-        onSearchTextChange  : (txt='') ->
-          dispatch Actions.setSearchText txt
-          dispatch Actions.search() if txt.length > 0
-        onSearchTextReset   : -> dispatch Actions.setSearchText ''
-        onShowInfo          : ->
-          dispatch Actions.showInfo()
-          dispatch Actions.getServerInfo()
-        onNewEntry          : -> dispatch Actions.showNewEntry()
-        onShowImprint       : -> dispatch Actions.showImprint()
+      div className:"main",
 
-      div className: "main",
+        div className:"center",
+          React.createElement Map,
+            marker        : (map.marker if view.panel in [V.EDIT, V.NEW])
+            center        : map.center
+            zoom          : map.zoom
+            category      : form.edit?.category?.value
+            highlight     : highlight
+            entries       : (resultEntries unless view.panel in [V.EDIT, V.NEW])
+            onClick       : (latlng) -> dispatch Actions.setMarker latlng
+            onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
+            onMoveend     : (center, bbox) ->
+              dispatch Actions.setCenter center
+              dispatch Actions.setBbox bbox
+              dispatch Actions.search()
+            onZoomend     : (zoom, bbox) ->
+              dispatch Actions.setZoom zoom
+              dispatch Actions.setBbox bbox
+              dispatch Actions.search()
 
-        React.createElement Map,
-          marker        : (map.marker if view.panel is V.EDIT)
-          center        : map.center
-          zoom          : map.zoom
-          category      : form.edit?.category?.value
-          highlight     : highlight
-          entries       : (resultEntries unless view.panel is V.EDIT)
-          onClick       : (latlng) -> dispatch Actions.setMarker latlng
-          onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
-          onMoveend     : (center, bbox) ->
-            dispatch Actions.setCenter center
-            dispatch Actions.setBbox bbox
-            dispatch Actions.search()
-          onZoomend     : (zoom, bbox) ->
-            dispatch Actions.setZoom zoom
-            dispatch Actions.setBbox bbox
-            dispatch Actions.search()
+        div className:"left #{if view.left? then 'opened' else 'closed'}",
 
-        div className:"right",
-          switch view.panel
+          div className: "search #{if view.left? then 'integrated' else 'standalone' }",
+            React.createElement SearchBar,
+              searchText      : search.text
+              categories      : search.categories
+              disabled        : view.left in [V.ENTRY, V.EDIT, V.NEW]
+              toggleCat       : (c) ->
+                dispatch Actions.toggleSearchCategory c
+                dispatch Actions.search()
+              onChange       : (txt='') ->
+                dispatch Actions.setSearchText txt
+                dispatch Actions.search() if txt.length > 0
+              onEscape        : -> dispatch Actions.setSearchText ''
+              onEnter         : -> # currently not used
 
-            when V.RESULT
-              div null,
-                React.createElement ResultList,
-                  entries     : resultEntries
-                  highlight   : highlight
-                  onClick     : (id) -> dispatch Actions.setCurrentEntry id
-                  onMouseEnter: (id) -> dispatch Actions.highlight id
-                  onMouseLeave: (id) -> dispatch Actions.highlight()
-                if invisibleEntries and invisibleEntries.length
-                  div null,
-                    div className: 'hdr-invisible',
-                      """
-                      Weitere Ergebnisse außerhalb
-                      des sichtbaren Bereichs der Karte:
-                      """
-                    React.createElement ResultList,
-                      entries     : invisibleEntries
-                      highlight   : highlight
-                      onClick     :
-                        (id) -> dispatch Actions.setCurrentEntry id
-                      onMouseEnter: (id) -> dispatch Actions.highlight id
-                      onMouseLeave: (id) -> dispatch Actions.highlight()
+          if view.left?
+            nav className: "menu pure-g",
+              switch view.left
+                when V.RESULT
+                  li
+                    onClick: -> dispatch Actions.showNewEntry()
+                    className:"pure-u-1",
+                      i className: "fa fa-plus"
+                      "Eintrag hinzufügen"
+                when V.ENTRY
+                  [
+                    li
+                      onClick: -> dispatch Actions.setCurrentEntry()
+                      key: "back"
+                      className:"pure-u-1-2",
+                        i className: "fa fa-chevron-left"
+                        "zurück"
+                    li
+                     onClick: -> dispatch Actions.editCurrentEntry()
+                     key: "edit"
+                     className:"pure-u-1-2",
+                       i className: "fa fa-pencil"
+                       "bearbeiten"
+                  ]
 
-            when V.ENTRY
-              div null,
-                React.createElement EntryDetails,
-                  entry   : entries[search.current]
-                  onClose : -> dispatch Actions.setCurrentEntry()
-                  onEdit  : -> dispatch Actions.editCurrentEntry()
+                when V.EDIT, V.NEW
+                  [
+                    li
+                      key: "save"
+                      className:"pure-u-1-2",
+                      onClick: (=>
+                        # dirty hack
+                        @refs.form
+                          .getDOMNode()
+                          .querySelector 'form'
+                          .dispatchEvent new Event "submit"
+                      ),
+                        i className: "fa fa-floppy-o"
+                        "speichern"
+                    li
+                      key: "cancel"
+                      className:"pure-u-1-2",
+                      onClick: (->
+                        dispatch initialize 'edit', {}
+                        dispatch switch view.left
+                          when V.NEW  then Actions.cancelNew()
+                          when V.EDIT then Actions.cancelEdit()
+                      ),
+                        i className: "fa fa-ban"
+                        "abbrechen"
+                  ]
+          div null,
 
-            when V.INFO
-              div null,
+            switch view.left
+
+              when V.RESULT
+                div null,
+                  React.createElement ResultList,
+                    entries     : resultEntries
+                    highlight   : highlight
+                    onClick     : (id) -> dispatch Actions.setCurrentEntry id
+                    onMouseEnter: (id) -> dispatch Actions.highlight id
+                    onMouseLeave: (id) -> dispatch Actions.highlight()
+                  if invisibleEntries and invisibleEntries.length
+                    div null,
+                      div className: 'hdr-invisible',
+                        """
+                        Weitere Ergebnisse außerhalb
+                        des sichtbaren Bereichs der Karte:
+                        """
+                      React.createElement ResultList,
+                        entries     : invisibleEntries
+                        highlight   : highlight
+                        onClick     :
+                          (id) -> dispatch Actions.setCurrentEntry id
+                        onMouseEnter: (id) -> dispatch Actions.highlight id
+                        onMouseLeave: (id) -> dispatch Actions.highlight()
+              when V.ENTRY
+                div null,
+                  React.createElement EntryDetails,
+                    entry   : entries[search.current]
+
+              when V.EDIT, V.NEW
+                div
+                  className: "content pure-g"
+                  ref: 'form',
+                    React.createElement EntryForm,
+                      isEdit: form.edit.id?
+                      onSubmit: (data) ->
+                        dispatch Actions.saveEntry
+                          id          : form.edit?.id?.value
+                          title       : data.title
+                          description : data.description
+                          homepage    : data.homepage
+                          telephone   : data.telephone
+                          lat         : data.lat
+                          lon         : data.lng
+                          categories  : [data.category]
+              when V.WAIT
+                React.createElement Wait,
+                  onCancel: ->
+                    dispatch Actions.cancelWait()
+
+        div className:"right #{if rightPanelIsOpen then 'opened' else 'closed'}",
+          div className:"menu-toggle",
+            button
+              onClick: (-> dispatch Actions.toggleMenu()) ,
+              (if rightPanelIsOpen then "" else "Menu"),
+                i className: "fa fa-#{if rightPanelIsOpen then 'times' else 'bars'}"
+
+          div className: "logo"
+
+          div null,
+            React.createElement Menu,
+              info:
+                label   : " Info"
+                active  : view.right is V.INFO
+                onClick : ->
+                  dispatch Actions.showInfo()
+                  dispatch Actions.getServerInfo()
+              imprint:
+                label   : " Impressum"
+                active  : view.right is V.IMPRINT
+                onClick : -> dispatch Actions.showImprint()
+          div className: "content",
+            switch view.right
+              when V.INFO
                 React.createElement Info,
                   clientVersion: pkg.version
                   serverVersion: @props.server.version
-                  onClose: ->
-                    dispatch Actions.closePanel()
 
-            when V.IMPRINT
-              div null,
-                React.createElement Imprint,
-                  onClose: ->
-                    dispatch Actions.closePanel()
-
-            when V.EDIT
-              div className: "content pure-g",
-                React.createElement EntryForm,
-                  isEdit: form.edit.id?
-                  onSubmit: (data) ->
-                    dispatch Actions.saveEntry
-                      id          : form.edit?.id?.value
-                      title       : data.title
-                      description : data.description
-                      homepage    : data.homepage
-                      telephone   : data.telephone
-                      lat         : data.lat
-                      lon         : data.lng
-                      categories  : [data.category]
-                  onCancel: ->
-                    dispatch initialize 'edit', {}
-                    dispatch Actions.closeNewEntry()
-            when V.WAIT
-              React.createElement Wait,
-                onCancel: ->
-                  dispatch Actions.cancelWait()
+              when V.IMPRINT
+                React.createElement Imprint

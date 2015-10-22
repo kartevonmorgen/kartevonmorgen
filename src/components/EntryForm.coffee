@@ -36,7 +36,6 @@ Form = React.createClass
 
   propTypes:
     fields        : T.object.isRequired
-    onCancel      : T.func.isRequired
     handleSubmit  : T.func.isRequired
     isEdit        : T.bool
 
@@ -121,25 +120,6 @@ Form = React.createClass
               label null, "Longitude"
               input fieldProps.lng
               lng.error and lng.touched and div className: "err", lng.error
-
-        fieldset null,
-          legend null, ""
-          div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-2",
-              button
-                className: "pure-u-23-24 pure-button pure-button-primary"
-                type: "submit",
-                  i className: "fa fa-floppy-o"
-                  "speichern"
-
-            div className: "pure-u-1 pure-u-md-1-2",
-              button
-                onClick: (ev) =>
-                  ev.preventDefault()
-                  @props.onCancel()
-                className:"pure-u-23-24 pure-button",
-                  i className: "fa fa-ban"
-                  "abbrechen"
 
 module.exports = connectReduxForm(
   form      : 'edit'

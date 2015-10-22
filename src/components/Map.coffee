@@ -75,10 +75,12 @@ module.exports = React.createClass
           icon: @getIconById e.categories?[0]
 
     React.createElement Map,
-      ref       : 'map'
-      center    : @props.center
-      zoom      : @props.zoom
-      className : "map",
+      style            : display: "flex", flex: "1 1 100%"
+      ref              : 'map'
+      center           : @props.center
+      zoom             : @props.zoom
+      zoomControl      : false
+      className        : "map",
       onLeafletLoad    : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
       onLeafletMoveend : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
       onLeafletZoomend : (e) -> onZoomend (t=e.target).getZoom(),  t.getBounds()
