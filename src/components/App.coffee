@@ -44,6 +44,12 @@ module.exports = React.createClass
     resultEntries    = (x for id in search.result when (x=@props.entries[id])?)
     invisibleEntries = (x for id in search.invisible when(x=@props.entries[id])?)
     rightPanelIsOpen = view.menu or view.right?
+    mapCenter =
+     if (c=search.current)
+       e = entries[c]
+       lat: e?.lat
+       lng: e?.lon
+     else map.center
 
     div className:"app",
 
@@ -52,7 +58,7 @@ module.exports = React.createClass
         div className:"center",
           React.createElement Map,
             marker        : (map.marker if view.panel in [V.EDIT, V.NEW])
-            center        : map.center
+            center        : mapCenter
             zoom          : map.zoom
             category      : form.edit?.category?.value
             highlight     : highlight
