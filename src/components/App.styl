@@ -57,8 +57,13 @@ button.pure-button i
 
     .left
       order -1
-      max-height 100vh
-      overflow-y  hidden
+      max-height     100vh
+      overflow-y     hidden
+      display        flex
+      flex-direction column
+
+      .content
+        overflow-y scroll
 
       &.closed
         flex 0

@@ -135,7 +135,7 @@ module.exports = React.createClass
                         i className: "fa fa-ban"
                         "abbrechen"
                   ]
-          div null,
+          div className:"content",
 
             switch view.left
 
