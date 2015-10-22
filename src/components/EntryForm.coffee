@@ -46,13 +46,13 @@ Form = React.createClass
     fieldProps = udeep FIELD_PROPS, fields
 
     classes =
-      title       : className: "pure-u-23-24"
-      description : className: "pure-u-23-24"
-      homepage    : className: "pure-u-23-24"
-      telephone   : className: "pure-u-23-24"
-      lat         : className: "pure-u-23-24"
-      lng         : className: "pure-u-23-24"
-      category    : className: ""
+      title       : className: "pure-input-1", placeholder: "Titel"
+      description : className: "pure-input-1", placeholder: "Beschreibung"
+      homepage    : className: "pure-input-1", placeholder: "Homepage"
+      telephone   : className: "pure-input-1", placeholder: "Telefon"
+      lat         : className: "pure-input-1"
+      lng         : className: "pure-input-1"
+      category    : className: "pure-input-1"
 
     for k,f of fieldProps when classes[k]? and f.error and f.touched
       classes[k].className += " err"
@@ -63,63 +63,57 @@ Form = React.createClass
       h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
-      div className: "pure-form pure-form-stacked",
+      div className: "pure-form",
 
         fieldset null,
-          legend null, "Kategorie"
-          div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-3",
-              select fieldProps.category,
-                option value: -1,                   "- auswählen -"
-                option value: IDS.INITIATIVE, "Initiative"
-                option value: IDS.EVENT, disabled: yes, "Event"
-                option value: IDS.COMPANY,   "Unternehmen"
-              category.error and category.touched and div className: "err",
-                category.error
+          select fieldProps.category,
+            option value: -1,"- Kategorie auswählen -"
+            option value: IDS.INITIATIVE, "Initiative"
+            option value: IDS.EVENT, disabled: yes, "Event"
+            option value: IDS.COMPANY,   "Unternehmen"
+          category.error and category.touched and div className: "err",
+            category.error
 
         fieldset null,
-          div className: "pure-g",
-            div className: "pure-u-1",
-              label null, "Titel"
-              input fieldProps.title
-              title.error and title.touched and div className: "err",
-                title.error
-
-          div className: "pure-g",
-            div className: "pure-u-1",
-              label null,
-                span className:"text","Beschreibung"
-              textarea fieldProps.description
-              description.error and description.touched and div className:"err",
-               description.error
+          input fieldProps.title
+          title.error and title.touched and div className: "err",
+            title.error
 
         fieldset null,
-          legend null,
-            span className:"text","Kontakt"
-          div className: "pure-g",
-            div className: "pure-u-1",
-              label null, "Homepage"
-              input fieldProps.homepage
-
-          div className: "pure-g",
-            div className: "pure-u-1",
-              label null, "Telefon"
-              input fieldProps.telephone
+          textarea fieldProps.description
+          description.error and description.touched and div className:"err",
+            description.error
 
         fieldset null,
           legend null,
             span className:"text","Ort"
-            span className:"desc","(Klick auf Karte)"
-          div className: "pure-g",
-            div className: "pure-u-1 pure-u-md-1-2",
-              label null, "Latitude"
-              input fieldProps.lat
-              lat.error and lat.touched and div className: "err", lat.error
+            span className:"desc","(auf Karte klicken)"
 
-            div className: "pure-u-1 pure-u-md-1-2",
-              label null, "Longitude"
-              input fieldProps.lng
-              lng.error and lng.touched and div className: "err", lng.error
+          div className: "pure-g",
+            label className: "pure-u-2-24",
+              i className: "fa fa-map-marker"
+            div className: "pure-u-22-24 pure-g",
+              div className: "pure-u-11-24",
+                input fieldProps.lat
+                lat.error and lat.touched and div className: "err", lat.error
+              div className: "pure-u-2-24"
+              div className: "pure-u-11-24",
+                input fieldProps.lng
+                lng.error and lng.touched and div className: "err", lng.error
+
+        fieldset null,
+          legend null, "Kontakt"
+          div className: "pure-g",
+            label className: "pure-u-2-24",
+              i className: "fa fa-globe"
+            div className: "pure-u-22-24",
+              input fieldProps.homepage
+
+         div className: "pure-g",
+           label className: "pure-u-2-24",
+              i className: "fa fa-phone"
+            div className: "pure-u-22-24",
+              input fieldProps.telephone
 
 module.exports = connectReduxForm(
   form      : 'edit'
