@@ -15,7 +15,7 @@ module.exports = (require "redux-form").reducer.plugin
         o[k] = { value: v } for k,v of action.payload
         o.category = { value: action.payload.categories[0] }
         # TODO: fix dirty bad ugly workaround for bugs in API (#30)
-        o.lng = { value: action.payload.lon }
+        o.lng = { value: action.payload.lng }
         u o, state
 
       when T.SET_MARKER

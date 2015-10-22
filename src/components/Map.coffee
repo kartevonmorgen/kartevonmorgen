@@ -66,7 +66,7 @@ module.exports = React.createClass
           key: e.id
           position:
             lat: e.lat
-            lng: e.lon
+            lng: e.lng
           opacity:
             if (h = highlight).length > 0
               if e.id in h then 1 else 0.3
