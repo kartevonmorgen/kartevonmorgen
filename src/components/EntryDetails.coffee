@@ -2,6 +2,7 @@
 
 React     = require "react"
 PureMixin = require "react-pure-render/mixin"
+Address   = require "./AddressLine"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
@@ -22,5 +23,21 @@ module.exports = React.createClass
       div null,
         h3 null, entry.title
         p null, entry.description
-        p null, a href: entry.homepage, entry.homepage
-        p null, entry.telephone
+        p null,
+          if entry.homepage
+            div className: "pure-g",
+              i className: "pure-u-2-24 fa fa-globe"
+              a className: "pure-u-21-24", href: entry.homepage, entry.homepage
+          if entry.email
+            div className: "pure-g",
+              i className: "pure-u-2-24 fa fa-envelope"
+              a className: "pure-u-21-24", href: "mailto:#{entry.email}", entry.email
+          if entry.telephone
+            div className: "pure-g",
+              i className: "pure-u-2-24 fa fa-phone"
+              span className: "pure-u-21-24", entry.telephone
+          if entry.street or entry.zip or entry.city
+            div className: "address pure-g",
+              i className: "pure-u-2-24 fa fa-map-marker"
+              div className: "pure-u-21-24",
+                React.createElement Address, entry

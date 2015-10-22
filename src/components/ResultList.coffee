@@ -3,6 +3,7 @@
 React   = require "react"
 Actions = require "../Actions"
 Pure    = require "react-pure-render/mixin"
+Address = require "./AddressLine"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
@@ -15,20 +16,23 @@ ResultListElement = React.createClass
   mixins: [Pure]
 
   render: ->
-    { id, highlight, title, description, category } = @props
+    { highlight, entry, } = @props
     { onClick, onMouseEnter, onMouseLeave } = @props
     clz = if highlight then 'highlight-entry ' else ''
-    clz += CSS_CLASSES[category]
+    clz += CSS_CLASSES[entry.categories?[0]]
     li
       className     : clz
-      onClick       : (ev) -> ev.preventDefault(); onClick      id
-      onMouseEnter  : (ev) -> ev.preventDefault(); onMouseEnter id
-      onMouseLeave  : (ev) -> ev.preventDefault(); onMouseLeave id
+      onClick       : (ev) -> ev.preventDefault(); onClick      entry.id
+      onMouseEnter  : (ev) -> ev.preventDefault(); onMouseEnter entry.id
+      onMouseLeave  : (ev) -> ev.preventDefault(); onMouseLeave entry.id
       div null,
-        span className: "category", NAMES[category]
+        span className: "category", NAMES[entry.categories?[0]]
       div null,
-        span className: "title", title
-        span className: "subtitle", description
+        span className: "title", entry.title
+      div null,
+        span className: "subtitle", entry.description
+      if entry.street or entry.zip or entry.city
+        React.createElement Address, entry
 
 module.exports = React.createClass
 
@@ -40,10 +44,7 @@ module.exports = React.createClass
     { entries, highlight } = @props
     results = for e in entries
       React.createElement ResultListElement,
-        id          : e.id
-        title       : e.title
-        description : e.description
-        category    : e.categories?[0]
+        entry       : e
         key         : e.id,
         highlight   : e.id in highlight
         onClick     : @props.onClick

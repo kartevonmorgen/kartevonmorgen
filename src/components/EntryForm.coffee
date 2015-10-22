@@ -41,7 +41,8 @@ Form = React.createClass
 
   render: ->
     { fields, handleSubmit, onCancel, isEdit} = @props
-    { title, description, homepage, telephone, lat, lng, category } = fields
+    { title, description, homepage, telephone, lat, lng, category,
+      city, zip, street, email } = fields
 
     fieldProps = udeep FIELD_PROPS, fields
 
@@ -50,6 +51,10 @@ Form = React.createClass
       description : className: "pure-input-1", placeholder: "Beschreibung"
       homepage    : className: "pure-input-1", placeholder: "Homepage"
       telephone   : className: "pure-input-1", placeholder: "Telefon"
+      street      : className: "pure-input-1", placeholder: "Straße"
+      city        : className: "pure-input-1", placeholder: "Stadt"
+      zip         : className: "pure-input-1", placeholder: "PLZ"
+      email       : className: "pure-input-1", placeholder: "eMail"
       lat         : className: "pure-input-1"
       lng         : className: "pure-input-1"
       category    : className: "pure-input-1"
@@ -100,6 +105,19 @@ Form = React.createClass
               div className: "pure-u-11-24",
                 input fieldProps.lng
                 lng.error and lng.touched and div className: "err", lng.error
+        fieldset null,
+          input fieldProps.street
+          street.error and street.touched and div className:"err",
+            street.error
+          div className: "pure-g",
+            div className: "pure-u-6-24",
+              input fieldProps.zip
+              zip.error and zip.touched and div className:"err",
+                zip.error
+            div className: "pure-u-18-24",
+              input fieldProps.city
+              city.error and city.touched and div className:"err",
+                city.error
 
         fieldset null,
           legend null, "Kontakt"
@@ -108,6 +126,12 @@ Form = React.createClass
               i className: "fa fa-globe"
             div className: "pure-u-22-24",
               input fieldProps.homepage
+
+          div className: "pure-g",
+            label className: "pure-u-2-24",
+              i className: "fa fa-envelope"
+            div className: "pure-u-22-24",
+              input fieldProps.email
 
          div className: "pure-g",
            label className: "pure-u-2-24",
@@ -122,6 +146,10 @@ module.exports = connectReduxForm(
     'description',
     'homepage',
     'telephone',
+    'city',
+    'zip',
+    'email',
+    'street',
     'lat',
     'lng',
     'category'

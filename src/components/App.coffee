@@ -187,6 +187,10 @@ module.exports = React.createClass
                           telephone   : data.telephone
                           lat         : data.lat
                           lon         : data.lng
+                          street      : data.street
+                          city        : data.city
+                          email       : data.email
+                          zip         : data.zip
                           categories  : [data.category]
               when V.WAIT
                 React.createElement Wait,
