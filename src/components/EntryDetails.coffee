@@ -31,7 +31,8 @@ module.exports = React.createClass
           if entry.email
             div className: "pure-g",
               i className: "pure-u-2-24 fa fa-envelope"
-              a className: "pure-u-21-24", href: "mailto:#{entry.email}", entry.email
+              a className: "pure-u-21-24", href: "mailto:#{entry.email}",
+                entry.email
           if entry.telephone
             div className: "pure-g",
               i className: "pure-u-2-24 fa fa-phone"

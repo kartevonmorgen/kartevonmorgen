@@ -41,8 +41,10 @@ module.exports = React.createClass
 
     { highlight } = search
 
-    resultEntries    = (x for id in search.result when (x=@props.entries[id])?)
-    invisibleEntries = (x for id in search.invisible when(x=@props.entries[id])?)
+    resultEntries    =
+      (x for id in search.result when (x=@props.entries[id])?)
+    invisibleEntries =
+      (x for id in search.invisible when(x=@props.entries[id])?)
     rightPanelIsOpen = view.menu or view.right?
     mapCenter =
      if (c=search.current)
@@ -76,7 +78,9 @@ module.exports = React.createClass
 
         div className:"left #{if view.left? then 'opened' else 'closed'}",
 
-          div className: "search #{if view.left? then 'integrated' else 'standalone' }",
+          div className: "search #{
+            if view.left? then 'integrated' else 'standalone'
+          }",
             React.createElement SearchBar,
               searchText      : search.text
               categories      : search.categories
@@ -108,11 +112,11 @@ module.exports = React.createClass
                         i className: "fa fa-chevron-left"
                         "zurück"
                     li
-                     onClick: -> dispatch Actions.editCurrentEntry()
-                     key: "edit"
-                     className:"pure-u-1-2",
-                       i className: "fa fa-pencil"
-                       "bearbeiten"
+                      onClick: -> dispatch Actions.editCurrentEntry()
+                      key: "edit"
+                      className:"pure-u-1-2",
+                        i className: "fa fa-pencil"
+                        "bearbeiten"
                   ]
 
                 when V.EDIT, V.NEW
@@ -197,12 +201,16 @@ module.exports = React.createClass
                   onCancel: ->
                     dispatch Actions.cancelWait()
 
-        div className:"right #{if rightPanelIsOpen then 'opened' else 'closed'}",
+        div className:"right #{
+          if rightPanelIsOpen then 'opened' else 'closed'
+        }",
           div className:"menu-toggle",
             button
               onClick: (-> dispatch Actions.toggleMenu()) ,
               (if rightPanelIsOpen then "" else "Menu"),
-                i className: "fa fa-#{if rightPanelIsOpen then 'times' else 'bars'}"
+                i className: "fa fa-#{
+                  if rightPanelIsOpen then 'times' else 'bars'
+                }"
 
           if rightPanelIsOpen
             div null,
