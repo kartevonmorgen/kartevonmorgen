@@ -57,12 +57,12 @@ module.exports = React.createClass
 
         div className:"center",
           React.createElement Map,
-            marker        : (map.marker if view.panel in [V.EDIT, V.NEW])
+            marker        : (map.marker if view.left in [V.EDIT, V.NEW])
             center        : mapCenter
             zoom          : map.zoom
             category      : form.edit?.category?.value
             highlight     : highlight
-            entries       : (resultEntries unless view.panel in [V.EDIT, V.NEW])
+            entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
             onMoveend     : (center, bbox) ->
