@@ -57,7 +57,14 @@ module.exports = React.createClass
   render: ->
 
     markers = []
-    { entries, highlight, onMoveend, onZoomend, onClick, onMarkerClick } = @props
+    {
+      entries,
+      highlight,
+      onMoveend,
+      onZoomend,
+      onClick,
+      onMarkerClick
+    } = @props
 
     if entries?.length > 0
       for e in entries then do (e) =>
