@@ -12,7 +12,7 @@ ResultList    = require "./ResultList"
 Info          = require "./Info"
 Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
-Wait          = require "./Wait"
+Message          = require "./Message"
 Map           = require "./Map"
 SearchBar     = require "./SearchBar"
 Menu          = require "./Menu"
@@ -197,9 +197,21 @@ module.exports = React.createClass
                           zip         : data.zip
                           categories  : [data.category]
               when V.WAIT
-                React.createElement Wait,
+                React.createElement Message,
+                  iconClass: "fa fa-spinner fa-pulse"
+                  message: " lade Daten vom Server ..."
+                  buttonLabel: "abbrechen"
                   onCancel: ->
                     dispatch Actions.cancelWait()
+              when V.IO_ERROR
+                React.createElement Message,
+                  iconClass: "fa fa-exclamation-triangle"
+                  message: " Server nicht erreichbar. " +
+                    "Bitte prüfe Deine Internetverbindung " +
+                    "oder versuche es später nochmal. "
+                  buttonLabel: "schließen"
+                  onCancel: ->
+                    dispatch Actions.closeIoErrorMessage()
 
         div className:"right #{
           if rightPanelIsOpen then 'opened' else 'closed'

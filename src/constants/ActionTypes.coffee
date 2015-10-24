@@ -9,11 +9,11 @@ module.exports =
   SHOW_INFO               : 'SHOW_INFO'
   SHOW_IMPRINT            : 'SHOW_IMPRINT'
   SHOW_IO_WAIT            : 'SHOW_IO_WAIT'
-  SHOW_MESSAGE            : 'SHOW_MESSAGE'
 
   CANCEL_WAIT_IO          : 'CANCEL_WAIT_IO'
   CANCEL_EDIT             : 'CANCEL_EDIT'
   CANCEL_NEW              : 'CANCEL_NEW'
+  CLOSE_IO_ERROR_MESSAGE  : 'CLOSE_IO_ERROR_MESSAGE'
 
   SET_MARKER              : 'SET_MARKER'
   SET_MAP_CENTER          : 'SET_MAP_CENTER'
