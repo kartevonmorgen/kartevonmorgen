@@ -19,13 +19,14 @@ Actions =
       ne = m.bbox.getNorthEast()
       bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
 
-      return if (not s.text?) or (s.text.length < 1) or (cats.length < 1)
+      return if (cats.length < 1)
 
       WebAPI.search s.text, cats, bbox, (err, res) ->
         dispatch
           type    : T.SEARCH_RESULT
           payload : err or res
           error   : err?
+          noList  : not s.text?
 
         ids = if Array.isArray (res?.visible)
                 if Array.isArray(res?.invisible)

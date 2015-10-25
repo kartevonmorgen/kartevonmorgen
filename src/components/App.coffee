@@ -35,6 +35,9 @@ module.exports = React.createClass
     form    : T.object.isRequired
     server  : T.object.isRequired
 
+  componentDidMount: () ->
+    @props.dispatch Actions.search()
+
   render: ->
 
     { dispatch, search, view, entries, map, form } = @props

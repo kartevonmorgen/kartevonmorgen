@@ -54,7 +54,7 @@ module.exports = (state=initialState, action={}) ->
     when T.SEARCH_RESULT
       if action.error
         u left: V.IO_ERROR, state
-      else unless state.left?
+      else unless state.left? or action.noList
         u left: V.RESULT, state
       else
         state
