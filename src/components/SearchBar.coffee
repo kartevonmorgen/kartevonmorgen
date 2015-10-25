@@ -5,7 +5,7 @@ React     = require "react"
 T         = React.PropTypes
 PureMixin = require "react-pure-render/mixin"
 
-{ MAIN_IDS, NAMES, CSS_CLASSES } = require "../constants/Categories"
+{ MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE} = require "../constants/Categories"
 
 { div, input, button, i, span } = React.DOM
 
@@ -28,8 +28,10 @@ CategoryButtons = React.createClass
         key       : c
         disabled  : disabled
         onClick   : -> onToggle c
-        className : "#{CSS_CLASSES[c]} pure-u-1-3#{act}",
+        className : "#{CSS_CLASSES[c]} #{CSS_CLASS_SIZE[c]}#{act}",
         NAMES[c]
+        i className: 'toggle',
+          i null
     div null, buttons
 
 module.exports = React.createClass
