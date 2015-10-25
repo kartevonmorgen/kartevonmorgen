@@ -5,7 +5,8 @@ React     = require "react"
 T         = React.PropTypes
 PureMixin = require "react-pure-render/mixin"
 
-{ MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE} = require "../constants/Categories"
+{ MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE } =
+  require "../constants/Categories"
 
 { div, input, button, i, span } = React.DOM
 
