@@ -142,7 +142,7 @@ Actions =
     (dispatch, getState) ->
       dispatch type: T.SHOW_IO_WAIT
       WebAPI.getEntries [getState().search.current], (err, res) ->
-        unless err?
+        unless err
           dispatch
             type    : T.ENTRIES_RESULT
             payload : res
@@ -150,8 +150,7 @@ Actions =
           dispatch
             type: T.EDIT_CURRENT_ENTRY
             payload : state.entries[state.search.current]
-            err: err
         else
-          dispatch type: T.EDIT_CURRENT_ENTRY, error: err
+          dispatch type: T.EDIT_CURRENT_ENTRY, payload: err, error: yes
 
 module.exports = Actions
