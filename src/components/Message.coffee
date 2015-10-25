@@ -10,7 +10,7 @@ REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
 
 module.exports = React.createClass
 
-  displayName: "Wait"
+  displayName: "Message"
 
   propTypes:
     clientVersion : T.string
@@ -21,8 +21,8 @@ module.exports = React.createClass
   render: ->
     div null,
       div className: "waiting-indicator",
-        i className: "fa fa-spinner fa-pulse"
-        " lade Daten vom Server ..."
+        i className: @props.iconClass
+        @props.message
       div className: "close-button",
         button
           onClick: (ev) =>
@@ -30,4 +30,4 @@ module.exports = React.createClass
             @props.onCancel()
           className:"pure-button",
           i className: "fa fa-ban"
-          "abbrechen"
+          @props.buttonLabel

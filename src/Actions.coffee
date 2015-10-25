@@ -85,7 +85,10 @@ Actions =
 
   cancelWait: ->
     type: T.CANCEL_WAIT_IO
-  # TODO: cancel asyn background api requests
+  # TODO: cancel async background api requests
+
+  closeIoErrorMessage: ->
+    type: T.CLOSE_IO_ERROR_MESSAGE
 
   saveEntry: (e) ->
     saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
@@ -147,7 +150,8 @@ Actions =
           dispatch
             type: T.EDIT_CURRENT_ENTRY
             payload : state.entries[state.search.current]
+            err: err
         else
-          dispatch type: T.SHOW_MESSAGE, payload: 'could connect to server'
+          dispatch type: T.EDIT_CURRENT_ENTRY, error: err
 
 module.exports = Actions

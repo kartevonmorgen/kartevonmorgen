@@ -28,7 +28,10 @@ module.exports = (state=initialState, action={}) ->
       u { menu: no, left: V.NEW }, state
 
     when T.EDIT_CURRENT_ENTRY
-      u { menu: no, left: V.EDIT }, state
+      unless action.error
+        u { menu: no, left: V.EDIT }, state
+      else
+        u left: V.IO_ERROR, state
 
     when T.SHOW_IO_WAIT
       u left: V.WAIT, state
@@ -36,8 +39,8 @@ module.exports = (state=initialState, action={}) ->
     when T.CANCEL_NEW, T.CANCEL_WAIT_IO
       u left: V.RESULT, state
 
-    when T.CANCEL_WAIT_IO
-      u left: V.RESULT, state
+    when T.CLOSE_IO_ERROR_MESSAGE
+      u left: null, state
 
     when T.CANCEL_EDIT
       u left: V.ENTRY, state
@@ -49,10 +52,13 @@ module.exports = (state=initialState, action={}) ->
         state
 
     when T.SEARCH_RESULT
-      unless action.error or state.left?
+      if action.error
+        u left: V.IO_ERROR, state
+      else unless state.left?
         u left: V.RESULT, state
       else
         state
+
 
     when T.SET_CURRENT_ENTRY
       v = if action.payload? then V.ENTRY else V.RESULT
