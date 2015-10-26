@@ -2,6 +2,7 @@
 
 T       = require "./constants/ActionTypes"
 WebAPI  = require "./WebAPI"
+GeoLocation = require "./GeoLocation"
 { initialize, stopSubmit } = require "redux-form"
 
 Actions =
@@ -153,5 +154,20 @@ Actions =
             payload : state.entries[state.search.current]
         else
           dispatch type: T.EDIT_CURRENT_ENTRY, payload: err, error: yes
+
+  showOwnPosition: ->
+    (dispatch) ->
+      dispatch type: T.SHOW_OWN_POSITION
+      GeoLocation.getLocation (position) ->
+        dispatch type: T.OWN_POSITION_RESULT, payload: position
+
+  showOwnPosition15minutes: ->
+    (dispatch) ->
+      dispatch type: T.SHOW_OWN_POSITION
+      GeoLocation.getLocation ((position) ->
+        dispatch type: T.OWN_POSITION_RESULT, payload: position), 900000
+
+  cancelOwnPosition: ->
+    type: T.CANCEL_OWN_POSITION
 
 module.exports = Actions

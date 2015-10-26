@@ -8,7 +8,7 @@ PureMixin = require "react-pure-render/mixin"
 { MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE } =
   require "../constants/Categories"
 
-{ div, input, button, i, span } = React.DOM
+{ div, input, button, i, span, a } = React.DOM
 
 CategoryButtons = React.createClass
 
@@ -49,6 +49,7 @@ module.exports = React.createClass
     onChange    : T.func
     onEnter     : T.func
     onEscape    : T.func
+    onLocate    : T.func
 
   onChange: (ev) ->
     return unless (v = ev.target?.value)?
@@ -83,4 +84,8 @@ module.exports = React.createClass
           value       : searchText
           className   : "pure-u-1"
           placeholder : "Wonach suchst du?"
-
+        a
+          className   : "locate-icon"
+          onClick     : @props.onLocate
+          title       : "Zeige meine Position"
+          i className : "fa fa-location-arrow"

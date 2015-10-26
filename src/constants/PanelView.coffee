@@ -9,3 +9,5 @@ module.exports =
   IMPRINT  : 'IMPRINT'
   WAIT     : 'WAIT'
   IO_ERROR : 'IO_ERROR'
+  LOCATE   : 'LOCATE'
+  LOCATE_DISABLED   : 'LOCATE_DISABLED'

@@ -4,10 +4,12 @@ T = require "../constants/ActionTypes"
 u = require "updeep"
 
 initialState =
-  zoom   : 13
-  center : { lat: 48.7784931, lng: 9.1800456 } # stuttgart
-  marker : null
-  bbox   : null
+  zoom        : 13
+  center      : { lat: 48.7784931, lng: 9.1800456 } # stuttgart
+  marker      : null
+  bbox        : null
+  ownPosition : null
+  ownPositionCancelled : false
 
 module.exports = (state=initialState, action={}) ->
 
@@ -38,6 +40,26 @@ module.exports = (state=initialState, action={}) ->
     when T.NEW_ENTRY_RESULT
       unless action.error
         u marker: null, state
+      else
+        state
+
+    when T.SHOW_OWN_POSITION
+      u ownPositionCancelled: false, state
+
+    when T.CANCEL_OWN_POSITION
+      u ownPositionCancelled: true, state
+
+    when T.OWN_POSITION_RESULT
+      if action.payload
+        newState = u ownPosition: {
+          lat: action.payload.coords.latitude,
+          lng: action.payload.coords.longitude
+        }, state
+
+        unless state.ownPositionCancelled
+          u center: newState.ownPosition, newState
+        else
+          newState
       else
         state
 

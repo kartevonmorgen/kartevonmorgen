@@ -8,6 +8,7 @@ initialState =
   menu  : no
   left  : null
   right : null
+  modal : null
 
 module.exports = (state=initialState, action={}) ->
 
@@ -59,10 +60,23 @@ module.exports = (state=initialState, action={}) ->
       else
         state
 
-
     when T.SET_CURRENT_ENTRY
       v = if action.payload? then V.ENTRY else V.RESULT
       u left: v, state
+
+    when T.SHOW_OWN_POSITION
+      u modal: V.LOCATE, state
+
+    when T.CANCEL_OWN_POSITION
+      u modal: null, state
+
+    when T.OWN_POSITION_RESULT
+      if action.payload
+        u modal: null, state
+      else if state.modal == V.LOCATE
+        u modal: V.LOCATE_DISABLED, state
+      else
+        state
 
     else
       state

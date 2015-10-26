@@ -6,7 +6,7 @@ T     = React.PropTypes
 
 REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
 
-{ div, i, button}  = React.DOM
+{ span, div, i, button}  = React.DOM
 
 module.exports = React.createClass
 
@@ -20,7 +20,7 @@ module.exports = React.createClass
 
   render: ->
     div null,
-      div className: "waiting-indicator",
+      div className: "message",
         i className: @props.iconClass
         @props.message
       div className: "close-button",
@@ -31,3 +31,11 @@ module.exports = React.createClass
           className:"pure-button",
           i className: "fa fa-ban"
           @props.buttonLabel
+        if @props.retryButtonLabel
+          button
+            onClick: (ev) =>
+              ev.preventDefault()
+              @props.onRetry()
+            className:"pure-button",
+            i className: "fa fa-repeat"
+            @props.retryButtonLabel

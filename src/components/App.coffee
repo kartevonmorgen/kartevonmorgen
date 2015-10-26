@@ -60,6 +60,32 @@ module.exports = React.createClass
 
       div className:"main",
 
+        if view.modal?
+          switch view.modal
+
+            when V.LOCATE
+              div className: 'modal',
+                React.createElement Message,
+                  iconClass: "fa fa-spinner fa-pulse"
+                  message: " Dein aktueller Standort wird gesucht ..."
+                  buttonLabel: "abbrechen"
+                  onCancel: -> dispatch Actions.cancelOwnPosition()
+
+            when V.LOCATE_DISABLED
+              div className: 'modal',
+                React.createElement Message,
+                  iconClass: "fa fa-exclamation-triangle"
+                  message: " " + '''
+                    Der Standort kann nicht ermittelt werden.
+                    Die Standortbestimmung ist in den Browser-
+                    oder System-Einstellungen deaktiviert, oder
+                    das GPS hat keinen Empfang.
+                  ''',
+                  buttonLabel: "schließen",
+                  onCancel: -> dispatch Actions.cancelOwnPosition(),
+                  retryButtonLabel: "nochmal versuchen",
+                  onRetry: -> dispatch Actions.showOwnPosition15minutes()
+
         div className:"center",
           React.createElement Map,
             marker        : (map.marker if view.left in [V.EDIT, V.NEW])
@@ -96,6 +122,7 @@ module.exports = React.createClass
                 dispatch Actions.search() if txt.length > 0
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
+              onLocate        : -> dispatch Actions.showOwnPosition()
 
           if view.left?
             nav className: "menu pure-g",

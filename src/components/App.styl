@@ -68,6 +68,11 @@ button.pure-button i
 .SearchBar .main-categories button.active > i.toggle
   text-align: right !important
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .app
   background #fff
   display flex
@@ -77,6 +82,27 @@ button.pure-button i
   .main
     display flex
     flex 1
+
+    div.modal
+      position absolute
+      background-color rgba(0,0,0,0.3)
+      z-index 100
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+      width: 100%
+      height: 100%
+      animation: fadein 500ms;
+
+      > div
+        background-color: #FFF
+        padding 10px
+        border 1px solid $lightGray
+        box-shadow: 0px 0px 10px
+        position absolute
+        top 20%
+        left 30%
 
     .center, .left, .right
       transition  all 0.3s ease-out
@@ -202,8 +228,16 @@ button.pure-button i
         li
           text-transform uppercase
 
-  .waiting-indicator, .close-button
-    test-align: center
+  .close-button
+    text-align: center
+    margin: 0
+    padding: 1em
+
+    button
+      margin 0 5px
+
+  .message
+    white-space pre-wrap
     margin: 0
     padding: 1em
 
