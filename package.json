@@ -1,6 +1,6 @@
 {
   "name": "kartevonmorgen",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Karte von Morgen",
   "scripts": {
     "lint": "coffeelint src/",
