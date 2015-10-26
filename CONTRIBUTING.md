@@ -1,6 +1,27 @@
-# KVM Developer Guide
+# How to contribute to KVM (Karte Von Morgen) 
 
-## Setup your system
+## Found a bug?
+
+Please let us know about any bugs you find via the github issue editor. Click
+[here](https://github.com/flosse/kartevonmorgen/issues) and report what you
+actually experienced and what you would have expected to happen.
+
+## Pull Request
+
+We are happy about any contribution via a pull request. To be able to easily
+accept your pull request, please stick to the following Style Guide.
+
+### Coffeescript Style Guide
+
+Please follow the coffeescript style guide from [polarmobile](https://github.com/polarmobile/coffeescript-style-guide)
+
+## Beginner Developer Guide
+
+If you want to contribute but do not know all the used technolgies, then don't
+worry. In the following lines you find a step-by-step manual how to get
+started and help us with developing on KVM (Karte Von Morgen).
+
+### Setup your system
 
 Take an operating system of your choice.
 Instead of describing the setup of multiple systems, I'll use
@@ -29,7 +50,7 @@ To manage the source code and to keep track of changes,
 
 Great, that's it! Your are done!
 
-## Learn the basics
+### Learn the basics
 
 If you're a web developer, you probably can skip this section.
 For newcomers I recommend to play around with the following technologies
@@ -56,7 +77,7 @@ I recommend to install [zeal](https://zealdocs.org/):
     $ sudo apt-get update
     $ sudo apt-get install zeal
 
-## Learn more
+### Learn more
 
 Now I assume you're a super React-Coffee-Stylus hacker that really want to
 learn something new.
@@ -75,7 +96,7 @@ first overview.
 Now I think it's easy for you to connect react and redux with
 [react-redux](https://github.com/gaearon/react-redux).
 
-Congratulations, your now a pro that can help other to hack the awesome KMV platform!
+Congratulations, your now a pro that can help other to hack the awesome KVM platform!
 
 That's it. Everything else is a matter of detail.
 Nevertheless here are some more libs used and you should/could know about:
@@ -84,7 +105,3 @@ Nevertheless here are some more libs used and you should/could know about:
 - [superagent](https://github.com/visionmedia/superagent)
 - [purecss](http://purecss.io/)
 - [font-awesome](http://fontawesome.io/)
-
-## Style Guide
-
-Please follow the coffeescript style guide from [polarmobile](https://github.com/polarmobile/coffeescript-style-guide)
