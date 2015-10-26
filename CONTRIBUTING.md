@@ -3,7 +3,7 @@
 ## Found a bug?
 
 Please let us know about any bugs you find via the github issue editor. Click
-[here](https://github.com/flosse/kartevonmorgen/issues) and report what you
+[here](https://github.com/flosse/kartevonmorgen/issues/new) and report what you
 actually experienced and what you would have expected to happen.
 
 ## Pull Request
