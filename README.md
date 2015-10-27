@@ -25,7 +25,7 @@ Demo: [kvm.markus-kohlhase.de](http://kvm.markus-kohlhase.de)
 Are you're interested in contributing to KVM?
 The following is a description of a quickstart.
 If you're looking for a more comprehensive introduction,
-have a look at the [developer guide](DEVELOPER_GUIDE.md).
+have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Dependencies
 
