@@ -8,18 +8,16 @@ middlewares = [require "redux-thunk"] # lets us dispatch() functions
 if __DEVELOPMENT__
   middlewares.push require "redux-logger"
 
-storeHooks =
-  if __DEVTOOLS__
-    { devTools, persistState } = require 'redux-devtools'
-    [
-      applyMiddleware middlewares...
-      devTools()
-      persistState window.location.href.match /[?&]debug_session=([^&]+)\b/
-    ]
-  else
-    [ applyMiddleware middlewares... ]
+storeHooks = [ applyMiddleware middlewares... ]
 
-store = (compose storeHooks...)(createStore) reducers
+# https://github.com/zalmoxisus/redux-devtools-extension
+createStoreWrapper =
+ if window.devToolsExtension
+   window.devToolsExtension(createStore)
+ else
+   createStore
+
+store = (compose storeHooks...)(createStoreWrapper) reducers
 
 if module.hot
   # Enable Webpack hot module replacement for reducers
