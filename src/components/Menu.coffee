@@ -3,7 +3,7 @@
 React     = require "react"
 PureMixin = require "react-pure-render/mixin"
 
-{ div, i, a, ul, li } = React.DOM
+{ div, i, a, ul, li, span, br } = React.DOM
 
 module.exports = React.createClass
 
@@ -12,7 +12,19 @@ module.exports = React.createClass
   mixins: [ PureMixin ]
 
   render: ->
-    buttons = for key,v of @props when typeof v is "object" then do (key,v) ->
-      li { key, className: if v.active then 'active' },
-        a { onClick: v.onClick }, v.label
+    onClick = @props.onClick
+    buttons =
+      for key,v of @props.items when typeof v is "object" then do (key,v) ->
+        submenu =
+          for key2,v2 of v.items when typeof v.items is "object" then do
+            (key2,v2) ->
+              li { key2, className: if v2.active then 'active' },
+                a { onClick: onClick(key2) }, v2.label
+        li { key, className: if v.active then 'active' },
+          a { onClick: onClick(key) }, v.label
+          if (submenu and submenu.length)
+            i className: "fa fa-angle-down", style: {"padding-left": "5px"}
+          if (submenu and submenu.length)
+            ul className:"submenu",
+              submenu
     ul className:"menu", buttons

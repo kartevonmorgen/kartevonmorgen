@@ -5,6 +5,7 @@ module.exports =
   TOGGLE_SEARCH_CATEGORY  : 'TOGGLE_SEARCH_CATEGORY'
   TOGGLE_MENU             : 'TOGGLE_MENU'
 
+  SHOW_MENU               : 'SHOW_MENU'
   SHOW_NEW_ENTRY          : 'SHOW_NEW_ENTRY'
   SHOW_INFO               : 'SHOW_INFO'
   SHOW_IMPRINT            : 'SHOW_IMPRINT'

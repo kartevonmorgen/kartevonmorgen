@@ -166,12 +166,13 @@ button.pure-button i
     .right
       background $coal
       color $lightGray
+      position relative
 
       a
         text-decoration none
         color $lightGray
 
-      .menu-toggle
+      .menu-toggle, .content-toggle
         button
           outline none
           position absolute
@@ -186,47 +187,78 @@ button.pure-button i
           i
             margin-left 0.3em
 
+
+      .content-toggle
+        button
+          right 0
+
       &.opened button
         width 2.5em
-        margin-left -2.5em
+        margin-left 0
         background rgba(0,0,0,0.8)
       &.closed button
         width 4.5em
         margin-left -4.5em
 
       .logo
+        margin-top 4em
         background          url("../img/logo.png")
         background-position center
         background-repeat   no-repeat
-        height 50px
-        margin 10px
+        height 70px
 
-      div.content
-        padding 1.3em
+      div.menu-content
+        padding   1.3em
+        position  absolute
+        top       8em
+        bottom    2em
+        left      0
+        right     0
+        overflow  auto
 
       ul.menu
-        list-style none
+        margin 4.5em 0 0 0
+
+      ul.submenu
         margin     0
+
+      ul.menu, ul.submenu
+        list-style none
         padding    0
         text-align center
 
-        li
-          display     block
-          cursor      pointer
-          color       rgba(255,255,255,0.8)
-          font-weight bold
-          margin-top  1em
-          &:hover
-            color rgba(255,255,255,1)
-            a
-              border-bottom 2px solid #fff
+      ul.menu > li
+        margin-top 2.5em
 
-        li.active
-          a
-           border-bottom 2px solid #fff
+      ul.submenu > li
+        margin-top 0.75em
+        font-size 0.85em
 
-        li
-          text-transform uppercase
+      ul.menu > li > a
+        font-weight bold
+        font-size 20px
+
+      ul.menu > li, ul.submenu > li, div.menu-footer
+        display     block
+        cursor      pointer
+        color       rgba(255,255,255,0.8)
+        text-transform uppercase
+
+        a:hover
+          color rgba(255,255,255,1)
+          border-bottom 2px solid #fff
+
+        &.active > a
+         border-bottom 2px solid #fff
+
+      div.menu-footer
+        position absolute
+        bottom 0
+        padding 10px
+        left 0
+        right 0
+        text-align center
+        font-size 0.85em
 
   .close-button
     text-align: center

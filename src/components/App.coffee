@@ -19,7 +19,7 @@ Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
 
 { initialize, touch       }  = require "redux-form"
-{ div, button, nav, li, i }  = React.DOM
+{ div, span, button, nav, li, i, a, br, p }  = React.DOM
 
 module.exports = React.createClass
 
@@ -253,29 +253,83 @@ module.exports = React.createClass
                 i className: "fa fa-#{
                   if rightPanelIsOpen then 'times' else 'bars'
                 }"
-
           if rightPanelIsOpen
             div null,
               div className: "logo"
+              if view.right != null
+                div className:"content-toggle",
+                  button
+                    onClick: (-> dispatch Actions.showMenu()),
+                    i className: "fa fa-bars"
+              div className: "menu-content",
+                if view.right is null
+                  React.createElement Menu,
+                    onClick : (key) -> ( ->
+                      dispatch Actions.showInfo(key)
+                      dispatch Actions.getServerInfo())
+                    items:
+                      MAP:
+                        label   : "Karte"
+                        active  : view.right is null
+                      DONATE:
+                        label   : "Spenden"
+                        active  : view.right is V.DONATE
+                      JOIN:
+                        label   : "Mitmachen"
+                        active  : view.right is V.JOIN
+                      INFO:
+                        label   : "Info"
+                        items:
+                          INFO:
+                            label   : "Das Projekt"
+                            active  : view.right is V.INFO
+                          TEAM:
+                            label   : "Team / Über Uns"
+                            active  : view.right is V.TEAM
+                          SUPPORTERS:
+                            label   : "Partner / Unterstützer"
+                            active  : view.right is V.PARTNER
+                else
+                  switch view.right
+                    when V.INFO
+                      React.createElement Info,
+                        clientVersion: pkg.version
+                        serverVersion: @props.server.version
+                    when V.DONATE
+                      div null,
+                        p null,
+                          "Wir möchten bald als Gemeinnützige Organisation "
+                          "Spenden entgegen nehmen können."
+                        br null
+                        br null
+                        p null,
+                          "Zur Zeit ist dies leider noch nicht möglich, da "
+                          "wir uns noch in der Gründungsphase befinden."
+                    when V.JOIN
+                      div null,
+                        "Bitte schreibt eine E-Mail an: "
+                        a href: "mailto:team@kartevonmorgen.org",
+                          "team@kartevonmorgen.org"
+                    when V.TEAM
+                      div null,
+                        p null, "Anja"
+                        p null, "Benedikt"
+                        p null, "Florian"
+                        p null, "Frederik"
+                        p null, "Helmut"
+                        p null, "Lisa"
+                        p null, "Markus"
+                        p null, "Peter"
+                        p null, "Thao"
+                        p null, "Xueqian"
+                        p null, "Tomas"
+                    when V.SUPPORTERS
+                      div null,
+                        p null, "Think BIG"
+                        p null, "Heinrich Böll Stiftung"
 
-              div null,
-                React.createElement Menu,
-                  info:
-                    label   : " Info"
-                    active  : view.right is V.INFO
-                    onClick : ->
-                      dispatch Actions.showInfo()
-                      dispatch Actions.getServerInfo()
-                  imprint:
-                    label   : " Impressum"
-                    active  : view.right is V.IMPRINT
-                    onClick : -> dispatch Actions.showImprint()
-              div className: "content",
-                switch view.right
-                  when V.INFO
-                    React.createElement Info,
-                      clientVersion: pkg.version
-                      serverVersion: @props.server.version
-
-                  when V.IMPRINT
-                    React.createElement Imprint
+                    when V.IMPRINT
+                      React.createElement Imprint
+              div className:"menu-footer",
+                a onClick: (-> dispatch Actions.showImprint()),
+                  "Kontakt // Impressum"

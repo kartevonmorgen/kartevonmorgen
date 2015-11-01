@@ -70,11 +70,15 @@ Actions =
   toggleMenu: ->
     type: T.TOGGLE_MENU
 
+  showMenu: ->
+    type: T.SHOW_MENU
+
   showNewEntry: ->
     type: T.SHOW_NEW_ENTRY
 
-  showInfo: ->
+  showInfo: (key) ->
     type: T.SHOW_INFO
+    payload: key
 
   showImprint: ->
     type: T.SHOW_IMPRINT

@@ -19,8 +19,14 @@ module.exports = (state=initialState, action={}) ->
       r = if m then state.right else null
       u {menu: m, right: r}, state
 
+    when T.SHOW_MENU
+      u {menu: yes, right: null}, state
+
     when T.SHOW_INFO
-      u { menu: yes, right: V.INFO }, state
+      newView = V[action.payload]
+      if newView == undefined
+        newView = null
+      u { menu: newView != null , right: newView }, state
 
     when T.SHOW_IMPRINT
       u { menu: yes, right: V.IMPRINT }, state
