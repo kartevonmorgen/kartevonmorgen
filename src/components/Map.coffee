@@ -14,7 +14,7 @@ PureMixin = require "react-pure-render/mixin"
 OSM_ATTR = '&copy; <a class="osm attr"' +
            ' href="http://osm.org/copyright">OpenStreetMap</a>'
 
-{ Map, TileLayer, Marker } = leaflet
+{ Map, TileLayer, Marker} = leaflet
 
 {
   div,
@@ -53,6 +53,7 @@ module.exports = React.createClass
     # workaround due to a bug in react-leaflet:
     if (map = @refs.map)?
       map.fireLeafletEvent 'load', map
+      map.getLeafletElement().addControl(L.control.zoom position: 'bottomright')
 
   render: ->
 
