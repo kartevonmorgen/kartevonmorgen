@@ -37,7 +37,7 @@
     "superagent": "^1.4.0",
     "superagent-prefix": "0.0.2",
     "updeep": "^0.10.1",
-    "vm-leaflet-icons": "^0.0.3"
+    "vm-leaflet-icons": "^0.0.4"
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
