@@ -5,8 +5,8 @@
   "scripts": {
     "lint": "coffeelint src/",
     "test": "npm run lint & karma start",
-    "pack": "webpack --production",
-    "start": "webpack-dev-server"
+    "pack": "webpack --production --progress",
+    "start": "webpack-dev-server --progress"
   },
   "repository": {
     "type": "git",
