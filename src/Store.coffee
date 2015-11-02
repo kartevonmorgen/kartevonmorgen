@@ -6,18 +6,16 @@ middlewares = [require "redux-thunk"] # lets us dispatch() functions
 { createStore, applyMiddleware, compose } = require "redux"
 
 if __DEVELOPMENT__
-  middlewares.push require "redux-logger"
-
-storeHooks = [ applyMiddleware middlewares... ]
+  middlewares.push (require "redux-logger")()
 
 # https://github.com/zalmoxisus/redux-devtools-extension
 createStoreWrapper =
  if window.devToolsExtension
-   window.devToolsExtension(createStore)
+   window.devToolsExtension createStore
  else
    createStore
 
-store = (compose storeHooks...)(createStoreWrapper) reducers
+store = (applyMiddleware middlewares...)(createStoreWrapper) reducers
 
 if module.hot
   # Enable Webpack hot module replacement for reducers

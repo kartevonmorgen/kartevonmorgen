@@ -3,6 +3,7 @@ Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 ###
 
 React       = require "react"
+ReactDOM    = require "react-dom"
 App         = require "./components/App"
 store       = require "./Store"
 
@@ -13,25 +14,10 @@ if __DEVELOPMENT__
 
 ConnectedApp = (connect (s) -> s) App
 
-rootElement  = document.querySelector 'body'
+rootElement  = document.querySelector '#app'
 
 # inject the 'dispatch' method and the state
-Wrapper = React.createElement Provider, { store }, ->
+Wrapper = React.createElement Provider, { store },
   React.createElement ConnectedApp
 
-React.initializeTouchEvents yes
-
-if __DEVTOOLS__
-  { DevTools, DebugPanel, LogMonitor } = require 'redux-devtools/lib/react'
-  { div } = React.DOM
-  X = div null,
-    Wrapper
-    React.createElement DebugPanel,
-      top     : yes
-      left    : yes
-      bottom  : yes
-      key     : "debugPanel",
-      React.createElement DevTools, { store, monitor:LogMonitor }
-  React.render X, rootElement
-else
-  React.render Wrapper, rootElement
+ReactDOM.render Wrapper, rootElement

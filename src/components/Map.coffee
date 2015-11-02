@@ -14,7 +14,7 @@ PureMixin = require "react-pure-render/mixin"
 OSM_ATTR = '&copy; <a class="osm attr"' +
            ' href="http://osm.org/copyright">OpenStreetMap</a>'
 
-{ Map, TileLayer, Marker} = leaflet
+{ Map, TileLayer, Marker } = leaflet
 
 {
   div,
@@ -54,6 +54,13 @@ module.exports = React.createClass
     if (map = @refs.map)?
       map.fireLeafletEvent 'load', map
       map.getLeafletElement().addControl(L.control.zoom position: 'bottomright')
+      @props.onMoveend @getMapCoordinates()
+
+  getMapCoordinates: ->
+    m = @refs.map.getLeafletElement()
+    center: m.getCenter()
+    bbox  : m.getBounds()
+    zoom  : m.getZoom()
 
   render: ->
 
@@ -89,9 +96,8 @@ module.exports = React.createClass
       zoom             : @props.zoom
       zoomControl      : false
       className        : "map",
-      onLeafletLoad    : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
-      onLeafletMoveend : (e) -> onMoveend (t=e.target).getCenter(),t.getBounds()
-      onLeafletZoomend : (e) -> onZoomend (t=e.target).getZoom(),  t.getBounds()
+      onLeafletMoveend : (e) => onMoveend @getMapCoordinates()
+      onLeafletZoomend : (e) => onZoomend @getMapCoordinates()
       onLeafletClick   : (e) -> onClick e.latlng
       React.createElement TileLayer,
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"

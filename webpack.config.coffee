@@ -69,23 +69,24 @@ config =
     ]
   resolve:
     extensions: ["", ".js", ".coffee"]
-    modulesDirectories: ['node_modules', 'bower_components']
+    modulesDirectories: ['node_modules']
   stylus:
     use: [(require "nib")()]
 
 htmlPluginOptions =
   templateContent: '''
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Karte von Morgen</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="viewport" content="width=860, maximum-scale=1.0" />
-  </head>
-  <body>
-  </body>
-</html>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Karte von Morgen</title>
+      <link rel="shortcut icon" href="favicon.ico">
+      <meta name="viewport" content="width=860, maximum-scale=1.0" />
+    </head>
+    <body>
+      <div id='app'></div>
+    </body>
+  </html>
   '''
   title   : "Karte von Morgen"
   favicon : "./src/img/favicon.ico"

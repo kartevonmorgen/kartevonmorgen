@@ -7,7 +7,7 @@ validation  = require "../util/validation"
 
 { IDS } = require "../constants/Categories"
 
-{ connectReduxForm } = require "redux-form"
+{ reduxForm } = require "redux-form"
 
 {
   div,
@@ -139,7 +139,7 @@ Form = React.createClass
             div className: "pure-u-22-24",
               input fieldProps.telephone
 
-module.exports = connectReduxForm(
+module.exports = reduxForm(
   form      : 'edit'
   fields    : [
     'title',

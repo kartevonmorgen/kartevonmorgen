@@ -35,9 +35,6 @@ module.exports = React.createClass
     form    : T.object.isRequired
     server  : T.object.isRequired
 
-  componentDidMount: () ->
-    @props.dispatch Actions.search()
-
   render: ->
 
     { dispatch, search, view, entries, map, form } = @props
@@ -96,13 +93,13 @@ module.exports = React.createClass
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
-            onMoveend     : (center, bbox) ->
-              dispatch Actions.setCenter center
-              dispatch Actions.setBbox bbox
+            onMoveend     : (coordinates) ->
+              dispatch Actions.setCenter coordinates.center
+              dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
-            onZoomend     : (zoom, bbox) ->
-              dispatch Actions.setZoom zoom
-              dispatch Actions.setBbox bbox
+            onZoomend     : (coordinates) ->
+              dispatch Actions.setZoom coordinates.zoom
+              dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
 
         div className:"left #{if view.left? then 'opened' else 'closed'}",
