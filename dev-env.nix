@@ -11,11 +11,11 @@ in rec {
       git
       nodejs
       python
-      phantomjs
+      phantomjs2
       zeal
     ];
     shellHook = ''
-      export PHANTOMJS_BIN=${pkgs.phantomjs}/bin/phantomjs
+      export PHANTOMJS_BIN=${pkgs.phantomjs2}/bin/phantomjs
       '';
   };
 }
