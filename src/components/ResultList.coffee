@@ -7,7 +7,7 @@ Address = require "./AddressLine"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
-{ div, ul, li, p, span } = React.DOM
+{ div, ul, li, p, span, i } = React.DOM
 
 ResultListElement = React.createClass
 
@@ -25,14 +25,18 @@ ResultListElement = React.createClass
       onClick       : (ev) -> ev.preventDefault(); onClick      entry.id
       onMouseEnter  : (ev) -> ev.preventDefault(); onMouseEnter entry.id
       onMouseLeave  : (ev) -> ev.preventDefault(); onMouseLeave entry.id
-      div null,
-        span className: "category", NAMES[entry.categories?[0]]
-      div null,
-        span className: "title", entry.title
-      div null,
-        span className: "subtitle", entry.description
-      if entry.street or entry.zip or entry.city
-        React.createElement Address, entry
+      div className: "pure-g",
+        div className: "pure-u-23-24",
+          div null,
+            span className: "category", NAMES[entry.categories?[0]]
+          div null,
+            span className: "title", entry.title
+          div null,
+            span className: "subtitle", entry.description
+          if entry.street or entry.zip or entry.city
+            React.createElement Address, entry
+        div className: "pure-u-1-24 chevron",
+          i className: "fa fa-chevron-right"
 
 module.exports = React.createClass
 
@@ -45,7 +49,7 @@ module.exports = React.createClass
     results = for e in entries
       React.createElement ResultListElement,
         entry       : e
-        key         : e.id,
+        key         : e.id
         highlight   : e.id in highlight
         onClick     : @props.onClick
         onMouseEnter: @props.onMouseEnter

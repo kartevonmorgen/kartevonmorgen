@@ -1,6 +1,6 @@
 // Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-@import 'nib'
+@require 'nib'
 
 @require "~normalize.css/normalize.css"
 @require "~font-awesome/css/font-awesome.css"
@@ -382,3 +382,24 @@ button.pure-button i
         .address
           font-size 0.8em
           color #888
+
+        div.chevron
+          position relative
+          color    $lightGray
+          i
+            position  absolute
+            display   inline-table
+            top       0
+            bottom    0
+            margin    auto
+
+        &.highlight-entry
+          div.chevron
+            color $darkGray
+
+          &.initiative div.chevron
+            color $initiative
+          &.company div.chevron
+            color $company
+          &.event div.chevron
+            color $event
