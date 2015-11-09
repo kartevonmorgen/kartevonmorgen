@@ -74,9 +74,10 @@ module.exports = React.createClass
           onToggle  : toggleCat
 
       div className: "pure-u-1",
-        span
-          className: "search-icon",
-          i className: "fa fa-search"
+        a
+          onClick     : => @props.onChange()
+          className   : "search-icon",
+          i className : "fa fa-search"
         input
           onChange    : @onChange
           disabled    : disabled

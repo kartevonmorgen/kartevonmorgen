@@ -114,9 +114,9 @@ module.exports = React.createClass
               toggleCat       : (c) ->
                 dispatch Actions.toggleSearchCategory c
                 dispatch Actions.search()
-              onChange       : (txt='') ->
+              onChange        : (txt="") ->
                 dispatch Actions.setSearchText txt
-                dispatch Actions.search() if txt.length > 0
+                dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
               onLocate        : -> dispatch Actions.showOwnPosition()
