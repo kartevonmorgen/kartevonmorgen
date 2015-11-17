@@ -70,6 +70,9 @@ config =
   resolve:
     extensions: ["", ".js", ".coffee"]
     modulesDirectories: ['node_modules']
+    fallback: process.env.NODE_PATH
+  resolveLoader:
+    fallback: process.env.NODE_PATH
   stylus:
     use: [(require "nib")()]
 
