@@ -82,7 +82,7 @@ in stdenv.mkDerivation rec {
     description = "Mapping for Good";
     homepage = http://www.kartevonmorgen.org/;
     license = licenses.agpl3;
-    platforms = [ platforms.linux ];
+    platforms = platforms.linux;
     maintainers = [ maintainers.flosse ];
   };
 }
