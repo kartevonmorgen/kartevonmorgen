@@ -38,9 +38,6 @@ entryForm = (data) ->
 
   unless data.category?
     errors.category = 'Pflichtangabe'
-  else
-    i = data.category * 1
-    errors.category = 'Ungültige Kategorie' if (not isInt i) or i < 0
 
   errors
 

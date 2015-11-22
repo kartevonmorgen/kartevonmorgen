@@ -103,7 +103,7 @@ Actions =
         if err
           dispatch stopSubmit 'edit', { _error: err }
         else
-          id = (e?.id or res) * 1
+          id = (e?.id or res)
           WebAPI.getEntries [id], (err, res) ->
             dispatch
               type    : T.ENTRIES_RESULT

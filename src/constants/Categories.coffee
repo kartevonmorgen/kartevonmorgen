@@ -4,9 +4,9 @@ c = {}
 
 c.IDS =
 
- INITIATIVE : 1
- EVENT      : 2
- COMPANY    : 3
+  INITIATIVE : "1"
+  EVENT      : "2"
+  COMPANY    : "3"
 
 c.MAIN_IDS = [c.IDS.INITIATIVE, c.IDS.EVENT, c.IDS.COMPANY]
 
