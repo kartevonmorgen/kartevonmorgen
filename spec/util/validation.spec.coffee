@@ -60,11 +60,11 @@ describe "Validation", ->
       it "should exist", ->
         F(category:null).category.should.have.string "Pflicht"
 
-      it "should be a positive integer", ->
-        F(category:"a").category.should.have.string "Ungültig"
-        F(category:"1.7").category.should.have.string "Ungültig"
-        should.not.exist F(category:"1").category
-        F(category:"-1").category.should.have.string "Ungültig"
+      it "should be a string", ->
+        F(category: 1).category.should.have.string "Ungültig"
+        F(category: 1.7).category.should.have.string "Ungültig"
+        F(category: {}).category.should.have.string "Ungültig"
+        F(category: []).category.should.have.string "Ungültig"
 
       it "should not throw error if valid", ->
-        should.not.exist F(category:1).category
+        should.not.exist F(category:"1").category

@@ -38,6 +38,9 @@ entryForm = (data) ->
 
   unless data.category?
     errors.category = 'Pflichtangabe'
+  else
+    unless (typeof data.category) is "string"
+      errors.category = 'Ungültige Kategorie'
 
   errors
 
