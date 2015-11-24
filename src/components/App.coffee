@@ -50,7 +50,7 @@ module.exports = React.createClass
      if (c=search.current)
        e = entries[c]
        lat: e?.lat
-       lng: e?.lon
+       lng: e?.lng
      else map.center
 
     div className:"app",
@@ -217,7 +217,7 @@ module.exports = React.createClass
                           homepage    : data.homepage
                           telephone   : data.telephone
                           lat         : data.lat
-                          lon         : data.lng
+                          lng         : data.lng
                           street      : data.street
                           city        : data.city
                           email       : data.email

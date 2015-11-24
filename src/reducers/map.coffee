@@ -22,7 +22,7 @@ module.exports = (state=initialState, action={}) ->
       u marker: action.payload, state
 
     when T.EDIT_CURRENT_ENTRY
-      point = { lat: action.payload.lat, lng: action.payload.lon}
+      point = { lat: action.payload.lat, lng: action.payload.lng}
       u
         marker: point
         center: point
