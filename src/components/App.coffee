@@ -222,6 +222,7 @@ module.exports = React.createClass
                           city        : data.city
                           email       : data.email
                           zip         : data.zip
+                          version     : (form.edit?.version?.value or 0) + 1
                           categories  : [data.category]
               when V.WAIT
                 React.createElement Message,

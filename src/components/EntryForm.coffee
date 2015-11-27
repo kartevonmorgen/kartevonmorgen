@@ -1,12 +1,10 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React       = require "react"
-T           = React.PropTypes
-udeep       = require "updeep"
-validation  = require "../util/validation"
-
-{ IDS } = require "../constants/Categories"
-
+React         = require "react"
+T             = React.PropTypes
+udeep         = require "updeep"
+validation    = require "../util/validation"
+{ IDS }       = require "../constants/Categories"
 { reduxForm } = require "redux-form"
 
 {

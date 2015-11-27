@@ -1,7 +1,7 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-T       = require "./constants/ActionTypes"
-WebAPI  = require "./WebAPI"
+T           = require "./constants/ActionTypes"
+WebAPI      = require "./WebAPI"
 GeoLocation = require "./GeoLocation"
 { initialize, stopSubmit } = require "redux-form"
 
