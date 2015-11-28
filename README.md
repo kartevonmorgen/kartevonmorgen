@@ -32,7 +32,7 @@ have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 
 To be able to start development you'll need the following tools:
 
-- [git](>https://www.git-scm.com/)
+- [git](https://www.git-scm.com/)
 - [Node.js](https://nodejs.org/) version >= 0.10.40
 - [npm](https://www.npmjs.com/package/npm)
 
