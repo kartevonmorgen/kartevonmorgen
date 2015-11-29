@@ -1,6 +1,6 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-{ URL } = require "./constants/API"
+URL     = "http://api.ofdb.io/v0/"
 request = require "superagent/lib/client"
 prefix  = (require "superagent-prefix") URL
 
