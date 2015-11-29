@@ -52,6 +52,10 @@ To build the web application run:
     npm run pack
 
 The result can be found in `dist/`.
+To build a Nix derivation, run
+
+    nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}'
+
 During the development you don't want to do that manually on every file change,
 so just run
 
