@@ -1,6 +1,6 @@
 # Karte von morgen
 
-![Screenshot](https://raw.githubusercontent.com/flosse/kartevonmorgen/master/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/flosse/kartevonmorgen/master/screenshot.jpg)
 
 ## Mapping for Good
 
