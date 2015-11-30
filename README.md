@@ -56,6 +56,10 @@ To build a Nix derivation, run
 
     nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}'
 
+*Note*: Sometimes the build fails because of a bad binary cache, so just disable it:
+
+    nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}' --option use-binary-caches false
+
 During the development you don't want to do that manually on every file change,
 so just run
 

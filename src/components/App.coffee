@@ -154,7 +154,6 @@ module.exports = React.createClass
                       onClick: (=>
                         # dirty hack
                         @refs.form
-                          .getDOMNode()
                           .querySelector 'form'
                           .dispatchEvent new Event "submit"
                       ),
