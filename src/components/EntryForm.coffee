@@ -6,6 +6,7 @@ udeep         = require "updeep"
 validation    = require "../util/validation"
 { IDS }       = require "../constants/Categories"
 { reduxForm } = require "redux-form"
+CC_LINK       = "http://creativecommons.org/publicdomain/zero/1.0/deed.de"
 
 {
   div,
@@ -20,13 +21,15 @@ validation    = require "../util/validation"
   textarea,
   select,
   i,
+  a,
   option
 } = React.DOM
 
 FIELD_PROPS =
-  title  : { type: "text" }
-  lat    : { type: "text", readOnly: yes }
-  lng    : { type: "text", readOnly: yes }
+  title   : { type: "text" }
+  lat     : { type: "text", readOnly: yes }
+  lng     : { type: "text", readOnly: yes }
+  license : { type: "checkbox" }
 
 Form = React.createClass
 
@@ -40,7 +43,7 @@ Form = React.createClass
   render: ->
     { fields, handleSubmit, onCancel, isEdit} = @props
     { title, description, homepage, telephone, lat, lng, category,
-      city, zip, street, email } = fields
+      city, zip, street, email, license } = fields
 
     fieldProps = udeep FIELD_PROPS, fields
 
@@ -77,12 +80,10 @@ Form = React.createClass
           category.error and category.touched and div className: "err",
             category.error
 
-        fieldset null,
           input fieldProps.title
           title.error and title.touched and div className: "err",
             title.error
 
-        fieldset null,
           textarea fieldProps.description
           description.error and description.touched and div className:"err",
             description.error
@@ -131,26 +132,43 @@ Form = React.createClass
             div className: "pure-u-22-24",
               input fieldProps.email
 
-         div className: "pure-g",
-           label className: "pure-u-2-24",
+          div className: "pure-g",
+            label className: "pure-u-2-24",
               i className: "fa fa-phone"
             div className: "pure-u-22-24",
               input fieldProps.telephone
 
+        fieldset null,
+          legend null,
+            span className:"text","Lizenz"
+            span className:"desc","(CC-0)"
+          div className: "pure-g license",
+            label className: "pure-u-2-24",
+              i className: "fa fa-creative-commons"
+            div className: "pure-u-2-24 pure-controls",
+              input fieldProps.license
+            div className: "pure-u-20-24",
+              license.error and license.touched and div className:"err",
+                license.error
+              " Ich habe die "
+              a href: CC_LINK, "Bestimmungen der Creative-Commons Lizenz CC0"
+              " gelesen und akzeptiere sie"
+
 module.exports = reduxForm(
   form      : 'edit'
   fields    : [
-    'title',
-    'description',
-    'homepage',
-    'telephone',
-    'city',
-    'zip',
-    'email',
-    'street',
-    'lat',
-    'lng',
+    'title'
+    'description'
+    'homepage'
+    'telephone'
+    'city'
+    'zip'
+    'email'
+    'street'
+    'lat'
+    'lng'
     'category'
+    'license'
   ]
   validate  : validation.entryForm
 )(Form)

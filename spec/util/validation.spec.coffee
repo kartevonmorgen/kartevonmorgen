@@ -68,3 +68,18 @@ describe "Validation", ->
 
       it "should not throw error if valid", ->
         should.not.exist F(category:"1").category
+
+    describe "license", ->
+
+      it "should exist", ->
+        F(license:null).license.should.have.string "Pflicht"
+
+      it "should be a boolean", ->
+        F(license: 1)  .license.should.have.string "Ungültig"
+        F(license: 1.7).license.should.have.string "Ungültig"
+        F(license: {}) .license.should.have.string "Ungültig"
+        F(license: []) .license.should.have.string "Ungültig"
+
+      it "should be accepted", ->
+        F(license:no).license.should.have.string "Lizenzzustimmung ist nötig"
+        should.not.exist F(license: yes).license

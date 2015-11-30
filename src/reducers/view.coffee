@@ -24,9 +24,8 @@ module.exports = (state=initialState, action={}) ->
 
     when T.SHOW_INFO
       newView = V[action.payload]
-      if newView == undefined
-        newView = null
-      u { menu: newView != null , right: newView }, state
+      newView = null if newView is undefined
+      u { menu: newView isnt null, right: newView }, state
 
     when T.SHOW_IMPRINT
       u { menu: yes, right: V.IMPRINT }, state
@@ -79,7 +78,7 @@ module.exports = (state=initialState, action={}) ->
     when T.OWN_POSITION_RESULT
       if action.payload
         u modal: null, state
-      else if state.modal == V.LOCATE
+      else if state.modal is V.LOCATE
         u modal: V.LOCATE_DISABLED, state
       else
         state

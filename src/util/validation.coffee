@@ -42,6 +42,14 @@ entryForm = (data) ->
     unless (typeof data.category) is "string"
       errors.category = 'Ungültige Kategorie'
 
+  unless data.license?
+    errors.license = 'Lizenzzustimmung ist nötig'
+  else
+    unless (typeof data.license) is "boolean"
+      errors.license = 'Ungültige Zustimmung'
+    else if data.license is false
+      errors.license = 'Lizenzzustimmung ist nötig'
+
   errors
 
 module.exports = { entryForm }
