@@ -72,7 +72,7 @@ describe "Validation", ->
     describe "license", ->
 
       it "should exist", ->
-        F(license:null).license.should.have.string "Pflicht"
+        F(license:null).license.should.have.string "Lizenzzustimmung"
 
       it "should be a boolean", ->
         F(license: 1)  .license.should.have.string "Ungültig"
