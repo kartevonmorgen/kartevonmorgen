@@ -1,6 +1,6 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-URL       = "http://localhost:6767/api/v0"
+URL       = "http://api.ofdb.io/v0"
 NOMINATIM = "http://nominatim.openstreetmap.org"
 request   = require "superagent/lib/client"
 saPrefix  = require "superagent-prefix"
