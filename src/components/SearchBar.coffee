@@ -75,7 +75,7 @@ module.exports = React.createClass
 
       div className: "pure-u-1",
         a
-          onClick     : => @props.onChange()
+          onClick     : @props.onLenseClick
           className   : "search-icon",
           i className : "fa fa-search"
         input
