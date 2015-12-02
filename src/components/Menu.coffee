@@ -18,13 +18,13 @@ module.exports = React.createClass
         submenu =
           for key2,v2 of v.items when typeof v.items is "object" then do
             (key2,v2) ->
-              li { key2, className: if v2.active then 'active' },
-                a { onClick: onClick(key2) }, v2.label
+              li { key: key2, className: if v2.active then 'active' },
+                a { onClick: onClick key2 }, v2.label
         li { key, className: if v.active then 'active' },
-          a { onClick: onClick(key) }, v.label
-          if (submenu and submenu.length)
-            i className: "fa fa-angle-down", style: {"padding-left": "5px"}
-          if (submenu and submenu.length)
+          a { onClick: onClick key }, v.label
+          if submenu and submenu.length
+            i className: "fa fa-angle-down", style: {paddingLeft: "5px"}
+          if submenu and submenu.length
             ul className:"submenu",
               submenu
     ul className:"menu", buttons
