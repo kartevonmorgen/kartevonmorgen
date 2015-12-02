@@ -177,7 +177,7 @@ module.exports = React.createClass
             switch view.left
 
               when V.RESULT
-                div null,
+                div className: "result",
                   React.createElement ResultList,
                     entries     : resultEntries
                     highlight   : highlight
