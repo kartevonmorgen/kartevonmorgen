@@ -57,13 +57,13 @@ let
   };
 
 in stdenv.mkDerivation rec {
-  version = "0.0.11";
+  version = "0.0.12";
   name = "kartevonmorgen-${version}";
   src = fetchFromGitHub {
     owner = "flosse";
     repo = "kartevonmorgen";
     rev = "v${version}";
-    sha256 = "13z4shabg1j17hlv2f91ykvd86rjdcnjpric9z83gjira6xpa78k";
+    sha256 = "0lj1v180bykhs8cqz1ccp2kvgd5ffm1rf3xq8r27klajf56pydha";
   };
 
   buildInputs = with pkgs; [ nodejs node_env nodePackages.webpack ];
