@@ -29,15 +29,20 @@ Actions =
           error   : err?
           noList  : not s.text?
 
-        ids = if Array.isArray (res?.visible)
-                if Array.isArray(res?.invisible)
-                  res.visible.concat(res.invisible)
+        ids = if Array.isArray res?.visible
+                if Array.isArray res.invisible
+                  res.visible.concat res.invisible
                 else res.visible
               else res?.invisible
-        if (Array.isArray (ids)) and ids.length > 0
+        if (Array.isArray ids) and ids.length > 0
           { entries } = getState()
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
+      WebAPI.searchAddress s.text, (err, res) ->
+        dispatch
+          type    : T.SEARCH_ADDRESS_RESULT
+          payload : err or res
+          error   : err?
 
   getEntries: (ids=[]) ->
     (dispatch) ->

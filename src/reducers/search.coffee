@@ -12,6 +12,13 @@ initialState =
   categories : MAIN_IDS
   highlight  : []
   invisible  : []
+  addresses  : []
+  cities     : []
+
+isCity = (x) ->
+  (x.class is 'place'    and (x.type is 'city' or x.type is 'village')) or
+  (x.class is 'boundary' and x.type is 'administrative')
+
 
 module.exports = (state=initialState, action={}) ->
 
@@ -35,6 +42,13 @@ module.exports = (state=initialState, action={}) ->
           state
       else
         state
+
+    when T.SEARCH_ADDRESS_RESULT
+      unless action.error
+        d = action.payload or []
+        u { addresses: d, cities: d.filter isCity }, state
+      else
+        u { addresses: [], cities: [] }, state
 
     when T.NEW_ENTRY_RESULT
       unless action.error

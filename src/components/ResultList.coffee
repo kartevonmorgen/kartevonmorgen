@@ -16,7 +16,7 @@ ResultListElement = React.createClass
   mixins: [Pure]
 
   render: ->
-    { highlight, entry, } = @props
+    { highlight, entry } = @props
     { onClick, onMouseEnter, onMouseLeave } = @props
     clz = if highlight then 'highlight-entry ' else ''
     clz += CSS_CLASSES[entry.categories?[0]]

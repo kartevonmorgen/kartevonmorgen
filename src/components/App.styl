@@ -322,9 +322,60 @@ button.pure-button i
     &.initiative .category span
       color $initiative
 
-  .hdr-invisible
+  .group-header
+    border-top    3px solid $lightGray
     padding 1em
-    margin 0
+    padding-top    0.5em
+    padding-bottom 0.5em
+    margin     0
+    background  #eaeaea
+    color       #666
+
+  .city-list
+    ul
+      background  #f7f7f7
+      list-style none
+      margin  0
+      padding 0
+
+      li
+        padding       0.2em
+        padding-left  0.7em
+        padding-right 0.7em
+        cursor pointer
+        line-height 0.9
+        border-left 5px solid transparent
+
+        &:hover
+          background #fff
+          border-left 5px solid $darkGray
+          div.chevron
+            color $darkGray
+        span
+          margin-right 0.5em
+
+          &.city, &.county
+            font-weight bold
+
+          &.state
+            color #555
+            font-size 0.9em
+
+          &.country
+            font-size 0.8em
+
+          &.country, &.prefix
+            color #888
+
+  div.chevron
+    position relative
+    color    $lightGray
+    i
+      position  absolute
+      display   inline-table
+      top       0
+      bottom    0
+      margin    auto
 
   .result-list
     overflow  hidden
@@ -388,20 +439,9 @@ button.pure-button i
           font-size 0.8em
           color #888
 
-        div.chevron
-          position relative
-          color    $lightGray
-          i
-            position  absolute
-            display   inline-table
-            top       0
-            bottom    0
-            margin    auto
-
         &.highlight-entry
           div.chevron
             color $darkGray
-
           &.initiative div.chevron
             color $initiative
           &.company div.chevron

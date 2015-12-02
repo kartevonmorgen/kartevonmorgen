@@ -1,8 +1,10 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-URL     = "http://api.ofdb.io/v0"
-request = require "superagent/lib/client"
-prefix  = (require "superagent-prefix") URL
+URL       = "http://localhost:6767/api/v0"
+NOMINATIM = "http://nominatim.openstreetmap.org"
+request   = require "superagent/lib/client"
+saPrefix  = require "superagent-prefix"
+prefix    = saPrefix URL
 
 jsonCallback = (cb) ->
   (err, res) -> if err then cb err else cb null, res.body
@@ -16,6 +18,17 @@ module.exports =
       .query text: txt.trim().split ' '
       .query 'categories=' + cats.join ','
       .query 'bbox=' + bbox.join ','
+      .set 'Accept', 'application/json'
+      .end jsonCallback cb
+    undefined
+
+  searchAddress: (addr='', cb) ->
+    request
+      .get '/search'
+      .use saPrefix NOMINATIM
+      .query q: addr
+      .query format: 'json'
+      .query addressdetails: 1
       .set 'Accept', 'application/json'
       .end jsonCallback cb
     undefined

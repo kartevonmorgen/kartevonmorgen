@@ -9,10 +9,11 @@ V             = require "../constants/PanelView"
 Actions       = require "../Actions"
 EntryDetails  = require "./EntryDetails"
 ResultList    = require "./ResultList"
+CityList      = require "./CityList"
 Info          = require "./Info"
 Imprint       = require "./Imprint"
 EntryForm     = require "./EntryForm"
-Message          = require "./Message"
+Message       = require "./Message"
 Map           = require "./Map"
 SearchBar     = require "./SearchBar"
 Menu          = require "./Menu"
@@ -39,7 +40,7 @@ module.exports = React.createClass
 
     { dispatch, search, view, entries, map, form } = @props
 
-    { highlight } = search
+    { highlight, addresses, cities } = search
 
     resultEntries    =
       (x for id in search.result when (x=@props.entries[id])?)
@@ -183,9 +184,17 @@ module.exports = React.createClass
                     onClick     : (id) -> dispatch Actions.setCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
+
+                  if cities.length > 0
+                    div null,
+                      div className: 'group-header', "Städte:"
+                      React.createElement CityList,
+                        cities  : cities
+                        onClick : (center) -> dispatch Actions.setCenter center
+
                   if invisibleEntries and invisibleEntries.length
                     div null,
-                      div className: 'hdr-invisible',
+                      div className: 'group-header',
                         """
                         Weitere Ergebnisse außerhalb
                         des sichtbaren Bereichs der Karte:
