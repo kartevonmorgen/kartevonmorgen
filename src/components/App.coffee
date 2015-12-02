@@ -304,13 +304,15 @@ module.exports = React.createClass
                     when V.DONATE
                       div null,
                         p null,
-                          "Wir möchten bald als Gemeinnützige Organisation "
-                          "Spenden entgegen nehmen können."
+                          "Du kannst uns mit Spenden ab sofort über unser "
+                          a href: "https://www.betterplace.org/de/projects/36213",
+                            "Crowdfunding Projekt"
+                          " auf "
+                          a href: "https://www.betterplace.org/de/projects/36213",
+                            "www.betterplace.org"
+                          " unterstützen."
                         br null
                         br null
-                        p null,
-                          "Zur Zeit ist dies leider noch nicht möglich, da "
-                          "wir uns noch in der Gründungsphase befinden."
                     when V.JOIN
                       div null,
                         "Bitte schreibt eine E-Mail an: "
