@@ -18,6 +18,7 @@ Map           = require "./Map"
 SearchBar     = require "./SearchBar"
 Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
+DONATE_URL    = "https://www.betterplace.org/de/projects/36213"
 
 { initialize, touch       }  = require "redux-form"
 { div, span, button, nav, li, i, a, br, p }  = React.DOM
@@ -313,11 +314,9 @@ module.exports = React.createClass
                       div null,
                         p null,
                           "Du kannst uns mit Spenden ab sofort über unser "
-                          a href: "https://www.betterplace.org/de/projects/36213",
-                            "Crowdfunding Projekt"
+                          a href: DONATE_URL, "Crowdfunding Projekt"
                           " auf "
-                          a href: "https://www.betterplace.org/de/projects/36213",
-                            "www.betterplace.org"
+                          a href: DONATE_URL, "www.betterplace.org"
                           " unterstützen."
                         br null
                         br null
