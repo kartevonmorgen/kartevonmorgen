@@ -60,4 +60,5 @@ module.exports = React.createClass
         ul null, results
       else
         p className: "no-results",
-          "Es konnten keine Einträge gefunden werden :("
+          i className: "fa fa-frown-o"
+          span null, "Es konnten keine Einträge gefunden werden"
