@@ -111,11 +111,12 @@ module.exports = React.createClass
             React.createElement SearchBar,
               searchText      : search.text
               categories      : search.categories
-              disabled        : view.left in [V.ENTRY, V.EDIT, V.NEW]
+              disabled        : view.left in [V.EDIT, V.NEW]
               toggleCat       : (c) ->
                 dispatch Actions.toggleSearchCategory c
                 dispatch Actions.search()
               onChange        : (txt="") ->
+                dispatch Actions.setCurrentEntry()
                 dispatch Actions.setSearchText txt
                 dispatch Actions.search()
               onLenseClick    : ->
