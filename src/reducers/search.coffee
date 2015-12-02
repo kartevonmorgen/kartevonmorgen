@@ -16,8 +16,10 @@ initialState =
   cities     : []
 
 isCity = (x) ->
-  (x.class is 'place'    and (x.type is 'city' or x.type is 'village')) or
-  (x.class is 'boundary' and x.type is 'administrative')
+  (
+    (x.class is 'place'    and (x.type is 'city' or x.type is 'village')) or
+    (x.class is 'boundary' and x.type is 'administrative')
+  ) and (a = x.address)? and (a.city? or a.county? or a.village?)
 
 
 module.exports = (state=initialState, action={}) ->
