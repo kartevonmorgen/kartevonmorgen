@@ -179,4 +179,8 @@ Actions =
   cancelOwnPosition: ->
     type: T.CANCEL_OWN_POSITION
 
+  showFeatureToDonate: (feat) ->
+    type    : T.SHOW_FEATURE_TO_DONATE
+    payload : feat
+
 module.exports = Actions

@@ -6,6 +6,7 @@ React         = require "react"
 T             = React.PropTypes
 Pure          = require "react-pure-render/mixin"
 V             = require "../constants/PanelView"
+C             = require "../constants/Categories"
 Actions       = require "../Actions"
 EntryDetails  = require "./EntryDetails"
 ResultList    = require "./ResultList"
@@ -67,7 +68,7 @@ module.exports = React.createClass
                 React.createElement Message,
                   iconClass: "fa fa-spinner fa-pulse"
                   message: " Dein aktueller Standort wird gesucht ..."
-                  buttonLabel: "abbrechen"
+                  cancelButtonLabel: "abbrechen"
                   onCancel: -> dispatch Actions.cancelOwnPosition()
 
             when V.LOCATE_DISABLED
@@ -80,10 +81,32 @@ module.exports = React.createClass
                     oder System-Einstellungen deaktiviert, oder
                     das GPS hat keinen Empfang.
                   ''',
-                  buttonLabel: "schließen",
+                  cancelButtonLabel: "schließen",
                   onCancel: -> dispatch Actions.cancelOwnPosition(),
-                  retryButtonLabel: "nochmal versuchen",
-                  onRetry: -> dispatch Actions.showOwnPosition15minutes()
+                  actionButtonLabel: "nochmal versuchen",
+                  actionButtonIcon: "fa fa-repeat",
+                  onAction: -> dispatch Actions.showOwnPosition15minutes()
+
+            when V.DONATE_FOR_EVENTS
+              div className: 'modal',
+                React.createElement Message,
+                  iconClass: "fa fa-info-circle"
+                  message: " " + '''
+                    Events werden zur Zeit noch nicht unterstützt.
+
+                    Ob Tagung, Konferenz oder Festival - auf der Karte von morgen
+                    sollen auch bald Events eingetragen werden.
+                    Wir planen außerdem einen Veranstaltungskalender,
+                    der die Ergebnisse anzeigt und exportiert.
+
+                    Helfe mit, damit diese Funktion schon bald verfügbar ist
+                    und beteilige Dich an der Spendenaktion auf betterplace.org!
+                  ''',
+                  cancelButtonLabel: "schließen",
+                  onCancel: -> dispatch Actions.showFeatureToDonate null
+                  actionButtonLabel: "Spenden",
+                  actionButtonIcon: "fa fa-external-link",
+                  onAction: -> (window.open DONATE_URL, '_blank').focus()
 
         div className:"center",
           React.createElement Map,
@@ -114,8 +137,11 @@ module.exports = React.createClass
               categories      : search.categories
               disabled        : view.left in [V.EDIT, V.NEW]
               toggleCat       : (c) ->
-                dispatch Actions.toggleSearchCategory c
-                dispatch Actions.search()
+                if c is C.IDS.EVENT
+                  dispatch Actions.showFeatureToDonate "events"
+                else
+                  dispatch Actions.toggleSearchCategory c
+                  dispatch Actions.search()
               onChange        : (txt="") ->
                 dispatch Actions.setCurrentEntry()
                 dispatch Actions.setSearchText txt

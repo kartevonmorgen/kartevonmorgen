@@ -3,13 +3,13 @@
 u = require "updeep"
 T = require "../constants/ActionTypes"
 
-{ MAIN_IDS } = require "../constants/Categories"
+{ MAIN_IDS, IDS } = require "../constants/Categories"
 
 initialState =
   text       : null
   result     : []
   current    : null
-  categories : MAIN_IDS
+  categories : MAIN_IDS.filter (c) -> c isnt IDS.EVENT # until events are supported
   highlight  : []
   invisible  : []
   addresses  : []

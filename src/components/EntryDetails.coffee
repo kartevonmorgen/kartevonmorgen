@@ -23,7 +23,7 @@ module.exports = React.createClass
       div null,
         h3 null, entry.title
         p null, entry.description
-        p null,
+        div null,
           if entry.homepage
             div className: "pure-g",
               i className: "pure-u-2-24 fa fa-globe"

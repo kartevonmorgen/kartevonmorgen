@@ -4,8 +4,6 @@ React = require "react"
 Pure  = require "react-pure-render/mixin"
 T     = React.PropTypes
 
-REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
-
 { span, div, i, button}  = React.DOM
 
 module.exports = React.createClass
@@ -13,8 +11,10 @@ module.exports = React.createClass
   displayName: "Message"
 
   propTypes:
-    clientVersion : T.string
-    serverVersion : T.string
+    onCancel            : T.func
+    onAction            : T.func
+    actionButtonLabel   : T.string
+    cancelButtonLabel   : T.string
 
   mixins: [Pure]
 
@@ -30,12 +30,12 @@ module.exports = React.createClass
             @props.onCancel()
           className:"pure-button",
           i className: "fa fa-ban"
-          @props.buttonLabel
-        if @props.retryButtonLabel
+          @props.cancelButtonLabel
+        if l = @props.actionButtonLabel
           button
             onClick: (ev) =>
               ev.preventDefault()
-              @props.onRetry()
+              @props.onAction()
             className:"pure-button",
-            i className: "fa fa-repeat"
-            @props.retryButtonLabel
+            i className: @props.actionButtonIcon
+            l

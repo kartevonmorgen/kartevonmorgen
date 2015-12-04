@@ -75,8 +75,8 @@ Form = React.createClass
           select fieldProps.category,
             option value: -1,"- Kategorie auswählen -"
             option value: IDS.INITIATIVE, "Initiative"
-            option value: IDS.EVENT, disabled: yes, "Event"
-            option value: IDS.COMPANY,   "Unternehmen"
+            option value: IDS.EVENT,      "Event"
+            option value: IDS.COMPANY,    "Unternehmen"
           category.error and category.touched and div className: "err",
             category.error
 

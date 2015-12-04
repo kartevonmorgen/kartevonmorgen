@@ -1,6 +1,7 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
 T = require "../constants/ActionTypes"
+C = require "../constants/Categories"
 u = require "updeep"
 
 module.exports = (require "redux-form").reducer.plugin
@@ -23,5 +24,11 @@ module.exports = (require "redux-form").reducer.plugin
           lat: { value: action.payload.lat }
           lng: { value: action.payload.lng }
           state
+
+      when "redux-form/CHANGE"
+        if action.field is "category" and action.value is C.IDS.EVENT
+          u category : { value: -1 }, state
+        else state
+
       else
         state

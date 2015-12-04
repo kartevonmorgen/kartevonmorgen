@@ -3,6 +3,7 @@
 u  = require "updeep"
 T = require "../constants/ActionTypes"
 V  = require "../constants/PanelView"
+C  = require "../constants/Categories"
 
 initialState =
   menu  : no
@@ -82,6 +83,20 @@ module.exports = (state=initialState, action={}) ->
         u modal: V.LOCATE_DISABLED, state
       else
         state
+
+    when T.SHOW_FEATURE_TO_DONATE
+      if p = action.payload
+        switch p
+          when "events"
+            u modal: V.DONATE_FOR_EVENTS, state
+          else state
+      else
+        u modal: null, state
+
+    when "redux-form/CHANGE"
+      if action.field is "category" and action.value is C.IDS.EVENT
+        u modal: V.DONATE_FOR_EVENTS, state
+      else state
 
     else
       state
