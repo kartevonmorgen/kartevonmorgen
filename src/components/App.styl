@@ -167,28 +167,29 @@ button.pure-button i
         flex 0
 
     .right
-      background $coal
-      color $lightGray
-      position relative
+      background  #fff
+      color       $coal
+      position    relative
 
       a
         text-decoration none
-        color $lightGray
+        color           $darkGray//coal
 
       .menu-toggle, .content-toggle
         button
-          outline none
-          position absolute
-          top 1em
-          font-size 1.3em
-          text-transform uppercase
-          color #fff
-          background rgba(0,0,0,0.6)
+          outline         none
+          position        absolute
+          top             1em
+          font-size       1.3em
+          text-transform  uppercase
+          color           #fff
+          background      rgba(0,0,0,0.6)
           border none
-          border-radius 0.3em 0 0 0.3em
-          padding 0.3em
+          border-radius   0.3em 0 0 0.3em
+          padding         0.3em
+
           i
-            margin-left 0.3em
+            margin-left   0.3em
 
 
       .content-toggle
@@ -196,19 +197,21 @@ button.pure-button i
           right 0
 
       &.opened button
-        width 2.5em
-        margin-left 0
-        background rgba(0,0,0,0.8)
+        width         2.5em
+        margin-left   0
+        background    none
+        color         $coal
+
       &.closed button
-        width 4.5em
+        width       4.5em
         margin-left -4.5em
 
       .logo
-        margin-top 4em
+        margin-top 2em
         background          url("../img/logo.png")
         background-position center
         background-repeat   no-repeat
-        height 70px
+        height 95px
 
       div.menu-content
         padding   1.3em
@@ -223,11 +226,11 @@ button.pure-button i
           padding-bottom 0.05em
           border-bottom 1px solid rgba(255,255,255,0.4)
           &:hover
-            color #fff
-            border-bottom 1px solid #fff
+            color #000
+            border-bottom 1px solid #000
 
       ul.menu
-        margin 4.5em 0 0 0
+        margin 2.5em 0 0 0
 
       ul.submenu
         margin     0
@@ -241,34 +244,34 @@ button.pure-button i
         margin-top 2.5em
 
       ul.submenu > li
-        margin-top 0.75em
-        font-size 0.85em
+        margin-top  0.75em
+        font-size   0.85em
 
       ul.menu > li > a
         font-weight bold
-        font-size 20px
+        font-size   20px
 
       ul.menu > li, ul.submenu > li, div.menu-footer
-        display     block
-        cursor      pointer
-        color       rgba(255,255,255,0.8)
-        text-transform uppercase
+        display         block
+        cursor          pointer
+        text-transform  uppercase
 
         a:hover
-          color rgba(255,255,255,1)
-          border-bottom 2px solid #fff
+          color         #000
+          border-bottom 2px solid #000
 
         &.active > a
-         border-bottom 2px solid #fff
+          color         $coal
+          border-bottom 2px solid $darkGray
 
       div.menu-footer
-        position absolute
-        bottom 0
-        padding 10px
-        left 0
-        right 0
-        text-align center
-        font-size 0.85em
+        position    absolute
+        bottom      0
+        left        0
+        right       0
+        padding     10px
+        text-align  center
+        font-size   0.85em
 
   .close-button
     text-align: center
