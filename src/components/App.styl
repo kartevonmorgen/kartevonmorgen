@@ -173,38 +173,57 @@ button.pure-button i
 
       a
         text-decoration none
-        color           $darkGray//coal
+        color           $darkGray
 
       .menu-toggle, .content-toggle
         button
           outline         none
           position        absolute
           top             1em
-          font-size       1.3em
+          font-size       1.8em
           text-transform  uppercase
-          color           #fff
-          background      rgba(0,0,0,0.6)
-          border none
-          border-radius   0.3em 0 0 0.3em
-          padding         0.3em
+          text-align      right
+          color           $darkGray
+          background      #fff
+          border          1px solid $lightGray
+          border-radius   0.2em 0 0 0.2em
+          padding         0.2em
+          box-shadow      0 2px 8px 4px rgba(0,0,0,0.5)
+
+          &:hover
+            color       $coal
+            box-shadow  0 2px 8px 4px rgba(0,0,0,0.7)
+
+          .pincloud
+            display inline-block
+            width   3.5em
+            height  1.2em
+            background-position left
+            background-image    url("../img/pincloud.png")
+            background-repeat   no-repeat
+            background-size     50%
 
           i
-            margin-left   0.3em
-
+            margin-right 0.3em
 
       .content-toggle
         button
           right 0
 
-      &.opened button
-        width         2.5em
-        margin-left   0
-        background    none
-        color         $coal
+      &.opened
+        button
+          margin-left   0
+          color         $darkGray
+          .pincloud
+            width       2.0em
+            background  none
+        button, button:hover
+          box-shadow    none
+          border        none
 
       &.closed button
-        width       4.5em
-        margin-left -4.5em
+        width       3.8em
+        margin-left -3.8em
 
       .logo
         margin-top 2em

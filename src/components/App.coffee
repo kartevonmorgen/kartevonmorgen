@@ -264,7 +264,7 @@ module.exports = React.createClass
           div className:"menu-toggle",
             button
               onClick: (-> dispatch Actions.toggleMenu()) ,
-              (if rightPanelIsOpen then "" else "Menu"),
+              span className: "pincloud",
                 i className: "fa fa-#{
                   if rightPanelIsOpen then 'times' else 'bars'
                 }"
