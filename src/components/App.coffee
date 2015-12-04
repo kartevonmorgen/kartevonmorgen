@@ -226,7 +226,9 @@ module.exports = React.createClass
                       div className: 'group-header', "Städte:"
                       React.createElement CityList,
                         cities  : cities
-                        onClick : (center) -> dispatch Actions.setCenter center
+                        onClick : (center) ->
+                          dispatch Actions.setCenter center
+                          dispatch Actions.setSearchText ''
 
                   if invisibleEntries and invisibleEntries.length
                     div null,
