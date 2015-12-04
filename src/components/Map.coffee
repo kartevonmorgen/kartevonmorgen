@@ -100,7 +100,7 @@ module.exports = React.createClass
       onLeafletZoomend : (e) => onZoomend @getMapCoordinates()
       onLeafletClick   : (e) -> onClick e.latlng
       React.createElement TileLayer,
-        url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution: OSM_ATTR
       markers
       if (p = @props.marker)?
