@@ -4,53 +4,63 @@ React = require "react"
 Pure  = require "react-pure-render/mixin"
 T     = React.PropTypes
 
-REPOSITORY = 'https://github.com/flosse/kartevonmorgen'
-
 { div, p, a,  h3, h4, br, button, i }  = React.DOM
 
 module.exports = React.createClass
 
   displayName: "Info"
 
-  propTypes:
-    clientVersion : T.string
-    serverVersion : T.string
-
   mixins: [Pure]
 
   render: ->
     div className: "info",
-      h3 null, "Über die Karte von Morgen"
-      h4 null,
-        "Die Welt steckt voller Entdecker."
+      h3 null, "Das Projekt"
+      p null,
+        """
+        von morgen fördert Menschlichkeit, Umweltfreundlichkeit und gemeinsames
+        Handeln – kurz gesagt: Alles was glücklich macht.
+        Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und
+        Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen
+        Umbrüchen alternativ entgegen wirken.
+        Ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine
+        erhöhte Aufmerksamkeit ermöglichen.
+        """
+
+      p null,
+        """
+        Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen
+        sich und andere auf der Karte eintragen und so ihre Mitmenschen
+        erreichen.
+        Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten
+        sichern vor Ort die Qualität der Karteneinträge und haben neben einer
+        redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und
+        Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und
+        Unternehmen zu stärken.
+        """
+
+      p null,
+        """
+        von morgen fragt nach Werten, die unsere Gesellschaft fundieren und
+        bewegen.
+        Wir zeigen Menschen, die Guten tun, wo es Gutes gibt.
+        """
+      p null,
+        i className: "fa fa-globe"
+        " "
+        a href: "http://prototyp.kartevonmorgen.org",
+          "www.prototyp.kartevonmorgen.org"
         br null
-        "Und voller Orte, die darauf warten entdeckt zu werden."
-
-      p null,
-        """
-        von morgen fördert Menschlichkeit, Umweltfreundlichkeit und
-        gemeinsames Handeln ‐ kurz gesagt:
-        Alles was glücklich macht.
-        """
-      p null,
-        """
-        Mit der Karte von morgen, einer Website und App, sollen Menschen
-        zusammen gebracht werden, die Gutes tun wollen, und Projekte,
-        diebereits Gutes schaffen.
-        Die interaktive Karte zeigt den Nutzern Orte in Ihrer Umgebung,
-        die sich schon heute für eine Welt von morgen einsetzen.
-        """
-      h4 null, "Open Source"
-      p null,
-        """
-        Wir wollen mit gutem Beispiel vorangehen und entwickeln daher
-        die Software transparent und offen.
-        Den Quellcode des Gemeinschaftsprojekts findest du unter:
-        """
-      p null, a href: REPOSITORY, REPOSITORY
-
-      p className: "version",
-        "Version dieses Clients: v#{@props.clientVersion}"
-      if (sv = @props.serverVersion)?
-        p className: "version",
-          "Version des Servers: v#{sv}"
+        i className: "fa fa-facebook"
+        " "
+        a href: "https://www.facebook.com/vonmorgen",
+          "www.facebook.com/vonmorgen"
+        br null
+        i className: "fa fa-envelope-o"
+        " "
+        a href: "mailto:info@kartevonmorgen.org",
+          "info@kartevonmorgen.org"
+        br null
+        i className: "fa fa-github"
+        " "
+        a href: "https://github.com/flosse/kartevonmorgen",
+          "github.com/flosse/kartevonmorgen"

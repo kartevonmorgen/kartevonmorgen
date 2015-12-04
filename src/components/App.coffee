@@ -20,9 +20,10 @@ SearchBar     = require "./SearchBar"
 Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
 DONATE_URL    = "https://www.betterplace.org/de/projects/36213"
+REPOSITORY    = 'https://github.com/flosse/kartevonmorgen'
 
 { initialize, touch       }  = require "redux-form"
-{ div, span, button, nav, li, i, a, br, p }  = React.DOM
+{ div, span, button, nav, li, i, a, br, h3, p }  = React.DOM
 
 module.exports = React.createClass
 
@@ -306,12 +307,12 @@ module.exports = React.createClass
                 if view.right is null
                   React.createElement Menu,
                     onClick : (key) -> ( ->
-                      dispatch Actions.showInfo(key)
+                      dispatch Actions.showInfo key
                       dispatch Actions.getServerInfo())
                     items:
-                      MAP:
+                      MAP_INFO:
                         label   : "Karte"
-                        active  : view.right is null
+                        active  : view.right is V.MAP_INO
                       DONATE:
                         label   : "Spenden"
                         active  : view.right is V.DONATE
@@ -324,33 +325,121 @@ module.exports = React.createClass
                           INFO:
                             label   : "Das Projekt"
                             active  : view.right is V.INFO
-                          TEAM:
-                            label   : "Team / Über Uns"
-                            active  : view.right is V.TEAM
                           SUPPORTERS:
-                            label   : "Partner / Unterstützer"
+                            label   : "Unterstützer"
                             active  : view.right is V.PARTNER
+                          OPEN_SOURCE:
+                            label   : "Open Source"
+                            active  : view.right is V.OPEN_SOURCE
                 else
                   switch view.right
+                    # TODO: move it all into the 'Info' component
+                    when V.MAP_INFO
+                      div null,
+                        h3 null,
+                          "Die Welt steckt voller Entdecker."
+                          br null
+                          "Und voller Orte, die darauf warten entdeckt zu werden."
+                        p null
+                          """
+                          Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
+                          an denen man sich schon heute für eine Welt von morgen einsetzt.
+                          """
+                        p null
+                          """
+                          Du hast eine Initiative, für die du Mitstreiter suchst?
+                          Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
+                          """
+                        p null
+                          """
+                          Auf unserer Website kannst du andere darauf
+                          aufmerksam machen – und dich so für eine Sache
+                          einsetzen, die dir persönlich am Herzen liegt.
+                          """
+
                     when V.INFO
-                      React.createElement Info,
-                        clientVersion: pkg.version
-                        serverVersion: @props.server.version
+                      React.createElement Info
+
+                    when V.OPEN_SOURCE
+                      div className: "info",
+                        h3 null, "Wir lieben Open Source!"
+                        p null,
+                          """
+                          Wir wollen mit gutem Beispiel vorangehen und entwickeln daher
+                          die Software transparent und offen.
+                          Den Quellcode des Gemeinschaftsprojekts findest du unter:
+                          """
+                        p null, a href: REPOSITORY, REPOSITORY
+
+                        p className: "version",
+                          "Version dieses Clients: v#{pkg.version}"
+                        if (sv = @props.server?.version)?
+                          p className: "version",
+                            "Version des Servers: v#{sv}"
+
+
                     when V.DONATE
                       div null,
+                        h3 null, "Hier kannst du doppelte Wirkung zeigen."
                         p null,
-                          "Du kannst uns mit Spenden ab sofort über unser "
-                          a href: DONATE_URL, "Crowdfunding Projekt"
-                          " auf "
-                          a href: DONATE_URL, "www.betterplace.org"
-                          " unterstützen."
-                        br null
-                        br null
+                          """
+                          Unsere Crowdfunding Kampagne auf www.betterplace.org
+                          wird von Ashoka und dem Softwareunternehmen SAP
+                          unterstützt.
+                          Jede Spende bis zu 200 Euro wird in den nächsten Wochen live und direkt verdoppelt.
+                          """
+
+                        p null,
+                          """
+                          Die Spenden sollen für die Weiterentwicklung der
+                          Plattform von morgen verwendet werden.
+                          Verschieden Feature sind in Planung,
+                          u.a. die Themenkarte zur Einbettung in eigene
+                          Webseiten und den Positivfaktoren der
+                          gemeinwohl-orientierten Bewertung der einzelnen Orte.
+                          """
+                        p null,
+                          "Hier geht es zur Kampagne: "
+                          a href: DONATE_URL, "www.betterplace.org/de/projects/36213"
+                        p null,
+                          """
+                          Wir freuen uns über jeden kleinen und großen Beitrag
+                          und hoffen auch bald in deiner Stadt verfügbar zu
+                          sein.
+                          """
+                        p null, "Alles Liebe, das Team von morgen"
+
                     when V.JOIN
                       div null,
-                        "Bitte schreibt eine E-Mail an: "
-                        a href: "mailto:team@kartevonmorgen.org",
-                          "team@kartevonmorgen.org"
+                        h3 null, "Werde Teil unseres Teams"
+
+                        p null,
+                          """
+                          Wir sind ein deutschlandweites Team und immer auf der
+                          Suche nach neuen Mitgliedern!
+                          Unsere aktuellen Ausschreibungen findest du hier:
+                          """
+                        p null,
+                          a href: "https://www.betterplace.org/de/organisations/vonmorgen",
+                            "www.betterplace.org/de/organisations/vonmorgen"
+
+                        p null,
+                          """
+                          Wir suchen Regional- und Themenpiloten
+                          Stark lokal: als direkter Ansprechpartner vor Ort,
+                          sicherst du die Qualität der Karteneinträge,
+                          organisierst z.B. Aktionen und Workshops und zeigst
+                          deine Stadt von ihrer besten Seite!
+                          """
+
+                        p null,
+                          """
+                          Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:
+                          """
+                          br null
+                          a href: "mailto:netzwerk@kartevonmorgen.org",
+                            "netzwerk@kartevonmorgen.org"
+
                     when V.TEAM
                       div null,
                         p null, "Anja"
@@ -366,8 +455,15 @@ module.exports = React.createClass
                         p null, "Tomas"
                     when V.SUPPORTERS
                       div null,
-                        p null, "Think BIG"
+                        h3 null, "Mit Unterstützung von:"
+
+                        p null, "Ashoka"
+
                         p null, "Heinrich Böll Stiftung"
+
+                        p null, "Social Impact Hub"
+
+                        p null, "Think Big"
 
                     when V.IMPRINT
                       React.createElement Imprint
