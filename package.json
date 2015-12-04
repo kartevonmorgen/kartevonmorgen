@@ -37,7 +37,7 @@
     "superagent": "^1.4.0",
     "superagent-prefix": "0.0.2",
     "updeep": "^0.11.0",
-    "vm-leaflet-icons": "^0.0.4"
+    "vm-leaflet-icons": "^0.0.5"
   },
   "devDependencies": {
     "chai": "^3.4.1",

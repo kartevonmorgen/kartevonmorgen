@@ -13853,16 +13853,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."vm-leaflet-icons"."^0.0.4" =
-    self.by-version."vm-leaflet-icons"."0.0.4";
-  by-version."vm-leaflet-icons"."0.0.4" = self.buildNodePackage {
-    name = "vm-leaflet-icons-0.0.4";
-    version = "0.0.4";
+  by-spec."vm-leaflet-icons"."^0.0.5" =
+    self.by-version."vm-leaflet-icons"."0.0.5";
+  by-version."vm-leaflet-icons"."0.0.5" = self.buildNodePackage {
+    name = "vm-leaflet-icons-0.0.5";
+    version = "0.0.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/vm-leaflet-icons/-/vm-leaflet-icons-0.0.4.tgz";
-      name = "vm-leaflet-icons-0.0.4.tgz";
-      sha1 = "d14b58964dcd4a98974b8ef3ea2ae4bb21b247d3";
+      url = "http://registry.npmjs.org/vm-leaflet-icons/-/vm-leaflet-icons-0.0.5.tgz";
+      name = "vm-leaflet-icons-0.0.5.tgz";
+      sha1 = "43e05e827be9c31da1fdf5b1cd28a50d51a5f4f3";
     };
     deps = {
       "leaflet-0.7.7" = self.by-version."leaflet"."0.7.7";
@@ -13873,7 +13873,7 @@
     os = [ ];
     cpu = [ ];
   };
-  "vm-leaflet-icons" = self.by-version."vm-leaflet-icons"."0.0.4";
+  "vm-leaflet-icons" = self.by-version."vm-leaflet-icons"."0.0.5";
   by-spec."void-elements"."^2.0.0" =
     self.by-version."void-elements"."2.0.1";
   by-version."void-elements"."2.0.1" = self.buildNodePackage {
