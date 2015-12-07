@@ -67,7 +67,7 @@ module.exports = React.createClass
         br null
         "Julius-Hölder-Str. 48"
         br null
-        "7597 Stuttgart"
+        "70597 Stuttgart"
         br null
         a {href:"mailto:markus@kartevonmorgen.org"}, "markus@kartevonmorgen.org"
 
