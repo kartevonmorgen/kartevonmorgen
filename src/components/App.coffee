@@ -21,9 +21,10 @@ Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
 DONATE_URL    = "https://www.betterplace.org/de/projects/36213"
 REPOSITORY    = 'https://github.com/flosse/kartevonmorgen'
+{ EDIT }      = require "../constants/Form"
 
-{ initialize, touch       }  = require "redux-form"
-{ div, span, button, nav, li, i, a, br, h3, p }  = React.DOM
+{ initialize, touch }  = require "redux-form"
+{ div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
 module.exports = React.createClass
 
@@ -114,7 +115,7 @@ module.exports = React.createClass
             marker        : (map.marker if view.left in [V.EDIT, V.NEW])
             center        : mapCenter
             zoom          : map.zoom
-            category      : form.edit?.category?.value
+            category      : form[EDIT.id]?.category?.value
             highlight     : highlight
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
@@ -200,7 +201,7 @@ module.exports = React.createClass
                       key: "cancel"
                       className:"pure-u-1-2",
                       onClick: (->
-                        dispatch initialize 'edit', {}
+                        dispatch initialize EDIT.id, {}, EDIT.fields
                         dispatch switch view.left
                           when V.NEW  then Actions.cancelNew()
                           when V.EDIT then Actions.cancelEdit()
@@ -254,10 +255,10 @@ module.exports = React.createClass
                   className: "content pure-g"
                   ref: 'form',
                     React.createElement EntryForm,
-                      isEdit: form.edit.id?
+                      isEdit: form[EDIT.id]?.id?
                       onSubmit: (data) ->
                         dispatch Actions.saveEntry
-                          id          : form.edit?.id?.value
+                          id          : form[EDIT.id]?.id?.value
                           title       : data.title
                           description : data.description
                           homepage    : data.homepage
@@ -268,7 +269,7 @@ module.exports = React.createClass
                           city        : data.city
                           email       : data.email
                           zip         : data.zip
-                          version     : (form.edit?.version?.value or 0) + 1
+                          version     : (form[EDIT.id]?.version?.value or 0) + 1
                           categories  : [data.category]
               when V.WAIT
                 React.createElement Message,

@@ -7,6 +7,7 @@ validation    = require "../util/validation"
 { IDS }       = require "../constants/Categories"
 { reduxForm } = require "redux-form"
 CC_LINK       = "http://creativecommons.org/publicdomain/zero/1.0/deed.de"
+{ EDIT }      = require "../constants/Form"
 
 {
   div,
@@ -155,20 +156,7 @@ Form = React.createClass
               " gelesen und akzeptiere sie"
 
 module.exports = reduxForm(
-  form      : 'edit'
-  fields    : [
-    'title'
-    'description'
-    'homepage'
-    'telephone'
-    'city'
-    'zip'
-    'email'
-    'street'
-    'lat'
-    'lng'
-    'category'
-    'license'
-  ]
+  form      : EDIT.id
+  fields    : EDIT.fields
   validate  : validation.entryForm
 )(Form)

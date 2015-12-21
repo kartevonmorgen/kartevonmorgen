@@ -3,6 +3,7 @@
 T           = require "./constants/ActionTypes"
 WebAPI      = require "./WebAPI"
 GeoLocation = require "./GeoLocation"
+{ EDIT }    = require "./constants/Form"
 { initialize, stopSubmit } = require "redux-form"
 
 Actions =
@@ -106,7 +107,7 @@ Actions =
     (dispatch, getState) ->
       saveFunc e, (err, res) ->
         if err
-          dispatch stopSubmit 'edit', { _error: err }
+          dispatch stopSubmit EDIT.id, { _error: err }
         else
           id = (e?.id or res)
           WebAPI.getEntries [id], (err, res) ->
@@ -114,7 +115,7 @@ Actions =
               type    : T.ENTRIES_RESULT
               payload : err or res
               error   : err?
-            dispatch initialize 'edit', {}
+            dispatch initialize EDIT.id, {}, EDIT.fields
             unless err
               dispatch
                 type    : T.SET_CURRENT_ENTRY
