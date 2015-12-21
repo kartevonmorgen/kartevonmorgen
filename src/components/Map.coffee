@@ -7,12 +7,10 @@ leaflet   = require "react-leaflet"
 VMIcons   = require "vm-leaflet-icons"
 T         = React.PropTypes
 PureMixin = require "react-pure-render/mixin"
+URLs      = require "../constants/URLs"
 
 { NAMES, CSS_CLASSES, IDS }    = require "../constants/Categories"
 { INITIATIVE, EVENT, COMPANY } = IDS
-
-OSM_ATTR = '&copy; <a class="osm attr"' +
-           ' href="http://osm.org/copyright">OpenStreetMap</a>'
 
 { Map, TileLayer, Marker } = leaflet
 
@@ -100,8 +98,9 @@ module.exports = React.createClass
       onLeafletZoomend : (e) => onZoomend @getMapCoordinates()
       onLeafletClick   : (e) -> onClick e.latlng
       React.createElement TileLayer,
-        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution: OSM_ATTR
+        url: URLs.OSM_TILES.link
+        attribution: '&copy; <a class="osm attr"' +
+           " href='#{URLs.OSM_ATTR.link}'>#{URLs.OSM_ATTR.name}</a>"
       markers
       if (p = @props.marker)?
         React.createElement Marker,

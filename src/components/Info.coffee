@@ -3,7 +3,7 @@
 React = require "react"
 Pure  = require "react-pure-render/mixin"
 T     = React.PropTypes
-
+URLs  = require "../constants/URLs"
 { div, p, a,  h3, h4, br, button, i }  = React.DOM
 
 module.exports = React.createClass
@@ -47,20 +47,16 @@ module.exports = React.createClass
       p null,
         i className: "fa fa-globe"
         " "
-        a href: "http://prototyp.kartevonmorgen.org",
-          "www.prototyp.kartevonmorgen.org"
+        a href: URLs.PROTOTYPE.link, URLs.PROTOTYPE.name
         br null
         i className: "fa fa-facebook"
         " "
-        a href: "https://www.facebook.com/vonmorgen",
-          "www.facebook.com/vonmorgen"
+        a href: URLs.FACEBOOK.link, URLs.FACEBOOK.name,
         br null
         i className: "fa fa-envelope-o"
         " "
-        a href: "mailto:info@kartevonmorgen.org",
-          "info@kartevonmorgen.org"
+        a href: URLs.MAIL.link, URLs.MAIL.name
         br null
         i className: "fa fa-github"
         " "
-        a href: "https://github.com/flosse/kartevonmorgen",
-          "github.com/flosse/kartevonmorgen"
+        a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name

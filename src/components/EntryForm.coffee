@@ -1,13 +1,13 @@
 # Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React         = require "react"
-T             = React.PropTypes
-udeep         = require "updeep"
-validation    = require "../util/validation"
-{ IDS }       = require "../constants/Categories"
-{ reduxForm } = require "redux-form"
-CC_LINK       = "http://creativecommons.org/publicdomain/zero/1.0/deed.de"
-{ EDIT }      = require "../constants/Form"
+React          = require "react"
+T              = React.PropTypes
+udeep          = require "updeep"
+validation     = require "../util/validation"
+{ IDS        } = require "../constants/Categories"
+{ reduxForm  } = require "redux-form"
+{ CC_LICENSE } = require "../constants/URLs"
+{ EDIT       } = require "../constants/Form"
 
 {
   div,
@@ -152,7 +152,8 @@ Form = React.createClass
               license.error and license.touched and div className:"err",
                 license.error
               " Ich habe die "
-              a href: CC_LINK, "Bestimmungen der Creative-Commons Lizenz CC0"
+              a href: CC_LICENSE.link,
+                "Bestimmungen der Creative-Commons Lizenz CC0"
               " gelesen und akzeptiere sie"
 
 module.exports = reduxForm(

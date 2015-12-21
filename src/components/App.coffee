@@ -19,9 +19,8 @@ Map           = require "./Map"
 SearchBar     = require "./SearchBar"
 Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
-DONATE_URL    = "https://www.betterplace.org/de/projects/36213"
-REPOSITORY    = 'https://github.com/flosse/kartevonmorgen'
 { EDIT }      = require "../constants/Form"
+URLs          = require "../constants/URLs"
 
 { initialize, touch }  = require "redux-form"
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
@@ -108,7 +107,7 @@ module.exports = React.createClass
                   onCancel: -> dispatch Actions.showFeatureToDonate null
                   actionButtonLabel: "Spenden",
                   actionButtonIcon: "fa fa-external-link",
-                  onAction: -> (window.open DONATE_URL, '_blank').focus()
+                  onAction: -> (window.open URLs.DONATE.link, '_blank').focus()
 
         div className:"center",
           React.createElement Map,
@@ -372,7 +371,7 @@ module.exports = React.createClass
                           die Software transparent und offen.
                           Den Quellcode des Gemeinschaftsprojekts findest du unter:
                           """
-                        p null, a href: REPOSITORY, REPOSITORY
+                        p null, a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
 
                         p className: "version",
                           "Version dieses Clients: v#{pkg.version}"
@@ -389,7 +388,8 @@ module.exports = React.createClass
                           Unsere Crowdfunding Kampagne auf www.betterplace.org
                           wird von Ashoka und dem Softwareunternehmen SAP
                           unterstützt.
-                          Jede Spende bis zu 200 Euro wird in den nächsten Wochen live und direkt verdoppelt.
+                          Jede Spende bis zu 200 Euro wird in den nächsten
+                          Wochen live und direkt verdoppelt.
                           """
 
                         p null,
@@ -403,7 +403,7 @@ module.exports = React.createClass
                           """
                         p null,
                           "Hier geht es zur Kampagne: "
-                          a href: DONATE_URL, "www.betterplace.org/de/projects/36213"
+                          a href: URLs.DONATE.link, URLs.DONATE.name
                         p null,
                           """
                           Wir freuen uns über jeden kleinen und großen Beitrag
@@ -423,9 +423,7 @@ module.exports = React.createClass
                           Unsere aktuellen Ausschreibungen findest du hier:
                           """
                         p null,
-                          a href: "https://www.betterplace.org/de/organisations/vonmorgen",
-                            "www.betterplace.org/de/organisations/vonmorgen"
-
+                          a href: URLs.JOB_ADS.link, URLs.JOB_ADS.name
                         p null,
                           """
                           Wir suchen Regional- und Themenpiloten
