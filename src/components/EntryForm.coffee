@@ -8,6 +8,7 @@ validation     = require "../util/validation"
 { reduxForm  } = require "redux-form"
 { CC_LICENSE } = require "../constants/URLs"
 { EDIT       } = require "../constants/Form"
+Actions       = require "../Actions"
 
 {
   div,
@@ -66,7 +67,11 @@ Form = React.createClass
 
     fieldProps = udeep classes, fieldProps
 
-    form onSubmit: handleSubmit, className: "add-entry-form pure-u-1", action: 'javascript:void();',
+    form {
+      onSubmit: handleSubmit,
+      className: "add-entry-form pure-u-1",
+      action: 'javascript:void();'
+      },
       h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
@@ -157,7 +162,17 @@ Form = React.createClass
               " gelesen und akzeptiere sie"
 
 module.exports = reduxForm(
-  form      : EDIT.id
-  fields    : EDIT.fields
-  validate  : validation.entryForm
+  form            : EDIT.id
+  fields          : EDIT.fields
+  asyncBlurFields : ['street', 'zip', 'city']
+  asyncValidate   : (values, dispatch) ->
+    dispatch Actions.geocodeAndSetMarker (
+      (if values.street then values.street + ' ' else '').concat(
+        (if values.zip then values.zip + ' ' else '').concat(
+          (if values.city then values.city else '')
+        )
+      )
+    )
+    new Promise (resolve, reject) -> resolve()
+  validate        : validation.entryForm
 )(Form)

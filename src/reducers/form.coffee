@@ -20,10 +20,17 @@ module.exports = (require "redux-form").reducer.plugin
         u o, state
 
       when T.SET_MARKER
-        u
-          lat: { value: action.payload.lat }
-          lng: { value: action.payload.lng }
-          state
+        if action.manual
+          u
+            lat: { value: action.payload.lat }
+            lng: { value: action.payload.lng }
+            markerWasEnteredManually : true
+            state
+        else
+          u
+            lat: { value: action.payload.lat }
+            lng: { value: action.payload.lng }
+            state
 
       when "redux-form/CHANGE"
         if action.field is "category" and action.value is C.IDS.EVENT

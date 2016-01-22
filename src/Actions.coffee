@@ -126,8 +126,23 @@ Actions =
                   payload : id
 
   setMarker: (latlng) ->
-    type: T.SET_MARKER
-    payload: latlng
+    (dispatch, getState) ->
+      dispatch
+        type: T.SET_MARKER
+        payload: latlng
+        manual: true
+
+  geocodeAndSetMarker: (address) ->
+    (dispatch, getState) ->
+      unless getState().form.edit.markerWasEnteredManually
+        WebAPI.searchAddress address, (err, res) ->
+          unless err or getState().form.edit.markerWasEnteredManually
+            if res and res.length and res[0] and res[0].lat and res[0].lon
+              dispatch
+                type    : T.SET_MARKER
+                payload : {lat: res[0].lat, lng: res[0].lon}
+                manual : false
+                error   : err?
 
   setCenter: (center) ->
     type: T.SET_MAP_CENTER

@@ -11,7 +11,8 @@ describe "map reducer", ->
   describe "marker", ->
 
     it "should be set when the action was fired", ->
-      action = Actions.setMarker { lat: 5, lng: 7 }
+      actionToBeDispatched = Actions.setMarker { lat: 5, lng: 7 }
+      action = actionToBeDispatched ((arg) -> arg), (() -> {})
       { marker } =  R {}, action
       marker.lat.should.equal 5
       marker.lng.should.equal 7

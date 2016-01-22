@@ -11,7 +11,8 @@ describe "form reducer", ->
   describe "'edit' form", ->
 
     it "sets the 'lat' and 'lng' fields if a marker was set", ->
-      a = A.setMarker { lat: 5, lng: 7 }
+      aD = A.setMarker { lat: 5, lng: 7 }
+      a = aD ( (arg) -> arg), (()-> {})
       s = (R {}, a).edit
       s.lat.value.should.equal 5
       s.lng.value.should.equal 7

@@ -19,7 +19,13 @@ module.exports = (state=initialState, action={}) ->
       u marker: null, state
 
     when T.SET_MARKER
-      u marker: action.payload, state
+      if action.manual
+        u marker: action.payload, state
+      else
+        u
+          marker: action.payload
+          center: action.payload
+          state
 
     when T.EDIT_CURRENT_ENTRY
       point = { lat: action.payload.lat, lng: action.payload.lng}
