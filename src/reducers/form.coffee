@@ -32,9 +32,31 @@ module.exports = (require "redux-form").reducer.plugin
             lng: { value: action.payload.lng }
             state
 
+      when T.MARKER_ADDRESS_RESULT
+        unless state.addressWasEnteredManually
+          if action.payload.address
+            addr = action.payload.address
+            u
+              street: { value:
+                (if addr.road then addr.road else '').concat(
+                  (if addr.house_number then ' ' + addr.house_number else ''))}
+              zip   : { value: if addr.postcode then addr.postcode else '' }
+              city  : { value:
+                if addr.city then addr.city
+                else if addr.town then addr.town
+                else if addr.village then addr.village else '' }
+              state
+          else state
+        else state
+
       when "redux-form/CHANGE"
-        if action.field is "category" and action.value is C.IDS.EVENT
+        field = action.field
+        if field is "category" and action.value is C.IDS.EVENT
           u category : { value: -1 }, state
+        if action.value and action.value.length
+          if field is "street" or field is "zip" or field is "city"
+            u addressWasEnteredManually: true, state
+          else state
         else state
 
       else

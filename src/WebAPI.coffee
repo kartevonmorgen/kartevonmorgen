@@ -24,13 +24,26 @@ module.exports =
 
   searchAddress: (addr='', cb) ->
     request
-      .get '/search'
-      .use saPrefix NOMINATIM
-      .query q: addr
-      .query format: 'json'
-      .query addressdetails: 1
-      .set 'Accept', 'application/json'
-      .end jsonCallback cb
+    .get '/search'
+    .use saPrefix NOMINATIM
+    .query q: addr
+    .query format: 'json'
+    .query addressdetails: 1
+    .set 'Accept', 'application/json'
+    .end jsonCallback cb
+    undefined
+
+  searchGeolocation: (latlng={lat: 0.0, lng:0.0}, cb) ->
+    request
+    .get '/reverse'
+    .use saPrefix NOMINATIM
+    .query lat: latlng.lat
+    .query lon: latlng.lng
+    .query zoom: 18
+    .query format: 'json'
+    .query addressdetails: 1
+    .set 'Accept', 'application/json'
+    .end jsonCallback cb
     undefined
 
   getEntries: (ids=[], cb) ->

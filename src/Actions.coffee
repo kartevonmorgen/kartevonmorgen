@@ -131,6 +131,11 @@ Actions =
         type: T.SET_MARKER
         payload: latlng
         manual: true
+      WebAPI.searchGeolocation latlng, (err, res) ->
+        dispatch
+          type    : T.MARKER_ADDRESS_RESULT
+          payload : err or res
+          error   : err?
 
   geocodeAndSetMarker: (address) ->
     (dispatch, getState) ->
