@@ -66,7 +66,7 @@ Form = React.createClass
 
     fieldProps = udeep classes, fieldProps
 
-    form onSubmit: handleSubmit, className: "add-entry-form pure-u-1",
+    form onSubmit: handleSubmit, className: "add-entry-form pure-u-1", action: 'javascript:void();',
       h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
