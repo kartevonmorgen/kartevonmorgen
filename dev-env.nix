@@ -12,7 +12,6 @@ in rec {
       nodejs
       python
       phantomjs2
-      zeal
     ];
     shellHook = ''
       export PHANTOMJS_BIN=${pkgs.phantomjs2}/bin/phantomjs
