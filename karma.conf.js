@@ -27,7 +27,8 @@ module.exports = function(config) {
       debug: true,
       module: {
         loaders: [
-          { test: /\.coffee$/, loader: 'coffee' }
+          { test: /\.coffee$/, loader: 'coffee' },
+          { test: /\.styl$/,   loader: 'null'   }
         ]
       },
       resolve: {
