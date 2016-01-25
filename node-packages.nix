@@ -39,6 +39,27 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."accepts"."1.1.4" =
+    self.by-version."accepts"."1.1.4";
+  by-version."accepts"."1.1.4" = self.buildNodePackage {
+    name = "accepts-1.1.4";
+    version = "1.1.4";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/accepts/-/accepts-1.1.4.tgz";
+      name = "accepts-1.1.4.tgz";
+      sha1 = "d71c96f7d41d0feda2c38cd14e8a27c04158df4a";
+    };
+    deps = {
+      "mime-types-2.0.14" = self.by-version."mime-types"."2.0.14";
+      "negotiator-0.4.9" = self.by-version."negotiator"."0.4.9";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."accepts"."~1.2.12" =
     self.by-version."accepts"."1.2.13";
   by-version."accepts"."1.2.13" = self.buildNodePackage {
@@ -51,7 +72,7 @@
       sha1 = "e5f1f3928c6d95fd96558c36ec3d9d0de4a6ecea";
     };
     deps = {
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
       "negotiator-0.5.3" = self.by-version."negotiator"."0.5.3";
     };
     optionalDependencies = {
@@ -60,19 +81,21 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."accepts"."~1.3.0" =
-    self.by-version."accepts"."1.3.0";
-  by-version."accepts"."1.3.0" = self.buildNodePackage {
-    name = "accepts-1.3.0";
-    version = "1.3.0";
+  by-spec."accepts"."~1.2.13" =
+    self.by-version."accepts"."1.2.13";
+  by-spec."accepts"."~1.3.1" =
+    self.by-version."accepts"."1.3.1";
+  by-version."accepts"."1.3.1" = self.buildNodePackage {
+    name = "accepts-1.3.1";
+    version = "1.3.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/accepts/-/accepts-1.3.0.tgz";
-      name = "accepts-1.3.0.tgz";
-      sha1 = "2341420f16d0b2d538a5898416ab0faa28912622";
+      url = "http://registry.npmjs.org/accepts/-/accepts-1.3.1.tgz";
+      name = "accepts-1.3.1.tgz";
+      sha1 = "dc295faf85024e05b04f5a6faf5eec1d1fd077e5";
     };
     deps = {
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
       "negotiator-0.6.0" = self.by-version."negotiator"."0.6.0";
     };
     optionalDependencies = {
@@ -162,6 +185,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."alphanum-sort"."^1.0.2" =
+    self.by-version."alphanum-sort"."1.0.2";
   by-spec."amdefine".">=0.0.4" =
     self.by-version."amdefine"."1.0.0";
   by-version."amdefine"."1.0.0" = self.buildNodePackage {
@@ -182,15 +207,15 @@
     cpu = [ ];
   };
   by-spec."ansi"."^0.3.0" =
-    self.by-version."ansi"."0.3.0";
-  by-version."ansi"."0.3.0" = self.buildNodePackage {
-    name = "ansi-0.3.0";
-    version = "0.3.0";
+    self.by-version."ansi"."0.3.1";
+  by-version."ansi"."0.3.1" = self.buildNodePackage {
+    name = "ansi-0.3.1";
+    version = "0.3.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/ansi/-/ansi-0.3.0.tgz";
-      name = "ansi-0.3.0.tgz";
-      sha1 = "74b2f1f187c8553c7f95015bcb76009fb43d38e0";
+      url = "http://registry.npmjs.org/ansi/-/ansi-0.3.1.tgz";
+      name = "ansi-0.3.1.tgz";
+      sha1 = "0c42d4fb17160d5a9af1e484bace1c66922c1b21";
     };
     deps = {
     };
@@ -201,27 +226,9 @@
     cpu = [ ];
   };
   by-spec."ansi"."~0.3.0" =
-    self.by-version."ansi"."0.3.0";
-  by-spec."ansi-green"."^0.1.1" =
-    self.by-version."ansi-green"."0.1.1";
-  by-version."ansi-green"."0.1.1" = self.buildNodePackage {
-    name = "ansi-green-0.1.1";
-    version = "0.1.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/ansi-green/-/ansi-green-0.1.1.tgz";
-      name = "ansi-green-0.1.1.tgz";
-      sha1 = "8a5d9a979e458d57c40e33580b37390b8e10d0f7";
-    };
-    deps = {
-      "ansi-wrap-0.1.0" = self.by-version."ansi-wrap"."0.1.0";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
+    self.by-version."ansi"."0.3.1";
+  by-spec."ansi"."~0.3.1" =
+    self.by-version."ansi"."0.3.1";
   by-spec."ansi-regex"."^2.0.0" =
     self.by-version."ansi-regex"."2.0.0";
   by-version."ansi-regex"."2.0.0" = self.buildNodePackage {
@@ -260,25 +267,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."ansi-wrap"."0.1.0" =
-    self.by-version."ansi-wrap"."0.1.0";
-  by-version."ansi-wrap"."0.1.0" = self.buildNodePackage {
-    name = "ansi-wrap-0.1.0";
-    version = "0.1.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/ansi-wrap/-/ansi-wrap-0.1.0.tgz";
-      name = "ansi-wrap-0.1.0.tgz";
-      sha1 = "a82250ddb0015e9a27ca82e82ea603bbfa45efaf";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."anymatch"."^1.3.0" =
     self.by-version."anymatch"."1.3.0";
   by-version."anymatch"."1.3.0" = self.buildNodePackage {
@@ -291,8 +279,8 @@
       sha1 = "a3e52fa39168c825ff57b0248126ce5a8ff95507";
     };
     deps = {
-      "arrify-1.0.0" = self.by-version."arrify"."1.0.0";
-      "micromatch-2.3.3" = self.by-version."micromatch"."2.3.3";
+      "arrify-1.0.1" = self.by-version."arrify"."1.0.1";
+      "micromatch-2.3.7" = self.by-version."micromatch"."2.3.7";
     };
     optionalDependencies = {
     };
@@ -301,19 +289,19 @@
     cpu = [ ];
   };
   by-spec."are-we-there-yet"."~1.0.0" =
-    self.by-version."are-we-there-yet"."1.0.4";
-  by-version."are-we-there-yet"."1.0.4" = self.buildNodePackage {
-    name = "are-we-there-yet-1.0.4";
-    version = "1.0.4";
+    self.by-version."are-we-there-yet"."1.0.5";
+  by-version."are-we-there-yet"."1.0.5" = self.buildNodePackage {
+    name = "are-we-there-yet-1.0.5";
+    version = "1.0.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/are-we-there-yet/-/are-we-there-yet-1.0.4.tgz";
-      name = "are-we-there-yet-1.0.4.tgz";
-      sha1 = "527fe389f7bcba90806106b99244eaa07e886f85";
+      url = "http://registry.npmjs.org/are-we-there-yet/-/are-we-there-yet-1.0.5.tgz";
+      name = "are-we-there-yet-1.0.5.tgz";
+      sha1 = "239f26706da902a2bffb72c33de66fdfd3798ac5";
     };
     deps = {
       "delegates-0.1.0" = self.by-version."delegates"."0.1.0";
-      "readable-stream-1.1.13" = self.by-version."readable-stream"."1.1.13";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -321,19 +309,21 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."argparse"."~1.0.2" =
-    self.by-version."argparse"."1.0.3";
-  by-version."argparse"."1.0.3" = self.buildNodePackage {
-    name = "argparse-1.0.3";
-    version = "1.0.3";
+  by-spec."are-we-there-yet"."~1.0.5" =
+    self.by-version."are-we-there-yet"."1.0.5";
+  by-spec."argparse"."^1.0.2" =
+    self.by-version."argparse"."1.0.4";
+  by-version."argparse"."1.0.4" = self.buildNodePackage {
+    name = "argparse-1.0.4";
+    version = "1.0.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/argparse/-/argparse-1.0.3.tgz";
-      name = "argparse-1.0.3.tgz";
-      sha1 = "14389deeb0c28fc4cda9405b9f532a4e3785ce84";
+      url = "http://registry.npmjs.org/argparse/-/argparse-1.0.4.tgz";
+      name = "argparse-1.0.4.tgz";
+      sha1 = "2b12247b933001971addcbfe4e67d20fd395bbf4";
     };
     deps = {
-      "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
+      "lodash-4.0.0" = self.by-version."lodash"."4.0.0";
       "sprintf-js-1.0.3" = self.by-version."sprintf-js"."1.0.3";
     };
     optionalDependencies = {
@@ -342,20 +332,19 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."arr-diff"."^1.1.0" =
-    self.by-version."arr-diff"."1.1.0";
-  by-version."arr-diff"."1.1.0" = self.buildNodePackage {
-    name = "arr-diff-1.1.0";
-    version = "1.1.0";
+  by-spec."arr-diff"."^2.0.0" =
+    self.by-version."arr-diff"."2.0.0";
+  by-version."arr-diff"."2.0.0" = self.buildNodePackage {
+    name = "arr-diff-2.0.0";
+    version = "2.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/arr-diff/-/arr-diff-1.1.0.tgz";
-      name = "arr-diff-1.1.0.tgz";
-      sha1 = "687c32758163588fef7de7b36fabe495eb1a399a";
+      url = "http://registry.npmjs.org/arr-diff/-/arr-diff-2.0.0.tgz";
+      name = "arr-diff-2.0.0.tgz";
+      sha1 = "8f3b827f955a8bd669697e4a4256ac3ceae356cf";
     };
     deps = {
       "arr-flatten-1.0.1" = self.by-version."arr-flatten"."1.0.1";
-      "array-slice-0.2.3" = self.by-version."array-slice"."0.2.3";
     };
     optionalDependencies = {
     };
@@ -401,19 +390,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."array-index"."~0.1.0" =
-    self.by-version."array-index"."0.1.1";
-  by-version."array-index"."0.1.1" = self.buildNodePackage {
-    name = "array-index-0.1.1";
-    version = "0.1.1";
+  by-spec."array-index"."^1.0.0" =
+    self.by-version."array-index"."1.0.0";
+  by-version."array-index"."1.0.0" = self.buildNodePackage {
+    name = "array-index-1.0.0";
+    version = "1.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/array-index/-/array-index-0.1.1.tgz";
-      name = "array-index-0.1.1.tgz";
-      sha1 = "4d5eaf06cc3d925847cd73d1535c217ba306d3e1";
+      url = "http://registry.npmjs.org/array-index/-/array-index-1.0.0.tgz";
+      name = "array-index-1.0.0.tgz";
+      sha1 = "ec56a749ee103e4e08c790b9c353df16055b97f9";
     };
     deps = {
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "es6-symbol-3.0.2" = self.by-version."es6-symbol"."3.0.2";
     };
     optionalDependencies = {
     };
@@ -479,15 +469,15 @@
     cpu = [ ];
   };
   by-spec."arrify"."^1.0.0" =
-    self.by-version."arrify"."1.0.0";
-  by-version."arrify"."1.0.0" = self.buildNodePackage {
-    name = "arrify-1.0.0";
-    version = "1.0.0";
+    self.by-version."arrify"."1.0.1";
+  by-version."arrify"."1.0.1" = self.buildNodePackage {
+    name = "arrify-1.0.1";
+    version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/arrify/-/arrify-1.0.0.tgz";
-      name = "arrify-1.0.0.tgz";
-      sha1 = "d6c361518250802fa2147ea7fb67597128cb8c81";
+      url = "http://registry.npmjs.org/arrify/-/arrify-1.0.1.tgz";
+      name = "arrify-1.0.1.tgz";
+      sha1 = "898508da2226f380df904728456849c1501a4b0d";
     };
     deps = {
     };
@@ -593,25 +583,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."assert-plus"."0.1.x" =
-    self.by-version."assert-plus"."0.1.5";
-  by-version."assert-plus"."0.1.5" = self.buildNodePackage {
-    name = "assert-plus-0.1.5";
-    version = "0.1.5";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/assert-plus/-/assert-plus-0.1.5.tgz";
-      name = "assert-plus-0.1.5.tgz";
-      sha1 = "ee74009413002d84cec7219c6ac811812e723160";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."assert-plus".">=0.2.0 <0.3.0" =
     self.by-version."assert-plus"."0.2.0";
   by-version."assert-plus"."0.2.0" = self.buildNodePackage {
@@ -633,6 +604,25 @@
   };
   by-spec."assert-plus"."^0.1.5" =
     self.by-version."assert-plus"."0.1.5";
+  by-version."assert-plus"."0.1.5" = self.buildNodePackage {
+    name = "assert-plus-0.1.5";
+    version = "0.1.5";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/assert-plus/-/assert-plus-0.1.5.tgz";
+      name = "assert-plus-0.1.5.tgz";
+      sha1 = "ee74009413002d84cec7219c6ac811812e723160";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."assert-plus"."^0.2.0" =
+    self.by-version."assert-plus"."0.2.0";
   by-spec."assertion-error"."^1.0.1" =
     self.by-version."assertion-error"."1.0.1";
   by-version."assertion-error"."1.0.1" = self.buildNodePackage {
@@ -672,15 +662,15 @@
     cpu = [ ];
   };
   by-spec."async"."^1.3.0" =
-    self.by-version."async"."1.5.0";
-  by-version."async"."1.5.0" = self.buildNodePackage {
-    name = "async-1.5.0";
-    version = "1.5.0";
+    self.by-version."async"."1.5.2";
+  by-version."async"."1.5.2" = self.buildNodePackage {
+    name = "async-1.5.2";
+    version = "1.5.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/async/-/async-1.5.0.tgz";
-      name = "async-1.5.0.tgz";
-      sha1 = "2796642723573859565633fc6274444bee2f8ce3";
+      url = "http://registry.npmjs.org/async/-/async-1.5.2.tgz";
+      name = "async-1.5.2.tgz";
+      sha1 = "ec6a61ae56480c0c3cb241c95618e20892f9672a";
     };
     deps = {
     };
@@ -691,7 +681,7 @@
     cpu = [ ];
   };
   by-spec."async"."^1.4.0" =
-    self.by-version."async"."1.5.0";
+    self.by-version."async"."1.5.2";
   by-spec."async"."~0.2.0" =
     self.by-version."async"."0.2.10";
   by-version."async"."0.2.10" = self.buildNodePackage {
@@ -754,22 +744,23 @@
     cpu = [ ];
   };
   by-spec."autoprefixer"."^6.0.3" =
-    self.by-version."autoprefixer"."6.1.1";
-  by-version."autoprefixer"."6.1.1" = self.buildNodePackage {
-    name = "autoprefixer-6.1.1";
-    version = "6.1.1";
+    self.by-version."autoprefixer"."6.3.1";
+  by-version."autoprefixer"."6.3.1" = self.buildNodePackage {
+    name = "autoprefixer-6.3.1";
+    version = "6.3.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/autoprefixer/-/autoprefixer-6.1.1.tgz";
-      name = "autoprefixer-6.1.1.tgz";
-      sha1 = "318b62195a89496300a7361a95212d4ec7f19678";
+      url = "http://registry.npmjs.org/autoprefixer/-/autoprefixer-6.3.1.tgz";
+      name = "autoprefixer-6.3.1.tgz";
+      sha1 = "79757c0caef79f00b93bffdcf1e0da7eeb06cc88";
     };
     deps = {
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
+      "normalize-range-0.1.2" = self.by-version."normalize-range"."0.1.2";
       "num2fraction-1.2.2" = self.by-version."num2fraction"."1.2.2";
-      "browserslist-1.0.1" = self.by-version."browserslist"."1.0.1";
-      "caniuse-db-1.0.30000372" = self.by-version."caniuse-db"."1.0.30000372";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "browserslist-1.1.1" = self.by-version."browserslist"."1.1.1";
+      "caniuse-db-1.0.30000392" = self.by-version."caniuse-db"."1.0.30000392";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -950,26 +941,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."batch"."0.5.2" =
-    self.by-version."batch"."0.5.2";
-  by-version."batch"."0.5.2" = self.buildNodePackage {
-    name = "batch-0.5.2";
-    version = "0.5.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/batch/-/batch-0.5.2.tgz";
-      name = "batch-0.5.2.tgz";
-      sha1 = "546543dbe32118c83c7c7ca33a1f5c5d5ea963e9";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."batch"."^0.5.3" =
+  by-spec."batch"."0.5.3" =
     self.by-version."batch"."0.5.3";
   by-version."batch"."0.5.3" = self.buildNodePackage {
     name = "batch-0.5.3";
@@ -988,6 +960,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."batch"."^0.5.3" =
+    self.by-version."batch"."0.5.3";
   by-spec."benchmark"."1.0.0" =
     self.by-version."benchmark"."1.0.0";
   by-version."benchmark"."1.0.0" = self.buildNodePackage {
@@ -1065,35 +1039,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."bindings"."1.2.x" =
-    self.by-version."bindings"."1.2.1";
-  by-version."bindings"."1.2.1" = self.buildNodePackage {
-    name = "bindings-1.2.1";
-    version = "1.2.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz";
-      name = "bindings-1.2.1.tgz";
-      sha1 = "14ad6113812d2d37d72e67b4cacb4bb726505f11";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."bl"."~0.9.0" =
-    self.by-version."bl"."0.9.4";
-  by-version."bl"."0.9.4" = self.buildNodePackage {
-    name = "bl-0.9.4";
-    version = "0.9.4";
+    self.by-version."bl"."0.9.5";
+  by-version."bl"."0.9.5" = self.buildNodePackage {
+    name = "bl-0.9.5";
+    version = "0.9.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/bl/-/bl-0.9.4.tgz";
-      name = "bl-0.9.4.tgz";
-      sha1 = "4702ddf72fbe0ecd82787c00c113aea1935ad0e7";
+      url = "http://registry.npmjs.org/bl/-/bl-0.9.5.tgz";
+      name = "bl-0.9.5.tgz";
+      sha1 = "c06b797af085ea00bc527afc8efcf11de2232054";
     };
     deps = {
       "readable-stream-1.0.33" = self.by-version."readable-stream"."1.0.33";
@@ -1105,18 +1060,18 @@
     cpu = [ ];
   };
   by-spec."bl"."~1.0.0" =
-    self.by-version."bl"."1.0.0";
-  by-version."bl"."1.0.0" = self.buildNodePackage {
-    name = "bl-1.0.0";
-    version = "1.0.0";
+    self.by-version."bl"."1.0.1";
+  by-version."bl"."1.0.1" = self.buildNodePackage {
+    name = "bl-1.0.1";
+    version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/bl/-/bl-1.0.0.tgz";
-      name = "bl-1.0.0.tgz";
-      sha1 = "ada9a8a89a6d7ac60862f7dec7db207873e0c3f5";
+      url = "http://registry.npmjs.org/bl/-/bl-1.0.1.tgz";
+      name = "bl-1.0.1.tgz";
+      sha1 = "0e6df7330308c46515751676cafa7334dc9852fd";
     };
     deps = {
-      "readable-stream-2.0.4" = self.by-version."readable-stream"."2.0.4";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -1182,35 +1137,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."bluebird"."^3.0.5" =
-    self.by-version."bluebird"."3.0.5";
-  by-version."bluebird"."3.0.5" = self.buildNodePackage {
-    name = "bluebird-3.0.5";
-    version = "3.0.5";
+  by-spec."bluebird"."^3.1.1" =
+    self.by-version."bluebird"."3.1.4";
+  by-version."bluebird"."3.1.4" = self.buildNodePackage {
+    name = "bluebird-3.1.4";
+    version = "3.1.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/bluebird/-/bluebird-3.0.5.tgz";
-      name = "bluebird-3.0.5.tgz";
-      sha1 = "2ff9d07c9b3edb29d6d280fe07528365e7ecd392";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."blueimp-tmpl"."^2.5.5" =
-    self.by-version."blueimp-tmpl"."2.5.6";
-  by-version."blueimp-tmpl"."2.5.6" = self.buildNodePackage {
-    name = "blueimp-tmpl-2.5.6";
-    version = "2.5.6";
-    bin = true;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/blueimp-tmpl/-/blueimp-tmpl-2.5.6.tgz";
-      name = "blueimp-tmpl-2.5.6.tgz";
-      sha1 = "bbee669a25e845e531e1fc832fd3fd90f9b3894e";
+      url = "http://registry.npmjs.org/bluebird/-/bluebird-3.1.4.tgz";
+      name = "bluebird-3.1.4.tgz";
+      sha1 = "8658702e862713f8c01aa5387ddfe36ec8e3d04d";
     };
     deps = {
     };
@@ -1221,27 +1157,46 @@
     cpu = [ ];
   };
   by-spec."body-parser"."^1.12.4" =
-    self.by-version."body-parser"."1.14.1";
-  by-version."body-parser"."1.14.1" = self.buildNodePackage {
-    name = "body-parser-1.14.1";
-    version = "1.14.1";
+    self.by-version."body-parser"."1.14.2";
+  by-version."body-parser"."1.14.2" = self.buildNodePackage {
+    name = "body-parser-1.14.2";
+    version = "1.14.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/body-parser/-/body-parser-1.14.1.tgz";
-      name = "body-parser-1.14.1.tgz";
-      sha1 = "ffe921eba3ce8f191e2a8a8803844bd025f3c6dc";
+      url = "http://registry.npmjs.org/body-parser/-/body-parser-1.14.2.tgz";
+      name = "body-parser-1.14.2.tgz";
+      sha1 = "1015cb1fe2c443858259581db53332f8d0cf50f9";
     };
     deps = {
-      "bytes-2.1.0" = self.by-version."bytes"."2.1.0";
+      "bytes-2.2.0" = self.by-version."bytes"."2.2.0";
       "content-type-1.0.1" = self.by-version."content-type"."1.0.1";
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
       "depd-1.1.0" = self.by-version."depd"."1.1.0";
       "http-errors-1.3.1" = self.by-version."http-errors"."1.3.1";
-      "iconv-lite-0.4.12" = self.by-version."iconv-lite"."0.4.12";
+      "iconv-lite-0.4.13" = self.by-version."iconv-lite"."0.4.13";
       "on-finished-2.3.0" = self.by-version."on-finished"."2.3.0";
-      "qs-5.1.0" = self.by-version."qs"."5.1.0";
-      "raw-body-2.1.4" = self.by-version."raw-body"."2.1.4";
-      "type-is-1.6.9" = self.by-version."type-is"."1.6.9";
+      "qs-5.2.0" = self.by-version."qs"."5.2.0";
+      "raw-body-2.1.5" = self.by-version."raw-body"."2.1.5";
+      "type-is-1.6.10" = self.by-version."type-is"."1.6.10";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."boolbase"."~1.0.0" =
+    self.by-version."boolbase"."1.0.0";
+  by-version."boolbase"."1.0.0" = self.buildNodePackage {
+    name = "boolbase-1.0.0";
+    version = "1.0.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz";
+      name = "boolbase-1.0.0.tgz";
+      sha1 = "68dff5fbe60c51eb37725ea9e3ed310dcc1e776e";
+    };
+    deps = {
     };
     optionalDependencies = {
     };
@@ -1330,20 +1285,19 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."braces"."^1.8.1" =
-    self.by-version."braces"."1.8.2";
-  by-version."braces"."1.8.2" = self.buildNodePackage {
-    name = "braces-1.8.2";
-    version = "1.8.2";
+  by-spec."braces"."^1.8.2" =
+    self.by-version."braces"."1.8.3";
+  by-version."braces"."1.8.3" = self.buildNodePackage {
+    name = "braces-1.8.3";
+    version = "1.8.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/braces/-/braces-1.8.2.tgz";
-      name = "braces-1.8.2.tgz";
-      sha1 = "036e024051d4bbc7096428b4d6f20ea1f137a794";
+      url = "http://registry.npmjs.org/braces/-/braces-1.8.3.tgz";
+      name = "braces-1.8.3.tgz";
+      sha1 = "35d4e7dda632b33e215d38a8a9cf4329c9c75d2c";
     };
     deps = {
       "expand-range-1.8.1" = self.by-version."expand-range"."1.8.1";
-      "lazy-cache-0.2.4" = self.by-version."lazy-cache"."0.2.4";
       "preserve-0.2.0" = self.by-version."preserve"."0.2.0";
       "repeat-element-1.1.2" = self.by-version."repeat-element"."1.1.2";
     };
@@ -1373,19 +1327,19 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."browserslist"."~1.0.1" =
-    self.by-version."browserslist"."1.0.1";
-  by-version."browserslist"."1.0.1" = self.buildNodePackage {
-    name = "browserslist-1.0.1";
-    version = "1.0.1";
+  by-spec."browserslist"."~1.1.1" =
+    self.by-version."browserslist"."1.1.1";
+  by-version."browserslist"."1.1.1" = self.buildNodePackage {
+    name = "browserslist-1.1.1";
+    version = "1.1.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/browserslist/-/browserslist-1.0.1.tgz";
-      name = "browserslist-1.0.1.tgz";
-      sha1 = "ef0dd708318cdf74325faeea59efec84d9464717";
+      url = "http://registry.npmjs.org/browserslist/-/browserslist-1.1.1.tgz";
+      name = "browserslist-1.1.1.tgz";
+      sha1 = "a333af8331160e1db14219ec1cc9b2da20cd4d37";
     };
     deps = {
-      "caniuse-db-1.0.30000372" = self.by-version."caniuse-db"."1.0.30000372";
+      "caniuse-db-1.0.30000392" = self.by-version."caniuse-db"."1.0.30000392";
     };
     optionalDependencies = {
     };
@@ -1394,41 +1348,20 @@
     cpu = [ ];
   };
   by-spec."buffer"."^3.0.3" =
-    self.by-version."buffer"."3.5.2";
-  by-version."buffer"."3.5.2" = self.buildNodePackage {
-    name = "buffer-3.5.2";
-    version = "3.5.2";
+    self.by-version."buffer"."3.6.0";
+  by-version."buffer"."3.6.0" = self.buildNodePackage {
+    name = "buffer-3.6.0";
+    version = "3.6.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/buffer/-/buffer-3.5.2.tgz";
-      name = "buffer-3.5.2.tgz";
-      sha1 = "184a1016a31c2f0628c7ca0f717cea9863a552cc";
+      url = "http://registry.npmjs.org/buffer/-/buffer-3.6.0.tgz";
+      name = "buffer-3.6.0.tgz";
+      sha1 = "a72c936f77b96bf52f5f7e7b467180628551defb";
     };
     deps = {
       "base64-js-0.0.8" = self.by-version."base64-js"."0.0.8";
       "ieee754-1.1.6" = self.by-version."ieee754"."1.1.6";
-      "is-array-1.0.1" = self.by-version."is-array"."1.0.1";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."bufferutil"."1.2.x" =
-    self.by-version."bufferutil"."1.2.1";
-  by-version."bufferutil"."1.2.1" = self.buildNodePackage {
-    name = "bufferutil-1.2.1";
-    version = "1.2.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/bufferutil/-/bufferutil-1.2.1.tgz";
-      name = "bufferutil-1.2.1.tgz";
-      sha1 = "37be5d36e1e06492221e68d474b1ac58e510cbd7";
-    };
-    deps = {
-      "bindings-1.2.1" = self.by-version."bindings"."1.2.1";
-      "nan-2.1.0" = self.by-version."nan"."2.1.0";
+      "isarray-1.0.0" = self.by-version."isarray"."1.0.0";
     };
     optionalDependencies = {
     };
@@ -1437,15 +1370,15 @@
     cpu = [ ];
   };
   by-spec."builtin-modules"."^1.0.0" =
-    self.by-version."builtin-modules"."1.1.0";
-  by-version."builtin-modules"."1.1.0" = self.buildNodePackage {
-    name = "builtin-modules-1.1.0";
-    version = "1.1.0";
+    self.by-version."builtin-modules"."1.1.1";
+  by-version."builtin-modules"."1.1.1" = self.buildNodePackage {
+    name = "builtin-modules-1.1.1";
+    version = "1.1.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/builtin-modules/-/builtin-modules-1.1.0.tgz";
-      name = "builtin-modules-1.1.0.tgz";
-      sha1 = "1053955fd994a5746e525e4ac717b81caf07491c";
+      url = "http://registry.npmjs.org/builtin-modules/-/builtin-modules-1.1.1.tgz";
+      name = "builtin-modules-1.1.1.tgz";
+      sha1 = "270f076c5a72c02f5b65a47df94c5fe3a278892f";
     };
     deps = {
     };
@@ -1455,16 +1388,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."bytes"."2.1.0" =
-    self.by-version."bytes"."2.1.0";
-  by-version."bytes"."2.1.0" = self.buildNodePackage {
-    name = "bytes-2.1.0";
-    version = "2.1.0";
+  by-spec."bytes"."2.2.0" =
+    self.by-version."bytes"."2.2.0";
+  by-version."bytes"."2.2.0" = self.buildNodePackage {
+    name = "bytes-2.2.0";
+    version = "2.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/bytes/-/bytes-2.1.0.tgz";
-      name = "bytes-2.1.0.tgz";
-      sha1 = "ac93c410e2ffc9cc7cf4b464b38289067f5e47b4";
+      url = "http://registry.npmjs.org/bytes/-/bytes-2.2.0.tgz";
+      name = "bytes-2.2.0.tgz";
+      sha1 = "fd35464a403f6f9117c2de3609ecff9cae000588";
     };
     deps = {
     };
@@ -1494,19 +1427,19 @@
     cpu = [ ];
   };
   by-spec."camel-case"."^1.1.1" =
-    self.by-version."camel-case"."1.2.0";
-  by-version."camel-case"."1.2.0" = self.buildNodePackage {
-    name = "camel-case-1.2.0";
-    version = "1.2.0";
+    self.by-version."camel-case"."1.2.2";
+  by-version."camel-case"."1.2.2" = self.buildNodePackage {
+    name = "camel-case-1.2.2";
+    version = "1.2.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/camel-case/-/camel-case-1.2.0.tgz";
-      name = "camel-case-1.2.0.tgz";
-      sha1 = "b53c17e3f9c22f457ec42707c60864556a3335b7";
+      url = "http://registry.npmjs.org/camel-case/-/camel-case-1.2.2.tgz";
+      name = "camel-case-1.2.2.tgz";
+      sha1 = "1aca7c4d195359a2ce9955793433c6e5542511f2";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -1533,18 +1466,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."camelcase"."^1.2.1" =
-    self.by-version."camelcase"."1.2.1";
   by-spec."camelcase"."^2.0.0" =
-    self.by-version."camelcase"."2.0.1";
-  by-version."camelcase"."2.0.1" = self.buildNodePackage {
-    name = "camelcase-2.0.1";
-    version = "2.0.1";
+    self.by-version."camelcase"."2.1.0";
+  by-version."camelcase"."2.1.0" = self.buildNodePackage {
+    name = "camelcase-2.1.0";
+    version = "2.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/camelcase/-/camelcase-2.0.1.tgz";
-      name = "camelcase-2.0.1.tgz";
-      sha1 = "57568d687b8da56c4c1d17b4c74a3cee26d73aeb";
+      url = "http://registry.npmjs.org/camelcase/-/camelcase-2.1.0.tgz";
+      name = "camelcase-2.1.0.tgz";
+      sha1 = "533ad4cd7f8a1080ded31aba6c79b4bf437ff30c";
     };
     deps = {
     };
@@ -1554,6 +1485,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."camelcase"."^2.0.1" =
+    self.by-version."camelcase"."2.1.0";
   by-spec."camelcase-keys"."^2.0.0" =
     self.by-version."camelcase-keys"."2.0.0";
   by-version."camelcase-keys"."2.0.0" = self.buildNodePackage {
@@ -1566,7 +1499,7 @@
       sha1 = "ab87e740d72a1ffcb12a43cc04c14b39d549eab9";
     };
     deps = {
-      "camelcase-2.0.1" = self.by-version."camelcase"."2.0.1";
+      "camelcase-2.1.0" = self.by-version."camelcase"."2.1.0";
       "map-obj-1.0.1" = self.by-version."map-obj"."1.0.1";
     };
     optionalDependencies = {
@@ -1575,16 +1508,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."caniuse-db"."^1.0.30000335" =
-    self.by-version."caniuse-db"."1.0.30000372";
-  by-version."caniuse-db"."1.0.30000372" = self.buildNodePackage {
-    name = "caniuse-db-1.0.30000372";
-    version = "1.0.30000372";
+  by-spec."caniuse-db"."^1.0.30000387" =
+    self.by-version."caniuse-db"."1.0.30000392";
+  by-version."caniuse-db"."1.0.30000392" = self.buildNodePackage {
+    name = "caniuse-db-1.0.30000392";
+    version = "1.0.30000392";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000372.tgz";
-      name = "caniuse-db-1.0.30000372.tgz";
-      sha1 = "ca57e4655a885a88a184d4440c3e60ed432890f9";
+      url = "http://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000392.tgz";
+      name = "caniuse-db-1.0.30000392.tgz";
+      sha1 = "b585331b3735dcebdb573fe1afb248c786b30fb5";
     };
     deps = {
     };
@@ -1594,8 +1527,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."caniuse-db"."^1.0.30000367" =
-    self.by-version."caniuse-db"."1.0.30000372";
   by-spec."caseless"."~0.11.0" =
     self.by-version."caseless"."0.11.0";
   by-version."caseless"."0.11.0" = self.buildNodePackage {
@@ -1647,7 +1578,7 @@
     };
     deps = {
       "align-text-0.1.3" = self.by-version."align-text"."0.1.3";
-      "lazy-cache-0.2.4" = self.by-version."lazy-cache"."0.2.4";
+      "lazy-cache-0.2.7" = self.by-version."lazy-cache"."0.2.7";
     };
     optionalDependencies = {
     };
@@ -1693,7 +1624,7 @@
     };
     deps = {
       "ansi-styles-2.1.0" = self.by-version."ansi-styles"."2.1.0";
-      "escape-string-regexp-1.0.3" = self.by-version."escape-string-regexp"."1.0.3";
+      "escape-string-regexp-1.0.4" = self.by-version."escape-string-regexp"."1.0.4";
       "has-ansi-2.0.0" = self.by-version."has-ansi"."2.0.0";
       "strip-ansi-3.0.0" = self.by-version."strip-ansi"."3.0.0";
       "supports-color-2.0.0" = self.by-version."supports-color"."2.0.0";
@@ -1707,33 +1638,33 @@
   by-spec."chalk"."^1.1.1" =
     self.by-version."chalk"."1.1.1";
   by-spec."change-case"."2.3.x" =
-    self.by-version."change-case"."2.3.0";
-  by-version."change-case"."2.3.0" = self.buildNodePackage {
-    name = "change-case-2.3.0";
-    version = "2.3.0";
+    self.by-version."change-case"."2.3.1";
+  by-version."change-case"."2.3.1" = self.buildNodePackage {
+    name = "change-case-2.3.1";
+    version = "2.3.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/change-case/-/change-case-2.3.0.tgz";
-      name = "change-case-2.3.0.tgz";
-      sha1 = "3d7c04e89dfe8119831ebf859c9e39558235a855";
+      url = "http://registry.npmjs.org/change-case/-/change-case-2.3.1.tgz";
+      name = "change-case-2.3.1.tgz";
+      sha1 = "2c4fde3f063bb41d00cd68e0d5a09db61cbe894f";
     };
     deps = {
-      "camel-case-1.2.0" = self.by-version."camel-case"."1.2.0";
-      "constant-case-1.1.1" = self.by-version."constant-case"."1.1.1";
-      "dot-case-1.1.1" = self.by-version."dot-case"."1.1.1";
-      "is-lower-case-1.1.1" = self.by-version."is-lower-case"."1.1.1";
-      "is-upper-case-1.1.1" = self.by-version."is-upper-case"."1.1.1";
-      "lower-case-1.1.2" = self.by-version."lower-case"."1.1.2";
-      "lower-case-first-1.0.0" = self.by-version."lower-case-first"."1.0.0";
-      "param-case-1.1.1" = self.by-version."param-case"."1.1.1";
-      "pascal-case-1.1.1" = self.by-version."pascal-case"."1.1.1";
-      "path-case-1.1.1" = self.by-version."path-case"."1.1.1";
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
-      "snake-case-1.1.1" = self.by-version."snake-case"."1.1.1";
-      "swap-case-1.1.1" = self.by-version."swap-case"."1.1.1";
-      "title-case-1.1.1" = self.by-version."title-case"."1.1.1";
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
-      "upper-case-first-1.1.1" = self.by-version."upper-case-first"."1.1.1";
+      "camel-case-1.2.2" = self.by-version."camel-case"."1.2.2";
+      "constant-case-1.1.2" = self.by-version."constant-case"."1.1.2";
+      "dot-case-1.1.2" = self.by-version."dot-case"."1.1.2";
+      "is-lower-case-1.1.3" = self.by-version."is-lower-case"."1.1.3";
+      "is-upper-case-1.1.2" = self.by-version."is-upper-case"."1.1.2";
+      "lower-case-1.1.3" = self.by-version."lower-case"."1.1.3";
+      "lower-case-first-1.0.2" = self.by-version."lower-case-first"."1.0.2";
+      "param-case-1.1.2" = self.by-version."param-case"."1.1.2";
+      "pascal-case-1.1.2" = self.by-version."pascal-case"."1.1.2";
+      "path-case-1.1.2" = self.by-version."path-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
+      "snake-case-1.1.2" = self.by-version."snake-case"."1.1.2";
+      "swap-case-1.1.2" = self.by-version."swap-case"."1.1.2";
+      "title-case-1.1.2" = self.by-version."title-case"."1.1.2";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
+      "upper-case-first-1.1.2" = self.by-version."upper-case-first"."1.1.2";
     };
     optionalDependencies = {
     };
@@ -1761,20 +1692,21 @@
     cpu = [ ];
   };
   by-spec."chokidar"."^1.0.0" =
-    self.by-version."chokidar"."1.3.0";
-  by-version."chokidar"."1.3.0" = self.buildNodePackage {
-    name = "chokidar-1.3.0";
-    version = "1.3.0";
+    self.by-version."chokidar"."1.4.2";
+  by-version."chokidar"."1.4.2" = self.buildNodePackage {
+    name = "chokidar-1.4.2";
+    version = "1.4.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/chokidar/-/chokidar-1.3.0.tgz";
-      name = "chokidar-1.3.0.tgz";
-      sha1 = "a7c2af0f4234b5d83e3491e403817a88d517e4ef";
+      url = "http://registry.npmjs.org/chokidar/-/chokidar-1.4.2.tgz";
+      name = "chokidar-1.4.2.tgz";
+      sha1 = "3eaea6c2898fa7208184a453d4889a9addf567d2";
     };
     deps = {
       "anymatch-1.3.0" = self.by-version."anymatch"."1.3.0";
       "async-each-0.1.6" = self.by-version."async-each"."0.1.6";
       "glob-parent-2.0.0" = self.by-version."glob-parent"."2.0.0";
+      "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "is-binary-path-1.0.1" = self.by-version."is-binary-path"."1.0.1";
       "is-glob-2.0.1" = self.by-version."is-glob"."2.0.1";
       "path-is-absolute-1.0.0" = self.by-version."path-is-absolute"."1.0.0";
@@ -1786,18 +1718,38 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."chokidar"."^1.0.1" =
-    self.by-version."chokidar"."1.3.0";
+  by-spec."chokidar"."^1.4.1" =
+    self.by-version."chokidar"."1.4.2";
+  by-spec."clap"."^1.0.9" =
+    self.by-version."clap"."1.0.10";
+  by-version."clap"."1.0.10" = self.buildNodePackage {
+    name = "clap-1.0.10";
+    version = "1.0.10";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/clap/-/clap-1.0.10.tgz";
+      name = "clap-1.0.10.tgz";
+      sha1 = "4f7a93e144545af85dfd29d92fd974e32548632a";
+    };
+    deps = {
+      "chalk-1.1.1" = self.by-version."chalk"."1.1.1";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."clean-css"."3.4.x" =
-    self.by-version."clean-css"."3.4.8";
-  by-version."clean-css"."3.4.8" = self.buildNodePackage {
-    name = "clean-css-3.4.8";
-    version = "3.4.8";
+    self.by-version."clean-css"."3.4.9";
+  by-version."clean-css"."3.4.9" = self.buildNodePackage {
+    name = "clean-css-3.4.9";
+    version = "3.4.9";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/clean-css/-/clean-css-3.4.8.tgz";
-      name = "clean-css-3.4.8.tgz";
-      sha1 = "5fc037a14a6821bb94fc1235f03c9b37266f9a95";
+      url = "http://registry.npmjs.org/clean-css/-/clean-css-3.4.9.tgz";
+      name = "clean-css-3.4.9.tgz";
+      sha1 = "954c49c34968763f50b05fd0dde44694cf9d2eb9";
     };
     deps = {
       "commander-2.8.1" = self.by-version."commander"."2.8.1";
@@ -1979,16 +1931,16 @@
   "coffee-script" = self.by-version."coffee-script"."1.10.0";
   by-spec."coffee-script"."^1.9.1" =
     self.by-version."coffee-script"."1.10.0";
-  by-spec."coffeelint"."^1.14.1" =
-    self.by-version."coffeelint"."1.14.1";
-  by-version."coffeelint"."1.14.1" = self.buildNodePackage {
-    name = "coffeelint-1.14.1";
-    version = "1.14.1";
+  by-spec."coffeelint"."^1.14.2" =
+    self.by-version."coffeelint"."1.14.2";
+  by-version."coffeelint"."1.14.2" = self.buildNodePackage {
+    name = "coffeelint-1.14.2";
+    version = "1.14.2";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/coffeelint/-/coffeelint-1.14.1.tgz";
-      name = "coffeelint-1.14.1.tgz";
-      sha1 = "87d4b60d1ee340dcead3349caf4c4a68287784fd";
+      url = "http://registry.npmjs.org/coffeelint/-/coffeelint-1.14.2.tgz";
+      name = "coffeelint-1.14.2.tgz";
+      sha1 = "42478843a974b8a967205bcdff5fc2d5d362bba5";
     };
     deps = {
       "coffee-script-1.10.0" = self.by-version."coffee-script"."1.10.0";
@@ -2004,7 +1956,107 @@
     os = [ ];
     cpu = [ ];
   };
-  "coffeelint" = self.by-version."coffeelint"."1.14.1";
+  "coffeelint" = self.by-version."coffeelint"."1.14.2";
+  by-spec."color"."^0.11.0" =
+    self.by-version."color"."0.11.1";
+  by-version."color"."0.11.1" = self.buildNodePackage {
+    name = "color-0.11.1";
+    version = "0.11.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/color/-/color-0.11.1.tgz";
+      name = "color-0.11.1.tgz";
+      sha1 = "19e357ce1872e191e8a91702b4ee1b0ed844187a";
+    };
+    deps = {
+      "color-convert-0.5.3" = self.by-version."color-convert"."0.5.3";
+      "color-string-0.3.0" = self.by-version."color-string"."0.3.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."color-convert"."^0.5.3" =
+    self.by-version."color-convert"."0.5.3";
+  by-version."color-convert"."0.5.3" = self.buildNodePackage {
+    name = "color-convert-0.5.3";
+    version = "0.5.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/color-convert/-/color-convert-0.5.3.tgz";
+      name = "color-convert-0.5.3.tgz";
+      sha1 = "bdb6c69ce660fadffe0b0007cc447e1b9f7282bd";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."color-name"."^1.0.0" =
+    self.by-version."color-name"."1.1.1";
+  by-version."color-name"."1.1.1" = self.buildNodePackage {
+    name = "color-name-1.1.1";
+    version = "1.1.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/color-name/-/color-name-1.1.1.tgz";
+      name = "color-name-1.1.1.tgz";
+      sha1 = "4b1415304cf50028ea81643643bd82ea05803689";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."color-string"."^0.3.0" =
+    self.by-version."color-string"."0.3.0";
+  by-version."color-string"."0.3.0" = self.buildNodePackage {
+    name = "color-string-0.3.0";
+    version = "0.3.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/color-string/-/color-string-0.3.0.tgz";
+      name = "color-string-0.3.0.tgz";
+      sha1 = "27d46fb67025c5c2fa25993bfbf579e47841b991";
+    };
+    deps = {
+      "color-name-1.1.1" = self.by-version."color-name"."1.1.1";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."colormin"."^1.0.5" =
+    self.by-version."colormin"."1.0.7";
+  by-version."colormin"."1.0.7" = self.buildNodePackage {
+    name = "colormin-1.0.7";
+    version = "1.0.7";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/colormin/-/colormin-1.0.7.tgz";
+      name = "colormin-1.0.7.tgz";
+      sha1 = "70c4da8c3cdbc39b5f32630e97ac625e05f83563";
+    };
+    deps = {
+      "color-0.11.1" = self.by-version."color"."0.11.1";
+      "css-color-names-0.0.3" = self.by-version."css-color-names"."0.0.3";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."colors"."^1.1.0" =
     self.by-version."colors"."1.1.2";
   by-version."colors"."1.1.2" = self.buildNodePackage {
@@ -2026,25 +2078,6 @@
   };
   by-spec."colors"."~1.1.2" =
     self.by-version."colors"."1.1.2";
-  by-spec."colr-convert"."^1.0.5" =
-    self.by-version."colr-convert"."1.0.5";
-  by-version."colr-convert"."1.0.5" = self.buildNodePackage {
-    name = "colr-convert-1.0.5";
-    version = "1.0.5";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/colr-convert/-/colr-convert-1.0.5.tgz";
-      name = "colr-convert-1.0.5.tgz";
-      sha1 = "b4a22c9322dfa238d2a80aa90736c11271841b71";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."combined-stream"."^1.0.5" =
     self.by-version."combined-stream"."1.0.5";
   by-version."combined-stream"."1.0.5" = self.buildNodePackage {
@@ -2203,6 +2236,27 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."component-emitter"."1.2.0" =
+    self.by-version."component-emitter"."1.2.0";
+  by-version."component-emitter"."1.2.0" = self.buildNodePackage {
+    name = "component-emitter-1.2.0";
+    version = "1.2.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/component-emitter/-/component-emitter-1.2.0.tgz";
+      name = "component-emitter-1.2.0.tgz";
+      sha1 = "ccd113a86388d06482d03de3fc7df98526ba8efe";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."component-emitter"."~1.2.0" =
+    self.by-version."component-emitter"."1.2.0";
   by-spec."component-inherit"."0.0.3" =
     self.by-version."component-inherit"."0.0.3";
   by-version."component-inherit"."0.0.3" = self.buildNodePackage {
@@ -2222,19 +2276,19 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."compressible"."~2.0.6" =
-    self.by-version."compressible"."2.0.6";
-  by-version."compressible"."2.0.6" = self.buildNodePackage {
-    name = "compressible-2.0.6";
-    version = "2.0.6";
+  by-spec."compressible"."~2.0.7" =
+    self.by-version."compressible"."2.0.7";
+  by-version."compressible"."2.0.7" = self.buildNodePackage {
+    name = "compressible-2.0.7";
+    version = "2.0.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/compressible/-/compressible-2.0.6.tgz";
-      name = "compressible-2.0.6.tgz";
-      sha1 = "9e4aa9321ffcf9cc4d81954f7aafa9f35767d5ea";
+      url = "http://registry.npmjs.org/compressible/-/compressible-2.0.7.tgz";
+      name = "compressible-2.0.7.tgz";
+      sha1 = "2058c52722fd3f1538a4f22ab14d0635904d19ae";
     };
     deps = {
-      "mime-db-1.20.0" = self.by-version."mime-db"."1.20.0";
+      "mime-db-1.21.0" = self.by-version."mime-db"."1.21.0";
     };
     optionalDependencies = {
     };
@@ -2243,20 +2297,20 @@
     cpu = [ ];
   };
   by-spec."compression"."^1.5.2" =
-    self.by-version."compression"."1.6.0";
-  by-version."compression"."1.6.0" = self.buildNodePackage {
-    name = "compression-1.6.0";
-    version = "1.6.0";
+    self.by-version."compression"."1.6.1";
+  by-version."compression"."1.6.1" = self.buildNodePackage {
+    name = "compression-1.6.1";
+    version = "1.6.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/compression/-/compression-1.6.0.tgz";
-      name = "compression-1.6.0.tgz";
-      sha1 = "886465ffa4a19f9b73b41682db77d28179b30920";
+      url = "http://registry.npmjs.org/compression/-/compression-1.6.1.tgz";
+      name = "compression-1.6.1.tgz";
+      sha1 = "1bf4f96fd72019a3fd11513b4fc4dcd3bd16db55";
     };
     deps = {
-      "accepts-1.3.0" = self.by-version."accepts"."1.3.0";
-      "bytes-2.1.0" = self.by-version."bytes"."2.1.0";
-      "compressible-2.0.6" = self.by-version."compressible"."2.0.6";
+      "accepts-1.3.1" = self.by-version."accepts"."1.3.1";
+      "bytes-2.2.0" = self.by-version."bytes"."2.2.0";
+      "compressible-2.0.7" = self.by-version."compressible"."2.0.7";
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
       "on-headers-1.0.1" = self.by-version."on-headers"."1.0.1";
       "vary-1.1.0" = self.by-version."vary"."1.1.0";
@@ -2300,7 +2354,7 @@
     deps = {
       "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "typedarray-0.0.6" = self.by-version."typedarray"."0.0.6";
-      "readable-stream-2.0.4" = self.by-version."readable-stream"."2.0.4";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -2311,15 +2365,15 @@
   by-spec."concat-stream"."^1.4.7" =
     self.by-version."concat-stream"."1.5.1";
   by-spec."config-chain"."~1.1.8" =
-    self.by-version."config-chain"."1.1.9";
-  by-version."config-chain"."1.1.9" = self.buildNodePackage {
-    name = "config-chain-1.1.9";
-    version = "1.1.9";
+    self.by-version."config-chain"."1.1.10";
+  by-version."config-chain"."1.1.10" = self.buildNodePackage {
+    name = "config-chain-1.1.10";
+    version = "1.1.10";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/config-chain/-/config-chain-1.1.9.tgz";
-      name = "config-chain-1.1.9.tgz";
-      sha1 = "39ac7d4dca84faad926124c54cff25a53aa8bf6e";
+      url = "http://registry.npmjs.org/config-chain/-/config-chain-1.1.10.tgz";
+      name = "config-chain-1.1.10.tgz";
+      sha1 = "7fc383de0fcc84d711cb465bd176579cad612346";
     };
     deps = {
       "proto-list-1.2.4" = self.by-version."proto-list"."1.2.4";
@@ -2332,20 +2386,20 @@
     cpu = [ ];
   };
   by-spec."connect"."^3.3.5" =
-    self.by-version."connect"."3.4.0";
-  by-version."connect"."3.4.0" = self.buildNodePackage {
-    name = "connect-3.4.0";
-    version = "3.4.0";
+    self.by-version."connect"."3.4.1";
+  by-version."connect"."3.4.1" = self.buildNodePackage {
+    name = "connect-3.4.1";
+    version = "3.4.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/connect/-/connect-3.4.0.tgz";
-      name = "connect-3.4.0.tgz";
-      sha1 = "ee8789a3bd4604bfda39dbcf1d3bb482dfe6cf24";
+      url = "http://registry.npmjs.org/connect/-/connect-3.4.1.tgz";
+      name = "connect-3.4.1.tgz";
+      sha1 = "a21361d3f4099ef761cda6dc4a973bb1ebb0a34d";
     };
     deps = {
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
-      "finalhandler-0.4.0" = self.by-version."finalhandler"."0.4.0";
-      "parseurl-1.3.0" = self.by-version."parseurl"."1.3.0";
+      "finalhandler-0.4.1" = self.by-version."finalhandler"."0.4.1";
+      "parseurl-1.3.1" = self.by-version."parseurl"."1.3.1";
       "utils-merge-1.0.0" = self.by-version."utils-merge"."1.0.0";
     };
     optionalDependencies = {
@@ -2394,19 +2448,19 @@
     cpu = [ ];
   };
   by-spec."constant-case"."^1.1.0" =
-    self.by-version."constant-case"."1.1.1";
-  by-version."constant-case"."1.1.1" = self.buildNodePackage {
-    name = "constant-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."constant-case"."1.1.2";
+  by-version."constant-case"."1.1.2" = self.buildNodePackage {
+    name = "constant-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/constant-case/-/constant-case-1.1.1.tgz";
-      name = "constant-case-1.1.1.tgz";
-      sha1 = "5798b36fb26dc26ec21e67f65473efadc4825cf6";
+      url = "http://registry.npmjs.org/constant-case/-/constant-case-1.1.2.tgz";
+      name = "constant-case-1.1.2.tgz";
+      sha1 = "8ec2ca5ba343e00aa38dbf4e200fd5ac907efd63";
     };
     deps = {
-      "snake-case-1.1.1" = self.by-version."snake-case"."1.1.1";
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "snake-case-1.1.2" = self.by-version."snake-case"."1.1.2";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -2433,16 +2487,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."content-disposition"."0.5.0" =
-    self.by-version."content-disposition"."0.5.0";
-  by-version."content-disposition"."0.5.0" = self.buildNodePackage {
-    name = "content-disposition-0.5.0";
-    version = "0.5.0";
+  by-spec."content-disposition"."0.5.1" =
+    self.by-version."content-disposition"."0.5.1";
+  by-version."content-disposition"."0.5.1" = self.buildNodePackage {
+    name = "content-disposition-0.5.1";
+    version = "0.5.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/content-disposition/-/content-disposition-0.5.0.tgz";
-      name = "content-disposition-0.5.0.tgz";
-      sha1 = "4284fe6ae0630874639e44e80a418c2934135e9e";
+      url = "http://registry.npmjs.org/content-disposition/-/content-disposition-0.5.1.tgz";
+      name = "content-disposition-0.5.1.tgz";
+      sha1 = "87476c6a67c8daa87e32e87616df883ba7fb071b";
     };
     deps = {
     };
@@ -2471,16 +2525,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."cookie"."0.1.3" =
-    self.by-version."cookie"."0.1.3";
-  by-version."cookie"."0.1.3" = self.buildNodePackage {
-    name = "cookie-0.1.3";
-    version = "0.1.3";
+  by-spec."cookie"."0.1.5" =
+    self.by-version."cookie"."0.1.5";
+  by-version."cookie"."0.1.5" = self.buildNodePackage {
+    name = "cookie-0.1.5";
+    version = "0.1.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/cookie/-/cookie-0.1.3.tgz";
-      name = "cookie-0.1.3.tgz";
-      sha1 = "e734a5c1417fce472d5aef82c381cabb64d1a435";
+      url = "http://registry.npmjs.org/cookie/-/cookie-0.1.5.tgz";
+      name = "cookie-0.1.5.tgz";
+      sha1 = "6ab9948a4b1ae21952cd2588530a4722d4044d7c";
     };
     deps = {
     };
@@ -2509,16 +2563,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."cookiejar"."2.0.1" =
-    self.by-version."cookiejar"."2.0.1";
-  by-version."cookiejar"."2.0.1" = self.buildNodePackage {
-    name = "cookiejar-2.0.1";
-    version = "2.0.1";
+  by-spec."cookiejar"."2.0.6" =
+    self.by-version."cookiejar"."2.0.6";
+  by-version."cookiejar"."2.0.6" = self.buildNodePackage {
+    name = "cookiejar-2.0.6";
+    version = "2.0.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/cookiejar/-/cookiejar-2.0.1.tgz";
-      name = "cookiejar-2.0.1.tgz";
-      sha1 = "3d12752f6adf68a892f332433492bd5812bb668f";
+      url = "http://registry.npmjs.org/cookiejar/-/cookiejar-2.0.6.tgz";
+      name = "cookiejar-2.0.6.tgz";
+      sha1 = "0abf356ad00d1c5a219d88d44518046dd026acfe";
     };
     deps = {
     };
@@ -2547,8 +2601,25 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."core-js"."^1.2.2" =
-    self.by-version."core-js"."1.2.6";
+  by-spec."core-js"."^2.0.2" =
+    self.by-version."core-js"."2.0.3";
+  by-version."core-js"."2.0.3" = self.buildNodePackage {
+    name = "core-js-2.0.3";
+    version = "2.0.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/core-js/-/core-js-2.0.3.tgz";
+      name = "core-js-2.0.3.tgz";
+      sha1 = "50875bfd128723373b8400f6bfcfe75134548cd2";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."core-util-is"."~1.0.0" =
     self.by-version."core-util-is"."1.0.2";
   by-version."core-util-is"."1.0.2" = self.buildNodePackage {
@@ -2569,19 +2640,19 @@
     cpu = [ ];
   };
   by-spec."cross-spawn"."^2.0.0" =
-    self.by-version."cross-spawn"."2.0.1";
-  by-version."cross-spawn"."2.0.1" = self.buildNodePackage {
-    name = "cross-spawn-2.0.1";
-    version = "2.0.1";
+    self.by-version."cross-spawn"."2.1.4";
+  by-version."cross-spawn"."2.1.4" = self.buildNodePackage {
+    name = "cross-spawn-2.1.4";
+    version = "2.1.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/cross-spawn/-/cross-spawn-2.0.1.tgz";
-      name = "cross-spawn-2.0.1.tgz";
-      sha1 = "ab6fd893a099759d9b85220e3a64397de946b0f6";
+      url = "http://registry.npmjs.org/cross-spawn/-/cross-spawn-2.1.4.tgz";
+      name = "cross-spawn-2.1.4.tgz";
+      sha1 = "e64441b7a038e929ccc6e24e2aa7b72a96b26a27";
     };
     deps = {
-      "cross-spawn-async-2.0.1" = self.by-version."cross-spawn-async"."2.0.1";
-      "spawn-sync-1.0.13" = self.by-version."spawn-sync"."1.0.13";
+      "cross-spawn-async-2.1.6" = self.by-version."cross-spawn-async"."2.1.6";
+      "spawn-sync-1.0.15" = self.by-version."spawn-sync"."1.0.15";
     };
     optionalDependencies = {
     };
@@ -2590,19 +2661,19 @@
     cpu = [ ];
   };
   by-spec."cross-spawn-async"."^2.0.0" =
-    self.by-version."cross-spawn-async"."2.0.1";
-  by-version."cross-spawn-async"."2.0.1" = self.buildNodePackage {
-    name = "cross-spawn-async-2.0.1";
-    version = "2.0.1";
+    self.by-version."cross-spawn-async"."2.1.6";
+  by-version."cross-spawn-async"."2.1.6" = self.buildNodePackage {
+    name = "cross-spawn-async-2.1.6";
+    version = "2.1.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/cross-spawn-async/-/cross-spawn-async-2.0.1.tgz";
-      name = "cross-spawn-async-2.0.1.tgz";
-      sha1 = "08067a895d7177adebe3933fc99300b9a2bd7d33";
+      url = "http://registry.npmjs.org/cross-spawn-async/-/cross-spawn-async-2.1.6.tgz";
+      name = "cross-spawn-async-2.1.6.tgz";
+      sha1 = "bba3739e5442236830c53d750225243c792f0512";
     };
     deps = {
-      "lru-cache-3.2.0" = self.by-version."lru-cache"."3.2.0";
-      "which-1.2.0" = self.by-version."which"."1.2.0";
+      "lru-cache-4.0.0" = self.by-version."lru-cache"."4.0.0";
+      "which-1.2.2" = self.by-version."which"."1.2.2";
     };
     optionalDependencies = {
     };
@@ -2691,16 +2762,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."css-color-names"."0.0.2" =
-    self.by-version."css-color-names"."0.0.2";
-  by-version."css-color-names"."0.0.2" = self.buildNodePackage {
-    name = "css-color-names-0.0.2";
-    version = "0.0.2";
+  by-spec."css-color-names"."0.0.3" =
+    self.by-version."css-color-names"."0.0.3";
+  by-version."css-color-names"."0.0.3" = self.buildNodePackage {
+    name = "css-color-names-0.0.3";
+    version = "0.0.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/css-color-names/-/css-color-names-0.0.2.tgz";
-      name = "css-color-names-0.0.2.tgz";
-      sha1 = "fba18e8cff86579572d749c146c47ee83f0ea955";
+      url = "http://registry.npmjs.org/css-color-names/-/css-color-names-0.0.3.tgz";
+      name = "css-color-names-0.0.3.tgz";
+      sha1 = "de0cef16f4d8aa8222a320d5b6d7e9bbada7b9f6";
     };
     deps = {
     };
@@ -2710,26 +2781,26 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."css-loader"."^0.23.0" =
-    self.by-version."css-loader"."0.23.0";
-  by-version."css-loader"."0.23.0" = self.buildNodePackage {
-    name = "css-loader-0.23.0";
-    version = "0.23.0";
+  by-spec."css-loader"."^0.23.1" =
+    self.by-version."css-loader"."0.23.1";
+  by-version."css-loader"."0.23.1" = self.buildNodePackage {
+    name = "css-loader-0.23.1";
+    version = "0.23.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/css-loader/-/css-loader-0.23.0.tgz";
-      name = "css-loader-0.23.0.tgz";
-      sha1 = "bddbb3cafe72aa66f8c4faf69210ad1312208f79";
+      url = "http://registry.npmjs.org/css-loader/-/css-loader-0.23.1.tgz";
+      name = "css-loader-0.23.1.tgz";
+      sha1 = "9fa23f2b5c0965235910ad5ecef3b8a36390fe50";
     };
     deps = {
       "css-selector-tokenizer-0.5.4" = self.by-version."css-selector-tokenizer"."0.5.4";
-      "cssnano-3.3.2" = self.by-version."cssnano"."3.3.2";
+      "cssnano-3.4.0" = self.by-version."cssnano"."3.4.0";
       "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
       "lodash.camelcase-3.0.1" = self.by-version."lodash.camelcase"."3.0.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
       "postcss-modules-extract-imports-1.0.0" = self.by-version."postcss-modules-extract-imports"."1.0.0";
-      "postcss-modules-local-by-default-1.0.0" = self.by-version."postcss-modules-local-by-default"."1.0.0";
+      "postcss-modules-local-by-default-1.0.1" = self.by-version."postcss-modules-local-by-default"."1.0.1";
       "postcss-modules-scope-1.0.0" = self.by-version."postcss-modules-scope"."1.0.0";
       "postcss-modules-values-1.1.1" = self.by-version."postcss-modules-values"."1.1.1";
       "source-list-map-0.1.5" = self.by-version."source-list-map"."0.1.5";
@@ -2740,7 +2811,7 @@
     os = [ ];
     cpu = [ ];
   };
-  "css-loader" = self.by-version."css-loader"."0.23.0";
+  "css-loader" = self.by-version."css-loader"."0.23.1";
   by-spec."css-parse"."1.7.x" =
     self.by-version."css-parse"."1.7.0";
   by-version."css-parse"."1.7.0" = self.buildNodePackage {
@@ -2753,6 +2824,29 @@
       sha1 = "321f6cf73782a6ff751111390fc05e2c657d8c9b";
     };
     deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."css-select"."^1.1.0" =
+    self.by-version."css-select"."1.2.0";
+  by-version."css-select"."1.2.0" = self.buildNodePackage {
+    name = "css-select-1.2.0";
+    version = "1.2.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/css-select/-/css-select-1.2.0.tgz";
+      name = "css-select-1.2.0.tgz";
+      sha1 = "2b3a110539c5355f1cd8d314623e870b121ec858";
+    };
+    deps = {
+      "css-what-2.1.0" = self.by-version."css-what"."2.1.0";
+      "domutils-1.5.1" = self.by-version."domutils"."1.5.1";
+      "boolbase-1.0.0" = self.by-version."boolbase"."1.0.0";
+      "nth-check-1.0.1" = self.by-version."nth-check"."1.0.1";
     };
     optionalDependencies = {
     };
@@ -2783,6 +2877,25 @@
   };
   by-spec."css-selector-tokenizer"."^0.5.1" =
     self.by-version."css-selector-tokenizer"."0.5.4";
+  by-spec."css-what"."2.1" =
+    self.by-version."css-what"."2.1.0";
+  by-version."css-what"."2.1.0" = self.buildNodePackage {
+    name = "css-what-2.1.0";
+    version = "2.1.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/css-what/-/css-what-2.1.0.tgz";
+      name = "css-what-2.1.0.tgz";
+      sha1 = "9467d032c38cfaefb9f2d79501253062f87fa1bd";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."cssesc"."^0.1.0" =
     self.by-version."cssesc"."0.1.0";
   by-version."cssesc"."0.1.0" = self.buildNodePackage {
@@ -2803,46 +2916,67 @@
     cpu = [ ];
   };
   by-spec."cssnano".">=2.6.1 <4" =
-    self.by-version."cssnano"."3.3.2";
-  by-version."cssnano"."3.3.2" = self.buildNodePackage {
-    name = "cssnano-3.3.2";
-    version = "3.3.2";
+    self.by-version."cssnano"."3.4.0";
+  by-version."cssnano"."3.4.0" = self.buildNodePackage {
+    name = "cssnano-3.4.0";
+    version = "3.4.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/cssnano/-/cssnano-3.3.2.tgz";
-      name = "cssnano-3.3.2.tgz";
-      sha1 = "76b87bc02421c7eb8f70f5df7f59d7509656b910";
+      url = "http://registry.npmjs.org/cssnano/-/cssnano-3.4.0.tgz";
+      name = "cssnano-3.4.0.tgz";
+      sha1 = "14d391032de4760d22e5db9f1fec1f0868e4bbb7";
     };
     deps = {
-      "autoprefixer-6.1.1" = self.by-version."autoprefixer"."6.1.1";
-      "decamelize-1.1.1" = self.by-version."decamelize"."1.1.1";
+      "autoprefixer-6.3.1" = self.by-version."autoprefixer"."6.3.1";
+      "decamelize-1.1.2" = self.by-version."decamelize"."1.1.2";
       "defined-1.0.0" = self.by-version."defined"."1.0.0";
       "indexes-of-1.0.1" = self.by-version."indexes-of"."1.0.1";
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-calc-5.0.0" = self.by-version."postcss-calc"."5.0.0";
-      "postcss-colormin-2.1.7" = self.by-version."postcss-colormin"."2.1.7";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-calc-5.2.0" = self.by-version."postcss-calc"."5.2.0";
+      "postcss-colormin-2.1.8" = self.by-version."postcss-colormin"."2.1.8";
       "postcss-convert-values-2.3.4" = self.by-version."postcss-convert-values"."2.3.4";
-      "postcss-discard-comments-2.0.2" = self.by-version."postcss-discard-comments"."2.0.2";
+      "postcss-discard-comments-2.0.3" = self.by-version."postcss-discard-comments"."2.0.3";
       "postcss-discard-duplicates-2.0.0" = self.by-version."postcss-discard-duplicates"."2.0.0";
       "postcss-discard-empty-2.0.0" = self.by-version."postcss-discard-empty"."2.0.0";
       "postcss-discard-unused-2.1.0" = self.by-version."postcss-discard-unused"."2.1.0";
       "postcss-filter-plugins-2.0.0" = self.by-version."postcss-filter-plugins"."2.0.0";
-      "postcss-merge-idents-2.1.3" = self.by-version."postcss-merge-idents"."2.1.3";
+      "postcss-merge-idents-2.1.4" = self.by-version."postcss-merge-idents"."2.1.4";
       "postcss-merge-longhand-2.0.1" = self.by-version."postcss-merge-longhand"."2.0.1";
-      "postcss-merge-rules-2.0.2" = self.by-version."postcss-merge-rules"."2.0.2";
+      "postcss-merge-rules-2.0.3" = self.by-version."postcss-merge-rules"."2.0.3";
       "postcss-minify-font-values-1.0.2" = self.by-version."postcss-minify-font-values"."1.0.2";
+      "postcss-minify-gradients-1.0.1" = self.by-version."postcss-minify-gradients"."1.0.1";
       "postcss-minify-params-1.0.4" = self.by-version."postcss-minify-params"."1.0.4";
-      "postcss-minify-selectors-2.0.1" = self.by-version."postcss-minify-selectors"."2.0.1";
+      "postcss-minify-selectors-2.0.3" = self.by-version."postcss-minify-selectors"."2.0.3";
       "postcss-normalize-charset-1.1.0" = self.by-version."postcss-normalize-charset"."1.1.0";
-      "postcss-normalize-url-3.0.4" = self.by-version."postcss-normalize-url"."3.0.4";
+      "postcss-normalize-url-3.0.5" = self.by-version."postcss-normalize-url"."3.0.5";
       "postcss-ordered-values-2.0.2" = self.by-version."postcss-ordered-values"."2.0.2";
       "postcss-reduce-idents-2.2.1" = self.by-version."postcss-reduce-idents"."2.2.1";
       "postcss-reduce-transforms-1.0.3" = self.by-version."postcss-reduce-transforms"."1.0.3";
-      "postcss-svgo-2.1.0" = self.by-version."postcss-svgo"."2.1.0";
+      "postcss-svgo-2.1.1" = self.by-version."postcss-svgo"."2.1.1";
       "postcss-unique-selectors-2.0.1" = self.by-version."postcss-unique-selectors"."2.0.1";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
-      "postcss-zindex-2.0.0" = self.by-version."postcss-zindex"."2.0.0";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
+      "postcss-zindex-2.0.1" = self.by-version."postcss-zindex"."2.0.1";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."csso"."~1.4.2" =
+    self.by-version."csso"."1.4.4";
+  by-version."csso"."1.4.4" = self.buildNodePackage {
+    name = "csso-1.4.4";
+    version = "1.4.4";
+    bin = true;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/csso/-/csso-1.4.4.tgz";
+      name = "csso-1.4.4.tgz";
+      sha1 = "0aebfa5093ef30ccac6db3ff5759dfca621b6b6a";
+    };
+    deps = {
+      "clap-1.0.10" = self.by-version."clap"."1.0.10";
     };
     optionalDependencies = {
     };
@@ -2888,19 +3022,41 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."dashdash".">=1.10.1 <2.0.0" =
-    self.by-version."dashdash"."1.10.1";
-  by-version."dashdash"."1.10.1" = self.buildNodePackage {
-    name = "dashdash-1.10.1";
-    version = "1.10.1";
+  by-spec."d"."^0.1.1" =
+    self.by-version."d"."0.1.1";
+  by-version."d"."0.1.1" = self.buildNodePackage {
+    name = "d-0.1.1";
+    version = "0.1.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/dashdash/-/dashdash-1.10.1.tgz";
-      name = "dashdash-1.10.1.tgz";
-      sha1 = "0abf1af89a8f5129a81f18c2b35b21df22622f60";
+      url = "http://registry.npmjs.org/d/-/d-0.1.1.tgz";
+      name = "d-0.1.1.tgz";
+      sha1 = "da184c535d18d8ee7ba2aa229b914009fae11309";
     };
     deps = {
-      "assert-plus-0.1.5" = self.by-version."assert-plus"."0.1.5";
+      "es5-ext-0.10.11" = self.by-version."es5-ext"."0.10.11";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."d"."~0.1.1" =
+    self.by-version."d"."0.1.1";
+  by-spec."dashdash".">=1.10.1 <2.0.0" =
+    self.by-version."dashdash"."1.12.2";
+  by-version."dashdash"."1.12.2" = self.buildNodePackage {
+    name = "dashdash-1.12.2";
+    version = "1.12.2";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/dashdash/-/dashdash-1.12.2.tgz";
+      name = "dashdash-1.12.2.tgz";
+      sha1 = "1c6f70588498d047b8cd5777b32ba85a5e25be36";
+    };
+    deps = {
+      "assert-plus-0.2.0" = self.by-version."assert-plus"."0.2.0";
     };
     optionalDependencies = {
     };
@@ -2966,108 +3122,31 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."debug"."1.0.2" =
-    self.by-version."debug"."1.0.2";
-  by-version."debug"."1.0.2" = self.buildNodePackage {
-    name = "debug-1.0.2";
-    version = "1.0.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/debug/-/debug-1.0.2.tgz";
-      name = "debug-1.0.2.tgz";
-      sha1 = "3849591c10cce648476c3c7c2e2e3416db5963c4";
-    };
-    deps = {
-      "ms-0.6.2" = self.by-version."ms"."0.6.2";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."debug"."1.0.3" =
-    self.by-version."debug"."1.0.3";
-  by-version."debug"."1.0.3" = self.buildNodePackage {
-    name = "debug-1.0.3";
-    version = "1.0.3";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/debug/-/debug-1.0.3.tgz";
-      name = "debug-1.0.3.tgz";
-      sha1 = "fc8c6b2d6002804b4081c0208e0f6460ba1fa3e4";
-    };
-    deps = {
-      "ms-0.6.2" = self.by-version."ms"."0.6.2";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."debug"."1.0.4" =
-    self.by-version."debug"."1.0.4";
-  by-version."debug"."1.0.4" = self.buildNodePackage {
-    name = "debug-1.0.4";
-    version = "1.0.4";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/debug/-/debug-1.0.4.tgz";
-      name = "debug-1.0.4.tgz";
-      sha1 = "5b9c256bd54b6ec02283176fa8a0ede6d154cbf8";
-    };
-    deps = {
-      "ms-0.6.2" = self.by-version."ms"."0.6.2";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."debug"."2" =
     self.by-version."debug"."2.2.0";
-  by-spec."debug"."2.1.0" =
-    self.by-version."debug"."2.1.0";
-  by-version."debug"."2.1.0" = self.buildNodePackage {
-    name = "debug-2.1.0";
-    version = "2.1.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/debug/-/debug-2.1.0.tgz";
-      name = "debug-2.1.0.tgz";
-      sha1 = "33ab915659d8c2cc8a41443d94d6ebd37697ed21";
-    };
-    deps = {
-      "ms-0.6.2" = self.by-version."ms"."0.6.2";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."debug"."2.2.0" =
     self.by-version."debug"."2.2.0";
   by-spec."debug"."^2.1.0" =
+    self.by-version."debug"."2.2.0";
+  by-spec."debug"."^2.2.0" =
     self.by-version."debug"."2.2.0";
   by-spec."debug"."~0.7.2" =
     self.by-version."debug"."0.7.4";
   by-spec."debug"."~2.2.0" =
     self.by-version."debug"."2.2.0";
   by-spec."decamelize"."^1.0.0" =
-    self.by-version."decamelize"."1.1.1";
-  by-version."decamelize"."1.1.1" = self.buildNodePackage {
-    name = "decamelize-1.1.1";
-    version = "1.1.1";
+    self.by-version."decamelize"."1.1.2";
+  by-version."decamelize"."1.1.2" = self.buildNodePackage {
+    name = "decamelize-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/decamelize/-/decamelize-1.1.1.tgz";
-      name = "decamelize-1.1.1.tgz";
-      sha1 = "8871479a6c0487f5653d48a992f1d0381ca6f031";
+      url = "http://registry.npmjs.org/decamelize/-/decamelize-1.1.2.tgz";
+      name = "decamelize-1.1.2.tgz";
+      sha1 = "dcc93727be209632e98b02718ef4cb79602322f2";
     };
     deps = {
+      "escape-string-regexp-1.0.4" = self.by-version."escape-string-regexp"."1.0.4";
     };
     optionalDependencies = {
     };
@@ -3076,9 +3155,11 @@
     cpu = [ ];
   };
   by-spec."decamelize"."^1.1.0" =
-    self.by-version."decamelize"."1.1.1";
+    self.by-version."decamelize"."1.1.2";
   by-spec."decamelize"."^1.1.1" =
-    self.by-version."decamelize"."1.1.1";
+    self.by-version."decamelize"."1.1.2";
+  by-spec."decamelize"."^1.1.2" =
+    self.by-version."decamelize"."1.1.2";
   by-spec."deep-eql"."^0.1.3" =
     self.by-version."deep-eql"."0.1.3";
   by-version."deep-eql"."0.1.3" = self.buildNodePackage {
@@ -3119,15 +3200,15 @@
     cpu = [ ];
   };
   by-spec."deep-extend"."~0.4.0" =
-    self.by-version."deep-extend"."0.4.0";
-  by-version."deep-extend"."0.4.0" = self.buildNodePackage {
-    name = "deep-extend-0.4.0";
-    version = "0.4.0";
+    self.by-version."deep-extend"."0.4.1";
+  by-version."deep-extend"."0.4.1" = self.buildNodePackage {
+    name = "deep-extend-0.4.1";
+    version = "0.4.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/deep-extend/-/deep-extend-0.4.0.tgz";
-      name = "deep-extend-0.4.0.tgz";
-      sha1 = "f58b46db58eb5d6439cdd0f2e6cafb4739fc1283";
+      url = "http://registry.npmjs.org/deep-extend/-/deep-extend-0.4.1.tgz";
+      name = "deep-extend-0.4.1.tgz";
+      sha1 = "efe4113d08085f4e6f9687759810f807469e2253";
     };
     deps = {
     };
@@ -3213,25 +3294,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."depd"."~1.0.1" =
-    self.by-version."depd"."1.0.1";
-  by-version."depd"."1.0.1" = self.buildNodePackage {
-    name = "depd-1.0.1";
-    version = "1.0.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/depd/-/depd-1.0.1.tgz";
-      name = "depd-1.0.1.tgz";
-      sha1 = "80aec64c9d6d97e65cc2a9caa93c0aa6abf73aaa";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."depd"."~1.1.0" =
     self.by-version."depd"."1.1.0";
   by-version."depd"."1.1.0" = self.buildNodePackage {
@@ -3251,16 +3313,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."destroy"."1.0.3" =
-    self.by-version."destroy"."1.0.3";
-  by-version."destroy"."1.0.3" = self.buildNodePackage {
-    name = "destroy-1.0.3";
-    version = "1.0.3";
+  by-spec."destroy"."~1.0.4" =
+    self.by-version."destroy"."1.0.4";
+  by-version."destroy"."1.0.4" = self.buildNodePackage {
+    name = "destroy-1.0.4";
+    version = "1.0.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/destroy/-/destroy-1.0.3.tgz";
-      name = "destroy-1.0.3.tgz";
-      sha1 = "b433b4724e71fd8551d9885174851c5fc377e2c9";
+      url = "http://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz";
+      name = "destroy-1.0.4.tgz";
+      sha1 = "978857442c44749e4206613e37946205826abd80";
     };
     deps = {
     };
@@ -3308,6 +3370,26 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."dom-converter"."~0.1" =
+    self.by-version."dom-converter"."0.1.4";
+  by-version."dom-converter"."0.1.4" = self.buildNodePackage {
+    name = "dom-converter-0.1.4";
+    version = "0.1.4";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/dom-converter/-/dom-converter-0.1.4.tgz";
+      name = "dom-converter-0.1.4.tgz";
+      sha1 = "a45ef5727b890c9bffe6d7c876e7b19cb0e17f3b";
+    };
+    deps = {
+      "utila-0.3.3" = self.by-version."utila"."0.3.3";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."dom-serialize"."^2.2.0" =
     self.by-version."dom-serialize"."2.2.1";
   by-version."dom-serialize"."2.2.1" = self.buildNodePackage {
@@ -3331,16 +3413,37 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."domain-browser"."^1.1.1" =
-    self.by-version."domain-browser"."1.1.4";
-  by-version."domain-browser"."1.1.4" = self.buildNodePackage {
-    name = "domain-browser-1.1.4";
-    version = "1.1.4";
+  by-spec."dom-serializer"."0" =
+    self.by-version."dom-serializer"."0.1.0";
+  by-version."dom-serializer"."0.1.0" = self.buildNodePackage {
+    name = "dom-serializer-0.1.0";
+    version = "0.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/domain-browser/-/domain-browser-1.1.4.tgz";
-      name = "domain-browser-1.1.4.tgz";
-      sha1 = "90b42769333e909ce3f13bf3e1023ba4a6d6b723";
+      url = "http://registry.npmjs.org/dom-serializer/-/dom-serializer-0.1.0.tgz";
+      name = "dom-serializer-0.1.0.tgz";
+      sha1 = "073c697546ce0780ce23be4a28e293e40bc30c82";
+    };
+    deps = {
+      "domelementtype-1.1.3" = self.by-version."domelementtype"."1.1.3";
+      "entities-1.1.1" = self.by-version."entities"."1.1.1";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."domain-browser"."^1.1.1" =
+    self.by-version."domain-browser"."1.1.7";
+  by-version."domain-browser"."1.1.7" = self.buildNodePackage {
+    name = "domain-browser-1.1.7";
+    version = "1.1.7";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/domain-browser/-/domain-browser-1.1.7.tgz";
+      name = "domain-browser-1.1.7.tgz";
+      sha1 = "867aa4b093faa05f1de08c06f4d7b21fdf8698bc";
     };
     deps = {
     };
@@ -3350,19 +3453,118 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."dot-case"."^1.1.0" =
-    self.by-version."dot-case"."1.1.1";
-  by-version."dot-case"."1.1.1" = self.buildNodePackage {
-    name = "dot-case-1.1.1";
-    version = "1.1.1";
+  by-spec."domelementtype"."1" =
+    self.by-version."domelementtype"."1.3.0";
+  by-version."domelementtype"."1.3.0" = self.buildNodePackage {
+    name = "domelementtype-1.3.0";
+    version = "1.3.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/dot-case/-/dot-case-1.1.1.tgz";
-      name = "dot-case-1.1.1.tgz";
-      sha1 = "9c183e7aa0fac8cdb71c55db78340aa805f01d71";
+      url = "http://registry.npmjs.org/domelementtype/-/domelementtype-1.3.0.tgz";
+      name = "domelementtype-1.3.0.tgz";
+      sha1 = "b17aed82e8ab59e52dd9c19b1756e0fc187204c2";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."domelementtype"."~1.1.1" =
+    self.by-version."domelementtype"."1.1.3";
+  by-version."domelementtype"."1.1.3" = self.buildNodePackage {
+    name = "domelementtype-1.1.3";
+    version = "1.1.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/domelementtype/-/domelementtype-1.1.3.tgz";
+      name = "domelementtype-1.1.3.tgz";
+      sha1 = "bd28773e2642881aec51544924299c5cd822185b";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."domhandler"."2.1" =
+    self.by-version."domhandler"."2.1.0";
+  by-version."domhandler"."2.1.0" = self.buildNodePackage {
+    name = "domhandler-2.1.0";
+    version = "2.1.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/domhandler/-/domhandler-2.1.0.tgz";
+      name = "domhandler-2.1.0.tgz";
+      sha1 = "d2646f5e57f6c3bab11cf6cb05d3c0acf7412594";
+    };
+    deps = {
+      "domelementtype-1.3.0" = self.by-version."domelementtype"."1.3.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."domutils"."1.1" =
+    self.by-version."domutils"."1.1.6";
+  by-version."domutils"."1.1.6" = self.buildNodePackage {
+    name = "domutils-1.1.6";
+    version = "1.1.6";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/domutils/-/domutils-1.1.6.tgz";
+      name = "domutils-1.1.6.tgz";
+      sha1 = "bddc3de099b9a2efacc51c623f28f416ecc57485";
+    };
+    deps = {
+      "domelementtype-1.3.0" = self.by-version."domelementtype"."1.3.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."domutils"."1.5.1" =
+    self.by-version."domutils"."1.5.1";
+  by-version."domutils"."1.5.1" = self.buildNodePackage {
+    name = "domutils-1.5.1";
+    version = "1.5.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/domutils/-/domutils-1.5.1.tgz";
+      name = "domutils-1.5.1.tgz";
+      sha1 = "dcd8488a26f563d61079e48c9f7b7e32373682cf";
+    };
+    deps = {
+      "dom-serializer-0.1.0" = self.by-version."dom-serializer"."0.1.0";
+      "domelementtype-1.3.0" = self.by-version."domelementtype"."1.3.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."dot-case"."^1.1.0" =
+    self.by-version."dot-case"."1.1.2";
+  by-version."dot-case"."1.1.2" = self.buildNodePackage {
+    name = "dot-case-1.1.2";
+    version = "1.1.2";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/dot-case/-/dot-case-1.1.2.tgz";
+      name = "dot-case-1.1.2.tgz";
+      sha1 = "1e73826900de28d6de5480bc1de31d0842b06bec";
+    };
+    deps = {
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -3409,22 +3611,23 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."engine.io"."1.5.4" =
-    self.by-version."engine.io"."1.5.4";
-  by-version."engine.io"."1.5.4" = self.buildNodePackage {
-    name = "engine.io-1.5.4";
-    version = "1.5.4";
+  by-spec."engine.io"."1.6.7" =
+    self.by-version."engine.io"."1.6.7";
+  by-version."engine.io"."1.6.7" = self.buildNodePackage {
+    name = "engine.io-1.6.7";
+    version = "1.6.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/engine.io/-/engine.io-1.5.4.tgz";
-      name = "engine.io-1.5.4.tgz";
-      sha1 = "c6141012911c350631c1b390f5324eb4202e29f2";
+      url = "http://registry.npmjs.org/engine.io/-/engine.io-1.6.7.tgz";
+      name = "engine.io-1.6.7.tgz";
+      sha1 = "d49db58ffa41cb7a6ab24732f14dacfb39c4d27c";
     };
     deps = {
       "base64id-0.1.0" = self.by-version."base64id"."0.1.0";
-      "debug-1.0.3" = self.by-version."debug"."1.0.3";
-      "engine.io-parser-1.2.2" = self.by-version."engine.io-parser"."1.2.2";
-      "ws-0.8.0" = self.by-version."ws"."0.8.0";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "ws-1.0.1" = self.by-version."ws"."1.0.1";
+      "engine.io-parser-1.2.4" = self.by-version."engine.io-parser"."1.2.4";
+      "accepts-1.1.4" = self.by-version."accepts"."1.1.4";
     };
     optionalDependencies = {
     };
@@ -3432,29 +3635,30 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."engine.io-client"."1.5.4" =
-    self.by-version."engine.io-client"."1.5.4";
-  by-version."engine.io-client"."1.5.4" = self.buildNodePackage {
-    name = "engine.io-client-1.5.4";
-    version = "1.5.4";
+  by-spec."engine.io-client"."1.6.7" =
+    self.by-version."engine.io-client"."1.6.7";
+  by-version."engine.io-client"."1.6.7" = self.buildNodePackage {
+    name = "engine.io-client-1.6.7";
+    version = "1.6.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/engine.io-client/-/engine.io-client-1.5.4.tgz";
-      name = "engine.io-client-1.5.4.tgz";
-      sha1 = "c6ad65a65752a29cb930c6911e579d2b28d1106c";
+      url = "http://registry.npmjs.org/engine.io-client/-/engine.io-client-1.6.7.tgz";
+      name = "engine.io-client-1.6.7.tgz";
+      sha1 = "eae106736021526475e6b087c8eaf927d26becc2";
     };
     deps = {
+      "has-cors-1.1.0" = self.by-version."has-cors"."1.1.0";
+      "ws-1.0.1" = self.by-version."ws"."1.0.1";
+      "xmlhttprequest-ssl-1.5.1" = self.by-version."xmlhttprequest-ssl"."1.5.1";
       "component-emitter-1.1.2" = self.by-version."component-emitter"."1.1.2";
-      "component-inherit-0.0.3" = self.by-version."component-inherit"."0.0.3";
-      "debug-1.0.4" = self.by-version."debug"."1.0.4";
-      "engine.io-parser-1.2.2" = self.by-version."engine.io-parser"."1.2.2";
-      "has-cors-1.0.3" = self.by-version."has-cors"."1.0.3";
       "indexof-0.0.1" = self.by-version."indexof"."0.0.1";
+      "engine.io-parser-1.2.4" = self.by-version."engine.io-parser"."1.2.4";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "parseuri-0.0.4" = self.by-version."parseuri"."0.0.4";
       "parsejson-0.0.1" = self.by-version."parsejson"."0.0.1";
       "parseqs-0.0.2" = self.by-version."parseqs"."0.0.2";
-      "parseuri-0.0.4" = self.by-version."parseuri"."0.0.4";
-      "ws-0.8.0" = self.by-version."ws"."0.8.0";
-      "xmlhttprequest-1.5.0" = self.by-version."xmlhttprequest"."1.5.0";
+      "component-inherit-0.0.3" = self.by-version."component-inherit"."0.0.3";
+      "yeast-0.1.2" = self.by-version."yeast"."0.1.2";
     };
     optionalDependencies = {
     };
@@ -3462,16 +3666,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."engine.io-parser"."1.2.2" =
-    self.by-version."engine.io-parser"."1.2.2";
-  by-version."engine.io-parser"."1.2.2" = self.buildNodePackage {
-    name = "engine.io-parser-1.2.2";
-    version = "1.2.2";
+  by-spec."engine.io-parser"."1.2.4" =
+    self.by-version."engine.io-parser"."1.2.4";
+  by-version."engine.io-parser"."1.2.4" = self.buildNodePackage {
+    name = "engine.io-parser-1.2.4";
+    version = "1.2.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/engine.io-parser/-/engine.io-parser-1.2.2.tgz";
-      name = "engine.io-parser-1.2.2.tgz";
-      sha1 = "cd081041feea39c64323ff79b82a90a72afcccdd";
+      url = "http://registry.npmjs.org/engine.io-parser/-/engine.io-parser-1.2.4.tgz";
+      name = "engine.io-parser-1.2.4.tgz";
+      sha1 = "e0897b0bf14e792d4cd2a5950553919c56948c42";
     };
     deps = {
       "after-0.8.1" = self.by-version."after"."0.8.1";
@@ -3519,6 +3723,25 @@
       url = "http://registry.npmjs.org/ent/-/ent-2.2.0.tgz";
       name = "ent-2.2.0.tgz";
       sha1 = "e964219325a21d05f44466a2f686ed6ce5f5dd1d";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."entities"."~1.1.1" =
+    self.by-version."entities"."1.1.1";
+  by-version."entities"."1.1.1" = self.buildNodePackage {
+    name = "entities-1.1.1";
+    version = "1.1.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/entities/-/entities-1.1.1.tgz";
+      name = "entities-1.1.1.tgz";
+      sha1 = "6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0";
     };
     deps = {
     };
@@ -3591,16 +3814,41 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."es5-shim"."^4.3.1" =
-    self.by-version."es5-shim"."4.3.1";
-  by-version."es5-shim"."4.3.1" = self.buildNodePackage {
-    name = "es5-shim-4.3.1";
-    version = "4.3.1";
+  by-spec."es5-ext"."^0.10.7" =
+    self.by-version."es5-ext"."0.10.11";
+  by-version."es5-ext"."0.10.11" = self.buildNodePackage {
+    name = "es5-ext-0.10.11";
+    version = "0.10.11";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/es5-shim/-/es5-shim-4.3.1.tgz";
-      name = "es5-shim-4.3.1.tgz";
-      sha1 = "d009ec30bf30db0d159d3f72999104183899be6c";
+      url = "http://registry.npmjs.org/es5-ext/-/es5-ext-0.10.11.tgz";
+      name = "es5-ext-0.10.11.tgz";
+      sha1 = "8184c3e705a820948c2dbe043849379b1dbd0c45";
+    };
+    deps = {
+      "es6-iterator-2.0.0" = self.by-version."es6-iterator"."2.0.0";
+      "es6-symbol-3.0.2" = self.by-version."es6-symbol"."3.0.2";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."es5-ext"."~0.10.10" =
+    self.by-version."es5-ext"."0.10.11";
+  by-spec."es5-ext"."~0.10.2" =
+    self.by-version."es5-ext"."0.10.11";
+  by-spec."es5-shim"."^4.5.0" =
+    self.by-version."es5-shim"."4.5.0";
+  by-version."es5-shim"."4.5.0" = self.buildNodePackage {
+    name = "es5-shim-4.5.0";
+    version = "4.5.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/es5-shim/-/es5-shim-4.5.0.tgz";
+      name = "es5-shim-4.5.0.tgz";
+      sha1 = "4a79e69eb173ad71a35df1d3b1dd7c3e1db00d6a";
     };
     deps = {
     };
@@ -3610,17 +3858,64 @@
     os = [ ];
     cpu = [ ];
   };
-  "es5-shim" = self.by-version."es5-shim"."4.3.1";
-  by-spec."escape-html"."1.0.2" =
-    self.by-version."escape-html"."1.0.2";
-  by-version."escape-html"."1.0.2" = self.buildNodePackage {
-    name = "escape-html-1.0.2";
-    version = "1.0.2";
+  "es5-shim" = self.by-version."es5-shim"."4.5.0";
+  by-spec."es6-iterator"."2" =
+    self.by-version."es6-iterator"."2.0.0";
+  by-version."es6-iterator"."2.0.0" = self.buildNodePackage {
+    name = "es6-iterator-2.0.0";
+    version = "2.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/escape-html/-/escape-html-1.0.2.tgz";
-      name = "escape-html-1.0.2.tgz";
-      sha1 = "d77d32fa98e38c2f41ae85e9278e0e0e6ba1022c";
+      url = "http://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.0.tgz";
+      name = "es6-iterator-2.0.0.tgz";
+      sha1 = "bd968567d61635e33c0b80727613c9cb4b096bac";
+    };
+    deps = {
+      "d-0.1.1" = self.by-version."d"."0.1.1";
+      "es5-ext-0.10.11" = self.by-version."es5-ext"."0.10.11";
+      "es6-symbol-3.0.2" = self.by-version."es6-symbol"."3.0.2";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."es6-symbol"."3" =
+    self.by-version."es6-symbol"."3.0.2";
+  by-version."es6-symbol"."3.0.2" = self.buildNodePackage {
+    name = "es6-symbol-3.0.2";
+    version = "3.0.2";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/es6-symbol/-/es6-symbol-3.0.2.tgz";
+      name = "es6-symbol-3.0.2.tgz";
+      sha1 = "1e928878c6f5e63541625b4bb4df4af07d154219";
+    };
+    deps = {
+      "d-0.1.1" = self.by-version."d"."0.1.1";
+      "es5-ext-0.10.11" = self.by-version."es5-ext"."0.10.11";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."es6-symbol"."^3.0.2" =
+    self.by-version."es6-symbol"."3.0.2";
+  by-spec."es6-symbol"."~3.0.2" =
+    self.by-version."es6-symbol"."3.0.2";
+  by-spec."escape-html"."~1.0.3" =
+    self.by-version."escape-html"."1.0.3";
+  by-version."escape-html"."1.0.3" = self.buildNodePackage {
+    name = "escape-html-1.0.3";
+    version = "1.0.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz";
+      name = "escape-html-1.0.3.tgz";
+      sha1 = "0258eae4d3d0c0974de1c169188ef0051d1d1988";
     };
     deps = {
     };
@@ -3650,15 +3945,15 @@
     cpu = [ ];
   };
   by-spec."escape-string-regexp"."^1.0.2" =
-    self.by-version."escape-string-regexp"."1.0.3";
-  by-version."escape-string-regexp"."1.0.3" = self.buildNodePackage {
-    name = "escape-string-regexp-1.0.3";
-    version = "1.0.3";
+    self.by-version."escape-string-regexp"."1.0.4";
+  by-version."escape-string-regexp"."1.0.4" = self.buildNodePackage {
+    name = "escape-string-regexp-1.0.4";
+    version = "1.0.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.3.tgz";
-      name = "escape-string-regexp-1.0.3.tgz";
-      sha1 = "9e2d8b25bc2555c3336723750e03f099c2735bb5";
+      url = "http://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.4.tgz";
+      name = "escape-string-regexp-1.0.4.tgz";
+      sha1 = "b85e679b46f72d03fbbe8a3bf7259d535c21b62f";
     };
     deps = {
     };
@@ -3668,16 +3963,18 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."escape-string-regexp"."^1.0.4" =
+    self.by-version."escape-string-regexp"."1.0.4";
   by-spec."esprima"."^2.5.0" =
-    self.by-version."esprima"."2.7.0";
-  by-version."esprima"."2.7.0" = self.buildNodePackage {
-    name = "esprima-2.7.0";
-    version = "2.7.0";
+    self.by-version."esprima"."2.7.1";
+  by-version."esprima"."2.7.1" = self.buildNodePackage {
+    name = "esprima-2.7.1";
+    version = "2.7.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/esprima/-/esprima-2.7.0.tgz";
-      name = "esprima-2.7.0.tgz";
-      sha1 = "74cfb0e4ae43f0b81541dcc30050f9dacb1f707e";
+      url = "http://registry.npmjs.org/esprima/-/esprima-2.7.1.tgz";
+      name = "esprima-2.7.1.tgz";
+      sha1 = "2ab7d1549edd06d14d69a6c1a1754aca02e9657e";
     };
     deps = {
     };
@@ -3687,25 +3984,8 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."esprima"."~2.2.0" =
-    self.by-version."esprima"."2.2.0";
-  by-version."esprima"."2.2.0" = self.buildNodePackage {
-    name = "esprima-2.2.0";
-    version = "2.2.0";
-    bin = true;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/esprima/-/esprima-2.2.0.tgz";
-      name = "esprima-2.2.0.tgz";
-      sha1 = "4292c1d68e4173d815fa2290dc7afc96d81fcd83";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
+  by-spec."esprima"."^2.6.0" =
+    self.by-version."esprima"."2.7.1";
   by-spec."esprima-fb"."13001.1001.0-dev-harmony-fb" =
     self.by-version."esprima-fb"."13001.1001.0-dev-harmony-fb";
   by-version."esprima-fb"."13001.1001.0-dev-harmony-fb" = self.buildNodePackage {
@@ -3895,7 +4175,7 @@
       sha1 = "acbd63e56efd9139722b755f099b9db5ac1f33f6";
     };
     deps = {
-      "fill-range-2.2.2" = self.by-version."fill-range"."2.2.2";
+      "fill-range-2.2.3" = self.by-version."fill-range"."2.2.3";
     };
     optionalDependencies = {
     };
@@ -3904,40 +4184,40 @@
     cpu = [ ];
   };
   by-spec."express"."^4.13.3" =
-    self.by-version."express"."4.13.3";
-  by-version."express"."4.13.3" = self.buildNodePackage {
-    name = "express-4.13.3";
-    version = "4.13.3";
+    self.by-version."express"."4.13.4";
+  by-version."express"."4.13.4" = self.buildNodePackage {
+    name = "express-4.13.4";
+    version = "4.13.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/express/-/express-4.13.3.tgz";
-      name = "express-4.13.3.tgz";
-      sha1 = "ddb2f1fb4502bf33598d2b032b037960ca6c80a3";
+      url = "http://registry.npmjs.org/express/-/express-4.13.4.tgz";
+      name = "express-4.13.4.tgz";
+      sha1 = "3c0b76f3c77590c8345739061ec0bd3ba067ec24";
     };
     deps = {
       "accepts-1.2.13" = self.by-version."accepts"."1.2.13";
       "array-flatten-1.1.1" = self.by-version."array-flatten"."1.1.1";
-      "content-disposition-0.5.0" = self.by-version."content-disposition"."0.5.0";
+      "content-disposition-0.5.1" = self.by-version."content-disposition"."0.5.1";
       "content-type-1.0.1" = self.by-version."content-type"."1.0.1";
-      "cookie-0.1.3" = self.by-version."cookie"."0.1.3";
+      "cookie-0.1.5" = self.by-version."cookie"."0.1.5";
       "cookie-signature-1.0.6" = self.by-version."cookie-signature"."1.0.6";
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
-      "depd-1.0.1" = self.by-version."depd"."1.0.1";
-      "escape-html-1.0.2" = self.by-version."escape-html"."1.0.2";
+      "depd-1.1.0" = self.by-version."depd"."1.1.0";
+      "escape-html-1.0.3" = self.by-version."escape-html"."1.0.3";
       "etag-1.7.0" = self.by-version."etag"."1.7.0";
-      "finalhandler-0.4.0" = self.by-version."finalhandler"."0.4.0";
+      "finalhandler-0.4.1" = self.by-version."finalhandler"."0.4.1";
       "fresh-0.3.0" = self.by-version."fresh"."0.3.0";
-      "merge-descriptors-1.0.0" = self.by-version."merge-descriptors"."1.0.0";
-      "methods-1.1.1" = self.by-version."methods"."1.1.1";
+      "merge-descriptors-1.0.1" = self.by-version."merge-descriptors"."1.0.1";
+      "methods-1.1.2" = self.by-version."methods"."1.1.2";
       "on-finished-2.3.0" = self.by-version."on-finished"."2.3.0";
-      "parseurl-1.3.0" = self.by-version."parseurl"."1.3.0";
+      "parseurl-1.3.1" = self.by-version."parseurl"."1.3.1";
       "path-to-regexp-0.1.7" = self.by-version."path-to-regexp"."0.1.7";
-      "proxy-addr-1.0.8" = self.by-version."proxy-addr"."1.0.8";
+      "proxy-addr-1.0.10" = self.by-version."proxy-addr"."1.0.10";
       "qs-4.0.0" = self.by-version."qs"."4.0.0";
       "range-parser-1.0.3" = self.by-version."range-parser"."1.0.3";
-      "send-0.13.0" = self.by-version."send"."0.13.0";
-      "serve-static-1.10.0" = self.by-version."serve-static"."1.10.0";
-      "type-is-1.6.9" = self.by-version."type-is"."1.6.9";
+      "send-0.13.1" = self.by-version."send"."0.13.1";
+      "serve-static-1.10.2" = self.by-version."serve-static"."1.10.2";
+      "type-is-1.6.10" = self.by-version."type-is"."1.6.10";
       "utils-merge-1.0.0" = self.by-version."utils-merge"."1.0.0";
       "vary-1.0.1" = self.by-version."vary"."1.0.1";
     };
@@ -3988,20 +4268,18 @@
   by-spec."extend"."~3.0.0" =
     self.by-version."extend"."3.0.0";
   by-spec."extglob"."^0.3.1" =
-    self.by-version."extglob"."0.3.1";
-  by-version."extglob"."0.3.1" = self.buildNodePackage {
-    name = "extglob-0.3.1";
-    version = "0.3.1";
+    self.by-version."extglob"."0.3.2";
+  by-version."extglob"."0.3.2" = self.buildNodePackage {
+    name = "extglob-0.3.2";
+    version = "0.3.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/extglob/-/extglob-0.3.1.tgz";
-      name = "extglob-0.3.1.tgz";
-      sha1 = "4f31241c0dddc90ac8c729cb6d7c872dee77c8f5";
+      url = "http://registry.npmjs.org/extglob/-/extglob-0.3.2.tgz";
+      name = "extglob-0.3.2.tgz";
+      sha1 = "2e18ff3d2f49ab2765cec9023f011daa8d8349a1";
     };
     deps = {
-      "ansi-green-0.1.1" = self.by-version."ansi-green"."0.1.1";
       "is-extglob-1.0.0" = self.by-version."is-extglob"."1.0.0";
-      "success-symbol-0.1.0" = self.by-version."success-symbol"."0.1.0";
     };
     optionalDependencies = {
     };
@@ -4059,7 +4337,7 @@
       sha1 = "885934c79effb0409549e0c0a3801ed17a40cdad";
     };
     deps = {
-      "websocket-driver-0.6.3" = self.by-version."websocket-driver"."0.6.3";
+      "websocket-driver-0.6.4" = self.by-version."websocket-driver"."0.6.4";
     };
     optionalDependencies = {
     };
@@ -4079,7 +4357,7 @@
       sha1 = "cc4074c7f4a4dfd03af54dd65c354b135132ce11";
     };
     deps = {
-      "websocket-driver-0.6.3" = self.by-version."websocket-driver"."0.6.3";
+      "websocket-driver-0.6.4" = self.by-version."websocket-driver"."0.6.4";
     };
     optionalDependencies = {
     };
@@ -4087,22 +4365,22 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."fbjs"."^0.3.1" =
-    self.by-version."fbjs"."0.3.2";
-  by-version."fbjs"."0.3.2" = self.buildNodePackage {
-    name = "fbjs-0.3.2";
-    version = "0.3.2";
+  by-spec."fbjs"."^0.6.1" =
+    self.by-version."fbjs"."0.6.1";
+  by-version."fbjs"."0.6.1" = self.buildNodePackage {
+    name = "fbjs-0.6.1";
+    version = "0.6.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/fbjs/-/fbjs-0.3.2.tgz";
-      name = "fbjs-0.3.2.tgz";
-      sha1 = "033a540595084b5de3509a405d06f1a2a8e5b9fb";
+      url = "http://registry.npmjs.org/fbjs/-/fbjs-0.6.1.tgz";
+      name = "fbjs-0.6.1.tgz";
+      sha1 = "9636b7705f5ba9684d44b72f78321254afc860f7";
     };
     deps = {
       "core-js-1.2.6" = self.by-version."core-js"."1.2.6";
       "loose-envify-1.1.0" = self.by-version."loose-envify"."1.1.0";
-      "promise-7.0.4" = self.by-version."promise"."7.0.4";
-      "ua-parser-js-0.7.9" = self.by-version."ua-parser-js"."0.7.9";
+      "promise-7.1.1" = self.by-version."promise"."7.1.1";
+      "ua-parser-js-0.7.10" = self.by-version."ua-parser-js"."0.7.10";
       "whatwg-fetch-0.9.0" = self.by-version."whatwg-fetch"."0.9.0";
     };
     optionalDependencies = {
@@ -4154,20 +4432,20 @@
     cpu = [ ];
   };
   by-spec."fill-range"."^2.1.0" =
-    self.by-version."fill-range"."2.2.2";
-  by-version."fill-range"."2.2.2" = self.buildNodePackage {
-    name = "fill-range-2.2.2";
-    version = "2.2.2";
+    self.by-version."fill-range"."2.2.3";
+  by-version."fill-range"."2.2.3" = self.buildNodePackage {
+    name = "fill-range-2.2.3";
+    version = "2.2.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/fill-range/-/fill-range-2.2.2.tgz";
-      name = "fill-range-2.2.2.tgz";
-      sha1 = "2ad9d158a6a666f9fb8c9f9f05345dff68d45760";
+      url = "http://registry.npmjs.org/fill-range/-/fill-range-2.2.3.tgz";
+      name = "fill-range-2.2.3.tgz";
+      sha1 = "50b77dfd7e469bc7492470963699fe7a8485a723";
     };
     deps = {
-      "is-number-1.1.2" = self.by-version."is-number"."1.1.2";
-      "isobject-1.0.2" = self.by-version."isobject"."1.0.2";
-      "randomatic-1.1.3" = self.by-version."randomatic"."1.1.3";
+      "is-number-2.1.0" = self.by-version."is-number"."2.1.0";
+      "isobject-2.0.0" = self.by-version."isobject"."2.0.0";
+      "randomatic-1.1.5" = self.by-version."randomatic"."1.1.5";
       "repeat-element-1.1.2" = self.by-version."repeat-element"."1.1.2";
       "repeat-string-1.5.2" = self.by-version."repeat-string"."1.5.2";
     };
@@ -4177,20 +4455,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."finalhandler"."0.4.0" =
-    self.by-version."finalhandler"."0.4.0";
-  by-version."finalhandler"."0.4.0" = self.buildNodePackage {
-    name = "finalhandler-0.4.0";
-    version = "0.4.0";
+  by-spec."finalhandler"."0.4.1" =
+    self.by-version."finalhandler"."0.4.1";
+  by-version."finalhandler"."0.4.1" = self.buildNodePackage {
+    name = "finalhandler-0.4.1";
+    version = "0.4.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/finalhandler/-/finalhandler-0.4.0.tgz";
-      name = "finalhandler-0.4.0.tgz";
-      sha1 = "965a52d9e8d05d2b857548541fb89b53a2497d9b";
+      url = "http://registry.npmjs.org/finalhandler/-/finalhandler-0.4.1.tgz";
+      name = "finalhandler-0.4.1.tgz";
+      sha1 = "85a17c6c59a94717d262d61230d4b0ebe3d4a14d";
     };
     deps = {
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
-      "escape-html-1.0.2" = self.by-version."escape-html"."1.0.2";
+      "escape-html-1.0.3" = self.by-version."escape-html"."1.0.3";
       "on-finished-2.3.0" = self.by-version."on-finished"."2.3.0";
       "unpipe-1.0.0" = self.by-version."unpipe"."1.0.0";
     };
@@ -4393,9 +4671,9 @@
       sha1 = "d35bc62e7fbc2937ae78f948aaa0d38d90607577";
     };
     deps = {
-      "async-1.5.0" = self.by-version."async"."1.5.0";
+      "async-1.5.2" = self.by-version."async"."1.5.2";
       "combined-stream-1.0.5" = self.by-version."combined-stream"."1.0.5";
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
     };
     optionalDependencies = {
     };
@@ -4403,16 +4681,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."formidable"."1.0.14" =
-    self.by-version."formidable"."1.0.14";
-  by-version."formidable"."1.0.14" = self.buildNodePackage {
-    name = "formidable-1.0.14";
-    version = "1.0.14";
+  by-spec."formidable"."~1.0.14" =
+    self.by-version."formidable"."1.0.17";
+  by-version."formidable"."1.0.17" = self.buildNodePackage {
+    name = "formidable-1.0.17";
+    version = "1.0.17";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/formidable/-/formidable-1.0.14.tgz";
-      name = "formidable-1.0.14.tgz";
-      sha1 = "2b3f4c411cbb5fdd695c44843e2a23514a43231a";
+      url = "http://registry.npmjs.org/formidable/-/formidable-1.0.17.tgz";
+      name = "formidable-1.0.17.tgz";
+      sha1 = "ef5491490f9433b705faa77249c99029ae348559";
     };
     deps = {
     };
@@ -4475,7 +4753,7 @@
       "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
       "jsonfile-2.2.3" = self.by-version."jsonfile"."2.2.3";
       "path-is-absolute-1.0.0" = self.by-version."path-is-absolute"."1.0.0";
-      "rimraf-2.4.4" = self.by-version."rimraf"."2.4.4";
+      "rimraf-2.5.1" = self.by-version."rimraf"."2.5.1";
     };
     optionalDependencies = {
     };
@@ -4498,7 +4776,7 @@
       "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
       "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
-      "rimraf-2.4.4" = self.by-version."rimraf"."2.4.4";
+      "rimraf-2.5.1" = self.by-version."rimraf"."2.5.1";
     };
     optionalDependencies = {
     };
@@ -4533,20 +4811,20 @@
     cpu = [ ];
   };
   by-spec."gauge"."~1.2.0" =
-    self.by-version."gauge"."1.2.2";
-  by-version."gauge"."1.2.2" = self.buildNodePackage {
-    name = "gauge-1.2.2";
-    version = "1.2.2";
+    self.by-version."gauge"."1.2.4";
+  by-version."gauge"."1.2.4" = self.buildNodePackage {
+    name = "gauge-1.2.4";
+    version = "1.2.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/gauge/-/gauge-1.2.2.tgz";
-      name = "gauge-1.2.2.tgz";
-      sha1 = "05b6730a19a8fcad3c340a142f0945222a3f815b";
+      url = "http://registry.npmjs.org/gauge/-/gauge-1.2.4.tgz";
+      name = "gauge-1.2.4.tgz";
+      sha1 = "b1d519758b3c77c7b45021d0ca4841548818bc41";
     };
     deps = {
-      "ansi-0.3.0" = self.by-version."ansi"."0.3.0";
-      "has-unicode-1.0.1" = self.by-version."has-unicode"."1.0.1";
-      "lodash.pad-3.1.1" = self.by-version."lodash.pad"."3.1.1";
+      "ansi-0.3.1" = self.by-version."ansi"."0.3.1";
+      "has-unicode-2.0.0" = self.by-version."has-unicode"."2.0.0";
+      "lodash.pad-3.2.0" = self.by-version."lodash.pad"."3.2.0";
       "lodash.padleft-3.1.1" = self.by-version."lodash.padleft"."3.1.1";
       "lodash.padright-3.1.1" = self.by-version."lodash.padright"."3.1.1";
     };
@@ -4556,6 +4834,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."gauge"."~1.2.4" =
+    self.by-version."gauge"."1.2.4";
   by-spec."gaze"."^0.5.1" =
     self.by-version."gaze"."0.5.2";
   by-version."gaze"."0.5.2" = self.buildNodePackage {
@@ -4730,6 +5010,32 @@
     self.by-version."glob"."5.0.15";
   by-spec."glob"."^5.0.5" =
     self.by-version."glob"."5.0.15";
+  by-spec."glob"."^6.0.1" =
+    self.by-version."glob"."6.0.4";
+  by-version."glob"."6.0.4" = self.buildNodePackage {
+    name = "glob-6.0.4";
+    version = "6.0.4";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/glob/-/glob-6.0.4.tgz";
+      name = "glob-6.0.4.tgz";
+      sha1 = "0f08860f6a155127b2fadd4f9ce24b1aab6e4d22";
+    };
+    deps = {
+      "inflight-1.0.4" = self.by-version."inflight"."1.0.4";
+      "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
+      "minimatch-3.0.0" = self.by-version."minimatch"."3.0.0";
+      "once-1.3.3" = self.by-version."once"."1.3.3";
+      "path-is-absolute-1.0.0" = self.by-version."path-is-absolute"."1.0.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."glob"."^6.0.3" =
+    self.by-version."glob"."6.0.4";
   by-spec."glob"."~3.1.21" =
     self.by-version."glob"."3.1.21";
   by-version."glob"."3.1.21" = self.buildNodePackage {
@@ -4793,25 +5099,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."global"."https://github.com/component/global/archive/v2.0.1.tar.gz" =
-    self.by-version."global"."2.0.1";
-  by-version."global"."2.0.1" = self.buildNodePackage {
-    name = "global-2.0.1";
-    version = "2.0.1";
-    bin = false;
-    src = fetchurl {
-      url = "https://github.com/component/global/archive/v2.0.1.tar.gz";
-      name = "global-2.0.1.tgz";
-      sha256 = "42be02b7148745447f6ba21137c972ca82d2cad92d30d63bd4fc310623901785";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."globule"."~0.1.0" =
     self.by-version."globule"."0.1.0";
   by-version."globule"."0.1.0" = self.buildNodePackage {
@@ -4827,25 +5114,6 @@
       "lodash-1.0.2" = self.by-version."lodash"."1.0.2";
       "glob-3.1.21" = self.by-version."glob"."3.1.21";
       "minimatch-0.2.14" = self.by-version."minimatch"."0.2.14";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."graceful-fs"."4.1" =
-    self.by-version."graceful-fs"."4.1.2";
-  by-version."graceful-fs"."4.1.2" = self.buildNodePackage {
-    name = "graceful-fs-4.1.2";
-    version = "4.1.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/graceful-fs/-/graceful-fs-4.1.2.tgz";
-      name = "graceful-fs-4.1.2.tgz";
-      sha1 = "fe2239b7574972e67e41f808823f9bfa4a991e37";
-    };
-    deps = {
     };
     optionalDependencies = {
     };
@@ -4874,6 +5142,23 @@
   };
   by-spec."graceful-fs"."^4.1.2" =
     self.by-version."graceful-fs"."4.1.2";
+  by-version."graceful-fs"."4.1.2" = self.buildNodePackage {
+    name = "graceful-fs-4.1.2";
+    version = "4.1.2";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/graceful-fs/-/graceful-fs-4.1.2.tgz";
+      name = "graceful-fs-4.1.2.tgz";
+      sha1 = "fe2239b7574972e67e41f808823f9bfa4a991e37";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."graceful-fs"."~1.2.0" =
     self.by-version."graceful-fs"."1.2.3";
   by-version."graceful-fs"."1.2.3" = self.buildNodePackage {
@@ -4951,20 +5236,20 @@
     cpu = [ ];
   };
   by-spec."har-validator"."~2.0.2" =
-    self.by-version."har-validator"."2.0.3";
-  by-version."har-validator"."2.0.3" = self.buildNodePackage {
-    name = "har-validator-2.0.3";
-    version = "2.0.3";
+    self.by-version."har-validator"."2.0.6";
+  by-version."har-validator"."2.0.6" = self.buildNodePackage {
+    name = "har-validator-2.0.6";
+    version = "2.0.6";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/har-validator/-/har-validator-2.0.3.tgz";
-      name = "har-validator-2.0.3.tgz";
-      sha1 = "5a9e12564a571cf0b81ef93c2157bd1617168883";
+      url = "http://registry.npmjs.org/har-validator/-/har-validator-2.0.6.tgz";
+      name = "har-validator-2.0.6.tgz";
+      sha1 = "cdcbc08188265ad119b6a5a7c8ab70eecfb5d27d";
     };
     deps = {
       "chalk-1.1.1" = self.by-version."chalk"."1.1.1";
       "commander-2.9.0" = self.by-version."commander"."2.9.0";
-      "is-my-json-valid-2.12.3" = self.by-version."is-my-json-valid"."2.12.3";
+      "is-my-json-valid-2.12.4" = self.by-version."is-my-json-valid"."2.12.4";
       "pinkie-promise-2.0.0" = self.by-version."pinkie-promise"."2.0.0";
     };
     optionalDependencies = {
@@ -5013,16 +5298,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."has-binary-data"."0.1.3" =
-    self.by-version."has-binary-data"."0.1.3";
-  by-version."has-binary-data"."0.1.3" = self.buildNodePackage {
-    name = "has-binary-data-0.1.3";
-    version = "0.1.3";
+  by-spec."has-binary"."0.1.7" =
+    self.by-version."has-binary"."0.1.7";
+  by-version."has-binary"."0.1.7" = self.buildNodePackage {
+    name = "has-binary-0.1.7";
+    version = "0.1.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/has-binary-data/-/has-binary-data-0.1.3.tgz";
-      name = "has-binary-data-0.1.3.tgz";
-      sha1 = "8ebb18388b57f19a5231275a16fc18d51f379aae";
+      url = "http://registry.npmjs.org/has-binary/-/has-binary-0.1.7.tgz";
+      name = "has-binary-0.1.7.tgz";
+      sha1 = "68e61eb16210c9545a0a5cce06a873912fe1e68c";
     };
     deps = {
       "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
@@ -5033,19 +5318,18 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."has-cors"."1.0.3" =
-    self.by-version."has-cors"."1.0.3";
-  by-version."has-cors"."1.0.3" = self.buildNodePackage {
-    name = "has-cors-1.0.3";
-    version = "1.0.3";
+  by-spec."has-cors"."1.1.0" =
+    self.by-version."has-cors"."1.1.0";
+  by-version."has-cors"."1.1.0" = self.buildNodePackage {
+    name = "has-cors-1.1.0";
+    version = "1.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/has-cors/-/has-cors-1.0.3.tgz";
-      name = "has-cors-1.0.3.tgz";
-      sha1 = "502acb9b3104dac33dd2630eaf2f888b0baf4cb3";
+      url = "http://registry.npmjs.org/has-cors/-/has-cors-1.1.0.tgz";
+      name = "has-cors-1.1.0.tgz";
+      sha1 = "5e474793f7ea9843d1bb99c23eef49ff126fff39";
     };
     deps = {
-      "global-2.0.1" = self.by-version."global"."2.0.1";
     };
     optionalDependencies = {
     };
@@ -5091,16 +5375,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."has-unicode"."^1.0.0" =
-    self.by-version."has-unicode"."1.0.1";
-  by-version."has-unicode"."1.0.1" = self.buildNodePackage {
-    name = "has-unicode-1.0.1";
-    version = "1.0.1";
+  by-spec."has-unicode"."^2.0.0" =
+    self.by-version."has-unicode"."2.0.0";
+  by-version."has-unicode"."2.0.0" = self.buildNodePackage {
+    name = "has-unicode-2.0.0";
+    version = "2.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/has-unicode/-/has-unicode-1.0.1.tgz";
-      name = "has-unicode-1.0.1.tgz";
-      sha1 = "c46fceea053eb8ec789bffbba25fca52dfdcf38e";
+      url = "http://registry.npmjs.org/has-unicode/-/has-unicode-2.0.0.tgz";
+      name = "has-unicode-2.0.0.tgz";
+      sha1 = "a3cd96c307ba41d559c5a2ee408c12a11c4c2ec3";
     };
     deps = {
     };
@@ -5134,15 +5418,15 @@
     cpu = [ ];
   };
   by-spec."hawk"."~3.1.0" =
-    self.by-version."hawk"."3.1.2";
-  by-version."hawk"."3.1.2" = self.buildNodePackage {
-    name = "hawk-3.1.2";
-    version = "3.1.2";
+    self.by-version."hawk"."3.1.3";
+  by-version."hawk"."3.1.3" = self.buildNodePackage {
+    name = "hawk-3.1.3";
+    version = "3.1.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/hawk/-/hawk-3.1.2.tgz";
-      name = "hawk-3.1.2.tgz";
-      sha1 = "90c90118886e21975d1ad4ae9b3e284ed19a2de8";
+      url = "http://registry.npmjs.org/hawk/-/hawk-3.1.3.tgz";
+      name = "hawk-3.1.3.tgz";
+      sha1 = "078444bd7c1640b0fe540d2c9b73d59678e8e1c4";
     };
     deps = {
       "hoek-2.16.3" = self.by-version."hoek"."2.16.3";
@@ -5232,24 +5516,24 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."html-minifier"."^1.0.0" =
-    self.by-version."html-minifier"."1.0.0";
-  by-version."html-minifier"."1.0.0" = self.buildNodePackage {
-    name = "html-minifier-1.0.0";
-    version = "1.0.0";
+  by-spec."html-minifier"."^1.1.1" =
+    self.by-version."html-minifier"."1.1.1";
+  by-version."html-minifier"."1.1.1" = self.buildNodePackage {
+    name = "html-minifier-1.1.1";
+    version = "1.1.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/html-minifier/-/html-minifier-1.0.0.tgz";
-      name = "html-minifier-1.0.0.tgz";
-      sha1 = "8b101086f352f6b1b5b1a7929a803e49c2d2aba9";
+      url = "http://registry.npmjs.org/html-minifier/-/html-minifier-1.1.1.tgz";
+      name = "html-minifier-1.1.1.tgz";
+      sha1 = "6850f99f9244a6541ad57d2327a204c9567b698f";
     };
     deps = {
-      "change-case-2.3.0" = self.by-version."change-case"."2.3.0";
-      "clean-css-3.4.8" = self.by-version."clean-css"."3.4.8";
+      "change-case-2.3.1" = self.by-version."change-case"."2.3.1";
+      "clean-css-3.4.9" = self.by-version."clean-css"."3.4.9";
       "cli-0.11.1" = self.by-version."cli"."0.11.1";
       "concat-stream-1.5.1" = self.by-version."concat-stream"."1.5.1";
       "relateurl-0.2.6" = self.by-version."relateurl"."0.2.6";
-      "uglify-js-2.5.0" = self.by-version."uglify-js"."2.5.0";
+      "uglify-js-2.6.1" = self.by-version."uglify-js"."2.6.1";
     };
     optionalDependencies = {
     };
@@ -5257,22 +5541,23 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."html-webpack-plugin"."^1.7.0" =
-    self.by-version."html-webpack-plugin"."1.7.0";
-  by-version."html-webpack-plugin"."1.7.0" = self.buildNodePackage {
-    name = "html-webpack-plugin-1.7.0";
-    version = "1.7.0";
+  by-spec."html-webpack-plugin"."^2.7.2" =
+    self.by-version."html-webpack-plugin"."2.7.2";
+  by-version."html-webpack-plugin"."2.7.2" = self.buildNodePackage {
+    name = "html-webpack-plugin-2.7.2";
+    version = "2.7.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-1.7.0.tgz";
-      name = "html-webpack-plugin-1.7.0.tgz";
-      sha1 = "cd0c73c791bd0c8c45b24e3001be334a6b74297b";
+      url = "http://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-2.7.2.tgz";
+      name = "html-webpack-plugin-2.7.2.tgz";
+      sha1 = "8015fe4b95f7385f3f9208208c0aabf886472ec3";
     };
     deps = {
-      "bluebird-3.0.5" = self.by-version."bluebird"."3.0.5";
-      "blueimp-tmpl-2.5.6" = self.by-version."blueimp-tmpl"."2.5.6";
-      "html-minifier-1.0.0" = self.by-version."html-minifier"."1.0.0";
+      "bluebird-3.1.4" = self.by-version."bluebird"."3.1.4";
+      "html-minifier-1.1.1" = self.by-version."html-minifier"."1.1.1";
+      "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
+      "pretty-error-2.0.0" = self.by-version."pretty-error"."2.0.0";
     };
     optionalDependencies = {
     };
@@ -5280,7 +5565,30 @@
     os = [ ];
     cpu = [ ];
   };
-  "html-webpack-plugin" = self.by-version."html-webpack-plugin"."1.7.0";
+  "html-webpack-plugin" = self.by-version."html-webpack-plugin"."2.7.2";
+  by-spec."htmlparser2"."~3.3.0" =
+    self.by-version."htmlparser2"."3.3.0";
+  by-version."htmlparser2"."3.3.0" = self.buildNodePackage {
+    name = "htmlparser2-3.3.0";
+    version = "3.3.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/htmlparser2/-/htmlparser2-3.3.0.tgz";
+      name = "htmlparser2-3.3.0.tgz";
+      sha1 = "cc70d05a59f6542e43f0e685c982e14c924a9efe";
+    };
+    deps = {
+      "domhandler-2.1.0" = self.by-version."domhandler"."2.1.0";
+      "domutils-1.1.6" = self.by-version."domutils"."1.1.6";
+      "domelementtype-1.3.0" = self.by-version."domelementtype"."1.3.0";
+      "readable-stream-1.0.33" = self.by-version."readable-stream"."1.0.33";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."http-browserify"."^1.3.2" =
     self.by-version."http-browserify"."1.7.0";
   by-version."http-browserify"."1.7.0" = self.buildNodePackage {
@@ -5324,19 +5632,19 @@
     cpu = [ ];
   };
   by-spec."http-proxy"."^1.11.1" =
-    self.by-version."http-proxy"."1.12.0";
-  by-version."http-proxy"."1.12.0" = self.buildNodePackage {
-    name = "http-proxy-1.12.0";
-    version = "1.12.0";
+    self.by-version."http-proxy"."1.12.1";
+  by-version."http-proxy"."1.12.1" = self.buildNodePackage {
+    name = "http-proxy-1.12.1";
+    version = "1.12.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/http-proxy/-/http-proxy-1.12.0.tgz";
-      name = "http-proxy-1.12.0.tgz";
-      sha1 = "4f02ea971e79e6affa12fa5f10ca2aebb5e3b17c";
+      url = "http://registry.npmjs.org/http-proxy/-/http-proxy-1.12.1.tgz";
+      name = "http-proxy-1.12.1.tgz";
+      sha1 = "23b4244d1b7f5a77ae333b8b189c13b4d2ccc468";
     };
     deps = {
       "eventemitter3-1.1.1" = self.by-version."eventemitter3"."1.1.1";
-      "requires-port-0.0.1" = self.by-version."requires-port"."0.0.1";
+      "requires-port-1.0.0" = self.by-version."requires-port"."1.0.0";
     };
     optionalDependencies = {
     };
@@ -5345,7 +5653,7 @@
     cpu = [ ];
   };
   by-spec."http-proxy"."^1.11.2" =
-    self.by-version."http-proxy"."1.12.0";
+    self.by-version."http-proxy"."1.12.1";
   by-spec."http-signature"."~0.10.0" =
     self.by-version."http-signature"."0.10.1";
   by-version."http-signature"."0.10.1" = self.buildNodePackage {
@@ -5382,7 +5690,7 @@
     deps = {
       "assert-plus-0.1.5" = self.by-version."assert-plus"."0.1.5";
       "jsprim-1.2.2" = self.by-version."jsprim"."1.2.2";
-      "sshpk-1.7.0" = self.by-version."sshpk"."1.7.0";
+      "sshpk-1.7.3" = self.by-version."sshpk"."1.7.3";
     };
     optionalDependencies = {
     };
@@ -5409,16 +5717,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."iconv-lite"."0.4.12" =
-    self.by-version."iconv-lite"."0.4.12";
-  by-version."iconv-lite"."0.4.12" = self.buildNodePackage {
-    name = "iconv-lite-0.4.12";
-    version = "0.4.12";
+  by-spec."iconv-lite"."0.4.13" =
+    self.by-version."iconv-lite"."0.4.13";
+  by-version."iconv-lite"."0.4.13" = self.buildNodePackage {
+    name = "iconv-lite-0.4.13";
+    version = "0.4.13";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.12.tgz";
-      name = "iconv-lite-0.4.12.tgz";
-      sha1 = "ef4bb2cb28f406d3c05fc89feea4504624b5ac87";
+      url = "http://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.13.tgz";
+      name = "iconv-lite-0.4.13.tgz";
+      sha1 = "1f88aba4ab0b1508e8312acc39345f36e992e2f2";
     };
     deps = {
     };
@@ -5583,6 +5891,25 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."inherit"."^2.2.2" =
+    self.by-version."inherit"."2.2.3";
+  by-version."inherit"."2.2.3" = self.buildNodePackage {
+    name = "inherit-2.2.3";
+    version = "2.2.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/inherit/-/inherit-2.2.3.tgz";
+      name = "inherit-2.2.3.tgz";
+      sha1 = "33234f912ac3276ea7ba7ad71231967c7ae45c0d";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."inherits"."1" =
     self.by-version."inherits"."1.0.2";
   by-version."inherits"."1.0.2" = self.buildNodePackage {
@@ -5629,7 +5956,7 @@
     self.by-version."inherits"."2.0.1";
   by-spec."inherits"."~2.0.1" =
     self.by-version."inherits"."2.0.1";
-  by-spec."ini"."1" =
+  by-spec."ini"."^1.2.0" =
     self.by-version."ini"."1.3.4";
   by-version."ini"."1.3.4" = self.buildNodePackage {
     name = "ini-1.3.4";
@@ -5648,7 +5975,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."ini"."^1.2.0" =
+  by-spec."ini"."^1.3.4" =
     self.by-version."ini"."1.3.4";
   by-spec."ini"."~1.3.0" =
     self.by-version."ini"."1.3.4";
@@ -5710,16 +6037,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."ipaddr.js"."1.0.1" =
-    self.by-version."ipaddr.js"."1.0.1";
-  by-version."ipaddr.js"."1.0.1" = self.buildNodePackage {
-    name = "ipaddr.js-1.0.1";
-    version = "1.0.1";
+  by-spec."ipaddr.js"."1.0.5" =
+    self.by-version."ipaddr.js"."1.0.5";
+  by-version."ipaddr.js"."1.0.5" = self.buildNodePackage {
+    name = "ipaddr.js-1.0.5";
+    version = "1.0.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.0.1.tgz";
-      name = "ipaddr.js-1.0.1.tgz";
-      sha1 = "5f38801dc73e0400fc7076386f6ed5215fbd8f95";
+      url = "http://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.0.5.tgz";
+      name = "ipaddr.js-1.0.5.tgz";
+      sha1 = "5fa78cf301b825c78abc3042d812723049ea23c7";
     };
     deps = {
     };
@@ -5759,25 +6086,6 @@
       url = "http://registry.npmjs.org/is-absolute-url/-/is-absolute-url-2.0.0.tgz";
       name = "is-absolute-url-2.0.0.tgz";
       sha1 = "9c4b20b0e5c0cbef9a479a367ede6f991679f359";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."is-array"."^1.0.1" =
-    self.by-version."is-array"."1.0.1";
-  by-version."is-array"."1.0.1" = self.buildNodePackage {
-    name = "is-array-1.0.1";
-    version = "1.0.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/is-array/-/is-array-1.0.1.tgz";
-      name = "is-array-1.0.1.tgz";
-      sha1 = "e9850cc2cc860c3bc0977e84ccf0dd464584279a";
     };
     deps = {
     };
@@ -5827,15 +6135,15 @@
     cpu = [ ];
   };
   by-spec."is-buffer"."^1.0.2" =
-    self.by-version."is-buffer"."1.1.0";
-  by-version."is-buffer"."1.1.0" = self.buildNodePackage {
-    name = "is-buffer-1.1.0";
-    version = "1.1.0";
+    self.by-version."is-buffer"."1.1.1";
+  by-version."is-buffer"."1.1.1" = self.buildNodePackage {
+    name = "is-buffer-1.1.1";
+    version = "1.1.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/is-buffer/-/is-buffer-1.1.0.tgz";
-      name = "is-buffer-1.1.0.tgz";
-      sha1 = "36f7850c0d077a71b041f3565664155f07035bd0";
+      url = "http://registry.npmjs.org/is-buffer/-/is-buffer-1.1.1.tgz";
+      name = "is-buffer-1.1.1.tgz";
+      sha1 = "3058de9ca454564e8bbe5b8dd2719a8d7089e7d7";
     };
     deps = {
     };
@@ -5876,7 +6184,7 @@
       sha1 = "540572d34f7ac3119f8f76c30cbc1b1e037affbe";
     };
     deps = {
-      "builtin-modules-1.1.0" = self.by-version."builtin-modules"."1.1.0";
+      "builtin-modules-1.1.1" = self.by-version."builtin-modules"."1.1.1";
     };
     optionalDependencies = {
     };
@@ -6024,18 +6332,18 @@
   by-spec."is-glob"."^2.0.1" =
     self.by-version."is-glob"."2.0.1";
   by-spec."is-lower-case"."^1.1.0" =
-    self.by-version."is-lower-case"."1.1.1";
-  by-version."is-lower-case"."1.1.1" = self.buildNodePackage {
-    name = "is-lower-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."is-lower-case"."1.1.3";
+  by-version."is-lower-case"."1.1.3" = self.buildNodePackage {
+    name = "is-lower-case-1.1.3";
+    version = "1.1.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/is-lower-case/-/is-lower-case-1.1.1.tgz";
-      name = "is-lower-case-1.1.1.tgz";
-      sha1 = "a2d40aaa953f5ee3f1bf3e075f2e83ac57ad547c";
+      url = "http://registry.npmjs.org/is-lower-case/-/is-lower-case-1.1.3.tgz";
+      name = "is-lower-case-1.1.3.tgz";
+      sha1 = "7e147be4768dc466db3bfb21cc60b31e6ad69393";
     };
     deps = {
-      "lower-case-1.1.2" = self.by-version."lower-case"."1.1.2";
+      "lower-case-1.1.3" = self.by-version."lower-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -6043,16 +6351,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."is-my-json-valid"."^2.12.3" =
-    self.by-version."is-my-json-valid"."2.12.3";
-  by-version."is-my-json-valid"."2.12.3" = self.buildNodePackage {
-    name = "is-my-json-valid-2.12.3";
-    version = "2.12.3";
+  by-spec."is-my-json-valid"."^2.12.4" =
+    self.by-version."is-my-json-valid"."2.12.4";
+  by-version."is-my-json-valid"."2.12.4" = self.buildNodePackage {
+    name = "is-my-json-valid-2.12.4";
+    version = "2.12.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.12.3.tgz";
-      name = "is-my-json-valid-2.12.3.tgz";
-      sha1 = "5a39d1d76b2dbb83140bbd157b1d5ee4bdc85ad6";
+      url = "http://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.12.4.tgz";
+      name = "is-my-json-valid-2.12.4.tgz";
+      sha1 = "d4ed2bc1d7f88daf8d0f763b3e3e39a69bd37880";
     };
     deps = {
       "generate-function-2.0.0" = self.by-version."generate-function"."2.0.0";
@@ -6085,25 +6393,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."is-number"."^1.1.2" =
-    self.by-version."is-number"."1.1.2";
-  by-version."is-number"."1.1.2" = self.buildNodePackage {
-    name = "is-number-1.1.2";
-    version = "1.1.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/is-number/-/is-number-1.1.2.tgz";
-      name = "is-number-1.1.2.tgz";
-      sha1 = "9d82409f3a8a8beecf249b1bc7dada49829966e4";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."is-number"."^2.0.2" =
     self.by-version."is-number"."2.1.0";
   by-version."is-number"."2.1.0" = self.buildNodePackage {
@@ -6124,6 +6413,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."is-number"."^2.1.0" =
+    self.by-version."is-number"."2.1.0";
   by-spec."is-plain-obj"."^1.0.0" =
     self.by-version."is-plain-obj"."1.1.0";
   by-version."is-plain-obj"."1.1.0" = self.buildNodePackage {
@@ -6258,18 +6549,18 @@
     cpu = [ ];
   };
   by-spec."is-upper-case"."^1.1.0" =
-    self.by-version."is-upper-case"."1.1.1";
-  by-version."is-upper-case"."1.1.1" = self.buildNodePackage {
-    name = "is-upper-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."is-upper-case"."1.1.2";
+  by-version."is-upper-case"."1.1.2" = self.buildNodePackage {
+    name = "is-upper-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/is-upper-case/-/is-upper-case-1.1.1.tgz";
-      name = "is-upper-case-1.1.1.tgz";
-      sha1 = "93c04a6e392d76e853ff88a4a12efe9511df22db";
+      url = "http://registry.npmjs.org/is-upper-case/-/is-upper-case-1.1.2.tgz";
+      name = "is-upper-case-1.1.2.tgz";
+      sha1 = "8d0b1fa7e7933a1e58483600ec7d9661cbaf756f";
     };
     deps = {
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -6278,15 +6569,15 @@
     cpu = [ ];
   };
   by-spec."is-utf8"."^0.2.0" =
-    self.by-version."is-utf8"."0.2.0";
-  by-version."is-utf8"."0.2.0" = self.buildNodePackage {
-    name = "is-utf8-0.2.0";
-    version = "0.2.0";
+    self.by-version."is-utf8"."0.2.1";
+  by-version."is-utf8"."0.2.1" = self.buildNodePackage {
+    name = "is-utf8-0.2.1";
+    version = "0.2.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/is-utf8/-/is-utf8-0.2.0.tgz";
-      name = "is-utf8-0.2.0.tgz";
-      sha1 = "b8aa54125ae626bfe4e3beb965f16a89c58a1137";
+      url = "http://registry.npmjs.org/is-utf8/-/is-utf8-0.2.1.tgz";
+      name = "is-utf8-0.2.1.tgz";
+      sha1 = "4b0da1442104d1b336340e80797e865cf39f7d72";
     };
     deps = {
     };
@@ -6315,18 +6606,57 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."isobject"."^1.0.0" =
-    self.by-version."isobject"."1.0.2";
-  by-version."isobject"."1.0.2" = self.buildNodePackage {
-    name = "isobject-1.0.2";
-    version = "1.0.2";
+  by-spec."isarray"."^1.0.0" =
+    self.by-version."isarray"."1.0.0";
+  by-version."isarray"."1.0.0" = self.buildNodePackage {
+    name = "isarray-1.0.0";
+    version = "1.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/isobject/-/isobject-1.0.2.tgz";
-      name = "isobject-1.0.2.tgz";
-      sha1 = "f0f9b8ce92dd540fa0740882e3835a2e022ec78a";
+      url = "http://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz";
+      name = "isarray-1.0.0.tgz";
+      sha1 = "bb935d48582cba168c06834957a54a3e07124f11";
     };
     deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."isexe"."^1.0.1" =
+    self.by-version."isexe"."1.0.1";
+  by-version."isexe"."1.0.1" = self.buildNodePackage {
+    name = "isexe-1.0.1";
+    version = "1.0.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/isexe/-/isexe-1.0.1.tgz";
+      name = "isexe-1.0.1.tgz";
+      sha1 = "5db010ed38a649d12d5faf9884b3474002e66a65";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."isobject"."^2.0.0" =
+    self.by-version."isobject"."2.0.0";
+  by-version."isobject"."2.0.0" = self.buildNodePackage {
+    name = "isobject-2.0.0";
+    version = "2.0.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/isobject/-/isobject-2.0.0.tgz";
+      name = "isobject-2.0.0.tgz";
+      sha1 = "208de872bd7378c2a92af9428a3f56eb91a122c4";
+    };
+    deps = {
+      "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
     };
     optionalDependencies = {
     };
@@ -6432,20 +6762,21 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."js-yaml"."~3.3.1" =
-    self.by-version."js-yaml"."3.3.1";
-  by-version."js-yaml"."3.3.1" = self.buildNodePackage {
-    name = "js-yaml-3.3.1";
-    version = "3.3.1";
+  by-spec."js-yaml"."~3.4.3" =
+    self.by-version."js-yaml"."3.4.6";
+  by-version."js-yaml"."3.4.6" = self.buildNodePackage {
+    name = "js-yaml-3.4.6";
+    version = "3.4.6";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/js-yaml/-/js-yaml-3.3.1.tgz";
-      name = "js-yaml-3.3.1.tgz";
-      sha1 = "ca1acd3423ec275d12140a7bab51db015ba0b3c0";
+      url = "http://registry.npmjs.org/js-yaml/-/js-yaml-3.4.6.tgz";
+      name = "js-yaml-3.4.6.tgz";
+      sha1 = "6be1b23f6249f53d293370fd4d1aaa63ce1b4eb0";
     };
     deps = {
-      "argparse-1.0.3" = self.by-version."argparse"."1.0.3";
-      "esprima-2.2.0" = self.by-version."esprima"."2.2.0";
+      "argparse-1.0.4" = self.by-version."argparse"."1.0.4";
+      "esprima-2.7.1" = self.by-version."esprima"."2.7.1";
+      "inherit-2.2.3" = self.by-version."inherit"."2.2.3";
     };
     optionalDependencies = {
     };
@@ -6553,7 +6884,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."json3"."^3.3.2" =
+  by-spec."json3"."3.3.2" =
     self.by-version."json3"."3.3.2";
   by-version."json3"."3.3.2" = self.buildNodePackage {
     name = "json3-3.3.2";
@@ -6572,6 +6903,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."json3"."^3.3.2" =
+    self.by-version."json3"."3.3.2";
   by-spec."json5"."^0.4.0" =
     self.by-version."json5"."0.4.0";
   by-version."json5"."0.4.0" = self.buildNodePackage {
@@ -6674,39 +7007,39 @@
     cpu = [ ];
   };
   by-spec."karma".">=0.10.9" =
-    self.by-version."karma"."0.13.15";
-  by-version."karma"."0.13.15" = self.buildNodePackage {
-    name = "karma-0.13.15";
-    version = "0.13.15";
+    self.by-version."karma"."0.13.19";
+  by-version."karma"."0.13.19" = self.buildNodePackage {
+    name = "karma-0.13.19";
+    version = "0.13.19";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/karma/-/karma-0.13.15.tgz";
-      name = "karma-0.13.15.tgz";
-      sha1 = "71c3925651728a05ab4980a6e894ce3aa5e8c5c0";
+      url = "http://registry.npmjs.org/karma/-/karma-0.13.19.tgz";
+      name = "karma-0.13.19.tgz";
+      sha1 = "72042233aaa4216246f3b7b565645e1ad7644d24";
     };
     deps = {
       "batch-0.5.3" = self.by-version."batch"."0.5.3";
       "bluebird-2.10.2" = self.by-version."bluebird"."2.10.2";
-      "body-parser-1.14.1" = self.by-version."body-parser"."1.14.1";
-      "chokidar-1.3.0" = self.by-version."chokidar"."1.3.0";
+      "body-parser-1.14.2" = self.by-version."body-parser"."1.14.2";
+      "chokidar-1.4.2" = self.by-version."chokidar"."1.4.2";
       "colors-1.1.2" = self.by-version."colors"."1.1.2";
-      "connect-3.4.0" = self.by-version."connect"."3.4.0";
-      "core-js-1.2.6" = self.by-version."core-js"."1.2.6";
+      "connect-3.4.1" = self.by-version."connect"."3.4.1";
+      "core-js-2.0.3" = self.by-version."core-js"."2.0.3";
       "di-0.0.1" = self.by-version."di"."0.0.1";
       "dom-serialize-2.2.1" = self.by-version."dom-serialize"."2.2.1";
       "expand-braces-0.1.2" = self.by-version."expand-braces"."0.1.2";
-      "glob-5.0.15" = self.by-version."glob"."5.0.15";
+      "glob-6.0.4" = self.by-version."glob"."6.0.4";
       "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
-      "http-proxy-1.12.0" = self.by-version."http-proxy"."1.12.0";
+      "http-proxy-1.12.1" = self.by-version."http-proxy"."1.12.1";
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
       "log4js-0.6.29" = self.by-version."log4js"."0.6.29";
       "mime-1.3.4" = self.by-version."mime"."1.3.4";
       "minimatch-3.0.0" = self.by-version."minimatch"."3.0.0";
       "optimist-0.6.1" = self.by-version."optimist"."0.6.1";
-      "rimraf-2.4.4" = self.by-version."rimraf"."2.4.4";
-      "socket.io-1.3.7" = self.by-version."socket.io"."1.3.7";
+      "rimraf-2.5.1" = self.by-version."rimraf"."2.5.1";
+      "socket.io-1.4.4" = self.by-version."socket.io"."1.4.4";
       "source-map-0.5.3" = self.by-version."source-map"."0.5.3";
-      "useragent-2.1.7" = self.by-version."useragent"."2.1.7";
+      "useragent-2.1.8" = self.by-version."useragent"."2.1.8";
     };
     optionalDependencies = {
     };
@@ -6715,10 +7048,10 @@
     cpu = [ ];
   };
   by-spec."karma".">=0.9" =
-    self.by-version."karma"."0.13.15";
-  by-spec."karma"."^0.13.15" =
-    self.by-version."karma"."0.13.15";
-  "karma" = self.by-version."karma"."0.13.15";
+    self.by-version."karma"."0.13.19";
+  by-spec."karma"."^0.13.19" =
+    self.by-version."karma"."0.13.19";
+  "karma" = self.by-version."karma"."0.13.19";
   by-spec."karma-chai"."^0.1.0" =
     self.by-version."karma-chai"."0.1.0";
   by-version."karma-chai"."0.1.0" = self.buildNodePackage {
@@ -6736,7 +7069,7 @@
     };
     peerDependencies = [
       self.by-version."chai"."3.4.1"
-      self.by-version."karma"."0.13.15"];
+      self.by-version."karma"."0.13.19"];
     os = [ ];
     cpu = [ ];
   };
@@ -6762,20 +7095,20 @@
     cpu = [ ];
   };
   "karma-mocha" = self.by-version."karma-mocha"."0.2.1";
-  by-spec."karma-mocha-reporter"."^1.1.3" =
-    self.by-version."karma-mocha-reporter"."1.1.3";
-  by-version."karma-mocha-reporter"."1.1.3" = self.buildNodePackage {
-    name = "karma-mocha-reporter-1.1.3";
-    version = "1.1.3";
+  by-spec."karma-mocha-reporter"."^1.1.5" =
+    self.by-version."karma-mocha-reporter"."1.1.5";
+  by-version."karma-mocha-reporter"."1.1.5" = self.buildNodePackage {
+    name = "karma-mocha-reporter-1.1.5";
+    version = "1.1.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/karma-mocha-reporter/-/karma-mocha-reporter-1.1.3.tgz";
-      name = "karma-mocha-reporter-1.1.3.tgz";
-      sha1 = "d73fd2ff65570218c71eb25ba623d872b2cb51f8";
+      url = "http://registry.npmjs.org/karma-mocha-reporter/-/karma-mocha-reporter-1.1.5.tgz";
+      name = "karma-mocha-reporter-1.1.5.tgz";
+      sha1 = "2df59465f24894b0ba1d8fec12232b5de5f49bd2";
     };
     deps = {
       "chalk-1.1.1" = self.by-version."chalk"."1.1.1";
-      "karma-0.13.15" = self.by-version."karma"."0.13.15";
+      "karma-0.13.19" = self.by-version."karma"."0.13.19";
     };
     optionalDependencies = {
     };
@@ -6783,17 +7116,17 @@
     os = [ ];
     cpu = [ ];
   };
-  "karma-mocha-reporter" = self.by-version."karma-mocha-reporter"."1.1.3";
-  by-spec."karma-phantomjs-launcher"."^0.2.1" =
-    self.by-version."karma-phantomjs-launcher"."0.2.1";
-  by-version."karma-phantomjs-launcher"."0.2.1" = self.buildNodePackage {
-    name = "karma-phantomjs-launcher-0.2.1";
-    version = "0.2.1";
+  "karma-mocha-reporter" = self.by-version."karma-mocha-reporter"."1.1.5";
+  by-spec."karma-phantomjs-launcher"."^0.2.3" =
+    self.by-version."karma-phantomjs-launcher"."0.2.3";
+  by-version."karma-phantomjs-launcher"."0.2.3" = self.buildNodePackage {
+    name = "karma-phantomjs-launcher-0.2.3";
+    version = "0.2.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/karma-phantomjs-launcher/-/karma-phantomjs-launcher-0.2.1.tgz";
-      name = "karma-phantomjs-launcher-0.2.1.tgz";
-      sha1 = "7c15fbb82b7661b17ed19391f019d76554b654df";
+      url = "http://registry.npmjs.org/karma-phantomjs-launcher/-/karma-phantomjs-launcher-0.2.3.tgz";
+      name = "karma-phantomjs-launcher-0.2.3.tgz";
+      sha1 = "77f68243fad7852c5b321bcf9d691f1223cc0809";
     };
     deps = {
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
@@ -6801,12 +7134,12 @@
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."karma"."0.13.15"
+      self.by-version."karma"."0.13.19"
       self.by-version."phantomjs"."1.9.19"];
     os = [ ];
     cpu = [ ];
   };
-  "karma-phantomjs-launcher" = self.by-version."karma-phantomjs-launcher"."0.2.1";
+  "karma-phantomjs-launcher" = self.by-version."karma-phantomjs-launcher"."0.2.3";
   by-spec."karma-webpack"."^1.7.0" =
     self.by-version."karma-webpack"."1.7.0";
   by-version."karma-webpack"."1.7.0" = self.buildNodePackage {
@@ -6823,8 +7156,8 @@
       "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
       "source-map-0.1.43" = self.by-version."source-map"."0.1.43";
-      "webpack-dev-middleware-1.4.0" = self.by-version."webpack-dev-middleware"."1.4.0";
-      "webpack-1.12.9" = self.by-version."webpack"."1.12.9";
+      "webpack-dev-middleware-1.5.1" = self.by-version."webpack-dev-middleware"."1.5.1";
+      "webpack-1.12.12" = self.by-version."webpack"."1.12.12";
     };
     optionalDependencies = {
     };
@@ -6864,7 +7197,7 @@
       sha1 = "018ec7a4ce7e3a86cb9141be519d24c8faa981b5";
     };
     deps = {
-      "is-buffer-1.1.0" = self.by-version."is-buffer"."1.1.0";
+      "is-buffer-1.1.1" = self.by-version."is-buffer"."1.1.1";
     };
     optionalDependencies = {
     };
@@ -6872,8 +7205,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."kind-of"."^2.0.1" =
-    self.by-version."kind-of"."2.0.1";
   by-spec."kind-of"."^3.0.2" =
     self.by-version."kind-of"."3.0.2";
   by-version."kind-of"."3.0.2" = self.buildNodePackage {
@@ -6886,7 +7217,7 @@
       sha1 = "187db427046e7e90945692e6768668bd6900dea0";
     };
     deps = {
-      "is-buffer-1.1.0" = self.by-version."is-buffer"."1.1.0";
+      "is-buffer-1.1.1" = self.by-version."is-buffer"."1.1.1";
     };
     optionalDependencies = {
     };
@@ -6894,16 +7225,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."lazy-cache"."^0.2.3" =
-    self.by-version."lazy-cache"."0.2.4";
-  by-version."lazy-cache"."0.2.4" = self.buildNodePackage {
-    name = "lazy-cache-0.2.4";
-    version = "0.2.4";
+  by-spec."lazy-cache"."^0.2.4" =
+    self.by-version."lazy-cache"."0.2.7";
+  by-version."lazy-cache"."0.2.7" = self.buildNodePackage {
+    name = "lazy-cache-0.2.7";
+    version = "0.2.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lazy-cache/-/lazy-cache-0.2.4.tgz";
-      name = "lazy-cache-0.2.4.tgz";
-      sha1 = "036a699535217acda4fb2e3fda3fc0916f8db786";
+      url = "http://registry.npmjs.org/lazy-cache/-/lazy-cache-0.2.7.tgz";
+      name = "lazy-cache-0.2.7.tgz";
+      sha1 = "7feddf2dcb6edb77d11ef1d117ab5ffdf0ab1b65";
     };
     deps = {
     };
@@ -6913,8 +7244,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."lazy-cache"."^0.2.4" =
-    self.by-version."lazy-cache"."0.2.4";
   by-spec."lcid"."^1.0.0" =
     self.by-version."lcid"."1.0.0";
   by-version."lcid"."1.0.0" = self.buildNodePackage {
@@ -7056,6 +7385,8 @@
   };
   by-spec."loader-utils"."^0.2.11" =
     self.by-version."loader-utils"."0.2.12";
+  by-spec."loader-utils"."^0.2.12" =
+    self.by-version."loader-utils"."0.2.12";
   by-spec."loader-utils"."^0.2.5" =
     self.by-version."loader-utils"."0.2.12";
   by-spec."loader-utils"."^0.2.7" =
@@ -7066,7 +7397,26 @@
     self.by-version."loader-utils"."0.2.12";
   by-spec."loader-utils"."~0.2.5" =
     self.by-version."loader-utils"."0.2.12";
-  by-spec."lodash".">= 3.2.0 < 4.0.0" =
+  by-spec."lodash".">= 4.0.0 < 5.0.0" =
+    self.by-version."lodash"."4.0.0";
+  by-version."lodash"."4.0.0" = self.buildNodePackage {
+    name = "lodash-4.0.0";
+    version = "4.0.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/lodash/-/lodash-4.0.0.tgz";
+      name = "lodash-4.0.0.tgz";
+      sha1 = "9ac43844c595e28d30108b7ba583703395922dfc";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."lodash"."^3.0.0" =
     self.by-version."lodash"."3.10.1";
   by-version."lodash"."3.10.1" = self.buildNodePackage {
     name = "lodash-3.10.1";
@@ -7085,8 +7435,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."lodash"."^3.0.0" =
-    self.by-version."lodash"."3.10.1";
   by-spec."lodash"."^3.10.1" =
     self.by-version."lodash"."3.10.1";
   "lodash" = self.by-version."lodash"."3.10.1";
@@ -7142,8 +7490,8 @@
       sha1 = "5dd2cb55372d6e70e0e2392fb2304d6631091075";
     };
     deps = {
-      "lodash.deburr-3.0.2" = self.by-version."lodash.deburr"."3.0.2";
-      "lodash.words-3.0.2" = self.by-version."lodash.words"."3.0.2";
+      "lodash.deburr-3.1.0" = self.by-version."lodash.deburr"."3.1.0";
+      "lodash.words-3.1.0" = self.by-version."lodash.words"."3.1.0";
     };
     optionalDependencies = {
     };
@@ -7163,26 +7511,7 @@
       sha1 = "4907b438595adc54ee8935527a6c424c02c81a87";
     };
     deps = {
-      "lodash.repeat-3.0.1" = self.by-version."lodash.repeat"."3.0.1";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."lodash._isiterateecall"."^3.0.0" =
-    self.by-version."lodash._isiterateecall"."3.0.9";
-  by-version."lodash._isiterateecall"."3.0.9" = self.buildNodePackage {
-    name = "lodash._isiterateecall-3.0.9";
-    version = "3.0.9";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/lodash._isiterateecall/-/lodash._isiterateecall-3.0.9.tgz";
-      name = "lodash._isiterateecall-3.0.9.tgz";
-      sha1 = "5203ad7ba425fae842460e696db9cf3e6aac057c";
-    };
-    deps = {
+      "lodash.repeat-3.1.0" = self.by-version."lodash.repeat"."3.1.0";
     };
     optionalDependencies = {
     };
@@ -7211,18 +7540,17 @@
     cpu = [ ];
   };
   by-spec."lodash.deburr"."^3.0.0" =
-    self.by-version."lodash.deburr"."3.0.2";
-  by-version."lodash.deburr"."3.0.2" = self.buildNodePackage {
-    name = "lodash.deburr-3.0.2";
-    version = "3.0.2";
+    self.by-version."lodash.deburr"."3.1.0";
+  by-version."lodash.deburr"."3.1.0" = self.buildNodePackage {
+    name = "lodash.deburr-3.1.0";
+    version = "3.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lodash.deburr/-/lodash.deburr-3.0.2.tgz";
-      name = "lodash.deburr-3.0.2.tgz";
-      sha1 = "86eb5700df1572279f22271257ae6af7ec5507c4";
+      url = "http://registry.npmjs.org/lodash.deburr/-/lodash.deburr-3.1.0.tgz";
+      name = "lodash.deburr-3.1.0.tgz";
+      sha1 = "d309f7fb43cace1de301191e226339cf5dfd6633";
     };
     deps = {
-      "lodash._basetostring-3.0.1" = self.by-version."lodash._basetostring"."3.0.1";
     };
     optionalDependencies = {
     };
@@ -7231,19 +7559,18 @@
     cpu = [ ];
   };
   by-spec."lodash.pad"."^3.0.0" =
-    self.by-version."lodash.pad"."3.1.1";
-  by-version."lodash.pad"."3.1.1" = self.buildNodePackage {
-    name = "lodash.pad-3.1.1";
-    version = "3.1.1";
+    self.by-version."lodash.pad"."3.2.0";
+  by-version."lodash.pad"."3.2.0" = self.buildNodePackage {
+    name = "lodash.pad-3.2.0";
+    version = "3.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lodash.pad/-/lodash.pad-3.1.1.tgz";
-      name = "lodash.pad-3.1.1.tgz";
-      sha1 = "2e078ebc33b331d2ba34bf8732af129fd5c04624";
+      url = "http://registry.npmjs.org/lodash.pad/-/lodash.pad-3.2.0.tgz";
+      name = "lodash.pad-3.2.0.tgz";
+      sha1 = "d1d882526da12087ef8c6089173ec081717698a2";
     };
     deps = {
-      "lodash._basetostring-3.0.1" = self.by-version."lodash._basetostring"."3.0.1";
-      "lodash._createpadding-3.6.1" = self.by-version."lodash._createpadding"."3.6.1";
+      "lodash.repeat-3.1.0" = self.by-version."lodash.repeat"."3.1.0";
     };
     optionalDependencies = {
     };
@@ -7294,18 +7621,17 @@
     cpu = [ ];
   };
   by-spec."lodash.repeat"."^3.0.0" =
-    self.by-version."lodash.repeat"."3.0.1";
-  by-version."lodash.repeat"."3.0.1" = self.buildNodePackage {
-    name = "lodash.repeat-3.0.1";
-    version = "3.0.1";
+    self.by-version."lodash.repeat"."3.1.0";
+  by-version."lodash.repeat"."3.1.0" = self.buildNodePackage {
+    name = "lodash.repeat-3.1.0";
+    version = "3.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lodash.repeat/-/lodash.repeat-3.0.1.tgz";
-      name = "lodash.repeat-3.0.1.tgz";
-      sha1 = "f4b98dc7ef67256ce61e7874e1865edb208e0edf";
+      url = "http://registry.npmjs.org/lodash.repeat/-/lodash.repeat-3.1.0.tgz";
+      name = "lodash.repeat-3.1.0.tgz";
+      sha1 = "a7bfe799b07c9a75dc010b65c61c1cfed3e18a96";
     };
     deps = {
-      "lodash._basetostring-3.0.1" = self.by-version."lodash._basetostring"."3.0.1";
     };
     optionalDependencies = {
     };
@@ -7314,19 +7640,17 @@
     cpu = [ ];
   };
   by-spec."lodash.words"."^3.0.0" =
-    self.by-version."lodash.words"."3.0.2";
-  by-version."lodash.words"."3.0.2" = self.buildNodePackage {
-    name = "lodash.words-3.0.2";
-    version = "3.0.2";
+    self.by-version."lodash.words"."3.1.0";
+  by-version."lodash.words"."3.1.0" = self.buildNodePackage {
+    name = "lodash.words-3.1.0";
+    version = "3.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lodash.words/-/lodash.words-3.0.2.tgz";
-      name = "lodash.words-3.0.2.tgz";
-      sha1 = "7b0cfd320f9b3d80e6ab579edc1358832b2afb14";
+      url = "http://registry.npmjs.org/lodash.words/-/lodash.words-3.1.0.tgz";
+      name = "lodash.words-3.1.0.tgz";
+      sha1 = "93c12cb208d12badc7cfad784581958d29cdf053";
     };
     deps = {
-      "lodash._basetostring-3.0.1" = self.by-version."lodash._basetostring"."3.0.1";
-      "lodash._isiterateecall-3.0.9" = self.by-version."lodash._isiterateecall"."3.0.9";
     };
     optionalDependencies = {
     };
@@ -7334,7 +7658,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."log4js"."^0.6.25" =
+  by-spec."log4js"."^0.6.28" =
     self.by-version."log4js"."0.6.29";
   by-version."log4js"."0.6.29" = self.buildNodePackage {
     name = "log4js-0.6.29";
@@ -7417,15 +7741,15 @@
     cpu = [ ];
   };
   by-spec."lower-case"."^1.1.0" =
-    self.by-version."lower-case"."1.1.2";
-  by-version."lower-case"."1.1.2" = self.buildNodePackage {
-    name = "lower-case-1.1.2";
-    version = "1.1.2";
+    self.by-version."lower-case"."1.1.3";
+  by-version."lower-case"."1.1.3" = self.buildNodePackage {
+    name = "lower-case-1.1.3";
+    version = "1.1.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lower-case/-/lower-case-1.1.2.tgz";
-      name = "lower-case-1.1.2.tgz";
-      sha1 = "02568a47559492fbe0a59e385ed494833ce8ca8a";
+      url = "http://registry.npmjs.org/lower-case/-/lower-case-1.1.3.tgz";
+      name = "lower-case-1.1.3.tgz";
+      sha1 = "c92393d976793eee5ba4edb583cf8eae35bd9bfb";
     };
     deps = {
     };
@@ -7436,22 +7760,22 @@
     cpu = [ ];
   };
   by-spec."lower-case"."^1.1.1" =
-    self.by-version."lower-case"."1.1.2";
+    self.by-version."lower-case"."1.1.3";
   by-spec."lower-case"."^1.1.2" =
-    self.by-version."lower-case"."1.1.2";
+    self.by-version."lower-case"."1.1.3";
   by-spec."lower-case-first"."^1.0.0" =
-    self.by-version."lower-case-first"."1.0.0";
-  by-version."lower-case-first"."1.0.0" = self.buildNodePackage {
-    name = "lower-case-first-1.0.0";
-    version = "1.0.0";
+    self.by-version."lower-case-first"."1.0.2";
+  by-version."lower-case-first"."1.0.2" = self.buildNodePackage {
+    name = "lower-case-first-1.0.2";
+    version = "1.0.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lower-case-first/-/lower-case-first-1.0.0.tgz";
-      name = "lower-case-first-1.0.0.tgz";
-      sha1 = "a1f626f4c3fdfab38648d806a07ea8aa753aa86a";
+      url = "http://registry.npmjs.org/lower-case-first/-/lower-case-first-1.0.2.tgz";
+      name = "lower-case-first-1.0.2.tgz";
+      sha1 = "e5da7c26f29a7073be02d52bac9980e5922adfa1";
     };
     deps = {
-      "lower-case-1.1.2" = self.by-version."lower-case"."1.1.2";
+      "lower-case-1.1.3" = self.by-version."lower-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -7497,19 +7821,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."lru-cache"."^3.2.0" =
-    self.by-version."lru-cache"."3.2.0";
-  by-version."lru-cache"."3.2.0" = self.buildNodePackage {
-    name = "lru-cache-3.2.0";
-    version = "3.2.0";
+  by-spec."lru-cache"."^4.0.0" =
+    self.by-version."lru-cache"."4.0.0";
+  by-version."lru-cache"."4.0.0" = self.buildNodePackage {
+    name = "lru-cache-4.0.0";
+    version = "4.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/lru-cache/-/lru-cache-3.2.0.tgz";
-      name = "lru-cache-3.2.0.tgz";
-      sha1 = "71789b3b7f5399bec8565dda38aa30d2a097efee";
+      url = "http://registry.npmjs.org/lru-cache/-/lru-cache-4.0.0.tgz";
+      name = "lru-cache-4.0.0.tgz";
+      sha1 = "b5cbf01556c16966febe54ceec0fb4dc90df6c28";
     };
     deps = {
-      "pseudomap-1.0.1" = self.by-version."pseudomap"."1.0.1";
+      "pseudomap-1.0.2" = self.by-version."pseudomap"."1.0.2";
+      "yallist-2.0.0" = self.by-version."yallist"."2.0.0";
     };
     optionalDependencies = {
     };
@@ -7536,6 +7861,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."map-obj"."^1.0.1" =
+    self.by-version."map-obj"."1.0.1";
   by-spec."md5"."~2.0.0" =
     self.by-version."md5"."2.0.0";
   by-version."md5"."2.0.0" = self.buildNodePackage {
@@ -7609,7 +7936,7 @@
     };
     deps = {
       "errno-0.1.4" = self.by-version."errno"."0.1.4";
-      "readable-stream-2.0.4" = self.by-version."readable-stream"."2.0.4";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -7618,19 +7945,21 @@
     cpu = [ ];
   };
   by-spec."meow"."^3.3.0" =
-    self.by-version."meow"."3.6.0";
-  by-version."meow"."3.6.0" = self.buildNodePackage {
-    name = "meow-3.6.0";
-    version = "3.6.0";
+    self.by-version."meow"."3.7.0";
+  by-version."meow"."3.7.0" = self.buildNodePackage {
+    name = "meow-3.7.0";
+    version = "3.7.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/meow/-/meow-3.6.0.tgz";
-      name = "meow-3.6.0.tgz";
-      sha1 = "e7a535295cb89db0e0782428e55fa8615bf9e150";
+      url = "http://registry.npmjs.org/meow/-/meow-3.7.0.tgz";
+      name = "meow-3.7.0.tgz";
+      sha1 = "72cb668b425228290abbfa856892587308a801fb";
     };
     deps = {
       "camelcase-keys-2.0.0" = self.by-version."camelcase-keys"."2.0.0";
+      "decamelize-1.1.2" = self.by-version."decamelize"."1.1.2";
       "loud-rejection-1.2.0" = self.by-version."loud-rejection"."1.2.0";
+      "map-obj-1.0.1" = self.by-version."map-obj"."1.0.1";
       "minimist-1.2.0" = self.by-version."minimist"."1.2.0";
       "normalize-package-data-2.3.5" = self.by-version."normalize-package-data"."2.3.5";
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
@@ -7644,35 +7973,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."merge-descriptors"."1.0.0" =
-    self.by-version."merge-descriptors"."1.0.0";
-  by-version."merge-descriptors"."1.0.0" = self.buildNodePackage {
-    name = "merge-descriptors-1.0.0";
-    version = "1.0.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.0.tgz";
-      name = "merge-descriptors-1.0.0.tgz";
-      sha1 = "2169cf7538e1b0cc87fb88e1502d8474bbf79864";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."methods"."1.0.1" =
-    self.by-version."methods"."1.0.1";
-  by-version."methods"."1.0.1" = self.buildNodePackage {
-    name = "methods-1.0.1";
+  by-spec."merge-descriptors"."1.0.1" =
+    self.by-version."merge-descriptors"."1.0.1";
+  by-version."merge-descriptors"."1.0.1" = self.buildNodePackage {
+    name = "merge-descriptors-1.0.1";
     version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/methods/-/methods-1.0.1.tgz";
-      name = "methods-1.0.1.tgz";
-      sha1 = "75bc91943dffd7da037cf3eeb0ed73a0037cd14b";
+      url = "http://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz";
+      name = "merge-descriptors-1.0.1.tgz";
+      sha1 = "b00aaa556dd8b44568150ec9d1b953f3f90cbb61";
     };
     deps = {
     };
@@ -7683,15 +7993,15 @@
     cpu = [ ];
   };
   by-spec."methods"."~1.1.1" =
-    self.by-version."methods"."1.1.1";
-  by-version."methods"."1.1.1" = self.buildNodePackage {
-    name = "methods-1.1.1";
-    version = "1.1.1";
+    self.by-version."methods"."1.1.2";
+  by-version."methods"."1.1.2" = self.buildNodePackage {
+    name = "methods-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/methods/-/methods-1.1.1.tgz";
-      name = "methods-1.1.1.tgz";
-      sha1 = "17ea6366066d00c58e375b8ec7dfd0453c89822a";
+      url = "http://registry.npmjs.org/methods/-/methods-1.1.2.tgz";
+      name = "methods-1.1.2.tgz";
+      sha1 = "5529a4d67654134edcc5266656835b0f851afcee";
     };
     deps = {
     };
@@ -7701,28 +8011,29 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."methods"."~1.1.2" =
+    self.by-version."methods"."1.1.2";
   by-spec."micromatch"."^2.1.5" =
-    self.by-version."micromatch"."2.3.3";
-  by-version."micromatch"."2.3.3" = self.buildNodePackage {
-    name = "micromatch-2.3.3";
-    version = "2.3.3";
+    self.by-version."micromatch"."2.3.7";
+  by-version."micromatch"."2.3.7" = self.buildNodePackage {
+    name = "micromatch-2.3.7";
+    version = "2.3.7";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/micromatch/-/micromatch-2.3.3.tgz";
-      name = "micromatch-2.3.3.tgz";
-      sha1 = "f8357e265f5768f2ca799a3241d1995788d31648";
+      url = "http://registry.npmjs.org/micromatch/-/micromatch-2.3.7.tgz";
+      name = "micromatch-2.3.7.tgz";
+      sha1 = "2f2e85ef46140dbea6cb55e739b6b11b30eaa509";
     };
     deps = {
-      "arr-diff-1.1.0" = self.by-version."arr-diff"."1.1.0";
+      "arr-diff-2.0.0" = self.by-version."arr-diff"."2.0.0";
       "array-unique-0.2.1" = self.by-version."array-unique"."0.2.1";
-      "braces-1.8.2" = self.by-version."braces"."1.8.2";
+      "braces-1.8.3" = self.by-version."braces"."1.8.3";
       "expand-brackets-0.1.4" = self.by-version."expand-brackets"."0.1.4";
-      "extglob-0.3.1" = self.by-version."extglob"."0.3.1";
+      "extglob-0.3.2" = self.by-version."extglob"."0.3.2";
       "filename-regex-2.0.0" = self.by-version."filename-regex"."2.0.0";
       "is-extglob-1.0.0" = self.by-version."is-extglob"."1.0.0";
       "is-glob-2.0.1" = self.by-version."is-glob"."2.0.1";
-      "kind-of-2.0.1" = self.by-version."kind-of"."2.0.1";
-      "lazy-cache-0.2.4" = self.by-version."lazy-cache"."0.2.4";
+      "kind-of-3.0.2" = self.by-version."kind-of"."3.0.2";
       "normalize-path-2.0.1" = self.by-version."normalize-path"."2.0.1";
       "object.omit-2.0.0" = self.by-version."object.omit"."2.0.0";
       "parse-glob-3.0.4" = self.by-version."parse-glob"."3.0.4";
@@ -7778,16 +8089,16 @@
     self.by-version."mime"."1.3.4";
   by-spec."mime"."~1.2.11" =
     self.by-version."mime"."1.2.11";
-  by-spec."mime-db".">= 1.19.0 < 2" =
-    self.by-version."mime-db"."1.20.0";
-  by-version."mime-db"."1.20.0" = self.buildNodePackage {
-    name = "mime-db-1.20.0";
-    version = "1.20.0";
+  by-spec."mime-db".">= 1.21.0 < 2" =
+    self.by-version."mime-db"."1.21.0";
+  by-version."mime-db"."1.21.0" = self.buildNodePackage {
+    name = "mime-db-1.21.0";
+    version = "1.21.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/mime-db/-/mime-db-1.20.0.tgz";
-      name = "mime-db-1.20.0.tgz";
-      sha1 = "496f90fd01fe0e031c8823ec3aa9450ffda18ed8";
+      url = "http://registry.npmjs.org/mime-db/-/mime-db-1.21.0.tgz";
+      name = "mime-db-1.21.0.tgz";
+      sha1 = "9b5239e3353cf6eb015a00d890261027c36d4bac";
     };
     deps = {
     };
@@ -7816,38 +8127,21 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."mime-db"."~1.19.0" =
-    self.by-version."mime-db"."1.19.0";
-  by-version."mime-db"."1.19.0" = self.buildNodePackage {
-    name = "mime-db-1.19.0";
-    version = "1.19.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/mime-db/-/mime-db-1.19.0.tgz";
-      name = "mime-db-1.19.0.tgz";
-      sha1 = "496a18198a7ce8244534e25bb102b74fb420fd56";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
+  by-spec."mime-db"."~1.21.0" =
+    self.by-version."mime-db"."1.21.0";
   by-spec."mime-types"."^2.1.3" =
-    self.by-version."mime-types"."2.1.7";
-  by-version."mime-types"."2.1.7" = self.buildNodePackage {
-    name = "mime-types-2.1.7";
-    version = "2.1.7";
+    self.by-version."mime-types"."2.1.9";
+  by-version."mime-types"."2.1.9" = self.buildNodePackage {
+    name = "mime-types-2.1.9";
+    version = "2.1.9";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/mime-types/-/mime-types-2.1.7.tgz";
-      name = "mime-types-2.1.7.tgz";
-      sha1 = "ff603970e3c731ef6f7f4df3c9a0f463a13c2755";
+      url = "http://registry.npmjs.org/mime-types/-/mime-types-2.1.9.tgz";
+      name = "mime-types-2.1.9.tgz";
+      sha1 = "dfb396764b5fdf75be34b1f4104bc3687fb635f8";
     };
     deps = {
-      "mime-db-1.19.0" = self.by-version."mime-db"."1.19.0";
+      "mime-db-1.21.0" = self.by-version."mime-db"."1.21.0";
     };
     optionalDependencies = {
     };
@@ -7894,12 +8188,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."mime-types"."~2.1.4" =
-    self.by-version."mime-types"."2.1.7";
+  by-spec."mime-types"."~2.0.4" =
+    self.by-version."mime-types"."2.0.14";
   by-spec."mime-types"."~2.1.6" =
-    self.by-version."mime-types"."2.1.7";
+    self.by-version."mime-types"."2.1.9";
   by-spec."mime-types"."~2.1.7" =
-    self.by-version."mime-types"."2.1.7";
+    self.by-version."mime-types"."2.1.9";
+  by-spec."mime-types"."~2.1.8" =
+    self.by-version."mime-types"."2.1.9";
+  by-spec."mime-types"."~2.1.9" =
+    self.by-version."mime-types"."2.1.9";
   by-spec."minimatch"."0.3" =
     self.by-version."minimatch"."0.3.0";
   by-version."minimatch"."0.3.0" = self.buildNodePackage {
@@ -8185,25 +8483,6 @@
   by-spec."mocha"."^2.3.4" =
     self.by-version."mocha"."2.3.4";
   "mocha" = self.by-version."mocha"."2.3.4";
-  by-spec."ms"."0.6.2" =
-    self.by-version."ms"."0.6.2";
-  by-version."ms"."0.6.2" = self.buildNodePackage {
-    name = "ms-0.6.2";
-    version = "0.6.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/ms/-/ms-0.6.2.tgz";
-      name = "ms-0.6.2.tgz";
-      sha1 = "d89c2124c6fdc1353d65a8b77bf1aac4b193708c";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."ms"."0.7.1" =
     self.by-version."ms"."0.7.1";
   by-version."ms"."0.7.1" = self.buildNodePackage {
@@ -8223,16 +8502,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."nan"."^2.0.2" =
-    self.by-version."nan"."2.1.0";
-  by-version."nan"."2.1.0" = self.buildNodePackage {
-    name = "nan-2.1.0";
-    version = "2.1.0";
+  by-spec."nan"."^2.0.8" =
+    self.by-version."nan"."2.2.0";
+  by-version."nan"."2.2.0" = self.buildNodePackage {
+    name = "nan-2.2.0";
+    version = "2.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/nan/-/nan-2.1.0.tgz";
-      name = "nan-2.1.0.tgz";
-      sha1 = "020a7ccedc63fdee85f85967d5607849e74abbe8";
+      url = "http://registry.npmjs.org/nan/-/nan-2.2.0.tgz";
+      name = "nan-2.2.0.tgz";
+      sha1 = "779c07135629503cf6a7b7e6aab33049b3c3853c";
     };
     deps = {
     };
@@ -8242,10 +8521,27 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."nan"."^2.0.5" =
-    self.by-version."nan"."2.1.0";
-  by-spec."nan"."^2.0.8" =
-    self.by-version."nan"."2.1.0";
+  by-spec."nan"."^2.1.0" =
+    self.by-version."nan"."2.2.0";
+  by-spec."negotiator"."0.4.9" =
+    self.by-version."negotiator"."0.4.9";
+  by-version."negotiator"."0.4.9" = self.buildNodePackage {
+    name = "negotiator-0.4.9";
+    version = "0.4.9";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/negotiator/-/negotiator-0.4.9.tgz";
+      name = "negotiator-0.4.9.tgz";
+      sha1 = "92e46b6db53c7e421ed64a2bc94f08be7630df3f";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."negotiator"."0.5.3" =
     self.by-version."negotiator"."0.5.3";
   by-version."negotiator"."0.5.3" = self.buildNodePackage {
@@ -8306,15 +8602,15 @@
   };
   "nib" = self.by-version."nib"."1.1.0";
   by-spec."node-gyp"."^3.0.1" =
-    self.by-version."node-gyp"."3.2.0";
-  by-version."node-gyp"."3.2.0" = self.buildNodePackage {
-    name = "node-gyp-3.2.0";
-    version = "3.2.0";
+    self.by-version."node-gyp"."3.2.1";
+  by-version."node-gyp"."3.2.1" = self.buildNodePackage {
+    name = "node-gyp-3.2.1";
+    version = "3.2.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/node-gyp/-/node-gyp-3.2.0.tgz";
-      name = "node-gyp-3.2.0.tgz";
-      sha1 = "ed0bff7223d5607f1c3f7309ed4b7b99977e6d05";
+      url = "http://registry.npmjs.org/node-gyp/-/node-gyp-3.2.1.tgz";
+      name = "node-gyp-3.2.1.tgz";
+      sha1 = "f5dd569970a508464cc3c15d7e9e8d2de8638dd5";
     };
     deps = {
       "fstream-1.0.8" = self.by-version."fstream"."1.0.8";
@@ -8325,12 +8621,12 @@
       "nopt-3.0.6" = self.by-version."nopt"."3.0.6";
       "npmlog-1.2.1" = self.by-version."npmlog"."1.2.1";
       "osenv-0.1.3" = self.by-version."osenv"."0.1.3";
-      "path-array-1.0.0" = self.by-version."path-array"."1.0.0";
+      "path-array-1.0.1" = self.by-version."path-array"."1.0.1";
       "request-2.67.0" = self.by-version."request"."2.67.0";
-      "rimraf-2.4.4" = self.by-version."rimraf"."2.4.4";
+      "rimraf-2.5.1" = self.by-version."rimraf"."2.5.1";
       "semver-5.1.0" = self.by-version."semver"."5.1.0";
       "tar-2.2.1" = self.by-version."tar"."2.2.1";
-      "which-1.2.0" = self.by-version."which"."1.2.0";
+      "which-1.2.2" = self.by-version."which"."1.2.2";
     };
     optionalDependencies = {
     };
@@ -8352,23 +8648,23 @@
     deps = {
       "assert-1.3.0" = self.by-version."assert"."1.3.0";
       "browserify-zlib-0.1.4" = self.by-version."browserify-zlib"."0.1.4";
-      "buffer-3.5.2" = self.by-version."buffer"."3.5.2";
+      "buffer-3.6.0" = self.by-version."buffer"."3.6.0";
       "console-browserify-1.1.0" = self.by-version."console-browserify"."1.1.0";
       "constants-browserify-0.0.1" = self.by-version."constants-browserify"."0.0.1";
       "crypto-browserify-3.2.8" = self.by-version."crypto-browserify"."3.2.8";
-      "domain-browser-1.1.4" = self.by-version."domain-browser"."1.1.4";
+      "domain-browser-1.1.7" = self.by-version."domain-browser"."1.1.7";
       "events-1.1.0" = self.by-version."events"."1.1.0";
       "http-browserify-1.7.0" = self.by-version."http-browserify"."1.7.0";
       "https-browserify-0.0.0" = self.by-version."https-browserify"."0.0.0";
       "os-browserify-0.1.2" = self.by-version."os-browserify"."0.1.2";
       "path-browserify-0.0.0" = self.by-version."path-browserify"."0.0.0";
       "process-0.11.2" = self.by-version."process"."0.11.2";
-      "punycode-1.3.2" = self.by-version."punycode"."1.3.2";
+      "punycode-1.4.0" = self.by-version."punycode"."1.4.0";
       "querystring-es3-0.2.1" = self.by-version."querystring-es3"."0.2.1";
       "readable-stream-1.1.13" = self.by-version."readable-stream"."1.1.13";
       "stream-browserify-1.0.0" = self.by-version."stream-browserify"."1.0.0";
       "string_decoder-0.10.31" = self.by-version."string_decoder"."0.10.31";
-      "timers-browserify-1.4.1" = self.by-version."timers-browserify"."1.4.1";
+      "timers-browserify-1.4.2" = self.by-version."timers-browserify"."1.4.2";
       "tty-browserify-0.0.0" = self.by-version."tty-browserify"."0.0.0";
       "url-0.10.3" = self.by-version."url"."0.10.3";
       "util-0.10.3" = self.by-version."util"."0.10.3";
@@ -8380,27 +8676,27 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."node-pre-gyp"."^0.6.15" =
-    self.by-version."node-pre-gyp"."0.6.17";
-  by-version."node-pre-gyp"."0.6.17" = self.buildNodePackage {
-    name = "node-pre-gyp-0.6.17";
-    version = "0.6.17";
+  by-spec."node-pre-gyp"."^0.6.17" =
+    self.by-version."node-pre-gyp"."0.6.19";
+  by-version."node-pre-gyp"."0.6.19" = self.buildNodePackage {
+    name = "node-pre-gyp-0.6.19";
+    version = "0.6.19";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.6.17.tgz";
-      name = "node-pre-gyp-0.6.17.tgz";
-      sha1 = "135d7cd0af12eeb9d3e724ac89c61932a120887a";
+      url = "http://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.6.19.tgz";
+      name = "node-pre-gyp-0.6.19.tgz";
+      sha1 = "842badff2e9c423c5a817e068ffe8f8487dc1016";
     };
     deps = {
       "nopt-3.0.6" = self.by-version."nopt"."3.0.6";
-      "npmlog-2.0.0" = self.by-version."npmlog"."2.0.0";
+      "npmlog-2.0.1" = self.by-version."npmlog"."2.0.1";
       "request-2.67.0" = self.by-version."request"."2.67.0";
       "semver-5.1.0" = self.by-version."semver"."5.1.0";
       "tar-2.2.1" = self.by-version."tar"."2.2.1";
-      "tar-pack-3.1.0" = self.by-version."tar-pack"."3.1.0";
+      "tar-pack-3.1.2" = self.by-version."tar-pack"."3.1.2";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
-      "rc-1.1.5" = self.by-version."rc"."1.1.5";
-      "rimraf-2.4.4" = self.by-version."rimraf"."2.4.4";
+      "rc-1.1.6" = self.by-version."rc"."1.1.6";
+      "rimraf-2.5.1" = self.by-version."rimraf"."2.5.1";
     };
     optionalDependencies = {
     };
@@ -8422,15 +8718,15 @@
     deps = {
       "async-foreach-0.1.3" = self.by-version."async-foreach"."0.1.3";
       "chalk-1.1.1" = self.by-version."chalk"."1.1.1";
-      "cross-spawn-2.0.1" = self.by-version."cross-spawn"."2.0.1";
+      "cross-spawn-2.1.4" = self.by-version."cross-spawn"."2.1.4";
       "gaze-0.5.2" = self.by-version."gaze"."0.5.2";
       "get-stdin-4.0.1" = self.by-version."get-stdin"."4.0.1";
       "glob-5.0.15" = self.by-version."glob"."5.0.15";
-      "meow-3.6.0" = self.by-version."meow"."3.6.0";
+      "meow-3.7.0" = self.by-version."meow"."3.7.0";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
-      "nan-2.1.0" = self.by-version."nan"."2.1.0";
+      "nan-2.2.0" = self.by-version."nan"."2.2.0";
       "npmconf-2.1.2" = self.by-version."npmconf"."2.1.2";
-      "node-gyp-3.2.0" = self.by-version."node-gyp"."3.2.0";
+      "node-gyp-3.2.1" = self.by-version."node-gyp"."3.2.1";
       "request-2.67.0" = self.by-version."request"."2.67.0";
       "sass-graph-2.0.1" = self.by-version."sass-graph"."2.0.1";
     };
@@ -8511,7 +8807,7 @@
   };
   by-spec."normalize-package-data"."^2.3.4" =
     self.by-version."normalize-package-data"."2.3.5";
-  by-spec."normalize-path"."^2.0.0" =
+  by-spec."normalize-path"."^2.0.1" =
     self.by-version."normalize-path"."2.0.1";
   by-version."normalize-path"."2.0.1" = self.buildNodePackage {
     name = "normalize-path-2.0.1";
@@ -8521,6 +8817,25 @@
       url = "http://registry.npmjs.org/normalize-path/-/normalize-path-2.0.1.tgz";
       name = "normalize-path-2.0.1.tgz";
       sha1 = "47886ac1662760d4261b7d979d241709d3ce3f7a";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."normalize-range"."^0.1.2" =
+    self.by-version."normalize-range"."0.1.2";
+  by-version."normalize-range"."0.1.2" = self.buildNodePackage {
+    name = "normalize-range-0.1.2";
+    version = "0.1.2";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz";
+      name = "normalize-range-0.1.2.tgz";
+      sha1 = "2d10c06bdfd312ea9777695a4d28439456b75942";
     };
     deps = {
     };
@@ -8585,7 +8900,7 @@
       sha1 = "a266c7e5c56695eb7f55caf3a5a7328f24510dae";
     };
     deps = {
-      "config-chain-1.1.9" = self.by-version."config-chain"."1.1.9";
+      "config-chain-1.1.10" = self.by-version."config-chain"."1.1.10";
       "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "ini-1.3.4" = self.by-version."ini"."1.3.4";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
@@ -8613,7 +8928,7 @@
       sha1 = "66606a4a736f1e77a059aa071a79c94ab781853a";
     };
     deps = {
-      "config-chain-1.1.9" = self.by-version."config-chain"."1.1.9";
+      "config-chain-1.1.10" = self.by-version."config-chain"."1.1.10";
       "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "ini-1.3.4" = self.by-version."ini"."1.3.4";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
@@ -8641,9 +8956,9 @@
       sha1 = "28e7be619609b53f7ad1dd300a10d64d716268b6";
     };
     deps = {
-      "ansi-0.3.0" = self.by-version."ansi"."0.3.0";
-      "are-we-there-yet-1.0.4" = self.by-version."are-we-there-yet"."1.0.4";
-      "gauge-1.2.2" = self.by-version."gauge"."1.2.2";
+      "ansi-0.3.1" = self.by-version."ansi"."0.3.1";
+      "are-we-there-yet-1.0.5" = self.by-version."are-we-there-yet"."1.0.5";
+      "gauge-1.2.4" = self.by-version."gauge"."1.2.4";
     };
     optionalDependencies = {
     };
@@ -8652,20 +8967,40 @@
     cpu = [ ];
   };
   by-spec."npmlog"."~2.0.0" =
-    self.by-version."npmlog"."2.0.0";
-  by-version."npmlog"."2.0.0" = self.buildNodePackage {
-    name = "npmlog-2.0.0";
-    version = "2.0.0";
+    self.by-version."npmlog"."2.0.1";
+  by-version."npmlog"."2.0.1" = self.buildNodePackage {
+    name = "npmlog-2.0.1";
+    version = "2.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/npmlog/-/npmlog-2.0.0.tgz";
-      name = "npmlog-2.0.0.tgz";
-      sha1 = "4076c200a3dda51133e6f3cf052130105f78bbdf";
+      url = "http://registry.npmjs.org/npmlog/-/npmlog-2.0.1.tgz";
+      name = "npmlog-2.0.1.tgz";
+      sha1 = "c2e704d3eb50de738c903f7172001d60bf673fa0";
     };
     deps = {
-      "ansi-0.3.0" = self.by-version."ansi"."0.3.0";
-      "are-we-there-yet-1.0.4" = self.by-version."are-we-there-yet"."1.0.4";
-      "gauge-1.2.2" = self.by-version."gauge"."1.2.2";
+      "ansi-0.3.1" = self.by-version."ansi"."0.3.1";
+      "are-we-there-yet-1.0.5" = self.by-version."are-we-there-yet"."1.0.5";
+      "gauge-1.2.4" = self.by-version."gauge"."1.2.4";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."nth-check"."~1.0.1" =
+    self.by-version."nth-check"."1.0.1";
+  by-version."nth-check"."1.0.1" = self.buildNodePackage {
+    name = "nth-check-1.0.1";
+    version = "1.0.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/nth-check/-/nth-check-1.0.1.tgz";
+      name = "nth-check-1.0.1.tgz";
+      sha1 = "9929acdf628fc2c41098deab82ac580cf149aae4";
+    };
+    deps = {
+      "boolbase-1.0.0" = self.by-version."boolbase"."1.0.0";
     };
     optionalDependencies = {
     };
@@ -8778,25 +9113,6 @@
       url = "http://registry.npmjs.org/object-component/-/object-component-0.0.3.tgz";
       name = "object-component-0.0.3.tgz";
       sha1 = "f0c69aa50efc95b866c186f400a33769cb2f1291";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."object-keys"."1.0.1" =
-    self.by-version."object-keys"."1.0.1";
-  by-version."object-keys"."1.0.1" = self.buildNodePackage {
-    name = "object-keys-1.0.1";
-    version = "1.0.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/object-keys/-/object-keys-1.0.1.tgz";
-      name = "object-keys-1.0.1.tgz";
-      sha1 = "55802e85842c26bbb5ebbc157abf3be302569ba8";
     };
     deps = {
     };
@@ -9108,18 +9424,18 @@
     cpu = [ ];
   };
   by-spec."param-case"."^1.1.0" =
-    self.by-version."param-case"."1.1.1";
-  by-version."param-case"."1.1.1" = self.buildNodePackage {
-    name = "param-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."param-case"."1.1.2";
+  by-version."param-case"."1.1.2" = self.buildNodePackage {
+    name = "param-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/param-case/-/param-case-1.1.1.tgz";
-      name = "param-case-1.1.1.tgz";
-      sha1 = "ee5be71ddb7f5c932dd7dc09b91a77730eac560d";
+      url = "http://registry.npmjs.org/param-case/-/param-case-1.1.2.tgz";
+      name = "param-case-1.1.2.tgz";
+      sha1 = "dcb091a43c259b9228f1c341e7b6a44ea0bf9743";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -9210,26 +9526,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."parseuri"."0.0.2" =
-    self.by-version."parseuri"."0.0.2";
-  by-version."parseuri"."0.0.2" = self.buildNodePackage {
-    name = "parseuri-0.0.2";
-    version = "0.0.2";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/parseuri/-/parseuri-0.0.2.tgz";
-      name = "parseuri-0.0.2.tgz";
-      sha1 = "db41878f2d6964718be870b3140973d8093be156";
-    };
-    deps = {
-      "better-assert-1.0.2" = self.by-version."better-assert"."1.0.2";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."parseuri"."0.0.4" =
     self.by-version."parseuri"."0.0.4";
   by-version."parseuri"."0.0.4" = self.buildNodePackage {
@@ -9250,16 +9546,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."parseurl"."~1.3.0" =
-    self.by-version."parseurl"."1.3.0";
-  by-version."parseurl"."1.3.0" = self.buildNodePackage {
-    name = "parseurl-1.3.0";
-    version = "1.3.0";
+  by-spec."parseurl"."~1.3.1" =
+    self.by-version."parseurl"."1.3.1";
+  by-version."parseurl"."1.3.1" = self.buildNodePackage {
+    name = "parseurl-1.3.1";
+    version = "1.3.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/parseurl/-/parseurl-1.3.0.tgz";
-      name = "parseurl-1.3.0.tgz";
-      sha1 = "b58046db4223e145afa76009e61bac87cc2281b3";
+      url = "http://registry.npmjs.org/parseurl/-/parseurl-1.3.1.tgz";
+      name = "parseurl-1.3.1.tgz";
+      sha1 = "c8ab8c9223ba34888aa64a297b28853bec18da56";
     };
     deps = {
     };
@@ -9270,19 +9566,19 @@
     cpu = [ ];
   };
   by-spec."pascal-case"."^1.1.0" =
-    self.by-version."pascal-case"."1.1.1";
-  by-version."pascal-case"."1.1.1" = self.buildNodePackage {
-    name = "pascal-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."pascal-case"."1.1.2";
+  by-version."pascal-case"."1.1.2" = self.buildNodePackage {
+    name = "pascal-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/pascal-case/-/pascal-case-1.1.1.tgz";
-      name = "pascal-case-1.1.1.tgz";
-      sha1 = "460d7d112e34228d344e1e66372668404e776e73";
+      url = "http://registry.npmjs.org/pascal-case/-/pascal-case-1.1.2.tgz";
+      name = "pascal-case-1.1.2.tgz";
+      sha1 = "3e5d64a20043830a7c49344c2d74b41be0c9c99b";
     };
     deps = {
-      "camel-case-1.2.0" = self.by-version."camel-case"."1.2.0";
-      "upper-case-first-1.1.1" = self.by-version."upper-case-first"."1.1.1";
+      "camel-case-1.2.2" = self.by-version."camel-case"."1.2.2";
+      "upper-case-first-1.1.2" = self.by-version."upper-case-first"."1.1.2";
     };
     optionalDependencies = {
     };
@@ -9291,18 +9587,18 @@
     cpu = [ ];
   };
   by-spec."path-array"."^1.0.0" =
-    self.by-version."path-array"."1.0.0";
-  by-version."path-array"."1.0.0" = self.buildNodePackage {
-    name = "path-array-1.0.0";
-    version = "1.0.0";
+    self.by-version."path-array"."1.0.1";
+  by-version."path-array"."1.0.1" = self.buildNodePackage {
+    name = "path-array-1.0.1";
+    version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/path-array/-/path-array-1.0.0.tgz";
-      name = "path-array-1.0.0.tgz";
-      sha1 = "6c14130c33084f0150553c657b38397ab67aaa4e";
+      url = "http://registry.npmjs.org/path-array/-/path-array-1.0.1.tgz";
+      name = "path-array-1.0.1.tgz";
+      sha1 = "7e2f0f35f07a2015122b868b7eac0eb2c4fec271";
     };
     deps = {
-      "array-index-0.1.1" = self.by-version."array-index"."0.1.1";
+      "array-index-1.0.0" = self.by-version."array-index"."1.0.0";
     };
     optionalDependencies = {
     };
@@ -9330,18 +9626,18 @@
     cpu = [ ];
   };
   by-spec."path-case"."^1.1.0" =
-    self.by-version."path-case"."1.1.1";
-  by-version."path-case"."1.1.1" = self.buildNodePackage {
-    name = "path-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."path-case"."1.1.2";
+  by-version."path-case"."1.1.2" = self.buildNodePackage {
+    name = "path-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/path-case/-/path-case-1.1.1.tgz";
-      name = "path-case-1.1.1.tgz";
-      sha1 = "fbc81d59d317e95157fedee9b224a328acb68ffe";
+      url = "http://registry.npmjs.org/path-case/-/path-case-1.1.2.tgz";
+      name = "path-case-1.1.2.tgz";
+      sha1 = "50ce6ba0d3bed3dd0b5c2a9c4553697434409514";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -9538,15 +9834,15 @@
     cpu = [ ];
   };
   by-spec."postcss"."^5.0.10" =
-    self.by-version."postcss"."5.0.12";
-  by-version."postcss"."5.0.12" = self.buildNodePackage {
-    name = "postcss-5.0.12";
-    version = "5.0.12";
+    self.by-version."postcss"."5.0.14";
+  by-version."postcss"."5.0.14" = self.buildNodePackage {
+    name = "postcss-5.0.14";
+    version = "5.0.14";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss/-/postcss-5.0.12.tgz";
-      name = "postcss-5.0.12.tgz";
-      sha1 = "61297ec594d17705071ad888f5ed408905b9575a";
+      url = "http://registry.npmjs.org/postcss/-/postcss-5.0.14.tgz";
+      name = "postcss-5.0.14.tgz";
+      sha1 = "164dafa9f3c6775ee599919cda610adeb495fcec";
     };
     deps = {
       "supports-color-3.1.2" = self.by-version."supports-color"."3.1.2";
@@ -9560,32 +9856,36 @@
     cpu = [ ];
   };
   by-spec."postcss"."^5.0.12" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
+  by-spec."postcss"."^5.0.13" =
+    self.by-version."postcss"."5.0.14";
+  by-spec."postcss"."^5.0.14" =
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss"."^5.0.2" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss"."^5.0.4" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss"."^5.0.5" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss"."^5.0.6" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss"."^5.0.8" =
-    self.by-version."postcss"."5.0.12";
+    self.by-version."postcss"."5.0.14";
   by-spec."postcss-calc"."^5.0.0" =
-    self.by-version."postcss-calc"."5.0.0";
-  by-version."postcss-calc"."5.0.0" = self.buildNodePackage {
-    name = "postcss-calc-5.0.0";
-    version = "5.0.0";
+    self.by-version."postcss-calc"."5.2.0";
+  by-version."postcss-calc"."5.2.0" = self.buildNodePackage {
+    name = "postcss-calc-5.2.0";
+    version = "5.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-calc/-/postcss-calc-5.0.0.tgz";
-      name = "postcss-calc-5.0.0.tgz";
-      sha1 = "234f0600e3ded531f016ad045ed46b89aef552c1";
+      url = "http://registry.npmjs.org/postcss-calc/-/postcss-calc-5.2.0.tgz";
+      name = "postcss-calc-5.2.0.tgz";
+      sha1 = "0b6153b79390ba3b7b98eaddff63f179ffe6faf5";
     };
     deps = {
       "postcss-message-helpers-2.0.0" = self.by-version."postcss-message-helpers"."2.0.0";
       "reduce-css-calc-1.2.0" = self.by-version."reduce-css-calc"."1.2.0";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9594,21 +9894,20 @@
     cpu = [ ];
   };
   by-spec."postcss-colormin"."^2.1.7" =
-    self.by-version."postcss-colormin"."2.1.7";
-  by-version."postcss-colormin"."2.1.7" = self.buildNodePackage {
-    name = "postcss-colormin-2.1.7";
-    version = "2.1.7";
+    self.by-version."postcss-colormin"."2.1.8";
+  by-version."postcss-colormin"."2.1.8" = self.buildNodePackage {
+    name = "postcss-colormin-2.1.8";
+    version = "2.1.8";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-colormin/-/postcss-colormin-2.1.7.tgz";
-      name = "postcss-colormin-2.1.7.tgz";
-      sha1 = "b9e30b04d6826be6858c124c19abf4135518d1e4";
+      url = "http://registry.npmjs.org/postcss-colormin/-/postcss-colormin-2.1.8.tgz";
+      name = "postcss-colormin-2.1.8.tgz";
+      sha1 = "37d379d5e3f739ebbb8485169aa1266d1c608af5";
     };
     deps = {
-      "colr-convert-1.0.5" = self.by-version."colr-convert"."1.0.5";
-      "css-color-names-0.0.2" = self.by-version."css-color-names"."0.0.2";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "colormin-1.0.7" = self.by-version."colormin"."1.0.7";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -9628,8 +9927,8 @@
       sha1 = "2321ba0397f322579130d8b9f0e89a42d82e6239";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -9638,18 +9937,18 @@
     cpu = [ ];
   };
   by-spec."postcss-discard-comments"."^2.0.2" =
-    self.by-version."postcss-discard-comments"."2.0.2";
-  by-version."postcss-discard-comments"."2.0.2" = self.buildNodePackage {
-    name = "postcss-discard-comments-2.0.2";
-    version = "2.0.2";
+    self.by-version."postcss-discard-comments"."2.0.3";
+  by-version."postcss-discard-comments"."2.0.3" = self.buildNodePackage {
+    name = "postcss-discard-comments-2.0.3";
+    version = "2.0.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-2.0.2.tgz";
-      name = "postcss-discard-comments-2.0.2.tgz";
-      sha1 = "9899744aad1321f9f13ffb8c6727606afeca50f8";
+      url = "http://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-2.0.3.tgz";
+      name = "postcss-discard-comments-2.0.3.tgz";
+      sha1 = "59797a51747e05e2bec208f22d635a6983068b04";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9669,7 +9968,7 @@
       sha1 = "16a1901e5d791947b198e4a6b29d7e123814dd12";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9689,7 +9988,7 @@
       sha1 = "404768be05a91330490115486e1d521918c8e761";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9710,7 +10009,7 @@
     };
     deps = {
       "flatten-0.0.1" = self.by-version."flatten"."0.0.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
       "uniqs-2.0.0" = self.by-version."uniqs"."2.0.0";
     };
     optionalDependencies = {
@@ -9731,7 +10030,7 @@
       sha1 = "acce5d18c40e51be598911b6eca8b54d9e5bdedf";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
       "uniqid-1.0.0" = self.by-version."uniqid"."1.0.0";
     };
     optionalDependencies = {
@@ -9741,20 +10040,20 @@
     cpu = [ ];
   };
   by-spec."postcss-merge-idents"."^2.1.3" =
-    self.by-version."postcss-merge-idents"."2.1.3";
-  by-version."postcss-merge-idents"."2.1.3" = self.buildNodePackage {
-    name = "postcss-merge-idents-2.1.3";
-    version = "2.1.3";
+    self.by-version."postcss-merge-idents"."2.1.4";
+  by-version."postcss-merge-idents"."2.1.4" = self.buildNodePackage {
+    name = "postcss-merge-idents-2.1.4";
+    version = "2.1.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-merge-idents/-/postcss-merge-idents-2.1.3.tgz";
-      name = "postcss-merge-idents-2.1.3.tgz";
-      sha1 = "462d5ccfb7a7dfefdbd629edd67dd3001094a90d";
+      url = "http://registry.npmjs.org/postcss-merge-idents/-/postcss-merge-idents-2.1.4.tgz";
+      name = "postcss-merge-idents-2.1.4.tgz";
+      sha1 = "270d1e9eae275f107a7ba76da130374de32d7ac1";
     };
     deps = {
       "has-own-1.0.0" = self.by-version."has-own"."1.0.0";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -9774,7 +10073,7 @@
       sha1 = "ff59b5dec6d586ce2cea183138f55c5876fa9cdc";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9783,18 +10082,18 @@
     cpu = [ ];
   };
   by-spec."postcss-merge-rules"."^2.0.1" =
-    self.by-version."postcss-merge-rules"."2.0.2";
-  by-version."postcss-merge-rules"."2.0.2" = self.buildNodePackage {
-    name = "postcss-merge-rules-2.0.2";
-    version = "2.0.2";
+    self.by-version."postcss-merge-rules"."2.0.3";
+  by-version."postcss-merge-rules"."2.0.3" = self.buildNodePackage {
+    name = "postcss-merge-rules-2.0.3";
+    version = "2.0.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-2.0.2.tgz";
-      name = "postcss-merge-rules-2.0.2.tgz";
-      sha1 = "4a3f5ead0e31a5c30cc0e87888b389b6d087aa6d";
+      url = "http://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-2.0.3.tgz";
+      name = "postcss-merge-rules-2.0.3.tgz";
+      sha1 = "92eff7efb5a13029853ebb4aa3309be525f319e6";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9834,9 +10133,30 @@
     };
     deps = {
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
       "uniqs-2.0.0" = self.by-version."uniqs"."2.0.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."postcss-minify-gradients"."^1.0.0" =
+    self.by-version."postcss-minify-gradients"."1.0.1";
+  by-version."postcss-minify-gradients"."1.0.1" = self.buildNodePackage {
+    name = "postcss-minify-gradients-1.0.1";
+    version = "1.0.1";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/postcss-minify-gradients/-/postcss-minify-gradients-1.0.1.tgz";
+      name = "postcss-minify-gradients-1.0.1.tgz";
+      sha1 = "3db3224a395711732bc0ae97b4c76597481a40f8";
+    };
+    deps = {
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -9857,8 +10177,8 @@
     };
     deps = {
       "alphanum-sort-1.0.2" = self.by-version."alphanum-sort"."1.0.2";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
       "uniqs-2.0.0" = self.by-version."uniqs"."2.0.0";
     };
     optionalDependencies = {
@@ -9868,19 +10188,19 @@
     cpu = [ ];
   };
   by-spec."postcss-minify-selectors"."^2.0.1" =
-    self.by-version."postcss-minify-selectors"."2.0.1";
-  by-version."postcss-minify-selectors"."2.0.1" = self.buildNodePackage {
-    name = "postcss-minify-selectors-2.0.1";
-    version = "2.0.1";
+    self.by-version."postcss-minify-selectors"."2.0.3";
+  by-version."postcss-minify-selectors"."2.0.3" = self.buildNodePackage {
+    name = "postcss-minify-selectors-2.0.3";
+    version = "2.0.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-minify-selectors/-/postcss-minify-selectors-2.0.1.tgz";
-      name = "postcss-minify-selectors-2.0.1.tgz";
-      sha1 = "15e6b99fc0a6197654912174ea834437a18b1382";
+      url = "http://registry.npmjs.org/postcss-minify-selectors/-/postcss-minify-selectors-2.0.3.tgz";
+      name = "postcss-minify-selectors-2.0.3.tgz";
+      sha1 = "d3e478f549e2fe70060b86cb823d2a02dd09c762";
     };
     deps = {
       "alphanum-sort-1.0.2" = self.by-version."alphanum-sort"."1.0.2";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
       "postcss-selector-parser-1.3.0" = self.by-version."postcss-selector-parser"."1.3.0";
     };
     optionalDependencies = {
@@ -9901,7 +10221,7 @@
       sha1 = "5b07f368e350cda6fd5c8844b79123a7bd3e37be";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9909,20 +10229,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."postcss-modules-local-by-default"."^1.0.0" =
-    self.by-version."postcss-modules-local-by-default"."1.0.0";
-  by-version."postcss-modules-local-by-default"."1.0.0" = self.buildNodePackage {
-    name = "postcss-modules-local-by-default-1.0.0";
-    version = "1.0.0";
+  by-spec."postcss-modules-local-by-default"."^1.0.1" =
+    self.by-version."postcss-modules-local-by-default"."1.0.1";
+  by-version."postcss-modules-local-by-default"."1.0.1" = self.buildNodePackage {
+    name = "postcss-modules-local-by-default-1.0.1";
+    version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-modules-local-by-default/-/postcss-modules-local-by-default-1.0.0.tgz";
-      name = "postcss-modules-local-by-default-1.0.0.tgz";
-      sha1 = "5fe7217ea1a7a9fdb9ead513f1e055051a4401a8";
+      url = "http://registry.npmjs.org/postcss-modules-local-by-default/-/postcss-modules-local-by-default-1.0.1.tgz";
+      name = "postcss-modules-local-by-default-1.0.1.tgz";
+      sha1 = "5ecb890fe5269f70fc3b980f6202cde9771d4799";
     };
     deps = {
       "css-selector-tokenizer-0.5.4" = self.by-version."css-selector-tokenizer"."0.5.4";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9943,7 +10263,7 @@
     };
     deps = {
       "css-selector-tokenizer-0.5.4" = self.by-version."css-selector-tokenizer"."0.5.4";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9964,7 +10284,7 @@
     };
     deps = {
       "icss-replace-symbols-1.0.2" = self.by-version."icss-replace-symbols"."1.0.2";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9984,7 +10304,7 @@
       sha1 = "2fbd30e12248c442981d31ea2484d46fd0628970";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
     };
     optionalDependencies = {
     };
@@ -9993,22 +10313,22 @@
     cpu = [ ];
   };
   by-spec."postcss-normalize-url"."^3.0.4" =
-    self.by-version."postcss-normalize-url"."3.0.4";
-  by-version."postcss-normalize-url"."3.0.4" = self.buildNodePackage {
-    name = "postcss-normalize-url-3.0.4";
-    version = "3.0.4";
+    self.by-version."postcss-normalize-url"."3.0.5";
+  by-version."postcss-normalize-url"."3.0.5" = self.buildNodePackage {
+    name = "postcss-normalize-url-3.0.5";
+    version = "3.0.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-normalize-url/-/postcss-normalize-url-3.0.4.tgz";
-      name = "postcss-normalize-url-3.0.4.tgz";
-      sha1 = "d0451e898166a9479368748ec4f10bf753dfb720";
+      url = "http://registry.npmjs.org/postcss-normalize-url/-/postcss-normalize-url-3.0.5.tgz";
+      name = "postcss-normalize-url-3.0.5.tgz";
+      sha1 = "fbabf11283953f36bea7f7a44c2c3b1980790d36";
     };
     deps = {
       "is-absolute-url-2.0.0" = self.by-version."is-absolute-url"."2.0.0";
       "normalize-url-1.4.0" = self.by-version."normalize-url"."1.4.0";
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -10028,8 +10348,8 @@
       sha1 = "fff3c4e79cab5ebf38450657e36f3617a502354a";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -10049,8 +10369,8 @@
       sha1 = "ecd82f719fb40eda22b0b6d41c3fc2dac6ad6a9b";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -10070,8 +10390,8 @@
       sha1 = "fc193e435a973c10f9801c74700a830f79643343";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
     };
     optionalDependencies = {
     };
@@ -10079,7 +10399,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."postcss-selector-parser"."^1.1.4" =
+  by-spec."postcss-selector-parser"."^1.3.0" =
     self.by-version."postcss-selector-parser"."1.3.0";
   by-version."postcss-selector-parser"."1.3.0" = self.buildNodePackage {
     name = "postcss-selector-parser-1.3.0";
@@ -10102,21 +10422,21 @@
     cpu = [ ];
   };
   by-spec."postcss-svgo"."^2.0.4" =
-    self.by-version."postcss-svgo"."2.1.0";
-  by-version."postcss-svgo"."2.1.0" = self.buildNodePackage {
-    name = "postcss-svgo-2.1.0";
-    version = "2.1.0";
+    self.by-version."postcss-svgo"."2.1.1";
+  by-version."postcss-svgo"."2.1.1" = self.buildNodePackage {
+    name = "postcss-svgo-2.1.1";
+    version = "2.1.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-svgo/-/postcss-svgo-2.1.0.tgz";
-      name = "postcss-svgo-2.1.0.tgz";
-      sha1 = "cbb497cf60958c41bfc9de5efea81070e059d634";
+      url = "http://registry.npmjs.org/postcss-svgo/-/postcss-svgo-2.1.1.tgz";
+      name = "postcss-svgo-2.1.1.tgz";
+      sha1 = "dac5b375d092789d64bbfcabe9dc7486b8aa8ecd";
     };
     deps = {
       "is-svg-1.1.1" = self.by-version."is-svg"."1.1.1";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
-      "postcss-value-parser-3.1.2" = self.by-version."postcss-value-parser"."3.1.2";
-      "svgo-0.5.6" = self.by-version."svgo"."0.5.6";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "postcss-value-parser-3.2.3" = self.by-version."postcss-value-parser"."3.2.3";
+      "svgo-0.6.1" = self.by-version."svgo"."0.6.1";
     };
     optionalDependencies = {
     };
@@ -10137,7 +10457,7 @@
     };
     deps = {
       "alphanum-sort-1.0.2" = self.by-version."alphanum-sort"."1.0.2";
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
       "uniqs-2.0.0" = self.by-version."uniqs"."2.0.0";
     };
     optionalDependencies = {
@@ -10147,15 +10467,15 @@
     cpu = [ ];
   };
   by-spec."postcss-value-parser"."^3.0.1" =
-    self.by-version."postcss-value-parser"."3.1.2";
-  by-version."postcss-value-parser"."3.1.2" = self.buildNodePackage {
-    name = "postcss-value-parser-3.1.2";
-    version = "3.1.2";
+    self.by-version."postcss-value-parser"."3.2.3";
+  by-version."postcss-value-parser"."3.2.3" = self.buildNodePackage {
+    name = "postcss-value-parser-3.2.3";
+    version = "3.2.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-3.1.2.tgz";
-      name = "postcss-value-parser-3.1.2.tgz";
-      sha1 = "5ec98f70548b8158b3b8f9b5c13a2bac46fb1837";
+      url = "http://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-3.2.3.tgz";
+      name = "postcss-value-parser-3.2.3.tgz";
+      sha1 = "216e7247bbd26b7668ab9eebd08de6b96eb2b453";
     };
     deps = {
     };
@@ -10166,24 +10486,27 @@
     cpu = [ ];
   };
   by-spec."postcss-value-parser"."^3.0.2" =
-    self.by-version."postcss-value-parser"."3.1.2";
+    self.by-version."postcss-value-parser"."3.2.3";
   by-spec."postcss-value-parser"."^3.1.1" =
-    self.by-version."postcss-value-parser"."3.1.2";
-  by-spec."postcss-value-parser"."^3.1.2" =
-    self.by-version."postcss-value-parser"."3.1.2";
+    self.by-version."postcss-value-parser"."3.2.3";
+  by-spec."postcss-value-parser"."^3.1.3" =
+    self.by-version."postcss-value-parser"."3.2.3";
+  by-spec."postcss-value-parser"."^3.2.3" =
+    self.by-version."postcss-value-parser"."3.2.3";
   by-spec."postcss-zindex"."^2.0.0" =
-    self.by-version."postcss-zindex"."2.0.0";
-  by-version."postcss-zindex"."2.0.0" = self.buildNodePackage {
-    name = "postcss-zindex-2.0.0";
-    version = "2.0.0";
+    self.by-version."postcss-zindex"."2.0.1";
+  by-version."postcss-zindex"."2.0.1" = self.buildNodePackage {
+    name = "postcss-zindex-2.0.1";
+    version = "2.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/postcss-zindex/-/postcss-zindex-2.0.0.tgz";
-      name = "postcss-zindex-2.0.0.tgz";
-      sha1 = "636dde2b07ef4a2b6d7ad8b034e237f535efd2b9";
+      url = "http://registry.npmjs.org/postcss-zindex/-/postcss-zindex-2.0.1.tgz";
+      name = "postcss-zindex-2.0.1.tgz";
+      sha1 = "1c9b22269691a87557f7565dfe6e3b8473e530bc";
     };
     deps = {
-      "postcss-5.0.12" = self.by-version."postcss"."5.0.12";
+      "postcss-5.0.14" = self.by-version."postcss"."5.0.14";
+      "uniqs-2.0.0" = self.by-version."uniqs"."2.0.0";
     };
     optionalDependencies = {
     };
@@ -10229,6 +10552,27 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."pretty-error"."^2.0.0" =
+    self.by-version."pretty-error"."2.0.0";
+  by-version."pretty-error"."2.0.0" = self.buildNodePackage {
+    name = "pretty-error-2.0.0";
+    version = "2.0.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/pretty-error/-/pretty-error-2.0.0.tgz";
+      name = "pretty-error-2.0.0.tgz";
+      sha1 = "e5f4dd401a652cf46226707c10ffa124e433e83f";
+    };
+    deps = {
+      "utila-0.4.0" = self.by-version."utila"."0.4.0";
+      "renderkid-2.0.0" = self.by-version."renderkid"."2.0.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."process"."^0.11.0" =
     self.by-version."process"."0.11.2";
   by-version."process"."0.11.2" = self.buildNodePackage {
@@ -10250,16 +10594,16 @@
   };
   by-spec."process"."~0.11.0" =
     self.by-version."process"."0.11.2";
-  by-spec."process-nextick-args"."~1.0.0" =
-    self.by-version."process-nextick-args"."1.0.3";
-  by-version."process-nextick-args"."1.0.3" = self.buildNodePackage {
-    name = "process-nextick-args-1.0.3";
-    version = "1.0.3";
+  by-spec."process-nextick-args"."~1.0.6" =
+    self.by-version."process-nextick-args"."1.0.6";
+  by-version."process-nextick-args"."1.0.6" = self.buildNodePackage {
+    name = "process-nextick-args-1.0.6";
+    version = "1.0.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.3.tgz";
-      name = "process-nextick-args-1.0.3.tgz";
-      sha1 = "e272eed825d5e9f4ea74d8d73b1fe311c3beb630";
+      url = "http://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.6.tgz";
+      name = "process-nextick-args-1.0.6.tgz";
+      sha1 = "0f96b001cea90b12592ce566edb97ec11e69bd05";
     };
     deps = {
     };
@@ -10309,15 +10653,15 @@
     cpu = [ ];
   };
   by-spec."promise"."^7.0.3" =
-    self.by-version."promise"."7.0.4";
-  by-version."promise"."7.0.4" = self.buildNodePackage {
-    name = "promise-7.0.4";
-    version = "7.0.4";
+    self.by-version."promise"."7.1.1";
+  by-version."promise"."7.1.1" = self.buildNodePackage {
+    name = "promise-7.1.1";
+    version = "7.1.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/promise/-/promise-7.0.4.tgz";
-      name = "promise-7.0.4.tgz";
-      sha1 = "363e84a4c36c8356b890fed62c91ce85d02ed539";
+      url = "http://registry.npmjs.org/promise/-/promise-7.1.1.tgz";
+      name = "promise-7.1.1.tgz";
+      sha1 = "489654c692616b8aa55b0724fa809bb7db49c5bf";
     };
     deps = {
       "asap-2.0.3" = self.by-version."asap"."2.0.3";
@@ -10347,20 +10691,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."proxy-addr"."~1.0.8" =
-    self.by-version."proxy-addr"."1.0.8";
-  by-version."proxy-addr"."1.0.8" = self.buildNodePackage {
-    name = "proxy-addr-1.0.8";
-    version = "1.0.8";
+  by-spec."proxy-addr"."~1.0.10" =
+    self.by-version."proxy-addr"."1.0.10";
+  by-version."proxy-addr"."1.0.10" = self.buildNodePackage {
+    name = "proxy-addr-1.0.10";
+    version = "1.0.10";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/proxy-addr/-/proxy-addr-1.0.8.tgz";
-      name = "proxy-addr-1.0.8.tgz";
-      sha1 = "db54ec878bcc1053d57646609219b3715678bafe";
+      url = "http://registry.npmjs.org/proxy-addr/-/proxy-addr-1.0.10.tgz";
+      name = "proxy-addr-1.0.10.tgz";
+      sha1 = "0d40a82f801fc355567d2ecb65efe3f077f121c5";
     };
     deps = {
       "forwarded-0.1.0" = self.by-version."forwarded"."0.1.0";
-      "ipaddr.js-1.0.1" = self.by-version."ipaddr.js"."1.0.1";
+      "ipaddr.js-1.0.5" = self.by-version."ipaddr.js"."1.0.5";
     };
     optionalDependencies = {
     };
@@ -10388,15 +10732,15 @@
     cpu = [ ];
   };
   by-spec."pseudomap"."^1.0.1" =
-    self.by-version."pseudomap"."1.0.1";
-  by-version."pseudomap"."1.0.1" = self.buildNodePackage {
-    name = "pseudomap-1.0.1";
-    version = "1.0.1";
+    self.by-version."pseudomap"."1.0.2";
+  by-version."pseudomap"."1.0.2" = self.buildNodePackage {
+    name = "pseudomap-1.0.2";
+    version = "1.0.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/pseudomap/-/pseudomap-1.0.1.tgz";
-      name = "pseudomap-1.0.1.tgz";
-      sha1 = "29b4e7f37bbbf3e3c9b9152981c40f33d56b2b28";
+      url = "http://registry.npmjs.org/pseudomap/-/pseudomap-1.0.2.tgz";
+      name = "pseudomap-1.0.2.tgz";
+      sha1 = "f052a28da70e618917ef0a8ac34c1ae5a68286b3";
     };
     deps = {
     };
@@ -10426,7 +10770,24 @@
     cpu = [ ];
   };
   by-spec."punycode"."^1.2.4" =
-    self.by-version."punycode"."1.3.2";
+    self.by-version."punycode"."1.4.0";
+  by-version."punycode"."1.4.0" = self.buildNodePackage {
+    name = "punycode-1.4.0";
+    version = "1.4.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/punycode/-/punycode-1.4.0.tgz";
+      name = "punycode-1.4.0.tgz";
+      sha1 = "3f879ea03f24c718d4d4b7e47de1fb51cf6c3e33";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
   by-spec."purecss"."^0.6.0" =
     self.by-version."purecss"."0.6.0";
   by-version."purecss"."0.6.0" = self.buildNodePackage {
@@ -10504,16 +10865,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."qs"."5.1.0" =
-    self.by-version."qs"."5.1.0";
-  by-version."qs"."5.1.0" = self.buildNodePackage {
-    name = "qs-5.1.0";
-    version = "5.1.0";
+  by-spec."qs"."5.2.0" =
+    self.by-version."qs"."5.2.0";
+  by-version."qs"."5.2.0" = self.buildNodePackage {
+    name = "qs-5.2.0";
+    version = "5.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/qs/-/qs-5.1.0.tgz";
-      name = "qs-5.1.0.tgz";
-      sha1 = "4d932e5c7ea411cca76a312d39a606200fd50cd9";
+      url = "http://registry.npmjs.org/qs/-/qs-5.2.0.tgz";
+      name = "qs-5.2.0.tgz";
+      sha1 = "a9f31142af468cb72b25b30136ba2456834916be";
     };
     deps = {
     };
@@ -10544,23 +10905,6 @@
   };
   by-spec."qs"."~5.2.0" =
     self.by-version."qs"."5.2.0";
-  by-version."qs"."5.2.0" = self.buildNodePackage {
-    name = "qs-5.2.0";
-    version = "5.2.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/qs/-/qs-5.2.0.tgz";
-      name = "qs-5.2.0.tgz";
-      sha1 = "a9f31142af468cb72b25b30136ba2456834916be";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."query-string"."^3.0.0" =
     self.by-version."query-string"."3.0.0";
   by-version."query-string"."3.0.0" = self.buildNodePackage {
@@ -10573,7 +10917,7 @@
       sha1 = "02fd306f0432040b91b11063f9404fe1bbd4ba7b";
     };
     deps = {
-      "strict-uri-encode-1.0.2" = self.by-version."strict-uri-encode"."1.0.2";
+      "strict-uri-encode-1.1.0" = self.by-version."strict-uri-encode"."1.1.0";
     };
     optionalDependencies = {
     };
@@ -10638,20 +10982,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."randomatic"."^1.1.0" =
-    self.by-version."randomatic"."1.1.3";
-  by-version."randomatic"."1.1.3" = self.buildNodePackage {
-    name = "randomatic-1.1.3";
-    version = "1.1.3";
+  by-spec."randomatic"."^1.1.3" =
+    self.by-version."randomatic"."1.1.5";
+  by-version."randomatic"."1.1.5" = self.buildNodePackage {
+    name = "randomatic-1.1.5";
+    version = "1.1.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/randomatic/-/randomatic-1.1.3.tgz";
-      name = "randomatic-1.1.3.tgz";
-      sha1 = "cfbd4fe82545202b0de0ce13d61c41f2d467d5cf";
+      url = "http://registry.npmjs.org/randomatic/-/randomatic-1.1.5.tgz";
+      name = "randomatic-1.1.5.tgz";
+      sha1 = "5e9ef5f2d573c67bd2b8124ae90b5156e457840b";
     };
     deps = {
       "is-number-2.1.0" = self.by-version."is-number"."2.1.0";
-      "kind-of-2.0.1" = self.by-version."kind-of"."2.0.1";
+      "kind-of-3.0.2" = self.by-version."kind-of"."3.0.2";
     };
     optionalDependencies = {
     };
@@ -10659,7 +11003,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."range-parser"."~1.0.2" =
+  by-spec."range-parser"."~1.0.3" =
     self.by-version."range-parser"."1.0.3";
   by-version."range-parser"."1.0.3" = self.buildNodePackage {
     name = "range-parser-1.0.3";
@@ -10678,20 +11022,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."raw-body"."~2.1.4" =
-    self.by-version."raw-body"."2.1.4";
-  by-version."raw-body"."2.1.4" = self.buildNodePackage {
-    name = "raw-body-2.1.4";
-    version = "2.1.4";
+  by-spec."raw-body"."~2.1.5" =
+    self.by-version."raw-body"."2.1.5";
+  by-version."raw-body"."2.1.5" = self.buildNodePackage {
+    name = "raw-body-2.1.5";
+    version = "2.1.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/raw-body/-/raw-body-2.1.4.tgz";
-      name = "raw-body-2.1.4.tgz";
-      sha1 = "dcc3afe2e1fdfc620a812376f8e0fc3d2e62cb50";
+      url = "http://registry.npmjs.org/raw-body/-/raw-body-2.1.5.tgz";
+      name = "raw-body-2.1.5.tgz";
+      sha1 = "8be8f09ddefd0d72ad99d883ab7f0cc350420956";
     };
     deps = {
-      "bytes-2.1.0" = self.by-version."bytes"."2.1.0";
-      "iconv-lite-0.4.12" = self.by-version."iconv-lite"."0.4.12";
+      "bytes-2.2.0" = self.by-version."bytes"."2.2.0";
+      "iconv-lite-0.4.13" = self.by-version."iconv-lite"."0.4.13";
       "unpipe-1.0.0" = self.by-version."unpipe"."1.0.0";
     };
     optionalDependencies = {
@@ -10701,18 +11045,18 @@
     cpu = [ ];
   };
   by-spec."rc"."~1.1.0" =
-    self.by-version."rc"."1.1.5";
-  by-version."rc"."1.1.5" = self.buildNodePackage {
-    name = "rc-1.1.5";
-    version = "1.1.5";
+    self.by-version."rc"."1.1.6";
+  by-version."rc"."1.1.6" = self.buildNodePackage {
+    name = "rc-1.1.6";
+    version = "1.1.6";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/rc/-/rc-1.1.5.tgz";
-      name = "rc-1.1.5.tgz";
-      sha1 = "3bae28d7bed87d1ccb5863f8dce8c27f2ceee89c";
+      url = "http://registry.npmjs.org/rc/-/rc-1.1.6.tgz";
+      name = "rc-1.1.6.tgz";
+      sha1 = "43651b76b6ae53b5c802f1151fa3fc3b059969c9";
     };
     deps = {
-      "deep-extend-0.4.0" = self.by-version."deep-extend"."0.4.0";
+      "deep-extend-0.4.1" = self.by-version."deep-extend"."0.4.1";
       "ini-1.3.4" = self.by-version."ini"."1.3.4";
       "minimist-1.2.0" = self.by-version."minimist"."1.2.0";
       "strip-json-comments-1.0.4" = self.by-version."strip-json-comments"."1.0.4";
@@ -10724,19 +11068,19 @@
     cpu = [ ];
   };
   by-spec."react".">=0.11.0 || ^0.14.0-rc" =
-    self.by-version."react"."0.14.3";
-  by-version."react"."0.14.3" = self.buildNodePackage {
-    name = "react-0.14.3";
-    version = "0.14.3";
+    self.by-version."react"."0.14.6";
+  by-version."react"."0.14.6" = self.buildNodePackage {
+    name = "react-0.14.6";
+    version = "0.14.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/react/-/react-0.14.3.tgz";
-      name = "react-0.14.3.tgz";
-      sha1 = "b82e7b049ee3e1e264d24ae7ea20d76e51126778";
+      url = "http://registry.npmjs.org/react/-/react-0.14.6.tgz";
+      name = "react-0.14.6.tgz";
+      sha1 = "2a57c2cf8747b483759ad8de0fa47fb0c5cf5c6a";
     };
     deps = {
       "envify-3.4.0" = self.by-version."envify"."3.4.0";
-      "fbjs-0.3.2" = self.by-version."fbjs"."0.3.2";
+      "fbjs-0.6.1" = self.by-version."fbjs"."0.6.1";
     };
     optionalDependencies = {
     };
@@ -10745,33 +11089,33 @@
     cpu = [ ];
   };
   by-spec."react"."^0.14.0" =
-    self.by-version."react"."0.14.3";
-  by-spec."react"."^0.14.3" =
-    self.by-version."react"."0.14.3";
-  "react" = self.by-version."react"."0.14.3";
+    self.by-version."react"."0.14.6";
+  by-spec."react"."^0.14.6" =
+    self.by-version."react"."0.14.6";
+  "react" = self.by-version."react"."0.14.6";
   by-spec."react-dom"."^0.14.0" =
-    self.by-version."react-dom"."0.14.3";
-  by-version."react-dom"."0.14.3" = self.buildNodePackage {
-    name = "react-dom-0.14.3";
-    version = "0.14.3";
+    self.by-version."react-dom"."0.14.6";
+  by-version."react-dom"."0.14.6" = self.buildNodePackage {
+    name = "react-dom-0.14.6";
+    version = "0.14.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz";
-      name = "react-dom-0.14.3.tgz";
-      sha1 = "b3f0aeeed1a433b20c5458e34439a51916818628";
+      url = "http://registry.npmjs.org/react-dom/-/react-dom-0.14.6.tgz";
+      name = "react-dom-0.14.6.tgz";
+      sha1 = "46d4e3243884f277e89ce8759131e8a16ac23e65";
     };
     deps = {
     };
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."react"."0.14.3"];
+      self.by-version."react"."0.14.6"];
     os = [ ];
     cpu = [ ];
   };
-  by-spec."react-dom"."^0.14.3" =
-    self.by-version."react-dom"."0.14.3";
-  "react-dom" = self.by-version."react-dom"."0.14.3";
+  by-spec."react-dom"."^0.14.6" =
+    self.by-version."react-dom"."0.14.6";
+  "react-dom" = self.by-version."react-dom"."0.14.6";
   by-spec."react-hot-api"."^0.4.5" =
     self.by-version."react-hot-api"."0.4.7";
   by-version."react-hot-api"."0.4.7" = self.buildNodePackage {
@@ -10788,7 +11132,7 @@
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."react"."0.14.3"];
+      self.by-version."react"."0.14.6"];
     os = [ ];
     cpu = [ ];
   };
@@ -10806,7 +11150,7 @@
     deps = {
       "react-hot-api-0.4.7" = self.by-version."react-hot-api"."0.4.7";
       "source-map-0.4.4" = self.by-version."source-map"."0.4.4";
-      "react-0.14.3" = self.by-version."react"."0.14.3";
+      "react-0.14.6" = self.by-version."react"."0.14.6";
     };
     optionalDependencies = {
     };
@@ -10815,16 +11159,16 @@
     cpu = [ ];
   };
   "react-hot-loader" = self.by-version."react-hot-loader"."1.3.0";
-  by-spec."react-lazy-cache"."^3.0.0" =
-    self.by-version."react-lazy-cache"."3.0.0";
-  by-version."react-lazy-cache"."3.0.0" = self.buildNodePackage {
-    name = "react-lazy-cache-3.0.0";
-    version = "3.0.0";
+  by-spec."react-lazy-cache"."^3.0.1" =
+    self.by-version."react-lazy-cache"."3.0.1";
+  by-version."react-lazy-cache"."3.0.1" = self.buildNodePackage {
+    name = "react-lazy-cache-3.0.1";
+    version = "3.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/react-lazy-cache/-/react-lazy-cache-3.0.0.tgz";
-      name = "react-lazy-cache-3.0.0.tgz";
-      sha1 = "657d289e0663792217f67452b4a82efc8533ed10";
+      url = "http://registry.npmjs.org/react-lazy-cache/-/react-lazy-cache-3.0.1.tgz";
+      name = "react-lazy-cache-3.0.1.tgz";
+      sha1 = "0dc64d38df1767ef77678c5c94190064cb11b0cd";
     };
     deps = {
       "deep-equal-1.0.1" = self.by-version."deep-equal"."1.0.1";
@@ -10835,16 +11179,16 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."react-leaflet"."^0.9.0" =
-    self.by-version."react-leaflet"."0.9.0";
-  by-version."react-leaflet"."0.9.0" = self.buildNodePackage {
-    name = "react-leaflet-0.9.0";
-    version = "0.9.0";
+  by-spec."react-leaflet"."^0.10.0" =
+    self.by-version."react-leaflet"."0.10.0";
+  by-version."react-leaflet"."0.10.0" = self.buildNodePackage {
+    name = "react-leaflet-0.10.0";
+    version = "0.10.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/react-leaflet/-/react-leaflet-0.9.0.tgz";
-      name = "react-leaflet-0.9.0.tgz";
-      sha1 = "b20cbf93c9ce93f8bfbb4fd7c4ac04da51d5ec6e";
+      url = "http://registry.npmjs.org/react-leaflet/-/react-leaflet-0.10.0.tgz";
+      name = "react-leaflet-0.10.0.tgz";
+      sha1 = "018c75026f8366ac348ea6fbb520c47b40eace3e";
     };
     deps = {
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
@@ -10853,12 +11197,12 @@
     };
     peerDependencies = [
       self.by-version."leaflet"."0.7.7"
-      self.by-version."react"."0.14.3"
-      self.by-version."react-dom"."0.14.3"];
+      self.by-version."react"."0.14.6"
+      self.by-version."react-dom"."0.14.6"];
     os = [ ];
     cpu = [ ];
   };
-  "react-leaflet" = self.by-version."react-leaflet"."0.9.0";
+  "react-leaflet" = self.by-version."react-leaflet"."0.10.0";
   by-spec."react-pure-render"."^1.0.2" =
     self.by-version."react-pure-render"."1.0.2";
   by-version."react-pure-render"."1.0.2" = self.buildNodePackage {
@@ -10880,15 +11224,15 @@
   };
   "react-pure-render" = self.by-version."react-pure-render"."1.0.2";
   by-spec."react-redux"."^3.0.0 || ^4.0.0" =
-    self.by-version."react-redux"."4.0.0";
-  by-version."react-redux"."4.0.0" = self.buildNodePackage {
-    name = "react-redux-4.0.0";
-    version = "4.0.0";
+    self.by-version."react-redux"."4.0.6";
+  by-version."react-redux"."4.0.6" = self.buildNodePackage {
+    name = "react-redux-4.0.6";
+    version = "4.0.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/react-redux/-/react-redux-4.0.0.tgz";
-      name = "react-redux-4.0.0.tgz";
-      sha1 = "fc32f6aa16922ef1a914ffc3dc04f613f6bc4346";
+      url = "http://registry.npmjs.org/react-redux/-/react-redux-4.0.6.tgz";
+      name = "react-redux-4.0.6.tgz";
+      sha1 = "083ce9eb632cf73a5eb9cb28df77147a640e6245";
     };
     deps = {
       "hoist-non-react-statics-1.0.3" = self.by-version."hoist-non-react-statics"."1.0.3";
@@ -10897,14 +11241,14 @@
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."react"."0.14.3"
-      self.by-version."redux"."3.0.4"];
+      self.by-version."react"."0.14.6"
+      self.by-version."redux"."3.0.6"];
     os = [ ];
     cpu = [ ];
   };
-  by-spec."react-redux"."^4.0.0" =
-    self.by-version."react-redux"."4.0.0";
-  "react-redux" = self.by-version."react-redux"."4.0.0";
+  by-spec."react-redux"."^4.0.6" =
+    self.by-version."react-redux"."4.0.6";
+  "react-redux" = self.by-version."react-redux"."4.0.6";
   by-spec."read-pkg"."^1.0.0" =
     self.by-version."read-pkg"."1.1.0";
   by-version."read-pkg"."1.1.0" = self.buildNodePackage {
@@ -10941,6 +11285,29 @@
     deps = {
       "find-up-1.1.0" = self.by-version."find-up"."1.1.0";
       "read-pkg-1.1.0" = self.by-version."read-pkg"."1.1.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."readable-stream"."1.0" =
+    self.by-version."readable-stream"."1.0.33";
+  by-version."readable-stream"."1.0.33" = self.buildNodePackage {
+    name = "readable-stream-1.0.33";
+    version = "1.0.33";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/readable-stream/-/readable-stream-1.0.33.tgz";
+      name = "readable-stream-1.0.33.tgz";
+      sha1 = "3a360dd66c1b1d7fd4705389860eda1d0f61126c";
+    };
+    deps = {
+      "core-util-is-1.0.2" = self.by-version."core-util-is"."1.0.2";
+      "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
+      "string_decoder-0.10.31" = self.by-version."string_decoder"."0.10.31";
+      "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
     };
     optionalDependencies = {
     };
@@ -10996,22 +11363,22 @@
   };
   by-spec."readable-stream"."^1.1.13" =
     self.by-version."readable-stream"."1.1.13";
-  by-spec."readable-stream"."^2.0.1" =
-    self.by-version."readable-stream"."2.0.4";
-  by-version."readable-stream"."2.0.4" = self.buildNodePackage {
-    name = "readable-stream-2.0.4";
-    version = "2.0.4";
+  by-spec."readable-stream"."^2.0.0 || ^1.1.13" =
+    self.by-version."readable-stream"."2.0.5";
+  by-version."readable-stream"."2.0.5" = self.buildNodePackage {
+    name = "readable-stream-2.0.5";
+    version = "2.0.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/readable-stream/-/readable-stream-2.0.4.tgz";
-      name = "readable-stream-2.0.4.tgz";
-      sha1 = "2523ef27ffa339d7ba9da8603f2d0599d06edbd8";
+      url = "http://registry.npmjs.org/readable-stream/-/readable-stream-2.0.5.tgz";
+      name = "readable-stream-2.0.5.tgz";
+      sha1 = "a2426f8dcd4551c77a33f96edf2886a23c829669";
     };
     deps = {
       "core-util-is-1.0.2" = self.by-version."core-util-is"."1.0.2";
       "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
       "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
-      "process-nextick-args-1.0.3" = self.by-version."process-nextick-args"."1.0.3";
+      "process-nextick-args-1.0.6" = self.by-version."process-nextick-args"."1.0.6";
       "string_decoder-0.10.31" = self.by-version."string_decoder"."0.10.31";
       "util-deprecate-1.0.2" = self.by-version."util-deprecate"."1.0.2";
     };
@@ -11021,35 +11388,20 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."readable-stream"."^2.0.1" =
+    self.by-version."readable-stream"."2.0.5";
   by-spec."readable-stream"."^2.0.2" =
-    self.by-version."readable-stream"."2.0.4";
+    self.by-version."readable-stream"."2.0.5";
   by-spec."readable-stream"."~1.0.2" =
     self.by-version."readable-stream"."1.0.33";
-  by-version."readable-stream"."1.0.33" = self.buildNodePackage {
-    name = "readable-stream-1.0.33";
-    version = "1.0.33";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/readable-stream/-/readable-stream-1.0.33.tgz";
-      name = "readable-stream-1.0.33.tgz";
-      sha1 = "3a360dd66c1b1d7fd4705389860eda1d0f61126c";
-    };
-    deps = {
-      "core-util-is-1.0.2" = self.by-version."core-util-is"."1.0.2";
-      "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
-      "string_decoder-0.10.31" = self.by-version."string_decoder"."0.10.31";
-      "inherits-2.0.1" = self.by-version."inherits"."2.0.1";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."readable-stream"."~1.0.26" =
     self.by-version."readable-stream"."1.0.33";
   by-spec."readable-stream"."~2.0.0" =
-    self.by-version."readable-stream"."2.0.4";
+    self.by-version."readable-stream"."2.0.5";
+  by-spec."readable-stream"."~2.0.4" =
+    self.by-version."readable-stream"."2.0.5";
+  by-spec."readable-stream"."~2.0.5" =
+    self.by-version."readable-stream"."2.0.5";
   by-spec."readdirp"."^2.0.0" =
     self.by-version."readdirp"."2.0.0";
   by-version."readdirp"."2.0.0" = self.buildNodePackage {
@@ -11064,7 +11416,7 @@
     deps = {
       "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
       "minimatch-2.0.10" = self.by-version."minimatch"."2.0.10";
-      "readable-stream-2.0.4" = self.by-version."readable-stream"."2.0.4";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -11154,15 +11506,15 @@
     cpu = [ ];
   };
   by-spec."redux"."^2.0.0 || ^3.0.0" =
-    self.by-version."redux"."3.0.4";
-  by-version."redux"."3.0.4" = self.buildNodePackage {
-    name = "redux-3.0.4";
-    version = "3.0.4";
+    self.by-version."redux"."3.0.6";
+  by-version."redux"."3.0.6" = self.buildNodePackage {
+    name = "redux-3.0.6";
+    version = "3.0.6";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/redux/-/redux-3.0.4.tgz";
-      name = "redux-3.0.4.tgz";
-      sha1 = "73019374f7a324765e4e33f367c2730a785a3305";
+      url = "http://registry.npmjs.org/redux/-/redux-3.0.6.tgz";
+      name = "redux-3.0.6.tgz";
+      sha1 = "f02db603a8996776f68ef38f571c25705c9ba325";
     };
     deps = {
     };
@@ -11173,46 +11525,46 @@
     cpu = [ ];
   };
   by-spec."redux"."^3.0.0" =
-    self.by-version."redux"."3.0.4";
-  by-spec."redux"."^3.0.4" =
-    self.by-version."redux"."3.0.4";
-  "redux" = self.by-version."redux"."3.0.4";
-  by-spec."redux-form"."^3.1.1" =
-    self.by-version."redux-form"."3.1.1";
-  by-version."redux-form"."3.1.1" = self.buildNodePackage {
-    name = "redux-form-3.1.1";
-    version = "3.1.1";
+    self.by-version."redux"."3.0.6";
+  by-spec."redux"."^3.0.6" =
+    self.by-version."redux"."3.0.6";
+  "redux" = self.by-version."redux"."3.0.6";
+  by-spec."redux-form"."^4.1.5" =
+    self.by-version."redux-form"."4.1.5";
+  by-version."redux-form"."4.1.5" = self.buildNodePackage {
+    name = "redux-form-4.1.5";
+    version = "4.1.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/redux-form/-/redux-form-3.1.1.tgz";
-      name = "redux-form-3.1.1.tgz";
-      sha1 = "cdbf3154b0fcbbabc85f46003f1ff69c197255ac";
+      url = "http://registry.npmjs.org/redux-form/-/redux-form-4.1.5.tgz";
+      name = "redux-form-4.1.5.tgz";
+      sha1 = "d5855fc32ce1a242ac18f9852138f0fb224b8d96";
     };
     deps = {
       "deep-equal-1.0.1" = self.by-version."deep-equal"."1.0.1";
       "hoist-non-react-statics-1.0.3" = self.by-version."hoist-non-react-statics"."1.0.3";
       "is-promise-2.1.0" = self.by-version."is-promise"."2.1.0";
-      "react-lazy-cache-3.0.0" = self.by-version."react-lazy-cache"."3.0.0";
+      "react-lazy-cache-3.0.1" = self.by-version."react-lazy-cache"."3.0.1";
     };
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."react-redux"."4.0.0"
-      self.by-version."redux"."3.0.4"];
+      self.by-version."react-redux"."4.0.6"
+      self.by-version."redux"."3.0.6"];
     os = [ ];
     cpu = [ ];
   };
-  "redux-form" = self.by-version."redux-form"."3.1.1";
-  by-spec."redux-logger"."^2.0.4" =
-    self.by-version."redux-logger"."2.0.4";
-  by-version."redux-logger"."2.0.4" = self.buildNodePackage {
-    name = "redux-logger-2.0.4";
-    version = "2.0.4";
+  "redux-form" = self.by-version."redux-form"."4.1.5";
+  by-spec."redux-logger"."^2.4.0" =
+    self.by-version."redux-logger"."2.4.0";
+  by-version."redux-logger"."2.4.0" = self.buildNodePackage {
+    name = "redux-logger-2.4.0";
+    version = "2.4.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/redux-logger/-/redux-logger-2.0.4.tgz";
-      name = "redux-logger-2.0.4.tgz";
-      sha1 = "e5f1a1963b47a5c5666967ae8323bba08fa915d3";
+      url = "http://registry.npmjs.org/redux-logger/-/redux-logger-2.4.0.tgz";
+      name = "redux-logger-2.4.0.tgz";
+      sha1 = "2586fcfc85cd0376a1494f23576d9d7f7d4fb3bd";
     };
     deps = {
     };
@@ -11222,17 +11574,17 @@
     os = [ ];
     cpu = [ ];
   };
-  "redux-logger" = self.by-version."redux-logger"."2.0.4";
-  by-spec."redux-thunk"."^1.0.0" =
-    self.by-version."redux-thunk"."1.0.0";
-  by-version."redux-thunk"."1.0.0" = self.buildNodePackage {
-    name = "redux-thunk-1.0.0";
-    version = "1.0.0";
+  "redux-logger" = self.by-version."redux-logger"."2.4.0";
+  by-spec."redux-thunk"."^1.0.3" =
+    self.by-version."redux-thunk"."1.0.3";
+  by-version."redux-thunk"."1.0.3" = self.buildNodePackage {
+    name = "redux-thunk-1.0.3";
+    version = "1.0.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.0.tgz";
-      name = "redux-thunk-1.0.0.tgz";
-      sha1 = "e35544a10fcd9c9e3ba96083ac16c702394f4009";
+      url = "http://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz";
+      name = "redux-thunk-1.0.3.tgz";
+      sha1 = "778aa0099eea0595031ab6b39165f6670d8d26bd";
     };
     deps = {
     };
@@ -11242,7 +11594,7 @@
     os = [ ];
     cpu = [ ];
   };
-  "redux-thunk" = self.by-version."redux-thunk"."1.0.0";
+  "redux-thunk" = self.by-version."redux-thunk"."1.0.3";
   by-spec."regex-cache"."^0.4.2" =
     self.by-version."regex-cache"."0.4.2";
   by-version."regex-cache"."0.4.2" = self.buildNodePackage {
@@ -11283,7 +11635,31 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."repeat-element"."^1.1.0" =
+  by-spec."renderkid"."~2.0.0" =
+    self.by-version."renderkid"."2.0.0";
+  by-version."renderkid"."2.0.0" = self.buildNodePackage {
+    name = "renderkid-2.0.0";
+    version = "2.0.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/renderkid/-/renderkid-2.0.0.tgz";
+      name = "renderkid-2.0.0.tgz";
+      sha1 = "1859753e7a5adbf35443aba0d4e4579e78abee85";
+    };
+    deps = {
+      "css-select-1.2.0" = self.by-version."css-select"."1.2.0";
+      "dom-converter-0.1.4" = self.by-version."dom-converter"."0.1.4";
+      "htmlparser2-3.3.0" = self.by-version."htmlparser2"."3.3.0";
+      "strip-ansi-3.0.0" = self.by-version."strip-ansi"."3.0.0";
+      "utila-0.3.3" = self.by-version."utila"."0.3.3";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."repeat-element"."^1.1.2" =
     self.by-version."repeat-element"."1.1.2";
   by-version."repeat-element"."1.1.2" = self.buildNodePackage {
     name = "repeat-element-1.1.2";
@@ -11302,8 +11678,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."repeat-element"."^1.1.2" =
-    self.by-version."repeat-element"."1.1.2";
   by-spec."repeat-string"."^0.2.2" =
     self.by-version."repeat-string"."0.2.2";
   by-version."repeat-string"."0.2.2" = self.buildNodePackage {
@@ -11374,26 +11748,26 @@
       sha1 = "8af74780e2bf11ea0ae9aa965c11f11afd272742";
     };
     deps = {
-      "bl-1.0.0" = self.by-version."bl"."1.0.0";
+      "bl-1.0.1" = self.by-version."bl"."1.0.1";
       "caseless-0.11.0" = self.by-version."caseless"."0.11.0";
       "extend-3.0.0" = self.by-version."extend"."3.0.0";
       "forever-agent-0.6.1" = self.by-version."forever-agent"."0.6.1";
       "form-data-1.0.0-rc3" = self.by-version."form-data"."1.0.0-rc3";
       "json-stringify-safe-5.0.1" = self.by-version."json-stringify-safe"."5.0.1";
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
       "node-uuid-1.4.7" = self.by-version."node-uuid"."1.4.7";
       "qs-5.2.0" = self.by-version."qs"."5.2.0";
-      "tunnel-agent-0.4.1" = self.by-version."tunnel-agent"."0.4.1";
+      "tunnel-agent-0.4.2" = self.by-version."tunnel-agent"."0.4.2";
       "tough-cookie-2.2.1" = self.by-version."tough-cookie"."2.2.1";
       "http-signature-1.1.0" = self.by-version."http-signature"."1.1.0";
       "oauth-sign-0.8.0" = self.by-version."oauth-sign"."0.8.0";
-      "hawk-3.1.2" = self.by-version."hawk"."3.1.2";
+      "hawk-3.1.3" = self.by-version."hawk"."3.1.3";
       "aws-sign2-0.6.0" = self.by-version."aws-sign2"."0.6.0";
       "stringstream-0.0.5" = self.by-version."stringstream"."0.0.5";
       "combined-stream-1.0.5" = self.by-version."combined-stream"."1.0.5";
       "isstream-0.1.2" = self.by-version."isstream"."0.1.2";
       "is-typedarray-1.0.0" = self.by-version."is-typedarray"."1.0.0";
-      "har-validator-2.0.3" = self.by-version."har-validator"."2.0.3";
+      "har-validator-2.0.6" = self.by-version."har-validator"."2.0.6";
     };
     optionalDependencies = {
     };
@@ -11413,14 +11787,14 @@
       sha1 = "572bd0148938564040ac7ab148b96423a063304a";
     };
     deps = {
-      "bl-0.9.4" = self.by-version."bl"."0.9.4";
+      "bl-0.9.5" = self.by-version."bl"."0.9.5";
       "caseless-0.6.0" = self.by-version."caseless"."0.6.0";
       "forever-agent-0.5.2" = self.by-version."forever-agent"."0.5.2";
       "qs-1.2.2" = self.by-version."qs"."1.2.2";
       "json-stringify-safe-5.0.1" = self.by-version."json-stringify-safe"."5.0.1";
       "mime-types-1.0.2" = self.by-version."mime-types"."1.0.2";
       "node-uuid-1.4.7" = self.by-version."node-uuid"."1.4.7";
-      "tunnel-agent-0.4.1" = self.by-version."tunnel-agent"."0.4.1";
+      "tunnel-agent-0.4.2" = self.by-version."tunnel-agent"."0.4.2";
     };
     optionalDependencies = {
       "tough-cookie-2.2.1" = self.by-version."tough-cookie"."2.2.1";
@@ -11461,25 +11835,6 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."requires-port"."0.x.x" =
-    self.by-version."requires-port"."0.0.1";
-  by-version."requires-port"."0.0.1" = self.buildNodePackage {
-    name = "requires-port-0.0.1";
-    version = "0.0.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/requires-port/-/requires-port-0.0.1.tgz";
-      name = "requires-port-0.0.1.tgz";
-      sha1 = "4b4414411d9df7c855995dd899a8c78a2951c16d";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
   by-spec."requires-port"."1.0.x" =
     self.by-version."requires-port"."1.0.0";
   by-version."requires-port"."1.0.0" = self.buildNodePackage {
@@ -11499,6 +11854,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."requires-port"."1.x.x" =
+    self.by-version."requires-port"."1.0.0";
   by-spec."resolve"."^0.6.3" =
     self.by-version."resolve"."0.6.3";
   by-version."resolve"."0.6.3" = self.buildNodePackage {
@@ -11539,18 +11896,18 @@
     cpu = [ ];
   };
   by-spec."rimraf"."2" =
-    self.by-version."rimraf"."2.4.4";
-  by-version."rimraf"."2.4.4" = self.buildNodePackage {
-    name = "rimraf-2.4.4";
-    version = "2.4.4";
+    self.by-version."rimraf"."2.5.1";
+  by-version."rimraf"."2.5.1" = self.buildNodePackage {
+    name = "rimraf-2.5.1";
+    version = "2.5.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/rimraf/-/rimraf-2.4.4.tgz";
-      name = "rimraf-2.4.4.tgz";
-      sha1 = "b528ce2ebe0e6d89fb03b265de11d61da0dbcf82";
+      url = "http://registry.npmjs.org/rimraf/-/rimraf-2.5.1.tgz";
+      name = "rimraf-2.5.1.tgz";
+      sha1 = "52e1e946f3f9b9b0d5d8988ba3191aaf2a2dbd43";
     };
     deps = {
-      "glob-5.0.15" = self.by-version."glob"."5.0.15";
+      "glob-6.0.4" = self.by-version."glob"."6.0.4";
     };
     optionalDependencies = {
     };
@@ -11559,21 +11916,22 @@
     cpu = [ ];
   };
   by-spec."rimraf"."^2.2.8" =
-    self.by-version."rimraf"."2.4.4";
+    self.by-version."rimraf"."2.5.1";
   by-spec."rimraf"."^2.3.3" =
-    self.by-version."rimraf"."2.4.4";
-  by-spec."rimraf"."~2.2.0" =
-    self.by-version."rimraf"."2.2.8";
-  by-version."rimraf"."2.2.8" = self.buildNodePackage {
-    name = "rimraf-2.2.8";
-    version = "2.2.8";
+    self.by-version."rimraf"."2.5.1";
+  by-spec."rimraf"."~2.4.4" =
+    self.by-version."rimraf"."2.4.5";
+  by-version."rimraf"."2.4.5" = self.buildNodePackage {
+    name = "rimraf-2.4.5";
+    version = "2.4.5";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz";
-      name = "rimraf-2.2.8.tgz";
-      sha1 = "e439be2aaee327321952730f99a8929e4fc50582";
+      url = "http://registry.npmjs.org/rimraf/-/rimraf-2.4.5.tgz";
+      name = "rimraf-2.4.5.tgz";
+      sha1 = "ee710ce5d93a8fdb856fb5ea8ff0e2d75934b2da";
     };
     deps = {
+      "glob-6.0.4" = self.by-version."glob"."6.0.4";
     };
     optionalDependencies = {
     };
@@ -11581,8 +11939,8 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."rimraf"."~2.4.0" =
-    self.by-version."rimraf"."2.4.4";
+  by-spec."rimraf"."~2.5.0" =
+    self.by-version."rimraf"."2.5.1";
   by-spec."ripemd160"."0.2.0" =
     self.by-version."ripemd160"."0.2.0";
   by-version."ripemd160"."0.2.0" = self.buildNodePackage {
@@ -11616,7 +11974,7 @@
     deps = {
       "glob-5.0.15" = self.by-version."glob"."5.0.15";
       "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
-      "yargs-3.30.0" = self.by-version."yargs"."3.30.0";
+      "yargs-3.32.0" = self.by-version."yargs"."3.32.0";
     };
     optionalDependencies = {
     };
@@ -11636,7 +11994,7 @@
       sha1 = "0ab5094a4c1e28948b4d56f2398f135797359f96";
     };
     deps = {
-      "async-1.5.0" = self.by-version."async"."1.5.0";
+      "async-1.5.2" = self.by-version."async"."1.5.2";
       "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
       "object-assign-4.0.1" = self.by-version."object-assign"."4.0.1";
     };
@@ -11644,7 +12002,7 @@
     };
     peerDependencies = [
       self.by-version."node-sass"."3.4.2"
-      self.by-version."webpack"."1.12.9"];
+      self.by-version."webpack"."1.12.12"];
     os = [ ];
     cpu = [ ];
   };
@@ -11668,7 +12026,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."sax"."~1.1.1" =
+  by-spec."sax"."~1.1.4" =
     self.by-version."sax"."1.1.4";
   by-version."sax"."1.1.4" = self.buildNodePackage {
     name = "sax-1.1.4";
@@ -11731,22 +12089,22 @@
     self.by-version."semver"."4.3.6";
   by-spec."semver"."~5.1.0" =
     self.by-version."semver"."5.1.0";
-  by-spec."send"."0.13.0" =
-    self.by-version."send"."0.13.0";
-  by-version."send"."0.13.0" = self.buildNodePackage {
-    name = "send-0.13.0";
-    version = "0.13.0";
+  by-spec."send"."0.13.1" =
+    self.by-version."send"."0.13.1";
+  by-version."send"."0.13.1" = self.buildNodePackage {
+    name = "send-0.13.1";
+    version = "0.13.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/send/-/send-0.13.0.tgz";
-      name = "send-0.13.0.tgz";
-      sha1 = "518f921aeb0560aec7dcab2990b14cf6f3cce5de";
+      url = "http://registry.npmjs.org/send/-/send-0.13.1.tgz";
+      name = "send-0.13.1.tgz";
+      sha1 = "a30d5f4c82c8a9bae9ad00a1d9b1bdbe6f199ed7";
     };
     deps = {
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
-      "depd-1.0.1" = self.by-version."depd"."1.0.1";
-      "destroy-1.0.3" = self.by-version."destroy"."1.0.3";
-      "escape-html-1.0.2" = self.by-version."escape-html"."1.0.2";
+      "depd-1.1.0" = self.by-version."depd"."1.1.0";
+      "destroy-1.0.4" = self.by-version."destroy"."1.0.4";
+      "escape-html-1.0.3" = self.by-version."escape-html"."1.0.3";
       "etag-1.7.0" = self.by-version."etag"."1.7.0";
       "fresh-0.3.0" = self.by-version."fresh"."0.3.0";
       "http-errors-1.3.1" = self.by-version."http-errors"."1.3.1";
@@ -11763,18 +12121,18 @@
     cpu = [ ];
   };
   by-spec."sentence-case"."^1.1.1" =
-    self.by-version."sentence-case"."1.1.2";
-  by-version."sentence-case"."1.1.2" = self.buildNodePackage {
-    name = "sentence-case-1.1.2";
-    version = "1.1.2";
+    self.by-version."sentence-case"."1.1.3";
+  by-version."sentence-case"."1.1.3" = self.buildNodePackage {
+    name = "sentence-case-1.1.3";
+    version = "1.1.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/sentence-case/-/sentence-case-1.1.2.tgz";
-      name = "sentence-case-1.1.2.tgz";
-      sha1 = "19948e73f3e3b18cd3434dd52de75a86182194f9";
+      url = "http://registry.npmjs.org/sentence-case/-/sentence-case-1.1.3.tgz";
+      name = "sentence-case-1.1.3.tgz";
+      sha1 = "8034aafc2145772d3abe1509aa42c9e1042dc139";
     };
     deps = {
-      "lower-case-1.1.2" = self.by-version."lower-case"."1.1.2";
+      "lower-case-1.1.3" = self.by-version."lower-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -11783,26 +12141,26 @@
     cpu = [ ];
   };
   by-spec."sentence-case"."^1.1.2" =
-    self.by-version."sentence-case"."1.1.2";
+    self.by-version."sentence-case"."1.1.3";
   by-spec."serve-index"."^1.7.2" =
-    self.by-version."serve-index"."1.7.2";
-  by-version."serve-index"."1.7.2" = self.buildNodePackage {
-    name = "serve-index-1.7.2";
-    version = "1.7.2";
+    self.by-version."serve-index"."1.7.3";
+  by-version."serve-index"."1.7.3" = self.buildNodePackage {
+    name = "serve-index-1.7.3";
+    version = "1.7.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/serve-index/-/serve-index-1.7.2.tgz";
-      name = "serve-index-1.7.2.tgz";
-      sha1 = "9a155d9c4f9d391e463970e7b4eb16c7672141c0";
+      url = "http://registry.npmjs.org/serve-index/-/serve-index-1.7.3.tgz";
+      name = "serve-index-1.7.3.tgz";
+      sha1 = "7a057fc6ee28dc63f64566e5fa57b111a86aecd2";
     };
     deps = {
       "accepts-1.2.13" = self.by-version."accepts"."1.2.13";
-      "batch-0.5.2" = self.by-version."batch"."0.5.2";
+      "batch-0.5.3" = self.by-version."batch"."0.5.3";
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
-      "escape-html-1.0.2" = self.by-version."escape-html"."1.0.2";
+      "escape-html-1.0.3" = self.by-version."escape-html"."1.0.3";
       "http-errors-1.3.1" = self.by-version."http-errors"."1.3.1";
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
-      "parseurl-1.3.0" = self.by-version."parseurl"."1.3.0";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
+      "parseurl-1.3.1" = self.by-version."parseurl"."1.3.1";
     };
     optionalDependencies = {
     };
@@ -11810,21 +12168,21 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."serve-static"."~1.10.0" =
-    self.by-version."serve-static"."1.10.0";
-  by-version."serve-static"."1.10.0" = self.buildNodePackage {
-    name = "serve-static-1.10.0";
-    version = "1.10.0";
+  by-spec."serve-static"."~1.10.2" =
+    self.by-version."serve-static"."1.10.2";
+  by-version."serve-static"."1.10.2" = self.buildNodePackage {
+    name = "serve-static-1.10.2";
+    version = "1.10.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/serve-static/-/serve-static-1.10.0.tgz";
-      name = "serve-static-1.10.0.tgz";
-      sha1 = "be632faa685820e4a43ed3df1379135cc4f370d7";
+      url = "http://registry.npmjs.org/serve-static/-/serve-static-1.10.2.tgz";
+      name = "serve-static-1.10.2.tgz";
+      sha1 = "feb800d0e722124dd0b00333160c16e9caa8bcb3";
     };
     deps = {
-      "escape-html-1.0.2" = self.by-version."escape-html"."1.0.2";
-      "parseurl-1.3.0" = self.by-version."parseurl"."1.3.0";
-      "send-0.13.0" = self.by-version."send"."0.13.0";
+      "escape-html-1.0.3" = self.by-version."escape-html"."1.0.3";
+      "parseurl-1.3.1" = self.by-version."parseurl"."1.3.1";
+      "send-0.13.1" = self.by-version."send"."0.13.1";
     };
     optionalDependencies = {
     };
@@ -11890,18 +12248,18 @@
     cpu = [ ];
   };
   by-spec."snake-case"."^1.1.0" =
-    self.by-version."snake-case"."1.1.1";
-  by-version."snake-case"."1.1.1" = self.buildNodePackage {
-    name = "snake-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."snake-case"."1.1.2";
+  by-version."snake-case"."1.1.2" = self.buildNodePackage {
+    name = "snake-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/snake-case/-/snake-case-1.1.1.tgz";
-      name = "snake-case-1.1.1.tgz";
-      sha1 = "e21d68bcf05577614058efff53e9d460cc4696e2";
+      url = "http://registry.npmjs.org/snake-case/-/snake-case-1.1.2.tgz";
+      name = "snake-case-1.1.2.tgz";
+      sha1 = "0c2f25e305158d9a18d3d977066187fef8a5a66a";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -11949,24 +12307,24 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."socket.io"."^1.3.7" =
-    self.by-version."socket.io"."1.3.7";
-  by-version."socket.io"."1.3.7" = self.buildNodePackage {
-    name = "socket.io-1.3.7";
-    version = "1.3.7";
+  by-spec."socket.io"."^1.4.0" =
+    self.by-version."socket.io"."1.4.4";
+  by-version."socket.io"."1.4.4" = self.buildNodePackage {
+    name = "socket.io-1.4.4";
+    version = "1.4.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/socket.io/-/socket.io-1.3.7.tgz";
-      name = "socket.io-1.3.7.tgz";
-      sha1 = "93747a29bcab6266f0fbe19112cca5e1388cf7ad";
+      url = "http://registry.npmjs.org/socket.io/-/socket.io-1.4.4.tgz";
+      name = "socket.io-1.4.4.tgz";
+      sha1 = "24b3e19ca15ee21cb7d9203d831f9b65a9f14bbd";
     };
     deps = {
-      "engine.io-1.5.4" = self.by-version."engine.io"."1.5.4";
-      "socket.io-parser-2.2.4" = self.by-version."socket.io-parser"."2.2.4";
-      "socket.io-client-1.3.7" = self.by-version."socket.io-client"."1.3.7";
-      "socket.io-adapter-0.3.1" = self.by-version."socket.io-adapter"."0.3.1";
-      "has-binary-data-0.1.3" = self.by-version."has-binary-data"."0.1.3";
-      "debug-2.1.0" = self.by-version."debug"."2.1.0";
+      "engine.io-1.6.7" = self.by-version."engine.io"."1.6.7";
+      "socket.io-parser-2.2.6" = self.by-version."socket.io-parser"."2.2.6";
+      "socket.io-client-1.4.4" = self.by-version."socket.io-client"."1.4.4";
+      "socket.io-adapter-0.4.0" = self.by-version."socket.io-adapter"."0.4.0";
+      "has-binary-0.1.7" = self.by-version."has-binary"."0.1.7";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
     };
     optionalDependencies = {
     };
@@ -11974,21 +12332,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."socket.io-adapter"."0.3.1" =
-    self.by-version."socket.io-adapter"."0.3.1";
-  by-version."socket.io-adapter"."0.3.1" = self.buildNodePackage {
-    name = "socket.io-adapter-0.3.1";
-    version = "0.3.1";
+  by-spec."socket.io-adapter"."0.4.0" =
+    self.by-version."socket.io-adapter"."0.4.0";
+  by-version."socket.io-adapter"."0.4.0" = self.buildNodePackage {
+    name = "socket.io-adapter-0.4.0";
+    version = "0.4.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/socket.io-adapter/-/socket.io-adapter-0.3.1.tgz";
-      name = "socket.io-adapter-0.3.1.tgz";
-      sha1 = "df81f970b4df6493902d93e519c7b72755c3a958";
+      url = "http://registry.npmjs.org/socket.io-adapter/-/socket.io-adapter-0.4.0.tgz";
+      name = "socket.io-adapter-0.4.0.tgz";
+      sha1 = "fb9f82ab1aa65290bf72c3657955b930a991a24f";
     };
     deps = {
-      "debug-1.0.2" = self.by-version."debug"."1.0.2";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
       "socket.io-parser-2.2.2" = self.by-version."socket.io-parser"."2.2.2";
-      "object-keys-1.0.1" = self.by-version."object-keys"."1.0.1";
     };
     optionalDependencies = {
     };
@@ -11996,27 +12353,27 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."socket.io-client"."1.3.7" =
-    self.by-version."socket.io-client"."1.3.7";
-  by-version."socket.io-client"."1.3.7" = self.buildNodePackage {
-    name = "socket.io-client-1.3.7";
-    version = "1.3.7";
+  by-spec."socket.io-client"."1.4.4" =
+    self.by-version."socket.io-client"."1.4.4";
+  by-version."socket.io-client"."1.4.4" = self.buildNodePackage {
+    name = "socket.io-client-1.4.4";
+    version = "1.4.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/socket.io-client/-/socket.io-client-1.3.7.tgz";
-      name = "socket.io-client-1.3.7.tgz";
-      sha1 = "7ab7c069b8d50425eb265f031f84a97e6ebe719c";
+      url = "http://registry.npmjs.org/socket.io-client/-/socket.io-client-1.4.4.tgz";
+      name = "socket.io-client-1.4.4.tgz";
+      sha1 = "ff0979bb9975826d5882d04a2c98aa75fa7f8c0d";
     };
     deps = {
-      "debug-0.7.4" = self.by-version."debug"."0.7.4";
-      "engine.io-client-1.5.4" = self.by-version."engine.io-client"."1.5.4";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "engine.io-client-1.6.7" = self.by-version."engine.io-client"."1.6.7";
       "component-bind-1.0.0" = self.by-version."component-bind"."1.0.0";
-      "component-emitter-1.1.2" = self.by-version."component-emitter"."1.1.2";
+      "component-emitter-1.2.0" = self.by-version."component-emitter"."1.2.0";
       "object-component-0.0.3" = self.by-version."object-component"."0.0.3";
-      "socket.io-parser-2.2.4" = self.by-version."socket.io-parser"."2.2.4";
-      "has-binary-0.1.6" = self.by-version."has-binary"."0.1.6";
+      "socket.io-parser-2.2.5" = self.by-version."socket.io-parser"."2.2.5";
+      "has-binary-0.1.7" = self.by-version."has-binary"."0.1.7";
       "indexof-0.0.1" = self.by-version."indexof"."0.0.1";
-      "parseuri-0.0.2" = self.by-version."parseuri"."0.0.2";
+      "parseuri-0.0.4" = self.by-version."parseuri"."0.0.4";
       "to-array-0.1.3" = self.by-version."to-array"."0.1.3";
       "backo2-1.0.2" = self.by-version."backo2"."1.0.2";
     };
@@ -12050,20 +12407,44 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."socket.io-parser"."2.2.4" =
-    self.by-version."socket.io-parser"."2.2.4";
-  by-version."socket.io-parser"."2.2.4" = self.buildNodePackage {
-    name = "socket.io-parser-2.2.4";
-    version = "2.2.4";
+  by-spec."socket.io-parser"."2.2.5" =
+    self.by-version."socket.io-parser"."2.2.5";
+  by-version."socket.io-parser"."2.2.5" = self.buildNodePackage {
+    name = "socket.io-parser-2.2.5";
+    version = "2.2.5";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/socket.io-parser/-/socket.io-parser-2.2.4.tgz";
-      name = "socket.io-parser-2.2.4.tgz";
-      sha1 = "f9ce19bf1909608ceb15d97721e23bfdd1e7cf65";
+      url = "http://registry.npmjs.org/socket.io-parser/-/socket.io-parser-2.2.5.tgz";
+      name = "socket.io-parser-2.2.5.tgz";
+      sha1 = "8d945b6da2158bafaf04f4e9c77c573b44cde52c";
     };
     deps = {
-      "debug-0.7.4" = self.by-version."debug"."0.7.4";
-      "json3-3.2.6" = self.by-version."json3"."3.2.6";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "json3-3.3.2" = self.by-version."json3"."3.3.2";
+      "component-emitter-1.1.2" = self.by-version."component-emitter"."1.1.2";
+      "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
+      "benchmark-1.0.0" = self.by-version."benchmark"."1.0.0";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."socket.io-parser"."2.2.6" =
+    self.by-version."socket.io-parser"."2.2.6";
+  by-version."socket.io-parser"."2.2.6" = self.buildNodePackage {
+    name = "socket.io-parser-2.2.6";
+    version = "2.2.6";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/socket.io-parser/-/socket.io-parser-2.2.6.tgz";
+      name = "socket.io-parser-2.2.6.tgz";
+      sha1 = "38dfd61df50dcf8ab1d9e2091322bf902ba28b99";
+    };
+    deps = {
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "json3-3.3.2" = self.by-version."json3"."3.3.2";
       "component-emitter-1.1.2" = self.by-version."component-emitter"."1.1.2";
       "isarray-0.0.1" = self.by-version."isarray"."0.0.1";
       "benchmark-1.0.0" = self.by-version."benchmark"."1.0.0";
@@ -12246,6 +12627,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."source-map"."^0.5.3" =
+    self.by-version."source-map"."0.5.3";
   by-spec."source-map"."~0.4.1" =
     self.by-version."source-map"."0.4.4";
   by-spec."source-map"."~0.5.1" =
@@ -12270,16 +12653,16 @@
     cpu = [ ];
   };
   "source-sans-pro" = self.by-version."source-sans-pro"."2.0.10";
-  by-spec."spawn-sync"."1.0.13" =
-    self.by-version."spawn-sync"."1.0.13";
-  by-version."spawn-sync"."1.0.13" = self.buildNodePackage {
-    name = "spawn-sync-1.0.13";
-    version = "1.0.13";
+  by-spec."spawn-sync"."^1.0.15" =
+    self.by-version."spawn-sync"."1.0.15";
+  by-version."spawn-sync"."1.0.15" = self.buildNodePackage {
+    name = "spawn-sync-1.0.15";
+    version = "1.0.15";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/spawn-sync/-/spawn-sync-1.0.13.tgz";
-      name = "spawn-sync-1.0.13.tgz";
-      sha1 = "904091b9ad48a0f3afb0e84752154c01e82fd8d8";
+      url = "http://registry.npmjs.org/spawn-sync/-/spawn-sync-1.0.15.tgz";
+      name = "spawn-sync-1.0.15.tgz";
+      sha1 = "b00799557eb7fb0c8376c29d44e8a1ea67e57476";
     };
     deps = {
       "concat-stream-1.5.1" = self.by-version."concat-stream"."1.5.1";
@@ -12303,7 +12686,7 @@
       sha1 = "4b3073d933ff51f3912f03ac5519498a4150db40";
     };
     deps = {
-      "spdx-license-ids-1.1.0" = self.by-version."spdx-license-ids"."1.1.0";
+      "spdx-license-ids-1.2.0" = self.by-version."spdx-license-ids"."1.2.0";
     };
     optionalDependencies = {
     };
@@ -12343,7 +12726,7 @@
     };
     deps = {
       "spdx-exceptions-1.0.4" = self.by-version."spdx-exceptions"."1.0.4";
-      "spdx-license-ids-1.1.0" = self.by-version."spdx-license-ids"."1.1.0";
+      "spdx-license-ids-1.2.0" = self.by-version."spdx-license-ids"."1.2.0";
     };
     optionalDependencies = {
     };
@@ -12352,15 +12735,15 @@
     cpu = [ ];
   };
   by-spec."spdx-license-ids"."^1.0.0" =
-    self.by-version."spdx-license-ids"."1.1.0";
-  by-version."spdx-license-ids"."1.1.0" = self.buildNodePackage {
-    name = "spdx-license-ids-1.1.0";
-    version = "1.1.0";
+    self.by-version."spdx-license-ids"."1.2.0";
+  by-version."spdx-license-ids"."1.2.0" = self.buildNodePackage {
+    name = "spdx-license-ids-1.2.0";
+    version = "1.2.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-1.1.0.tgz";
-      name = "spdx-license-ids-1.1.0.tgz";
-      sha1 = "28694acdf39fe27de45143fff81f21f6c66d44ac";
+      url = "http://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-1.2.0.tgz";
+      name = "spdx-license-ids-1.2.0.tgz";
+      sha1 = "b549dd0f63dcb745a17e2ea3a07402e0e332d1e2";
     };
     deps = {
     };
@@ -12371,7 +12754,7 @@
     cpu = [ ];
   };
   by-spec."spdx-license-ids"."^1.0.2" =
-    self.by-version."spdx-license-ids"."1.1.0";
+    self.by-version."spdx-license-ids"."1.2.0";
   by-spec."sprintf-js"."~1.0.2" =
     self.by-version."sprintf-js"."1.0.3";
   by-version."sprintf-js"."1.0.3" = self.buildNodePackage {
@@ -12392,24 +12775,24 @@
     cpu = [ ];
   };
   by-spec."sshpk"."^1.7.0" =
-    self.by-version."sshpk"."1.7.0";
-  by-version."sshpk"."1.7.0" = self.buildNodePackage {
-    name = "sshpk-1.7.0";
-    version = "1.7.0";
+    self.by-version."sshpk"."1.7.3";
+  by-version."sshpk"."1.7.3" = self.buildNodePackage {
+    name = "sshpk-1.7.3";
+    version = "1.7.3";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/sshpk/-/sshpk-1.7.0.tgz";
-      name = "sshpk-1.7.0.tgz";
-      sha1 = "c64ac26de1bdd19cc9ccbe78ba747292c6c70a7c";
+      url = "http://registry.npmjs.org/sshpk/-/sshpk-1.7.3.tgz";
+      name = "sshpk-1.7.3.tgz";
+      sha1 = "caa8ef95e30765d856698b7025f9f211ab65962f";
     };
     deps = {
       "asn1-0.2.3" = self.by-version."asn1"."0.2.3";
       "assert-plus-0.2.0" = self.by-version."assert-plus"."0.2.0";
-      "dashdash-1.10.1" = self.by-version."dashdash"."1.10.1";
+      "dashdash-1.12.2" = self.by-version."dashdash"."1.12.2";
     };
     optionalDependencies = {
       "jsbn-0.1.0" = self.by-version."jsbn"."0.1.0";
-      "tweetnacl-0.13.2" = self.by-version."tweetnacl"."0.13.2";
+      "tweetnacl-0.13.3" = self.by-version."tweetnacl"."0.13.3";
       "jodid25519-1.0.2" = self.by-version."jodid25519"."1.0.2";
       "ecc-jsbn-0.1.1" = self.by-version."ecc-jsbn"."0.1.1";
     };
@@ -12479,15 +12862,15 @@
     cpu = [ ];
   };
   by-spec."strict-uri-encode"."^1.0.0" =
-    self.by-version."strict-uri-encode"."1.0.2";
-  by-version."strict-uri-encode"."1.0.2" = self.buildNodePackage {
-    name = "strict-uri-encode-1.0.2";
-    version = "1.0.2";
+    self.by-version."strict-uri-encode"."1.1.0";
+  by-version."strict-uri-encode"."1.1.0" = self.buildNodePackage {
+    name = "strict-uri-encode-1.1.0";
+    version = "1.1.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.0.2.tgz";
-      name = "strict-uri-encode-1.0.2.tgz";
-      sha1 = "fd19e639d89a766256a33e611d38415df8d6058d";
+      url = "http://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz";
+      name = "strict-uri-encode-1.1.0.tgz";
+      sha1 = "279b225df1d582b1f54e65addd4352e18faa0713";
     };
     deps = {
     };
@@ -12591,7 +12974,7 @@
       sha1 = "6219a85616520491f35788bdbf1447a99c7e6b0e";
     };
     deps = {
-      "is-utf8-0.2.0" = self.by-version."is-utf8"."0.2.0";
+      "is-utf8-0.2.1" = self.by-version."is-utf8"."0.2.1";
     };
     optionalDependencies = {
     };
@@ -12711,17 +13094,42 @@
     os = [ ];
     cpu = [ ];
   };
-  "stylus" = self.by-version."stylus"."0.52.4";
-  by-spec."stylus-loader"."^1.4.2" =
-    self.by-version."stylus-loader"."1.4.2";
-  by-version."stylus-loader"."1.4.2" = self.buildNodePackage {
-    name = "stylus-loader-1.4.2";
-    version = "1.4.2";
+  by-spec."stylus"."^0.53.0" =
+    self.by-version."stylus"."0.53.0";
+  by-version."stylus"."0.53.0" = self.buildNodePackage {
+    name = "stylus-0.53.0";
+    version = "0.53.0";
+    bin = true;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/stylus/-/stylus-0.53.0.tgz";
+      name = "stylus-0.53.0.tgz";
+      sha1 = "6b51e7665097f8dd4a6965e14ceea5e4b9fd724a";
+    };
+    deps = {
+      "css-parse-1.7.0" = self.by-version."css-parse"."1.7.0";
+      "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
+      "debug-2.2.0" = self.by-version."debug"."2.2.0";
+      "sax-0.5.8" = self.by-version."sax"."0.5.8";
+      "glob-3.2.11" = self.by-version."glob"."3.2.11";
+      "source-map-0.1.43" = self.by-version."source-map"."0.1.43";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  "stylus" = self.by-version."stylus"."0.53.0";
+  by-spec."stylus-loader"."^1.5.0" =
+    self.by-version."stylus-loader"."1.5.0";
+  by-version."stylus-loader"."1.5.0" = self.buildNodePackage {
+    name = "stylus-loader-1.5.0";
+    version = "1.5.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/stylus-loader/-/stylus-loader-1.4.2.tgz";
-      name = "stylus-loader-1.4.2.tgz";
-      sha1 = "c627008c03f21294190b15e27d1956d76b30e58c";
+      url = "http://registry.npmjs.org/stylus-loader/-/stylus-loader-1.5.0.tgz";
+      name = "stylus-loader-1.5.0.tgz";
+      sha1 = "e732f908a0e2a3c593898db512def9629cf1f3ff";
     };
     deps = {
       "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
@@ -12734,44 +13142,25 @@
     os = [ ];
     cpu = [ ];
   };
-  "stylus-loader" = self.by-version."stylus-loader"."1.4.2";
-  by-spec."success-symbol"."^0.1.0" =
-    self.by-version."success-symbol"."0.1.0";
-  by-version."success-symbol"."0.1.0" = self.buildNodePackage {
-    name = "success-symbol-0.1.0";
-    version = "0.1.0";
+  "stylus-loader" = self.by-version."stylus-loader"."1.5.0";
+  by-spec."superagent"."^1.7.1" =
+    self.by-version."superagent"."1.7.1";
+  by-version."superagent"."1.7.1" = self.buildNodePackage {
+    name = "superagent-1.7.1";
+    version = "1.7.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/success-symbol/-/success-symbol-0.1.0.tgz";
-      name = "success-symbol-0.1.0.tgz";
-      sha1 = "24022e486f3bf1cdca094283b769c472d3b72897";
-    };
-    deps = {
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."superagent"."^1.4.0" =
-    self.by-version."superagent"."1.4.0";
-  by-version."superagent"."1.4.0" = self.buildNodePackage {
-    name = "superagent-1.4.0";
-    version = "1.4.0";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/superagent/-/superagent-1.4.0.tgz";
-      name = "superagent-1.4.0.tgz";
-      sha1 = "772eed5d70001bcace9397eca5515e177c6a5e8f";
+      url = "http://registry.npmjs.org/superagent/-/superagent-1.7.1.tgz";
+      name = "superagent-1.7.1.tgz";
+      sha1 = "bc2ed6629055e6f18557ceaa2cb2a07d9e16d327";
     };
     deps = {
       "qs-2.3.3" = self.by-version."qs"."2.3.3";
-      "formidable-1.0.14" = self.by-version."formidable"."1.0.14";
+      "formidable-1.0.17" = self.by-version."formidable"."1.0.17";
       "mime-1.3.4" = self.by-version."mime"."1.3.4";
-      "component-emitter-1.1.2" = self.by-version."component-emitter"."1.1.2";
-      "methods-1.0.1" = self.by-version."methods"."1.0.1";
-      "cookiejar-2.0.1" = self.by-version."cookiejar"."2.0.1";
+      "component-emitter-1.2.0" = self.by-version."component-emitter"."1.2.0";
+      "methods-1.1.2" = self.by-version."methods"."1.1.2";
+      "cookiejar-2.0.6" = self.by-version."cookiejar"."2.0.6";
       "debug-2.2.0" = self.by-version."debug"."2.2.0";
       "reduce-component-1.0.1" = self.by-version."reduce-component"."1.0.1";
       "extend-1.2.1" = self.by-version."extend"."1.2.1";
@@ -12784,7 +13173,7 @@
     os = [ ];
     cpu = [ ];
   };
-  "superagent" = self.by-version."superagent"."1.4.0";
+  "superagent" = self.by-version."superagent"."1.7.1";
   by-spec."superagent-prefix"."0.0.2" =
     self.by-version."superagent-prefix"."0.0.2";
   by-version."superagent-prefix"."0.0.2" = self.buildNodePackage {
@@ -12867,24 +13256,25 @@
     self.by-version."supports-color"."3.1.2";
   by-spec."supports-color"."^3.1.2" =
     self.by-version."supports-color"."3.1.2";
-  by-spec."svgo"."^0.5.6" =
-    self.by-version."svgo"."0.5.6";
-  by-version."svgo"."0.5.6" = self.buildNodePackage {
-    name = "svgo-0.5.6";
-    version = "0.5.6";
+  by-spec."svgo"."^0.6.1" =
+    self.by-version."svgo"."0.6.1";
+  by-version."svgo"."0.6.1" = self.buildNodePackage {
+    name = "svgo-0.6.1";
+    version = "0.6.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/svgo/-/svgo-0.5.6.tgz";
-      name = "svgo-0.5.6.tgz";
-      sha1 = "9501c533cf84f74a79be1bb3f3494d912bbed119";
+      url = "http://registry.npmjs.org/svgo/-/svgo-0.6.1.tgz";
+      name = "svgo-0.6.1.tgz";
+      sha1 = "b9dd8d450660ca5f88b22271fbdc8b2a966637a9";
     };
     deps = {
       "sax-1.1.4" = self.by-version."sax"."1.1.4";
       "coa-1.0.1" = self.by-version."coa"."1.0.1";
-      "js-yaml-3.3.1" = self.by-version."js-yaml"."3.3.1";
+      "js-yaml-3.4.6" = self.by-version."js-yaml"."3.4.6";
       "colors-1.1.2" = self.by-version."colors"."1.1.2";
       "whet.extend-0.9.9" = self.by-version."whet.extend"."0.9.9";
       "mkdirp-0.5.1" = self.by-version."mkdirp"."0.5.1";
+      "csso-1.4.4" = self.by-version."csso"."1.4.4";
     };
     optionalDependencies = {
     };
@@ -12893,19 +13283,19 @@
     cpu = [ ];
   };
   by-spec."swap-case"."^1.1.0" =
-    self.by-version."swap-case"."1.1.1";
-  by-version."swap-case"."1.1.1" = self.buildNodePackage {
-    name = "swap-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."swap-case"."1.1.2";
+  by-version."swap-case"."1.1.2" = self.buildNodePackage {
+    name = "swap-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/swap-case/-/swap-case-1.1.1.tgz";
-      name = "swap-case-1.1.1.tgz";
-      sha1 = "8e1d0ec68e8df3c133bde08c0e25b77352163672";
+      url = "http://registry.npmjs.org/swap-case/-/swap-case-1.1.2.tgz";
+      name = "swap-case-1.1.2.tgz";
+      sha1 = "c39203a4587385fad3c850a0bd1bcafa081974e3";
     };
     deps = {
-      "lower-case-1.1.2" = self.by-version."lower-case"."1.1.2";
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "lower-case-1.1.3" = self.by-version."lower-case"."1.1.3";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -12961,26 +13351,25 @@
   by-spec."tar"."~2.2.1" =
     self.by-version."tar"."2.2.1";
   by-spec."tar-pack"."~3.1.0" =
-    self.by-version."tar-pack"."3.1.0";
-  by-version."tar-pack"."3.1.0" = self.buildNodePackage {
-    name = "tar-pack-3.1.0";
-    version = "3.1.0";
+    self.by-version."tar-pack"."3.1.2";
+  by-version."tar-pack"."3.1.2" = self.buildNodePackage {
+    name = "tar-pack-3.1.2";
+    version = "3.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/tar-pack/-/tar-pack-3.1.0.tgz";
-      name = "tar-pack-3.1.0.tgz";
-      sha1 = "4cd7ab38addb1480139e80040f149e07edc8ac16";
+      url = "http://registry.npmjs.org/tar-pack/-/tar-pack-3.1.2.tgz";
+      name = "tar-pack-3.1.2.tgz";
+      sha1 = "15fc57c379238bd350ef7b182a2e2baf826fe048";
     };
     deps = {
-      "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
       "uid-number-0.0.3" = self.by-version."uid-number"."0.0.3";
       "once-1.1.1" = self.by-version."once"."1.1.1";
       "debug-0.7.4" = self.by-version."debug"."0.7.4";
-      "rimraf-2.2.8" = self.by-version."rimraf"."2.2.8";
+      "rimraf-2.4.5" = self.by-version."rimraf"."2.4.5";
       "fstream-1.0.8" = self.by-version."fstream"."1.0.8";
       "tar-2.2.1" = self.by-version."tar"."2.2.1";
       "fstream-ignore-1.0.3" = self.by-version."fstream-ignore"."1.0.3";
-      "readable-stream-1.0.33" = self.by-version."readable-stream"."1.0.33";
+      "readable-stream-2.0.5" = self.by-version."readable-stream"."2.0.5";
     };
     optionalDependencies = {
     };
@@ -13027,15 +13416,15 @@
     cpu = [ ];
   };
   by-spec."timers-browserify"."^1.0.1" =
-    self.by-version."timers-browserify"."1.4.1";
-  by-version."timers-browserify"."1.4.1" = self.buildNodePackage {
-    name = "timers-browserify-1.4.1";
-    version = "1.4.1";
+    self.by-version."timers-browserify"."1.4.2";
+  by-version."timers-browserify"."1.4.2" = self.buildNodePackage {
+    name = "timers-browserify-1.4.2";
+    version = "1.4.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/timers-browserify/-/timers-browserify-1.4.1.tgz";
-      name = "timers-browserify-1.4.1.tgz";
-      sha1 = "bf8afeb7b50d6c500e2b3e0a5d759c4005e985d7";
+      url = "http://registry.npmjs.org/timers-browserify/-/timers-browserify-1.4.2.tgz";
+      name = "timers-browserify-1.4.2.tgz";
+      sha1 = "c9c58b575be8407375cb5e2462dacee74359f41d";
     };
     deps = {
       "process-0.11.2" = self.by-version."process"."0.11.2";
@@ -13047,19 +13436,19 @@
     cpu = [ ];
   };
   by-spec."title-case"."^1.1.0" =
-    self.by-version."title-case"."1.1.1";
-  by-version."title-case"."1.1.1" = self.buildNodePackage {
-    name = "title-case-1.1.1";
-    version = "1.1.1";
+    self.by-version."title-case"."1.1.2";
+  by-version."title-case"."1.1.2" = self.buildNodePackage {
+    name = "title-case-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/title-case/-/title-case-1.1.1.tgz";
-      name = "title-case-1.1.1.tgz";
-      sha1 = "9b31307ad5c69f4c6711ab21375054b486ace9f2";
+      url = "http://registry.npmjs.org/title-case/-/title-case-1.1.2.tgz";
+      name = "title-case-1.1.2.tgz";
+      sha1 = "fae4a6ae546bfa22d083a0eea910a40d12ed4f5a";
     };
     deps = {
-      "sentence-case-1.1.2" = self.by-version."sentence-case"."1.1.2";
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "sentence-case-1.1.3" = self.by-version."sentence-case"."1.1.3";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -13146,15 +13535,15 @@
     cpu = [ ];
   };
   by-spec."tunnel-agent"."~0.4.0" =
-    self.by-version."tunnel-agent"."0.4.1";
-  by-version."tunnel-agent"."0.4.1" = self.buildNodePackage {
-    name = "tunnel-agent-0.4.1";
-    version = "0.4.1";
+    self.by-version."tunnel-agent"."0.4.2";
+  by-version."tunnel-agent"."0.4.2" = self.buildNodePackage {
+    name = "tunnel-agent-0.4.2";
+    version = "0.4.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/tunnel-agent/-/tunnel-agent-0.4.1.tgz";
-      name = "tunnel-agent-0.4.1.tgz";
-      sha1 = "bbeecff4d679ce753db9462761a88dfcec3c5ab3";
+      url = "http://registry.npmjs.org/tunnel-agent/-/tunnel-agent-0.4.2.tgz";
+      name = "tunnel-agent-0.4.2.tgz";
+      sha1 = "1104e3f36ac87125c287270067d582d18133bfee";
     };
     deps = {
     };
@@ -13165,17 +13554,17 @@
     cpu = [ ];
   };
   by-spec."tunnel-agent"."~0.4.1" =
-    self.by-version."tunnel-agent"."0.4.1";
+    self.by-version."tunnel-agent"."0.4.2";
   by-spec."tweetnacl".">=0.13.0 <1.0.0" =
-    self.by-version."tweetnacl"."0.13.2";
-  by-version."tweetnacl"."0.13.2" = self.buildNodePackage {
-    name = "tweetnacl-0.13.2";
-    version = "0.13.2";
+    self.by-version."tweetnacl"."0.13.3";
+  by-version."tweetnacl"."0.13.3" = self.buildNodePackage {
+    name = "tweetnacl-0.13.3";
+    version = "0.13.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/tweetnacl/-/tweetnacl-0.13.2.tgz";
-      name = "tweetnacl-0.13.2.tgz";
-      sha1 = "453161770469d45cd266c36404e2bc99a8fa9944";
+      url = "http://registry.npmjs.org/tweetnacl/-/tweetnacl-0.13.3.tgz";
+      name = "tweetnacl-0.13.3.tgz";
+      sha1 = "d628b56f3bcc3d5ae74ba9d4c1a704def5ab4b56";
     };
     deps = {
     };
@@ -13223,20 +13612,20 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."type-is"."~1.6.6" =
-    self.by-version."type-is"."1.6.9";
-  by-version."type-is"."1.6.9" = self.buildNodePackage {
-    name = "type-is-1.6.9";
-    version = "1.6.9";
+  by-spec."type-is"."~1.6.10" =
+    self.by-version."type-is"."1.6.10";
+  by-version."type-is"."1.6.10" = self.buildNodePackage {
+    name = "type-is-1.6.10";
+    version = "1.6.10";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/type-is/-/type-is-1.6.9.tgz";
-      name = "type-is-1.6.9.tgz";
-      sha1 = "87f3e88b92ff5ac30fbc1acf9a9d00cbc38b3d7a";
+      url = "http://registry.npmjs.org/type-is/-/type-is-1.6.10.tgz";
+      name = "type-is-1.6.10.tgz";
+      sha1 = "d27e995b20d8c2a543f3420573f690a3929fd75a";
     };
     deps = {
       "media-typer-0.3.0" = self.by-version."media-typer"."0.3.0";
-      "mime-types-2.1.7" = self.by-version."mime-types"."2.1.7";
+      "mime-types-2.1.9" = self.by-version."mime-types"."2.1.9";
     };
     optionalDependencies = {
     };
@@ -13244,8 +13633,8 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."type-is"."~1.6.9" =
-    self.by-version."type-is"."1.6.9";
+  by-spec."type-is"."~1.6.6" =
+    self.by-version."type-is"."1.6.10";
   by-spec."typedarray"."~0.0.5" =
     self.by-version."typedarray"."0.0.6";
   by-version."typedarray"."0.0.6" = self.buildNodePackage {
@@ -13266,15 +13655,15 @@
     cpu = [ ];
   };
   by-spec."ua-parser-js"."^0.7.9" =
-    self.by-version."ua-parser-js"."0.7.9";
-  by-version."ua-parser-js"."0.7.9" = self.buildNodePackage {
-    name = "ua-parser-js-0.7.9";
-    version = "0.7.9";
+    self.by-version."ua-parser-js"."0.7.10";
+  by-version."ua-parser-js"."0.7.10" = self.buildNodePackage {
+    name = "ua-parser-js-0.7.10";
+    version = "0.7.10";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.9.tgz";
-      name = "ua-parser-js-0.7.9.tgz";
-      sha1 = "4d70d68f353923765d775bfd84b23028b4e11ed5";
+      url = "http://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.10.tgz";
+      name = "ua-parser-js-0.7.10.tgz";
+      sha1 = "917559ddcce07cbc09ece7d80495e4c268f4ef9f";
     };
     deps = {
     };
@@ -13284,30 +13673,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."uglify-js"."2.5.x" =
-    self.by-version."uglify-js"."2.5.0";
-  by-version."uglify-js"."2.5.0" = self.buildNodePackage {
-    name = "uglify-js-2.5.0";
-    version = "2.5.0";
-    bin = true;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/uglify-js/-/uglify-js-2.5.0.tgz";
-      name = "uglify-js-2.5.0.tgz";
-      sha1 = "4ab5d65a4730ecb7a4fb62d3f499e2054d98fba1";
-    };
-    deps = {
-      "async-0.2.10" = self.by-version."async"."0.2.10";
-      "source-map-0.5.3" = self.by-version."source-map"."0.5.3";
-      "uglify-to-browserify-1.0.2" = self.by-version."uglify-to-browserify"."1.0.2";
-      "yargs-3.5.4" = self.by-version."yargs"."3.5.4";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."uglify-js"."~2.6.0" =
+  by-spec."uglify-js"."2.6.x" =
     self.by-version."uglify-js"."2.6.1";
   by-version."uglify-js"."2.6.1" = self.buildNodePackage {
     name = "uglify-js-2.6.1";
@@ -13330,6 +13696,8 @@
     os = [ ];
     cpu = [ ];
   };
+  by-spec."uglify-js"."~2.6.0" =
+    self.by-version."uglify-js"."2.6.1";
   by-spec."uglify-to-browserify"."~1.0.0" =
     self.by-version."uglify-to-browserify"."1.0.2";
   by-version."uglify-to-browserify"."1.0.2" = self.buildNodePackage {
@@ -13503,37 +13871,37 @@
   };
   by-spec."unpipe"."~1.0.0" =
     self.by-version."unpipe"."1.0.0";
-  by-spec."updeep"."^0.11.0" =
-    self.by-version."updeep"."0.11.0";
-  by-version."updeep"."0.11.0" = self.buildNodePackage {
-    name = "updeep-0.11.0";
-    version = "0.11.0";
+  by-spec."updeep"."^0.12.0" =
+    self.by-version."updeep"."0.12.0";
+  by-version."updeep"."0.12.0" = self.buildNodePackage {
+    name = "updeep-0.12.0";
+    version = "0.12.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/updeep/-/updeep-0.11.0.tgz";
-      name = "updeep-0.11.0.tgz";
-      sha1 = "40ec897ba1bcaeaf806325cd0ccbd53bf0095cf4";
+      url = "http://registry.npmjs.org/updeep/-/updeep-0.12.0.tgz";
+      name = "updeep-0.12.0.tgz";
+      sha1 = "451b85ee6975d8b50ca4254ca4afc032a85aeee3";
     };
     deps = {
+      "lodash-3.10.1" = self.by-version."lodash"."3.10.1";
     };
     optionalDependencies = {
     };
-    peerDependencies = [
-      self.by-version."lodash"."3.10.1"];
+    peerDependencies = [];
     os = [ ];
     cpu = [ ];
   };
-  "updeep" = self.by-version."updeep"."0.11.0";
+  "updeep" = self.by-version."updeep"."0.12.0";
   by-spec."upper-case"."^1.0.3" =
-    self.by-version."upper-case"."1.1.2";
-  by-version."upper-case"."1.1.2" = self.buildNodePackage {
-    name = "upper-case-1.1.2";
-    version = "1.1.2";
+    self.by-version."upper-case"."1.1.3";
+  by-version."upper-case"."1.1.3" = self.buildNodePackage {
+    name = "upper-case-1.1.3";
+    version = "1.1.3";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/upper-case/-/upper-case-1.1.2.tgz";
-      name = "upper-case-1.1.2.tgz";
-      sha1 = "18973f566860831d5617724efd5c1b15cfd26d36";
+      url = "http://registry.npmjs.org/upper-case/-/upper-case-1.1.3.tgz";
+      name = "upper-case-1.1.3.tgz";
+      sha1 = "f6b4501c2ec4cdd26ba78be7222961de77621598";
     };
     deps = {
     };
@@ -13544,22 +13912,22 @@
     cpu = [ ];
   };
   by-spec."upper-case"."^1.1.0" =
-    self.by-version."upper-case"."1.1.2";
+    self.by-version."upper-case"."1.1.3";
   by-spec."upper-case"."^1.1.1" =
-    self.by-version."upper-case"."1.1.2";
+    self.by-version."upper-case"."1.1.3";
   by-spec."upper-case-first"."^1.1.0" =
-    self.by-version."upper-case-first"."1.1.1";
-  by-version."upper-case-first"."1.1.1" = self.buildNodePackage {
-    name = "upper-case-first-1.1.1";
-    version = "1.1.1";
+    self.by-version."upper-case-first"."1.1.2";
+  by-version."upper-case-first"."1.1.2" = self.buildNodePackage {
+    name = "upper-case-first-1.1.2";
+    version = "1.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/upper-case-first/-/upper-case-first-1.1.1.tgz";
-      name = "upper-case-first-1.1.1.tgz";
-      sha1 = "7fa7b70da0fb683e081e687e28f33ec3b349c04b";
+      url = "http://registry.npmjs.org/upper-case-first/-/upper-case-first-1.1.2.tgz";
+      name = "upper-case-first-1.1.2.tgz";
+      sha1 = "5d79bedcff14419518fd2edb0a0507c9b6859115";
     };
     deps = {
-      "upper-case-1.1.2" = self.by-version."upper-case"."1.1.2";
+      "upper-case-1.1.3" = self.by-version."upper-case"."1.1.3";
     };
     optionalDependencies = {
     };
@@ -13635,39 +14003,18 @@
   by-spec."url-parse"."^1.0.1" =
     self.by-version."url-parse"."1.0.5";
   by-spec."useragent"."^2.1.6" =
-    self.by-version."useragent"."2.1.7";
-  by-version."useragent"."2.1.7" = self.buildNodePackage {
-    name = "useragent-2.1.7";
-    version = "2.1.7";
+    self.by-version."useragent"."2.1.8";
+  by-version."useragent"."2.1.8" = self.buildNodePackage {
+    name = "useragent-2.1.8";
+    version = "2.1.8";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/useragent/-/useragent-2.1.7.tgz";
-      name = "useragent-2.1.7.tgz";
-      sha1 = "2229bc0a1bc7751e0ed50b0c13184b81fcb2ec8a";
+      url = "http://registry.npmjs.org/useragent/-/useragent-2.1.8.tgz";
+      name = "useragent-2.1.8.tgz";
+      sha1 = "7a09a53770e039136e0d61fb77e65e2bf1920093";
     };
     deps = {
       "lru-cache-2.2.4" = self.by-version."lru-cache"."2.2.4";
-    };
-    optionalDependencies = {
-    };
-    peerDependencies = [];
-    os = [ ];
-    cpu = [ ];
-  };
-  by-spec."utf-8-validate"."1.2.x" =
-    self.by-version."utf-8-validate"."1.2.1";
-  by-version."utf-8-validate"."1.2.1" = self.buildNodePackage {
-    name = "utf-8-validate-1.2.1";
-    version = "1.2.1";
-    bin = false;
-    src = fetchurl {
-      url = "http://registry.npmjs.org/utf-8-validate/-/utf-8-validate-1.2.1.tgz";
-      name = "utf-8-validate-1.2.1.tgz";
-      sha1 = "44cb7c6eead73d6b40448f71f745904357b9f72c";
-    };
-    deps = {
-      "bindings-1.2.1" = self.by-version."bindings"."1.2.1";
-      "nan-2.1.0" = self.by-version."nan"."2.1.0";
     };
     optionalDependencies = {
     };
@@ -13726,6 +14073,44 @@
       url = "http://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz";
       name = "util-deprecate-1.0.2.tgz";
       sha1 = "450d4dc9fa70de732762fbd2d4a28981419a0ccf";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."utila"."~0.3" =
+    self.by-version."utila"."0.3.3";
+  by-version."utila"."0.3.3" = self.buildNodePackage {
+    name = "utila-0.3.3";
+    version = "0.3.3";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/utila/-/utila-0.3.3.tgz";
+      name = "utila-0.3.3.tgz";
+      sha1 = "d7e8e7d7e309107092b05f8d9688824d633a4226";
+    };
+    deps = {
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."utila"."~0.4" =
+    self.by-version."utila"."0.4.0";
+  by-version."utila"."0.4.0" = self.buildNodePackage {
+    name = "utila-0.4.0";
+    version = "0.4.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/utila/-/utila-0.4.0.tgz";
+      name = "utila-0.4.0.tgz";
+      sha1 = "8a16a05d445657a3aea5eecc5b12a4fa5379772c";
     };
     deps = {
     };
@@ -13906,7 +14291,7 @@
     };
     deps = {
       "async-0.9.2" = self.by-version."async"."0.9.2";
-      "chokidar-1.3.0" = self.by-version."chokidar"."1.3.0";
+      "chokidar-1.4.2" = self.by-version."chokidar"."1.4.2";
       "graceful-fs-4.1.2" = self.by-version."graceful-fs"."4.1.2";
     };
     optionalDependencies = {
@@ -13916,21 +14301,21 @@
     cpu = [ ];
   };
   by-spec."webpack".">=1.0.0 <3" =
-    self.by-version."webpack"."1.12.9";
-  by-version."webpack"."1.12.9" = self.buildNodePackage {
-    name = "webpack-1.12.9";
-    version = "1.12.9";
+    self.by-version."webpack"."1.12.12";
+  by-version."webpack"."1.12.12" = self.buildNodePackage {
+    name = "webpack-1.12.12";
+    version = "1.12.12";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/webpack/-/webpack-1.12.9.tgz";
-      name = "webpack-1.12.9.tgz";
-      sha1 = "2a031d66189839cc5cbf2c68f80566da2e14ff4e";
+      url = "http://registry.npmjs.org/webpack/-/webpack-1.12.12.tgz";
+      name = "webpack-1.12.12.tgz";
+      sha1 = "06e7a379a1a6411eac6f1006d94b1b269e917a3b";
     };
     deps = {
-      "async-1.5.0" = self.by-version."async"."1.5.0";
+      "async-1.5.2" = self.by-version."async"."1.5.2";
       "clone-1.0.2" = self.by-version."clone"."1.0.2";
       "enhanced-resolve-0.9.1" = self.by-version."enhanced-resolve"."0.9.1";
-      "esprima-2.7.0" = self.by-version."esprima"."2.7.0";
+      "esprima-2.7.1" = self.by-version."esprima"."2.7.1";
       "interpret-0.6.6" = self.by-version."interpret"."0.6.6";
       "loader-utils-0.2.12" = self.by-version."loader-utils"."0.2.12";
       "memory-fs-0.3.0" = self.by-version."memory-fs"."0.3.0";
@@ -13950,14 +14335,14 @@
     cpu = [ ];
   };
   by-spec."webpack".">=1.3.0 <3" =
-    self.by-version."webpack"."1.12.9";
+    self.by-version."webpack"."1.12.12";
+  by-spec."webpack"."^1.12.12" =
+    self.by-version."webpack"."1.12.12";
+  "webpack" = self.by-version."webpack"."1.12.12";
   by-spec."webpack"."^1.12.6" =
-    self.by-version."webpack"."1.12.9";
-  by-spec."webpack"."^1.12.9" =
-    self.by-version."webpack"."1.12.9";
-  "webpack" = self.by-version."webpack"."1.12.9";
+    self.by-version."webpack"."1.12.12";
   by-spec."webpack"."^1.4.0" =
-    self.by-version."webpack"."1.12.9";
+    self.by-version."webpack"."1.12.12";
   by-spec."webpack-core"."~0.6.0" =
     self.by-version."webpack-core"."0.6.8";
   by-version."webpack-core"."0.6.8" = self.buildNodePackage {
@@ -13980,15 +14365,15 @@
     cpu = [ ];
   };
   by-spec."webpack-dev-middleware"."^1.0.11" =
-    self.by-version."webpack-dev-middleware"."1.4.0";
-  by-version."webpack-dev-middleware"."1.4.0" = self.buildNodePackage {
-    name = "webpack-dev-middleware-1.4.0";
-    version = "1.4.0";
+    self.by-version."webpack-dev-middleware"."1.5.1";
+  by-version."webpack-dev-middleware"."1.5.1" = self.buildNodePackage {
+    name = "webpack-dev-middleware-1.5.1";
+    version = "1.5.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-1.4.0.tgz";
-      name = "webpack-dev-middleware-1.4.0.tgz";
-      sha1 = "326ec7725cde19692e70edb1ff8a570312ee6830";
+      url = "http://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-1.5.1.tgz";
+      name = "webpack-dev-middleware-1.5.1.tgz";
+      sha1 = "c46e075467881211e3fca34af1cdadf47163c89a";
     };
     deps = {
       "memory-fs-0.3.0" = self.by-version."memory-fs"."0.3.0";
@@ -13997,37 +14382,37 @@
     optionalDependencies = {
     };
     peerDependencies = [
-      self.by-version."webpack"."1.12.9"];
+      self.by-version."webpack"."1.12.12"];
     os = [ ];
     cpu = [ ];
   };
   by-spec."webpack-dev-middleware"."^1.4.0" =
-    self.by-version."webpack-dev-middleware"."1.4.0";
-  by-spec."webpack-dev-server"."^1.14.0" =
-    self.by-version."webpack-dev-server"."1.14.0";
-  by-version."webpack-dev-server"."1.14.0" = self.buildNodePackage {
-    name = "webpack-dev-server-1.14.0";
-    version = "1.14.0";
+    self.by-version."webpack-dev-middleware"."1.5.1";
+  by-spec."webpack-dev-server"."^1.14.1" =
+    self.by-version."webpack-dev-server"."1.14.1";
+  by-version."webpack-dev-server"."1.14.1" = self.buildNodePackage {
+    name = "webpack-dev-server-1.14.1";
+    version = "1.14.1";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.14.0.tgz";
-      name = "webpack-dev-server-1.14.0.tgz";
-      sha1 = "ace376e571a84162f229ba6598e9180f7efc9eec";
+      url = "http://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.14.1.tgz";
+      name = "webpack-dev-server-1.14.1.tgz";
+      sha1 = "e51de228071258b0db6d55e0f5fee55eec6755de";
     };
     deps = {
-      "compression-1.6.0" = self.by-version."compression"."1.6.0";
+      "compression-1.6.1" = self.by-version."compression"."1.6.1";
       "connect-history-api-fallback-1.1.0" = self.by-version."connect-history-api-fallback"."1.1.0";
-      "express-4.13.3" = self.by-version."express"."4.13.3";
-      "http-proxy-1.12.0" = self.by-version."http-proxy"."1.12.0";
+      "express-4.13.4" = self.by-version."express"."4.13.4";
+      "http-proxy-1.12.1" = self.by-version."http-proxy"."1.12.1";
       "optimist-0.6.1" = self.by-version."optimist"."0.6.1";
-      "serve-index-1.7.2" = self.by-version."serve-index"."1.7.2";
+      "serve-index-1.7.3" = self.by-version."serve-index"."1.7.3";
       "sockjs-0.3.15" = self.by-version."sockjs"."0.3.15";
       "sockjs-client-1.0.3" = self.by-version."sockjs-client"."1.0.3";
       "stream-cache-0.0.2" = self.by-version."stream-cache"."0.0.2";
       "strip-ansi-3.0.0" = self.by-version."strip-ansi"."3.0.0";
       "supports-color-3.1.2" = self.by-version."supports-color"."3.1.2";
-      "webpack-dev-middleware-1.4.0" = self.by-version."webpack-dev-middleware"."1.4.0";
-      "webpack-1.12.9" = self.by-version."webpack"."1.12.9";
+      "webpack-dev-middleware-1.5.1" = self.by-version."webpack-dev-middleware"."1.5.1";
+      "webpack-1.12.12" = self.by-version."webpack"."1.12.12";
     };
     optionalDependencies = {
     };
@@ -14035,17 +14420,17 @@
     os = [ ];
     cpu = [ ];
   };
-  "webpack-dev-server" = self.by-version."webpack-dev-server"."1.14.0";
+  "webpack-dev-server" = self.by-version."webpack-dev-server"."1.14.1";
   by-spec."websocket-driver".">=0.3.6" =
-    self.by-version."websocket-driver"."0.6.3";
-  by-version."websocket-driver"."0.6.3" = self.buildNodePackage {
-    name = "websocket-driver-0.6.3";
-    version = "0.6.3";
+    self.by-version."websocket-driver"."0.6.4";
+  by-version."websocket-driver"."0.6.4" = self.buildNodePackage {
+    name = "websocket-driver-0.6.4";
+    version = "0.6.4";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/websocket-driver/-/websocket-driver-0.6.3.tgz";
-      name = "websocket-driver-0.6.3.tgz";
-      sha1 = "fd21911bb46dee34ad85bdbc5676bf9024ed087b";
+      url = "http://registry.npmjs.org/websocket-driver/-/websocket-driver-0.6.4.tgz";
+      name = "websocket-driver-0.6.4.tgz";
+      sha1 = "65b84d02113480d3fc05e63e809322042bdc940b";
     };
     deps = {
       "websocket-extensions-0.1.1" = self.by-version."websocket-extensions"."0.1.1";
@@ -14057,7 +14442,7 @@
     cpu = [ ];
   };
   by-spec."websocket-driver".">=0.5.1" =
-    self.by-version."websocket-driver"."0.6.3";
+    self.by-version."websocket-driver"."0.6.4";
   by-spec."websocket-extensions".">=0.1.1" =
     self.by-version."websocket-extensions"."0.1.1";
   by-version."websocket-extensions"."0.1.1" = self.buildNodePackage {
@@ -14135,18 +14520,19 @@
     cpu = [ ];
   };
   by-spec."which"."1" =
-    self.by-version."which"."1.2.0";
-  by-version."which"."1.2.0" = self.buildNodePackage {
-    name = "which-1.2.0";
-    version = "1.2.0";
+    self.by-version."which"."1.2.2";
+  by-version."which"."1.2.2" = self.buildNodePackage {
+    name = "which-1.2.2";
+    version = "1.2.2";
     bin = true;
     src = fetchurl {
-      url = "http://registry.npmjs.org/which/-/which-1.2.0.tgz";
-      name = "which-1.2.0.tgz";
-      sha1 = "a5c8df5abc792f6ce9652c8d9ca8f3a91b77e59d";
+      url = "http://registry.npmjs.org/which/-/which-1.2.2.tgz";
+      name = "which-1.2.2.tgz";
+      sha1 = "6cf661c374b6016ad71f035993d5bc85e003aec7";
     };
     deps = {
       "is-absolute-0.1.7" = self.by-version."is-absolute"."0.1.7";
+      "isexe-1.0.1" = self.by-version."isexe"."1.0.1";
     };
     optionalDependencies = {
     };
@@ -14155,7 +14541,7 @@
     cpu = [ ];
   };
   by-spec."which"."^1.2.0" =
-    self.by-version."which"."1.2.0";
+    self.by-version."which"."1.2.2";
   by-spec."which"."~1.0.5" =
     self.by-version."which"."1.0.9";
   by-version."which"."1.0.9" = self.buildNodePackage {
@@ -14194,7 +14580,7 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."window-size"."^0.1.2" =
+  by-spec."window-size"."^0.1.4" =
     self.by-version."window-size"."0.1.4";
   by-version."window-size"."0.1.4" = self.buildNodePackage {
     name = "window-size-0.1.4";
@@ -14290,39 +14676,37 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."ws"."0.8.0" =
-    self.by-version."ws"."0.8.0";
-  by-version."ws"."0.8.0" = self.buildNodePackage {
-    name = "ws-0.8.0";
-    version = "0.8.0";
+  by-spec."ws"."1.0.1" =
+    self.by-version."ws"."1.0.1";
+  by-version."ws"."1.0.1" = self.buildNodePackage {
+    name = "ws-1.0.1";
+    version = "1.0.1";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/ws/-/ws-0.8.0.tgz";
-      name = "ws-0.8.0.tgz";
-      sha1 = "ac60ebad312121d01e16cc3383d7ec67ad0f0f1f";
+      url = "http://registry.npmjs.org/ws/-/ws-1.0.1.tgz";
+      name = "ws-1.0.1.tgz";
+      sha1 = "7d0b2a2e58cddd819039c29c9de65045e1b310e9";
     };
     deps = {
       "options-0.0.6" = self.by-version."options"."0.0.6";
       "ultron-1.0.2" = self.by-version."ultron"."1.0.2";
     };
     optionalDependencies = {
-      "bufferutil-1.2.1" = self.by-version."bufferutil"."1.2.1";
-      "utf-8-validate-1.2.1" = self.by-version."utf-8-validate"."1.2.1";
     };
     peerDependencies = [];
     os = [ ];
     cpu = [ ];
   };
-  by-spec."xmlhttprequest"."https://github.com/rase-/node-XMLHttpRequest/archive/a6b6f2.tar.gz" =
-    self.by-version."xmlhttprequest"."1.5.0";
-  by-version."xmlhttprequest"."1.5.0" = self.buildNodePackage {
-    name = "xmlhttprequest-1.5.0";
-    version = "1.5.0";
+  by-spec."xmlhttprequest-ssl"."1.5.1" =
+    self.by-version."xmlhttprequest-ssl"."1.5.1";
+  by-version."xmlhttprequest-ssl"."1.5.1" = self.buildNodePackage {
+    name = "xmlhttprequest-ssl-1.5.1";
+    version = "1.5.1";
     bin = false;
     src = fetchurl {
-      url = "https://github.com/rase-/node-XMLHttpRequest/archive/a6b6f2.tar.gz";
-      name = "xmlhttprequest-1.5.0.tgz";
-      sha256 = "f29574bb6dad260b7856b8dcfd432fc9ceb52161b8ee02f387440bb7f6e39f92";
+      url = "http://registry.npmjs.org/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.1.tgz";
+      name = "xmlhttprequest-ssl-1.5.1.tgz";
+      sha1 = "3b7741fea4a86675976e908d296d4445961faa67";
     };
     deps = {
     };
@@ -14370,22 +14754,42 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."yargs"."^3.30.0" =
-    self.by-version."yargs"."3.30.0";
-  by-version."yargs"."3.30.0" = self.buildNodePackage {
-    name = "yargs-3.30.0";
-    version = "3.30.0";
+  by-spec."yallist"."^2.0.0" =
+    self.by-version."yallist"."2.0.0";
+  by-version."yallist"."2.0.0" = self.buildNodePackage {
+    name = "yallist-2.0.0";
+    version = "2.0.0";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/yargs/-/yargs-3.30.0.tgz";
-      name = "yargs-3.30.0.tgz";
-      sha1 = "5ec82ef8c7296fe02fa0ee37863f6d9d9e24acef";
+      url = "http://registry.npmjs.org/yallist/-/yallist-2.0.0.tgz";
+      name = "yallist-2.0.0.tgz";
+      sha1 = "306c543835f09ee1a4cb23b7bce9ab341c91cdd4";
     };
     deps = {
-      "camelcase-1.2.1" = self.by-version."camelcase"."1.2.1";
+    };
+    optionalDependencies = {
+    };
+    peerDependencies = [];
+    os = [ ];
+    cpu = [ ];
+  };
+  by-spec."yargs"."^3.32.0" =
+    self.by-version."yargs"."3.32.0";
+  by-version."yargs"."3.32.0" = self.buildNodePackage {
+    name = "yargs-3.32.0";
+    version = "3.32.0";
+    bin = false;
+    src = fetchurl {
+      url = "http://registry.npmjs.org/yargs/-/yargs-3.32.0.tgz";
+      name = "yargs-3.32.0.tgz";
+      sha1 = "03088e9ebf9e756b69751611d2a5ef591482c995";
+    };
+    deps = {
+      "camelcase-2.1.0" = self.by-version."camelcase"."2.1.0";
       "cliui-3.1.0" = self.by-version."cliui"."3.1.0";
-      "decamelize-1.1.1" = self.by-version."decamelize"."1.1.1";
+      "decamelize-1.1.2" = self.by-version."decamelize"."1.1.2";
       "os-locale-1.4.0" = self.by-version."os-locale"."1.4.0";
+      "string-width-1.0.1" = self.by-version."string-width"."1.0.1";
       "window-size-0.1.4" = self.by-version."window-size"."0.1.4";
       "y18n-3.2.0" = self.by-version."y18n"."3.2.0";
     };
@@ -14395,9 +14799,9 @@
     os = [ ];
     cpu = [ ];
   };
-  "yargs" = self.by-version."yargs"."3.30.0";
+  "yargs" = self.by-version."yargs"."3.32.0";
   by-spec."yargs"."^3.8.0" =
-    self.by-version."yargs"."3.30.0";
+    self.by-version."yargs"."3.32.0";
   by-spec."yargs"."~3.10.0" =
     self.by-version."yargs"."3.10.0";
   by-version."yargs"."3.10.0" = self.buildNodePackage {
@@ -14412,7 +14816,7 @@
     deps = {
       "camelcase-1.2.1" = self.by-version."camelcase"."1.2.1";
       "cliui-2.1.0" = self.by-version."cliui"."2.1.0";
-      "decamelize-1.1.1" = self.by-version."decamelize"."1.1.1";
+      "decamelize-1.1.2" = self.by-version."decamelize"."1.1.2";
       "window-size-0.1.0" = self.by-version."window-size"."0.1.0";
     };
     optionalDependencies = {
@@ -14421,22 +14825,18 @@
     os = [ ];
     cpu = [ ];
   };
-  by-spec."yargs"."~3.5.4" =
-    self.by-version."yargs"."3.5.4";
-  by-version."yargs"."3.5.4" = self.buildNodePackage {
-    name = "yargs-3.5.4";
-    version = "3.5.4";
+  by-spec."yeast"."0.1.2" =
+    self.by-version."yeast"."0.1.2";
+  by-version."yeast"."0.1.2" = self.buildNodePackage {
+    name = "yeast-0.1.2";
+    version = "0.1.2";
     bin = false;
     src = fetchurl {
-      url = "http://registry.npmjs.org/yargs/-/yargs-3.5.4.tgz";
-      name = "yargs-3.5.4.tgz";
-      sha1 = "d8aff8f665e94c34bd259bdebd1bfaf0ddd35361";
+      url = "http://registry.npmjs.org/yeast/-/yeast-0.1.2.tgz";
+      name = "yeast-0.1.2.tgz";
+      sha1 = "008e06d8094320c372dbc2f8ed76a0ca6c8ac419";
     };
     deps = {
-      "camelcase-1.2.1" = self.by-version."camelcase"."1.2.1";
-      "decamelize-1.1.1" = self.by-version."decamelize"."1.1.1";
-      "window-size-0.1.0" = self.by-version."window-size"."0.1.0";
-      "wordwrap-0.0.2" = self.by-version."wordwrap"."0.0.2";
     };
     optionalDependencies = {
     };
