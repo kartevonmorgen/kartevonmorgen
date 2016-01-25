@@ -31,8 +31,8 @@ describe "Validation", ->
       it "should be at least 10 chars long", ->
         F(description:"asadf").description.should.have.string "Zu wenig Text"
 
-      it "should be at most 160 chars long", ->
-        t = ("a" for i in [1..170]).join ''
+      it "should be at most 250 chars long", ->
+        t = ("a" for i in [1..251]).join ''
         F(description:t).description.should.have.string "Zu lange Beschreibung"
 
       it "should not throw error if valid", ->

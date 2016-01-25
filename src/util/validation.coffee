@@ -21,8 +21,8 @@ entryForm = (data) ->
   unless data.description?
     errors.description = 'Pflichtangabe'
   else
-    unless (l = data.description.length) <= 160
-      errors.description ?= "Zu lange Beschreibung: #{l} statt max. 160 Zeichen"
+    unless (l = data.description.length) <= 250
+      errors.description ?= "Zu lange Beschreibung: #{l} statt max. 250 Zeichen"
     unless (l = data.description.length) >= 10
       errors.description ?= "Zu wenig Text: #{l} von mind. 10 Zeichen"
 
