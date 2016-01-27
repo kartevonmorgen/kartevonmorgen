@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+# Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 URL       = "https://api.ofdb.io/v0"
 NOMINATIM = "https://nominatim.openstreetmap.org"

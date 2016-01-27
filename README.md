@@ -91,6 +91,6 @@ Until then you can use `http://kvm.markus-kohlhase.de` as a playground.
 
 ## License
 
-Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).

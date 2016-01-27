@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Markus Kohlhase <mail@markus-kohlhase.de>
+# Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 isInt = (v) -> (typeof v) is "number" and (isFinite v) and (Math.floor v) is v
 
