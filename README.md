@@ -15,7 +15,7 @@ favorite places in the world. Places that are forward‐thinking and inspiring.
 The goal is to collect projects, companies and events that make a world of
 tomorrow, already experienceable today.
 
-Demo: [http://prototyp.kartevonmorgen.org/](http://prototyp.kartevonmorgen.org/)
+Demo: [https://prototyp.kartevonmorgen.org/](https://prototyp.kartevonmorgen.org/)
 
 ## Development
 
