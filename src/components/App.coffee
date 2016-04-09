@@ -189,10 +189,7 @@ module.exports = React.createClass
                       key: "save"
                       className:"pure-u-1-2",
                       onClick: (=>
-                        # dirty hack
-                        @refs.form
-                          .querySelector 'form'
-                          .dispatchEvent new Event "submit"
+                        @refs.form.submit()
                       ),
                         i className: "fa fa-floppy-o"
                         "speichern"
@@ -251,9 +248,9 @@ module.exports = React.createClass
 
               when V.EDIT, V.NEW
                 div
-                  className: "content pure-g"
-                  ref: 'form',
+                  className: "content pure-g",
                     React.createElement EntryForm,
+                      ref: 'form'
                       isEdit: form[EDIT.id]?.id?
                       onSubmit: (data) ->
                         dispatch Actions.saveEntry

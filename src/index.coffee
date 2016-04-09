@@ -2,6 +2,8 @@
 Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 ###
 
+(require 'es6-promise').polyfill() # required for redux-form
+
 React       = require "react"
 ReactDOM    = require "react-dom"
 App         = require "./components/App"
