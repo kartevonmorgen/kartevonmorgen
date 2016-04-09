@@ -52,14 +52,15 @@ button.pure-button i
 
 .app
   background #fff
-  display flex
+  //  display flex
   min-height 100vh
   height     100vh
-  flex-direction column
+  //  flex-direction column
 
   .main
-    display flex
-    flex 1
+    //   display flex
+    //   flex 1
+    height     100vh
 
     .landing, .modal
       position absolute
@@ -157,28 +158,33 @@ button.pure-button i
         top 20%
         left 30%
 
-    .center, .left, .right
+    .left, .right
       transition  all 0.3s ease-out
 
     .center
-      display flex
-      flex 1
+      // display flex
+      // flex 1
+      height     100vh
 
     .left
       order -1
       max-height     100vh
       overflow-y     hidden
-      display        flex
-      flex-direction column
+      //      display        flex
+      //      flex-direction column
+      float left
 
       .content
         overflow-y     scroll
+        height 100vh
         padding-bottom 1.5em
 
       &.closed
-        flex 0
+        //        flex 0
+        width 0
       &.opened
-        flex 0 0 350px
+        //        flex 0 0 350px
+        width 350px
 
       .search.standalone
         left     1em
@@ -214,10 +220,15 @@ button.pure-button i
             margin-right 0.5em
 
     .right
+      float right
+      height 100vh
+
       &.opened
-        flex 0 0 28em
+        //flex 0 0 28em
+        width 28em
       &.closed
-        flex 0
+         //flex 0
+        width 0
 
     .right
       background  #fff
@@ -232,6 +243,7 @@ button.pure-button i
         button
           outline         none
           position        absolute
+          z-index         2
           top             1em
           font-size       1.8em
           text-transform  uppercase

@@ -88,7 +88,7 @@ module.exports = React.createClass
           icon: @getIconById e.categories?[0]
 
     React.createElement Map,
-      style            : display: "flex", flex: "1 1 100%"
+      style            : height: "100%"
       ref              : 'map'
       center           : @props.center
       zoom             : @props.zoom

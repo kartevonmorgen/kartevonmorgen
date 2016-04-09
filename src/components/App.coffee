@@ -139,25 +139,6 @@ module.exports = React.createClass
                   actionButtonIcon: "fa fa-external-link",
                   onAction: -> (window.open URLs.DONATE.link, '_blank').focus()
 
-        div className:"center",
-          React.createElement Map,
-            marker        : (map.marker if view.left in [V.EDIT, V.NEW])
-            center        : mapCenter
-            zoom          : map.zoom
-            category      : form[EDIT.id]?.category?.value
-            highlight     : highlight
-            entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
-            onClick       : (latlng) -> dispatch Actions.setMarker latlng
-            onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
-            onMoveend     : (coordinates) ->
-              dispatch Actions.setCenter coordinates.center
-              dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.search()
-            onZoomend     : (coordinates) ->
-              dispatch Actions.setZoom coordinates.zoom
-              dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.search()
-
         div className:"left #{if view.left? and not view.landing then 'opened' else 'closed'}",
 
           div className: "search #{
@@ -504,3 +485,24 @@ module.exports = React.createClass
               div className:"menu-footer",
                 a onClick: (-> dispatch Actions.showImprint()),
                   "Kontakt // Impressum"
+
+
+        div className:"center",
+          React.createElement Map,
+            marker        : (map.marker if view.left in [V.EDIT, V.NEW])
+            center        : mapCenter
+            zoom          : map.zoom
+            category      : form[EDIT.id]?.category?.value
+            highlight     : highlight
+            entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
+            onClick       : (latlng) -> dispatch Actions.setMarker latlng
+            onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
+            onMoveend     : (coordinates) ->
+              dispatch Actions.setCenter coordinates.center
+              dispatch Actions.setBbox coordinates.bbox
+              dispatch Actions.search()
+            onZoomend     : (coordinates) ->
+              dispatch Actions.setZoom coordinates.zoom
+              dispatch Actions.setBbox coordinates.bbox
+              dispatch Actions.search()
+
