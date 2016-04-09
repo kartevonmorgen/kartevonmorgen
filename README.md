@@ -86,8 +86,6 @@ can get your complete development environment by just typing
 ### Backend
 
 KVM uses the [OpenFairDB](https://github.com/flosse/openfairdb) as its backend.
-As soon it's open sourced you can compile it yourself.
-Until then you can use `http://kvm.markus-kohlhase.de` as a playground.
 
 ## License
 
