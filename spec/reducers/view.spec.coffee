@@ -22,3 +22,20 @@ describe "view reducer", ->
 
     it "should not be changed after action SEARCH_RESULT if it exists", ->
       V({left:"foo"},{type:AT.SEARCH_RESULT}).left.should.equal "foo"
+
+  describe "the landingpage", ->
+
+    it "should be active in the initial state", ->
+      V().landing.should.equal true
+
+    it "visibility can be toggled", ->
+      state1 = V(V(), type:AT.TOGGLE_LANDING)
+      state1.landing.should.equal false
+
+      state2 = V(state1, type:AT.TOGGLE_LANDING)
+      state2.landing.should.equal true
+
+    it "cannot be opend if a modal dialog is open", ->
+
+      state = V({modal: PV.LOCATE, landing: no}, type:AT.TOGGLE_LANDING)
+      state.landing.should.equal false

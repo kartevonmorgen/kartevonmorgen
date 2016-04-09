@@ -17,6 +17,7 @@ EntryForm     = require "./EntryForm"
 Message       = require "./Message"
 Map           = require "./Map"
 SearchBar     = require "./SearchBar"
+LandingPage   = require "./LandingPage"
 Menu          = require "./Menu"
 pkg           = require "json!../../package.json"
 { EDIT }      = require "../constants/Form"
@@ -60,6 +61,35 @@ module.exports = React.createClass
     div className:"app",
 
       div className:"main",
+
+        if view.landing
+          React.createElement LandingPage,
+            onMenuItemClick: (id) -> switch id
+              when 'map'
+                dispatch Actions.toggleLandingPage()
+              when 'new'
+                dispatch Actions.toggleLandingPage()
+                dispatch Actions.showNewEntry()
+              when 'donate'
+                dispatch Actions.toggleLandingPage()
+                dispatch Actions.showInfo V.DONATE
+              when 'info'
+                dispatch Actions.toggleLandingPage()
+                dispatch Actions.showInfo V.INFO
+            onChange: (city) ->
+              dispatch Actions.setCitySearchText city
+              dispatch Actions.searchCity()
+            searchText: search.city
+            cities: search.cities
+            onEscape: -> dispatch Actions.setCitySearchText ''
+
+            onSelection: (city) ->
+              if city
+                dispatch Actions.setCenter
+                  lat: city.lat
+                  lng: city.lon
+                dispatch Actions.toggleLandingPage()
+                dispatch Actions.setSearchText ''
 
         if view.modal?
           switch view.modal
@@ -128,7 +158,7 @@ module.exports = React.createClass
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
 
-        div className:"left #{if view.left? then 'opened' else 'closed'}",
+        div className:"left #{if view.left? and not view.landing then 'opened' else 'closed'}",
 
           div className: "search #{
             if view.left? then 'integrated' else 'standalone'
@@ -223,8 +253,10 @@ module.exports = React.createClass
                       div className: 'group-header', "Städte:"
                       React.createElement CityList,
                         cities  : cities
-                        onClick : (center) ->
-                          dispatch Actions.setCenter center
+                        onClick : (city) ->
+                          dispatch Actions.setCenter
+                            lat: city.lat
+                            lng: city.lon
                           dispatch Actions.setSearchText ''
 
                   if invisibleEntries and invisibleEntries.length
@@ -296,7 +328,11 @@ module.exports = React.createClass
                 }"
           if rightPanelIsOpen
             div null,
-              div className: "logo"
+              div
+                className: "logo"
+                onClick: ->
+                  dispatch Actions.toggleLandingPage()
+                  dispatch Actions.toggleMenu()
               if view.right != null
                 div className:"content-toggle",
                   button
@@ -310,7 +346,7 @@ module.exports = React.createClass
                       dispatch Actions.getServerInfo())
                     items:
                       MAP_INFO:
-                        label   : "Karte"
+                        label   : "Über die Karte"
                         active  : view.right is V.MAP_INO
                       DONATE:
                         label   : "Spenden"

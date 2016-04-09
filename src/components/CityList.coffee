@@ -15,7 +15,7 @@ CityListElement = React.createClass
   render: ->
     { city, onClick } = @props
     li
-      onClick: (ev) -> ev.preventDefault(); onClick lat: city.lat, lng: city.lon
+      onClick: (ev) -> ev.preventDefault(); onClick city
       div className: "pure-g",
         div className: "pure-u-23-24",
           div null,

@@ -6,10 +6,11 @@ V  = require "../constants/PanelView"
 C  = require "../constants/Categories"
 
 initialState =
-  menu  : no
-  left  : null
-  right : null
-  modal : null
+  menu    : no
+  left    : null
+  right   : null
+  modal   : null
+  landing : yes
 
 module.exports = (state=initialState, action={}) ->
 
@@ -19,6 +20,12 @@ module.exports = (state=initialState, action={}) ->
       m = not state.menu
       r = if m then state.right else null
       u {menu: m, right: r}, state
+
+    when T.TOGGLE_LANDING
+      if state.modal?
+        state
+      else
+        u {landing: not state.landing}, state
 
     when T.SHOW_MENU
       u {menu: yes, right: null}, state

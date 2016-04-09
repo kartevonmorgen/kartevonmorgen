@@ -12,6 +12,10 @@ Actions =
     type    : T.SET_SEARCH_TEXT
     payload : txt
 
+  setCitySearchText: (txt) ->
+    type    : T.SET_CITY_SEARCH_TEXT
+    payload : txt
+
   search: ->
     (dispatch, getState) ->
       s = getState().search
@@ -40,6 +44,15 @@ Actions =
           fetch_ids = (id for id in ids when not entries[id]?)
           dispatch Actions.getEntries fetch_ids if fetch_ids.length > 0
       WebAPI.searchAddress s.text, (err, res) ->
+        dispatch
+          type    : T.SEARCH_ADDRESS_RESULT
+          payload : err or res
+          error   : err?
+
+  searchCity: ->
+    (dispatch, getState) ->
+      s = getState().search
+      WebAPI.searchAddress s.city, (err, res) ->
         dispatch
           type    : T.SEARCH_ADDRESS_RESULT
           payload : err or res
@@ -81,6 +94,9 @@ Actions =
 
   showNewEntry: ->
     type: T.SHOW_NEW_ENTRY
+
+  toggleLandingPage: ->
+    type: T.TOGGLE_LANDING
 
   showInfo: (key) ->
     type: T.SHOW_INFO
@@ -146,7 +162,7 @@ Actions =
               dispatch
                 type    : T.SET_MARKER
                 payload : {lat: res[0].lat, lng: res[0].lon}
-                manual : false
+                manual  : false
                 error   : err?
 
   setCenter: (center) ->

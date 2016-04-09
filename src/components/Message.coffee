@@ -19,7 +19,7 @@ module.exports = React.createClass
   mixins: [Pure]
 
   render: ->
-    div null,
+    div className: 'dialog',
       div className: "message",
         i className: @props.iconClass
         @props.message

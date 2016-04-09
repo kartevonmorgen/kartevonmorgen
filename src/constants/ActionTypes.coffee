@@ -4,6 +4,7 @@ module.exports =
 
   TOGGLE_SEARCH_CATEGORY  : 'TOGGLE_SEARCH_CATEGORY'
   TOGGLE_MENU             : 'TOGGLE_MENU'
+  TOGGLE_LANDING          : 'TOGGLE_LANDING'
 
   SHOW_MENU               : 'SHOW_MENU'
   SHOW_NEW_ENTRY          : 'SHOW_NEW_ENTRY'
@@ -25,6 +26,7 @@ module.exports =
   SET_BBOX                : 'SET_BBOX'
   SET_CURRENT_ENTRY       : 'SET_CURRENT_ENTRY'
   SET_SEARCH_TEXT         : 'SET_SEARCH_TEXT'
+  SET_CITY_SEARCH_TEXT    : 'SET_CITY_SEARCH_TEXT'
 
   EDIT_CURRENT_ENTRY      : 'EDIT_CURRENT_ENTRY'
 

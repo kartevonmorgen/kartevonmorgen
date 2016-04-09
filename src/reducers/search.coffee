@@ -7,6 +7,7 @@ T = require "../constants/ActionTypes"
 
 initialState =
   text       : null
+  city       : null
   result     : []
   current    : null
   categories : MAIN_IDS.filter (c) -> c isnt IDS.EVENT # until events are supported
@@ -37,6 +38,9 @@ module.exports = (state=initialState, action={}) ->
 
     when T.SET_SEARCH_TEXT
       u text: action.payload, state
+
+    when T.SET_CITY_SEARCH_TEXT
+      u city: action.payload, state
 
     when T.SEARCH_RESULT
       unless action.error

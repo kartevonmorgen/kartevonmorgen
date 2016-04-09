@@ -61,19 +61,94 @@ button.pure-button i
     display flex
     flex 1
 
-    div.modal
+    .landing, .modal
       position absolute
+      z-index  100
+      width    100%
+      height   100%
+
+    .landing
+      z-index           1001
+      background-color  rgba(0,0,0,0.7)
+      min-height 100vh
+      h2
+        font-size 1.8em
+        margin-top 1.5em
+
+      input
+        font-size 1.2em
+
+      .place-search
+        max-width     500px
+        margin        auto
+        margin-top    2em
+        margin-bottom 2em
+
+        .city-list
+          margin-top 0.3em
+          li:hover
+            background rgba(0,0,0,0.5)
+            div.chevron
+              color #fff
+
+      .content
+        max-width 900px
+        margin auto
+
+      .banner, .explain
+        background-color #fff
+        color $darkGray
+
+      .search, .explain
+        text-align center
+        padding 1em
+        ul
+          text-align left
+      .explain
+        ul
+          max-width 250px
+          text-align left
+          margin auto
+
+      .banner
+        height 100px
+
+        .logo
+          img
+            padding 1em
+            height  70px
+
+        .menu
+          margin-top 50px
+          text-align right
+          font-size  1.3em
+
+          li
+            &:hover, &:active
+              text-decoration underline
+
+            a
+              background  transparent
+
+      .search
+        text-align center
+        color #fff
+        h2
+          font-weight normal
+          font-size   1.4em
+
+        input, button
+          color $coal
+
+    .modal
+      top      0
+      right    0
+      left     0
+      bottom   0
       background-color rgba(0,0,0,0.3)
-      z-index 100
-      top: 0
-      right: 0
-      left: 0
-      bottom: 0
-      width: 100%
-      height: 100%
       animation: fadein 500ms;
 
-      > div
+      .dialog
         background-color: #FFF
         padding 10px
         border 1px solid $lightGray
@@ -203,11 +278,12 @@ button.pure-button i
         margin-left -3.8em
 
       .logo
-        margin-top 2em
+        cursor              pointer
+        margin-top          2em
         background          url("../img/logo.png")
         background-position center
         background-repeat   no-repeat
-        height 95px
+        height              95px
 
       div.menu-content
         padding   2.5em
@@ -333,42 +409,6 @@ button.pure-button i
     background  #eaeaea
     color       #666
 
-  .city-list
-    ul
-      background  #f7f7f7
-      list-style none
-      margin  0
-      padding 0
-
-      li
-        padding       0.2em
-        padding-left  0.7em
-        padding-right 0.7em
-        cursor pointer
-        line-height 0.9
-        border-left 5px solid transparent
-
-        &:hover
-          background #fff
-          border-left 5px solid $darkGray
-          div.chevron
-            color $darkGray
-        span
-          margin-right 0.5em
-
-          &.city, &.county
-            font-weight bold
-
-          &.state
-            color #555
-            font-size 0.9em
-
-          &.country
-            font-size 0.8em
-
-          &.country, &.prefix
-            color #888
-
   div.chevron
     position relative
     color    $lightGray
@@ -379,8 +419,57 @@ button.pure-button i
       bottom    0
       margin    auto
 
+  .city-list
+    ul
+      list-style none
+      margin  0
+      padding 0
+      li
+        cursor  pointer
+        padding 0.4em
+        padding-left  0.7em
+        padding-right 0.7em
+
+        span
+          margin-right 0.5em
+          &.city, &.county
+            font-weight bold
+
+          &.state
+            opacity 0.8
+            font-size 0.9em
+
+          &.country
+            font-size 0.8em
+
+          &.country, &.prefix
+            opacity 0.6
+
   .result
     padding-bottom 1.5em
+
+    .city-list
+      ul
+        background  #f7f7f7
+
+        li
+          padding       0.2em
+          padding-left  0.7em
+          padding-right 0.7em
+          line-height 0.9
+          border-left 5px solid transparent
+
+          &:hover
+            background #fff
+            border-left 5px solid $darkGray
+            div.chevron
+              color $darkGray
+          span
+            &.state
+              color #555
+
+            &.country, &.prefix
+              color #888
 
   .result-list
     overflow  hidden
