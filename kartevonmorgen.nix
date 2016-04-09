@@ -13,6 +13,7 @@ let
     name = "node_env";
     paths = with nodePackages;
       [
+        es6-promise
         font-awesome
         leaflet
         lodash
@@ -57,13 +58,13 @@ let
   };
 
 in stdenv.mkDerivation rec {
-  version = "0.1.1";
+  version = "0.1.2";
   name = "kartevonmorgen-${version}";
   src = fetchFromGitHub {
     owner = "flosse";
     repo = "kartevonmorgen";
     rev = "v${version}";
-    sha256 = "1lxcm6w5yrflfx4pczz7dw4jmxz7n70451xpz1k3p9dqn96gd6k8";
+    sha256 = "0k7djf7hgj93ndgwwmxychmva885h381fnc2x4hk39fk8afr1nnl";
   };
 
   buildInputs = with pkgs; [ nodejs node_env nodePackages.webpack ];
