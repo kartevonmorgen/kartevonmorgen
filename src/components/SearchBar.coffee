@@ -1,12 +1,13 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 require './SearchBar.styl'
+
 React     = require "react"
 T         = React.PropTypes
 PureMixin = require "react-pure-render/mixin"
 
 { MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE } =
-  require "../constants/Categories"
+  require "../constants/Categories.coffee"
 
 { div, input, button, i, span, a } = React.DOM
 

@@ -1,5 +1,7 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
-#
+
+require './AddressLine.styl'
+
 React = require "react"
 Pure  = require "react-pure-render/mixin"
 
@@ -12,7 +14,7 @@ module.exports = React.createClass
   mixins: [Pure]
 
   render: ->
-    div className: "address",
+    div className: "AddressLine",
       if @props.street
         span null, @props.street
       if @props.street && (@props.zip or @props.city)

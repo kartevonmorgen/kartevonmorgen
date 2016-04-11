@@ -48,6 +48,28 @@ $borderRadius = 0.4em
       padding         0.5em
       text-transform  uppercase
 
+    button > i.toggle
+      text-align    left
+      display       block;
+      width         1.8em;
+      height        0.9em;
+      border        1px solid #FFF
+      border-radius 0.5em
+      float         right
+
+      i
+        display: inline-block;
+        height: 0.9em;
+        width: 0.9em;
+        border-radius: 0.5em;
+        background-color: #FFF;
+        vertical-align: top;
+        border: 1px solid #FFF;
+        margin: -1px;
+
+      button.active > i.toggle
+        text-align: right !important
+
     .active
       color #fff
 
