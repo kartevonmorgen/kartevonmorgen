@@ -54,6 +54,10 @@ module.exports = React.createClass
       map.getLeafletElement().addControl(L.control.zoom position: 'bottomright')
       @props.onMoveend @getMapCoordinates()
 
+  componentDidUpdate: (prevProps, prevState) ->
+    if (prevProps.size != @props.size)
+      @refs.map.getLeafletElement().invalidateSize()
+
   getMapCoordinates: ->
     m = @refs.map.getLeafletElement()
     center: m.getCenter()

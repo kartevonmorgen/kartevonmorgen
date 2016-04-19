@@ -490,6 +490,7 @@ module.exports = React.createClass
         div className:"center",
           React.createElement Map,
             marker        : (map.marker if view.left in [V.EDIT, V.NEW])
+            size          : if view.left? then (if rightPanelIsOpen then 3 else 2) else if rightPanelIsOpen then 1 else 0
             center        : mapCenter
             zoom          : map.zoom
             category      : form[EDIT.id]?.category?.value
