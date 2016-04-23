@@ -40,7 +40,7 @@ config =
       }
       {
         test:   /\.jpe?g$|\.gif$|\.png$/,
-        loader: "url"
+        loader: "url?limit=10000"
       }
       {
         test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,

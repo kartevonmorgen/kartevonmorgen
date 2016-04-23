@@ -108,14 +108,50 @@ button.pure-button i
 
       .search, .explain
         text-align center
-        padding 1em
+        padding 50px 1em
         ul
           text-align left
       .explain
+        position: relative
+
         ul
           max-width 250px
           text-align left
           margin auto
+
+        .circleTutorial
+          display block
+          text-decoration none
+          position: absolute
+          width: 100px
+          border-radius 50px
+          background-color #000000
+          color: #fff
+          left: 50%
+          margin-left -50px;
+          height 80px;
+          top: -50px
+          padding-top 20px
+          cursor      pointer
+
+        .partnerLogo
+          margin: 3em
+
+        hr
+          margin 100px 40px
+        hr:before
+            content ' '
+            display block
+            position absolute
+            margin-left -100px
+            margin-top -35px
+            background-color #ffffff
+            background-image url(../img/pincloud.png)
+            background-repeat no-repeat
+            background-position center center
+            left 50%
+            width 200px
+            height 70px
 
       .banner
         height 100px

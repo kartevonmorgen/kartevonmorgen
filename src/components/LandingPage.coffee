@@ -6,7 +6,7 @@ Pure      = require "react-pure-render/mixin"
 logo      = require "../img/logo.png"
 CityList  = require "./CityList"
 
-{ div, h1, h2, h3, br, input, button, ul, li, a, img, p } = React.DOM
+{ div, h1, h2, h3, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
 
 module.exports = React.createClass
 
@@ -74,13 +74,38 @@ module.exports = React.createClass
                     onClick : onSelection
 
       div className: "explain",
+        a href: "#tutorial", className: "circleTutorial",
+          strong null,
+            "Tutorial",
+          div style: paddingTop: "10px",
+            "v"
         div className: "content",
-          h2 null, "So funktionierts"
-          ul null,
-            li null, "Ort auswählen"
-            li null, "Suchbegriff eingeben"
-            li null, "Suchergebnisse ansehen und auswählen"
-            li null, "Einträge erstellen und editieren"
+          h3 null,
+            "Unsere Partner",
+          img className: "partnerLogo", src: require "../img/Pep.png"
+          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
+          img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
+          hr id: "tutorial",
+          h2 null, "So funktioniert`s"
+          div
+            img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
+            div style: {marginTop: "200px"},
+              h3 null, "1. Entdecke Deine Orte von ihren besten Seiten"
+              p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
+                    " Unternehmen und Events direkt in Deiner Umgebung"
+            div style: clear: "both"
+            img style: {float: "right"}, src: require "../img/lp_illu2.jpg"
+            div style: {marginTop: "200px"},
+              h3 null, "2. Sei dabei!"
+              p null, "Nimm Kontakt auf und schau vorbei!"
+            div style: clear: "both"
+            img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
+            div style: {marginTop: "200px"},
+              h3 null, "3. Gestalte Deine Gemeinschaft"
+              p null, "Sehe das Leben mit motivierten Augen und erfahre " +
+                  "bereits jetzt eine Welt von morgen."
+            div style: clear: "both"
+          hr null,
           h2 null, "Worum geht es hier?"
           p null,
             "Die Welt steckt voller Entdecker. Und voller Orte,"
