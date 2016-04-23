@@ -6,7 +6,7 @@ Pure      = require "react-pure-render/mixin"
 logo      = require "../img/logo.png"
 CityList  = require "./CityList"
 
-{ div, h1, h2, h3, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
+{ div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
 
 module.exports = React.createClass
 
@@ -106,6 +106,19 @@ module.exports = React.createClass
                   "bereits jetzt eine Welt von morgen."
             div style: clear: "both"
           hr null,
+
+          h2 null, "Wie funktioniert die Karte von morgen?"
+          div null,
+            p null, "Suchbegriff in das Suchfeld eingeben"
+            p null, "bei Bedarf nach Kategorien filtern (Initiativen, " +
+                "Events, Unternehmen"
+            p null, "Suchergebnisse ansehen und auswählen"
+            p null, "Visitenkarten ansehen"
+            p null, "Orte eintragen und editieren"
+
+          div style: overflow: "visible",
+            img style: {width: "100%"}, src: require "../img/postkarte.jpg"
+
           h2 null, "Worum geht es hier?"
           p null,
             "Die Welt steckt voller Entdecker. Und voller Orte,"
@@ -117,3 +130,92 @@ module.exports = React.createClass
             "gemeinsames Handeln im bunten Feld des gesellschaftlichen Wandels."
             br null
             "Das Ziel: eine menschliche Zukunft."
+
+          hr null,
+          h2 null,
+            "Mach mit und gestalte deine Welt von morgen",
+          div style: float: "left", paddingTop: "1px",
+            h4 null,
+              "Unterstütze",
+              br null,
+              "unser Projekt"
+            p null, ""
+            a href: "#", "mehr erfahren"
+          div style: float: "right", paddingTop: "1px",
+            h4 null,
+              "Wir suchen Regional-",
+              br null,
+              "und Themenpiloten"
+            p null, ""
+            a href: "#", "mehr erfahren"
+          div style: paddingTop: "1px",
+            h4 null,
+              "Werde Teil",
+              br null,
+              "unseres Teams"
+            p null, ""
+            a href: "#", "mehr erfahren"
+
+          hr null,
+            h2 null, "Das Team von morgen"
+
+           div className: "teamMember",
+              div className: "circle pink"
+              div null, "Helmut Wolman -"
+              div null, "Project Management"
+           div className: "teamMember",
+              div className: "circle blue"
+              div null, "Benedikt Roth -"
+              div null, "Concept & Strategy"
+           div className: "teamMember",
+              div className: "circle green"
+              div null, "Frederik Schütz -"
+              div null, "Business & Finance"
+           div className: "teamMember",
+              div className: "circle yellow"
+              div null, "Tomas Gerlitz -"
+              div null, "Business & Finance"
+           div className: "teamMember",
+              div className: "circle green"
+              div null, "Lisa Stehr -"
+              div null, "Concept & Strategy"
+           div className: "teamMember",
+              div className: "circle berry"
+              div null, "Xueqian Chen -"
+              div null, "PR & Marketing"
+           div className: "teamMember",
+              div className: "circle yellow"
+              div null, "Thao Tran - Brand &"
+              div null, "Project Management"
+           div className: "teamMember",
+              div className: "circle grayBlue"
+              div null, "Peter Gericke-"
+              div null, "Graphic Design"
+           div className: "teamMember",
+              div className: "circle blue"
+              div null, "Anja Dannemann -"
+              div null, "Graphic Design"
+           div className: "teamMember",
+              div className: "circle green"
+              div null, "Markus Kohlhase -"
+              div null, "Software Development"
+           div className: "teamMember",
+              div className: "circle pink"
+              div null, "Florian Jostock -"
+              div null, "Software Development"
+           div className: "teamMember",
+              div className: "circle blue"
+              div null, "Wir freuen uns über neue"
+              div null, "Teammitglieder!"
+
+          hr null,
+          div className: "footer",
+            h3 null,
+              "Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt."
+            p null,
+              "Kontakt: info@kartevonmorgen.org"
+            p null,
+              "Social Media: facebook.com/vonmorgen"
+            p null,
+              "Impressum"
+
