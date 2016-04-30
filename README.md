@@ -83,6 +83,15 @@ can get your complete development environment by just typing
 
     nix-shell dev-env.nix
 
+Updating the `node-packages.nix` works as follows:
+
+    cd path/to/your/kartevonmorgen/
+    git clone https://github.com/NixOS/npm2nix
+    nix-shell -p nodejs
+    node npm2nix/lib/npm2nix.js package.json node-packages.nix
+
+...and don't forget to update 'kartevonmorgen.nix' ;-)
+
 ### Backend
 
 KVM uses the [OpenFairDB](https://github.com/flosse/openfairdb) as its backend.

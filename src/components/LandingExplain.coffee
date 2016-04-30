@@ -152,5 +152,5 @@ module.exports = React.createClass
       a href:"https://www.think-big.org",
         img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
       a href:"http://slowtec.de",
-        img className: "partnerLogo", src: require "../img/Slowtec.png"
+        img className: "partnerLogo", src: require "../img/slowtec.png"
       hr null
