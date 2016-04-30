@@ -111,11 +111,11 @@ module.exports = React.createClass
           div null,
             p null, "Suchbegriff in das Suchfeld eingeben"
             p null, "bei Bedarf nach Kategorien filtern (Initiativen, " +
-                "Events, Unternehmen"
+                "Events, Unternehmen)"
             p null, "Suchergebnisse ansehen und auswählen"
             p null, "Visitenkarten ansehen"
             p null, "Orte eintragen und editieren"
-
+            br null,
           div style: overflow: "visible",
             img style: {width: "100%"}, src: require "../img/postkarte.jpg"
 
@@ -140,21 +140,21 @@ module.exports = React.createClass
               br null,
               "unser Projekt"
             p null, ""
-            a href: "#", "mehr erfahren"
+            a href: "#donate", "mehr erfahren"
           div style: float: "right", paddingTop: "1px",
             h4 null,
               "Wir suchen Regional-",
               br null,
               "und Themenpiloten"
             p null, ""
-            a href: "#", "mehr erfahren"
+            a href: "#pilot", "mehr erfahren"
           div style: paddingTop: "1px",
             h4 null,
               "Werde Teil",
               br null,
               "unseres Teams"
             p null, ""
-            a href: "#", "mehr erfahren"
+            a href: "#join", "mehr erfahren"
 
           hr null,
             h2 null, "Das Team von morgen"
@@ -189,7 +189,7 @@ module.exports = React.createClass
               div null, "Project Management"
            div className: "teamMember",
               div className: "circle grayBlue"
-              div null, "Peter Gericke-"
+              div null, "Peter Gericke -"
               div null, "Graphic Design"
            div className: "teamMember",
               div className: "circle blue"
@@ -209,13 +209,18 @@ module.exports = React.createClass
               div null, "Teammitglieder!"
 
           hr null,
-          div className: "footer",
-            h3 null,
-              "Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt."
-            p null,
-              "Kontakt: info@kartevonmorgen.org"
-            p null,
-              "Social Media: facebook.com/vonmorgen"
-            p null,
-              "Impressum"
+      div className: "footer",
+        h3 null,
+          "Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt."
+        p null,
+          "Kontakt: "
+          a href:"mailto:info@kartevonmorgen.org",
+            "info@kartevonmorgen.org"
+          br null
+          "Social Media: "
+          a href:"http://www.facebook.com/vonmorgen",
+            "facebook.com/vonmorgen"
+        p null,
+          a href:"#imprint",
+            "Impressum"
 
