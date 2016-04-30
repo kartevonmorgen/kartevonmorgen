@@ -23,6 +23,10 @@ config =
         loader: "react-hot!coffee"
       }
       {
+        test:   /\.jsx?$/,
+        loader: "babel"
+      }
+      {
         test:   /\.css$/,
         loader: "style!css"
       }
