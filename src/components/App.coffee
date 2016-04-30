@@ -22,6 +22,8 @@ Menu          = require "./Menu"
 { EDIT }      = require "../constants/Form"
 URLs          = require "../constants/URLs"
 
+Growler = require "flash-notification-react-redux/index.js"
+
 { initialize, touch }  = require "redux-form"
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
@@ -38,10 +40,11 @@ module.exports = React.createClass
     search  : T.object.isRequired
     form    : T.object.isRequired
     server  : T.object.isRequired
+    growler  : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, entries, map, form } = @props
+    { dispatch, search, view, entries, map, form, growler } = @props
 
     { highlight, addresses, cities } = search
 
@@ -60,6 +63,9 @@ module.exports = React.createClass
     div className:"app",
 
       div className:"main",
+
+        React.createElement Growler.GrowlerContainer,
+          growler: growler
 
         if view.menu
           React.createElement LandingPage,

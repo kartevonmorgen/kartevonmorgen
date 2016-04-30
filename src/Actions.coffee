@@ -140,6 +140,14 @@ Actions =
                 dispatch
                   type    : T.NEW_ENTRY_RESULT
                   payload : id
+              else
+                dispatch({
+                  type: 'GROWLER__SHOW',
+                  growler: {
+                    text: 'Entry was successfully saved!',
+                    type: 'growler--success',
+                  },
+                })
 
   setMarker: (latlng) ->
     (dispatch, getState) ->

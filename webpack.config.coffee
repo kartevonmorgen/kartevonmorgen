@@ -24,15 +24,18 @@ config =
       }
       {
         test:   /\.jsx?$/,
-        loader: "babel"
+        loader: "babel",
+        query: {
+          plugins: ['transform-decorators-legacy']
+        },
+        include: [
+          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, "node_modules/flash-notification-react-redux")
+        ],
       }
       {
         test:   /\.css$/,
         loader: "style!css"
-      }
-      {
-        test: /\.scss$/,
-        loader: "style!css!sass"
       }
       {
         test:   /\.styl$/,
@@ -66,13 +69,18 @@ config =
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?limit=10000&mimetype=image/svg+xml"
       }
+
+      {
+        test: [/\.scss$/],
+        loader: 'css?localIdentName=[path]!postcss-loader!sass',
+      }
     ]
     noParse:[
       /\.min\.js/
       path.join __dirname, 'bower_components'
     ]
   resolve:
-    extensions: ["", ".js", ".coffee"]
+    extensions: ["", ".jsx", ".js", ".coffee"]
     modulesDirectories: ['node_modules']
     fallback: process.env.NODE_PATH
   resolveLoader:
