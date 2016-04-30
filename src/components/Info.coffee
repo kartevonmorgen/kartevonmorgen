@@ -4,7 +4,8 @@ React = require "react"
 Pure  = require "react-pure-render/mixin"
 T     = React.PropTypes
 URLs  = require "../constants/URLs"
-{ div, p, a,  h3, h4, br, button, i }  = React.DOM
+pkg           = require "json!../../package.json"
+{ div, p, a, h2, h3, h4, br, button, i}  = React.DOM
 
 module.exports = React.createClass
 
@@ -14,7 +15,27 @@ module.exports = React.createClass
 
   render: ->
     div className: "info",
-      h3 null, "Das Projekt"
+      h3 null,
+        "Die Welt steckt voller Entdecker."
+        br null
+        "Und voller Orte, die darauf warten entdeckt zu werden."
+      p null
+        """
+                      Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
+                      an denen man sich schon heute für eine Welt von morgen einsetzt.
+                      """
+      p null
+        """
+                      Du hast eine Initiative, für die du Mitstreiter suchst?
+                      Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
+                      """
+      p null
+        """
+                      Auf unserer Website kannst du andere darauf
+                      aufmerksam machen – und dich so für eine Sache
+                      einsetzen, die dir persönlich am Herzen liegt.
+                      """
+      h2 null, "Das Projekt"
       p null,
         """
         von morgen fördert Menschlichkeit, Umweltfreundlichkeit und gemeinsames
@@ -60,3 +81,17 @@ module.exports = React.createClass
         i className: "fa fa-github"
         " "
         a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
+      br null
+      br null
+      h2 null, "Wir lieben Open Source!"
+      p null,
+        "Wir wollen mit gutem Beispiel vorangehen und entwickeln daher"
+        "die Software transparent und offen."
+        "Den Quellcode des Gemeinschaftsprojekts findest du unter:"
+      p null, a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
+
+      p className: "version",
+        "Version dieses Clients: v#{pkg.version}"
+      if (sv = @props.server?.version)?
+        p className: "version",
+          "Version des Servers: v#{sv}"

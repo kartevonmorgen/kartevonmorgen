@@ -19,7 +19,6 @@ Map           = require "./Map"
 SearchBar     = require "./SearchBar"
 LandingPage   = require "./LandingPage"
 Menu          = require "./Menu"
-pkg           = require "json!../../package.json"
 { EDIT }      = require "../constants/Form"
 URLs          = require "../constants/URLs"
 

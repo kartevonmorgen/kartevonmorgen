@@ -48,7 +48,7 @@ module.exports = React.createClass
         p null, "Suchergebnisse ansehen und auswählen"
         p null, "Visitenkarten ansehen"
         p null, "Orte eintragen und editieren"
-        br null,
+        br null
           div style: overflow: "visible",
             img style: {width: "100%"}, src: require "../img/postkarte.jpg"
 
@@ -64,84 +64,84 @@ module.exports = React.createClass
         br null
         "Das Ziel: eine menschliche Zukunft."
 
-      hr null,
+      hr null
       h2 null,
         "Mach mit und gestalte deine Welt von morgen",
       div style: float: "left", paddingTop: "1px",
         h4 null,
           "Unterstütze",
-          br null,
-            "unser Projekt"
+          br null
+          "unser Projekt"
         p null, ""
         a href: "#", onClick: (-> onClick V.DONATE), "mehr erfahren"
       div style: float: "right", paddingTop: "1px",
         h4 null,
           "Wir suchen Regional-",
-          br null,
-            "und Themenpiloten"
+          br null
+          "und Themenpiloten"
         p null, ""
         a href: "#", onClick: (-> onClick V.JOIN), "mehr erfahren"
       div style: paddingTop: "1px",
         h4 null,
           "Werde Teil",
-          br null,
-            "unseres Teams"
+          br null
+          "unseres Teams"
         p null, ""
         a href: "#", onClick: (-> onClick V.JOIN), "mehr erfahren"
 
-      hr null,
-        h2 null, "Das Team von morgen"
+      hr null
+      h2 null, "Das Team von morgen"
 
-        div className: "teamMember",
-          div className: "circle pink"
-          div null, "Helmut Wolman -"
-          div null, "Project Management"
-        div className: "teamMember",
-          div className: "circle blue"
-          div null, "Benedikt Roth -"
-          div null, "Concept & Strategy"
-        div className: "teamMember",
-          div className: "circle green"
-          div null, "Frederik Schütz -"
-          div null, "Business & Finance"
-        div className: "teamMember",
-          div className: "circle yellow"
-          div null, "Tomas Gerlitz -"
-          div null, "Business & Finance"
-        div className: "teamMember",
-          div className: "circle green"
-          div null, "Lisa Stehr -"
-          div null, "Concept & Strategy"
-        div className: "teamMember",
-          div className: "circle berry"
-          div null, "Xueqian Chen -"
-          div null, "PR & Marketing"
-        div className: "teamMember",
-          div className: "circle yellow"
-          div null, "Thao Tran - Brand &"
-          div null, "Project Management"
-        div className: "teamMember",
-          div className: "circle grayBlue"
-          div null, "Peter Gericke -"
-          div null, "Graphic Design"
-        div className: "teamMember",
-          div className: "circle blue"
-          div null, "Anja Dannemann -"
-          div null, "Graphic Design"
-        div className: "teamMember",
-          div className: "circle green"
-          div null, "Markus Kohlhase -"
-          div null, "Software Development"
-        div className: "teamMember",
-          div className: "circle pink"
-          div null, "Florian Jostock -"
-          div null, "Software Development"
-        div className: "teamMember",
-          div className: "circle blue"
-          div null, "Wir freuen uns über neue"
-          div null, "Teammitglieder!"
+      div className: "teamMember",
+        div className: "circle pink"
+        div null, "Helmut Wolman -"
+        div null, "Project Management"
+      div className: "teamMember",
+        div className: "circle blue"
+        div null, "Benedikt Roth -"
+        div null, "Concept & Strategy"
+      div className: "teamMember",
+        div className: "circle green"
+        div null, "Frederik Schütz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle yellow"
+        div null, "Tomas Gerlitz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle green"
+        div null, "Lisa Stehr -"
+        div null, "Concept & Strategy"
+      div className: "teamMember",
+        div className: "circle berry"
+        div null, "Xueqian Chen -"
+        div null, "PR & Marketing"
+      div className: "teamMember",
+        div className: "circle yellow"
+        div null, "Thao Tran - Brand &"
+        div null, "Project Management"
+      div className: "teamMember",
+        div className: "circle grayBlue"
+        div null, "Peter Gericke -"
+        div null, "Graphic Design"
+      div className: "teamMember",
+        div className: "circle blue"
+        div null, "Anja Dannemann -"
+        div null, "Graphic Design"
+      div className: "teamMember",
+        div className: "circle green"
+        div null, "Markus Kohlhase -"
+        div null, "Software Development"
+      div className: "teamMember",
+        div className: "circle pink"
+        div null, "Florian Jostock -"
+        div null, "Software Development"
+      div className: "teamMember",
+        div className: "circle blue"
+        div null, "Wir freuen uns über neue"
+        div null, "Teammitglieder!"
 
-      hr null,
+      hr null
 
       h2 null,
         "Unsere Partner",
