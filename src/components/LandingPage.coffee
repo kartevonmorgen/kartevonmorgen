@@ -80,12 +80,6 @@ module.exports = React.createClass
           div style: paddingTop: "10px",
             "v"
         div className: "content",
-          h3 null,
-            "Unsere Partner",
-          img className: "partnerLogo", src: require "../img/Pep.png"
-          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
-          img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
-          hr id: "tutorial",
           h2 null, "So funktioniert`s"
           div
             img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
@@ -105,7 +99,7 @@ module.exports = React.createClass
               p null, "Sehe das Leben mit motivierten Augen und erfahre " +
                   "bereits jetzt eine Welt von morgen."
             div style: clear: "both"
-          hr null,
+          hr id: "tutorial"
 
           h2 null, "Wie funktioniert die Karte von morgen?"
           div null,
@@ -209,6 +203,19 @@ module.exports = React.createClass
               div null, "Teammitglieder!"
 
           hr null,
+
+          h3 null,
+            "Unsere Partner",
+          a href:"http://germany.ashoka.org",
+            img className: "partnerLogo", src: require "../img/Pep.png"
+          a href:"https://www.boell.de/de",
+            img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
+          a href:"https://www.think-big.org",
+            img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
+          a href:"http://slowtec.de",
+            img className: "partnerLogo", src: require "../img/Slowtec.png"
+          hr null
+
       div className: "footer",
         h3 null,
           "Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt."
