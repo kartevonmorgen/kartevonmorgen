@@ -67,6 +67,8 @@ module.exports = React.createClass
             onMenuItemClick: (id) -> switch id
               when 'map'
                 dispatch Actions.toggleLandingPage()
+                dispatch Actions.setSearchText ''
+                dispatch Actions.search()
               when 'new'
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.showNewEntry()
