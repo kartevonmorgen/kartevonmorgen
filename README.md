@@ -33,8 +33,8 @@ have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 To be able to start development you'll need the following tools:
 
 - [git](https://www.git-scm.com/)
-- [Node.js](https://nodejs.org/) version >= 0.10.40
-- [npm](https://www.npmjs.com/package/npm)
+- [Node.js](https://nodejs.org/) version >= 4.2.x
+- [npm](https://www.npmjs.com/package/npm) version 3.x
 
 Now clone this repository:
 
