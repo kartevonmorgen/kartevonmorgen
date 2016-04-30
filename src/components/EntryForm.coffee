@@ -69,7 +69,7 @@ Form = React.createClass
 
     form {
       onSubmit: handleSubmit,
-      className: "add-entry-form pure-u-1",
+      className: "add-entry-form",
       action: 'javascript:void();'
       },
       h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"

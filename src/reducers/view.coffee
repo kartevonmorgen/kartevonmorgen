@@ -21,7 +21,7 @@ module.exports = (state=initialState, action={}) ->
       else
         m = not state.menu
         r = if m then state.right else null
-        u {menu: m, right: r}, state
+        u {menu: m, right: r, left: if m then null else state.left}, state
 
     when T.SHOW_MENU
       u {menu: yes, right: null}, state

@@ -252,7 +252,9 @@ button.pure-button i
       .content
         overflow-y      scroll
         height          100vh
-        padding-bottom  1.5em
+        height          calc(100vh - 7em)
+        padding-bottom  7em;
+        box-sizing  border-box
 
       &.closed
         width 0
@@ -273,7 +275,7 @@ button.pure-button i
         position    absolute
         bottom      0
         background  $coal
-        width       350px
+        width       410px
         text-align  center
         li
           cursor        pointer

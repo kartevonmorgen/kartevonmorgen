@@ -261,26 +261,24 @@ module.exports = React.createClass
                     entry   : entries[search.current]
 
               when V.EDIT, V.NEW
-                div
-                  className: "content pure-g",
-                    React.createElement EntryForm,
-                      ref: 'form'
-                      isEdit: form[EDIT.id]?.id?
-                      onSubmit: (data) ->
-                        dispatch Actions.saveEntry
-                          id          : form[EDIT.id]?.id?.value
-                          title       : data.title
-                          description : data.description
-                          homepage    : data.homepage
-                          telephone   : data.telephone
-                          lat         : data.lat
-                          lng         : data.lng
-                          street      : data.street
-                          city        : data.city
-                          email       : data.email
-                          zip         : data.zip
-                          version     : (form[EDIT.id]?.version?.value or 0) + 1
-                          categories  : [data.category]
+                React.createElement EntryForm,
+                  ref: 'form'
+                  isEdit: form[EDIT.id]?.id?
+                  onSubmit: (data) ->
+                    dispatch Actions.saveEntry
+                      id          : form[EDIT.id]?.id?.value
+                      title       : data.title
+                      description : data.description
+                      homepage    : data.homepage
+                      telephone   : data.telephone
+                      lat         : data.lat
+                      lng         : data.lng
+                      street      : data.street
+                      city        : data.city
+                      email       : data.email
+                      zip         : data.zip
+                      version     : (form[EDIT.id]?.version?.value or 0) + 1
+                      categories  : [data.category]
               when V.WAIT
                 React.createElement Message,
                   iconClass: "fa fa-spinner fa-pulse"
