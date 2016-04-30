@@ -11,7 +11,7 @@ LandingExplain   = require "./LandingExplain"
 URLs  = require "../constants/URLs"
 V  = require "../constants/PanelView"
 
-{ div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
+{ div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr, i } = React.DOM
 
 module.exports = React.createClass
 
@@ -85,8 +85,8 @@ module.exports = React.createClass
           a href: "#tutorial", className: "circleTutorial",
             strong null,
               "Tutorial",
-              div style: paddingTop: "10px",
-                "v"
+              div style: paddingTop: "10px; font-size:12px;",
+                i className: "fa fa-chevron-down"
         div className: "content",
 
           if content is null

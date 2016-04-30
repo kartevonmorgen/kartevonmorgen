@@ -6,7 +6,7 @@
     "lint": "coffeelint src/",
     "test": "npm run lint & karma start",
     "pack": "webpack --production --progress",
-    "start": "webpack-dev-server --progress",
+    "start": "webpack-dev-server --progress --host 0.0.0.0",
     "storybook": "start-storybook -p 9001"
   },
   "repository": {
