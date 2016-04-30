@@ -50,7 +50,7 @@ module.exports = React.createClass
       (x for id in search.result when (x=@props.entries[id])?)
     invisibleEntries =
       (x for id in search.invisible when(x=@props.entries[id])?)
-    rightPanelIsOpen = view.menu or view.right?
+    rightPanelIsOpen = false #right panel moved into landingpage
     mapCenter =
      if (c=search.current)
        e = entries[c]
@@ -62,7 +62,7 @@ module.exports = React.createClass
 
       div className:"main",
 
-        if view.landing
+        if view.menu
           React.createElement LandingPage,
             onMenuItemClick: (id) -> switch id
               when 'map'
@@ -72,15 +72,15 @@ module.exports = React.createClass
               when 'new'
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.showNewEntry()
-              when 'donate'
+              when 'landing'
+                dispatch Actions.showInfo null
                 dispatch Actions.toggleLandingPage()
-                dispatch Actions.showInfo V.DONATE
-              when 'info'
-                dispatch Actions.toggleLandingPage()
-                dispatch Actions.showInfo V.INFO
+              else
+                dispatch Actions.showInfo id
             onChange: (city) ->
               dispatch Actions.setCitySearchText city
               dispatch Actions.searchCity()
+            content: view.right
             searchText: search.city
             cities: search.cities
             onEscape: -> dispatch Actions.setCitySearchText ''
@@ -141,7 +141,7 @@ module.exports = React.createClass
                   actionButtonIcon: "fa fa-external-link",
                   onAction: -> (window.open URLs.DONATE.link, '_blank').focus()
 
-        div className:"left #{if view.left? and not view.landing then 'opened' else 'closed'}",
+        div className:"left #{if view.left? and not view.menu then 'opened' else 'closed'}",
 
           div className: "search #{
             if view.left? then 'integrated' else 'standalone'
@@ -309,185 +309,6 @@ module.exports = React.createClass
                 i className: "fa fa-#{
                   if rightPanelIsOpen then 'times' else 'bars'
                 }"
-          if rightPanelIsOpen
-            div null,
-              div
-                className: "logo"
-                onClick: ->
-                  dispatch Actions.toggleLandingPage()
-                  dispatch Actions.toggleMenu()
-              if view.right != null
-                div className:"content-toggle",
-                  button
-                    onClick: (-> dispatch Actions.showMenu()),
-                    i className: "fa fa-bars"
-              div className: "menu-content",
-                if view.right is null
-                  React.createElement Menu,
-                    onClick : (key) -> ( ->
-                      dispatch Actions.showInfo key
-                      dispatch Actions.getServerInfo())
-                    items:
-                      MAP_INFO:
-                        label   : "Über die Karte"
-                        active  : view.right is V.MAP_INO
-                      DONATE:
-                        label   : "Spenden"
-                        active  : view.right is V.DONATE
-                      JOIN:
-                        label   : "Mitmachen"
-                        active  : view.right is V.JOIN
-                      INFO:
-                        label   : "Info"
-                        items:
-                          INFO:
-                            label   : "Das Projekt"
-                            active  : view.right is V.INFO
-                          SUPPORTERS:
-                            label   : "Unterstützer"
-                            active  : view.right is V.PARTNER
-                          OPEN_SOURCE:
-                            label   : "Open Source"
-                            active  : view.right is V.OPEN_SOURCE
-                else
-                  switch view.right
-                    # TODO: move it all into the 'Info' component
-                    when V.MAP_INFO
-                      div null,
-                        h3 null,
-                          "Die Welt steckt voller Entdecker."
-                          br null
-                          "Und voller Orte, die darauf warten entdeckt zu werden."
-                        p null
-                          """
-                          Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
-                          an denen man sich schon heute für eine Welt von morgen einsetzt.
-                          """
-                        p null
-                          """
-                          Du hast eine Initiative, für die du Mitstreiter suchst?
-                          Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
-                          """
-                        p null
-                          """
-                          Auf unserer Website kannst du andere darauf
-                          aufmerksam machen – und dich so für eine Sache
-                          einsetzen, die dir persönlich am Herzen liegt.
-                          """
-
-                    when V.INFO
-                      React.createElement Info
-
-                    when V.OPEN_SOURCE
-                      div className: "info",
-                        h3 null, "Wir lieben Open Source!"
-                        p null,
-                          """
-                          Wir wollen mit gutem Beispiel vorangehen und entwickeln daher
-                          die Software transparent und offen.
-                          Den Quellcode des Gemeinschaftsprojekts findest du unter:
-                          """
-                        p null, a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
-
-                        p className: "version",
-                          "Version dieses Clients: v#{pkg.version}"
-                        if (sv = @props.server?.version)?
-                          p className: "version",
-                            "Version des Servers: v#{sv}"
-
-
-                    when V.DONATE
-                      div null,
-                        h3 null, "Hier kannst du doppelte Wirkung zeigen."
-                        p null,
-                          """
-                          Unsere Crowdfunding Kampagne auf www.betterplace.org
-                          wird von Ashoka und dem Softwareunternehmen SAP
-                          unterstützt.
-                          Jede Spende bis zu 200 Euro wird in den nächsten
-                          Wochen live und direkt verdoppelt.
-                          """
-
-                        p null,
-                          """
-                          Die Spenden sollen für die Weiterentwicklung der
-                          Plattform von morgen verwendet werden.
-                          Verschieden Feature sind in Planung,
-                          u.a. die Themenkarte zur Einbettung in eigene
-                          Webseiten und den Positivfaktoren der
-                          gemeinwohl-orientierten Bewertung der einzelnen Orte.
-                          """
-                        p null,
-                          "Hier geht es zur Kampagne: "
-                          a href: URLs.DONATE.link, URLs.DONATE.name
-                        p null,
-                          """
-                          Wir freuen uns über jeden kleinen und großen Beitrag
-                          und hoffen auch bald in deiner Stadt verfügbar zu
-                          sein.
-                          """
-                        p null, "Alles Liebe, das Team von morgen"
-
-                    when V.JOIN
-                      div null,
-                        h3 null, "Werde Teil unseres Teams"
-
-                        p null,
-                          """
-                          Wir sind ein deutschlandweites Team und immer auf der
-                          Suche nach neuen Mitgliedern!
-                          Unsere aktuellen Ausschreibungen findest du hier:
-                          """
-                        p null,
-                          a href: URLs.JOB_ADS.link, URLs.JOB_ADS.name
-                        p null,
-                          """
-                          Wir suchen Regional- und Themenpiloten
-                          Stark lokal: als direkter Ansprechpartner vor Ort,
-                          sicherst du die Qualität der Karteneinträge,
-                          organisierst z.B. Aktionen und Workshops und zeigst
-                          deine Stadt von ihrer besten Seite!
-                          """
-
-                        p null,
-                          """
-                          Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:
-                          """
-                          br null
-                          a href: "mailto:netzwerk@kartevonmorgen.org",
-                            "netzwerk@kartevonmorgen.org"
-
-                    when V.TEAM
-                      div null,
-                        p null, "Anja"
-                        p null, "Benedikt"
-                        p null, "Florian"
-                        p null, "Frederik"
-                        p null, "Helmut"
-                        p null, "Lisa"
-                        p null, "Markus"
-                        p null, "Peter"
-                        p null, "Thao"
-                        p null, "Xueqian"
-                        p null, "Tomas"
-                    when V.SUPPORTERS
-                      div null,
-                        h3 null, "Mit Unterstützung von:"
-
-                        p null, "Ashoka"
-
-                        p null, "Heinrich Böll Stiftung"
-
-                        p null, "Social Impact Hub"
-
-                        p null, "Think Big"
-
-                    when V.IMPRINT
-                      React.createElement Imprint
-              div className:"menu-footer",
-                a onClick: (-> dispatch Actions.showImprint()),
-                  "Kontakt // Impressum"
-
 
         div className:"center",
           React.createElement Map,

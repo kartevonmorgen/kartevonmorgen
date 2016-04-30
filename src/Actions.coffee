@@ -96,7 +96,7 @@ Actions =
     type: T.SHOW_NEW_ENTRY
 
   toggleLandingPage: ->
-    type: T.TOGGLE_LANDING
+    type: T.TOGGLE_MENU
 
   showInfo: (key) ->
     type: T.SHOW_INFO
