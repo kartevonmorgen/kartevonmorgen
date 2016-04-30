@@ -25,7 +25,7 @@ started and help us with developing on KVM (Karte Von Morgen).
 
 Take an operating system of your choice.
 Instead of describing the setup of multiple systems, I'll use
-[Kubuntu 15.04](http://kubuntu.org/getkubuntu/) for this guide
+[Kubuntu 16.04 LTS](http://kubuntu.org/getkubuntu/) for this guide
 (although I personally prefer [NixOS](http://nixos.org)).
 
 First of all, make shure you have a good text editor you're comfortable with.
@@ -39,9 +39,9 @@ If you never used `vim`, start with something like `kate` (already installed in
 Kubuntu).
 
 Ok, that's boring, I know. So go on and install [Node](https://nodejs.org/)
-that we'll need to build the app:
+and [npm](https://www.npmjs.com/) that we'll need to build the app:
 
-    sudo apt-get install nodejs
+    sudo apt-get install nodejs nodejs-legacy npm
 
 To manage the source code and to keep track of changes,
 [git](http://git-scm.com/) will help you:
