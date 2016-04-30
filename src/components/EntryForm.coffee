@@ -75,6 +75,10 @@ Form = React.createClass
       h3 null, if isEdit then "Eintrag bearbeiten" else "Neuer Eintrag"
       @props.error and div className: "err",
         "Der Eintrag konnte nicht gespeichert werden: #{@props.error.message}"
+      (not @props.error) and @props.submitFailed and div className: "err",
+        "Bitte überprüfen Sie ihre Eingaben!"
+      license.error and license.touched and div className:"err",
+        license.error
       div className: "pure-form",
 
         fieldset null,
