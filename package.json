@@ -87,6 +87,7 @@
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0",
+    "why-did-you-update": "0.0.6",
     "yargs": "^3.32.0"
   }
 }

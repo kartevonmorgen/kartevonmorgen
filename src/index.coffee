@@ -13,6 +13,8 @@ store       = require "./Store"
 
 if __DEVELOPMENT__
   window.React = React
+  { whyDidYouUpdate } = require 'why-did-you-update'
+  whyDidYouUpdate React
 
 ConnectedApp = (connect (s) -> s) App
 
