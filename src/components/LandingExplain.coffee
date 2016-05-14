@@ -23,9 +23,9 @@ module.exports = React.createClass
       div
       img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "1. Entdecke Deine Orte von ihren besten Seiten"
+        h3 null, "1. Entdecke deine Orte von ihren besten Seiten"
         p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
-            " Unternehmen und Events direkt in Deiner Umgebung"
+            " Unternehmen und bald auch Events direkt in deiner Umgebung."
       div style: clear: "both"
       img style: {float: "right"}, src: require "../img/lp_illu2.jpg"
       div style: {marginTop: "200px"},
@@ -34,7 +34,7 @@ module.exports = React.createClass
       div style: clear: "both"
       img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "3. Gestalte Deine Gemeinschaft"
+        h3 null, "3. Gestalte deine Gemeinschaft"
         p null, "Sehe das Leben mit motivierten Augen und erfahre " +
             "bereits jetzt eine Welt von morgen."
       div style: clear: "both"
