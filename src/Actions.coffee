@@ -5,6 +5,7 @@ WebAPI      = require "./WebAPI"
 GeoLocation = require "./GeoLocation"
 { EDIT }    = require "./constants/Form"
 { initialize, stopSubmit } = require "redux-form"
+LICENSE_NAME = "CC0-1.0"
 
 Actions =
 
@@ -121,6 +122,7 @@ Actions =
   saveEntry: (e) ->
     saveFunc = if e?.id then WebAPI.saveEntry else WebAPI.saveNewEntry
     (dispatch, getState) ->
+      e.license ?= LICENSE_NAME
       saveFunc e, (err, res) ->
         if err
           dispatch stopSubmit EDIT.id, { _error: err }
