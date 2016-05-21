@@ -92,15 +92,15 @@ module.exports = React.createClass
           icon: @getIconById e.categories?[0]
 
     React.createElement Map,
-      style            : height: "100%"
-      ref              : 'map'
-      center           : @props.center
-      zoom             : @props.zoom
-      zoomControl      : false
-      className        : "map",
-      onLeafletMoveend : (e) => onMoveend @getMapCoordinates()
-      onLeafletZoomend : (e) => onZoomend @getMapCoordinates()
-      onLeafletClick   : (e) -> onClick e.latlng
+      style       : height: "100%"
+      ref         : 'map'
+      center      : @props.center
+      zoom        : @props.zoom
+      zoomControl : false
+      className   : "map",
+      onMoveend   : (e) => onMoveend @getMapCoordinates()
+      onZoomend   : (e) => onZoomend @getMapCoordinates()
+      onClick     : (e) -> onClick e.latlng
       React.createElement TileLayer,
         url: URLs.OSM_TILES.link
         attribution: '&copy; <a class="osm attr"' +
