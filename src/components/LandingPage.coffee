@@ -116,7 +116,7 @@ module.exports = React.createClass
 
               when V.DONATE
                 div null,
-                  h2 null, "Hier kannst du doppelte Wirkung zeigen."
+                  h2 null, "Hier kannst Du doppelte Wirkung zeigen."
                   p null,
                     """
                     Unsere Crowdfunding Kampagne auf www.betterplace.org
