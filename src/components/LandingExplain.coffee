@@ -68,7 +68,7 @@ module.exports = React.createClass
 
       hr null
       h2 null,
-        "Mach mit und gestalte deine Welt von morgen",
+        "Möchtest du dabei sein?",
       div style: float: "left", paddingTop: "1px",
         h4 null,
           "Unterstütze",
