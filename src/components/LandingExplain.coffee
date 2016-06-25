@@ -21,23 +21,22 @@ module.exports = React.createClass
     div null,
       h2 null, "Online suchen - Offline handeln"
       div
-      img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
+      img style: {float: "left", marginRight: 200}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Entdecke Orte von ihren besten Seiten."
-        p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
+        h3 style: {textAlign: "left"}, "Entdecke Orte von ihren besten Seiten."
+        p style: {textAlign: "left"}, "Unsere Karte zeigt dir zukunftsorientierte Initiativen, " +
             "Unternehmen und bald auch Events direkt in deiner Umgebung."
       div style: clear: "both"
       img style: {float: "right"}, src: require "../img/lp_illu2.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Sei dabei!"
-        p null, "Du hast an einer Initiative besonderes Interesse?" +
-            "Bei uns findest du die nötigen Informationen," +
-            "um Kontakt aufzunehmen und vorbei zu schauen."
+        h3 style: {textAlign: "left"}, "Sei dabei!"
+        p style: {textAlign: "left"}, """Du hast an einer Initiative besonderes Interesse?
+            Bei uns findest du die nötigen Informationen, um Kontakt aufzunehmen und vorbei zu schauen."""
       div style: clear: "both"
-      img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
+      img style: {float: "left", marginRight: 80}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Gestalte die Welt von morgen."
-        p null, "Gemeinsam mti dir möchten wir den positiven Wandel" +
+        h3 style: {textAlign: "left"}, "Gestalte die Welt von morgen."
+        p style: {textAlign: "left"}, "Gemeinsam mti dir möchten wir den positiven Wandel " +
             "unserer Gesellschaft sichtbar und erfahrbar machen."
       div style: clear: "both"
       hr id: "tutorial"
@@ -69,22 +68,22 @@ module.exports = React.createClass
       hr null
       h2 null,
         "Möchtest du dabei sein?",
-      div style: float: "left", paddingTop: "1px",
-        h4 null,
+      div style: float: "left", paddingTop: "1px", marginLeft: 100,
+        h3 null,
           "Unterstütze",
           br null
           "unser Projekt"
         p null, ""
         a href: "#", onClick: (-> onClick V.DONATE), "mehr erfahren"
-      div style: float: "right", paddingTop: "1px",
-        h4 null,
+      div style: float: "right", paddingTop: "1px", marginRight: 100,
+        h3 null,
           "Wir suchen Regional-",
           br null
           "und Themenpiloten"
         p null, ""
         a href: "#", onClick: (-> onClick V.JOIN), "mehr erfahren"
       div style: paddingTop: "1px",
-        h4 null,
+        h3 null,
           "Werde Teil",
           br null
           "unseres Teams"
@@ -161,7 +160,8 @@ module.exports = React.createClass
         div null, "Xueqian Chen -"
         div null, "PR & Marketing"
       div className: "teamMember",
-        div className: "circle blue"
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/placeholder_4.png"
         div null, "Wir freuen uns über neue"
         div null, "Teammitglieder!"
 
