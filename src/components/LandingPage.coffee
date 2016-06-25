@@ -5,8 +5,9 @@ T         = React.PropTypes
 Pure      = require "react-pure-render/mixin"
 logo      = require "../img/logo.png"
 CityList  = require "./CityList"
-Info  = require "./Info"
-Imprint  = require "./Imprint"
+Info      = require "./Info"
+Workshop  = require "./Workshop"
+Imprint   = require "./Imprint"
 LandingExplain   = require "./LandingExplain"
 URLs  = require "../constants/URLs"
 V  = require "../constants/PanelView"
@@ -55,16 +56,22 @@ module.exports = React.createClass
                 li className:"pure-menu-item",
                   a onClick: (-> onClick 'new'), href:"#", className:"pure-menu-link", "Eintrag hinzufügen"
                 li className:"pure-menu-item", "|"
+                # the onClick event has to be changed
                 li className:"pure-menu-item",
-                  a onClick: (-> onClick V.DONATE), href:"#", className:"pure-menu-link", "Spenden"
+                  a onClick: (-> onClick V.WORKSHOP), href:"#", className:"pure-menu-link", "Workshops"
                 li className:"pure-menu-item", "|"
                 li className:"pure-menu-item",
-                  a onClick: (-> onClick V.INFO), href:"#", className:"pure-menu-link", "Info"
+                  a href:"https://www.facebook.com/vonmorgen", className:"pure-menu-link", "News"
+                li className:"pure-menu-item", "|"
+                li className:"pure-menu-item",
+                  a onClick: (-> onClick V.INFO), href:"#", className:"pure-menu-link", "Kontakt"
+                li className:"pure-menu-item", "|"
+                li className:"pure-menu-item",
+                  a onClick: (-> onClick V.DONATE), href:"#", className:"pure-menu-link", "Spenden"
 
       div className: "search",
         div className: "content",
           h1 null, "Alles Gute auf einer Karte"
-          h2 null, "online vernetzen - offline handeln"
           div className:"place-search",
             div className: "pure-g pure-form",
               input
@@ -73,7 +80,7 @@ module.exports = React.createClass
                 onKeyUp     : @onKeyUp
                 value       : searchText
                 type        : 'text'
-                placeholder : "Welchen Ort möchtest Du entdecken?"
+                placeholder : "Welchen Ort möchtest du entdecken?"
               if cities?.length > 0
                 div className: "pure-u-1",
                   React.createElement CityList,
@@ -107,6 +114,9 @@ module.exports = React.createClass
 
               when V.INFO
                 React.createElement Info
+
+              when V.WORKSHOP
+                React.createElement Workshop
 
               when V.MAP_INFO
                 React.createElement Info

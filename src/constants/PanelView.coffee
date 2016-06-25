@@ -6,6 +6,7 @@ module.exports =
   RESULT            : 'RESULT'
   ENTRY             : 'ENTRY'
   INFO              : 'INFO'
+  WORKSHOP          : 'WORKSHOP'
   MAP_INFO          : 'MAP_INO'
   DONATE            : 'DONATE'
   JOIN              : 'JOIN'

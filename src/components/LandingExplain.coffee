@@ -19,7 +19,7 @@ module.exports = React.createClass
   render: ->
     { onClick } = @props
     div null,
-      h2 null, "So funktioniert`s"
+      h2 null, "Online suchen - Offline handeln"
       div
       img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
@@ -52,7 +52,7 @@ module.exports = React.createClass
           div style: overflow: "visible",
             img style: {width: "100%"}, src: require "../img/postkarte.jpg"
 
-      h2 null, "Worum geht es hier?"
+      h2 null, "Die Vision von morgen"
       p null,
         "Die Welt steckt voller Entdecker. Und voller Orte,"
         br null
@@ -153,4 +153,6 @@ module.exports = React.createClass
         img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
       a href:"http://slowtec.de",
         img className: "partnerLogo", src: require "../img/slowtec.png"
+      a href:"http://www.ideenhochdrei.org/de/",
+        img className: "partnerLogo", src: require "../img/ideen.png"
       hr null
