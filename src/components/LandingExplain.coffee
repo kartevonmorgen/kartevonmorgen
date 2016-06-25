@@ -92,50 +92,72 @@ module.exports = React.createClass
       hr null
       h2 null, "Das Team von morgen"
 
+      
       div className: "teamMember",
-        div className: "circle pink"
-        div null, "Helmut Wolman -"
-        div null, "Project Management"
-      div className: "teamMember",
-        div className: "circle blue"
-        div null, "Benedikt Roth -"
-        div null, "Concept & Strategy"
-      div className: "teamMember",
-        div className: "circle green"
-        div null, "Frederik Schütz -"
-        div null, "Business & Finance"
-      div className: "teamMember",
-        div className: "circle yellow"
-        div null, "Tomas Gerlitz -"
-        div null, "Business & Finance"
-      div className: "teamMember",
-        div className: "circle green"
-        div null, "Lisa Stehr -"
-        div null, "Concept & Strategy"
-      div className: "teamMember",
-        div className: "circle berry"
-        div null, "Xueqian Chen -"
-        div null, "PR & Marketing"
-      div className: "teamMember",
-        div className: "circle yellow"
-        div null, "Thao Tran - Brand &"
-        div null, "Project Management"
-      div className: "teamMember",
-        div className: "circle grayBlue"
-        div null, "Peter Gericke -"
-        div null, "Graphic Design"
-      div className: "teamMember",
-        div className: "circle blue"
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Anja.jpg"
         div null, "Anja Dannemann -"
         div null, "Graphic Design"
       div className: "teamMember",
-        div className: "circle green"
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Ben.jpg"
+        div null, "Benedikt Roth -"
+        div null, "Network & Development"
+      div className: "teamMember",
+        div className: "circle berry",
+          img className: "teamImage", src: require "../img/team/David.jpg"
+        div null, "David Ziegler -"
+        div null, "Softwaredevelopment"
+      div className: "teamMember",
+        div className: "circle pink",
+          img className: "teamImage", src: require "../img/team/placeholder_1.png"
+        div null, "Florian Jostock -"
+        div null, "Software Development"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Frederik.jpg"
+        div null, "Frederik Schütz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle pink",
+          img className: "teamImage", src: require "../img/team/Helmut.jpg"
+        div null, "Helmut Wolman -"
+        div null, "Network & Development"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Lisa.jpg"
+        div null, "Lisa Stehr -"
+        div null, "Funding & Strategy"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Markus.jpg"
         div null, "Markus Kohlhase -"
         div null, "Software Development"
       div className: "teamMember",
-        div className: "circle pink"
-        div null, "Florian Jostock -"
-        div null, "Software Development"
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/placeholder_2.png"
+        div null, "Nina Bärnreuther -"
+        div null, "PR & Marketing"
+      div className: "teamMember",
+        div className: "circle grayBlue",
+          img className: "teamImage", src: require "../img/team/placeholder_3.png"
+        div null, "Peter Gericke -"
+        div null, "Graphic Design"
+      div className: "teamMember",
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/Thao.jpg"
+        div null, "Thao Tran - Brand &"
+        div null, "Project Management"
+      div className: "teamMember",
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/Tomas.jpg"
+        div null, "Tomas Gerlitz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle berry",
+          img className: "teamImage", src: require "../img/team/Xueqian.jpg"
+        div null, "Xueqian Chen -"
+        div null, "PR & Marketing"
       div className: "teamMember",
         div className: "circle blue"
         div null, "Wir freuen uns über neue"

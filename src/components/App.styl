@@ -18,8 +18,14 @@
 @require "~purecss/build/forms.css"
 @require "~purecss/build/buttons.css"
 
+h1, h2, h3, h4, h5, h6, h7
+    font-family Museo
+
 html, button, input, select, textarea
-  font-family Museo
+    font-family Source Sans Pro Light, sans-serif
+  
+.pure-menu-link
+    color #000
 
 .fa
   font-family: FontAwesome !important;
@@ -190,7 +196,10 @@ button.pure-button i
             height: 100px
             border-radius 50px
             margin: 10px
+            overflow hidden
 
+            img
+              width:100%
           .circle.pink
               background-color: $pink
           .circle.yellow
