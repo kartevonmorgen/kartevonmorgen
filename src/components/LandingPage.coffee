@@ -64,7 +64,6 @@ module.exports = React.createClass
       div className: "search",
         div className: "content",
           h1 null, "Alles Gute auf einer Karte"
-          h2 null, "online vernetzen - offline handeln"
           div className:"place-search",
             div className: "pure-g pure-form",
               input
@@ -73,7 +72,7 @@ module.exports = React.createClass
                 onKeyUp     : @onKeyUp
                 value       : searchText
                 type        : 'text'
-                placeholder : "Welchen Ort möchtest Du entdecken?"
+                placeholder : "Welchen Ort möchtest du entdecken?"
               if cities?.length > 0
                 div className: "pure-u-1",
                   React.createElement CityList,
