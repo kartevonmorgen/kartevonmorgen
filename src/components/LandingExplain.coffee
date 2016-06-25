@@ -19,7 +19,9 @@ module.exports = React.createClass
   render: ->
     { onClick } = @props
     div null,
-      h2 null, "Online suchen - Offline handeln"
+      h2 null, "Die Welt steckt voller Entdecker."
+       br null
+      "Und voller Orte, die darauf warten entdeckt zu werden."
       div
       img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
@@ -56,13 +58,13 @@ module.exports = React.createClass
 
       h2 null, "Die Vision von morgen"
       p null,
-        "Die Welt steckt voller Entdecker. Und voller Orte,"
-        br null
-        "die darauf warten entdeckt zu werden."
-      p null,
         "von morgen fördert Kreativität, Umweltfreundlichkeit und"
         br null
         "gemeinsames Handeln im bunten Feld des gesellschaftlichen Wandels."
+      p null,
+        "von morgen hat die Vision einer intakten Welt, in der die Menschen"
+        br null
+        "miteinander ein selbstbestimmtes, glückliches und umweltbewusstes Leben führen."
         br null
         "Das Ziel: eine menschliche Zukunft."
 
