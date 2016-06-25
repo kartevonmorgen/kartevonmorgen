@@ -23,20 +23,22 @@ module.exports = React.createClass
       div
       img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "1. Entdecke deine Orte von ihren besten Seiten"
+        h3 null, "Entdecke Orte von ihren besten Seiten."
         p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
-            " Unternehmen und bald auch Events direkt in deiner Umgebung."
+            "Unternehmen und bald auch Events direkt in deiner Umgebung."
       div style: clear: "both"
       img style: {float: "right"}, src: require "../img/lp_illu2.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "2. Sei dabei!"
-        p null, "Nimm Kontakt auf und schau vorbei!"
+        h3 null, "Sei dabei!"
+        p null, "Du hast an einer Initiative besonderes Interesse?" +
+            "Bei uns findest du die nötigen Informationen," +
+            "um Kontakt aufzunehmen und vorbei zu schauen."
       div style: clear: "both"
       img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "3. Gestalte deine Gemeinschaft"
-        p null, "Sehe das Leben mit motivierten Augen und erfahre " +
-            "bereits jetzt eine Welt von morgen."
+        h3 null, "Gestalte die Welt von morgen."
+        p null, "Gemeinsam mti dir möchten wir den positiven Wandel" +
+            "unserer Gesellschaft sichtbar und erfahrbar machen."
       div style: clear: "both"
       hr id: "tutorial"
 
@@ -66,7 +68,7 @@ module.exports = React.createClass
 
       hr null
       h2 null,
-        "Mach mit und gestalte deine Welt von morgen",
+        "Möchtest du dabei sein?",
       div style: float: "left", paddingTop: "1px",
         h4 null,
           "Unterstütze",
