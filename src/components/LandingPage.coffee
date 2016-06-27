@@ -115,35 +115,33 @@ module.exports = React.createClass
 
               when V.DONATE
                 div null,
-                  h2 null, "Hier kannst Du doppelte Wirkung zeigen."
+                  h2 null, "Etwas Gutes für morgen tun."
                   p null,
                     """
-                    Unsere Crowdfunding Kampagne auf www.betterplace.org
-                    wird von Ashoka und dem Softwareunternehmen SAP
-                    unterstützt.
-                    Jede Spende bis zu 200 Euro wird in den nächsten
-                    Wochen live und direkt verdoppelt.
+                    Die Plattform von morgen finanziert sich über Fördermittel
+                    verschiedener Programme und Wettbewerbe, als auch über Spenden.
+                    Wir, das Team von morgen, arbeiten ehrenamtlich.
                     """
 
                   p null,
                     """
-                    Die Spenden sollen für die Weiterentwicklung der
-                    Plattform von morgen verwendet werden.
-                    Verschieden Feature sind in Planung,
+                    Die Beiträge möchten wir für die Weiterentwicklung
+                    der Plattform verwenden.
+                    Verschieden Features sind in Planung,
                     u.a. die Themenkarte zur Einbettung in eigene
-                    Webseiten und den Positivfaktoren der
-                    gemeinwohl-orientierten Bewertung der einzelnen Orte.
+                    Websites und den Positivfaktoren - dem
+                    gemeinwohl-orientierten Bewertungssytem der einzelnen Orte.
                     """
                   p null,
-                    "Hier geht es zur Kampagne: "
+                    "Hier geht es zu unserer Crowdfunding-Kampagne: "
                     a href: URLs.DONATE.link, URLs.DONATE.name
                   p null,
                     """
                     Wir freuen uns über jeden kleinen und großen Beitrag
                     und hoffen auch bald in deiner Stadt verfügbar zu
-                    sein.
+                    sein. Auf bald!
                     """
-                  p null, "Alles Liebe, das Team von morgen"
+                  p null, "Dankend, das Team von morgen"
 
               when V.JOIN
                 div null,
