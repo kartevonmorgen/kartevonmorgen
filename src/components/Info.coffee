@@ -15,31 +15,23 @@ module.exports = React.createClass
 
   render: ->
     div className: "info",
-      h3 null,
-        "Die Welt steckt voller Entdecker."
-        br null
-        "Und voller Orte, die darauf warten entdeckt zu werden."
-      p null
-        """
-                      Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
-                      an denen man sich schon heute für eine Welt von morgen einsetzt.
-                      """
-      p null
-        """
-                      Du hast eine Initiative, für die du Mitstreiter suchst?
-                      Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
-                      """
-      p null
-        """
-                      Auf unserer Website kannst du andere darauf
-                      aufmerksam machen – und dich so für eine Sache
-                      einsetzen, die dir persönlich am Herzen liegt.
-                      """
       h2 null, "Das Projekt"
       p null,
         """
-        von morgen fördert Menschlichkeit, Umweltfreundlichkeit und gemeinsames
-        Handeln – kurz gesagt: Alles was glücklich macht.
+        Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
+        an denen man sich schon heute für eine Welt von morgen einsetzt.
+        """
+      p null
+        """
+        Du hast eine Initiative, für die du Mitstreiter suchst?
+        Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
+        """
+      p null
+        """
+        Auf unserer Website kannst du andere darauf
+        aufmerksam machen – und dich so für eine Sache
+        einsetzen, die dir persönlich am Herzen liegt.
+        """
         Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und
         Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen
         Umbrüchen alternativ entgegen wirken.
