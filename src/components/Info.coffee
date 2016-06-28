@@ -21,16 +21,18 @@ module.exports = React.createClass
         Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
         an denen man sich schon heute für eine Welt von morgen einsetzt.
         """
-      p null
+      p null,
         """
         Du hast eine Initiative, für die du Mitstreiter suchst?
         Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
         """
-      p null
+      p null,
         """
         Auf unserer Website kannst du andere darauf
         aufmerksam machen – und dich so für eine Sache
         einsetzen, die dir persönlich am Herzen liegt.
+        """
+      p null,
         """
         Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und
         Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen
