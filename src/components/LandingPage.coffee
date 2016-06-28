@@ -5,8 +5,9 @@ T         = React.PropTypes
 Pure      = require "react-pure-render/mixin"
 logo      = require "../img/logo.png"
 CityList  = require "./CityList"
-Info  = require "./Info"
-Imprint  = require "./Imprint"
+Info      = require "./Info"
+Workshop  = require "./Workshop"
+Imprint   = require "./Imprint"
 LandingExplain   = require "./LandingExplain"
 URLs  = require "../constants/URLs"
 V  = require "../constants/PanelView"
@@ -56,10 +57,16 @@ module.exports = React.createClass
                   a onClick: (-> onClick 'new'), href:"#", className:"pure-menu-link", "Eintrag hinzufügen"
                 li className:"pure-menu-item", "|"
                 li className:"pure-menu-item",
-                  a onClick: (-> onClick V.DONATE), href:"#", className:"pure-menu-link", "Spenden"
+                  a onClick: (-> onClick V.WORKSHOP), href:"#", className:"pure-menu-link", "Workshops"
                 li className:"pure-menu-item", "|"
                 li className:"pure-menu-item",
-                  a onClick: (-> onClick V.INFO), href:"#", className:"pure-menu-link", "Info"
+                  a href:"https://www.facebook.com/vonmorgen", className:"pure-menu-link", "News"
+                li className:"pure-menu-item", "|"
+                li className:"pure-menu-item",
+                  a onClick: (-> onClick V.INFO), href:"#", className:"pure-menu-link", "Kontakt"
+                li className:"pure-menu-item", "|"
+                li className:"pure-menu-item",
+                  a onClick: (-> onClick V.DONATE), href:"#", className:"pure-menu-link", "Spenden"
 
       div className: "search",
         div className: "content",
@@ -106,6 +113,9 @@ module.exports = React.createClass
 
               when V.INFO
                 React.createElement Info
+
+              when V.WORKSHOP
+                React.createElement Workshop
 
               when V.MAP_INFO
                 React.createElement Info

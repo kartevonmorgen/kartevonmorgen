@@ -18,14 +18,20 @@
 @require "~purecss/build/forms.css"
 @require "~purecss/build/buttons.css"
 
+h1, h2, h3, h4, h5, h6, h7
+  font-family Museo
+
 html, button, input, select, textarea
-  font-family Source Sans Pro, sans-serif
+  font-family Source Sans Pro Light, sans-serif
+
+.pure-menu-link:hover
+  color #000
 
 .fa
   font-family: FontAwesome !important;
 
 .pure-g [class *= "pure-u"]
-  font-family Source Sans Pro, FreeSans, Arimo, Droid Sans, Helvetica, Arial, sans-serif
+  font-family Museo
 
 .fa
   font-family: FontAwesome !important;
@@ -48,16 +54,19 @@ button.pure-button i
   margin-right 0.5em
 
 ::-webkit-scrollbar
-	background-color  #eee
+  background-color  #eee
 
 ::-webkit-scrollbar-thumb
-	border-radius    0
-	background-color #ccc
+  border-radius    0
+  background-color #ccc
 
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+.pure-menu-list
+  margin 0 50px
 
 .app
   background #fff
@@ -80,10 +89,13 @@ button.pure-button i
 
       h1, h3
         font-family Museo
-        font-weight 700
+        font-weight 500
       h2
-        font-size 1.8em
+        font-size 2em
         margin-top 1.5em
+        font-weight 500
+      h3
+        font-size 1.5em
 
       input
         font-size 1.2em
@@ -107,7 +119,6 @@ button.pure-button i
 
       .banner, .explain
         background-color #fff
-        color $darkGray
 
       .footer
         background-color $darkGray
@@ -116,9 +127,11 @@ button.pure-button i
         padding 20px 20px 50px 20px
         line-height: 1.5em;
 
+        h3
+          font-size 1.5em
+
         a
           color #fff
-          text-decoration none
 
       .search, .explain
         text-align center
@@ -128,6 +141,8 @@ button.pure-button i
       .explain
         position: relative
 
+        p, a
+          font-size 1.2em
         a
           color $darkGray
 
@@ -147,13 +162,14 @@ button.pure-button i
           left: 50%
           margin-left -50px;
           height 73px;
-          top: -50px
+          top: -150px
           padding-top 27px
           cursor      pointer
 
         .partnerLogo
           margin: 3em
           border none
+          width 15%
 
         hr
           margin 100px 40px
@@ -183,7 +199,10 @@ button.pure-button i
             height: 100px
             border-radius 50px
             margin: 10px
+            overflow hidden
 
+            img
+              width:100%
           .circle.pink
               background-color: $pink
           .circle.yellow
@@ -200,15 +219,19 @@ button.pure-button i
       .banner
         height 100px
 
+        .content
+          max-width initial
+
         .logo
           img
             padding 1em
-            height  70px
+            height  57px
+            margin-left  50px
 
         .menu
           margin-top 50px
           text-align right
-          font-size  1.3em
+          font-size  0.9em
 
           li
             &:hover, &:active
@@ -218,14 +241,30 @@ button.pure-button i
               background  transparent
 
       .search
+        position relative
         text-align center
         color #fff
+        height calc(100% - 100px)
+
+        h1
+          font-size 3em
+
+        .content
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          width: 50%;
+          height: 30%;
+
         h2
           font-weight normal
           font-size   1.4em
 
         input, button
           color $coal
+          font-family Source Sans Pro Light, sans-serif
 
     .modal
       top      0
