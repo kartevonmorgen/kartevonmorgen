@@ -50,6 +50,13 @@ entryForm = (data) ->
     else if data.license is false
       errors.license = 'Lizenzzustimmung ist nötig'
 
+  if (h = data.homepage)?
+    unless ((h.indexOf("http://") == 0) or (h.indexOf("https://") == 0))
+      errors.homepage = 'Ungültige URL'
+
+    if (h = data.homepage)?.length < 9
+      errors.homepage = 'Ungültige URL'
+
   errors
 
 module.exports = { entryForm }

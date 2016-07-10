@@ -135,6 +135,8 @@ Form = React.createClass
               i className: "fa fa-globe"
             div className: "pure-u-22-24",
               input fieldProps.homepage
+              homepage.error and homepage.touched and div className:"err",
+                homepage.error
 
           div className: "pure-g",
             label className: "pure-u-2-24",
@@ -168,6 +170,7 @@ Form = React.createClass
 module.exports = reduxForm(
   form            : EDIT.id
   fields          : EDIT.fields
+  validate        : validation.entryForm
   asyncBlurFields : ['street', 'zip', 'city']
   asyncValidate   : (values, dispatch) ->
     dispatch Actions.geocodeAndSetMarker (
@@ -178,5 +181,4 @@ module.exports = reduxForm(
       )
     )
     new Promise (resolve, reject) -> resolve()
-  validate        : validation.entryForm
 )(Form)

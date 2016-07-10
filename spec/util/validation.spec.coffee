@@ -83,3 +83,15 @@ describe "Validation", ->
       it "should be accepted", ->
         F(license:no).license.should.have.string "Lizenzzustimmung ist nötig"
         should.not.exist F(license: yes).license
+
+    describe "homepage", ->
+
+      it "should contain the protocol", ->
+        F(homepage: "example.org").homepage.should.have.string "Ungültig"
+        F(homepage: "www.example.org").homepage.should.have.string "Ungültig"
+        should.not.exist F(homepage: "http://foo.bar").homepage
+        should.not.exist F(homepage: "https://foo.bar").homepage
+
+      it "should be long enough", ->
+        F(homepage: "http://").homepage.should.have.string "Ungültig"
+        F(homepage: "https://").homepage.should.have.string "Ungültig"
