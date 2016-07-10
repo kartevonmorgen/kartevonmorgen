@@ -1,10 +1,12 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-T = require "../constants/ActionTypes"
-C = require "../constants/Categories"
-u = require "updeep"
+T           = require "../constants/ActionTypes"
+C           = require "../constants/Categories"
+u           = require "updeep"
+normalize   = require "../util/normalize"
+{ reducer } = require "redux-form"
 
-module.exports = (require "redux-form").reducer.plugin
+reducer = reducer.plugin
 
   edit: (state, action) ->
 
@@ -61,3 +63,9 @@ module.exports = (require "redux-form").reducer.plugin
 
       else
         state
+
+reducer = reducer.normalize
+  edit:
+    homepage: normalize.url
+
+module.exports = reducer
