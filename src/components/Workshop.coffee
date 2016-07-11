@@ -16,79 +16,36 @@ module.exports = React.createClass
   render: ->
     div className: "info",
       h3 null,
-        "Das ist die Workshopseite."
+        "Workshops von morgen"
         br null
-        " Sie ist allerdings nur ein Dummy und völlig von der Kontaktseite abgekupfert."
+        "Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen Hoch Drei und deren Bildungsprogramm „Bildungsagenten” bieten wir Workshops zu verschiedenen Themen an," +
+        "u.a. Solidarisches Wirtschaften, Friedliches Ressourcenteilen und Globale Zusammenarbeit.  Stellt uns gerne eine Anfrage und wir konzipieren unsere Workshops nach euren Wünschen!"
       p null
         """
-                      Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
-                      an denen man sich schon heute für eine Welt von morgen einsetzt.
-                      """
-      p null
-        """
-                      Du hast eine Initiative, für die du Mitstreiter suchst?
-                      Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
-                      """
-      p null
-        """
-                      Auf unserer Website kannst du andere darauf
-                      aufmerksam machen – und dich so für eine Sache
-                      einsetzen, die dir persönlich am Herzen liegt.
-                      """
-      h2 null, "Das Projekt"
+      h2 null, "Die Bildungsagenten stellen sich vor:"
       p null,
         """
-        von morgen fördert Menschlichkeit, Umweltfreundlichkeit und gemeinsames
-        Handeln – kurz gesagt: Alles was glücklich macht.
-        Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und
-        Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen
-        Umbrüchen alternativ entgegen wirken.
-        Ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine
-        erhöhte Aufmerksamkeit ermöglichen.
+        Die Ideenwerkstatt Bildungsagenten ist eine Initiative von ehemaligen internationalen Freiwilligen. 
+        Wir wollen globale- und wirtschaftliche Zusammenhänge in interaktiven Workshops an Schulen und mit
+        Jugendgruppen erlebbar zu machen und durch künstlerische Aktionen ins öffentliche Bewusstsein zu bringen.
+        Unsere Vision ist eine friedliche, bunte Welt in der sich alle Menschen frei begegnen können.
         """
 
       p null,
         """
-        Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen
-        sich und andere auf der Karte eintragen und so ihre Mitmenschen
-        erreichen.
-        Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten
-        sichern vor Ort die Qualität der Karteneinträge und haben neben einer
-        redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und
-        Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und
-        Unternehmen zu stärken.
+        Vorallem entdecken unsere Teilnehmer_Innen in Workshops und Vorträgen positive Beispiele und
+        erfolgreiche Projekte aus der ganzen Welt und entwickeln durch unsere interaktiven Methoden und
+        der Begleitung im Projektmanagement eigene Leuchtturmprojekte auf regionaler Ebene. 
+        Dazu gehört das Besuchen von Initativen auf der Karte von morgen,
+        das verzeichnen der eigenen Region oder das Gründen von Projekten 
+        und die dann auf der Karte von morgen erscheinen werden. 
         """
 
       p null,
         """
-        von morgen fragt nach Werten, die unsere Gesellschaft fundieren und
-        bewegen.
-        Wir zeigen Menschen, die Guten tun, wo es Gutes gibt.
+        Auf der Suche nach der Welt von morgen? Suchen Sie mit uns gemeinsam!
+        Hier geht es zur Webseite der Bildungsagenten: www.bildungsagenten.org
         """
-      p null,
-        i className: "fa fa-globe"
-        " "
-        a href: URLs.PROTOTYPE.link, URLs.PROTOTYPE.name
-        br null
-        i className: "fa fa-facebook"
-        " "
-        a href: URLs.FACEBOOK.link, URLs.FACEBOOK.name,
-        br null
-        i className: "fa fa-envelope-o"
-        " "
-        a href: URLs.MAIL.link, URLs.MAIL.name
-        br null
-        i className: "fa fa-github"
-        " "
-        a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
-      br null
-      br null
-      h2 null, "Wir lieben Open Source!"
-      p null,
-        "Wir wollen mit gutem Beispiel vorangehen und entwickeln daher"
-        "die Software transparent und offen."
-        "Den Quellcode des Gemeinschaftsprojekts findest du unter:"
-      p null, a href: URLs.REPOSITORY.link, URLs.REPOSITORY.name
 
       p className: "version",
         "Version dieses Clients: v#{pkg.version}"

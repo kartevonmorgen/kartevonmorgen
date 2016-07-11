@@ -47,7 +47,7 @@ module.exports = React.createClass
         a {href:"mailto:thao.tran@kartevonmorgen.org" },
           "thao.tran@kartevonmorgen.org"
 
-      h4 null, "Konzept und Design"
+      h4 null, "Konzept"
         "T. Thao Tran"
         br null
         "Gleimstraße 27"
@@ -56,6 +56,17 @@ module.exports = React.createClass
         br null
         a {href:"mailto:thao.tran@kartevonmorgen.org" },
           "thao.tran@kartevonmorgen.org"
+
+      h4 null, "Design"
+        "Anja Dannemann"
+        br null
+        a {href:"mailto:anja.dannemann@kartevonmorgen.org" },
+          "anja.dannemann@kartevonmorgen.org"
+
+      h4 null, "Illustrationen"
+        "Lisa Tegtmeier"
+        br null
+        "www.lisategtmeier.de"
 
       h4 null, "Umsetzung & Programmierung"
 
