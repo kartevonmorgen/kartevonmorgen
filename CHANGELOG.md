@@ -1,3 +1,18 @@
+## v0.1.5 (2016-07-11)
+
+- new(landingpage): tutorial images
+- new(entryForm): normalize homepage field
+  (add `http://` if no protocol was specified)
+- new(entryForm): naive URL validation (full validation is done on the server)
+- fix(landingpage): text & typos
+
+## v0.1.4 (2016-06-29)
+
+- new(gui): use museo font
+- new(landigpage): content update
+- new(action): add licence property
+- refactor(react): use `v15.1.0`
+
 ## v0.1.3 (2016-05-01)
 
 - new(gui): add new landing page (#101)
