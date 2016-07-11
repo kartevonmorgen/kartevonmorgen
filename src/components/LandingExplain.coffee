@@ -19,9 +19,7 @@ module.exports = React.createClass
   render: ->
     { onClick } = @props
     div null,
-      h2 null, "Die Welt steckt voller Entdecker."
-       br null
-      "Und voller Orte, die darauf warten entdeckt zu werden."
+      h2 null, "Die Welt steckt voller Entdecker. Und voller Orte, die darauf warten entdeckt zu werden."
       div
       img style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
@@ -39,7 +37,7 @@ module.exports = React.createClass
       img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
         h3 null, "Gestalte die Welt von morgen."
-        p null, "Gemeinsam mti dir möchten wir den positiven Wandel" +
+        p null, "Gemeinsam mit dir möchten wir den positiven Wandel" +
             "unserer Gesellschaft sichtbar und erfahrbar machen."
       div style: clear: "both"
       hr id: "tutorial"
@@ -163,6 +161,7 @@ module.exports = React.createClass
         div null, "PR & Marketing"
       div className: "teamMember",
         div className: "circle blue"
+          img className: "teamImage", src: require "../img/team/placeholder_4.png"
         div null, "Wir freuen uns über neue"
         div null, "Teammitglieder!"
 
