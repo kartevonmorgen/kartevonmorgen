@@ -160,7 +160,7 @@ module.exports = React.createClass
         div null, "Xueqian Chen -"
         div null, "PR & Marketing"
       div className: "teamMember",
-        div className: "circle blue"
+        div className: "circle blue",
           img className: "teamImage", src: require "../img/team/placeholder_4.png"
         div null, "Wir freuen uns über neue"
         div null, "Teammitglieder!"

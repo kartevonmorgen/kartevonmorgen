@@ -20,12 +20,12 @@ module.exports = React.createClass
         br null
         "Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen Hoch Drei und deren Bildungsprogramm „Bildungsagenten” bieten wir Workshops zu verschiedenen Themen an," +
         "u.a. Solidarisches Wirtschaften, Friedliches Ressourcenteilen und Globale Zusammenarbeit.  Stellt uns gerne eine Anfrage und wir konzipieren unsere Workshops nach euren Wünschen!"
-      p null
-        """
+
       h2 null, "Die Bildungsagenten stellen sich vor:"
+
       p null,
         """
-        Die Ideenwerkstatt Bildungsagenten ist eine Initiative von ehemaligen internationalen Freiwilligen. 
+        Die Ideenwerkstatt Bildungsagenten ist eine Initiative von ehemaligen internationalen Freiwilligen.
         Wir wollen globale- und wirtschaftliche Zusammenhänge in interaktiven Workshops an Schulen und mit
         Jugendgruppen erlebbar zu machen und durch künstlerische Aktionen ins öffentliche Bewusstsein zu bringen.
         Unsere Vision ist eine friedliche, bunte Welt in der sich alle Menschen frei begegnen können.
@@ -35,10 +35,10 @@ module.exports = React.createClass
         """
         Vorallem entdecken unsere Teilnehmer_Innen in Workshops und Vorträgen positive Beispiele und
         erfolgreiche Projekte aus der ganzen Welt und entwickeln durch unsere interaktiven Methoden und
-        der Begleitung im Projektmanagement eigene Leuchtturmprojekte auf regionaler Ebene. 
+        der Begleitung im Projektmanagement eigene Leuchtturmprojekte auf regionaler Ebene.
         Dazu gehört das Besuchen von Initativen auf der Karte von morgen,
-        das verzeichnen der eigenen Region oder das Gründen von Projekten 
-        und die dann auf der Karte von morgen erscheinen werden. 
+        das verzeichnen der eigenen Region oder das Gründen von Projekten
+        und die dann auf der Karte von morgen erscheinen werden.
         """
 
       p null,
