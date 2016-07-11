@@ -25,19 +25,19 @@ module.exports = React.createClass
       div style: {marginTop: "200px"},
         h3 null, "Entdecke Orte von ihren besten Seiten."
         p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
-            "Unternehmen und bald auch Events direkt in deiner Umgebung."
+            " Unternehmen und bald auch Events direkt in deiner Umgebung."
       div style: clear: "both"
       img style: {float: "right"}, src: require "../img/lp_illu2.jpg"
       div style: {marginTop: "200px"},
         h3 null, "Sei dabei!"
         p null, "Du hast an einer Initiative besonderes Interesse?" +
-            "Bei uns findest du die nötigen Informationen," +
-            "um Kontakt aufzunehmen und vorbei zu schauen."
+            " Bei uns findest du die nötigen Informationen," +
+            " um Kontakt aufzunehmen und vorbei zu schauen."
       div style: clear: "both"
       img style: {float: "left"}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
         h3 null, "Gestalte die Welt von morgen."
-        p null, "Gemeinsam mit dir möchten wir den positiven Wandel" +
+        p null, "Gemeinsam mit dir möchten wir den positiven Wandel " +
             "unserer Gesellschaft sichtbar und erfahrbar machen."
       div style: clear: "both"
       hr id: "tutorial"
