@@ -44,12 +44,12 @@ module.exports = React.createClass
 
       h2 null, "Wie funktioniert die Karte von morgen?"
       div null,
-        p null, "1. Erkunde mit der Karte von morgen deine Umgebung. Nutze hierfür das Suchfeld - wo befindest du dich?"
-        p null, "2. Über die Kategorien \"Initiativen und Unternehmen\" grenzt du die Suchergebnisse ein."
-        p null, "3. Nähere Informationen über jeden Eintrag befinden sich in der Visitenkarte, die sich bei der Auswahl aufklappt."
-        p null, "4. Du hast einen Ort, der auf der Karte nicht fehlen darf? Trage ihn gern über die Eingabemaske ein."
-        p null, "5. Möchtest du einen bestehenden Eintrag korrigieren oder ergänzen? Hierfür dient die Editierfunktion."
-        p null, "online suchen - offline handeln"
+      img src: require "../img/1.jpg"
+      img src: require "../img/2.jpg"
+      img src: require "../img/3.jpg"
+      img src: require "../img/4.jpg"
+      img src: require "../img/5.jpg"
+      img src: require "../img/6.jpg"
         br null
           div style: overflow: "visible",
             img style: {width: "100%"}, src: require "../img/postkarte.jpg"
