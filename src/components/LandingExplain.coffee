@@ -43,16 +43,16 @@ module.exports = React.createClass
       hr id: "tutorial"
 
       h2 null, "Wie funktioniert die Karte von morgen?"
-      div null,
-      img src: require "../img/1.jpg"
-      img src: require "../img/2.jpg"
-      img src: require "../img/3.jpg"
-      img src: require "../img/4.jpg"
-      img src: require "../img/5.jpg"
-      img src: require "../img/6.jpg"
-        br null
-          div style: overflow: "visible",
-            img style: {width: "100%"}, src: require "../img/postkarte.jpg"
+      div className: "tutorial",
+        img src: require "../img/tutorial/1.jpg"
+        img src: require "../img/tutorial/2.jpg"
+        img src: require "../img/tutorial/3.jpg"
+        img src: require "../img/tutorial/4.jpg"
+        img src: require "../img/tutorial/5.jpg"
+        img src: require "../img/tutorial/6.jpg"
+
+      div style: overflow: "visible",
+        img style: {width: "100%"}, src: require "../img/postkarte.jpg"
 
       h2 null, "Die Vision von morgen"
       p null,
