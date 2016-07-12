@@ -2,16 +2,14 @@
 
 React     = require "react"
 T         = React.PropTypes
-Pure      = require "react-pure-render/mixin"
-V  = require "../constants/PanelView"
+V         = require "../constants/PanelView"
+{ pure }  = require "recompose"
 
 { div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "LandingExplain"
-
-  mixins: [Pure]
 
   propTypes:
     onClick  : T.func

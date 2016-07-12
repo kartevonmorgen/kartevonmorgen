@@ -2,16 +2,13 @@
 
 require './AddressLine.styl'
 
-React = require "react"
-Pure  = require "react-pure-render/mixin"
-
+React         = require "react"
+{ pure }      = require "recompose"
 { div, span } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "AddressLine"
-
-  mixins: [Pure]
 
   render: ->
     div className: "AddressLine",

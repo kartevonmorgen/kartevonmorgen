@@ -1,16 +1,14 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React = require "react"
-Pure  = require "react-pure-render/mixin"
-URLs  = require "../constants/URLs"
+React    = require "react"
+URLs     = require "../constants/URLs"
+{ pure } = require "recompose"
 
 { div, p, a,  h3, h4, br, button, i, ul, li }  = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "Imprint"
-
-  mixins: [Pure]
 
   render: ->
     div className: "info",

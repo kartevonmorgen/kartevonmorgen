@@ -1,18 +1,16 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React     = require "react"
-PureMixin = require "react-pure-render/mixin"
-Address   = require "./AddressLine"
+React    = require "react"
+Address  = require "./AddressLine"
+{ pure } = require "recompose"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
 { div, p, h3, button, span, i, a } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "EntryDetails"
-
-  mixins: [ PureMixin ]
 
   render: ->
     { entry } = @props

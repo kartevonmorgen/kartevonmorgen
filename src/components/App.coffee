@@ -4,7 +4,6 @@ require "./App.styl"
 
 React         = require "react"
 T             = React.PropTypes
-Pure          = require "react-pure-render/mixin"
 V             = require "../constants/PanelView"
 C             = require "../constants/Categories"
 Actions       = require "../Actions"
@@ -21,17 +20,16 @@ LandingPage   = require "./LandingPage"
 Menu          = require "./Menu"
 { EDIT }      = require "../constants/Form"
 URLs          = require "../constants/URLs"
+{ pure }      = require "recompose"
 
 Growler = require "flash-notification-react-redux/index.js"
 
 { initialize, touch }  = require "redux-form"
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "Main"
-
-  mixins: [ Pure ]
 
   propTypes:
     entries : T.object.isRequired

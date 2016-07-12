@@ -2,23 +2,21 @@
 
 React     = require "react"
 T         = React.PropTypes
-Pure      = require "react-pure-render/mixin"
 logo      = require "../img/logo.png"
 CityList  = require "./CityList"
 Info      = require "./Info"
 Workshop  = require "./Workshop"
 Imprint   = require "./Imprint"
-LandingExplain   = require "./LandingExplain"
-URLs  = require "../constants/URLs"
-V  = require "../constants/PanelView"
+Explain   = require "./LandingExplain"
+URLs      = require "../constants/URLs"
+V         = require "../constants/PanelView"
+{ pure }  = require "recompose"
 
 { div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr, i } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "LandingPage"
-
-  mixins: [Pure]
 
   propTypes:
     content     : T.string
@@ -96,16 +94,16 @@ module.exports = React.createClass
         div className: "content",
 
           if content is null
-            React.createElement LandingExplain,
+            React.createElement Explain,
               onClick: onClick
           else
             switch content
 
               when V.TEAM
-                React.createElement LandingExplain,
+                React.createElement Explain,
                   onClick: onClick
               when V.SUPPORTERS
-                React.createElement LandingExplain,
+                React.createElement Explain,
                   onClick: onClick
 
               when V.IMPRINT

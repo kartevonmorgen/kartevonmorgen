@@ -1,19 +1,17 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React   = require "react"
-Actions = require "../Actions"
-Pure    = require "react-pure-render/mixin"
-Address = require "./AddressLine"
+React    = require "react"
+Actions  = require "../Actions"
+Address  = require "./AddressLine"
+{ pure } = require "recompose"
 
 { NAMES, CSS_CLASSES } = require "../constants/Categories"
 
 { div, ul, li, p, span, i } = React.DOM
 
-ResultListElement = React.createClass
+ResultListElement = pure React.createClass
 
   displayName: "ResultListElement"
-
-  mixins: [Pure]
 
   render: ->
     { highlight, entry } = @props
@@ -38,11 +36,9 @@ ResultListElement = React.createClass
         div className: "pure-u-1-24 chevron",
           i className: "fa fa-chevron-right"
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "ResultList"
-
-  mixins: [Pure]
 
   render: ->
     { entries, highlight } = @props

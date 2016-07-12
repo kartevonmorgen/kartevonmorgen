@@ -4,18 +4,16 @@ require './SearchBar.styl'
 
 React     = require "react"
 T         = React.PropTypes
-PureMixin = require "react-pure-render/mixin"
+{ pure }  = require "recompose"
 
 { MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE } =
   require "../constants/Categories.coffee"
 
 { div, input, button, i, span, a } = React.DOM
 
-CategoryButtons = React.createClass
+CategoryButtons = pure React.createClass
 
   displayName: "CategoryButtons"
-
-  mixins: [ PureMixin ]
 
   propTypes:
     active     : T.array
@@ -36,11 +34,9 @@ CategoryButtons = React.createClass
           i null
     div null, buttons
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "SearchBar"
-
-  mixins: [ PureMixin ]
 
   propTypes:
     searchText  : T.string

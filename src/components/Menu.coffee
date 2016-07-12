@@ -1,15 +1,13 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React     = require "react"
-PureMixin = require "react-pure-render/mixin"
+React    = require "react"
+{ pure } = require "recompose"
 
 { div, i, a, ul, li, span, br } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "Menu"
-
-  mixins: [ PureMixin ]
 
   render: ->
     onClick = @props.onClick

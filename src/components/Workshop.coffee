@@ -1,17 +1,16 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React = require "react"
-Pure  = require "react-pure-render/mixin"
-T     = React.PropTypes
-URLs  = require "../constants/URLs"
-pkg           = require "json!../../package.json"
-{ div, p, a, h2, h3, h4, br, button, i}  = React.DOM
+React    = require "react"
+T        = React.PropTypes
+URLs     = require "../constants/URLs"
+pkg      = require "json!../../package.json"
+{ pure } = require "recompose"
 
-module.exports = React.createClass
+{ div, p, a, h2, h3, h4, br, button, i} = React.DOM
+
+module.exports = pure React.createClass
 
   displayName: "Workshops"
-
-  mixins: [Pure]
 
   render: ->
     div className: "info",

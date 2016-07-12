@@ -1,16 +1,14 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-React   = require "react"
-Actions = require "../Actions"
-Pure    = require "react-pure-render/mixin"
+React    = require "react"
+Actions  = require "../Actions"
+{ pure } = require "recompose"
 
 { div, ul, li, span, i } = React.DOM
 
-CityListElement = React.createClass
+CityListElement = pure React.createClass
 
   displayName: "CityListElement"
-
-  mixins: [Pure]
 
   render: ->
     { city, onClick } = @props
@@ -34,11 +32,9 @@ CityListElement = React.createClass
         div className: "pure-u-1-24 chevron",
           i className: "fa fa-chevron-right"
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "CityList"
-
-  mixins: [Pure]
 
   render: ->
     { cities } = @props

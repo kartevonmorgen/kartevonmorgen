@@ -6,8 +6,8 @@ React     = require "react"
 leaflet   = require "react-leaflet"
 VMIcons   = require "vm-leaflet-icons"
 T         = React.PropTypes
-PureMixin = require "react-pure-render/mixin"
 URLs      = require "../constants/URLs"
+{ pure }  = require "recompose"
 
 { NAMES, CSS_CLASSES, IDS }    = require "../constants/Categories"
 { INITIATIVE, EVENT, COMPANY } = IDS
@@ -23,11 +23,9 @@ URLs      = require "../constants/URLs"
   li
 } = React.DOM
 
-module.exports = React.createClass
+module.exports = pure React.createClass
 
   displayName: "Map"
-
-  mixins: [ PureMixin ]
 
   propTypes:
     entries       : T.array
