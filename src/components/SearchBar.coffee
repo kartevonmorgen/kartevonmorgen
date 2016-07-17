@@ -79,7 +79,7 @@ module.exports = pure React.createClass
           onChange    : @onChange
           disabled    : disabled
           onKeyUp     : @onKeyUp
-          value       : searchText
+          value       : searchText or ''
           className   : "pure-u-1"
           placeholder : "Wonach suchst du?"
         a

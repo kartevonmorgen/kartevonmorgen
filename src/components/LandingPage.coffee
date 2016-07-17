@@ -75,7 +75,7 @@ module.exports = pure React.createClass
                 className   : "pure-u-1"
                 onChange    : @onChange
                 onKeyUp     : @onKeyUp
-                value       : searchText
+                value       : searchText or ''
                 type        : 'text'
                 placeholder : "Welchen Ort möchtest du entdecken?"
               if cities?.length > 0
@@ -89,7 +89,7 @@ module.exports = pure React.createClass
           a href: "#tutorial", className: "circleTutorial",
             strong null,
               "Tutorial",
-              div style: paddingTop: "10px; font-size:12px;",
+              div style: { paddingTop: "10px", fontSize: "12px"},
                 i className: "fa fa-chevron-down"
         div className: "content",
 
@@ -195,4 +195,3 @@ module.exports = pure React.createClass
         p null,
           a href:"#", onClick: (-> onClick V.IMPRINT),
             "Impressum"
-

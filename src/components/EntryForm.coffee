@@ -28,10 +28,18 @@ Actions       = require "../Actions"
 } = React.DOM
 
 FIELD_PROPS =
-  title   : { type: "text" }
-  lat     : { type: "text", readOnly: yes }
-  lng     : { type: "text", readOnly: yes }
-  license : { type: "checkbox" }
+
+  title       : { type: "text" }
+  description : { type: "text" }
+  homepage    : { type: "text" }
+  telephone   : { type: "text" }
+  street      : { type: "text" }
+  city        : { type: "text" }
+  zip         : { type: "text" }
+  email       : { type: "email" }
+  lat         : { type: "text", readOnly: yes }
+  lng         : { type: "text", readOnly: yes }
+  license     : { type: "checkbox"            }
 
 Form = React.createClass
 
@@ -43,7 +51,7 @@ Form = React.createClass
     isEdit        : T.bool
 
   render: ->
-    { fields, handleSubmit, onCancel, isEdit} = @props
+    { fields, handleSubmit, onCancel, isEdit } = @props
     { title, description, homepage, telephone, lat, lng, category,
       city, zip, street, email, license } = fields
 
