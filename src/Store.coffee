@@ -1,7 +1,9 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
-reducers    = require "./reducers"
-middlewares = [require "redux-thunk"] # lets us dispatch() functions
+reducers   = require "./reducers"
+ReduxThunk = require "redux-thunk" # lets us dispatch() functions
+
+middlewares = [ReduxThunk.default]
 
 { createStore, applyMiddleware, compose } = require "redux"
 
