@@ -6,7 +6,7 @@ plugins     = []
 production  = yargs.argv.production
 
 config =
-  entry: path.join __dirname, "src/index.coffee"
+  entry: path.join __dirname, "src/index.js"
   output:
     path: 'dist/'
     filename: "app.js"
