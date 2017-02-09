@@ -7,7 +7,7 @@ T         = React.PropTypes
 { pure }  = require "recompose"
 
 { MAIN_IDS, NAMES, CSS_CLASSES, CSS_CLASS_SIZE } =
-  require "../constants/Categories.coffee"
+  require "../constants/Categories"
 
 { div, input, button, i, span, a } = React.DOM
 
