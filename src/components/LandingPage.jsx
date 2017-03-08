@@ -106,6 +106,7 @@ class LandingPage extends React.Component {
           </p>
         </div>;
         break;
+        default:
     }
 
     return (
@@ -160,7 +161,7 @@ class LandingPage extends React.Component {
             </div>
           </div>
         </div>
-      <div className = "search">
+      <div className ={ "search" + (content ? '' : ' start')}>
         <div className = "content">
           <h1>Alles Gute auf einer Karte</h1>
           <div className="place-search">

@@ -111,7 +111,10 @@ button.pure-button i
         margin-bottom 2em
 
         .city-list
-          margin-top 0.3em
+          padding-top   0.3em
+          background    rgba(0,0,0,0.8)
+          border-radius 0 0 0.3em 0.3em
+
           li:hover
             background rgba(0,0,0,0.5)
             div.chevron
@@ -142,6 +145,8 @@ button.pure-button i
         padding 50px 1em
         ul
           text-align left
+        h1
+          margin-top 0
       .explain
         position: relative
 
@@ -221,7 +226,7 @@ button.pure-button i
               background-color: $grayBlue
 
       .banner
-        height 100px
+        height  100px
 
         .content
           max-width initial
@@ -248,19 +253,19 @@ button.pure-button i
         position relative
         text-align center
         color #fff
-        height calc(100% - 100px)
+        height 150px
 
         h1
           font-size 3em
 
         .content
-          position: absolute;
-          top: 0px;
-          bottom: 0px;
-          left: 0px;
-          right: 0px;
-          width: 50%;
-          height: 30%;
+          position: absolute
+          top    0
+          bottom 0
+          left   0
+          right  0
+          width  50%
+          height 50%
 
         h2
           font-weight normal
@@ -269,6 +274,16 @@ button.pure-button i
         input, button
           color $coal
           font-family Source Sans Pro Light, sans-serif
+
+      .search.start
+        height calc(100% - 100px)
+        .content
+          height 30%
+
+      .search
+        z-index 1
+      .content
+        z-index 0
 
     .modal
       top      0
@@ -555,6 +570,7 @@ button.pure-button i
       margin    auto
 
   .city-list
+
     ul
       list-style none
       margin  0
