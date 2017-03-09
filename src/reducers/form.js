@@ -1,95 +1,95 @@
 import T            from "../constants/ActionTypes";
 import C            from "../constants/Categories";
-import u            from "updeep";
 import normalize    from "../util/normalize";
-import { reducer  } from "redux-form";
 
-let kvm_reducer = reducer.plugin({
-  edit: function(state, action) {
-    var addr, field, k, o, ref, v;
+import { reducer as formReducer } from "redux-form";
+
+const reducer = formReducer.plugin({
+
+  edit: (state, action) => {
+
     switch (action.type) {
+
       case T.SHOW_NEW_ENTRY:
-        return {};
+        return {
+          ...state,
+          values: { },
+          kvm_flag_id: null,
+          kvm_flag_markerWasEnteredManually: false,
+          kvm_flag_addressWasEnteredManually: false,
+        };
+
       case T.EDIT_CURRENT_ENTRY:
-        o = {};
-        ref = action.payload;
-        for (k in ref) {
-          v = ref[k];
-          o[k] = {
-            value: v
-          };
+        return {
+          ...state,
+          values: {
+            ...action.payload,
+            category: action.payload.categories[0]
+          },
+          kvm_flag_id: action.payload.id
         }
-        o.category = {
-          value: action.payload.categories[0]
-        };
-        o.lng = {
-          value: action.payload.lng
-        };
-        return u(o, state);
+        break;
       case T.SET_MARKER:
         if (action.manual) {
-          return u({
-            lat: {
-              value: action.payload.lat
+          return {
+            ...state,
+            values: {
+              ...state.values,
+              lat: action.payload.lat,
+              lng: action.payload.lng
             },
-            lng: {
-              value: action.payload.lng
+            fields: {
+              ...state.fields,
             },
-            markerWasEnteredManually: true
-          }, state);
+            kvm_flag_markerWasEnteredManually: true
+          }
         } else {
-          return u({
-            lat: {
-              value: action.payload.lat
-            },
-            lng: {
-              value: action.payload.lng
+          return {
+            ...state,
+            values: {
+              ...state.values,
+              lat: action.payload.lat,
+              lng: action.payload.lng
             }
-          }, state);
+          }
         }
         break;
       case T.MARKER_ADDRESS_RESULT:
-        if (!state.addressWasEnteredManually) {
-          if (action.payload.address) {
-            addr = action.payload.address;
-            return u({
-              street: {
-                value: (addr.road ? addr.road : '').concat((addr.house_number ? ' ' + addr.house_number : ''))
-              },
-              zip: {
-                value: addr.postcode ? addr.postcode : ''
-              },
-              city: {
-                value: addr.city ? addr.city : addr.town ? addr.town : addr.village ? addr.village : ''
-              }
-            }, state);
-          } else {
-            return state;
-          }
-        } else {
-          return state;
-        }
-        break;
-      case "redux-form/CHANGE":
-        field = action.field;
-        if (field === "category" && action.value === C.IDS.EVENT) {
-          u({
-            category: {
-              value: -1
+        if (!state.kvm_flag_addressWasEnteredManually && action.payload.address) {
+          const addr = action.payload.address;
+          return {
+            ...state,
+            values: {
+              ...state.values,
+              street: (addr.road ? addr.road : '').concat((addr.house_number ? ' ' + addr.house_number : '')),
+              zip: addr.postcode ? addr.postcode : '',
+              city: addr.city ? addr.city : addr.town ? addr.town : addr.village ? addr.village : ''
             }
-          }, state);
-        }
-        if (action.value && action.value.length) {
-          if (field === "street" || field === "zip" || field === "city") {
-            return u({
-              addressWasEnteredManually: true
-            }, state);
-          } else {
-            return state;
           }
-        } else {
-          return state;
         }
+        return state;
+        break;
+
+      case "@@redux-form/CHANGE":
+        const { field } = action.meta;
+        if (field === "category" && action.payload === C.IDS.EVENT) {
+          return {
+            ...state,
+            values: {
+              ...state.values,
+              category: -1
+            }
+          }
+        }
+        if (action.payload) {
+          if (field === "street" || field === "zip" || field === "city") {
+            return {
+              ...state,
+              kvm_flag_addressWasEnteredManually: true
+            }
+          }
+        }
+        return state;
         break;
       default:
         return state;
@@ -97,10 +97,4 @@ let kvm_reducer = reducer.plugin({
   }
 });
 
-kvm_reducer = kvm_reducer.normalize({
-  edit: {
-    homepage: normalize.url
-  }
-});
-
-module.exports = kvm_reducer;
+module.exports = reducer

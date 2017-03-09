@@ -1,62 +1,25 @@
-import React          from "react"
-import udeep          from "updeep"
-import validation     from "../util/validation"
-import { IDS        } from "../constants/Categories"
-import { reduxForm  } from "redux-form"
-import { CC_LICENSE } from "../constants/URLs"
-import { EDIT       } from "../constants/Form"
-import Actions        from "../Actions"
+import React, { Component } from "react"
+import Actions              from "../Actions"
+import validation           from "../util/validation"
+import normalize            from "../util/normalize";
+import { reduxForm, Field } from "redux-form"
+import { IDS              } from "../constants/Categories"
+import { CC_LICENSE       } from "../constants/URLs"
+import { EDIT             } from "../constants/Form"
 
-const FIELD_PROPS = {
-  title       : { type: "text" },
-  description : { type: "text" },
-  homepage    : { type: "text" },
-  telephone   : { type: "text" },
-  street      : { type: "text" },
-  city        : { type: "text" },
-  zip         : { type: "text" },
-  email       : { type: "email" },
-  lat         : { type: "text", readOnly: true },
-  lng         : { type: "text", readOnly: true },
-  license     : { type: "checkbox"            }
-};
+const errorMessage = ({meta}) =>
+  meta.error && meta.touched
+    ? <div className="err">{meta.error}</div>
+    : null
 
-class Form extends React.Component {
+class Form extends Component {
 
   render() {
 
-    const { fields, handleSubmit, onCancel, isEdit } = this.props;
-    const { title, description, homepage, telephone, lat, lng, category,
-      city, zip, street, email, license } = fields;
-
-    let fieldProps = udeep(FIELD_PROPS, fields);
-
-    const classes = {
-      title       : { className: "pure-input-1", placeholder: "Titel"        },
-      description : { className: "pure-input-1", placeholder: "Beschreibung" },
-      homepage    : { className: "pure-input-1", placeholder: "Homepage"     },
-      telephone   : { className: "pure-input-1", placeholder: "Telefon"      },
-      street      : { className: "pure-input-1", placeholder: "Straße"       },
-      city        : { className: "pure-input-1", placeholder: "Stadt"        },
-      zip         : { className: "pure-input-1", placeholder: "PLZ"          },
-      email       : { className: "pure-input-1", placeholder: "eMail"        },
-      lat         : { className: "pure-input-1"                              },
-      lng         : { className: "pure-input-1"                              },
-      category    : { className: "pure-input-1"                              }
-    };
-
-    for (var k in fieldProps) {
-      const f = fieldProps[k];
-      if ((classes[k] != null) && f.error && f.touched) {
-        classes[k].className += " err";
-      }
-    }
-
-    fieldProps = udeep(classes, fieldProps);
+    const { isEdit } = this.props;
 
     return (
     <form
-      onSubmit  = {handleSubmit}
       className = "add-entry-form"
       action    = 'javascript:void();' >
 
@@ -69,29 +32,22 @@ class Form extends React.Component {
       { (!this.props.error) && this.props.submitFailed &&
         <div className="err">Bitte überprüfen Sie ihre Eingaben!</div>
       }
-      { license.error && license.touched &&
-        <div className="err">{license.error}</div>
-      }
       <div className= "pure-form">
-
         <fieldset>
-          <select {...fieldProps.category} >
+          <Field className="pure-input-1" name="category" component="select">
             <option value={-1}>- Kategorie auswählen -</option>
             <option value={IDS.INITIATIVE}>Initiative</option>
             <option value={IDS.EVENT}>Event</option>
             <option value={IDS.COMPANY}>Unternehmen</option>
-          </select>
-          {category.error && category.touched &&
-            <div className= "err">{category.error}</div>
-          }
-          <input {...fieldProps.title } />
-          {title.error && title.touched &&
-            <div className = "err">{title.error}</div>
-          }
-          <textarea {...fieldProps.description }/>
-          {description.error && description.touched &&
-            <div className="err">{description.error}</div>
-          }
+          </Field>
+          <Field name="category" component={errorMessage} />
+
+          <Field name="title" className="pure-input-1" type="text" component="input" placeholder="Titel" />
+          <Field name="title" component={errorMessage} />
+
+          <Field name="description" className="pure-input-1" component="textarea" placeholder="Beschreibung"  />
+          <Field name="description" component={errorMessage} />
+
         </fieldset>
 
         <fieldset>
@@ -105,39 +61,29 @@ class Form extends React.Component {
             </label>
             <div className= "pure-u-22-24 pure-g">
               <div className= "pure-u-11-24">
-                <input {...fieldProps.lat} />
-                { lat.error && lat.touched &&
-                   <div className= "err">{lat.error}</div>
-                }
+                <Field name="lat" className="pure-input-1" component="input" readOnly={true}/>
+                <Field name="lat" component={errorMessage} />
               </div>
               <div className= "pure-u-2-24"></div>
               <div className= "pure-u-11-24">
-                <input {...fieldProps.lng} />
-                { lng.error && lng.touched &&
-                  <div className= "err">{lng.error}</div>
-                }
+                <Field name="lng" className="pure-input-1" component="input" readOnly={true} />
+                <Field name="lng" component={errorMessage} />
               </div>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
-          <input {...fieldProps.street} />
-          {street.error && street.touched &&
-            <div className="err">{street.error}</div>
-          }
+          <Field name="street" className="pure-input-1" component="input" placeholder="Straße"/>
+          <Field name="street" component={errorMessage} />
           <div className= "pure-g">
             <div className= "pure-u-6-24">
-              <input {...fieldProps.zip} />
-              {zip.error && zip.touched &&
-                <div className="err">{zip.error}</div>
-              }
+              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ" />
+              <Field name="zip" component={errorMessage} />
             </div>
             <div className= "pure-u-18-24">
-              <input {...fieldProps.city} />
-              {city.error && city.touched &&
-                <div className="err">{city.error}</div>
-              }
+              <Field name="city" className="pure-input-1" component="input" placeholder="Stadt" />
+              <Field name="city" component={errorMessage} />
             </div>
           </div>
         </fieldset>
@@ -149,10 +95,13 @@ class Form extends React.Component {
               <i className= "fa fa-globe" />
             </label>
             <div className= "pure-u-22-24">
-              <input {...fieldProps.homepage} />
-              { homepage.error && homepage.touched &&
-                <div className="err">{homepage.error}</div>
-              }
+              <Field
+                name="homepage"
+                className="pure-input-1"
+                component="input"
+                placeholder="Homepage"
+                normalize={normalize.url} />
+              <Field name="homepage" component={errorMessage} />
             </div>
           </div>
 
@@ -161,7 +110,8 @@ class Form extends React.Component {
               <i className= "fa fa-envelope" />
             </label>
             <div className= "pure-u-22-24">
-              <input {...fieldProps.email} />
+              <Field name="email" type="email" className="pure-input-1" component="input" placeholder="Telefon" />
+              <Field name="email" component={errorMessage} />
             </div>
           </div>
 
@@ -170,7 +120,8 @@ class Form extends React.Component {
               <i className= "fa fa-phone" />
             </label>
             <div className= "pure-u-22-24">
-              <input {...fieldProps.telephone} />
+              <Field name="telephone" className="pure-input-1" component="input" placeholder="eMail" />
+              <Field name="telephone" component={errorMessage} />
             </div>
           </div>
 
@@ -186,12 +137,10 @@ class Form extends React.Component {
               <i className= "fa fa-creative-commons" />
             </label>
             <div className= "pure-u-2-24 pure-controls">
-              <input {...fieldProps.license } />
+              <Field name="license" component="input" type="checkbox" />
             </div>
             <div className= "pure-u-20-24">
-              { license.error && license.touched &&
-                <div className="err">{license.error}</div>
-              }
+              <Field name="license" component={errorMessage} />
               Ich habe die
               <a href={CC_LICENSE.link}>
                 Bestimmungen der Creative-Commons Lizenz CC0
@@ -200,7 +149,6 @@ class Form extends React.Component {
             </div>
           </div>
         </fieldset>
-
       </div>
     </form>)
   }
@@ -208,15 +156,10 @@ class Form extends React.Component {
 
 const T = React.PropTypes;
 
-Form.propTypes = {
-  fields        : T.object.isRequired,
-  handleSubmit  : T.func.isRequired,
-  isEdit        : T.bool
-};
+Form.propTypes = { isEdit : T.bool };
 
 module.exports = reduxForm({
   form            : EDIT.id,
-  fields          : EDIT.fields,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],
   asyncValidate: function(values, dispatch) {

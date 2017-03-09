@@ -252,9 +252,9 @@ const Actions = {
 
   geocodeAndSetMarker: (address) =>
     (dispatch, getState) => {
-      if (!getState().form.edit.markerWasEnteredManually) {
+      if (!getState().form.edit.kvm_flag_markerWasEnteredManually) {
         WebAPI.searchAddress(address, (err, res) => {
-          if (!(err || getState().form.edit.markerWasEnteredManually)) {
+          if (!(err || getState().form.edit.kvm_flag_markerWasEnteredManually)) {
             if (res && res.length && res[0] && res[0].lat && res[0].lon) {
               dispatch({
                 type: T.SET_MARKER,
