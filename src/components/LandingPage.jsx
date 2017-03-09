@@ -1,40 +1,41 @@
-import React     from "react";
-import logo      from "../img/logo.png";
-import CityList  from "./CityList";
-import Info      from "./Info";
-import Workshop  from "./Workshop";
-import Imprint   from "./Imprint";
-import Explain   from "./LandingExplain";
-import URLs      from "../constants/URLs";
-import V         from "../constants/PanelView";
-import { pure }  from "recompose";
+import React, { Component } from "react";
+import logo                 from "../img/logo.png";
+import CityList             from "./CityList";
+import Info                 from "./Info";
+import Workshop             from "./Workshop";
+import Imprint              from "./Imprint";
+import Explain              from "./LandingExplain";
+import URLs                 from "../constants/URLs";
+import V                    from "../constants/PanelView";
+import { pure }             from "recompose";
 
-class LandingPage extends React.Component {
-
-  onChange(ev) {
-    const target = ev.target;
-    const v = target != null ? target.value : void 0;
-    if (v == null) {
-      return;
-    }
-    this.props.onChange(v);
-  }
-
-  onKeyUp(ev) {
-    ev.preventDefault();
-    switch (ev.key) {
-      case "Escape":
-        this.props.onEscape();
-        break;
-      case "Enter":
-        this.props.onSelection(this.props.cities[0]);
-    }
-  }
+class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, cities, onSelection } = this.props;
+    const { content, searchText, cities, onSelection, onEscape, onChange } = this.props;
     const onClick = this.props.onMenuItemClick;
+
+    const onKeyUp = ev => {
+      ev.preventDefault();
+      switch (ev.key) {
+        case "Escape":
+          onEscape();
+          break;
+        case "Enter":
+          onSelection(props.cities[0]);
+      }
+    }
+
+    const onPlaceSearch = ev => {
+      const target = ev.target;
+      const v = target != null ? target.value : void 0;
+      if (v == null) {
+        return;
+      }
+      onChange(v);
+    }
+
     let contentComp = null;
     switch (content) {
       case V.TEAM:
@@ -168,8 +169,8 @@ class LandingPage extends React.Component {
             <div className= "pure-g pure-form">
               <input
                 className   = "pure-u-1"
-                onChange    = {this.onChange}
-                onKeyUp     = {this.onKeyUp}
+                onChange    = {onPlaceSearch}
+                onKeyUp     = {onKeyUp}
                 value       = {searchText || ''}
                 type        = 'text'
                 placeholder = "Welchen Ort möchtest du entdecken?"
