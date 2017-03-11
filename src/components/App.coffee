@@ -270,7 +270,7 @@ module.exports = pure React.createClass
                   isEdit: form[EDIT.id]?.kvm_flag_id?
                   onSubmit: (data) ->
                     dispatch Actions.saveEntry
-                      id          : form[EDIT.id]?.id?.value
+                      id          : form[EDIT.id]?.kvm_flag_id
                       title       : data.title
                       description : data.description
                       homepage    : data.homepage
@@ -281,7 +281,7 @@ module.exports = pure React.createClass
                       city        : data.city
                       email       : data.email
                       zip         : data.zip
-                      version     : (form[EDIT.id]?.version?.value or 0) + 1
+                      version     : (form[EDIT.id]?.values?.version or 0) + 1
                       categories  : [data.category]
               when V.WAIT
                 React.createElement Message,
