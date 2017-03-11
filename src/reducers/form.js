@@ -6,7 +6,7 @@ import { reducer as formReducer } from "redux-form";
 
 const reducer = formReducer.plugin({
 
-  edit: (state, action) => {
+  edit: (state={}, action={}) => {
 
     switch (action.type) {
 
@@ -43,14 +43,13 @@ const reducer = formReducer.plugin({
             },
             kvm_flag_markerWasEnteredManually: true
           }
-        } else {
-          return {
-            ...state,
-            values: {
-              ...state.values,
-              lat: action.payload.lat,
-              lng: action.payload.lng
-            }
+        }
+        return {
+          ...state,
+          values: {
+            ...state.values,
+            lat: action.payload.lat,
+            lng: action.payload.lng
           }
         }
         break;
