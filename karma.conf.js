@@ -1,3 +1,7 @@
+var webpackCfg = require("./webpack.config.coffee");
+
+webpackCfg.debug = true;
+
 module.exports = function(config) {
 
   config.set({
@@ -23,20 +27,6 @@ module.exports = function(config) {
 
     singleRun: true,
 
-    webpack: {
-      debug: true,
-      module: {
-        loaders: [
-          { test: /\.coffee$/, loader: 'coffee' },
-          { test: /\.styl$/,   loader: 'null'   }
-        ]
-      },
-      resolve: {
-        extensions: ['', '.json', '.js', '.coffee']
-      }
-    },
-    webpackServer: {
-      noInfo: true
-    }
+    webpack: webpackCfg
   })
 }

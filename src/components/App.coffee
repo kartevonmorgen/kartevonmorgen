@@ -2,29 +2,29 @@
 
 require "./App.styl"
 
-React         = require "react"
-T             = React.PropTypes
-V             = require "../constants/PanelView"
-C             = require "../constants/Categories"
-Actions       = require "../Actions"
-EntryDetails  = require "./EntryDetails"
-ResultList    = require "./ResultList"
-CityList      = require "./CityList"
-Info          = require "./Info"
-Imprint       = require "./Imprint"
-EntryForm     = require "./EntryForm"
-Message       = require "./Message"
-Map           = require "./Map"
-SearchBar     = require "./SearchBar"
-LandingPage   = require "./LandingPage"
-Menu          = require "./Menu"
-{ EDIT }      = require "../constants/Form"
-URLs          = require "../constants/URLs"
-{ pure }      = require "recompose"
+React           = require "react"
+T               = React.PropTypes
+V               = require "../constants/PanelView"
+C               = require "../constants/Categories"
+Actions         = require "../Actions"
+EntryDetails    = require "./EntryDetails"
+ResultList      = require "./ResultList"
+CityList        = require "./CityList"
+Info            = require "./Info"
+Imprint         = require "./Imprint"
+EntryForm       = require "./EntryForm"
+Message         = require "./Message"
+Map             = require "./Map"
+SearchBar       = require "./SearchBar"
+LandingPage     = require "./LandingPage"
+Menu            = require "./Menu"
+{ EDIT }        = require "../constants/Form"
+URLs            = require "../constants/URLs"
+{ pure }        = require "recompose"
+{ initialize }  = require "redux-form"
 
 Growler = require "flash-notification-react-redux/index.js"
 
-{ initialize, touch }  = require "redux-form"
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
 module.exports = pure React.createClass
@@ -267,10 +267,10 @@ module.exports = pure React.createClass
               when V.EDIT, V.NEW
                 React.createElement EntryForm,
                   ref: 'form'
-                  isEdit: form[EDIT.id]?.id?
+                  isEdit: form[EDIT.id]?.kvm_flag_id?
                   onSubmit: (data) ->
                     dispatch Actions.saveEntry
-                      id          : form[EDIT.id]?.id?.value
+                      id          : form[EDIT.id]?.kvm_flag_id
                       title       : data.title
                       description : data.description
                       homepage    : data.homepage
@@ -281,7 +281,7 @@ module.exports = pure React.createClass
                       city        : data.city
                       email       : data.email
                       zip         : data.zip
-                      version     : (form[EDIT.id]?.version?.value or 0) + 1
+                      version     : (form[EDIT.id]?.values?.version or 0) + 1
                       categories  : [data.category]
               when V.WAIT
                 React.createElement Message,

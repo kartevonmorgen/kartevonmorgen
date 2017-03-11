@@ -11,9 +11,11 @@ describe "form reducer", ->
   describe "'edit' form", ->
 
     it "sets the 'lat' and 'lng' fields if a marker was set", ->
-      aD = A.setMarker { lat: 5, lng: 7 }
-      a = null;
-      aD ( (arg) -> a = arg), (()-> {})
-      s = (R {}, a).edit
-      s.lat.value.should.equal 5
-      s.lng.value.should.equal 7
+      action = null
+      asyncAction = A.setMarker({ lat: 5, lng: 7 })
+      getState = () -> {}
+      dispatch = (arg) -> action = arg
+      asyncAction(dispatch, getState)
+      s = R({}, action).edit
+      s.values.lat.should.equal 5
+      s.values.lng.should.equal 7
