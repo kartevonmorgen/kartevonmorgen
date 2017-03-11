@@ -1,4 +1,9 @@
-const URL = "https://api.ofdb.io/v0";
+let URL = "https://api.ofdb.io/v0";
+
+if (__DEVELOPMENT__) {
+  URL = "http://127.0.0.1:6768";
+}
+
 const NOMINATIM = "https://nominatim.openstreetmap.org";
 
 import request  from "superagent/lib/client";
