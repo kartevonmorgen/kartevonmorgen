@@ -30,7 +30,9 @@ class Form extends Component {
         </div>
       }
       { (!this.props.error) && this.props.submitFailed &&
-        <div className="err">Bitte überprüfen Sie ihre Eingaben!</div>
+        <div className="err">Bitte überprüfen Sie ihre Eingaben!
+          <Field name="license" component={errorMessage} />
+        </div>
       }
       <div className= "pure-form">
         <fieldset>
