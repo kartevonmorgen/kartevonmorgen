@@ -39,18 +39,20 @@ module.exports = (state = initialState, action = {}) => {
         return state;
       }
       //TODO: beautify
-      var cats = indexOf.call(state.categories, c) >= 0 ? (() => {
-        var x, i, len, ref1, results;
-        ref1 = state.categories;
-        results = [];
-        for (i = 0, len = ref1.length; i < len; i++) {
-          x = ref1[i];
-          if (x !== c) {
-            results.push(x);
+      const cats = state.categories.indexOf(c) >= 0
+        ? (() => {
+          var ref1 = state.categories;
+          var results = [];
+          var x, i, len;
+          for (i = 0, len = ref1.length; i < len; i++) {
+            x = ref1[i];
+            if (x !== c) {
+              results.push(x);
+            }
           }
-        }
-        return results;
-      })() : [c].concat(slice.call(state.categories));
+          return results;
+        })()
+      : [c].concat([].slice.call(state.categories));
 
       return {
         ...state,
