@@ -1,7 +1,12 @@
+## v0.1.7 (2017-03-19)
+
+- new(entry): basic tag support (#179)
+- fix(search): toggle category filter (#190)
+
 ## v0.1.6 (2017-03-11)
 
-- refactor(*): start migrating CoffeeScript to ES6
-- refactor(entryForm): upgrade redux-form 4.x -> 6.x
+- refactor(*): start migrating CoffeeScript to ES6 (#143)
+- refactor(entryForm): upgrade redux-form 4.x -> 6.x (#188)
 
 ## v0.1.5 (2016-07-11)
 
