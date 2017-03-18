@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CityListElement = ({ city, onClick }) => {
 
   const address = city.address || {};

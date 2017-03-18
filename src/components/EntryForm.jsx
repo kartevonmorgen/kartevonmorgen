@@ -51,6 +51,9 @@ class Form extends Component {
           <Field name="description" component={errorMessage} />
 
         </fieldset>
+        <fieldset>
+          <Field name="tags" className="pure-input-1" component="input" placeholder="Stichworte" normalize={normalize.tags} />
+        </fieldset>
 
         <fieldset>
           <legend>

@@ -273,6 +273,7 @@ module.exports = pure React.createClass
                       id          : form[EDIT.id]?.kvm_flag_id
                       title       : data.title
                       description : data.description
+                      tags        : data.tags?.split(',')
                       homepage    : data.homepage
                       telephone   : data.telephone
                       lat         : data.lat

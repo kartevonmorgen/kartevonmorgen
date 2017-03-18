@@ -8,4 +8,14 @@ const url = (value) => {
   return value;
 };
 
-module.exports = { url: url };
+const tags = (value) => {
+  if ((value == null) || value.length === 0) {
+    return value;
+  }
+  return value
+    .toLowerCase()
+    .replace(' ',',')
+    .replace(',,',',')
+};
+
+module.exports = { url, tags };
