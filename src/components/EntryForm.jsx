@@ -37,7 +37,7 @@ class Form extends Component {
       <div className= "pure-form">
         <fieldset>
           <Field className="pure-input-1" name="category" component="select">
-            <option value={-1}>- Kategorie auswählen -</option>
+            <option value={-1}>- Eintragstyp auswählen -</option>
             <option value={IDS.INITIATIVE}>Initiative</option>
             <option value={IDS.EVENT}>Event</option>
             <option value={IDS.COMPANY}>Unternehmen</option>
