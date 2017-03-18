@@ -1,3 +1,8 @@
+## v0.1.6 (2017-03-11)
+
+- refactor(*): start migrating CoffeeScript to ES6
+- refactor(entryForm): upgrade redux-form 4.x -> 6.x
+
 ## v0.1.5 (2016-07-11)
 
 - new(landingpage): tutorial images
