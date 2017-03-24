@@ -115,7 +115,7 @@ class Form extends Component {
               <i className= "fa fa-envelope" />
             </label>
             <div className= "pure-u-22-24">
-              <Field name="email" type="email" className="pure-input-1" component="input" placeholder="Telefon" />
+              <Field name="email" type="email" className="pure-input-1" component="input" placeholder="eMail" />
               <Field name="email" component={errorMessage} />
             </div>
           </div>
@@ -125,7 +125,7 @@ class Form extends Component {
               <i className= "fa fa-phone" />
             </label>
             <div className= "pure-u-22-24">
-              <Field name="telephone" className="pure-input-1" component="input" placeholder="eMail" />
+              <Field name="telephone" className="pure-input-1" component="input" placeholder="Telefon" />
               <Field name="telephone" component={errorMessage} />
             </div>
           </div>
