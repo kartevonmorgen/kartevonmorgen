@@ -24,6 +24,7 @@ const reducer = formReducer.plugin({
           ...state,
           values: {
             ...action.payload,
+            tags: (action.payload.tags || []).join(','),
             category: action.payload.categories[0]
           },
           kvm_flag_id: action.payload.id

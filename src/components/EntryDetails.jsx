@@ -50,13 +50,18 @@ class EntryDetails extends Component {
               </div>
             </div>
             : null),
-          (entry.tags && entry.tags.length > 0
+          (entry.tags && entry.tags.filter(t => t !="").length > 0
             ?
             <div key="tags" className = "tags pure-g">
               <i className = "pure-u-2-24 fa fa-tags" />
               <span className = "pure-u-21-24">
                 <ul>
-                { entry.tags.map(t => <li>{t}</li>) }
+                {
+                  entry
+                    .tags
+                    .filter(t => t != "")
+                    .map(t => <li key={t}>{t}</li>)
+                }
                 </ul>
               </span>
             </div>
