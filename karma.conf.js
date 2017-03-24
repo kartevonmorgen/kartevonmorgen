@@ -1,19 +1,19 @@
 var webpackCfg = require("./webpack.config.coffee");
 
 webpackCfg.debug = true;
+webpackCfg.entry = null;
 
-module.exports = function(config) {
+module.exports = (config) => {
 
   config.set({
 
     frameworks: ['mocha', 'chai'],
 
-    files: [
-      'node_modules/es5-shim/es5-shim.min.js',
-      'spec/**/*.spec.js'
-      ],
+    files: [ 'spec/**/*.spec.js' ],
 
-    preprocessors: { '**/*.spec.js': ['webpack'] },
+    preprocessors: {
+      '**/*.spec.js': ['webpack']
+    },
 
     reporters: ['mocha'],
 

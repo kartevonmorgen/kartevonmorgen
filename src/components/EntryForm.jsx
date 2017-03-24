@@ -104,8 +104,7 @@ class Form extends Component {
                 name="homepage"
                 className="pure-input-1"
                 component="input"
-                placeholder="Homepage"
-                normalize={normalize.url} />
+                placeholder="Homepage" />
               <Field name="homepage" component={errorMessage} />
             </div>
           </div>
