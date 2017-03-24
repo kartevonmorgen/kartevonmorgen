@@ -1,3 +1,8 @@
+## v0.1.8 (2017-03-24)
+
+- new(resultList): show tags
+- fix(entryForm): show correct placeholder (#191)
+
 ## v0.1.7 (2017-03-19)
 
 - new(entry): basic tag support (#179)
