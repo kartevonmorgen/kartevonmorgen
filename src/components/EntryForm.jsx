@@ -52,7 +52,12 @@ class Form extends Component {
 
         </fieldset>
         <fieldset>
-          <Field name="tags" className="pure-input-1" component="input" placeholder="Stichworte" normalize={normalize.tags} />
+          <Field
+            name="tags"
+            className="pure-input-1"
+            component="input"
+            placeholder="Stichworte (Komma getrennt)"
+            normalize={normalize.tags} />
         </fieldset>
 
         <fieldset>

@@ -1,3 +1,9 @@
+## v0.1.9 (2017-03-24)
+
+- fix(entryForm): handle tag array correctly (#193)
+- fix(entryForm): do not normalize url
+- refacotr(specs): migrate to ES6
+
 ## v0.1.8 (2017-03-24)
 
 - new(resultList): show tags
