@@ -10,10 +10,10 @@ module.exports = function(config) {
 
     files: [
       'node_modules/es5-shim/es5-shim.min.js',
-      'spec/**/*.spec.coffee'
+      'spec/**/*.spec.js'
       ],
 
-    preprocessors: { '**/*.spec.coffee': ['webpack'] },
+    preprocessors: { '**/*.spec.js': ['webpack'] },
 
     reporters: ['mocha'],
 
