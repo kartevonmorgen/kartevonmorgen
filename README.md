@@ -34,8 +34,9 @@ have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 To be able to start development you'll need the following tools:
 
 - [git](https://www.git-scm.com/)
-- [Node.js](https://nodejs.org/) version >= 4.2.x
+- [Node.js](https://nodejs.org/) version 6.x
 - [npm](https://www.npmjs.com/package/npm) version 3.x
+- [OpenFairDB](https://github.com/flosse/openfairdb)
 
 Now clone this repository:
 
@@ -61,14 +62,39 @@ To build a Nix derivation, run
 
     nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}' --option use-binary-caches false
 
-During the development you don't want to do that manually on every file change,
-so just run
+### Local development setup
 
+First make sure [Neo4j is installed](https://github.com/flosse/openfairdb#installing-neo4j) and runnig.
+
+    git clone https://github.com/flosse/openfairdb
+    cd openfairdb/
+    cargo build
+    RUST_LOG=debug ./target/debug/openfairdb
+
+Now `openfairdb` is listening on port 6767.
+
+    cd /path/to/kartevonmorgen/
     npm start
 
-and open the app in your browser `http://localhost:8080`.
-Now on every file change, the app will be build
+The web app is now listening on port 8080.
+Open it in your browser `http://localhost:8080`.
+
+On every file change in `src/`, the app will be build
 for you and the browser reloads automatically.
+
+There is still one missing step.
+If the web application would do some REST requests to the openfairdb on port 767
+your browser would tell you something like
+
+    Cross-Origin Request Blocked: The Same Origin Policy disallows reading ...
+
+But we cheat a little bit :)
+A special proxy is listening on `6768` and forwards our requests to `6767`.
+All requests and responses will be intercepted and modified to allow
+[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+To do so, install `mitmproxy` and run it as follows:
+
+    mitmproxy -s cors.py -R http://127.0.0.1:6767 -b 127.0.0.1 -p 6768
 
 ### Tests
 
@@ -99,6 +125,6 @@ KVM uses the [OpenFairDB](https://github.com/flosse/openfairdb) as its backend.
 
 ## License
 
-Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
+Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
 
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).
