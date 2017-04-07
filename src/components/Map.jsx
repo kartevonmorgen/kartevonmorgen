@@ -2,7 +2,7 @@ import "./Map.styl"
 
 import React, { Component }         from "react"
 import { Map, TileLayer, Marker }   from "react-leaflet"
-import VMIcons                      from "vm-leaflet-icons"
+import { icons }                    from "vm-leaflet-icons"
 import URLs                         from "../constants/URLs"
 import { pure }                     from "recompose"
 import { NAMES, CSS_CLASSES, IDS }  from  "../constants/Categories"
@@ -14,13 +14,13 @@ class KVMMap extends Component {
   getIconById(id){
     switch (id) {
       case INITIATIVE:
-        return VMIcons.initiative;
+        return icons.initiative;
       case EVENT:
-        return VMIcons.event;
+        return icons.event;
       case COMPANY:
-        return VMIcons.company;
+        return icons.company;
       default:
-        return VMIcons.unknown;
+        return icons.unknown;
     }
   }
 
@@ -29,19 +29,19 @@ class KVMMap extends Component {
     const map = this.refs.map;
     if (map) {
       map.fireLeafletEvent('load', map)
-      map.getLeafletElement().addControl(L.control.zoom({position: 'bottomright'}))
+      map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
     }
   }
 
   componentDidUpdate(prevProps, prevState){
     if (prevProps.size != this.props.size) {
-      this.refs.map.getLeafletElement().invalidateSize()
+      this.refs.map.leafletElement.invalidateSize()
     }
   }
 
   getMapCoordinates(){
-    const m = this.refs.map.getLeafletElement()
+    const m = this.refs.map.leafletElement
     return {
       center: m.getCenter(),
       bbox  : m.getBounds(),

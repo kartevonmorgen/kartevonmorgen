@@ -22,16 +22,16 @@
   "homepage": "https://github.com/flosse/kartevonmorgen",
   "dependencies": {
     "es6-promise": "^3.1.2",
-    "museo": "^0.1.0",
     "flash-notification-react-redux": "^1.0.5",
     "font-awesome": "^4.5.0",
-    "leaflet": "^0.7.7",
+    "leaflet": "^1.0.3",
     "lodash": "^3.10.1",
+    "museo": "^0.1.0",
     "normalize.css": "^3.0.3",
     "purecss": "^0.6.0",
     "react": "^15.4",
     "react-dom": "^15.4",
-    "react-leaflet": "^0.11.0",
+    "react-leaflet": "^1.1.5",
     "react-redux": "^5.0.2",
     "recompose": "^0.20.2",
     "redux": "^3.6.0",
@@ -42,7 +42,7 @@
     "superagent": "^1.7.1",
     "superagent-prefix": "0.0.2",
     "updeep": "^0.12.0",
-    "vm-leaflet-icons": "^0.0.5"
+    "vm-leaflet-icons": "^0.1.0"
   },
   "optionalDependencies": {
     "@kadira/storybook": "~1.8.0"
