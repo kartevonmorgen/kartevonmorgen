@@ -41,7 +41,6 @@
     "source-sans-pro": "^2.0.10",
     "superagent": "^1.7.1",
     "superagent-prefix": "0.0.2",
-    "updeep": "^0.12.0",
     "vm-leaflet-icons": "^0.1.0"
   },
   "optionalDependencies": {

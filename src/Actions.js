@@ -53,7 +53,7 @@ const Actions = {
 
         if ((Array.isArray(ids)) && ids.length > 0) {
 
-          const entries = getState().entries;
+          const entries = getState().server.entries;
           const fetch_ids = ids.filter((x) => entries[x] == null);
 
           if (fetch_ids.length > 0) {
@@ -326,7 +326,7 @@ const Actions = {
           const state = getState();
           dispatch({
             type: T.EDIT_CURRENT_ENTRY,
-            payload: state.entries[state.search.current]
+            payload: state.server.entries[state.search.current]
           });
         } else {
           dispatch({

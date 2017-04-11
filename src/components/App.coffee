@@ -26,13 +26,13 @@ Growler = require "flash-notification-react-redux/index.js"
 
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
-module.exports = pure React.createClass
+Main = React.createClass
 
   displayName: "Main"
 
   propTypes:
-    entries : T.object.isRequired
     view    : T.object.isRequired
+    server  : T.object.isRequired
     map     : T.object.isRequired
     search  : T.object.isRequired
     form    : T.object.isRequired
@@ -41,14 +41,15 @@ module.exports = pure React.createClass
 
   render: ->
 
-    { dispatch, search, view, entries, map, form, growler } = @props
+    { dispatch, search, view, server, map, form, growler } = @props
 
     { highlight, addresses, cities } = search
+    { entries } = server
 
     resultEntries    =
-      (x for id in search.result when (x=@props.entries[id])?)
+      (x for id in search.result when (x=entries[id])?)
     invisibleEntries =
-      (x for id in search.invisible when(x=@props.entries[id])?)
+      (x for id in search.invisible when(x=entries[id])?)
     rightPanelIsOpen = false #right panel moved into landingpage
     mapCenter =
      if (c=search.current)
@@ -331,3 +332,4 @@ module.exports = pure React.createClass
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
 
+module.exports = pure(Main)
