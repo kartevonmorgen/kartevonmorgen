@@ -116,9 +116,9 @@ const ratingForm = (data) => {
   if (data.comment == null) {
     errors.comment = 'Pflichtangabe';
   } else {
-    if (!((l = data.comment.length) <= 160)) {
+    if (!((l = data.comment.length) <= 500)) {
       if (errors.comment == null) {
-        errors.comment = "Zu langer Kommentar: " + l + " statt max. 160 Zeichen";
+        errors.comment = "Zu langer Kommentar: " + l + " statt max. 500 Zeichen";
       }
     }
     if (!((l = data.comment.length) >= 10)) {
