@@ -1,3 +1,11 @@
+## v0.1.10 (2017-04-12)
+
+- new(ratings): add basic rating form
+- new(entry): show ratings
+- refactor(map): migrate to ES6
+- refactor(map): migrate to leaflet 1.0
+- refactor(*): get rid of `updeep`
+
 ## v0.1.9 (2017-03-24)
 
 - fix(entryForm): handle tag array correctly (#193)
