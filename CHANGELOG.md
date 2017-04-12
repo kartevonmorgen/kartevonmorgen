@@ -1,3 +1,8 @@
+## v0.1.11 (2017-04-12)
+
+- new(results): show rating flower
+- fix(rating): allow comments with up to 500 chars
+
 ## v0.1.10 (2017-04-12)
 
 - new(ratings): add basic rating form
