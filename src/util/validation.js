@@ -78,6 +78,56 @@ const entryForm = (data) => {
   return errors;
 };
 
-module.exports = {
-  entryForm: entryForm
-};
+const ratingForm = (data) => {
+  var h, l, ref;
+  var errors = {};
+  if (data == null) {
+    errors._error = "Ungültige Daten";
+    return errors;
+  }
+  if (data.title == null) {
+    errors.title = 'Pflichtangabe';
+  } else {
+    if (!((l = data.title.length) <= 40)) {
+      if (errors.title == null) {
+        errors.title = "Zu langer Titel: " + l + " statt max. 40 Zeichen";
+      }
+    }
+    if (!((l = data.title.length) >= 3)) {
+      if (errors.title == null) {
+        errors.title = "Zu kurzer Titel: " + l + " von mind. 3 Zeichen";
+      }
+    }
+  }
+  if (data.context == null) {
+    errors.context = 'Pflichtangabe';
+  } else {
+    if ((typeof data.context) !== "string") {
+      errors.context = 'Ungültiger Bewertungskontext';
+    }
+  }
+  if (data.value == null) {
+    errors.value = 'Pflichtangabe';
+  } else {
+    if (data.value < -1 || data.value > 2) {
+      errors.value = 'Ungültige Bewertung';
+    }
+  }
+  if (data.comment == null) {
+    errors.comment = 'Pflichtangabe';
+  } else {
+    if (!((l = data.comment.length) <= 160)) {
+      if (errors.comment == null) {
+        errors.comment = "Zu langer Kommentar: " + l + " statt max. 160 Zeichen";
+      }
+    }
+    if (!((l = data.comment.length) >= 10)) {
+      if (errors.comment == null) {
+        errors.comment = "Zu wenig Text: " + l + " von mind. 10 Zeichen";
+      }
+    }
+  }
+  return errors;
+}
+
+module.exports = { entryForm, ratingForm };

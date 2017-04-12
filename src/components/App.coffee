@@ -1,26 +1,27 @@
-# Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
+# Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
 
 require "./App.styl"
 
-React           = require "react"
-T               = React.PropTypes
-V               = require "../constants/PanelView"
-C               = require "../constants/Categories"
-Actions         = require "../Actions"
-EntryDetails    = require "./EntryDetails"
-ResultList      = require "./ResultList"
-CityList        = require "./CityList"
-Info            = require "./Info"
-Imprint         = require "./Imprint"
-EntryForm       = require "./EntryForm"
-Message         = require "./Message"
-Map             = require "./Map"
-SearchBar       = require "./SearchBar"
-LandingPage     = require "./LandingPage"
-{ EDIT }        = require "../constants/Form"
-URLs            = require "../constants/URLs"
-{ pure }        = require "recompose"
-{ initialize }  = require "redux-form"
+React             = require "react"
+T                 = React.PropTypes
+V                 = require "../constants/PanelView"
+C                 = require "../constants/Categories"
+Actions           = require "../Actions"
+EntryDetails      = require "./EntryDetails"
+ResultList        = require "./ResultList"
+CityList          = require "./CityList"
+Info              = require "./Info"
+Imprint           = require "./Imprint"
+EntryForm         = require "./EntryForm"
+RatingForm        = require "./RatingForm"
+Message           = require "./Message"
+Map               = require "./Map"
+SearchBar         = require "./SearchBar"
+LandingPage       = require "./LandingPage"
+{ EDIT, RATING }  = require "../constants/Form"
+URLs              = require "../constants/URLs"
+{ pure }          = require "recompose"
+{ initialize }    = require "redux-form"
 
 Growler = require "flash-notification-react-redux/index.js"
 
@@ -37,14 +38,14 @@ Main = React.createClass
     search  : T.object.isRequired
     form    : T.object.isRequired
     server  : T.object.isRequired
-    growler  : T.object.isRequired
+    growler : T.object.isRequired
 
   render: ->
 
     { dispatch, search, view, server, map, form, growler } = @props
 
     { highlight, addresses, cities } = search
-    { entries } = server
+    { entries, ratings } = server
 
     resultEntries    =
       (x for id in search.result when (x=entries[id])?)
@@ -221,6 +222,26 @@ Main = React.createClass
                         i className: "fa fa-ban"
                         "abbrechen"
                   ]
+                when V.NEW_RATING
+                  [
+                    li
+                      key: "save"
+                      className:"pure-u-1-2",
+                      onClick: (=>
+                        @refs.rating.submit()
+                      ),
+                        i className: "fa fa-floppy-o"
+                        "bewerten"
+                    li
+                      key: "cancel"
+                      className:"pure-u-1-2",
+                      onClick: (->
+                        dispatch initialize RATING.id, {}, RATING.fields
+                        dispatch Actions.cancelRating()
+                      ),
+                        i className: "fa fa-ban"
+                        "abbrechen"
+                  ]
           div className:"content",
 
             switch view.left
@@ -263,6 +284,8 @@ Main = React.createClass
                 div null,
                   React.createElement EntryDetails,
                     entry   : entries[search.current]
+                    ratings : (entries[search.current].ratings || []).map((id) -> ratings[id])
+                    onRate  : (id) => dispatch Actions.showNewRating id
 
               when V.EDIT, V.NEW
                 React.createElement EntryForm,
@@ -284,6 +307,18 @@ Main = React.createClass
                       zip         : data.zip
                       version     : (form[EDIT.id]?.values?.version or 0) + 1
                       categories  : [data.category]
+              when V.NEW_RATING
+                React.createElement RatingForm,
+                  ref         : 'rating'
+                  entryid     : form[RATING.id]?.kvm_flag_id
+                  entryTitle  : entries[form[RATING.id]?.kvm_flag_id]?.title
+                  onSubmit: (data) ->
+                    dispatch Actions.createRating
+                      entry   : form[RATING.id]?.kvm_flag_id
+                      title   : data.title
+                      context : data.context
+                      value   : data.value
+                      comment : data.comment
               when V.WAIT
                 React.createElement Message,
                   iconClass: "fa fa-spinner fa-pulse"

@@ -367,6 +367,7 @@ button.pure-button i
         width 28em
       &.closed
         width 0
+        z-index 1000
 
     .right
       background  #fff
@@ -508,14 +509,21 @@ button.pure-button i
     margin: 0
     padding: 1em
 
-  .add-entry-form
+  .add-entry-form, .new-rating-form
     margin-left  1em
     margin-right 1em
+
+    select
+      height 2.5em
+
+  .add-entry-form
     h3
       margin-top    0.5em
       margin-bottom 0.2em
-    select
-      height 2.5em
+
+  .new-rating-form
+    .title
+      font-weight bold
 
   .license input
     margin-top 0.7em
@@ -566,6 +574,46 @@ button.pure-button i
           padding-left  0.4em
           padding-right 0.4em
           font-size     0.9em
+    .ratings
+      margin-top 0.5em
+      color #333;
+      button
+        margin-top 1em
+        float right
+        font-size 0.9em
+      h4
+        border-bottom 1px solid #aaa
+      .rating-list
+        ul
+          list-style  none
+          margin      0
+          margin-left 0
+          padding     0
+
+        .rating-context
+          h5
+            border-bottom 1px solid #ddd
+          ul
+            margin-left 0.5em
+
+        h5
+         margin-top    1.0em
+         margin-bottom 0.3em
+
+        .count
+          font-weight normal
+          margin-left 0.3em
+          color #888
+
+        .rating
+          font-size 0.9em
+          span.title
+            margin-left: 0.3em
+            font-weight bold
+          .comments
+            margin-left 1.2em;
+            margin-top 0.5em;
+            margin-bottom 0.5em;
 
   .group-header
     border-top    3px solid $lightGray

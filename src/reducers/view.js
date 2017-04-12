@@ -57,7 +57,12 @@ module.exports = (state=initialState, action={}) => {
         menu: false,
         left: V.NEW
       }
-
+    case T.SHOW_NEW_RATING:
+      return {
+        ...state,
+        menu: false,
+        left: V.NEW_RATING
+      }
     case T.EDIT_CURRENT_ENTRY:
       if (!action.error) {
         return {
@@ -90,6 +95,7 @@ module.exports = (state=initialState, action={}) => {
         left: null
       }
 
+    case T.CANCEL_RATING:
     case T.CANCEL_EDIT:
       return {
         ...state,

@@ -1,10 +1,14 @@
 import T                          from "./constants/ActionTypes";
 import WebAPI                     from "./WebAPI";
 import GeoLocation                from "./GeoLocation";
-import { EDIT }                   from "./constants/Form";
+import { EDIT, RATING }           from "./constants/Form";
 import { initialize, stopSubmit } from "redux-form";
 
 const LICENSE_NAME = "CC0-1.0";
+
+const flatten = nestedArray => nestedArray.reduce(
+    (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
+);
 
 const Actions = {
 
@@ -85,14 +89,28 @@ const Actions = {
       });
     },
 
-  getEntries: (ids) =>
-    (dispatch) => {
-      if (ids == null) {
-        ids = [];
-      }
+  getEntries: (ids=[]) =>
+    (dispatch,getState) => {
       WebAPI.getEntries(ids, (err, res) => {
         dispatch({
           type: T.ENTRIES_RESULT,
+          payload: err || res,
+          error: err != null
+        });
+        if (!err) {
+          const { ratings } = getState().server;
+          const ids = flatten(res.map(e => e.ratings));
+          const fetch_ids = ids.filter((x) => ratings[x] == null);
+          dispatch(Actions.getRatings(fetch_ids));
+        }
+      });
+    },
+
+  getRatings: (ids=[]) =>
+    (dispatch) => {
+      WebAPI.getRatings(ids, (err, res) => {
+        dispatch({
+          type: T.RATINGS_RESULT,
           payload: err || res,
           error: err != null
         });
@@ -128,66 +146,26 @@ const Actions = {
     };
   },
 
-  toggleMenu: () => {
-    return {
-      type: T.TOGGLE_MENU
-    };
-  },
+  toggleMenu          : () => ({ type: T.TOGGLE_MENU            }),
+  showMenu            : () => ({ type: T.SHOW_MENU              }),
+  showNewEntry        : () => ({ type: T.SHOW_NEW_ENTRY         }),
+  toggleLandingPage   : () => ({ type: T.TOGGLE_MENU            }),
+  showImprint         : () => ({ type: T.SHOW_IMPRINT           }),
+  cancelNew           : () => ({ type: T.CANCEL_NEW             }),
+  cancelEdit          : () => ({ type: T.CANCEL_EDIT            }),
+  cancelRating        : () => ({ type: T.CANCEL_RATING          }),
+  cancelWait          : () => ({ type: T.CANCEL_WAIT_IO         }),
+  closeIoErrorMessage : () => ({ type: T.CLOSE_IO_ERROR_MESSAGE }),
 
-  showMenu: () => {
-    return {
-      type: T.SHOW_MENU
-    };
-  },
+  showNewRating: (id) => ({
+     payload: id,
+     type: T.SHOW_NEW_RATING
+  }),
 
-  showNewEntry: () => {
-    return {
-      type: T.SHOW_NEW_ENTRY
-    };
-  },
-
-  toggleLandingPage: () => {
-    return {
-      type: T.TOGGLE_MENU
-    };
-  },
-
-  showInfo: (key) => {
-    return {
-      type: T.SHOW_INFO,
-      payload: key
-    };
-  },
-
-  showImprint: () => {
-    return {
-      type: T.SHOW_IMPRINT
-    };
-  },
-
-  cancelNew: () => {
-    return {
-      type: T.CANCEL_NEW
-    };
-  },
-
-  cancelEdit: () => {
-    return {
-      type: T.CANCEL_EDIT
-    };
-  },
-
-  cancelWait: () => {
-    return {
-      type: T.CANCEL_WAIT_IO
-    };
-  },
-
-  closeIoErrorMessage: () => {
-    return {
-      type: T.CLOSE_IO_ERROR_MESSAGE
-    };
-  },
+  showInfo: (key) => ({
+    type: T.SHOW_INFO,
+    payload: key
+  }),
 
   saveEntry: (e) =>
     (dispatch, getState) => {
@@ -228,6 +206,40 @@ const Actions = {
                   }
                 });
               }
+            }
+          });
+        }
+      });
+    },
+
+  createRating: (r) =>
+    (dispatch, getState) => {
+      WebAPI.createRaing(r, (err, res) => {
+        if (err) {
+          dispatch(stopSubmit(RATING.id, {
+            _error: err
+          }));
+        } else {
+          WebAPI.getEntries([r.entry], (err, res) => {
+            dispatch({
+              type: T.ENTRIES_RESULT,
+              payload: err || res,
+              error: err != null
+            });
+            if (!err && res && res.length == 1) {
+              dispatch({
+                type: T.SET_CURRENT_ENTRY,
+                payload: res[0].id
+              });
+              dispatch(Actions.getRatings(res[0].ratings));
+              dispatch({
+                type: 'GROWLER__SHOW',
+                growler: {
+                  text: 'Rating was successfully saved!',
+                  type: 'growler--success'
+                }
+              });
+              dispatch(initialize(RATING.id, {}, RATING.fields));
             }
           });
         }

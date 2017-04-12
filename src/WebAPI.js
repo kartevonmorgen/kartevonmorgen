@@ -69,21 +69,33 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  getEntries: (ids, cb) => {
-
-    if (ids == null) {
-      ids = [];
-    }
+  getEntries: (ids=[], cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids];
     }
 
-    if (!(ids.length > 0)) {
+    if (ids.length < 1) {
       cb(new Error("no IDs were passed"));
     } else {
       request
         .get('/entries/' + ids.join(','))
+        .use(prefix).set('Accept', 'application/json')
+        .end(jsonCallback(cb));
+    }
+  },
+
+  getRatings: (ids=[], cb) => {
+
+    if (!Array.isArray(ids)) {
+      ids = [ids];
+    }
+
+    if (ids.length < 1) {
+      cb(new Error("no IDs were passed"));
+    } else {
+      request
+        .get('/ratings/' + ids.join(','))
         .use(prefix).set('Accept', 'application/json')
         .end(jsonCallback(cb));
     }
@@ -110,6 +122,21 @@ module.exports = {
       .use(prefix)
       .set('Accept', 'application/json')
       .send(e)
+      .end((err, res) => {
+        if (err) {
+          cb(err);
+        } else {
+          cb(null, res.text);
+        }
+    });
+  },
+
+  createRaing: (r, cb) => {
+    request
+      .post('/ratings')
+      .use(prefix)
+      .set('Accept', 'application/json')
+      .send(r)
       .end((err, res) => {
         if (err) {
           cb(err);

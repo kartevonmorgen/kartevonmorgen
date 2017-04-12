@@ -13,7 +13,17 @@ module.exports = {
       'lat',
       'lng',
       'category',
-      'license'
+      'license',
+      'tags'
+    ]
+  },
+
+  RATING: {
+    id: "rating",
+    fields: [
+      "context",
+      "value",
+      "comment"
     ]
   }
 };

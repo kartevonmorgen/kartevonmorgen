@@ -94,7 +94,23 @@ const reducer = formReducer.plugin({
       default:
         return state;
     }
+  },
+
+  rating: (state={}, action={}) => {
+
+    const { payload } = action;
+
+    switch (action.type) {
+      case T.SHOW_NEW_RATING:
+        return {
+          ...state,
+          kvm_flag_id: payload,
+        };
+      default:
+        return state;
+    }
   }
+
 });
 
 module.exports = reducer

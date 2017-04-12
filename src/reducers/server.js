@@ -2,25 +2,33 @@ import T from "../constants/ActionTypes";
 
 const initialState = {
   version: null,
-  entries: {}
+  entries: {},
+  ratings: {}
 };
 
 module.exports = (state=initialState, action={}) => {
+
+  if (action.error) {
+    console.error(action.error);
+    return state;
+  }
+
+  const { payload } = action;
+
   switch (action.type) {
     case T.SERVER_INFO_RESULT:
       return {
         ...state,
-        version: action.payload.version
+        version: payload.version
       };
     case T.ENTRIES_RESULT:
-      var p;
-      if (!(action.error || ((p = action.payload) == null))) {
+      if (payload != null) {
         var o = {};
-        if (Array.isArray(p)) {
-          p.filter(e => e != null)
-           .forEach(e => { o[e.id] = e;});
+        if (Array.isArray(payload)) {
+          payload.filter(e => e != null)
+           .forEach(e => { o[e.id] = e; });
         } else {
-          o[p.id] = p;
+          o[p.id] = payload;
         }
         return {
           ...state,
@@ -29,10 +37,26 @@ module.exports = (state=initialState, action={}) => {
             ...o
           }
         };
-      } else {
-        return state;
       }
-      break;
+      return state;
+    case T.RATINGS_RESULT:
+      if (payload != null) {
+        var o = {};
+        if (Array.isArray(payload)) {
+          payload.filter(e => e != null)
+           .forEach(e => { o[e.id] = e; });
+        } else {
+          o[p.id] = payload;
+        }
+        return {
+          ...state,
+          ratings: {
+            ...state.ratings,
+            ...o
+          }
+        };
+      }
+      return state;
     default:
       return state;
   }
