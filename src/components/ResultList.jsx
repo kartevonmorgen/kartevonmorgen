@@ -2,10 +2,11 @@ import React    from "react"
 import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
+import Flower   from "./Flower";
 
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
 
-const ResultListElement = ({highlight, entry, onClick, onMouseEnter, onMouseLeave}) => {
+const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave}) => {
   var clz = highlight ? 'highlight-entry ' : '';
   clz = clz + CSS_CLASSES[entry.categories && entry.categories[0]];
   return (
@@ -31,6 +32,7 @@ const ResultListElement = ({highlight, entry, onClick, onMouseEnter, onMouseLeav
               ? <Address { ...entry } />
               : null
           }
+          <div className="flower">{ Flower(ratings,30) }</div>
           {
             (entry.tags.length > 0)
               ? <div className="tags" >
@@ -48,10 +50,11 @@ const ResultListElement = ({highlight, entry, onClick, onMouseEnter, onMouseLeav
     </li>)
 }
 
-const ResultList = ({ entries, highlight, onClick, onMouseEnter, onMouseLeave}) => {
+const ResultList = ({ entries, ratings, highlight, onClick, onMouseEnter, onMouseLeave}) => {
   const results = entries.map( e =>
     <ResultListElement
       entry        = { e            }
+      ratings      = { (e.ratings || []).map(id => ratings[id])}
       key          = { e.id         }
       highlight    = { highlight.indexOf(e.id) >= 0 }
       onClick      = { onClick      }

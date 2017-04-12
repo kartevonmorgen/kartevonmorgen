@@ -250,6 +250,7 @@ Main = React.createClass
                 div className: "result",
                   React.createElement ResultList,
                     entries     : resultEntries
+                    ratings     : ratings
                     highlight   : highlight
                     onClick     : (id) -> dispatch Actions.setCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
@@ -275,6 +276,7 @@ Main = React.createClass
                         """
                       React.createElement ResultList,
                         entries     : invisibleEntries
+                        ratings     : ratings
                         highlight   : highlight
                         onClick     :
                           (id) -> dispatch Actions.setCurrentEntry id

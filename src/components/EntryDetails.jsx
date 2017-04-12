@@ -2,7 +2,7 @@ import React, { Component }   from "react";
 import Address                from "./AddressLine";
 import { pure }               from "recompose";
 import { NAMES, CSS_CLASSES } from "../constants/Categories";
-import Flower                 from "react-vm-flower";
+import Flower                 from "./Flower";
 
 const context_name = (id) => {
   switch(id) {
@@ -41,6 +41,7 @@ const context_color = (id) => {
       return "#888"
   }
 }
+
 const value_name = (v) => {
   switch(v) {
     case -1:
@@ -123,83 +124,6 @@ const Comment = (comment) =>
     {comment.text}
   </div>
 
-const FLOWER_RADIUS = 40;
-
-const flower_scales = (ratings=[]) => {
-  var scales = [0.6,0.6,0.6,0.6,0.6,0.6];
-  const groups = rating_groups(ratings);
-  Object.keys(groups).forEach(g => {
-    const rtngs = groups[g];
-    if (rtngs && rtngs.length > 0) { 
-      const av = rtngs.reduce((acc, r) => {return acc+r.value;}, 0) / rtngs.length;
-      console.info("average", av)
-      const scale = 0.233 * av + 0.533;
-      console.info("scale", scale)
-      switch (g) {
-        case "diversity":
-          scales[0] = scale;
-          break;
-        case "renewable":
-          scales[1] = scale;
-          break;
-        case "fairness":
-          scales[2] = scale;
-          break;
-        case "humanity":
-          scales[3] = scale;
-          break;
-        case "transparency":
-          scales[4] = scale;
-          break;
-        case "solidarity":
-          scales[5] = scale;
-          break;
-        default:
-          break;
-      }
-    }
-  })
-  return scales;
-
-}
-const KVMFlower = (ratings=[]) => {
-
-  var colors = ["#eee", "#eee", "#eee", "#eee", "#eee", "#eee"];
-
-  ratings.filter(r => typeof r !== "undefined" && r !== null).forEach(r => {
-    switch (r.context) {
-      case "diversity":
-        colors[0] = null;
-        break;
-      case "renewable":
-        colors[1] = null;
-        break;
-      case "fairness":
-        colors[2] = null;
-        break;
-      case "humanity":
-        colors[3] = null;
-        break;
-      case "transparency":
-        colors[4] = null;
-        break;
-      case "solidarity":
-        colors[5] = null;
-        break;
-      default:
-        break;
-    }
-  })
-
-  return (
-    <svg width={(FLOWER_RADIUS +2) * 2} height = {(FLOWER_RADIUS+2) * 2}>
-      <g transform={"translate(" + (FLOWER_RADIUS + 2) + "," + (FLOWER_RADIUS + 2) + ")"}>
-        <circle cx={0} cy={0} r={FLOWER_RADIUS+1} fill="#fff" stroke="#ccc" strokeWidth={0.5} />
-        <Flower size = {FLOWER_RADIUS * 2} scales={flower_scales(ratings)} colors={colors} />
-      </g>
-    </svg>)
-}
-
 class EntryDetails extends Component {
 
   render() {
@@ -252,7 +176,7 @@ class EntryDetails extends Component {
             : null)
         ]}</div>
         <div className="ratings">
-          <div className="flower">{KVMFlower(ratings)}</div>
+          <div className="flower">{Flower(ratings,40)}</div>
           <h4>Bewertungen</h4>
           { entry.ratings && entry.ratings.length > 0
             ? <div>
