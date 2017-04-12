@@ -33,9 +33,9 @@ const ResultListElement = ({highlight, entry, onClick, onMouseEnter, onMouseLeav
           }
           {
             (entry.tags.length > 0)
-              ? <div className="tags">
+              ? <div className="tags" >
                   <ul >
-                  { entry.tags.map(t => <li>{t}</li>) }
+                  { entry.tags.map(t => <li key={t}>{t}</li>) }
                   </ul>
                 </div>
               : null

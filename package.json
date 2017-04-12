@@ -33,6 +33,7 @@
     "react-dom": "^15.4",
     "react-leaflet": "^1.1.5",
     "react-redux": "^5.0.2",
+    "react-vm-flower": "^0.2.0",
     "recompose": "^0.20.2",
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
