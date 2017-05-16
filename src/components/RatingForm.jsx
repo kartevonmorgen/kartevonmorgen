@@ -38,7 +38,7 @@ class RatingForm extends Component {
         <fieldset>
           <Field className="pure-input-1" name="context" component="select">
             <option value={-1}>- Bewertungskontext auswählen -</option>
-            <option value="diversity">Vielfätigkeit</option>
+            <option value="diversity">Natürlichkeit</option>
             <option value="renewable">Erneuerbarkeit</option>
             <option value="fairness">Fairness</option>
             <option value="humanity">Menschlichkeit</option>

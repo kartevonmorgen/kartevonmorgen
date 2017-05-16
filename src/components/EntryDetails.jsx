@@ -7,7 +7,7 @@ import Flower                 from "./Flower";
 const context_name = (id) => {
   switch(id) {
     case "diversity":
-      return "Vielfalt";
+      return "Natürlichkeit";
     case "renewable":
       return "Erneuerbarkeit";
     case "fairness":
