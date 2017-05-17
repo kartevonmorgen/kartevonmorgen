@@ -85,7 +85,7 @@ class SearchBar extends React.Component {
             onKeyUp     = { this.onKeyUp }
             value       = { searchText || '' }
             className   = "pure-u-1"
-            placeholder = "Wonach suchst du?" />
+            placeholder = "Wonach suchst du? (# für Tags)" />
           <a
             className   = "locate-icon"
             onClick     = { this.props.onLocate }
