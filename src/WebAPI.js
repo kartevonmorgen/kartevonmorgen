@@ -133,7 +133,7 @@ module.exports = {
 
   createRaing: (r, cb) => {
     request
-      .post('/ratings')
+      .post('/ratings/')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(r)

@@ -212,8 +212,12 @@ const Actions = {
       });
     },
 
-  createRating: (r) =>
+  createRating: (rating) =>
     (dispatch, getState) => {
+      const r = {
+        ...rating,
+        value: Number.parseInt(rating.value)
+      };
       WebAPI.createRaing(r, (err, res) => {
         if (err) {
           dispatch(stopSubmit(RATING.id, {
