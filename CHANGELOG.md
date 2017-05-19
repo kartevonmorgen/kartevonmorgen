@@ -1,3 +1,11 @@
+## v0.1.12 (2017-05-19)
+
+- new(SearchBar): add hint for tag searching
+- refactor(imprint): migrate to ES6
+- fix(*): add missing Flower component
+- fix(rating): change "Vielfältigkeit" to "Natürlichkeit"
+- fix(rating): send rating value as integer
+
 ## v0.1.11 (2017-04-12)
 
 - new(results): show rating flower
