@@ -58,6 +58,15 @@ const entryForm = (data) => {
       errors.category = 'Ungültige Kategorie';
     }
   }
+  if (data.tags == null) {
+    errors.tags = 'Pflichtangabe';
+  } else {
+    if ((typeof data.tags) !== "string") {
+      errors.tags = 'Ungültige Stichworte';
+    } else if (data.tags.length < 3) {
+      errors.tags = 'Mindestlänge von Stichworten: 3 Zeichen';
+    }
+  }
   if (data.license == null) {
     errors.license = 'Lizenzzustimmung ist nötig';
   } else {

@@ -44,20 +44,34 @@ class Form extends Component {
           </Field>
           <Field name="category" component={errorMessage} />
 
-          <Field name="title" className="pure-input-1" type="text" component="input" placeholder="Titel" />
-          <Field name="title" component={errorMessage} />
+          <Field
+            name="title"
+            required={true}
+            className="pure-input-1"
+            type="text"
+            component="input"
+            placeholder="Titel" />
+
+          <Field
+            name="title"
+            component={errorMessage} />
 
           <Field name="description" className="pure-input-1" component="textarea" placeholder="Beschreibung"  />
           <Field name="description" component={errorMessage} />
 
         </fieldset>
+
         <fieldset>
           <Field
             name="tags"
+            required={true}
             className="pure-input-1"
             component="input"
             placeholder="Stichworte (Komma getrennt)"
             normalize={normalize.tags} />
+          <Field
+            name="tags"
+            component={errorMessage} />
         </fieldset>
 
         <fieldset>
