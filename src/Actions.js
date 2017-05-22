@@ -3,6 +3,7 @@ import WebAPI                     from "./WebAPI";
 import GeoLocation                from "./GeoLocation";
 import { EDIT, RATING }           from "./constants/Form";
 import { initialize, stopSubmit } from "redux-form";
+import parseURL                   from "./util/parseURL";
 
 const LICENSE_NAME = "CC0-1.0";
 
@@ -391,7 +392,19 @@ const Actions = {
       type: T.SHOW_FEATURE_TO_DONATE,
       payload: feat
     };
-  }
+  },
+
+  updateURL: (newURL) =>
+    (dispatch, getState) => {
+      const { url } = getState();
+      if (newURL === url.actual) {
+        return;
+      }
+      dispatch({
+        type: T.UPDATE_URL,
+        payload: parseURL(newURL)
+      })
+    },
 
 };
 

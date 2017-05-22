@@ -8,6 +8,7 @@ import React    from "react";
 import ReactDOM from "react-dom";
 import App      from "./components/App";
 import store    from "./Store";
+import Actions  from "./Actions";
 
 import { Provider, connect } from "react-redux";
 
@@ -17,6 +18,11 @@ if (__DEVELOPMENT__) {
   whyDidYouUpdate(React);
 }
 
+// listen for back button, forward button, etc.
+window.onpopstate = (e) => {
+  store.dispatch(Actions.updateURL(window.location.hash));
+};
+
 const ConnectedApp = connect((s) => s)(App);
 
 const rootElement = document.querySelector('#app');
@@ -25,3 +31,6 @@ const rootElement = document.querySelector('#app');
 const Wrapper = <Provider store = {store} ><ConnectedApp /></Provider>;
 
 ReactDOM.render(Wrapper, rootElement);
+
+// read the hash url and navigate to the right page
+store.dispatch(Actions.updateURL(window.location.hash));

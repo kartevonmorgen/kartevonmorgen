@@ -3,15 +3,17 @@ import search   from "./search";
 import map      from "./map";
 import view     from "./view";
 import server   from "./server";
+import url      from "./url";
 
 import { GrowlerReducer  } from "flash-notification-react-redux/index.js"
 import { combineReducers } from "redux";
 
 module.exports = combineReducers({
-  form: form,
-  search: search,
-  map: map,
-  view: view,
-  server: server,
+  form,
+  search,
+  map,
+  view,
+  server,
+  url,
   growler: GrowlerReducer
 });
