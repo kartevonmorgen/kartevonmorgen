@@ -51,6 +51,22 @@ module.exports = (state = initialState, action = {}) => {
         ...state,
         center: action.payload
       };
+    case T.UPDATE_URL:
+      const { params } = action.payload;
+      const value = params["map-center"];
+      if (value && value.length > 2) {
+        let [lat, lng] = value.split(',');
+        lat = parseFloat(lat);
+        lng = parseFloat(lng);
+        if (!(isNaN(lat) || isNaN(lng))) {
+          return {
+            ...state,
+            center: { lat, lng }
+          };
+        }
+      }
+      return state;
+
     case T.SET_ZOOM:
       return {
         ...state,
