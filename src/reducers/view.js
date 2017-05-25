@@ -130,7 +130,20 @@ module.exports = (state=initialState, action={}) => {
     case T.SET_CURRENT_ENTRY:
       return {
         ...state,
-        left: action.payload != null ? V.ENTRY : V.RESULT
+        left: action.payload != null ? V.ENTRY : V.RESULT,
+        menu: false
+      }
+
+    case T.UPDATE_URL:
+      const { params } = action.payload;
+      const value = params["map-center"];
+      if (value && value.length > 2) {
+        return{
+          ...state,
+          menu: false
+        };
+      } else{
+        return state;
       }
 
     case T.SHOW_OWN_POSITION:

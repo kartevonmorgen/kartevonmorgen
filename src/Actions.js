@@ -400,9 +400,43 @@ const Actions = {
       if (newURL === url.actual) {
         return;
       }
+      let url_parsed = parseURL(newURL);
+      const { entry } = url_parsed.params;
+      const entries = getState().server.entries;
+      
+      if(entry && entries[entry] == null){
+        WebAPI.getEntries([entry], (err, res) => {
+          dispatch({
+            type: T.ENTRIES_RESULT,
+            payload: err || res,
+            error: err != null
+          });
+
+          if (!err) {
+            dispatch(Actions.setCurrentEntry(entry));
+            const { ratings } = getState().server;
+            const ids = flatten(res.map(e => e.ratings));
+            const fetch_ids = ids.filter((x) => ratings[x] == null);
+            dispatch(Actions.getRatings(fetch_ids));
+          }
+        });
+      }
+
+      const { params } = url_parsed;
+      const value = params["map-center"];
+      if (value && value.length > 2) {
+        console.log("new map-center: " + value);
+        let [lat, lng] = value.split(',');
+        lat = parseFloat(lat);
+        lng = parseFloat(lng);
+        if (!(isNaN(lat) || isNaN(lng))) {
+          dispatch(Actions.setCenter({lat, lng}));
+        }
+      }
+
       dispatch({
         type: T.UPDATE_URL,
-        payload: parseURL(newURL)
+        payload: url_parsed
       })
     },
 

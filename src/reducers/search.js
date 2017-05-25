@@ -112,6 +112,7 @@ module.exports = (state = initialState, action = {}) => {
     case T.SET_CURRENT_ENTRY:
       const p = action.payload;
       if (p != null) {
+        console.log("entry: " + p);
         return {
           ...state,
           current: p,
