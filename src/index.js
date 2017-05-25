@@ -19,9 +19,9 @@ if (__DEVELOPMENT__) {
 }
 
 // listen for back button, forward button, etc.
-window.onpopstate = (e) => {
+window.addEventListener("hashchange", (e) => {
   store.dispatch(Actions.updateURL(window.location.hash));
-};
+}, false);
 
 const ConnectedApp = connect((s) => s)(App);
 

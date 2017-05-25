@@ -12,7 +12,9 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
   return (
     <li
       className     = { clz }
-      onClick       = { (ev) => { ev.preventDefault(); onClick(entry.id) }}
+      onClick       = { (ev) => {
+       window.location.hash = "/?entry=" + entry.id;
+      }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
       <div className = "pure-g">
