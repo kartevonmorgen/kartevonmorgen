@@ -140,6 +140,7 @@ module.exports = (state=initialState, action={}) => {
       if (value && value.length > 2) {
         return{
           ...state,
+          left: V.RESULT,
           menu: false
         };
       } else{
