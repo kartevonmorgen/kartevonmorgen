@@ -44,7 +44,7 @@ const Actions = {
           payload: err || res,
           error: err != null,
           noList: s.text == null
-        });
+        }); 
 
         const ids =
           Array.isArray(res != null ? res.visible : void 0)
@@ -202,7 +202,7 @@ const Actions = {
                 dispatch({
                   type: 'GROWLER__SHOW',
                   growler: {
-                    text: 'Entry was successfully saved!',
+                    text: 'Eintrag wurde gespeichert.',
                     type: 'growler--success'
                   }
                 });
@@ -240,7 +240,7 @@ const Actions = {
               dispatch({
                 type: 'GROWLER__SHOW',
                 growler: {
-                  text: 'Rating was successfully saved!',
+                  text: 'Bewertung wurde gespeichert.',
                   type: 'growler--success'
                 }
               });
@@ -276,8 +276,8 @@ const Actions = {
               dispatch({
                 type: T.SET_MARKER,
                 payload: {
-                  lat: res[0].lat,
-                  lng: res[0].lon
+                  lat: parseFloat(res[0].lat),
+                  lng: parseFloat(res[0].lon)
                 },
                 manual: false,
                 error: err != null
