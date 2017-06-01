@@ -1,8 +1,12 @@
+## v0.1.14 (2017-06-01)
+
+- fix(new entry): convert latitude and longitude to float when entering a manual address
+
 ## v0.1.13 (2017-05-26)
 
- - new(routing): add routing functionality (#107)
- - new(routing): go to location by url with `map-center` key
- - new(routing): go to entry page by url with `entry` key (#164)
+- new(routing): add routing functionality (#107)
+- new(routing): go to location by url with `map-center` key
+- new(routing): go to entry page by url with `entry` key (#164)
 
 ## v0.1.12 (2017-05-19)
 
