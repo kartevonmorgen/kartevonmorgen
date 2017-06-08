@@ -99,6 +99,10 @@ Main = React.createClass
                   lng: city.lon
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
+            onLogin: (data) ->
+                dispatch Actions.login(data)
+            onRegister: (data) ->
+                dispatch Actions.register(data)
 
         if view.modal?
           React.createElement Modal, { view, dispatch }

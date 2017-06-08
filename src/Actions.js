@@ -306,6 +306,45 @@ const Actions = {
       }
     },
 
+  login: ({username, password}) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.LOGIN_SUBMITTING
+      });
+      WebAPI.login({username, password}, (err, res) => {
+        if (err) {
+          dispatch({
+            type: T.LOGIN_RESULT,
+            payload: err,
+            error: true
+          });
+          return;
+        }
+        WebAPI.getUser(username), (err, res) => {
+          dispatch({
+            type: T.LOGIN_RESULT,
+            payload: err || res,
+            error: err != null
+          });
+        }
+      });
+
+    },
+
+  register: ({username, password, email}) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.REGISTER_SUBMITTING
+      });
+      WebAPI.register({username, password, email}, (err, res) => {
+        dispatch({
+          type: T.REGISTER_RESULT,
+          payload: err || res,
+          error: err != null
+        });
+      });
+    },
+
   setCenter: (center) => {
     return {
       type: T.SET_MAP_CENTER,

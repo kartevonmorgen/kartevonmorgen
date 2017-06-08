@@ -44,6 +44,28 @@ module.exports = (state=initialState, action={}) => {
         right: newView
       }
 
+    case T.REGISTER_RESULT:
+      if (!action.error && state.right === V.REGISTER) {
+        return {
+          ...state,
+          right: V.REGISTER_SUCCESS
+        }
+      }
+      return state
+
+    case T.LOGIN_RESULT:
+      if (action.error) {
+        return {
+          ...state,
+          right: V.LOGIN_ERROR
+        }
+      } else {
+        return {
+          ...state,
+          right: V.LOGIN_SUCCESS
+        }
+      }
+
     case T.SHOW_IMPRINT:
       return {
         ...state,

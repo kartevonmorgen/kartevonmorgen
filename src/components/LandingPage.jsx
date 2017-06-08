@@ -5,6 +5,8 @@ import Info                 from "./Info";
 import Workshop             from "./Workshop";
 import Imprint              from "./Imprint";
 import Explain              from "./LandingExplain";
+import Register             from "./Register";
+import Login                from "./Login";
 import URLs                 from "../constants/URLs";
 import V                    from "../constants/PanelView";
 import { pure }             from "recompose";
@@ -13,7 +15,7 @@ class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, cities, onSelection, onEscape, onChange } = this.props;
+    const { content, searchText, cities, onSelection, onEscape, onChange, onRegister, onLogin, username } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {
@@ -78,6 +80,47 @@ class LandingPage extends Component {
             sein. Auf bald!
           </p>
           <p>Dankend, das Team von morgen</p>
+        </div>;
+        break;
+      case V.REGISTER:
+        contentComp = <div>
+          <Register
+            onSubmit = { onRegister }
+            onLogin = {() => {
+              onClick(V.LOGIN)
+            }}
+           />
+        </div>;
+        break;
+      case V.REGISTER_SUCCESS:
+        contentComp = <div>
+          <p>
+          Du hast dich erfolgreich registriert und kannst
+          dich <a onClick={() => onClick(V.LOGIN)} href="#">jetzt mit deinem Benutzername einloggen</a>.
+          </p>
+        </div>;
+        break;
+      case V.LOGIN:
+        contentComp = <div>
+          <Login
+            onSubmit = { onLogin }
+            onRegister = {() => {
+              onClick(V.REGISTER)
+            }}
+           />
+        </div>;
+        break;
+      case V.LOGIN_SUCCESS:
+        contentComp = <div>
+          <p>Du bist jetzt als <strong>{username}</strong> eingeloggt</p>
+        </div>;
+        break;
+      case V.LOGIN_ERROR:
+        contentComp = <div>
+          <p>Der Login hat leider nicht geklappt :(
+          <br />
+          <a href="#" onClick={() => onClick(V.LOGIN)}>Versuche es nochmal :)</a>
+          </p>
         </div>;
         break;
       case V.JOIN:
@@ -155,6 +198,12 @@ class LandingPage extends Component {
                   <li className="pure-menu-item">
                     <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
                       Spenden
+                    </a>
+                  </li>
+                  <li className="pure-menu-item">|</li>
+                  <li className="pure-menu-item">
+                    <a onClick = {() => onClick(V.LOGIN)} href="#" className="pure-menu-link">
+                      Login
                     </a>
                   </li>
                 </ul>

@@ -41,7 +41,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "source-sans-pro": "^2.0.10",
-    "superagent": "^1.7.1",
+    "superagent": "^3.5.2",
     "superagent-prefix": "0.0.2",
     "vm-leaflet-icons": "^0.1.0"
   },

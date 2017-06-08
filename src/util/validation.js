@@ -139,4 +139,72 @@ const ratingForm = (data) => {
   return errors;
 }
 
-module.exports = { entryForm, ratingForm };
+const loginForm = (data) => {
+  var errors = {};
+  if (data == null) {
+    errors._error = "Ungültige Daten";
+    return errors;
+  }
+  if (data.username == null) {
+    errors.username = 'Pflichtangabe';
+  } else {
+    var l;
+    if (!((l = data.username.length) >= 3)) {
+      if (errors.username == null) {
+        errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
+      }
+    }
+  }
+  if (data.password == null) {
+    errors.password = 'Pflichtangabe';
+  } else {
+    var l;
+    if (!((l = data.password.length) >= 3)) {
+      if (errors.password == null) {
+        errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";
+      }
+    }
+  }
+  return errors;
+}
+
+const registerForm = (data) => {
+  var errors = {};
+  if (data == null) {
+    errors._error = "Ungültige Daten";
+    return errors;
+  }
+  if (data.username == null) {
+    errors.username = 'Pflichtangabe';
+  } else {
+    var l;
+    if (!((l = data.username.length) >= 3)) {
+      if (errors.username == null) {
+        errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
+      }
+    }
+  }
+  if (data.email == null) {
+    errors.email = 'Pflichtangabe';
+  } else {
+    var l;
+    if (!((l = data.email.length) >= 3)) {
+      if (errors.email == null) {
+        errors.email = "Ungültige eMail-Adresse";
+      }
+    }
+  }
+  if (data.password == null) {
+    errors.password = 'Pflichtangabe';
+  } else {
+    var l;
+    if (!((l = data.password.length) >= 3)) {
+      if (errors.password == null) {
+        errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";
+      }
+    }
+  }
+  return errors;
+}
+
+module.exports = { entryForm, ratingForm, loginForm, registerForm };

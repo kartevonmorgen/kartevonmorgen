@@ -18,4 +18,13 @@ const tags = (value) => {
     .replace(',,',',')
 };
 
-module.exports = { url, tags };
+const username = (name) => {
+  if ((name == null) || name.length === 0) {
+    return name;
+  }
+  return name
+    .toLowerCase()
+    .trim()
+};
+
+module.exports = { url, tags, username };

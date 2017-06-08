@@ -157,5 +157,43 @@ module.exports = {
           cb(null, { version: res.text });
         }
     });
+  },
+
+  register: ({username,email,password}, cb) => {
+    request
+      .post('/users')
+      .use(prefix)
+      .set('Accept', 'application/json')
+      .send({username,email,password})
+      .end(cb);
+  },
+
+  login: ({username, password}, cb) => {
+    request
+      .post('/login')
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .withCredentials()
+      .send({username,password})
+      .end(cb);
+  },
+
+  getUser: (username, cb) => {
+    request
+      .get('/users/' + username)
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .withCredentials()
+      .end(cb);
+  },
+
+  logout: (cb) => {
+    request
+      .post('/logout')
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .withCredentials()
+      .end(cb);
   }
+
 };
