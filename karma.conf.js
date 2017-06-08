@@ -1,4 +1,4 @@
-var webpackCfg = require("./webpack.config.coffee");
+var webpackCfg = require("./webpack.config.babel.js");
 
 webpackCfg.debug = true;
 webpackCfg.entry = null;
