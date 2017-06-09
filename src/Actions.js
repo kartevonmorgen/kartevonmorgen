@@ -401,9 +401,11 @@ const Actions = {
         return;
       }
       let url_parsed = parseURL(newURL);
-      const { entry } = url_parsed.params;
+      let { params } = url_parsed;
+      const { entry } = params;
+      const mapCenter = params["map-center"];
       const entries = getState().server.entries;
-      
+
       if(entry){ 
         if(entries[entry] == null){
           WebAPI.getEntries([entry], (err, res) => {
@@ -425,11 +427,9 @@ const Actions = {
           dispatch(Actions.setCurrentEntry(entry));
         }
       }
-
-      const { params } = url_parsed;
-      const value = params["map-center"];
-      if (value && value.length > 2) {
-        let [lat, lng] = value.split(',');
+      
+      if (!entry && mapCenter && mapCenter.length > 2) {
+        let [lat, lng] = mapCenter.split(',');
         lat = parseFloat(lat);
         lng = parseFloat(lng);
         if (!(isNaN(lat) || isNaN(lng))) {
