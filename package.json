@@ -4,7 +4,8 @@
   "description": "Karte von Morgen",
   "scripts": {
     "lint": "eslint src/",
-    "test": "npm run lint & karma start",
+    "pretest": "npm run lint",
+    "test": "karma start",
     "pack": "webpack --production --progress",
     "build": "webpack --progress",
     "start": "webpack-dev-server --progress",
