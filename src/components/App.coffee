@@ -251,7 +251,7 @@ Main = React.createClass
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight
-                    onClick     : (id) -> dispatch Actions.setCurrentEntry id
+                    #onClick     : (id) -> dispatch Actions.setCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
 
