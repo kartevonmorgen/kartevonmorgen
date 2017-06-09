@@ -1,7 +1,7 @@
 import React    from "react";
 import { pure } from "recompose";
 import URLs     from "../constants/URLs";
-import pkg      from "json!../../package.json";
+import pkg      from "../../package.json";
 
 class Info extends React.Component {
 
