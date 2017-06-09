@@ -3,7 +3,7 @@
 React    = require "react"
 T        = React.PropTypes
 URLs     = require "../constants/URLs"
-pkg      = require "json!../../package.json"
+pkg      = require "../../package.json"
 { pure } = require "recompose"
 
 { div, p, a, h2, h3, h4, br, button, i} = React.DOM
