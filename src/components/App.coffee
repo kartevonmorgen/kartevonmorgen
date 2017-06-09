@@ -14,6 +14,7 @@ Info              = require "./Info"
 EntryForm         = require "./EntryForm"
 RatingForm        = require "./RatingForm"
 Message           = require "./Message"
+Modal             = require "./Modal"
 Map               = require "./Map"
 SearchBar         = require "./SearchBar"
 LandingPage       = require "./LandingPage"
@@ -97,52 +98,7 @@ Main = React.createClass
                 dispatch Actions.setSearchText ''
 
         if view.modal?
-          switch view.modal
-
-            when V.LOCATE
-              div className: 'modal',
-                React.createElement Message,
-                  iconClass: "fa fa-spinner fa-pulse"
-                  message: " Dein aktueller Standort wird gesucht ..."
-                  cancelButtonLabel: "abbrechen"
-                  onCancel: -> dispatch Actions.cancelOwnPosition()
-
-            when V.LOCATE_DISABLED
-              div className: 'modal',
-                React.createElement Message,
-                  iconClass: "fa fa-exclamation-triangle"
-                  message: " " + '''
-                    Der Standort kann nicht ermittelt werden.
-                    Die Standortbestimmung ist in den Browser-
-                    oder System-Einstellungen deaktiviert, oder
-                    das GPS hat keinen Empfang.
-                  ''',
-                  cancelButtonLabel: "schließen",
-                  onCancel: -> dispatch Actions.cancelOwnPosition(),
-                  actionButtonLabel: "nochmal versuchen",
-                  actionButtonIcon: "fa fa-repeat",
-                  onAction: -> dispatch Actions.showOwnPosition15minutes()
-
-            when V.DONATE_FOR_EVENTS
-              div className: 'modal',
-                React.createElement Message,
-                  iconClass: "fa fa-info-circle"
-                  message: " " + '''
-                    Events werden zur Zeit noch nicht unterstützt.
-
-                    Ob Tagung, Konferenz oder Festival - auf der Karte von morgen
-                    sollen auch bald Events eingetragen werden.
-                    Wir planen außerdem einen Veranstaltungskalender,
-                    der die Ergebnisse anzeigt und exportiert.
-
-                    Helfe mit, damit diese Funktion schon bald verfügbar ist
-                    und beteilige Dich an der Spendenaktion auf betterplace.org!
-                  ''',
-                  cancelButtonLabel: "schließen",
-                  onCancel: -> dispatch Actions.showFeatureToDonate null
-                  actionButtonLabel: "Spenden",
-                  actionButtonIcon: "fa fa-external-link",
-                  onAction: -> (window.open URLs.DONATE.link, '_blank').focus()
+          React.createElement Modal, { view, dispatch }
 
         div className:"left #{if view.left? and not view.menu then 'opened' else 'closed'}",
 
