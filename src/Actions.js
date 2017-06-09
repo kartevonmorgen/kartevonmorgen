@@ -401,9 +401,12 @@ const Actions = {
         return;
       }
       let url_parsed = parseURL(newURL);
-      const { entry } = url_parsed.params;
+      let { params } = url_parsed;
+      const { entry } = params;
+      const { tags } = params;
+      const mapCenter = params["map-center"];
+
       const entries = getState().server.entries;
-      
       if(entry){ 
         if(entries[entry] == null){
           WebAPI.getEntries([entry], (err, res) => {
@@ -425,16 +428,26 @@ const Actions = {
           dispatch(Actions.setCurrentEntry(entry));
         }
       }
+      else {
+        if (mapCenter && mapCenter.length > 2) {
+          let [lat, lng] = mapCenter.split(',');
+          lat = parseFloat(lat);
+          lng = parseFloat(lng);
+          if (!(isNaN(lat) || isNaN(lng))) {
+            dispatch(Actions.setCenter({lat, lng}));
+            dispatch(Actions.setBbox(getState().map.bbox));
+            dispatch(Actions.search());
+          }
+        }
 
-      const { params } = url_parsed;
-      const value = params["map-center"];
-      if (value && value.length > 2) {
-        let [lat, lng] = value.split(',');
-        lat = parseFloat(lat);
-        lng = parseFloat(lng);
-        if (!(isNaN(lat) || isNaN(lng))) {
-          dispatch(Actions.setCenter({lat, lng}));
-          dispatch(Actions.setBbox(getState().map.bbox));
+        if (tags && tags.length > 0) {
+          let tags2 = tags.split(',');
+          let txt = "";
+          for (let tag of tags2) {
+            txt += ("#" + tag);
+          }
+          dispatch(Actions.setCurrentEntry());
+          dispatch(Actions.setSearchText(txt));
           dispatch(Actions.search());
         }
       }

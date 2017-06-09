@@ -23,7 +23,7 @@ URLs              = require "../constants/URLs"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 
-Growler = require "flash-notification-react-redux/index.js"
+{ GrowlerContainer } = require "flash-notification-react-redux"
 
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
@@ -63,7 +63,7 @@ Main = React.createClass
 
       div className:"main",
 
-        React.createElement Growler.GrowlerContainer,
+        React.createElement GrowlerContainer,
           growler: growler
 
         if view.menu
