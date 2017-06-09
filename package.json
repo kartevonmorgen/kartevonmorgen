@@ -38,7 +38,7 @@
     "recompose": "^0.20.2",
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
-    "redux-logger": "^2.7.4",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "source-sans-pro": "^2.0.10",
     "superagent": "^1.7.1",
