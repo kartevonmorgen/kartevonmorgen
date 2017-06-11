@@ -39,7 +39,6 @@ module.exports = {
   },
 
   searchAddress: (addr, cb) => {
-
     if (addr != null && addr != ""){
       request
         .get(OVERPASS + addr + ".js")
