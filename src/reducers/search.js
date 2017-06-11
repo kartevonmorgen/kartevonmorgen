@@ -16,13 +16,14 @@ const initialState = {
 const unique = cities =>
   cities
     .map(
-      ({city, name, state, country, lat, lon}) =>
+      ({city, name, state, country, lat, lon, osm_id}) =>
         ({
           city: (city || name),
           state,
           country,
           lat,
-          lon
+          lon,
+          osm_id
         }))
     .filter((item, pos, self) => 
       self.findIndex(x => (
@@ -30,12 +31,6 @@ const unique = cities =>
           && x.state == item.state
           && x.country == item.country
         )) == pos)
-    .map((city, pos) =>
-      ({
-        ...city,
-        key: pos
-      })
-    )
 
 const isCity = x =>
   (
@@ -101,7 +96,7 @@ module.exports = (state = initialState, action = {}) => {
     case T.SEARCH_ADDRESS_RESULT:
       if (!action.error) {
         const d = action.payload || [];
-        console.log("result: ", d.filter(isCity));
+        console.log("result: ", unique(d.filter(isCity)));
         return {
           ...state,
           addresses: d,
