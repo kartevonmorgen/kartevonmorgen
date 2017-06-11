@@ -13,19 +13,35 @@ const initialState = {
   cities: []
 };
 
+const unique = cities =>
+  cities
+    .map(
+      ({city, name, state, country, lat, lon}) =>
+        ({
+          city: (city || name),
+          state,
+          country,
+          lat,
+          lon
+        }))
+    .filter((item, pos, self) => 
+      self.findIndex(x => (
+          x.city == item.city
+          && x.state == item.state
+          && x.country == item.country
+        )) == pos)
+    .map((city, pos) =>
+      ({
+        ...city,
+        key: pos
+      })
+    )
+
 const isCity = x =>
   (
     (
       (x["class"] === 'place' && (x.type === 'city' || x.type === 'village')) ||
       (x["class"] === 'boundary' && x.type === 'administrative')
-    )
-    &&
-      (x.address != null)
-    &&
-    (
-      (x.address.city     != null) ||
-      (x.address.county   != null) ||
-      (x.address.village  != null)
     )
   )
 
@@ -88,7 +104,7 @@ module.exports = (state = initialState, action = {}) => {
         return {
           ...state,
           addresses: d,
-          cities: d.filter(isCity)
+          cities: unique(d.filter(isCity))
         }
       }
       return {
