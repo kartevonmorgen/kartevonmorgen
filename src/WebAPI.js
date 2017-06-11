@@ -5,6 +5,7 @@ if (__DEVELOPMENT__) {
 }
 
 const NOMINATIM = "https://nominatim.openstreetmap.org";
+const OVERPASS = "https://search.osmnames.org/q/.js";
 
 import request  from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
@@ -42,11 +43,8 @@ module.exports = {
     if (addr == null) { addr = ''; }
 
     request
-      .get('/search')
-      .use(saPrefix(NOMINATIM))
-      .query({ q: addr })
-      .query({ format: 'json' })
-      .query({ addressdetails: 1 })
+      .get()
+      .use(saPrefix(String.format(OVERPASS, addr)))
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
