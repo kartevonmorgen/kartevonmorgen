@@ -62,7 +62,7 @@ const Actions = {
       WebAPI.searchAddress(s.text, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res,
+          payload: err || res.results,
           error: err != null
         });
       });
@@ -75,7 +75,7 @@ const Actions = {
       WebAPI.searchAddress(s.city, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res,
+          payload: err || res.results,
           error: err != null
         });
       });

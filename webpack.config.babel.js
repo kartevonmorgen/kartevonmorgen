@@ -2,6 +2,7 @@ import path        from "path"
 import webpack     from "webpack"
 import yargs       from 'yargs'
 import HTMLPlugin  from 'html-webpack-plugin'
+import nib         from "nib"
 
 let plugins = [];
 
@@ -10,7 +11,7 @@ const production = yargs.argv.production;
 const config = {
   entry: path.join(__dirname, "src/index.js"),
   output: {
-    path: 'dist/',
+    path: path.join(__dirname, 'dist/'),
     filename: "app.js"
   },
   devServer: {
@@ -21,14 +22,17 @@ const config = {
   cache: true,
   watch: false,
   module: {
-    loaders: [
+    rules: [
       {
         test:   /\.coffee$/,
-        loader: "react-hot!coffee"
+        use: [
+          "react-hot-loader",
+          "coffee-loader"
+        ]
       },
       {
         test:   /\.jsx?$/,
-        loader: "babel",
+        loader: "babel-loader",
         query: {
           plugins: ['transform-decorators-legacy']
         },
@@ -41,31 +45,49 @@ const config = {
       },
       {
         test:   /\.css$/,
-        loader: "style!css"
+        use: [
+          "style-loader",
+          "css-loader"
+        ]
       },
       {
         test:   /\.styl$/,
-        loader: "style!css!stylus" + (production ? '?compress=true' : '')
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "stylus-loader",
+            options: {
+              compress: (production ? true : false),
+              use: [nib()]
+            }
+          }
+        ]
+
       },
       {
         test:   /\.less$/,
-        loader: "style!css!less"
+        use: [
+          "style-loader",
+          "css-loader",
+          "less-loader"
+        ]
       },
       {
         test:   /\.jpe?g$|\.gif$|\.png$/,
-        loader: "url?limit=10000"
+        loader: "url-loader?limit=10000"
       },
       {
         test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff"
+        loader: "url-loader?limit=10000&mimetype=application/font-woff"
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/octet-stream"
+        loader: "url-loader?limit=10000&mimetype=application/octet-stream"
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file"
+        loader: "file-loader"
       },
       {
         test: /\.otf$/,
@@ -73,28 +95,23 @@ const config = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml"
+        loader: "url-loader?limit=10000&mimetype=image/svg+xml"
       },
       {
         test: [/\.scss$/],
-        loader: 'css?localIdentName=[path]!postcss-loader!sass',
+        use: [
+          "css-loader?localIdentName=[path]",
+          "postcss-loader",
+          "sass-loader"
+        ],
       }
     ],
     noParse: [
-      /\.min\.js/,
-      path.join(__dirname, 'bower_components')
+      /\.min\.js$/,
     ]
   },
   resolve: {
-    extensions: ["", ".jsx", ".js", ".coffee"],
-    modulesDirectories: ['node_modules'],
-    fallback: process.env.NODE_PATH
-  },
-  resolveLoader: {
-    fallback: process.env.NODE_PATH
-  },
-  stylus: {
-    use: [(require("nib"))()]
+    extensions: [".jsx", ".js", ".coffee"]
   }
 };
 
@@ -107,7 +124,6 @@ let htmlPluginOptions = {
 
 if (production) {
   plugins.push(new webpack.optimize.UglifyJsPlugin());
-  plugins.push(new webpack.optimize.DedupePlugin());
   htmlPluginOptions.minify = {
     removeComments        : true,
     collapseWhitespace    : true,
