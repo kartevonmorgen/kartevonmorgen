@@ -96,7 +96,6 @@ module.exports = (state = initialState, action = {}) => {
     case T.SEARCH_ADDRESS_RESULT:
       if (!action.error) {
         const d = action.payload || [];
-        console.log("result: ", unique(d.filter(isCity)));
         return {
           ...state,
           addresses: d,
