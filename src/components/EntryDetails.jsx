@@ -130,7 +130,14 @@ class EntryDetails extends Component {
     const { entry, ratings, onRate } = this.props;
     const clz = CSS_CLASSES[entry.categories && entry.categories[0]];
 
-    return (
+    if (!entry) {
+      return(
+        <div>
+          Eintrag wird geladen...
+        </div>
+      );
+    } 
+    else return (
     <div className = {"entry-detail " + clz} id = {entry.id + "-details"}>
       <div className= "category">
         <span>{NAMES[entry.categories && entry.categories[0]]}</span>

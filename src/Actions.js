@@ -3,7 +3,6 @@ import WebAPI                     from "./WebAPI";
 import GeoLocation                from "./GeoLocation";
 import { EDIT, RATING }           from "./constants/Form";
 import { initialize, stopSubmit } from "redux-form";
-import parseURL                   from "./util/parseURL";
 
 const LICENSE_NAME = "CC0-1.0";
 
@@ -55,23 +54,15 @@ const Actions = {
             ? res.invisible
             : void 0;
 
-
         if ((Array.isArray(ids)) && ids.length > 0) {
-
-          const entries = getState().server.entries;
-          const fetch_ids = ids.filter((x) => entries[x] == null);
-
-          if (fetch_ids.length > 0) {
-            dispatch(Actions.getEntries(fetch_ids));
-          }
-
+            dispatch(Actions.getEntries(ids));
         }
       });
 
       WebAPI.searchAddress(s.text, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res,
+          payload: err || res.results,
           error: err != null
         });
       });
@@ -84,7 +75,7 @@ const Actions = {
       WebAPI.searchAddress(s.city, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res,
+          payload: err || res.results,
           error: err != null
         });
       });
@@ -92,19 +83,24 @@ const Actions = {
 
   getEntries: (ids=[]) =>
     (dispatch,getState) => {
-      WebAPI.getEntries(ids, (err, res) => {
-        dispatch({
-          type: T.ENTRIES_RESULT,
-          payload: err || res,
-          error: err != null
+      const entries = getState().server.entries; 
+      const fetch_ids = ids.filter((x) => entries[x] == null);
+      if (fetch_ids.length > 0) {
+
+        WebAPI.getEntries(ids, (err, res) => {
+          dispatch({
+            type: T.ENTRIES_RESULT,
+            payload: err || res,
+            error: err != null
+          });
+          if (!err) {
+            const { ratings } = getState().server;
+            const ids = flatten(res.map(e => e.ratings));
+            const fetch_ids = ids.filter((x) => ratings[x] == null);
+            dispatch(Actions.getRatings(fetch_ids));
+          }
         });
-        if (!err) {
-          const { ratings } = getState().server;
-          const ids = flatten(res.map(e => e.ratings));
-          const fetch_ids = ids.filter((x) => ratings[x] == null);
-          dispatch(Actions.getRatings(fetch_ids));
-        }
-      });
+      }
     },
 
   getRatings: (ids=[]) =>
@@ -394,70 +390,12 @@ const Actions = {
     };
   },
 
-  updateURL: (newURL) =>
-    (dispatch, getState) => {
-      const { url } = getState();
-      if (newURL === url.actual) {
-        return;
-      }
-      let url_parsed = parseURL(newURL);
-      let { params } = url_parsed;
-      const { entry } = params;
-      const { tags } = params;
-      const mapCenter = params["map-center"];
-
-      const entries = getState().server.entries;
-      if(entry){ 
-        if(entries[entry] == null){
-          WebAPI.getEntries([entry], (err, res) => {
-            dispatch({
-              type: T.ENTRIES_RESULT,
-              payload: err || res,
-              error: err != null
-            });
-
-            if (!err) {
-              dispatch(Actions.setCurrentEntry(entry));
-              const { ratings } = getState().server;
-              const ids = flatten(res.map(e => e.ratings));
-              const fetch_ids = ids.filter((x) => ratings[x] == null);
-              dispatch(Actions.getRatings(fetch_ids));
-            }
-          });
-        } else{
-          dispatch(Actions.setCurrentEntry(entry));
-        }
-      }
-      else {
-        if (mapCenter && mapCenter.length > 2) {
-          let [lat, lng] = mapCenter.split(',');
-          lat = parseFloat(lat);
-          lng = parseFloat(lng);
-          if (!(isNaN(lat) || isNaN(lng))) {
-            dispatch(Actions.setCenter({lat, lng}));
-            dispatch(Actions.setBbox(getState().map.bbox));
-            dispatch(Actions.search());
-          }
-        }
-
-        if (tags && tags.length > 0) {
-          let tags2 = tags.split(',');
-          let txt = "";
-          for (let tag of tags2) {
-            txt += ("#" + tag);
-          }
-          dispatch(Actions.setCurrentEntry());
-          dispatch(Actions.setSearchText(txt));
-          dispatch(Actions.search());
-        }
-      }
-
-      dispatch({
-        type: T.UPDATE_URL,
-        payload: url_parsed
-      });
-    },
-
+  updateURL: (url_parsed) => {
+    return {
+      type: T.UPDATE_URL,
+      payload: url_parsed
+    }
+  }
 };
 
 module.exports = Actions;
