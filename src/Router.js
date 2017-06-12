@@ -11,8 +11,7 @@ const route = (e) => {
   const url_parsed = parseURL(window.location.hash);
   const { params } = url_parsed;
 
-  const { entry } = params;
-  const { tags } = params;
+  const { entry, tags } = params;
   const mapCenter = params["map-center"];
 
   if(entry){ 
@@ -25,9 +24,8 @@ const route = (e) => {
       lat = parseFloat(lat);
       lng = parseFloat(lng);
       if (!(isNaN(lat) || isNaN(lng))) {
-        store.dispatch(Actions.showMap());
         store.dispatch(Actions.setCenter({lat, lng}));
-        store.dispatch(Actions.setBbox(getState().map.bbox));
+        // store.dispatch(Actions.setBbox(getState().map.bbox));
         store.dispatch(Actions.search());
       }
     }
@@ -44,7 +42,6 @@ const route = (e) => {
       store.dispatch(Actions.search());
     }
   }
-  store.dispatch(Actions.updateURL(url_parsed));
 };
 
 module.exports = route;

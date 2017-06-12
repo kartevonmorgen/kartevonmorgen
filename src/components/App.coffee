@@ -316,9 +316,10 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.setCurrentEntry id
             onMoveend     : (coordinates) ->
-              dispatch Actions.setCenter coordinates.center
+              # dispatch Actions.setCenter coordinates.center
+              # dispatch Actions.search()
+              window.location.hash = "/?map-center=" + coordinates.center.lat + "," + coordinates.center.lng
               dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.search()
             onZoomend     : (coordinates) ->
               dispatch Actions.setZoom coordinates.zoom
               dispatch Actions.setBbox coordinates.bbox
