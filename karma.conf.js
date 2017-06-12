@@ -1,6 +1,6 @@
-var webpackCfg = require("./webpack.config.coffee");
+require("babel-core/register");
+var webpackCfg = require("./webpack.config.babel.js");
 
-webpackCfg.debug = true;
 webpackCfg.entry = null;
 
 module.exports = (config) => {

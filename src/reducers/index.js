@@ -5,8 +5,8 @@ import view     from "./view";
 import server   from "./server";
 import url      from "./url";
 
-import { GrowlerReducer  } from "flash-notification-react-redux/index.js"
-import { combineReducers } from "redux";
+import { GrowlerReducer as growler } from "flash-notification-react-redux"
+import { combineReducers           } from "redux";
 
 module.exports = combineReducers({
   form,
@@ -15,5 +15,5 @@ module.exports = combineReducers({
   view,
   server,
   url,
-  growler: GrowlerReducer
+  growler
 });
