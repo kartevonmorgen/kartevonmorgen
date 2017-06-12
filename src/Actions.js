@@ -390,10 +390,9 @@ const Actions = {
     };
   },
 
-  updateURL: (url_parsed) => {
+  showMap: () => {
     return {
-      type: T.UPDATE_URL,
-      payload: url_parsed
+      type: T.SHOW_MAP
     }
   }
 };
