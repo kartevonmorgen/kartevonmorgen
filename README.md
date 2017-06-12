@@ -82,20 +82,6 @@ Open it in your browser `http://localhost:8080`.
 On every file change in `src/`, the app will be build
 for you and the browser reloads automatically.
 
-There is still one missing step.
-If the web application would do some REST requests to the openfairdb on port 767
-your browser would tell you something like
-
-    Cross-Origin Request Blocked: The Same Origin Policy disallows reading ...
-
-But we cheat a little bit :)
-A special proxy is listening on `6768` and forwards our requests to `6767`.
-All requests and responses will be intercepted and modified to allow
-[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
-To do so, install `mitmproxy` and run it as follows:
-
-    mitmproxy -s cors.py -R http://127.0.0.1:6767 -b 127.0.0.1 -p 6768
-
 ### Tests
 
 All the tests can be found in the `spec/` folder.
