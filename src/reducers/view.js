@@ -137,7 +137,6 @@ module.exports = (state=initialState, action={}) => {
     case T.SHOW_MAP:
       return {
         ...state,
-        left: V.RESULT,
         menu: false
       }
 

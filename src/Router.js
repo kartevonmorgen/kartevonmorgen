@@ -9,27 +9,23 @@ const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 const Router = {
   
   route: (e) => {
-    console.log("route:", window.location.hash);
-    // const { url } = getState();
-    // if (newURL === url.actual) {
-    //   return;
-    // }
-    const url_parsed = parseURL(window.location.hash);
-    const { params } = url_parsed;
+    console.log("routing:", window.location.hash);
 
-    const { entry, tags, zoom } = params;
-    const center = params["center"];
-
-    const entries = store.getState().server.entries;
-
-    const { map } = store.getState();
+    const { params } = parseURL(window.location.hash);
+    const { entry, zoom, center } = params;
+    const { server, map } = store.getState();
+    const { entries } = server;
 
     if(Object.keys(params).length == 0){
       store.dispatch(Actions.showSearchResults());
     } else{
       if(entry){ 
-        store.dispatch(Actions.getEntries([entry]));
+        store.dispatch(Actions.updateStateFromURL(window.location.hash));
+        store.dispatch(Actions.showMap());
+        store.dispatch(Actions.setCenterOfEntryToFetch(entry));
+        // store.dispatch(Actions.setCenter({lat: e.lat, lng: e.lng}));
         store.dispatch(Actions.setCurrentEntry(entry));
+
       }   
       else {
         if (center && (center.length > 2)) {
@@ -46,7 +42,6 @@ const Router = {
               store.dispatch(Actions.showMap());
             }
 
-            console.log("center --> search");
             store.dispatch(Actions.setCenter({lat, lng}));
             store.dispatch(Actions.search());
             store.dispatch(Actions.setBbox(store.getState().map.bbox));
@@ -57,8 +52,6 @@ const Router = {
         if (zoom) {
           const zoomValue = Number(zoom)
           if(!isNaN(zoomValue)){
-
-            console.log("zoom --> search");
             store.dispatch(Actions.setZoom(zoomValue));
             store.dispatch(Actions.search());
             store.dispatch(Actions.setBbox(store.getState().map.bbox));

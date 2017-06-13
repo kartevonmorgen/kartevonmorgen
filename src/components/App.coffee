@@ -40,10 +40,11 @@ Main = React.createClass
     form    : T.object.isRequired
     server  : T.object.isRequired
     growler : T.object.isRequired
+    url : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, server, map, form, growler } = @props
+    { dispatch, search, view, server, map, form, growler, url } = @props
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -318,14 +319,13 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              if (map.center.lat.toFixed(4) != coordinates.center.lat.toFixed(4)) or (map.center.lng.toFixed(4) != coordinates.center.lng.toFixed(4))
-                console.log("CENTER BBOX");
-                dispatch Actions.setBbox coordinates.bbox
-                dispatch Actions.urlSetCenter coordinates.center
+              dispatch Actions.updateStateFromURL window.location.hash  # because onMoveEnd is triggered when rendering initially and subsequently any URL would be overwritten
+              dispatch Actions.setBbox coordinates.bbox
+              dispatch Actions.urlSetCenter coordinates.center
+              dispatch Actions.search()
               
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
-                console.log("ZOOM BBOX");
                 dispatch Actions.urlSetZoom coordinates.zoom
                 dispatch Actions.setBbox coordinates.bbox
               

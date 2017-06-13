@@ -1,5 +1,6 @@
 import T from "../constants/ActionTypes";
 import mapConst from "../constants/Map";
+import parseURL from "../util/parseURL";
 
 const initialState = {
   zoom: mapConst.DEFAULT_ZOOM,
@@ -11,8 +12,6 @@ const initialState = {
 };
 
 module.exports = (state = initialState, action = {}) => {
-
-  // console.log("map: ", state);
 
   var newState, point;
   switch (action.type) {

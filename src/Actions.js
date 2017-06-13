@@ -103,6 +103,27 @@ const Actions = {
       }
     },
 
+  setCenterOfEntryToFetch: (id) =>
+    (dispatch,getState) => {
+      const entries = getState().server.entries; 
+      if(entries[id] == null){
+        WebAPI.getEntries([id], (err, res) => {
+          dispatch({
+            type: T.ENTRIES_RESULT,
+            payload: err || res,
+            error: err != null
+          });
+          if (!err) {
+            const ids = flatten(res.map(e => e.ratings));
+            dispatch(Actions.getRatings(ids));
+            dispatch(Actions.setCenter({lat: res[0].lat, lng: res[0].lng}));
+          }
+        });
+      } else{
+        dispatch(Actions.setCenter({lat: entries[id].lat, lng: entries[id].lng}));
+      }
+    },
+
   getRatings: (ids=[]) =>
     (dispatch) => {
       WebAPI.getRatings(ids, (err, res) => {
@@ -333,7 +354,7 @@ const Actions = {
       });
   },
 
-  urlSetZoom: (coordinates) => 
+  urlSetZoom: (zoom) => 
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_ZOOM,
@@ -425,6 +446,13 @@ const Actions = {
   showMap: () => {
     return {
       type: T.SHOW_MAP
+    }
+  },
+
+  updateStateFromURL: (hash) => {
+    return {
+      type: T.UPDATE_STATE_FROM_URL,
+      payload: hash
     }
   }
 };
