@@ -3,7 +3,6 @@ import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
 import Flower   from "./Flower";
-import Router   from  "../Router";
 
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
 
@@ -13,9 +12,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
   return (
     <li
       className     = { clz }
-      onClick       = { (ev) => {
-        Router.setCurrentEntry(entry.id)
-      }}
+      onClick       = { (ev) => { onClick(entry.id) }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
       <div className = "pure-g">

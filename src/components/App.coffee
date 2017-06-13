@@ -22,7 +22,6 @@ LandingPage       = require "./LandingPage"
 URLs              = require "../constants/URLs"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
-Router            = require "../Router"
 mapConst          = require "../constants/Map"
 
 { GrowlerContainer } = require "flash-notification-react-redux"
@@ -73,8 +72,8 @@ Main = React.createClass
           React.createElement LandingPage,
             onMenuItemClick: (id) -> switch id
               when 'map'
-                Router.setCenter { center: mapConst.DEFAULT_CENTER, bbox: mapConst.DEFAULT_BBOX}
-                Router.setZoom mapConst.DEFAULT_ZOOM 
+                dispatch Actions.urlSetCenter { center: mapConst.DEFAULT_CENTER, bbox: mapConst.DEFAULT_BBOX}
+                dispatch Actions.urlSetZoom mapConst.DEFAULT_ZOOM 
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
                 dispatch Actions.search()
@@ -147,7 +146,7 @@ Main = React.createClass
                 when V.ENTRY
                   [
                     li
-                      onClick: -> Router.setCurrentEntry()
+                      onClick: -> dispatch Actions.urlSetCurrentEntry()
                       key: "back"
                       className:"pure-u-1-2",
                         i className: "fa fa-chevron-left"
@@ -212,7 +211,7 @@ Main = React.createClass
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight
-                    #onClick     : (id) -> dispatch Actions.setCurrentEntry id
+                    onClick     : (id) -> dispatch Actions.urlSetCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
 
@@ -319,20 +318,20 @@ Main = React.createClass
             highlight     : highlight
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
-            onMarkerClick : (id) -> dispatch Router.setCurrentEntry id
+            onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
               console.log("moveend")
               #dispatch Actions.setCenter coordinates.center
               #dispatch Actions.search()
               #dispatch Actions.setBbox coordinates.bbox
-              Router.setCenter coordinates
+              dispatch Actions.urlSetCenter coordinates
               
             onZoomend     : (coordinates) ->
               console.log("zoom")
               #dispatch Actions.setZoom coordinates.zoom
               #dispatch Actions.search()      
               dispatch Actions.setBbox coordinates.bbox
-              Router.setZoom coordinates.zoom
+              dispatch Actions.urlSetZoom coordinates.zoom
               
 
 module.exports = pure(Main)
