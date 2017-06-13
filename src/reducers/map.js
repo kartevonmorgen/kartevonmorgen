@@ -5,7 +5,7 @@ const initialState = {
   zoom: mapConst.DEFAULT_ZOOM,
   center: mapConst.DEFAULT_CENTER,
   marker: null,
-  bbox: null,
+  bbox: mapConst.DEFAULT_BBOX,
   ownPosition: null,
   ownPositionCancelled: false
 };
@@ -103,6 +103,21 @@ module.exports = (state = initialState, action = {}) => {
         return state;
       }
       break;
+
+    case T.URL_SET_CENTER:
+      return {
+        ...state,
+        center: action.payload.center
+      }
+      break;
+
+    case T.URL_SET_ZOOM:
+      return {
+        ...state,
+        zoom: action.payload.zoom
+      }
+      break;
+
     default:
       return state;
   }

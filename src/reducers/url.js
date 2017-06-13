@@ -6,38 +6,34 @@ const initialHash = "";
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 module.exports = (state=initialHash, action={}) => {
-  const { params } = parseURL(window.location.hash);
-  const {center, zoom } = params;
+  // const { params } = parseURL(window.location.hash);
+  // const {center, zoom } = params;
 
-  const latlng = center ? center.split(",") : null;
+  // const latlng = center ? center.split(",") : null;
 
-  const current = {
-    mapCenter: latlng ? { lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])} : action.payload.current.center,
-    zoom: parseInt(zoom) || mapConst.DEFAULT_ZOOM,
-  };
+  // var current = null;
+  // if(action.type == T.URL_SET_CENTER || action.type == T.URL_SET_ZOOM){
+  //   current = {
+  //     mapCenter: latlng ? { lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])} : action.payload.center,
+  //     zoom: parseInt(zoom) || mapConst.DEFAULT_ZOOM,
+  //   };
+  // }
 
   switch (action.type) {
     case T.URL_SET_CURRENT_ENTRY:
       window.location.hash = "/?" + (action.payload ? ("entry=" + action.payload) : "");
       return window.location.hash;
 
-    case T.URL_SET_MAP_CENTER:
-      
-      const latlngNew = action.payload.new.center.split(",");
-
+    case T.URL_SET_CENTER:   // fall through
+    case T.URL_SET_ZOOM:
+      const center = action.payload.center;
       window.location.hash = "/?"
-        + "center=" + parseFloat(latlngNew[0]).toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "," +  parseFloat(latlngNew[1]).toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "&zoom=" + current.zoom;
+        + "center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "&zoom=" + action.payload.zoom;
+      console.log("center or zoom:", window.location.hash, action.payload);
       return window.location.hash;
     
-    case T.URL_SET_ZOOM:
-      window.location.hash = "/?"
-        + "center=" + current.mapCenter.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "," + current.mapCenter.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "&zoom=" + action.payload.new.zoom;
-      return window.location.hash
-
     default:
       return state;
   }
