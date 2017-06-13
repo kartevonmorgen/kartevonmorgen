@@ -12,7 +12,7 @@ module.exports = (state=initialHash, action={}) => {
   const latlng = center ? center.split(",") : null;
 
   const current = {
-    mapCenter: latlng ? { lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])} : store.getState().map.center,
+    mapCenter: latlng ? { lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])} : action.payload.current.center,
     zoom: parseInt(zoom) || mapConst.DEFAULT_ZOOM,
   };
 
@@ -22,7 +22,8 @@ module.exports = (state=initialHash, action={}) => {
       return window.location.hash;
 
     case T.URL_SET_MAP_CENTER:
-      const latlngNew = action.payload.split(",");
+      
+      const latlngNew = action.payload.new.center.split(",");
 
       window.location.hash = "/?"
         + "center=" + parseFloat(latlngNew[0]).toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
@@ -34,7 +35,7 @@ module.exports = (state=initialHash, action={}) => {
       window.location.hash = "/?"
         + "center=" + current.mapCenter.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
         + "," + current.mapCenter.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "&zoom=" + action.payload;
+        + "&zoom=" + action.payload.new.zoom;
       return window.location.hash
 
     default:

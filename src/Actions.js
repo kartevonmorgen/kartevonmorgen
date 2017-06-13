@@ -328,7 +328,10 @@ const Actions = {
       dispatch(Actions.setBbox(coordinates.bbox));
       dispatch({
         type: T.URL_SET_CENTER,
-        payload: center.lat.toFixed(4) + "," + center.lng.toFixed(4)
+        payload: {
+          current: getState().map,
+          new: center.lat.toFixed(4) + "," + center.lng.toFixed(4)
+        }
       });
   },
 
@@ -336,7 +339,10 @@ const Actions = {
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_ZOOM,
-        payload: zoom
+        payload: {
+          current: getState().map,
+          new: zoom
+        }
       });
   },
 
