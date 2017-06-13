@@ -313,6 +313,33 @@ const Actions = {
     };
   },
 
+  urlSetCurrentEntry: (id) => 
+    (dispatch, getState) => {
+      dispatch(Actions.highlight(id ? [id] : []));
+      dispatch({
+        type: T.URL_SET_CURRENT_ENTRY,
+        payload: id
+      });
+  },
+
+  urlSetCenter: (coordinates) => 
+    (dispatch, getState) => {
+      const {center, bbox} = coordinates;
+      dispatch(Actions.setBbox(coordinates.bbox));
+      dispatch({
+        type: T.URL_SET_CENTER,
+        payload: center.lat.toFixed(4) + "," + center.lng.toFixed(4)
+      });
+  },
+
+  urlSetZoom: (zoom) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_SET_ZOOM,
+        payload: zoom
+      });
+  },
+
   highlight: (id) => {
     if (id == null) {
       id = [];

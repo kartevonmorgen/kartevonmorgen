@@ -35,7 +35,7 @@ const changeURL = (key, newValue) => {
 
   const mapRouting = !current.entry;
 
-  const newUrl =  "/?" 
+  const newUrl =  "/?"
   + (mapRouting ? ("center=" + current.mapCenter.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
   + "," + current.mapCenter.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
   + "&zoom=" + current.zoom) : "")
@@ -61,53 +61,42 @@ const Router = {
 
     const entries = store.getState().server.entries;
 
-    if(entry){ 
-      console.log("entry:", entries[entry]);
-      store.dispatch(Actions.getEntries([entry]));
-      store.dispatch(Actions.setCurrentEntry(entry));
-    }   
-    else {
-      if (mapCenter && mapCenter.length > 2) {
-        let [lat, lng] = mapCenter.split(',');
-        lat = parseFloat(lat);
-        lng = parseFloat(lng);
-        if (!(isNaN(lat) || isNaN(lng))) {
+    if(Object.keys(params).length == 0){
+      console.log("empty hash");
+      store.dispatch(Actions.showSearchResults());
+    } else{
+      if(entry){ 
+        store.dispatch(Actions.getEntries([entry]));
+        store.dispatch(Actions.setCurrentEntry(entry));
+      }   
+      else {
+        if (mapCenter && mapCenter.length > 2) {
+          let [lat, lng] = mapCenter.split(',');
+          lat = parseFloat(lat);
+          lng = parseFloat(lng);
+          if (!(isNaN(lat) || isNaN(lng))) {
 
-          store.dispatch(Actions.showSearchResults());
-          // if someone types specifies a custom map center, show the map directly
-          if(lat != mapConst.DEFAULT_CENTER.lat || lng != mapConst.DEFAULT_CENTER.lng){
-            store.dispatch(Actions.showMap());
+            store.dispatch(Actions.showSearchResults());
+            // if someone specifies a custom map center, show the map directly
+            if(lat != mapConst.DEFAULT_CENTER.lat || lng != mapConst.DEFAULT_CENTER.lng){
+              store.dispatch(Actions.showMap());
+            }
+
+            store.dispatch(Actions.setCenter({lat, lng}));
+            //store.dispatch(Actions.setBbox(store.getState().map.bbox));
+            store.dispatch(Actions.search());
           }
-
-          store.dispatch(Actions.setCenter({lat, lng}));
-          //store.dispatch(Actions.setBbox(store.getState().map.bbox));
-          store.dispatch(Actions.search());
         }
-      }
 
-      if (zoom) {
-        const zoomValue = Number(zoom)
-        if(!isNaN(zoomValue)){
-          store.dispatch(Actions.setZoom(zoomValue));
-          store.dispatch(Actions.search());
+        if (zoom) {
+          const zoomValue = Number(zoom)
+          if(!isNaN(zoomValue)){
+            store.dispatch(Actions.setZoom(zoomValue));
+            store.dispatch(Actions.search());
+          }
         }
       }
     }
-  },
-
-  setCurrentEntry(id){
-    window.location.hash = changeURL("entry", id);
-    store.dispatch(Actions.highlight(id ? [id] : []));
-  },
-
-  setCenter(coordinates){
-    const {center, bbox} = coordinates;
-    store.dispatch(Actions.setBbox(coordinates.bbox));
-    window.location.hash = changeURL("center", center.lat.toFixed(4) + "," + center.lng.toFixed(4));
-  },
-
-  setZoom(zoom){
-    window.location.hash = changeURL("zoom", zoom);
   }
 };
 
