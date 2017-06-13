@@ -3,6 +3,7 @@ import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
 import Flower   from "./Flower";
+import Router   from  "../Router";
 
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
 
@@ -13,7 +14,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     <li
       className     = { clz }
       onClick       = { (ev) => {
-       window.location.hash = "/?entry=" + entry.id;
+        Router.setCurrentEntry(entry.id)
       }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >

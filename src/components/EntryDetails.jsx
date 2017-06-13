@@ -128,7 +128,6 @@ class EntryDetails extends Component {
 
   render() {
     const { entry, ratings, onRate } = this.props;
-    const clz = CSS_CLASSES[entry.categories && entry.categories[0]];
 
     if (!entry) {
       return(
@@ -137,7 +136,9 @@ class EntryDetails extends Component {
         </div>
       );
     } 
-    else return (
+    else {
+      const clz = CSS_CLASSES[entry.categories && entry.categories[0]];
+      return (
     <div className = {"entry-detail " + clz} id = {entry.id + "-details"}>
       <div className= "category">
         <span>{NAMES[entry.categories && entry.categories[0]]}</span>
@@ -198,6 +199,7 @@ class EntryDetails extends Component {
         </div>
       </div>
     </div>)
+    }
   }
 }
 
