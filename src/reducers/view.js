@@ -141,6 +141,12 @@ module.exports = (state=initialState, action={}) => {
         menu: false
       }
 
+    case T.SHOW_SEARCH_RESULTS:
+      return {
+        ...state,
+        left: V.RESULT
+      }
+
     case T.SHOW_OWN_POSITION:
       return {
         ...state,

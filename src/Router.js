@@ -63,12 +63,8 @@ const Router = {
 
     if(entry){ 
       console.log("entry:", entries[entry]);
-      // const e = entries[entry];
-      // store.dispatch(Actions.setCenter({lat: e.lat, lng: e.lng}));
-      store.dispatch(Actions.search());
       store.dispatch(Actions.getEntries([entry]));
       store.dispatch(Actions.setCurrentEntry(entry));
-      //store.dispatch(Actions.setBbox(store.getState().map.bbox));
     }   
     else {
       if (mapCenter && mapCenter.length > 2) {
@@ -77,6 +73,7 @@ const Router = {
         lng = parseFloat(lng);
         if (!(isNaN(lat) || isNaN(lng))) {
 
+          store.dispatch(Actions.showSearchResults());
           // if someone types specifies a custom map center, show the map directly
           if(lat != mapConst.DEFAULT_CENTER.lat || lng != mapConst.DEFAULT_CENTER.lng){
             store.dispatch(Actions.showMap());

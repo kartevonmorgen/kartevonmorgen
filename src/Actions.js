@@ -146,6 +146,7 @@ const Actions = {
   toggleMenu          : () => ({ type: T.TOGGLE_MENU            }),
   showMenu            : () => ({ type: T.SHOW_MENU              }),
   showNewEntry        : () => ({ type: T.SHOW_NEW_ENTRY         }),
+  showSearchResults   : () => ({ type: T.SHOW_SEARCH_RESULTS    }),
   toggleLandingPage   : () => ({ type: T.TOGGLE_MENU            }),
   showImprint         : () => ({ type: T.SHOW_IMPRINT           }),
   cancelNew           : () => ({ type: T.CANCEL_NEW             }),
