@@ -1,3 +1,10 @@
+## v0.1.15 (2017-06-14)
+
+- new(routing): routing by center, zoom and entry
+- new(routing): change URL when interacting with the website; make all updates to center, zoom and entry via the URL
+- new(city-search): use Overpass API instead of Nominatim API for searching cities
+- chore(*): update to webpack 2
+
 ## v0.1.14 (2017-06-01)
 
 - fix(new entry): convert latitude and longitude to float when entering a manual address
