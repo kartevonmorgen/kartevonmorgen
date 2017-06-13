@@ -322,26 +322,24 @@ const Actions = {
       });
   },
 
-  urlSetCenter: (coordinates) => 
+  urlSetCenter: (center) => 
     (dispatch, getState) => {
-      const {center, bbox} = coordinates;
-      dispatch(Actions.setBbox(coordinates.bbox));
       dispatch({
         type: T.URL_SET_CENTER,
         payload: {
-          current: getState().map,
-          new: center.lat.toFixed(4) + "," + center.lng.toFixed(4)
+          center: {lat: center.lat, lng: center.lng},
+          zoom: getState().map.zoom
         }
       });
   },
 
-  urlSetZoom: (zoom) => 
+  urlSetZoom: (coordinates) => 
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_ZOOM,
         payload: {
-          current: getState().map,
-          new: zoom
+          center: getState().map.center,
+          zoom: zoom
         }
       });
   },

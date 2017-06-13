@@ -72,8 +72,6 @@ Main = React.createClass
           React.createElement LandingPage,
             onMenuItemClick: (id) -> switch id
               when 'map'
-                dispatch Actions.urlSetCenter { center: mapConst.DEFAULT_CENTER, bbox: mapConst.DEFAULT_BBOX}
-                dispatch Actions.urlSetZoom mapConst.DEFAULT_ZOOM 
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
                 dispatch Actions.search()
@@ -95,7 +93,7 @@ Main = React.createClass
 
             onSelection: (city) ->
               if city
-                dispatch Actions.setCenter
+                dispatch Actions.urlSetCenter
                   lat: city.lat
                   lng: city.lon
                 dispatch Actions.toggleLandingPage()
@@ -221,7 +219,7 @@ Main = React.createClass
                       React.createElement CityList,
                         cities  : cities
                         onClick : (city) ->
-                          dispatch Actions.setCenter
+                          dispatch Actions.urlSetCenter
                             lat: city.lat
                             lng: city.lon
                           dispatch Actions.setSearchText ''
@@ -320,18 +318,15 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              console.log("moveend")
-              #dispatch Actions.setCenter coordinates.center
-              #dispatch Actions.search()
-              #dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.urlSetCenter coordinates
+              if (map.center.lat.toFixed(4) != coordinates.center.lat.toFixed(4)) or (map.center.lng.toFixed(4) != coordinates.center.lng.toFixed(4))
+                console.log("CENTER BBOX");
+                dispatch Actions.setBbox coordinates.bbox
+                dispatch Actions.urlSetCenter coordinates.center
               
             onZoomend     : (coordinates) ->
-              console.log("zoom")
-              #dispatch Actions.setZoom coordinates.zoom
-              #dispatch Actions.search()      
-              dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.urlSetZoom coordinates.zoom
+              if coordinates.zoom != map.zoom
+                console.log("ZOOM BBOX");
+                dispatch Actions.urlSetZoom coordinates.zoom
+                dispatch Actions.setBbox coordinates.bbox
               
-
 module.exports = pure(Main)
