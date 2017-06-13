@@ -54,12 +54,13 @@ Main = React.createClass
     invisibleEntries =
       (x for id in search.invisible when(x=entries[id])?)
     rightPanelIsOpen = false #right panel moved into landingpage
-    mapCenter =
-     if (c=search.current)
-       e = entries[c]
-       lat: e?.lat
-       lng: e?.lng
-     else map.center
+    mapCenter = 
+      if e?.lat and e?.lng and c=search.current
+         e = entries[c]
+         lat: e?.lat
+         lng: e?.lng
+      else
+        map.center
 
     div className:"app",
 
