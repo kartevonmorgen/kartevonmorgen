@@ -1,11 +1,9 @@
 import T from "../constants/ActionTypes";
+import mapConst from "../constants/Map";
 
 const initialState = {
-  zoom: 13,
-  center: {
-    lat: 48.7784931,
-    lng: 9.1800456
-  },
+  zoom: mapConst.DEFAULT_ZOOM,
+  center: mapConst.DEFAULT_CENTER,
   marker: null,
   bbox: null,
   ownPosition: null,
@@ -13,6 +11,8 @@ const initialState = {
 };
 
 module.exports = (state = initialState, action = {}) => {
+
+  // console.log("map: ", state);
 
   var newState, point;
   switch (action.type) {
