@@ -6,9 +6,9 @@ let middlewares = [thunk];
 
 import { createStore, applyMiddleware, compose } from "redux";
 
-if (__DEVELOPMENT__) {
-  middlewares.push(logger);
-}
+// if (__DEVELOPMENT__) {
+//   middlewares.push(logger);
+// }
 
 // https://github.com/zalmoxisus/redux-devtools-extension
 const createStoreWrapper =

@@ -6,7 +6,7 @@
     "lint": "eslint src/",
     "pretest": "npm run lint",
     "test": "karma start",
-    "pack": "webpack --production --progress",
+    "pack": "webpack --env.production --env.progress",
     "build": "webpack --progress",
     "start": "webpack-dev-server --progress",
     "storybook": "start-storybook -p 9001"
