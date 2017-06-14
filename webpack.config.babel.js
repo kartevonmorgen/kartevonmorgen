@@ -1,12 +1,11 @@
 import path        from "path"
 import webpack     from "webpack"
-import yargs       from 'yargs'
 import HTMLPlugin  from 'html-webpack-plugin'
 import nib         from "nib"
 
 let plugins = [];
 
-const production = yargs.argv.production;
+const production = process.env.NODE_ENV
 
 const config = {
   entry: path.join(__dirname, "src/index.js"),
@@ -129,7 +128,9 @@ let htmlPluginOptions = {
 };
 
 if (production) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    comments: false,
+  }));
   htmlPluginOptions.minify = {
     removeComments        : true,
     collapseWhitespace    : true,
