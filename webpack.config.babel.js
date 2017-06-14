@@ -128,7 +128,9 @@ let htmlPluginOptions = {
 };
 
 if (production) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    comments: false,
+  }));
   htmlPluginOptions.minify = {
     removeComments        : true,
     collapseWhitespace    : true,
