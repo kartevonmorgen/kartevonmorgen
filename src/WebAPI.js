@@ -1,8 +1,4 @@
-let URL = "https://api.ofdb.io/v0";
-
-// if (__DEVELOPMENT__) {
-//   URL = "http://127.0.0.1:6768";
-// }
+const URL       = location.origin + "/api";
 
 const NOMINATIM = "https://nominatim.openstreetmap.org";
 const OVERPASS = "https://search.osmnames.org/q/";

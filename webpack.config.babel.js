@@ -16,7 +16,13 @@ const config = {
   },
   devServer: {
     hot: true,
-    inline: true
+    inline: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:6767",
+        pathRewrite: {"^/api" : ""}
+      }
+    }
   },
   target: "web",
   cache: true,
