@@ -22,9 +22,9 @@ const Router = {
       if(entry){ 
         store.dispatch(Actions.updateStateFromURL(window.location.hash));
         store.dispatch(Actions.showMap());
-        store.dispatch(Actions.setCenterOfEntryToFetch(entry));
-        // store.dispatch(Actions.setCenter({lat: e.lat, lng: e.lng}));
+        store.dispatch(Actions.getEntries([entry]));
         store.dispatch(Actions.setCurrentEntry(entry));
+        store.dispatch(Actions.setCenter(entry));
 
       }   
       else {

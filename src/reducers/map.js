@@ -8,7 +8,8 @@ const initialState = {
   marker: null,
   bbox: mapConst.DEFAULT_BBOX,
   ownPosition: null,
-  ownPositionCancelled: false
+  ownPositionCancelled: false,
+  waiting_for_center_of: null
 };
 
 module.exports = (state = initialState, action = {}) => {
@@ -46,10 +47,19 @@ module.exports = (state = initialState, action = {}) => {
         center: point
       };
     case T.SET_MAP_CENTER:
-      return {
-        ...state,
-        center: action.payload
-      };
+      if ((typeof action.payload) === "string") {
+        // payload is an entry ID
+        return {
+          ...state,
+          waiting_for_center_of: action.payload
+        };
+
+      } else {
+        return {
+          ...state,
+          center: action.payload
+        };
+      }
 
     case T.SET_ZOOM:
       return {
@@ -61,16 +71,31 @@ module.exports = (state = initialState, action = {}) => {
         ...state,
         bbox: action.payload
       };
+
+    case T.ENTRY_RESULT:
+      if (action.error) {
+        return state;
+      }
+      const e_id = state.waiting_for_center_of;
+      const e = action.payload[e_id];
+      if (e) {
+        const { lat, lng } = e;
+        return {
+          ...state,
+          waiting_for_center_of: null,
+          center: { lat, lng }
+        };
+      }
+      return state;
+
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
         return {
           ...state,
           marker: null
         };
-      } else {
-        return state;
       }
-      break;
+      return state;
     case T.SHOW_OWN_POSITION:
       return {
         ...state,
