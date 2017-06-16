@@ -1,6 +1,9 @@
-require("chai").should();
+import chai from "chai";
+import V    from "../../src/util/validation";
 
-import V from "../../src/util/validation";
+import 'babel-polyfill';
+
+chai.should();
 
 describe("Validation", () => {
 
@@ -23,17 +26,9 @@ describe("Validation", () => {
       });
 
       it("should be at most 40 chars long", () => {
-        var i, t;
-        t = ((function() {
-          var j, results;
-          results = [];
-          for (i = j = 1; j <= 50; i = ++j) {
-            results.push("a");
-          }
-          return results;
-        })()).join('');
+
         F({
-          title: t
+          title: new Array(41).fill('a').join(''),
         }).title.should.have.string("Zu langer Titel");
       });
 
@@ -53,39 +48,20 @@ describe("Validation", () => {
       });
 
       it("should be at least 10 chars long", () => {
-        return F({
+        F({
           description: "asadf"
         }).description.should.have.string("Zu wenig Text");
       });
 
       it("should be at most 250 chars long", () => {
-        var i, t;
-        t = ((function() {
-          var j, results;
-          results = [];
-          for (i = j = 1; j <= 251; i = ++j) {
-            results.push("a");
-          }
-          return results;
-        })()).join('');
         F({
-          description: t
+          description: new Array(251).fill('a').join(''),
         }).description.should.have.string("Zu lange Beschreibung");
       });
 
       it("should not throw error if valid", () => {
-        var i, t;
-        t = ((function() {
-          var j, results;
-          results = [];
-          for (i = j = 1; j <= 50; i = ++j) {
-            results.push("a");
-          }
-          return results;
-        })()).join('');
-
         should.not.exist(F({
-          description: t
+          description: new Array(50).fill('a').join(''),
         }).description);
       });
     });
@@ -101,7 +77,7 @@ describe("Validation", () => {
         }).lng.should.have.string("Pflicht");
       });
 
-      it("should be a number ", function() {
+      it("should be a number ", () => {
         F({
           lat: "ab"
         }).lat.should.have.string("Ungültiger Breitengrad");
