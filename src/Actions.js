@@ -100,27 +100,13 @@ const Actions = {
             dispatch(Actions.getRatings(fetch_ids));
           }
         });
-      }
-    },
-
-  setCenterOfEntryToFetch: (id) =>
-    (dispatch,getState) => {
-      const entries = getState().server.entries; 
-      if(entries[id] == null){
-        WebAPI.getEntries([id], (err, res) => {
-          dispatch({
-            type: T.ENTRIES_RESULT,
-            payload: err || res,
-            error: err != null
-          });
-          if (!err) {
-            const ids = flatten(res.map(e => e.ratings));
-            dispatch(Actions.getRatings(ids));
-            dispatch(Actions.setCenter({lat: res[0].lat, lng: res[0].lng}));
-          }
-        });
       } else{
-        dispatch(Actions.setCenter({lat: entries[id].lat, lng: entries[id].lng}));
+        const entr = Object.keys(entries).map((key) => entries[key])
+        dispatch({
+          type: T.ENTRIES_RESULT,
+          payload: entr.filter((e) => ids.includes(e.id)),
+          error: false
+        })
       }
     },
 

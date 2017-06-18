@@ -56,9 +56,9 @@ Main = React.createClass
     rightPanelIsOpen = false #right panel moved into landingpage
     mapCenter = 
       if e?.lat and e?.lng and c=search.current
-         e = entries[c]
-         lat: e?.lat
-         lng: e?.lng
+        e = entries[c]
+        lat: e?.lat
+        lng: e?.lng
       else
         map.center
 
@@ -73,6 +73,7 @@ Main = React.createClass
           React.createElement LandingPage,
             onMenuItemClick: (id) -> switch id
               when 'map'
+                dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
                 dispatch Actions.search()
@@ -119,7 +120,7 @@ Main = React.createClass
                   dispatch Actions.toggleSearchCategory c
                   dispatch Actions.search()
               onChange        : (txt="") ->
-                dispatch Actions.setCurrentEntry()
+                dispatch Actions.urlSetCurrentEntry()
                 dispatch Actions.setSearchText txt
                 dispatch Actions.search()
               onLenseClick    : ->
@@ -237,7 +238,7 @@ Main = React.createClass
                         ratings     : ratings
                         highlight   : highlight
                         onClick     :
-                          (id) -> dispatch Actions.setCurrentEntry id
+                          (id) -> dispatch Actions.urlSetCurrentEntry id
                         onMouseEnter: (id) -> dispatch Actions.highlight id
                         onMouseLeave: (id) -> dispatch Actions.highlight()
               when V.ENTRY
@@ -319,6 +320,7 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
+              console.log("moveend");
               dispatch Actions.updateStateFromURL window.location.hash  # because onMoveEnd is triggered when rendering initially and subsequently any URL would be overwritten
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.urlSetCenter coordinates.center
