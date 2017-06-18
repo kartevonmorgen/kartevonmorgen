@@ -29,7 +29,9 @@ module.exports = (state=initialHash, action={}) => {
     case T.URL_SET_ZOOM:
       const center = action.payload.center;
         window.location.hash = "/?"
-          + (entry ? ("entry=" + entry) : (center ? "center=" + center : ""))
+          + (entry ? ("entry=" + entry) : ("center="
+            + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+            + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
           + "&zoom=" + action.payload.zoom;
       return {hash: window.location.hash};
     
