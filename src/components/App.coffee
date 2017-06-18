@@ -48,6 +48,7 @@ Main = React.createClass
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
+    { waiting_for_search_results } = view
 
     resultEntries    =
       (x for id in search.result when (x=entries[id])?)
@@ -208,6 +209,7 @@ Main = React.createClass
               when V.RESULT
                 div className: "result",
                   React.createElement ResultList,
+                    waiting     : waiting_for_search_results
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight

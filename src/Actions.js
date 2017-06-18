@@ -56,6 +56,8 @@ const Actions = {
 
         if ((Array.isArray(ids)) && ids.length > 0) {
             dispatch(Actions.getEntries(ids));
+        } else{
+          dispatch(Actions.noSearchResults());
         }
       });
 
@@ -68,6 +70,10 @@ const Actions = {
       });
 
     },
+
+  noSearchResults: () => ({
+    type: T.NO_SEARCH_RESULTS
+  }),
 
   searchCity: () =>
     (dispatch, getState) => {

@@ -131,9 +131,9 @@ class EntryDetails extends Component {
 
     if (!entry) {
       return(
-        <div>
-          Eintrag wird geladen...
-        </div>
+        <p className= "entry-loading">
+          <span>Eintrag wird geladen...</span>
+        </p>
       );
     } 
     else {

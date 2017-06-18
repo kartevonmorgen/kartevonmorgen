@@ -6,13 +6,13 @@ const initialState = {
   menu: false,
   left: V.RESULT,
   right: null,
-  modal: null
+  modal: null,
+  waiting_for_search_results: true
 };
 
 module.exports = (state=initialState, action={}) => {
 
   switch (action.type) {
-
     case T.TOGGLE_MENU:
       if (state.modal != null) {
         return state;
@@ -125,7 +125,13 @@ module.exports = (state=initialState, action={}) => {
         }
       }
       return state;
-      break;
+
+    case T.ENTRIES_RESULT:
+    case T.NO_SEARCH_RESULTS:
+      return {
+        ...state,
+        waiting_for_search_results: false
+      }
 
     case T.SET_CURRENT_ENTRY:
       return {
@@ -143,7 +149,8 @@ module.exports = (state=initialState, action={}) => {
     case T.SHOW_SEARCH_RESULTS:
       return {
         ...state,
-        left: V.RESULT
+        left: V.RESULT,
+        waiting_for_search_results: true
       }
 
     case T.SHOW_OWN_POSITION:

@@ -50,7 +50,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </li>)
 }
 
-const ResultList = ({ entries, ratings, highlight, onClick, onMouseEnter, onMouseLeave}) => {
+const ResultList = ({ waiting, entries, ratings, highlight, onClick, onMouseEnter, onMouseLeave}) => {
   const results = entries.map( e =>
     <ResultListElement
       entry        = { e            }
@@ -65,10 +65,14 @@ const ResultList = ({ entries, ratings, highlight, onClick, onMouseEnter, onMous
     {
       (results.length > 0)
         ? <ul>{results}</ul>
+        : (waiting ? 
+        <p className= "loading">
+          <span>Einträge werden geladen...</span>
+        </p>
         : <p className= "no-results">
             <i className= "fa fa-frown-o" />
             <span>Es konnten keine Einträge gefunden werden</span>
-          </p>
+          </p>)
     }
     </div>)
 }
