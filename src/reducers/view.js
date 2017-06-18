@@ -3,8 +3,8 @@ import V from "../constants/PanelView";
 import C from "../constants/Categories";
 
 const initialState = {
-  menu: true,
-  left: null,
+  menu: false,
+  left: V.RESULT,
   right: null,
   modal: null
 };
