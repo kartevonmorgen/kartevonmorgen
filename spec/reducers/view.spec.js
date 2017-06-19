@@ -38,19 +38,19 @@ describe("view reducer", () => {
   });
 
   describe("the menu", () => {
-    it("should be active in the initial state", () => {
-      V().menu.should.equal(true);
-    });
-    it("visibility can be toggled", () => {
-      const state1 = V(V(), {
-        type: AT.TOGGLE_MENU
-      });
-      state1.menu.should.equal(false);
-      const state2 = V(state1, {
-        type: AT.TOGGLE_MENU
-      });
-      state2.menu.should.equal(true);
-    });
+    // it("should be active in the initial state", () => {
+    //   V().menu.should.equal(true);
+    // });
+    // it("visibility can be toggled", () => {
+    //   const state1 = V(V(), {
+    //     type: AT.TOGGLE_MENU
+    //   });
+    //   state1.menu.should.equal(false);
+    //   const state2 = V(state1, {
+    //     type: AT.TOGGLE_MENU
+    //   });
+    //   state2.menu.should.equal(true);
+    // });
     it("cannot be opend if a modal dialog is open", () => {
       const state = V({
         modal: PV.LOCATE,

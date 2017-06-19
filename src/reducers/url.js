@@ -65,15 +65,15 @@ module.exports = (state=initialState, action={}) => {
       return {hash: window.location.hash};
 
     case T.URL_SET_SEARCH:
-      console.log("TEXT: ", action.search_text);
-      window.location.hash = "/?"
-        + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "&zoom=" + action.zoom
-        + "&" + searchTextToUrlQuery(action.search_text);
-      console.log(searchTextToUrlQuery(action.search_text));
-      return { hash: window.location.hash };
-      // return { hash: "blubb" };
+      // console.log("TEXT: ", action.search_text);
+      // window.location.hash = "/?"
+      //   + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+      //   + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+      //   + "&zoom=" + action.zoom
+      //   + "&" + searchTextToUrlQuery(action.search_text);
+      // console.log(searchTextToUrlQuery(action.search_text));
+      // return { hash: window.location.hash };
+      return { hash: "blubb" };
 
     default:
       return state;
