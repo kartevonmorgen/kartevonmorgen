@@ -32,10 +32,12 @@ const Router = {
         }
 
       }   
-      else if (center && (center.length > 2)) {
+      else if (center && center.includes(',') && (center.length >= 3)) {
         let [lat, lng] = center.split(',');
         lat = parseFloat(lat);
         lng = parseFloat(lng);
+        console.log(lat, lng);
+        console.log(map.center)
 
         if (!(isNaN(lat) || isNaN(lng))
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
@@ -48,15 +50,15 @@ const Router = {
         }
       }
       if (zoom) {
-        console.log("route: zoom");
         const zoomValue = Number(zoom)
-        if(!isNaN(zoomValue)){
+        if(!isNaN(zoomValue) && zoomValue != map.zoom){
+          console.log("route: zoom", zoomValue, map.zoom);
           dispatch(Actions.setZoom(zoomValue));
           dispatch(Actions.search());
           dispatch(Actions.setBbox(getState().map.bbox));
         }
       }
-      if ((search && search != "") || (tags && tags != "")) {
+      if (search || tags || search == "" || tags == "") {
         console.log("route: search", search, tags);
         var search_str = search ? search : "";
         if(search && tags){
@@ -65,6 +67,9 @@ const Router = {
         if(tags){
           console.log("tags: ", tags.split(','), tags.split(',').reduce((acc, tag) => acc + " #" + tag));
           search_str += "#" + tags.split(',').reduce((acc, tag) => acc + " #" + tag);
+        }
+        if(tags == ""){
+          search_str += " #";
         }
 
         dispatch(Actions.setSearchText(search_str));

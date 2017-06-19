@@ -23,6 +23,7 @@ URLs              = require "../constants/URLs"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
+Router            = require "../Router"
 
 { GrowlerContainer } = require "flash-notification-react-redux"
 
@@ -122,8 +123,9 @@ Main = React.createClass
                   dispatch Actions.search()
               onChange        : (txt="") ->
                 dispatch Actions.urlSetCurrentEntry()
+                dispatch Actions.urlSetSearch txt
                 dispatch Actions.setSearchText txt
-                dispatch Actions.search()
+                # dispatch Actions.search()
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
@@ -147,7 +149,9 @@ Main = React.createClass
                 when V.ENTRY
                   [
                     li
-                      onClick: -> dispatch Actions.urlSetCurrentEntry()
+                      onClick: -> 
+                        dispatch Actions.urlSetCurrentEntry()
+                        dispatch Actions.showSearchResults()
                       key: "back"
                       className:"pure-u-1-2",
                         i className: "fa fa-chevron-left"

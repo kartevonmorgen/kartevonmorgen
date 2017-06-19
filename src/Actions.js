@@ -331,9 +331,12 @@ const Actions = {
       dispatch(Actions.highlight(id ? [id] : []));
       dispatch({
         type: T.URL_SET_CURRENT_ENTRY,
-        payload: id
+        entry: id,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        search: getState().search.text,
       });
-  },
+    },
 
   urlSetCenter: (center) => 
     (dispatch, getState) => {
@@ -344,7 +347,7 @@ const Actions = {
           zoom: getState().map.zoom
         }
       });
-  },
+    },
 
   urlSetZoom: (zoom) => 
     (dispatch, getState) => {
@@ -355,7 +358,28 @@ const Actions = {
           zoom: zoom
         }
       });
-  },
+    },
+
+  urlSetSearch: (search_text) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_SET_SEARCH,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        search_text: search_text
+      });
+    },
+
+  urlSetTags: (tags) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_SET_TAGS,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        tags: tags
+      });
+    },
+
 
   highlight: (id) => {
     if (id == null) {
