@@ -9,28 +9,12 @@ const initialState = {
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 const searchTextToUrlQuery = (text) => {
-  const TAG_REGEX = /#(\w*)/g;
-  const search = text.replace(TAG_REGEX, "").replace(/\s+/g, " ");
-  let tags = [];
-  var match;
-  do {
-    match = TAG_REGEX.exec(text);
-    if(match) tags.push(match[1]);
-  } while(match)
-
-  let query = "&search=" + encodeURIComponent(search.trim());
-  if(tags.length > 0){
-    query += "&tags=" + tags.reduce((acc, tag) => acc + "," + encodeURIComponent(tag));
-  }
-  if(text[text.length-1] == ' '){
-    query += "%20";
-  }
+  let query = "&search=" 
+    + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
   return query;
 }
 
 module.exports = (state=initialState, action={}) => {
-  // const { entry, center, zoom, search, tags } = parseURL(window.location.hash).params;
-
   switch (action.type) {
     case T.UPDATE_STATE_FROM_URL:
       return {hash: window.location.hash};

@@ -29,17 +29,14 @@ describe("url reducer", () => {
       A.urlSetSearch("blabla")(dispatch, getState);
       R({}, action).hash.should.equal(first_query_part + "search=blabla");
 
-      A.urlSetSearch("blabla #foo #bar")(dispatch, getState);
-      R({}, action).hash.should.equal(first_query_part + "search=blabla&tags=foo,bar");
-
       A.urlSetSearch(" blabla  #foo blubb  #bar   blabla")(dispatch, getState);
-      R({}, action).hash.should.equal(first_query_part + "search=blabla%20blubb%20blabla&tags=foo,bar");
+      R({}, action).hash.should.equal(first_query_part + "search=blabla%20%23foo%20blubb%20%23bar%20blabla");
 
       A.urlSetSearch("blabla #")(dispatch, getState);
-      R({}, action).hash.should.equal(first_query_part + "search=blabla&tags=");
+      R({}, action).hash.should.equal(first_query_part + "search=blabla%20%23");
 
       A.urlSetSearch("blabla # ")(dispatch, getState);
-      R({}, action).hash.should.equal(first_query_part + "search=blabla&tags=%20");
+      R({}, action).hash.should.equal(first_query_part + "search=blabla%20%23%20");
 
       return true;
     });
