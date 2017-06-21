@@ -154,6 +154,7 @@ if (production) {
 }
 
 plugins.push(new HTMLPlugin(htmlPluginOptions));
+plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
 
 config.plugins = plugins;
 module.exports = config;
