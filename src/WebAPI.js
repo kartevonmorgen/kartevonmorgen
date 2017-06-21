@@ -1,4 +1,5 @@
 const URL       = location.origin + "/api";
+
 const NOMINATIM = "https://nominatim.openstreetmap.org";
 const OVERPASS = "https://search.osmnames.org/q/";
 
