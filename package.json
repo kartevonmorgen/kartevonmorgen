@@ -6,8 +6,8 @@
     "lint": "eslint src/",
     "pretest": "npm run lint",
     "test": "karma start",
-    "pack": "NODE_ENV=production webpack --progress --display-optimization-bailout",
-    "build": "webpack --progress --display-optimization-bailout",
+    "pack": "NODE_ENV=production webpack --progress",
+    "build": "webpack --progress",
     "start": "webpack-dev-server --progress",
     "storybook": "start-storybook -p 9001"
   },
@@ -90,9 +90,9 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "url-loader": "^0.5.7",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0",
-    "webpack-hot-middleware": "^2.18.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-hot-middleware": "^2.10.0",
     "why-did-you-update": "0.0.8"
   }
 }
