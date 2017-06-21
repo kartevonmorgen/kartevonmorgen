@@ -2,9 +2,7 @@ import T from "../constants/ActionTypes";
 import mapConst from "../constants/Map";
 import parseURL from "../util/parseURL";
 
-const initialState = { 
-  hash: ""
-};
+const initialState = "";
 
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
@@ -18,18 +16,20 @@ module.exports = (state=initialState, action={}) => {
   var { center, zoom, entry, search_text } = action;
 
   if(action.type == T.UPDATE_STATE_FROM_URL){
-      return {hash: window.location.hash};
-  } else{
-    if(window.location.hash.includes("entry")){
+      return window.location.hash;
+  } else if(action.type.startsWith("URL")){
+    if(!entry && window.location.hash.includes("entry")){
       entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];
     }
     window.location.hash = "/?"
-      + (entry ? ("entry=" + entry) :
+      + ((entry && entry != "NONE") ? ("entry=" + entry) :
         ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
         + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
       + "&zoom=" + zoom
-      + (entry ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""));
+      + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""));
 
-    return { hash: window.location.hash };
+    return window.location.hash;
   }
+
+  return initialState;
 };

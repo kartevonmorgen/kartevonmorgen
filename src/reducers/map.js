@@ -164,14 +164,14 @@ module.exports = (state = initialState, action = {}) => {
     case T.URL_SET_CENTER:
       return {
         ...state,
-        center: action.payload.center
+        center: action.center
       }
       break;
 
     case T.URL_SET_ZOOM:
       return {
         ...state,
-        zoom: action.payload.zoom
+        zoom: action.zoom
       }
       break;
 

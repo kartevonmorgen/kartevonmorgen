@@ -150,7 +150,7 @@ Main = React.createClass
                   [
                     li
                       onClick: -> 
-                        dispatch Actions.urlSetCurrentEntry()
+                        dispatch Actions.urlSetCurrentEntry("NONE")
                         dispatch Actions.showSearchResults()
                       key: "back"
                       className:"pure-u-1-2",
