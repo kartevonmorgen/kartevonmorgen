@@ -9,21 +9,27 @@ const initialState = {
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 const searchTextToUrlQuery = (text) => {
-  const parts = text.split('#');
-  const tags = parts.map(part => part.split(' ')[0]).slice(1, parts.length);
-  const search = parts.map(part => part.split(' ')[1])
-    .reduce((acc, part) => acc + " " + part);
-  console.log(search);
+  const TAG_REGEX = /#(\w*)/g;
+  const search = text.replace(TAG_REGEX, "").replace(/\s+/g, " ");
+  let tags = [];
+  var match;
+  do {
+    match = TAG_REGEX.exec(text);
+    if(match) tags.push(match[1]);
+  } while(match)
 
-  var text = "search=" + search;
+  let query = "&search=" + encodeURIComponent(search.trim());
   if(tags.length > 0){
-    text += "&tags=" + tags.reduce((acc, tag) => acc + "," + tag);
+    query += "&tags=" + tags.reduce((acc, tag) => acc + "," + encodeURIComponent(tag));
   }
-  return text;
+  if(text[text.length-1] == ' '){
+    query += "%20";
+  }
+  return query;
 }
 
 module.exports = (state=initialState, action={}) => {
-  const { entry, center, zoom, search, tags } = parseURL(window.location.hash).params;
+  // const { entry, center, zoom, search, tags } = parseURL(window.location.hash).params;
 
   switch (action.type) {
     case T.UPDATE_STATE_FROM_URL:
@@ -65,15 +71,13 @@ module.exports = (state=initialState, action={}) => {
       return {hash: window.location.hash};
 
     case T.URL_SET_SEARCH:
-      // console.log("TEXT: ", action.search_text);
-      // window.location.hash = "/?"
-      //   + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-      //   + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-      //   + "&zoom=" + action.zoom
-      //   + "&" + searchTextToUrlQuery(action.search_text);
-      // console.log(searchTextToUrlQuery(action.search_text));
-      // return { hash: window.location.hash };
-      return { hash: "blubb" };
+      console.log("TEXT: ", action.search_text);
+      window.location.hash = "/?"
+        + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "&zoom=" + action.zoom
+        + searchTextToUrlQuery(action.search_text);
+      return { hash: window.location.hash };
 
     default:
       return state;
