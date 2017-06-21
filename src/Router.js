@@ -36,8 +36,6 @@ const Router = {
         let [lat, lng] = center.split(',');
         lat = parseFloat(lat);
         lng = parseFloat(lng);
-        console.log(lat, lng);
-        console.log(map.center)
 
         if (!(isNaN(lat) || isNaN(lng))
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
@@ -65,7 +63,6 @@ const Router = {
           search_str += " ";
         }
         if(tags){
-          console.log("tags: ", tags.split(','), tags.split(',').reduce((acc, tag) => acc + " #" + tag));
           search_str += "#" + tags.split(',').reduce((acc, tag) => acc + " #" + tag);
         }
         if(tags == ""){

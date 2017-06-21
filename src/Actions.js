@@ -193,9 +193,11 @@ const Actions = {
           const id = (e != null ? e.id : void 0) || res;
           WebAPI.getEntries([id], (err, res) => {
             dispatch({
-              type: T.ENTRIES_RESULT,
-              payload: err || res,
-              error: err != null
+              type: T.URL_SET_CURRENT_ENTRY,
+              entry: id,
+              center: getState().map.center,
+              zoom: getState().map.zoom,
+              search_text: getState().search.text,
             });
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
