@@ -32,43 +32,40 @@ const Actions = {
       const ne = m.bbox.getNorthEast();
       const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-      if (cats.length < 1) {
-        return;
-      }
+      if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {
+        WebAPI.search(s.text, cats, bbox, (err, res) => {
 
-      WebAPI.search(s.text, cats, bbox, (err, res) => {
+          dispatch({
+            type: T.SEARCH_RESULT,
+            payload: err || res,
+            error: err != null,
+            noList: s.text == null
+          }); 
 
-        dispatch({
-          type: T.SEARCH_RESULT,
-          payload: err || res,
-          error: err != null,
-          noList: s.text == null
-        }); 
+          const ids =
+            Array.isArray(res != null ? res.visible : void 0)
+            ? Array.isArray(res.invisible)
+              ? res.visible.concat(res.invisible)
+              : res.visible
+            : res != null
+              ? res.invisible
+              : void 0;
 
-        const ids =
-          Array.isArray(res != null ? res.visible : void 0)
-          ? Array.isArray(res.invisible)
-            ? res.visible.concat(res.invisible)
-            : res.visible
-          : res != null
-            ? res.invisible
-            : void 0;
-
-        if ((Array.isArray(ids)) && ids.length > 0) {
-            dispatch(Actions.getEntries(ids));
-        } else{
-          dispatch(Actions.noSearchResults());
-        }
-      });
-
-      WebAPI.searchAddress(s.text, (err, res) => {
-        dispatch({
-          type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res.results,
-          error: err != null
+          if ((Array.isArray(ids)) && ids.length > 0) {
+              dispatch(Actions.getEntries(ids));
+          } else{
+            dispatch(Actions.noSearchResults());
+          }
         });
-      });
 
+        WebAPI.searchAddress(s.text, (err, res) => {
+          dispatch({
+            type: T.SEARCH_ADDRESS_RESULT,
+            payload: err || res.results,
+            error: err != null
+          });
+        });
+      }
     },
 
   noSearchResults: () => ({
