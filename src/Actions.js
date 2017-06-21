@@ -58,13 +58,16 @@ const Actions = {
           }
         });
 
-        WebAPI.searchAddress(s.text, (err, res) => {
-          dispatch({
-            type: T.SEARCH_ADDRESS_RESULT,
-            payload: err || res.results,
-            error: err != null
+        if(s.text != null){
+          const address = s.text .replace(/#/g,"");
+          WebAPI.searchAddress(address, (err, res) => {
+            dispatch({
+              type: T.SEARCH_ADDRESS_RESULT,
+              payload: err || res.results,
+              error: err != null
+            });
           });
-        });
+        }
       }
     },
 
