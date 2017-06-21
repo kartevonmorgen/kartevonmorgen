@@ -15,55 +15,21 @@ const searchTextToUrlQuery = (text) => {
 }
 
 module.exports = (state=initialState, action={}) => {
-  switch (action.type) {
-    case T.UPDATE_STATE_FROM_URL:
+  var { center, zoom, entry, search_text } = action;
+
+  if(action.type == T.UPDATE_STATE_FROM_URL){
       return {hash: window.location.hash};
+  } else{
+    if(window.location.hash.includes("entry")){
+      entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];
+    }
+    window.location.hash = "/?"
+      + (entry ? ("entry=" + entry) :
+        ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
+      + "&zoom=" + zoom
+      + (entry ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""));
 
-    case T.URL_SET_CURRENT_ENTRY:
-      if(action.entry){
-        window.location.hash = "/?entry=" + action.entry 
-          + (zoom ? ("&zoom=" + zoom) : "");
-      } else{
-        window.location.hash = "/?"
-          + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "&zoom=" + action.zoom
-          + (action.search ? ("&search=" + encodeURIComponent(action.search)) : "");
-      }
-      return { 
-        // ...state,
-        hash: window.location.hash 
-      };
-
-    case T.URL_SET_CENTER:
-      if(!state.hash.includes("entry")){
-        const center = action.payload.center;
-        window.location.hash = "/?"
-          + "center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "&zoom=" + action.payload.zoom;
-      }
-      return {hash: window.location.hash};
-
-    case T.URL_SET_ZOOM:
-      const center = action.payload.center;
-        window.location.hash = "/?"
-          + (entry ? ("entry=" + entry) : ("center="
-            + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-            + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
-          + "&zoom=" + action.payload.zoom;
-      return {hash: window.location.hash};
-
-    case T.URL_SET_SEARCH:
-      console.log("TEXT: ", action.search_text);
-      window.location.hash = "/?"
-        + "center=" + action.center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "," +  action.center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-        + "&zoom=" + action.zoom
-        + searchTextToUrlQuery(action.search_text);
-      return { hash: window.location.hash };
-
-    default:
-      return state;
+    return { hash: window.location.hash };
   }
 };

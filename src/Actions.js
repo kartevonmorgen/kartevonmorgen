@@ -334,7 +334,7 @@ const Actions = {
         entry: id,
         center: getState().map.center,
         zoom: getState().map.zoom,
-        search: getState().search.text,
+        search_text: getState().search.text,
       });
     },
 
@@ -342,10 +342,9 @@ const Actions = {
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_CENTER,
-        payload: {
-          center: {lat: center.lat, lng: center.lng},
-          zoom: getState().map.zoom
-        }
+        center: {lat: center.lat, lng: center.lng},
+        zoom: getState().map.zoom,
+        search_text: getState().search.text,
       });
     },
 
@@ -353,10 +352,9 @@ const Actions = {
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_ZOOM,
-        payload: {
-          center: getState().map.center,
-          zoom: zoom
-        }
+        center: getState().map.center,
+        zoom: zoom,
+        search_text: getState().search.text,
       });
     },
 
