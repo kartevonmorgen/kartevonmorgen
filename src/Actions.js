@@ -231,7 +231,7 @@ const Actions = {
         ...rating,
         value: Number.parseInt(rating.value)
       };
-      WebAPI.createRaing(r, (err, res) => {
+      WebAPI.createRating(r, (err, res) => {
         if (err) {
           dispatch(stopSubmit(RATING.id, {
             _error: err

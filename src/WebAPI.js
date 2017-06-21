@@ -123,7 +123,7 @@ module.exports = {
     });
   },
 
-  createRaing: (r, cb) => {
+  createRating: (r, cb) => {
     request
       .post('/ratings/')
       .use(prefix)
