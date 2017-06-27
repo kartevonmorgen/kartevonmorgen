@@ -1,4 +1,5 @@
 const URL       = location.origin + "/api";
+
 const NOMINATIM = "https://nominatim.openstreetmap.org";
 const OVERPASS = "https://search.osmnames.org/q/";
 
@@ -122,7 +123,7 @@ module.exports = {
     });
   },
 
-  createRaing: (r, cb) => {
+  createRating: (r, cb) => {
     request
       .post('/ratings/')
       .use(prefix)

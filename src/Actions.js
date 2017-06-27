@@ -32,42 +32,48 @@ const Actions = {
       const ne = m.bbox.getNorthEast();
       const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-      if (cats.length < 1) {
-        return;
-      }
+      if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {
+        WebAPI.search(s.text, cats, bbox, (err, res) => {
 
-      WebAPI.search(s.text, cats, bbox, (err, res) => {
+          dispatch({
+            type: T.SEARCH_RESULT,
+            payload: err || res,
+            error: err != null,
+            noList: s.text == null
+          }); 
 
-        dispatch({
-          type: T.SEARCH_RESULT,
-          payload: err || res,
-          error: err != null,
-          noList: s.text == null
-        }); 
+          const ids =
+            Array.isArray(res != null ? res.visible : void 0)
+            ? Array.isArray(res.invisible)
+              ? res.visible.concat(res.invisible)
+              : res.visible
+            : res != null
+              ? res.invisible
+              : void 0;
 
-        const ids =
-          Array.isArray(res != null ? res.visible : void 0)
-          ? Array.isArray(res.invisible)
-            ? res.visible.concat(res.invisible)
-            : res.visible
-          : res != null
-            ? res.invisible
-            : void 0;
-
-        if ((Array.isArray(ids)) && ids.length > 0) {
-            dispatch(Actions.getEntries(ids));
-        }
-      });
-
-      WebAPI.searchAddress(s.text, (err, res) => {
-        dispatch({
-          type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res.results,
-          error: err != null
+          if ((Array.isArray(ids)) && ids.length > 0) {
+              dispatch(Actions.getEntries(ids));
+          } else{
+            dispatch(Actions.noSearchResults());
+          }
         });
-      });
 
+        if(s.text != null){
+          const address = s.text .replace(/#/g,"");
+          WebAPI.searchAddress(address, (err, res) => {
+            dispatch({
+              type: T.SEARCH_ADDRESS_RESULT,
+              payload: err || res.results,
+              error: err != null
+            });
+          });
+        }
+      }
     },
+
+  noSearchResults: () => ({
+    type: T.NO_SEARCH_RESULTS
+  }),
 
   searchCity: () =>
     (dispatch, getState) => {
@@ -86,7 +92,6 @@ const Actions = {
       const entries = getState().server.entries; 
       const fetch_ids = ids.filter((x) => entries[x] == null);
       if (fetch_ids.length > 0) {
-
         WebAPI.getEntries(ids, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,
@@ -100,27 +105,13 @@ const Actions = {
             dispatch(Actions.getRatings(fetch_ids));
           }
         });
-      }
-    },
-
-  setCenterOfEntryToFetch: (id) =>
-    (dispatch,getState) => {
-      const entries = getState().server.entries; 
-      if(entries[id] == null){
-        WebAPI.getEntries([id], (err, res) => {
-          dispatch({
-            type: T.ENTRIES_RESULT,
-            payload: err || res,
-            error: err != null
-          });
-          if (!err) {
-            const ids = flatten(res.map(e => e.ratings));
-            dispatch(Actions.getRatings(ids));
-            dispatch(Actions.setCenter({lat: res[0].lat, lng: res[0].lng}));
-          }
-        });
       } else{
-        dispatch(Actions.setCenter({lat: entries[id].lat, lng: entries[id].lng}));
+        const entr = Object.keys(entries).map((key) => entries[key])
+        dispatch({
+          type: T.ENTRIES_RESULT,
+          payload: entr.filter((e) => ids.includes(e.id)),
+          error: false
+        })
       }
     },
 
@@ -201,9 +192,11 @@ const Actions = {
           const id = (e != null ? e.id : void 0) || res;
           WebAPI.getEntries([id], (err, res) => {
             dispatch({
-              type: T.ENTRIES_RESULT,
-              payload: err || res,
-              error: err != null
+              type: T.URL_SET_CURRENT_ENTRY,
+              entry: id,
+              center: getState().map.center,
+              zoom: getState().map.zoom,
+              search_text: getState().search.text,
             });
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
@@ -237,7 +230,7 @@ const Actions = {
         ...rating,
         value: Number.parseInt(rating.value)
       };
-      WebAPI.createRaing(r, (err, res) => {
+      WebAPI.createRating(r, (err, res) => {
         if (err) {
           dispatch(stopSubmit(RATING.id, {
             _error: err
@@ -378,31 +371,53 @@ const Actions = {
       dispatch(Actions.highlight(id ? [id] : []));
       dispatch({
         type: T.URL_SET_CURRENT_ENTRY,
-        payload: id
+        entry: id,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        search_text: getState().search.text,
       });
-  },
+    },
 
   urlSetCenter: (center) => 
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_CENTER,
-        payload: {
-          center: {lat: center.lat, lng: center.lng},
-          zoom: getState().map.zoom
-        }
+        center: {lat: center.lat, lng: center.lng},
+        zoom: getState().map.zoom,
+        search_text: getState().search.text,
       });
-  },
+    },
 
   urlSetZoom: (zoom) => 
     (dispatch, getState) => {
       dispatch({
         type: T.URL_SET_ZOOM,
-        payload: {
-          center: getState().map.center,
-          zoom: zoom
-        }
+        center: getState().map.center,
+        zoom: zoom,
+        search_text: getState().search.text,
       });
-  },
+    },
+
+  urlSetSearch: (search_text) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_SET_SEARCH,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        search_text: search_text
+      });
+    },
+
+  urlSetTags: (tags) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_SET_TAGS,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        tags: tags
+      });
+    },
+
 
   highlight: (id) => {
     if (id == null) {

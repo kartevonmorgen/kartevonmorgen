@@ -13,11 +13,11 @@ import Router    from "./Router";
 
 import { Provider, connect } from "react-redux";
 
-// if (__DEVELOPMENT__) {
-//   window.React = React;
-//   const { whyDidYouUpdate } = require('why-did-you-update');
-//   whyDidYouUpdate(React);
-// }
+if (__DEVELOPMENT__) {
+  window.React = React;
+  const { whyDidYouUpdate } = require('why-did-you-update');
+  whyDidYouUpdate(React);
+}
 
 // listen for back button, forward button, etc.
 window.addEventListener("hashchange", Router.route, false);
@@ -29,7 +29,12 @@ const rootElement = document.querySelector('#app');
 // inject the 'dispatch' method and the state
 const Wrapper = <Provider store = {store} ><ConnectedApp /></Provider>;
 
-ReactDOM.render(Wrapper, rootElement);
+if(window.location.hash == ""){
+  store.dispatch(Actions.showMenu());
+}
 
 // read the hash url and navigate to the right page
+store.dispatch(Actions.updateStateFromURL);
 Router.route();
+
+ReactDOM.render(Wrapper, rootElement);

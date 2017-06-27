@@ -7,6 +7,8 @@ module.exports = (config) => {
 
   config.set({
 
+    basePath: './',
+
     frameworks: ['mocha', 'chai'],
 
     files: [ 'spec/**/*.spec.js' ],
@@ -21,11 +23,11 @@ module.exports = (config) => {
 
     logLevel: config.LOG_INFO,
 
-    autoWatch: false,
+    autoWatch: true,
 
     browsers: ['PhantomJS'],
 
-    singleRun: true,
+    singleRun: false,
 
     webpack: webpackCfg
   })

@@ -1,30 +1,35 @@
 import T from "../constants/ActionTypes";
 import mapConst from "../constants/Map";
+import parseURL from "../util/parseURL";
 
-const initialHash = "";
+const initialState = "";
+
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
-module.exports = (state=initialHash, action={}) => {
-  switch (action.type) {
-    case T.UPDATE_STATE_FROM_URL:
-      return window.location.hash;
+const searchTextToUrlQuery = (text) => {
+  let query = "&search=" 
+    + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
+  return query;
+}
 
-    case T.URL_SET_CURRENT_ENTRY:
-      window.location.hash = "/?" + (action.payload ? ("entry=" + action.payload) : "");
-      return window.location.hash;
+module.exports = (state=initialState, action={}) => {
+  var { center, zoom, entry, search_text } = action;
 
-    case T.URL_SET_CENTER:   // fall through
-    case T.URL_SET_ZOOM:
-      if(!state.includes("entry")){
-        const center = action.payload.center;
-        window.location.hash = "/?"
-          + "center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-          + "&zoom=" + action.payload.zoom;
-      }
+  if(action.type == T.UPDATE_STATE_FROM_URL){
       return window.location.hash;
-    
-    default:
-      return state;
+  } else if(action.type.startsWith("URL")){
+    if(!entry && window.location.hash.includes("entry")){
+      entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];
+    }
+    window.location.hash = "/?"
+      + ((entry && entry != "NONE") ? ("entry=" + entry) :
+        ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+        + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
+      + "&zoom=" + zoom
+      + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""));
+
+    return window.location.hash;
   }
+
+  return initialState;
 };

@@ -117,6 +117,7 @@ const Rating = (rating) =>
     <ul className="comments">
       {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
     </ul>
+    <div className="source"><span>{(rating.source != "") ? ("(" + rating.source + ")") : ""}</span></div>
   </div>
 
 const Comment = (comment) =>
@@ -131,9 +132,9 @@ class EntryDetails extends Component {
 
     if (!entry) {
       return(
-        <div>
-          Eintrag wird geladen...
-        </div>
+        <p className= "entry-loading">
+          <span>Eintrag wird geladen...</span>
+        </p>
       );
     } 
     else {
