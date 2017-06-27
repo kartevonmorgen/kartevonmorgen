@@ -92,7 +92,6 @@ const Actions = {
       const entries = getState().server.entries; 
       const fetch_ids = ids.filter((x) => entries[x] == null);
       if (fetch_ids.length > 0) {
-
         WebAPI.getEntries(ids, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,

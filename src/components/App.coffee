@@ -286,7 +286,7 @@ Main = React.createClass
                       context : data.context
                       value   : data.value
                       comment : data.comment
-                      sources : data.sources
+                      source : data.source
               when V.WAIT
                 React.createElement Message,
                   iconClass: "fa fa-spinner fa-pulse"
