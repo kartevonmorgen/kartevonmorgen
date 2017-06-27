@@ -313,15 +313,14 @@ const Actions = {
           });
           return;
         }
-        WebAPI.getUser(username), (err, res) => {
+        WebAPI.getUser(username, (err, res) => {
           dispatch({
             type: T.LOGIN_RESULT,
             payload: err || res,
             error: err != null
           });
-        }
+        });
       });
-
     },
 
   register: ({username, password, email}) =>

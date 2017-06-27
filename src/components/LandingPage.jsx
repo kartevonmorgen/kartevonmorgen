@@ -112,7 +112,7 @@ class LandingPage extends Component {
         break;
       case V.LOGIN_SUCCESS:
         contentComp = <div>
-          <p>Du bist jetzt als <strong>{username}</strong> eingeloggt</p>
+          <p>Du bist eingeloggt</p>
         </div>;
         break;
       case V.LOGIN_ERROR:
