@@ -40,11 +40,9 @@ const Router = {
         if (!(isNaN(lat) || isNaN(lng))
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
           || (lng.toFixed(4) != map.center.lng.toFixed(4)))) {
-          console.log("route: center");
           dispatch(Actions.showSearchResults());
+          console.log("center: ", getState().map.center);
           dispatch(Actions.setCenter({lat, lng}));
-          dispatch(Actions.search());
-          dispatch(Actions.setBbox(getState().map.bbox));
         }
       }
       if (zoom) {
@@ -52,8 +50,6 @@ const Router = {
         if(!isNaN(zoomValue) && zoomValue != map.zoom){
           console.log("route: zoom", zoomValue, map.zoom);
           dispatch(Actions.setZoom(zoomValue));
-          dispatch(Actions.search());
-          dispatch(Actions.setBbox(getState().map.bbox));
         }
       }
       if (search || tags || search == "" || tags == "") {
@@ -70,8 +66,11 @@ const Router = {
         }
 
         dispatch(Actions.setSearchText(search_str));
-        dispatch(Actions.search());
       }
+      
+      console.log("dispatch search: ", getState().map.center);
+      dispatch(Actions.setBbox(getState().map.bbox));
+      dispatch(Actions.search("1"));
     }
   }
 }; 

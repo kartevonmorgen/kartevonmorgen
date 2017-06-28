@@ -16,7 +16,7 @@ module.exports = (state=initialState, action={}) => {
   var { center, zoom, entry, search_text } = action;
 
   if(action.type == T.UPDATE_STATE_FROM_URL){
-      return window.location.hash;
+    return window.location.hash;
   } else if(action.type.startsWith("URL")){
     if(!entry && window.location.hash.includes("entry")){
       entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];

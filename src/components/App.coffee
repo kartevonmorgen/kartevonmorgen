@@ -78,7 +78,7 @@ Main = React.createClass
                 dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
-                dispatch Actions.search()
+                dispatch Actions.search("Karte")
               when 'new'
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.showNewEntry()
@@ -120,7 +120,7 @@ Main = React.createClass
                   dispatch Actions.showFeatureToDonate "events"
                 else
                   dispatch Actions.toggleSearchCategory c
-                  dispatch Actions.search()
+                  dispatch Actions.search("toggleCat")
               onChange        : (txt="") ->
                 dispatch Actions.urlSetCurrentEntry()
                 dispatch Actions.urlSetSearch txt
@@ -132,7 +132,7 @@ Main = React.createClass
                     dispatch Actions.setCurrentEntry()
                   else
                     dispatch Actions.setSearchText ''
-                    dispatch Actions.search()
+                    dispatch Actions.search("lenseClick")
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
               onLocate        : -> dispatch Actions.showOwnPosition()
@@ -327,11 +327,11 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              console.log("moveend");
+              console.log("moveend:", coordinates.center);
               dispatch Actions.updateStateFromURL window.location.hash  # because onMoveEnd is triggered when rendering initially and subsequently any URL would be overwritten
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.urlSetCenter coordinates.center
-              dispatch Actions.search()
+              dispatch Actions.search("moveend")
               
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
