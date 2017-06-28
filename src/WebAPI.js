@@ -160,7 +160,7 @@ module.exports = {
     });
   },
 
-  register: ({username,email,password}, cb) => {
+  register: ({username,password,email}, cb) => {
     request
       .post('/users')
       .use(prefix)

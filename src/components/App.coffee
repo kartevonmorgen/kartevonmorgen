@@ -103,9 +103,11 @@ Main = React.createClass
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
             onLogin: (data) ->
-                dispatch Actions.login(data)
+                {username, password} = data
+                dispatch Actions.login(username, password)
             onRegister: (data) ->
-                dispatch Actions.register(data)
+                {username, password, email} = data
+                dispatch Actions.register(username, password, email)
 
         if view.modal?
           React.createElement Modal, { view, dispatch }

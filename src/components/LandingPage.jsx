@@ -15,7 +15,7 @@ class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, cities, onSelection, onEscape, onChange, onRegister, onLogin, username } = this.props;
+    const { content, searchText, cities, onSelection, onEscape, onChange, onRegister, onLogin } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {

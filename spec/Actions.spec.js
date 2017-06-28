@@ -25,7 +25,7 @@ describe("Actions", () => {
       .filter(v => typeof v === "object")
       .forEach((a) => a.type.should.be.a("string")));
 
-  it("must not return objects with properties other than type, error, payload and meta", () =>
+  it("returned object must contain type property", () =>
     Object
       .entries(A)
       .map(([_,v]) => v())
@@ -33,8 +33,8 @@ describe("Actions", () => {
       .forEach((a) =>
         Object
           .entries(a)
-          .map(([k,_]) => k === "type" || k === "payload" || k === "error" || k === "meta")
-          .forEach(valid => valid.should.be["true"])));
+          .map(([k,_]) => k === "type")
+          .some(valid => valid.should.be["true"])));
 
   describe("search", () =>
     it("should return a function", () =>

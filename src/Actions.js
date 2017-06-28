@@ -299,7 +299,7 @@ const Actions = {
       }
     },
 
-  login: ({username, password}) =>
+  login: (username, password) =>
     (dispatch, getState) => {
       dispatch({
         type: T.LOGIN_SUBMITTING
@@ -323,11 +323,14 @@ const Actions = {
       });
     },
 
-  register: ({username, password, email}) =>
+  register: (username, password, email) =>
     (dispatch, getState) => {
       dispatch({
         type: T.REGISTER_SUBMITTING
       });
+      console.log("username", username);
+      console.log("password", password);
+      console.log("email", email);
       WebAPI.register({username, password, email}, (err, res) => {
         dispatch({
           type: T.REGISTER_RESULT,
