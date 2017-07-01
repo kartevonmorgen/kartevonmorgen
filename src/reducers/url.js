@@ -31,5 +31,5 @@ module.exports = (state=initialState, action={}) => {
     return window.location.hash;
   }
 
-  return initialState;
+  return state;
 };

@@ -22,7 +22,7 @@ const Actions = {
     payload: txt
   }),
 
-  search: (k) =>
+  search: () =>
     (dispatch, getState) => {
 
       const s = getState().search;
@@ -34,8 +34,6 @@ const Actions = {
 
       if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {
         WebAPI.search(s.text, cats, bbox, (err, res) => {
-
-          console.log("search:", s.text, bbox, res, k);
 
           dispatch({
             type: T.SEARCH_RESULT,

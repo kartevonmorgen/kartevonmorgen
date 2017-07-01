@@ -41,7 +41,7 @@ const Router = {
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
           || (lng.toFixed(4) != map.center.lng.toFixed(4)))) {
           dispatch(Actions.showSearchResults());
-          console.log("center: ", getState().map.center);
+          console.log("route center: ", getState().map.center);
           dispatch(Actions.setCenter({lat, lng}));
         }
       }
@@ -66,11 +66,8 @@ const Router = {
         }
 
         dispatch(Actions.setSearchText(search_str));
+        dispatch(Actions.search());
       }
-      
-      console.log("dispatch search: ", getState().map.center);
-      dispatch(Actions.setBbox(getState().map.bbox));
-      dispatch(Actions.search("1"));
     }
   }
 }; 

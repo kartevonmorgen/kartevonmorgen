@@ -78,7 +78,7 @@ Main = React.createClass
                 dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
-                dispatch Actions.search("Karte")
+                dispatch Actions.search()
               when 'new'
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.showNewEntry()
@@ -120,7 +120,7 @@ Main = React.createClass
                   dispatch Actions.showFeatureToDonate "events"
                 else
                   dispatch Actions.toggleSearchCategory c
-                  dispatch Actions.search("toggleCat")
+                  dispatch Actions.search()
               onChange        : (txt="") ->
                 dispatch Actions.urlSetCurrentEntry()
                 dispatch Actions.urlSetSearch txt
@@ -132,7 +132,7 @@ Main = React.createClass
                     dispatch Actions.setCurrentEntry()
                   else
                     dispatch Actions.setSearchText ''
-                    dispatch Actions.search("lenseClick")
+                    dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
               onLocate        : -> dispatch Actions.showOwnPosition()
@@ -328,14 +328,12 @@ Main = React.createClass
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
               console.log("moveend:", coordinates.center);
-              dispatch Actions.updateStateFromURL window.location.hash  # because onMoveEnd is triggered when rendering initially and subsequently any URL would be overwritten
-              dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.urlSetCenter coordinates.center
-              dispatch Actions.search("moveend")
+              dispatch Actions.setBbox coordinates.bbox
+              dispatch Actions.search()
               
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
                 dispatch Actions.urlSetZoom coordinates.zoom
-                dispatch Actions.setBbox coordinates.bbox
               
 module.exports = pure(Main)
