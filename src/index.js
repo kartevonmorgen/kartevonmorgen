@@ -33,8 +33,8 @@ if(window.location.hash == ""){
   store.dispatch(Actions.showMenu());
 }
 
+ReactDOM.render(Wrapper, rootElement);
+
 // read the hash url and navigate to the right page
 store.dispatch(Actions.updateStateFromURL);
 Router.route();
-
-ReactDOM.render(Wrapper, rootElement);
