@@ -311,15 +311,15 @@ const Actions = {
             payload: err,
             error: true
           });
-          return;
-        }
-        WebAPI.getUser(username, (err, res) => {
-          dispatch({
-            type: T.LOGIN_RESULT,
-            payload: err || res,
-            error: err != null
+        } else{
+          WebAPI.getUser(username, (err, res) => {
+            dispatch({
+              type: T.LOGIN_RESULT,
+              payload: err || res,
+              error: err != null
+            });
           });
-        });
+        }
       });
     },
 
@@ -484,7 +484,7 @@ const Actions = {
           payload: position
         });
       }), 900000);
-    },
+  },
 
   cancelOwnPosition: () => {
     return {
@@ -512,5 +512,30 @@ const Actions = {
     }
   }
 };
+
+const createCookie = (name,value,days) => {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+};
+
+const readCookie = (name) => {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+};
+
+const eraseCookie = (name) => {
+  createCookie(name,"",-1);
+}
 
 module.exports = Actions;

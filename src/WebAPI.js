@@ -196,5 +196,4 @@ module.exports = {
       .withCredentials()
       .end(cb);
   }
-
 };
