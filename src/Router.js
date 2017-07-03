@@ -66,7 +66,10 @@ const Router = {
         }
 
         dispatch(Actions.setSearchText(search_str));
-        dispatch(Actions.search());
+        if(!search.searchByUrl){
+          // search string doesn't come from initial URL but from entering it in the search bar
+          dispatch(Actions.search());
+        }
       }
     }
   }
