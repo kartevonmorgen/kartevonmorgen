@@ -2,19 +2,19 @@ module.exports = {
   EDIT: {
     id: "edit",
     fields: [
-      'title',
-      'description',
-      'homepage',
-      'telephone',
-      'city',
-      'zip',
-      'email',
-      'street',
-      'lat',
-      'lng',
-      'category',
-      'license',
-      'tags'
+      "title",
+      "description",
+      "homepage",
+      "telephone",
+      "city",
+      "zip",
+      "email",
+      "street",
+      "lat",
+      "lng",
+      "category",
+      "license",
+      "tags"
     ]
   },
 
@@ -24,6 +24,14 @@ module.exports = {
       "context",
       "value",
       "comment"
+    ]
+  },
+
+  LOGIN: {
+    id: "login",
+    fields: [
+      "username",
+      "password"
     ]
   }
 };

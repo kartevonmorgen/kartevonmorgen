@@ -1,7 +1,7 @@
 import T                          from "./constants/ActionTypes";
 import WebAPI                     from "./WebAPI";
 import GeoLocation                from "./GeoLocation";
-import { EDIT, RATING }           from "./constants/Form";
+import { EDIT, RATING, LOGIN    } from "./constants/Form";
 import { initialize, stopSubmit } from "redux-form";
 
 const LICENSE_NAME = "CC0-1.0";
@@ -306,11 +306,9 @@ const Actions = {
       });
       WebAPI.login({username, password}, (err, res) => {
         if (err) {
-          dispatch({
-            type: T.LOGIN_RESULT,
-            payload: err,
-            error: true
-          });
+          dispatch(stopSubmit(LOGIN.id, {
+            _error: err
+          }));
         } else{
           WebAPI.getUser(username, (err, res) => {
             dispatch({
@@ -328,9 +326,6 @@ const Actions = {
       dispatch({
         type: T.REGISTER_SUBMITTING
       });
-      console.log("username", username);
-      console.log("password", password);
-      console.log("email", email);
       WebAPI.register({username, password, email}, (err, res) => {
         dispatch({
           type: T.REGISTER_RESULT,

@@ -100,6 +100,7 @@ class LandingPage extends Component {
           </p>
         </div>;
         break;
+      case V.LOGIN_ERROR:  // fall through
       case V.LOGIN:
         contentComp = <div>
           <Login
@@ -113,14 +114,6 @@ class LandingPage extends Component {
       case V.LOGIN_SUCCESS:
         contentComp = <div>
           <p>Du bist eingeloggt</p>
-        </div>;
-        break;
-      case V.LOGIN_ERROR:
-        contentComp = <div>
-          <p>Der Login hat leider nicht geklappt :(
-          <br />
-          <a href="#" onClick={() => onClick(V.LOGIN)}>Versuche es nochmal :)</a>
-          </p>
         </div>;
         break;
       case V.JOIN:

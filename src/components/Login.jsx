@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { reduxForm, Field } from "redux-form"
 import validation           from "../util/validation"
+import { LOGIN             } from "../constants/Form"
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -20,7 +21,9 @@ const Login = (props) => {
     <h3>Login</h3>
     { error &&
       <div className= "err">
-        Der Login ist fehlgeschlagen: {error.message}
+        Der Login ist fehlgeschlagen: {(error.message == "Unauthorized") 
+          ? "falsches Passwort oder falscher Benutzername." 
+          : error.message} 
       </div>
     }
     <div>
@@ -32,13 +35,13 @@ const Login = (props) => {
         <button type="submit" className="pure-button pure-button-primary" disabled={submitting}>Log In</button>
       </fieldset>
       <p>
-        Du hast noch kein Account? Dann kannst du dich <a onClick={onRegister} href="#">hier kostenlos registrieren</a>.
+        Du hast noch keinen Account? Dann kannst du dich <a onClick={onRegister} href="#">hier kostenlos registrieren</a>.
       </p>
     </div>
   </form>)
 }
 
 module.exports = reduxForm({
-  form     : "login",
+  form     : LOGIN.id,
   validate : validation.loginForm
 })(Login)
