@@ -125,7 +125,9 @@ Main = React.createClass
                 dispatch Actions.urlSetCurrentEntry()
                 dispatch Actions.urlSetSearch txt
                 dispatch Actions.setSearchText txt
-                # dispatch Actions.search()
+                if txt == ""
+                  # need to manually start search because router doesn't search for empty strings
+                  dispatch Actions.search()
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
