@@ -66,7 +66,8 @@ const Router = {
         }
 
         dispatch(Actions.setSearchText(search_str));
-        if(!search.searchByUrl){
+        if(!getState().search.searchByUrl){
+          console.log("ROUTER: SEARCH");
           // search string doesn't come from initial URL but from entering it in the search bar
           dispatch(Actions.search());
         }
