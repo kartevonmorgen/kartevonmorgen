@@ -28,8 +28,8 @@ const Actions = {
       const s = getState().search;
       const m = getState().map;
       const cats = s.categories;
-      const sw = m.bbox.getSouthWest();
-      const ne = m.bbox.getNorthEast();
+      const sw = m.bbox._southWest;
+      const ne = m.bbox._northEast;
       const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
       if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {

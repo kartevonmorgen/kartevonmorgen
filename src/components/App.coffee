@@ -137,7 +137,9 @@ Main = React.createClass
                 dispatch Actions.urlSetCurrentEntry()
                 dispatch Actions.urlSetSearch txt
                 dispatch Actions.setSearchText txt
-                # dispatch Actions.search()
+                if txt == ""
+                  # need to manually start search because router doesn't search for empty strings
+                  dispatch Actions.search()
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
@@ -344,10 +346,9 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              console.log("moveend");
-              dispatch Actions.updateStateFromURL window.location.hash  # because onMoveEnd is triggered when rendering initially and subsequently any URL would be overwritten
-              dispatch Actions.setBbox coordinates.bbox
+              console.log("moveend:", coordinates.center);
               dispatch Actions.urlSetCenter coordinates.center
+              dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom

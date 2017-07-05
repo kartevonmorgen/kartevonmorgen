@@ -10,7 +10,8 @@ const initialState = {
   highlight: [],
   invisible: [],
   addresses: [],
-  cities: []
+  cities: [],
+  searchByUrl: true
 };
 
 const unique = cities =>
@@ -74,6 +75,12 @@ module.exports = (state = initialState, action = {}) => {
       return {
         ...state,
         text: action.payload
+      }
+
+    case T.URL_SET_SEARCH:
+      return {
+        ...state,
+        searchByUrl: false
       }
 
     case T.SET_CITY_SEARCH_TEXT:
