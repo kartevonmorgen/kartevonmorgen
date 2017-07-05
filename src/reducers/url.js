@@ -19,17 +19,12 @@ module.exports = (state=initialState, action={}) => {
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
       return window.location.hash;
-    // case T.SHOW_SUBSCRIBE_TO_MAP_VIEW:
-    //   window.location.hash = "/?view=subscribeToMapView";
-    //   return window.location.hash;
-
     case T.URL_SET_CENTER: // fall through
     case T.URL_SET_ZOOM: // fall through
     case T.URL_SET_CURRENT_ENTRY: // fall through
     case T.URL_SET_SEARCH: // fall through
     case T.URL_SET_TAGS:
-      console.log("view:", view);
-      if(view.left != V.SUBSCRIBE_TO_MAP_VIEW){
+      if(!view || view.left != V.SUBSCRIBE_TO_MAP_VIEW){
         if(!entry && window.location.hash.includes("entry")){
           entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];
         }
