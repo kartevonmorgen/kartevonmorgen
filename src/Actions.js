@@ -181,10 +181,22 @@ const Actions = {
     type: T.SHOW_SUBSCRIBE_TO_MAP_VIEW
   }),
 
-  subscribeToMapView: (bbox) => ({
-    type: T.SUBSCRIBE_TO_MAP_VIEW,
-    payload: bbox
-  }),
+  subscribeToMapView: (bbox) => 
+    (dispatch, getState) => {
+      WebAPI.subscribeToMapView(bbox, (err, res) => {
+        if (err) {
+          dispatch({
+            type: T.SUBSCRIBE_TO_MAP_VIEW_RESULT,
+            payload: err
+          });
+        } else {
+          dispatch({
+            type: T.SUBSCRIBE_TO_MAP_VIEW_RESULT,
+            payload: res
+          });
+        }
+      })
+  },
 
   saveEntry: (e) =>
     (dispatch, getState) => {

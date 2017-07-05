@@ -195,5 +195,20 @@ module.exports = {
       .use(prefix)
       .withCredentials()
       .end(cb);
+  },
+
+  subscribeToMapView: (bbox, cb) => {
+    request
+      .post('/subscribe-to-map-view')
+      .use(prefix)
+      .set('Accept', 'application/json')
+      .send(bbox)
+      .end((err, res) => {
+        if (err) {
+          cb(err);
+        } else {
+          cb(null, res.text);
+        }
+    });
   }
 };
