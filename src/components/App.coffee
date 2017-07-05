@@ -226,7 +226,7 @@ Main = React.createClass
                   ]
                 when V.SUBSCRIBE_TO_MAP_VIEW
                   li
-                    onClick: -> dispatch Actions.subscribeToMapView(map.bbox)
+                    onClick: -> dispatch Actions.subscribeToMapView(map.bbox, user.username)
                     className:"pure-u-1",
                       i className: "fa fa-envelope"
                       "Kartenausschnitt abonnieren"

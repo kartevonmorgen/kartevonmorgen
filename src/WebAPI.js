@@ -197,12 +197,18 @@ module.exports = {
       .end(cb);
   },
 
-  subscribeToMapView: (bbox, cb) => {
+  subscribeToMapView: (bbox, username, cb) => {
+    console.log("BBox:", bbox);
+    let coordinates = [bbox._southWest, bbox._northEast];
+    let subscriptionInfo = {
+      bbox: coordinates,
+      username: username
+    }
     request
       .post('/subscribe-to-map-view')
       .use(prefix)
       .set('Accept', 'application/json')
-      .send(bbox)
+      .send(subscriptionInfo)
       .end((err, res) => {
         if (err) {
           cb(err);
