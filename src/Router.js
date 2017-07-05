@@ -2,6 +2,7 @@ import { dispatch, getState } from "./Store";
 import Actions from "./Actions";
 import parseURL from "./util/parseURL";
 import T        from "./constants/ActionTypes";
+import V        from "./constants/PanelView";
 import mapConst from "./constants/Map";
 
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
@@ -10,13 +11,16 @@ const Router = {
   
   route: (e) => {
     const { params } = parseURL(window.location.hash);
-    const { entry, zoom, center, search, tags } = params;
+    const { entry, zoom, center, search, tags, view } = params;
     const { server, map } = getState();
     const { entries } = server;
 
     if(!params || Object.keys(params).length == 0){
-      dispatch(Actions.showSearchResults());
-    } else{
+      console.log("route: nothing", getState().view);
+      if(getState().view.left != V.SUBSCRIBE_TO_MAP_VIEW){
+        dispatch(Actions.showSearchResults());
+      }
+    } else if(!view){
       if(entry){ 
         console.log("route: entry");
         dispatch(Actions.updateStateFromURL(window.location.hash));
@@ -40,8 +44,8 @@ const Router = {
         if (!(isNaN(lat) || isNaN(lng))
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
           || (lng.toFixed(4) != map.center.lng.toFixed(4)))) {
-          dispatch(Actions.showSearchResults());
           console.log("route center: ", getState().map.center);
+          dispatch(Actions.showSearchResults());
           dispatch(Actions.setCenter({lat, lng}));
         }
       }

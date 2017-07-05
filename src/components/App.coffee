@@ -18,6 +18,7 @@ Modal             = require "./Modal"
 Map               = require "./Map"
 SearchBar         = require "./SearchBar"
 LandingPage       = require "./LandingPage"
+SubscribeToMapView= require "./SubscribeToMapView"
 { EDIT, RATING }  = require "../constants/Form"
 URLs              = require "../constants/URLs"
 { pure }          = require "recompose"
@@ -75,23 +76,26 @@ Main = React.createClass
 
         if view.menu
           React.createElement LandingPage,
-            onMenuItemClick: (id) -> switch id
-              when 'map'
-                dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
-                dispatch Actions.toggleLandingPage()
-                dispatch Actions.setSearchText ''
-                dispatch Actions.search()
-              when 'new'
-                dispatch Actions.toggleLandingPage()
-                dispatch Actions.showNewEntry()
-              when 'landing'
-                dispatch Actions.showInfo null
-                dispatch Actions.toggleLandingPage()
-              when V.LOGOUT
-                dispatch Actions.logout()
-                dispatch Actions.showInfo V.LOGOUT
-              else
-                dispatch Actions.showInfo id
+            onMenuItemClick: (id) -> 
+              switch id
+                when 'map'
+                  dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
+                  dispatch Actions.toggleLandingPage()
+                  dispatch Actions.setSearchText ''
+                  dispatch Actions.search()
+                when 'new'
+                  dispatch Actions.toggleLandingPage()
+                  dispatch Actions.showNewEntry()
+                when 'landing'
+                  dispatch Actions.showInfo null
+                  dispatch Actions.toggleLandingPage()
+                when V.LOGOUT
+                  dispatch Actions.logout()
+                  dispatch Actions.showInfo V.LOGOUT
+                when V.SUBSCRIBE_TO_MAP_VIEW
+                  dispatch Actions.showSubscribeToMapView()
+                else
+                  dispatch Actions.showInfo id
             onChange: (city) ->
               dispatch Actions.setCitySearchText city
               dispatch Actions.searchCity()
@@ -220,6 +224,12 @@ Main = React.createClass
                         i className: "fa fa-ban"
                         "abbrechen"
                   ]
+                when V.SUBSCRIBE_TO_MAP_VIEW
+                  li
+                    onClick: -> dispatch Actions.subscribeToMapView(map.bbox)
+                    className:"pure-u-1",
+                      i className: "fa fa-envelope"
+                      "Kartenausschnitt abonnieren"
           div className:"content",
 
             switch view.left
@@ -317,6 +327,9 @@ Main = React.createClass
                   buttonLabel: "schließen"
                   onCancel: ->
                     dispatch Actions.closeIoErrorMessage()
+              when V.SUBSCRIBE_TO_MAP_VIEW
+                div className: "subscribe-to-map-view",
+                  React.createElement SubscribeToMapView,
 
         div className:"right #{
           if rightPanelIsOpen then 'opened' else 'closed'
@@ -330,9 +343,10 @@ Main = React.createClass
                 }"
           # div className:"subscribe-link",
           #   a
-          #     onClick: (() -> dispatch Actions.subscribeToMapView())
-          #     href: "#"
-          #       Kartenauschnitt abonnieren
+          #     className:"pure-menu-link"
+          #     onClick: -> dispatch Actions.subscribeToMapView()
+          #     href:"#",
+          #       "Kartenauschnitt abonnieren"
 
         div className:"center",
           React.createElement Map,

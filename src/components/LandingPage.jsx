@@ -39,6 +39,12 @@ class LandingPage extends Component {
       onChange(v);
     }
 
+    let loginInfo = <div className="login-info">
+      <p>Du bist eingeloggt. Wenn du magst kannst du <br/>
+      <a onClick={() => onClick(V.SUBSCRIBE_TO_MAP_VIEW)} href="#">über Änderungen in deiner
+      Stadt auf dem Laufenden bleiben</a>.</p>
+    </div>;
+
     let contentComp = null;
     switch (content) {
       case V.TEAM:
@@ -113,9 +119,7 @@ class LandingPage extends Component {
         </div>;
         break;
       case V.LOGIN_SUCCESS:
-        contentComp = <div>
-          <p>Du bist eingeloggt</p>
-        </div>;
+        contentComp = loginInfo;
         break;
       case V.LOGOUT:
         contentComp = <div>
@@ -251,7 +255,9 @@ class LandingPage extends Component {
           : null }
         <div className = "content">{
           content == null
-            ? <Explain onClick = { onClick } />
+            ? <div>
+              {loggedIn ? loginInfo : null} <Explain onClick = { onClick } />
+              </div>
             : contentComp
         }</div>
       </div>

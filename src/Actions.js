@@ -177,6 +177,15 @@ const Actions = {
     payload: key
   }),
 
+  showSubscribeToMapView: () => ({
+    type: T.SHOW_SUBSCRIBE_TO_MAP_VIEW
+  }),
+
+  subscribeToMapView: (bbox) => ({
+    type: T.SUBSCRIBE_TO_MAP_VIEW,
+    payload: bbox
+  }),
+
   saveEntry: (e) =>
     (dispatch, getState) => {
       const saveFunc = (e != null ? e.id : void 0) ? WebAPI.saveEntry : WebAPI.saveNewEntry;
@@ -376,6 +385,7 @@ const Actions = {
         center: getState().map.center,
         zoom: getState().map.zoom,
         search_text: getState().search.text,
+        view: getState().view
       });
     },
 
@@ -386,6 +396,7 @@ const Actions = {
         center: {lat: center.lat, lng: center.lng},
         zoom: getState().map.zoom,
         search_text: getState().search.text,
+        view: getState().view
       });
     },
 
@@ -396,6 +407,7 @@ const Actions = {
         center: getState().map.center,
         zoom: zoom,
         search_text: getState().search.text,
+        view: getState().view
       });
     },
 
@@ -405,7 +417,8 @@ const Actions = {
         type: T.URL_SET_SEARCH,
         center: getState().map.center,
         zoom: getState().map.zoom,
-        search_text: search_text
+        search_text: search_text,
+        view: getState().view
       });
     },
 
@@ -415,8 +428,9 @@ const Actions = {
         type: T.URL_SET_TAGS,
         center: getState().map.center,
         zoom: getState().map.zoom,
-        tags: tags
-      });
+        tags: tags,
+        view: getState().view
+       }); 
     },
 
 

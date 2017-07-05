@@ -44,6 +44,14 @@ module.exports = (state=initialState, action={}) => {
         right: newView
       }
 
+    case T.SHOW_SUBSCRIBE_TO_MAP_VIEW:
+      return {
+        ...state,
+        menu: false,
+        right: null,
+        left: V.SUBSCRIBE_TO_MAP_VIEW
+      }
+
     case T.REGISTER_RESULT:
       if (!action.error && state.right === V.REGISTER) {
         return {
