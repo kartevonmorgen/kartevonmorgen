@@ -41,11 +41,12 @@ Main = React.createClass
     form    : T.object.isRequired
     server  : T.object.isRequired
     growler : T.object.isRequired
-    url : T.object.isRequired
+    url     : T.object.isRequired
+    user    : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, server, map, form, growler, url } = @props
+    { dispatch, search, view, server, map, form, growler, url, user } = @props
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -63,6 +64,7 @@ Main = React.createClass
         lng: e?.lng
       else
         map.center
+    loggedIn = if user.username then true else false
 
     div className:"app",
 
@@ -85,6 +87,9 @@ Main = React.createClass
               when 'landing'
                 dispatch Actions.showInfo null
                 dispatch Actions.toggleLandingPage()
+              when V.LOGOUT
+                dispatch Actions.logout()
+                dispatch Actions.showInfo V.LOGOUT
               else
                 dispatch Actions.showInfo id
             onChange: (city) ->
@@ -108,6 +113,7 @@ Main = React.createClass
             onRegister: (data) ->
                 {username, password, email} = data
                 dispatch Actions.register(username, password, email)
+            loggedIn: loggedIn
 
         if view.modal?
           React.createElement Modal, { view, dispatch }
@@ -320,6 +326,11 @@ Main = React.createClass
                 i className: "fa fa-#{
                   if rightPanelIsOpen then 'times' else 'bars'
                 }"
+          # div className:"subscribe-link",
+          #   a
+          #     onClick: (() -> dispatch Actions.subscribeToMapView())
+          #     href: "#"
+          #       Kartenauschnitt abonnieren
 
         div className:"center",
           React.createElement Map,
@@ -338,10 +349,10 @@ Main = React.createClass
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.urlSetCenter coordinates.center
               dispatch Actions.search()
-              
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
                 dispatch Actions.urlSetZoom coordinates.zoom
                 dispatch Actions.setBbox coordinates.bbox
+            loggedIn
               
 module.exports = pure(Main)

@@ -15,8 +15,8 @@ import { Provider, connect } from "react-redux";
 
 if (__DEVELOPMENT__) {
   window.React = React;
-  const { whyDidYouUpdate } = require('why-did-you-update');
-  whyDidYouUpdate(React);
+  // const { whyDidYouUpdate } = require('why-did-you-update');
+  // whyDidYouUpdate(React);
 }
 
 // listen for back button, forward button, etc.

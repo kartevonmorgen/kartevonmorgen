@@ -1,4 +1,5 @@
 import T from "../constants/ActionTypes";
+import cookies from "../util/cookies";
 
 const initialState = {
   username: null
@@ -18,6 +19,13 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         username: action.error ? null : action.payload.body.username
+      }
+
+    case T.LOGOUT:
+      cookies.deleteAllCookies();
+      return {
+        ...state,
+        username: null
       }
 
     default:

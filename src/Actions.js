@@ -321,6 +321,10 @@ const Actions = {
       });
     },
 
+  logout: () => ({
+    type: T.LOGOUT
+  }),
+
   register: (username, password, email) =>
     (dispatch, getState) => {
       dispatch({

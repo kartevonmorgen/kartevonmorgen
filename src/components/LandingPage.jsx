@@ -15,7 +15,8 @@ class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, cities, onSelection, onEscape, onChange, onRegister, onLogin } = this.props;
+    const { content, searchText, cities, onSelection, onEscape, 
+      onChange, onRegister, onLogin, loggedIn } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {
@@ -116,6 +117,11 @@ class LandingPage extends Component {
           <p>Du bist eingeloggt</p>
         </div>;
         break;
+      case V.LOGOUT:
+        contentComp = <div>
+          <p>Du bist ausgeloggt</p>
+        </div>;
+        break;
       case V.JOIN:
         contentComp = <div>
           <h3>Werde Teil unseres Teams</h3>
@@ -195,9 +201,14 @@ class LandingPage extends Component {
                   </li>
                   <li className="pure-menu-item">|</li>
                   <li className="pure-menu-item">
-                    <a onClick = {() => onClick(V.LOGIN)} href="#" className="pure-menu-link">
-                      Login
-                    </a>
+                    { loggedIn ?
+                      <a onClick = {() => onClick(V.LOGOUT)} href="#" className="pure-menu-link">
+                        Logout
+                      </a>
+                      : <a onClick = {() => onClick(V.LOGIN)} href="#" className="pure-menu-link">
+                        Login
+                      </a>
+                    }
                   </li>
                 </ul>
               </div>
