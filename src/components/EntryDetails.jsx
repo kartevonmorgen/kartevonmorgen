@@ -23,6 +23,25 @@ const context_name = (id) => {
   }
 }
 
+const context_order = (id) => {
+  switch(id) {
+  case "diversity":
+    return "a";
+  case "renewable":
+    return "b";
+  case "fairness":
+    return "c";
+  case "humanity":
+    return "d";
+  case "transparency":
+    return "e";
+  case "solidarity":
+    return "f";
+  default:
+    return id
+  }
+}
+
 const context_color = (id) => {
   switch(id) {
     case "diversity":
@@ -75,31 +94,36 @@ const rating_groups = (ratings=[]) => {
   ratings
     .filter(r => typeof r !== "undefined" && r !== null)
     .forEach(r =>{
-      if (groups[r.context] == null) {
-        groups[r.context] = [];
+      let key = context_order(r.context);
+      if (groups[key] == null) {
+        groups[key] = [];
       }
-      groups[r.context].push(r);
+      groups[key].push(r);
     });
-  return groups;
+  let groups_sorted = [];
+  for(var k of Object.keys(groups).sort()){
+    groups_sorted.push(groups[k]);
+  }
+  return groups_sorted;
 }
 
 const Ratings = (ratings=[]) => {
 
   const groups = rating_groups(ratings);
 
-  const rtngs = Object.keys(groups).map(g => {
-    const l = groups[g].length
+  const ratingElements = groups.map(g => {
+    const l = g.length
     const count = l > 1 ? l +  " Bewertungen" : l + " Bewertung";
 
     return (
     <div className="rating-context">
       <h5>
-        <span style={{color: context_color(g)}}>{context_name(g)}</span>
+        <span style={{color: context_color(g[0].context)}}>{context_name(g[0].context)}</span>
         <span className="count">({count})</span>
       </h5>
       <ul>
         {
-          groups[g].map(r => <li key={r.id}>{Rating(r)}</li>)
+          g.map(r => <li key={r.id}>{Rating(r)}</li>)
         }
       </ul>
     </div>)
@@ -107,7 +131,7 @@ const Ratings = (ratings=[]) => {
 
   return (
     <div className="rating-list">
-      <ul>{rtngs}</ul>
+      <ul>{ratingElements}</ul>
     </div>)
 }
 
