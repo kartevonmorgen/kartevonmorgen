@@ -1,17 +1,48 @@
 import React, { Component } from "react"
 import { reduxForm, Field } from "redux-form"
 import validation           from "../util/validation"
+import { DIVERSITY, RENEWABLE, FAIRNESS, HUMANITY,
+         TRANSPARENCY, SOLIDARITY, EXPLANATION } from "../constants/RatingContexts";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
     ? <div className="err">{meta.error}</div>
-    : null
+    : null    
 
 class RatingForm extends Component {
 
   render() {
 
-    const { entryId, entryTitle } = this.props;
+    const { entryId, entryTitle, contextToExplain, 
+      changeContext, selectedContext } = this.props;
+
+    const explainDiversity = () => {
+      changeContext(DIVERSITY);
+    }
+
+    const explainRenewable = () => {
+      changeContext(RENEWABLE);
+    }
+
+    const explainFairness = () => {
+      changeContext(FAIRNESS);
+    }
+
+    const explainHumanity = () => {
+      changeContext(HUMANITY);
+    }
+
+    const explainTransparency = () => {
+      changeContext(TRANSPARENCY);
+    }
+
+    const explainSolidarity = () => {
+      changeContext(SOLIDARITY);
+    }
+
+    const explainSelected = () => {
+      changeContext(selectedContext);
+    }
 
     return (
     <form
@@ -36,24 +67,66 @@ class RatingForm extends Component {
           <Field name="title" component={errorMessage} />
         </fieldset>
         <fieldset>
-          <Field className="pure-input-1" name="context" component="select">
-            <option value={-1}>- Bewertungskontext auswählen -</option>
-            <option value="diversity">Natürlichkeit</option>
-            <option value="renewable">Erneuerbarkeit</option>
-            <option value="fairness">Fairness</option>
-            <option value="humanity">Menschlichkeit</option>
-            <option value="transparency">Transparenz</option>
-            <option value="solidarity">Solidarität</option>
-          </Field>
+          <span onMouseOver={explainDiversity}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="diversity" />
+            {" "} Natürlichkeit
+          </label>
+          </span><br />
+          <span onMouseOver={explainRenewable}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="renewable" />
+            {" "} Erneuerbarkeit
+          </label>
+          </span><br />
+          <span onMouseOver={explainFairness}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="fairness" />
+            {" "} Fairness
+          </label>
+          </span><br />
+          <span onMouseOver={explainHumanity}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="humanity" />
+            {" "} Menschlichkeit
+          </label>
+          </span><br />
+          <span onMouseOver={explainTransparency}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
+            {" "} Transparenz
+          </label>
+          </span><br />
+          <span onMouseOver={explainSolidarity}>
+          <label>
+            <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
+            {" "} Solidarität
+          </label>
+          </span>
           <Field name="context" component={errorMessage} />
-          <Field className="pure-input-1" name="value" component="select">
-            <option value={-100}>- Bewertung auswählen -</option>
-            <option value={-1}>von gestern (-1)</option>
-            <option value={0}>von heute (0)</option>
-            <option value={1}>von morgen (1)</option>
-            <option value={2}>Visionär (2)</option>
-          </Field>
-          <Field name="value" component={errorMessage} />
+          <div className="rating-context-explanation">
+            {contextToExplain ? EXPLANATION[contextToExplain] : EXPLANATION["null"]}
+          </div>
+        </fieldset>
+        <span onMouseOver={explainSelected}>
+        <p className="form-heading">Bewertung:</p>
+        <fieldset>  
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="-1" />
+            {" "} von gestern (-1)
+          </label><br />
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="0" />
+            {" "} von heute (0)
+          </label><br/>
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="1" />
+            {" "} von morgen (1)
+          </label><br />
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="2" />
+            {" "} visionär (2)
+          </label>
         </fieldset>
         <fieldset>
           <Field name="comment" className="pure-input-1" component="textarea" placeholder="Kommentar"  />
@@ -62,6 +135,7 @@ class RatingForm extends Component {
         <fieldset>
           <Field name="source" className="pure-input-1" type="text" component="input" placeholder="Quelle (z.B. ein Link oder 'ich arbeite da'...)" />
         </fieldset>
+        </span>
       </div>
     </form>)
   }

@@ -535,6 +535,13 @@ const Actions = {
       type: T.UPDATE_STATE_FROM_URL,
       payload: hash
     }
+  },
+
+  explainRatingContext: (context) => {
+    return {
+      type: T.EXPLAIN_RATING_CONTEXT,
+      payload: context
+    }
   }
 };
 

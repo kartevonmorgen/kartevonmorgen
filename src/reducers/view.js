@@ -7,7 +7,9 @@ const initialState = {
   left: V.RESULT,
   right: null,
   modal: null,
-  waiting_for_search_results: true
+  waiting_for_search_results: true,
+  explainRatingContext: null,
+  selectedContext: null
 };
 
 module.exports = (state=initialState, action={}) => {
@@ -91,7 +93,8 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         menu: false,
-        left: V.NEW_RATING
+        left: V.NEW_RATING,
+        explainRatingContext: null
       }
     case T.EDIT_CURRENT_ENTRY:
       if (!action.error) {
@@ -229,11 +232,23 @@ module.exports = (state=initialState, action={}) => {
       }
       break;
 
+    case T.EXPLAIN_RATING_CONTEXT:
+      return{
+        ...state,
+        explainRatingContext: action.payload
+      }
+
     case "@@redux-form/CHANGE":
       if (action.meta.field === "category" && action.payload === C.IDS.EVENT) {
         return {
           ...state,
           modal: V.DONATE_FOR_EVENTS
+        }
+      }
+      if (action.meta.field === "context"){
+        return {
+          ...state,
+          selectedContext: action.payload
         }
       }
       return state;

@@ -21,6 +21,8 @@ LandingPage       = require "./LandingPage"
 SubscribeToMapView= require "./SubscribeToMapView"
 { EDIT, RATING }  = require "../constants/Form"
 URLs              = require "../constants/URLs"
+{ DIVERSITY, RENEWABLE, FAIRNESS, 
+HUMANITY, TRANSPARENCY, SOLIDARITY } = require "../constants/RatingContexts"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
@@ -51,7 +53,7 @@ Main = React.createClass
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
-    { waiting_for_search_results } = view
+    { waiting_for_search_results, explainRatingContext, selectedContext } = view
 
     resultEntries    =
       (x for id in search.result when (x=entries[id])?)
@@ -311,6 +313,10 @@ Main = React.createClass
                       value   : data.value
                       comment : data.comment
                       source : data.source
+                  contextToExplain: explainRatingContext
+                  selectedContext: selectedContext
+                  changeContext: (ratingContext) ->
+                    dispatch Actions.explainRatingContext(ratingContext)
               when V.WAIT
                 React.createElement Message,
                   iconClass: "fa fa-spinner fa-pulse"
