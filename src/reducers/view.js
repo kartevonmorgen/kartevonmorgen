@@ -94,7 +94,8 @@ module.exports = (state=initialState, action={}) => {
         ...state,
         menu: false,
         left: V.NEW_RATING,
-        explainRatingContext: null
+        explainRatingContext: null,
+        selectedContext: null
       }
     case T.EDIT_CURRENT_ENTRY:
       if (!action.error) {

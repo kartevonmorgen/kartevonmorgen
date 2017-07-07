@@ -127,6 +127,7 @@ class RatingForm extends Component {
             <Field name="value" className="radio-button" component="input" type="radio" value="2" />
             {" "} visionär (2)
           </label>
+          <Field name="value" component={errorMessage} />
         </fieldset>
         <fieldset>
           <Field name="comment" className="pure-input-1" component="textarea" placeholder="Kommentar"  />
