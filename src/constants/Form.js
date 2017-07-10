@@ -33,5 +33,14 @@ module.exports = {
       "username",
       "password"
     ]
+  },
+
+  REGISTER: {
+    id: "register",
+    fields: [
+      "username",
+      "email",
+      "password"
+    ]
   }
 };

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { reduxForm, Field } from "redux-form"
 import validation           from "../util/validation"
 import normalize            from "../util/normalize";
+import { REGISTER }         from "../constants/Form";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -49,6 +50,6 @@ const Register = (props) => {
 }
 
 module.exports = reduxForm({
-  form      : "register",
+  form      : REGISTER.id,
   validate : validation.registerForm
 })(Register)

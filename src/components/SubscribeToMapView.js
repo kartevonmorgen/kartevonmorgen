@@ -10,6 +10,10 @@ const SubscribeToMapView = () => {
       <p>Du wirst dann per Email über neue Einträge und Änderungen in diesem
       Kartenbereich informiert. Dieses Abonnement kannst du jederzeit wieder 
       abbestellen.</p>
+      <br/>
+      <br/>
+      <p className="err">Wir entwickeln dieses Feature gerade erst. Keine Garantie, dass
+      im Moment tatsächlich schon Emails ankommen ;)</p>
     </div>)
 }
 
