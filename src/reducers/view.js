@@ -54,14 +54,14 @@ module.exports = (state=initialState, action={}) => {
         left: V.SUBSCRIBE_TO_MAP_VIEW
       }
 
-    // case T.REGISTER_RESULT:
-    //   if (state.right === V.REGISTER) {
-    //     return {
-    //       ...state,
-    //       right: V.REGISTER_SUCCESS
-    //     }
-    //   }
-    //   return state
+    case T.REGISTER_RESULT:
+      if (state.right === V.REGISTER) {
+        return {
+          ...state,
+          right: V.REGISTER_SUCCESS
+        }
+      }
+      return state
 
     case T.LOGIN_RESULT:
       if (action.error) {

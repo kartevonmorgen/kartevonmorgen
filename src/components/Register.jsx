@@ -22,7 +22,7 @@ const Register = (props) => {
     <h3>Registrieren</h3>
     { error &&
       <div className= "err">
-        Die Registrierung ist fehlgeschlagen: {error.message}
+        Die Registrierung ist fehlgeschlagen. Bitte überprüfe die angegebenen Daten.
       </div>
     }
     <div className= "pure-form">

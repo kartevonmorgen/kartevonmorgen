@@ -103,7 +103,7 @@ class LandingPage extends Component {
         contentComp = <div>
           <p>
           Du hast dich erfolgreich registriert und kannst
-          dich <a onClick={() => onClick(V.LOGIN)} href="#">jetzt mit deinem Benutzername einloggen</a>.
+          dich <a onClick={() => onClick(V.LOGIN)} href="#">jetzt mit deinem Benutzernamen einloggen</a>.
           </p>
         </div>;
         break;
