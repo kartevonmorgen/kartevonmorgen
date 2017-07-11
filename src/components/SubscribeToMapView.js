@@ -12,8 +12,7 @@ const SubscribeToMapView = () => {
       abbestellen.</p>
       <br/>
       <br/>
-      <p className="err">Wir entwickeln dieses Feature gerade erst. Keine Garantie, dass
-      im Moment tatsächlich schon Emails ankommen ;)</p>
+      <div className="err">DIESES FEATURE IST GERADE NOCH IN DER ENTWICKLUNG...</div>
     </div>)
 }
 
