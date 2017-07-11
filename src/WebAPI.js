@@ -34,13 +34,25 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchAddress: (addr, cb) => {
+  searchAddressOverpass: (addr, cb) => {
     if (addr != null && addr != ""){
       request
         .get(OVERPASS + addr + ".js")
         .set('Accept', 'application/json')
         .end(jsonCallback(cb));
     }
+  },
+
+  searchAddressNominatim: (addr, cb) => {
+    if (addr == null) { addr = ''; }
+    request
+      .get('/search')
+      .use(saPrefix(NOMINATIM))
+      .query({ q: addr })
+      .query({ format: 'json' })
+      .query({ addressdetails: 1 })
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb));
   },
 
   searchGeolocation: (latlng, cb) => {

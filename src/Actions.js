@@ -60,7 +60,7 @@ const Actions = {
 
         if(s.text != null){
           const address = s.text .replace(/#/g,"");
-          WebAPI.searchAddress(address, (err, res) => {
+          WebAPI.searchAddressOverpass(address, (err, res) => {
             dispatch({
               type: T.SEARCH_ADDRESS_RESULT,
               payload: err || res.results,
@@ -78,7 +78,7 @@ const Actions = {
   searchCity: () =>
     (dispatch, getState) => {
       const s = getState().search;
-      WebAPI.searchAddress(s.city, (err, res) => {
+      WebAPI.searchAddressOverpass(s.city, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
           payload: err || res.results,
@@ -302,7 +302,7 @@ const Actions = {
   geocodeAndSetMarker: (address) =>
     (dispatch, getState) => {
       if (!getState().form.edit.kvm_flag_markerWasEnteredManually) {
-        WebAPI.searchAddress(address, (err, res) => {
+        WebAPI.searchAddressNominatim(address, (err, res) => {
           if (!(err || getState().form.edit.kvm_flag_markerWasEnteredManually)) {
             if (res && res.length && res[0] && res[0].lat && res[0].lon) {
               dispatch({
