@@ -227,11 +227,25 @@ Main = React.createClass
                         "abbrechen"
                   ]
                 when V.SUBSCRIBE_TO_MAP_VIEW
-                  li
-                    onClick: -> dispatch Actions.subscribeToMapView(map.bbox, user.username)
-                    className:"pure-u-1",
-                      i className: "fa fa-envelope"
-                      "Kartenausschnitt abonnieren"
+                  [
+                    li
+                      key: "save"
+                      className:"pure-u-1-2",
+                      onClick: (=>
+                        dispatch Actions.subscribeToMapView(map.bbox, user.username)
+                      ),
+                        i className: "fa fa-envelope"
+                        "speichern"
+                    li
+                      key: "cancel"
+                      className:"pure-u-1-2",
+                      onClick: (->
+                        dispatch Actions.showMap()
+                      ),
+                        i className: "fa fa-ban"
+                        "abbrechen"
+                  ]
+
           div className:"content",
 
             switch view.left
