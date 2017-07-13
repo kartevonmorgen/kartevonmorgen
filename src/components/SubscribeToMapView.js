@@ -6,7 +6,7 @@ const SubscribeToMapView = () => {
     <div className= "subscribe-to-map-view">
       <h3>Kartenausschnitt abonnieren</h3>
       <p>Navigiere zu dem Kartenausschnitt der dich interessiert und 
-      klicke dann auf "Kartenausschnitt abonnieren".</p>
+      klicke dann auf "speichern".</p>
       <p>Du wirst dann per Email über neue Einträge und Änderungen in diesem
       Kartenbereich informiert. Dieses Abonnement kannst du jederzeit wieder 
       abbestellen.</p>

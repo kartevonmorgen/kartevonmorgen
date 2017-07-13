@@ -181,9 +181,9 @@ const Actions = {
     type: T.SHOW_SUBSCRIBE_TO_MAP_VIEW
   }),
 
-  subscribeToMapView: (bbox, username) => 
+  subscribeToMapView: (bbox) => 
     (dispatch, getState) => {
-      WebAPI.subscribeToMapView(bbox, username, (err, res) => {
+      WebAPI.subscribeToMapView(bbox, (err, res) => {
         if (err) {
           dispatch({
             type: T.SUBSCRIBE_TO_MAP_VIEW_RESULT,

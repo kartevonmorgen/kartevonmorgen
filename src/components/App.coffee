@@ -232,7 +232,7 @@ Main = React.createClass
                       key: "save"
                       className:"pure-u-1-2",
                       onClick: (=>
-                        dispatch Actions.subscribeToMapView(map.bbox, user.username)
+                        dispatch Actions.subscribeToMapView(map.bbox)
                       ),
                         i className: "fa fa-envelope"
                         "speichern"
