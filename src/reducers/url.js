@@ -19,10 +19,10 @@ module.exports = (state=initialState, action={}) => {
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
       return window.location.hash;
-    case T.URL_SET_CENTER: // fall through
-    case T.URL_SET_ZOOM: // fall through
-    case T.URL_SET_CURRENT_ENTRY: // fall through
-    case T.URL_SET_SEARCH: // fall through
+    case T.URL_SET_CENTER: // falls through
+    case T.URL_SET_ZOOM: // falls through
+    case T.URL_SET_CURRENT_ENTRY: // falls through
+    case T.URL_SET_SEARCH: // falls through
     case T.URL_SET_TAGS:
       if(!view || view.left != V.SUBSCRIBE_TO_MAP_VIEW){
         if(!entry && window.location.hash.includes("entry")){
@@ -37,6 +37,7 @@ module.exports = (state=initialState, action={}) => {
 
         return window.location.hash;
       }
+      return state;
 
     default: 
       return state;

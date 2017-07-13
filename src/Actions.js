@@ -168,8 +168,8 @@ const Actions = {
   closeIoErrorMessage : () => ({ type: T.CLOSE_IO_ERROR_MESSAGE }),
 
   showNewRating: (id) => ({
-     payload: id,
-     type: T.SHOW_NEW_RATING
+     type: T.SHOW_NEW_RATING,
+     payload: id
   }),
 
   showInfo: (key) => ({

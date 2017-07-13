@@ -16,9 +16,12 @@ describe("user reducer", () => {
 
       let action = {
         type: T.LOGIN_RESULT,
-        payload: "username",
+        payload: {body: {
+          username: "username"
+        }},
         error: false
       };
+      should.exist(user_reducer(undefined, action).username);
       user_reducer(undefined, action).username.should.equal("username");
 
       action = {
@@ -26,7 +29,7 @@ describe("user reducer", () => {
         payload: "error",
         error: true
       };
-      // user_reducer(undefined, action).username.should.equal(null);
+      should.not.exist(user_reducer(undefined, action).username);
 
       return true;
     });
