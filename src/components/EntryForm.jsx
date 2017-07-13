@@ -164,10 +164,10 @@ class Form extends Component {
             </div>
             <div className= "pure-u-20-24">
               <Field name="license" component={errorMessage} />
-              Ich habe die
+              Ich habe die {" "}
               <a href={CC_LICENSE.link}>
                 Bestimmungen der Creative-Commons Lizenz CC0
-              </a>
+              </a> {" "}
               gelesen und akzeptiere sie
             </div>
           </div>

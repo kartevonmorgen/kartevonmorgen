@@ -24,6 +24,7 @@ const reducer = formReducer.plugin({
           ...state,
           values: {
             ...action.payload,
+            license: null,
             tags: (action.payload.tags || []).join(','),
             category: action.payload.categories[0]
           },
