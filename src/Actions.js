@@ -177,21 +177,21 @@ const Actions = {
     payload: key
   }),
 
-  showSubscribeToMapView: () => ({
-    type: T.SHOW_SUBSCRIBE_TO_MAP_VIEW
+  showSubscribeToBbox: () => ({
+    type: T.SHOW_SUBSCRIBE_TO_BBOX
   }),
 
-  subscribeToMapView: (bbox) => 
+  subscribeToBbox: (bbox) => 
     (dispatch, getState) => {
-      WebAPI.subscribeToMapView(bbox, (err, res) => {
+      WebAPI.subscribeToBbox(bbox, (err, res) => {
         if (err) {
           dispatch({
-            type: T.SUBSCRIBE_TO_MAP_VIEW_RESULT,
+            type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: err
           });
         } else {
           dispatch({
-            type: T.SUBSCRIBE_TO_MAP_VIEW_RESULT,
+            type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: res
           });
         }

@@ -18,7 +18,7 @@ Modal             = require "./Modal"
 Map               = require "./Map"
 SearchBar         = require "./SearchBar"
 LandingPage       = require "./LandingPage"
-SubscribeToMapView= require "./SubscribeToMapView"
+SubscribeToBbox   = require "./SubscribeToBbox"
 { EDIT, RATING }  = require "../constants/Form"
 URLs              = require "../constants/URLs"
 { DIVERSITY, RENEWABLE, FAIRNESS, 
@@ -94,8 +94,8 @@ Main = React.createClass
                 when V.LOGOUT
                   dispatch Actions.logout()
                   dispatch Actions.showInfo V.LOGOUT
-                when V.SUBSCRIBE_TO_MAP_VIEW
-                  dispatch Actions.showSubscribeToMapView()
+                when V.SUBSCRIBE_TO_BBOX
+                  dispatch Actions.showSubscribeToBbox()
                 else
                   dispatch Actions.showInfo id
             onChange: (city) ->
@@ -226,13 +226,13 @@ Main = React.createClass
                         i className: "fa fa-ban"
                         "abbrechen"
                   ]
-                when V.SUBSCRIBE_TO_MAP_VIEW
+                when V.SUBSCRIBE_TO_BBOX
                   [
                     li
                       key: "save"
                       className:"pure-u-1-2",
                       onClick: (=>
-                        dispatch Actions.subscribeToMapView(map.bbox)
+                        dispatch Actions.subscribeToBbox(map.bbox)
                       ),
                         i className: "fa fa-envelope"
                         "speichern"
@@ -347,9 +347,9 @@ Main = React.createClass
                   buttonLabel: "schließen"
                   onCancel: ->
                     dispatch Actions.closeIoErrorMessage()
-              when V.SUBSCRIBE_TO_MAP_VIEW
-                div className: "subscribe-to-map-view",
-                  React.createElement SubscribeToMapView,
+              when V.SUBSCRIBE_TO_BBOX
+                div className: "subscribe-to-bbox",
+                  React.createElement SubscribeToBbox,
 
         div className:"right #{
           if rightPanelIsOpen then 'opened' else 'closed'
@@ -364,7 +364,7 @@ Main = React.createClass
           # div className:"subscribe-link",
           #   a
           #     className:"pure-menu-link"
-          #     onClick: -> dispatch Actions.subscribeToMapView()
+          #     onClick: -> dispatch Actions.subscribeToBbox()
           #     href:"#",
           #       "Kartenauschnitt abonnieren"
 

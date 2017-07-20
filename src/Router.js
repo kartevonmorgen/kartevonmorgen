@@ -17,7 +17,7 @@ const Router = {
 
     if(!params || Object.keys(params).length == 0){
       console.log("route: nothing", getState().view);
-      if(getState().view.left != V.SUBSCRIBE_TO_MAP_VIEW){
+      if(getState().view.left != V.SUBSCRIBE_TO_BBOX){
         dispatch(Actions.showSearchResults());
       }
     } else if(!view){

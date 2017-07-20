@@ -41,7 +41,7 @@ class LandingPage extends Component {
 
     let loginInfo = <div className="login-info">
       <p>Du bist eingeloggt. Wenn du magst kannst du <br/>
-      <a onClick={() => onClick(V.SUBSCRIBE_TO_MAP_VIEW)} href="#">über Änderungen in deiner
+      <a onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)} href="#">über Änderungen in deiner
       Stadt auf dem Laufenden bleiben</a>.</p>
     </div>;
 

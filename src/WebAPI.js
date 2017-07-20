@@ -209,14 +209,13 @@ module.exports = {
       .end(cb);
   },
 
-  subscribeToMapView: (bbox, cb) => {
+  subscribeToBbox: (bbox, cb) => {
     let coordinates = [bbox._southWest, bbox._northEast];
-    console.log("BBox:", coordinates);
     request
-      .post('/subscribe-to-map-view')
+      .post('/subscribe-to-bbox')
       .use(prefix)
       .set('Accept', 'application/json')
-      .send({coordinates})
+      .send(coordinates)
       .end((err, res) => {
         if (err) {
           cb(err);

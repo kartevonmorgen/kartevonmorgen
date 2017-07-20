@@ -24,7 +24,7 @@ module.exports = (state=initialState, action={}) => {
     case T.URL_SET_CURRENT_ENTRY: // falls through
     case T.URL_SET_SEARCH: // falls through
     case T.URL_SET_TAGS:
-      if(!view || view.left != V.SUBSCRIBE_TO_MAP_VIEW){
+      if(!view || view.left != V.SUBSCRIBE_TO_BBOX){
         if(!entry && window.location.hash.includes("entry")){
           entry = /entry=([\w\d]*)/.exec(window.location.hash)[1];
         }

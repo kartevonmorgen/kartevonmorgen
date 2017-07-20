@@ -46,12 +46,12 @@ module.exports = (state=initialState, action={}) => {
         right: newView
       }
 
-    case T.SHOW_SUBSCRIBE_TO_MAP_VIEW:
+    case T.SHOW_SUBSCRIBE_TO_BBOX:
       return {
         ...state,
         menu: false,
         right: null,
-        left: V.SUBSCRIBE_TO_MAP_VIEW
+        left: V.SUBSCRIBE_TO_BBOX
       }
 
     case T.REGISTER_RESULT:
