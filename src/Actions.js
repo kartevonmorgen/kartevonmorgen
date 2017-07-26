@@ -181,7 +181,7 @@ const Actions = {
     type: T.SHOW_SUBSCRIBE_TO_BBOX
   }),
 
-  subscribeToBbox: (bbox) => 
+  subscribeToBbox: (bbox, changeExistingBbox) => 
     (dispatch, getState) => {
       WebAPI.subscribeToBbox(bbox, (err, res) => {
         if (err) {
@@ -189,11 +189,58 @@ const Actions = {
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: err
           });
+          dispatch({
+            type: 'GROWLER__SHOW',
+            growler: {
+              text: 'Oups! Es ist ein Fehler aufgetreten...',
+              type: 'growler--error'
+            }
+          });
         } else {
           dispatch({
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: res
           });
+          dispatch({
+            type: 'GROWLER__SHOW',
+            growler: {
+              text: changeExistingBbox ? 'Abonnement wurde geändert.' 
+                : 'Kartenausschnitt wurde abonniert.',
+              type: 'growler--success'
+            }
+          });
+          dispatch({
+            type: 'UPDATE_SUBSCRIPTION_INFO',
+            subscriptionExists: true
+          })
+        }
+      })
+  },
+
+  unsubscribeFromBboxes: (username) =>
+    (dispatch, getState) => {
+      WebAPI.unsubscribeFromBboxes((err, res) => {
+        if (err) {
+          dispatch({
+            type: 'GROWLER__SHOW',
+            growler: {
+              text: 'Oups! Es ist ein Fehler aufgetreten...',
+              type: 'growler--error'
+            }
+          });
+        } else {
+          console.log("UNSUBSCRIBE SUCCESS");
+          dispatch({
+            type: 'GROWLER__SHOW',
+            growler: {
+              text: 'Abonnement wurde abbestellt',
+              type: 'growler--success'
+            }
+          });
+          dispatch({
+            type: 'UPDATE_SUBSCRIPTION_INFO',
+            subscriptionExists: false
+          })
         }
       })
   },
@@ -337,6 +384,15 @@ const Actions = {
               payload: err || res,
               error: err != null
             });
+          });
+          WebAPI.getBboxSubscriptions((err, res) => {
+            console.log("SUBSCRIPTIONS: ", res.body);
+            if(!err){
+              dispatch({
+                type: T.UPDATE_SUBSCRIPTION_INFO,
+                subscriptionExists: res.body.length > 0
+              })
+            }
           });
         }
       });

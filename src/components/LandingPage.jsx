@@ -16,7 +16,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, cities, onSelection, onEscape, 
-      onChange, onRegister, onLogin, loggedIn } = this.props;
+      onChange, onRegister, onLogin, loggedIn, subscriptionExists } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {
@@ -39,10 +39,12 @@ class LandingPage extends Component {
       onChange(v);
     }
 
+    let subscriptionLink = subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen" 
+    : "über Änderungen in deiner Stadt auf dem Laufenden bleiben";
+
     let loginInfo = <div className="login-info">
       <p>Du bist eingeloggt. Wenn du magst kannst du <br/>
-      <a onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)} href="#">über Änderungen in deiner
-      Stadt auf dem Laufenden bleiben</a>.</p>
+      <a onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)} href="#">{subscriptionLink}</a>.</p>
     </div>;
 
     let contentComp = null;

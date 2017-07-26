@@ -204,6 +204,13 @@ const registerForm = (data) => {
       }
     }
   }
+  if (data.password2 == null) {
+    errors.password2 = 'Bitte gib das Passwort zum Überprüfen hier nochmal ein.';
+  } else if (data.password != data.password2){
+    if (errors.password2 == null) {
+      errors.password2 = 'Passwörter stimmen nicht überein';
+    }
+  }
   return errors;
 }
 

@@ -75,6 +75,7 @@ Main = React.createClass
 
         React.createElement GrowlerContainer,
           growler: growler
+          shownFor: 2000
 
         if view.menu
           React.createElement LandingPage,
@@ -120,6 +121,7 @@ Main = React.createClass
                 {username, password, email} = data
                 dispatch Actions.register(username, password, email)
             loggedIn: loggedIn
+            subscriptionExists: user.subscriptionExists
 
         if view.modal?
           React.createElement Modal, { view, dispatch }
@@ -227,24 +229,53 @@ Main = React.createClass
                         "abbrechen"
                   ]
                 when V.SUBSCRIBE_TO_BBOX
-                  [
-                    li
-                      key: "save"
-                      className:"pure-u-1-2",
-                      onClick: (=>
-                        dispatch Actions.subscribeToBbox(map.bbox)
-                      ),
-                        i className: "fa fa-envelope"
-                        "speichern"
-                    li
-                      key: "cancel"
-                      className:"pure-u-1-2",
-                      onClick: (->
-                        dispatch Actions.showMap()
-                      ),
-                        i className: "fa fa-ban"
-                        "abbrechen"
-                  ]
+                  if user.subscriptionExists
+                    [
+                      li
+                        key: "back"
+                        className:"pure-u-1-2",
+                        onClick: (->
+                          dispatch Actions.showMap()
+                        ),
+                          i className: "fa fa-chevron-left"
+                          "abbrechen"
+                      li
+                        key: "save"
+                        className:"pure-u-1-2",
+                        onClick: (=>
+                          dispatch Actions.subscribeToBbox(map.bbox, true)
+                        ),
+                          i className: "fa fa-envelope"
+                          "ändern"
+                      li
+                        key: "delete"
+                        className:"pure-u-1-1",
+                        onClick: (->
+                          dispatch Actions.unsubscribeFromBboxes(user.username)
+                          console.log "done"
+                        ),
+                          i className: "fa fa-trash"
+                          "Abonnement abbestellen"
+                    ]
+                  else
+                    [
+                      li
+                        key: "back"
+                        className:"pure-u-1-2",
+                        onClick: (->
+                          dispatch Actions.showMap()
+                        ),
+                          i className: "fa fa-chevron-left"
+                          "zurück"
+                      li
+                        key: "save"
+                        className:"pure-u-1-2",
+                        onClick: (=>
+                          dispatch Actions.subscribeToBbox(map.bbox, false)
+                        ),
+                          i className: "fa fa-envelope"
+                          "abonnieren"
+                    ]
 
           div className:"content",
 
@@ -306,8 +337,8 @@ Main = React.createClass
                       tags        : data.tags?.split(',')
                       homepage    : data.homepage
                       telephone   : data.telephone
-                      lat         : data.lat
-                      lng         : data.lng
+                      lat         : Number data.lat
+                      lng         : Number data.lng
                       street      : data.street
                       city        : data.city
                       email       : data.email
@@ -350,6 +381,7 @@ Main = React.createClass
               when V.SUBSCRIBE_TO_BBOX
                 div className: "subscribe-to-bbox",
                   React.createElement SubscribeToBbox,
+                    subscriptionExists: user.subscriptionExists
 
         div className:"right #{
           if rightPanelIsOpen then 'opened' else 'closed'
@@ -361,12 +393,6 @@ Main = React.createClass
                 i className: "fa fa-#{
                   if rightPanelIsOpen then 'times' else 'bars'
                 }"
-          # div className:"subscribe-link",
-          #   a
-          #     className:"pure-menu-link"
-          #     onClick: -> dispatch Actions.subscribeToBbox()
-          #     href:"#",
-          #       "Kartenauschnitt abonnieren"
 
         div className:"center",
           React.createElement Map,

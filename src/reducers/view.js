@@ -54,6 +54,12 @@ module.exports = (state=initialState, action={}) => {
         left: V.SUBSCRIBE_TO_BBOX
       }
 
+    case T.SUBSCRIBE_TO_BBOX_RESULT: 
+      return {
+        ...state,
+        left: V.RESULT
+      }
+
     case T.REGISTER_RESULT:
       if (state.right === V.REGISTER) {
         return {

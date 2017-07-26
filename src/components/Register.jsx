@@ -22,7 +22,7 @@ const Register = (props) => {
     <h3>Registrieren</h3>
     { error &&
       <div className= "err">
-        Die Registrierung ist fehlgeschlagen. Möglicherweise ist dieser Benutzername schon vergeben.
+        Die Registrierung ist fehlgeschlagen. Der Benutzername oder die Email-Adresse ist schon registriert.
       </div>
     }
     <div className= "pure-form">
@@ -40,6 +40,8 @@ const Register = (props) => {
         <Field name="email" component={errorMessage} />
         <Field name="password" className="pure-input-1" type="password" component="input" required={true} placeholder="Password" />
         <Field name="password" component={errorMessage} />
+        <Field name="password2" className="pure-input-1" type="password" component="input" required={true} placeholder="Password wiederholen" />
+        <Field name="password2" component={errorMessage} />
         <button type="submit" className="pure-button pure-button-primary" disabled={submitting}>Registrieren</button>
       </fieldset>
       <p>

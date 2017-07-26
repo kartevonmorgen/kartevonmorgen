@@ -223,5 +223,22 @@ module.exports = {
           cb(null, res.text);
         }
     });
+  },
+
+  getBboxSubscriptions: (cb) => {
+    request
+      .get('/bbox-subscriptions')
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .end(cb);
+  },
+
+  unsubscribeFromBboxes: (cb) => {
+    console.log("UNSUBSCRIBING...");
+    request
+      .delete('/unsubscribe-all-bboxes')
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .end(cb);
   }
 };

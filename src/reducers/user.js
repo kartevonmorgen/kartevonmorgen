@@ -2,7 +2,8 @@ import T from "../constants/ActionTypes";
 import cookies from "../util/cookies";
 
 const initialState = {
-  username: null
+  username: null,
+  subscriptionExists: false
 };
 
 module.exports = (state=initialState, action={}) => {
@@ -26,6 +27,12 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         username: null
+      }
+
+    case T.UPDATE_SUBSCRIPTION_INFO:
+      return {
+        ...state,
+        subscriptionExists: action.subscriptionExists
       }
 
     default:
