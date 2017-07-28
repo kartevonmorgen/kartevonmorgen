@@ -11,13 +11,17 @@ const errorMessage = ({meta}) =>
 const Login = (props) => {
 
   const { error, submitting, handleSubmit, onRegister } = props;
-  let error_message = error ? error.message : "";
+  let error_message = "";
   if(error){
     switch(error.message){
       case "Unauthorized":
         error_message = "falsches Passwort oder falscher Benutzername."
+        break;
       case "Forbidden":
-        error_message = "Email-Adresse noch nicht bestätigt. Bitte schaue in deinem Postfach nach, möglicherweise auch im Spam-Ordner."
+        error_message = "Email-Adresse noch nicht bestätigt. Bitte schaue in deinem Postfach nach, möglicherweise auch im Spam-Ordner.";
+        break;
+      default: 
+        error_message = error.message;
     }
   }
 
