@@ -466,10 +466,14 @@ const Actions = {
 
   deleteAccount: () => 
     (dispatch, getState) => {
-      console.log("DELETE ACCOUNT");
-      WebAPI.deleteAccount(getState().user.id), (err, res) => {
-        
-      }
+      WebAPI.deleteAccount(getState().user.id, (err, res) => {
+        console.log("err, res: ", err, res);
+        if(!err){
+          dispatch({
+            type: T.LOGOUT
+          });
+        }
+      });
     },
 
   setCenter: (center) => {

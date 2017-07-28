@@ -27,7 +27,9 @@ module.exports = (state=initialState, action={}) => {
       cookies.deleteAllCookies();
       return {
         ...state,
-        id: null
+        id: null,
+        email: null,
+        subscriptionExists: false
       }
 
     case T.UPDATE_SUBSCRIPTION_INFO:
