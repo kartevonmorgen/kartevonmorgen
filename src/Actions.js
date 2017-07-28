@@ -464,6 +464,13 @@ const Actions = {
       })
     },
 
+  deleteAccount: () => 
+    (dispatch, getState) => {
+      WebAPI.deleteAccount(getState().user.username), (err, res) => {
+        
+      }
+    },
+
   setCenter: (center) => {
     return {
       type: T.SET_MAP_CENTER,

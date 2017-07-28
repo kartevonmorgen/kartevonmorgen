@@ -16,7 +16,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, cities, onSelection, onEscape, 
-      onChange, onRegister, onLogin, loggedIn, user } = this.props;
+      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {
@@ -238,7 +238,7 @@ class LandingPage extends Component {
                         Login
                       </a>
                     }
-                  </li>
+                  </li>        
                 </ul>
               </div>
             </div>
@@ -266,6 +266,11 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <a onClick={onDeleteAccount} href="#" className="blabla">
+          Account löschen
+        </a>
       </div>
       <div className = "explain">{
         content == null

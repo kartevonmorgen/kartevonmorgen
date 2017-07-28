@@ -122,6 +122,7 @@ Main = React.createClass
                 dispatch Actions.register(username, password, email)
             loggedIn: loggedIn
             user: user
+            onDeleteAccount: -> dispatch Actions.deleteAccount()
 
         if view.modal?
           React.createElement Modal, { view, dispatch }

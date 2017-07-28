@@ -218,6 +218,15 @@ module.exports = {
       .end(cb);
   },
 
+  deleteAccount: (u_id, cb) => {
+    request
+      .delete('/users/' + u_id)
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .withCredentials()
+      .end(cb);
+  },
+
   subscribeToBbox: (bbox, cb) => {
     let coordinates = [bbox._southWest, bbox._northEast];
     request
