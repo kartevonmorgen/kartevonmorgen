@@ -415,10 +415,28 @@ const Actions = {
         } else{
           dispatch({
             type: T.REGISTER_RESULT,
-            payload: res
+            result: res,
+            email: email 
           });
         }
       });
+    },
+
+  confirmEmail: (u_id) =>
+    (dispatch, getState) => {
+      WebAPI.confirmEmail(u_id, (err, res) => {
+        if(err){
+          dispatch({
+            type: T.EMAIL_CONFIRMATION_RESULT,
+            error: true
+          })
+        } else{
+          dispatch({
+            type: T.EMAIL_CONFIRMATION_RESULT,
+            error: false
+          })
+        }
+      })
     },
 
   setCenter: (center) => {

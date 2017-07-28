@@ -11,6 +11,15 @@ const errorMessage = ({meta}) =>
 const Login = (props) => {
 
   const { error, submitting, handleSubmit, onRegister } = props;
+  let error_message = error ? error.message : "";
+  if(error){
+    switch(error.message){
+      case "Unauthorized":
+        error_message = "falsches Passwort oder falscher Benutzername."
+      case "Forbidden":
+        error_message = "Email-Adresse noch nicht bestätigt. Bitte schaue in deinem Postfach nach, möglicherweise auch im Spam-Ordner."
+    }
+  }
 
   return (
   <form
@@ -21,9 +30,7 @@ const Login = (props) => {
     <h3>Login</h3>
     { error &&
       <div className= "err">
-        Der Login ist fehlgeschlagen: {(error.message == "Unauthorized") 
-          ? "falsches Passwort oder falscher Benutzername." 
-          : error.message} 
+        Der Login ist fehlgeschlagen: {error_message} 
       </div>
     }
     <div>

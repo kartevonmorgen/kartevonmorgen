@@ -246,6 +246,21 @@ module.exports = (state=initialState, action={}) => {
         explainRatingContext: action.payload
       }
 
+    case T.EMAIL_CONFIRMATION_RESULT:
+      if(action.error){
+        return{
+          ...state,
+          menu: true,
+          right: V.CONFIRM_EMAIL_ERROR
+        }
+      } else{
+        return{
+          ...state,
+          menu: true,
+          right: V.EMAIL_CONFIRMED
+        }
+      }
+
     case "@@redux-form/CHANGE":
       if (action.meta.field === "category" && action.payload === C.IDS.EVENT) {
         return {

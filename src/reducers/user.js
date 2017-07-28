@@ -3,6 +3,7 @@ import cookies from "../util/cookies";
 
 const initialState = {
   username: null,
+  email: null,
   subscriptionExists: false
 };
 
@@ -33,6 +34,12 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         subscriptionExists: action.subscriptionExists
+      }
+
+    case T.REGISTER_RESULT:
+      return {
+        ...state,
+        email: action.email
       }
 
     default:

@@ -209,6 +209,15 @@ module.exports = {
       .end(cb);
   },
 
+  confirmEmail: (u_id, cb) => {
+    request
+      .post('/confirm-email-address')
+      .set('Accept', 'application/json')
+      .use(prefix)
+      .send({u_id})
+      .end(cb);
+  },
+
   subscribeToBbox: (bbox, cb) => {
     let coordinates = [bbox._southWest, bbox._northEast];
     request

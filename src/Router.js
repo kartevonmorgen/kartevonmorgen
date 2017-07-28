@@ -11,7 +11,7 @@ const Router = {
   
   route: (e) => {
     const { params } = parseURL(window.location.hash);
-    const { entry, zoom, center, search, tags, view } = params;
+    const { entry, zoom, center, search, tags, view, confirm_email } = params;
     const { server, map } = getState();
     const { entries } = server;
 
@@ -20,6 +20,9 @@ const Router = {
       if(getState().view.left != V.SUBSCRIBE_TO_BBOX){
         dispatch(Actions.showSearchResults());
       }
+    } else if(confirm_email){
+      console.log("route: confirm_email");
+      dispatch(Actions.confirmEmail(confirm_email));
     } else if(!view){
       if(entry){ 
         console.log("route: entry");

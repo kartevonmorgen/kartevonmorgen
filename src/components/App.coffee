@@ -121,7 +121,7 @@ Main = React.createClass
                 {username, password, email} = data
                 dispatch Actions.register(username, password, email)
             loggedIn: loggedIn
-            subscriptionExists: user.subscriptionExists
+            user: user
 
         if view.modal?
           React.createElement Modal, { view, dispatch }

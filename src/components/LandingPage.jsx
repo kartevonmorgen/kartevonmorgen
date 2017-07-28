@@ -16,7 +16,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, cities, onSelection, onEscape, 
-      onChange, onRegister, onLogin, loggedIn, subscriptionExists } = this.props;
+      onChange, onRegister, onLogin, loggedIn, user } = this.props;
     const onClick = this.props.onMenuItemClick;
 
     const onKeyUp = ev => {
@@ -39,7 +39,7 @@ class LandingPage extends Component {
       onChange(v);
     }
 
-    let subscriptionLink = subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen" 
+    let subscriptionLink = user.subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen" 
     : "über Änderungen in deiner Stadt auf dem Laufenden bleiben";
 
     let loginInfo = <div className="login-info">
@@ -104,11 +104,34 @@ class LandingPage extends Component {
       case V.REGISTER_SUCCESS:
         contentComp = <div>
           <p>
-          Du hast dich erfolgreich registriert und kannst
-          dich <a onClick={() => onClick(V.LOGIN)} href="#">jetzt mit deinem Benutzernamen einloggen</a>.
+          Du hast dich erfolgreich registriert. Bitte bestätige deine Email-Adresse, dann kannst <br/>
+          du dich einloggen. Dazu ging eben eine Email an {user.email} raus.
           </p>
         </div>;
         break;
+      case V.CONFIRMING_EMAIL:
+        contentComp = <div>
+          <p>
+          Deine Email-Adresse wird gerade bestätigt... <br/>
+          </p>
+          </div>;
+          break;
+      case V.CONFIRM_EMAIL_ERROR:
+        contentComp = <div>
+          <p>
+          Oups! Es gab einen Fehler beim Bestätigen deiner Email-Adresse. Bitte probiere, dich
+          mit einem neuen Benutzernamen erneut zu <a onClick={() => {onClick(V.REGISTER)}} href="#">registrieren</a>.<br/>
+          </p>
+          </div>;
+          break;
+      case V.EMAIL_CONFIRMED:
+        contentComp = <div>
+          <p>
+          Deine Email-Adresse wurde bestätigt. <br/>
+          Du kannst dich jetzt <a onClick={() => {onClick(V.LOGIN)}} href="#">anmelden.</a>
+          </p>
+          </div>;
+          break;
       case V.LOGIN_ERROR:  // fall through
       case V.LOGIN:
         contentComp = <div>
