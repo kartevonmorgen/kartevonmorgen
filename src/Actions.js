@@ -412,7 +412,6 @@ const Actions = {
             });
           });
           WebAPI.getBboxSubscriptions((err, res) => {
-            console.log("SUBSCRIPTIONS: ", res.body);
             if(!err){
               dispatch({
                 type: T.UPDATE_SUBSCRIPTION_INFO,

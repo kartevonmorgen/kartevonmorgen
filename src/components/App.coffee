@@ -407,7 +407,7 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              console.log("moveend:", coordinates.center);
+              # console.log("move:", coordinates.center);
               dispatch Actions.urlSetCenter coordinates.center
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
