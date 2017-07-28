@@ -112,6 +112,7 @@ Main = React.createClass
                 dispatch Actions.urlSetCenter
                   lat: city.lat
                   lng: city.lon
+                dispatch Actions.urlSetZoom 14
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
             onLogin: (data) ->
