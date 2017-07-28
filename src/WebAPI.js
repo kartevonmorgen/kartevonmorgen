@@ -220,7 +220,7 @@ module.exports = {
 
   deleteAccount: (u_id, cb) => {
     request
-      .delete('/users/' + u_id)
+      .delete('/users/' + "e4f9075ba61a4cf5b5ebde58fe5a36dc")//u_id)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()

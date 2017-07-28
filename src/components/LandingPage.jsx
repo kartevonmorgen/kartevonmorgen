@@ -267,11 +267,6 @@ class LandingPage extends Component {
           </div>
         </div>
       </div>
-      <div>
-        <a onClick={onDeleteAccount} href="#" className="blabla">
-          Account löschen
-        </a>
-      </div>
       <div className = "explain">{
         content == null
           ? <a href= "#tutorial" className= "circleTutorial">
@@ -302,6 +297,11 @@ class LandingPage extends Component {
         </p>
         <p>
           <a href="#" onClick={() => onClick(V.IMPRINT)}>Impressum</a>
+        </p>
+        <p>
+          {user.id != null ? <a onClick={onDeleteAccount} href="#">
+            Account löschen
+          </a> : ""}
         </p>
       </div>
     </div>);

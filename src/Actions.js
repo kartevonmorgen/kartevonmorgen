@@ -244,7 +244,7 @@ const Actions = {
       })
   },
 
-  unsubscribeFromBboxes: (username) =>
+  unsubscribeFromBboxes: (u_id) =>
     (dispatch, getState) => {
       WebAPI.unsubscribeFromBboxes((err, res) => {
         if (err) {
@@ -466,7 +466,8 @@ const Actions = {
 
   deleteAccount: () => 
     (dispatch, getState) => {
-      WebAPI.deleteAccount(getState().user.username), (err, res) => {
+      console.log("DELETE ACCOUNT");
+      WebAPI.deleteAccount(getState().user.id), (err, res) => {
         
       }
     },
