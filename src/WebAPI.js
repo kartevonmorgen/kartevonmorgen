@@ -243,7 +243,6 @@ module.exports = {
   },
 
   unsubscribeFromBboxes: (cb) => {
-    console.log("UNSUBSCRIBING...");
     request
       .delete('/unsubscribe-all-bboxes')
       .set('Accept', 'application/json')

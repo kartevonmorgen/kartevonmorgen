@@ -11,7 +11,12 @@ const initialState = {
   invisible: [],
   addresses: [],
   cities: [],
-  searchByUrl: true
+  searchByUrl: true,
+  entriesToFetch: {
+    all: false,
+    num: 30
+  },
+  moreEntriesAvailable: false
 };
 
 const unique = cities =>
@@ -146,6 +151,18 @@ module.exports = (state = initialState, action = {}) => {
       return {
         ...state,
         highlight: action.payload
+      }
+
+    case T.SET_MORE_ENTRIES_AVAILABLE:
+      return {
+        ...state,
+        moreEntriesAvailable: action.moreEntriesAvailable
+      }
+
+    case T.SET_NUM_ENTRIES_TO_FETCH:
+      return {
+        ...state,
+        entriesToFetch: action.entriesToFetch
       }
 
     default:

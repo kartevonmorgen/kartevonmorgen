@@ -50,8 +50,9 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </li>)
 }
 
-const ResultList = ({ waiting, entries, ratings, highlight, onClick, onMouseEnter, onMouseLeave}) => {
-  const results = entries.map( e =>
+const ResultList = ({ waiting, entries, ratings, highlight, onClick, 
+  onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick}) => {
+  let results = entries.map( e =>
     <ResultListElement
       entry        = { e            }
       ratings      = { (e.ratings || []).map(id => ratings[id])}
@@ -59,7 +60,19 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick, onMouseEnte
       highlight    = { highlight.indexOf(e.id) >= 0 }
       onClick      = { onClick      }
       onMouseEnter = { onMouseEnter }
-      onMouseLeave = { onMouseLeave } />)
+      onMouseLeave = { onMouseLeave } />);
+  if(moreEntriesAvailable && !waiting){
+    results.push(
+      <li>
+      <div>
+        <a onClick = { onMoreEntriesClick } href="#">
+          mehr Einträge anzeigen...
+        </a>
+      </div>
+      </li>
+    );
+  }
+
   return ( 
     <div className= "result-list">
     {

@@ -89,6 +89,13 @@ const Actions = {
 
   getEntries: (ids=[]) =>
     (dispatch,getState) => {
+      let entriesToFetch = getState().search.entriesToFetch;
+      dispatch({
+        type: T.SET_MORE_ENTRIES_AVAILABLE,
+        moreEntriesAvailable: !entriesToFetch.all && (ids.length > entriesToFetch.num)
+      });
+      ids = ids.slice(0, entriesToFetch.num);
+
       const entries = getState().server.entries; 
       const fetch_ids = ids.filter((x) => entries[x] == null);
       if (fetch_ids.length > 0) {
@@ -114,6 +121,26 @@ const Actions = {
         })
       }
     },
+
+  showAllEntries: () =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.SET_NUM_ENTRIES_TO_FETCH,
+        entriesToFetch: {
+          all: true,
+          num: getState().search.entriesToFetch.num
+        }
+      });
+      const allIDs = [];
+      if(Array.isArray(getState().search.result)){
+        allIDs.push(allIDs, getState().search.result);
+      }
+      if(Array.isArray(getState().search.invisible)){
+        allIDs.push(allIDs, getState().search.invisible);
+      }
+      dispatch(Actions.getEntries(allIDs));
+    },
+
 
   getRatings: (ids=[]) =>
     (dispatch) => {
@@ -229,7 +256,6 @@ const Actions = {
             }
           });
         } else {
-          console.log("UNSUBSCRIBE SUCCESS");
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {

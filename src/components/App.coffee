@@ -252,7 +252,6 @@ Main = React.createClass
                         className:"pure-u-1-1",
                         onClick: (->
                           dispatch Actions.unsubscribeFromBboxes(user.username)
-                          console.log "done"
                         ),
                           i className: "fa fa-trash"
                           "Abonnement abbestellen"
@@ -291,6 +290,8 @@ Main = React.createClass
                     onClick     : (id) -> dispatch Actions.urlSetCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
+                    moreEntriesAvailable: search.moreEntriesAvailable
+                    onMoreEntriesClick: () -> dispatch Actions.showAllEntries()
 
                   if cities.length > 0
                     div null,
