@@ -112,9 +112,10 @@ Main = React.createClass
                 dispatch Actions.urlSetCenter
                   lat: city.lat
                   lng: city.lon
-                dispatch Actions.urlSetZoom 14
+                dispatch Actions.urlSetZoom 13
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
+                dispatch Actions.finishCitySearch()
             onLogin: (data) ->
                 {username, password} = data
                 dispatch Actions.login(username, password)

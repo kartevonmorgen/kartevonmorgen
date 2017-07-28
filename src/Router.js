@@ -37,6 +37,9 @@ const Router = {
         } else{
           dispatch(Actions.setCenter(entry));
         }
+        if(!zoom) {
+          dispatch(Actions.urlSetZoom(mapConst.ENTRY_DEFAULT_ZOOM));
+        }
 
       }   
       else if (center && center.includes(',') && (center.length >= 3)) {

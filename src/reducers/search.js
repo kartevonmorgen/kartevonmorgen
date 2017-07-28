@@ -165,6 +165,13 @@ module.exports = (state = initialState, action = {}) => {
         entriesToFetch: action.entriesToFetch
       }
 
+    case T.FINISH_CITY_SEARCH:
+      return {
+        ...state,
+        cities: [],
+        city: ""
+      }
+
     default:
       return state;
   }

@@ -22,6 +22,10 @@ const Actions = {
     payload: txt
   }),
 
+  finishCitySearch: () => ({
+    type: T.FINISH_CITY_SEARCH
+  }),
+
   search: () =>
     (dispatch, getState) => {
 
@@ -467,7 +471,6 @@ const Actions = {
   deleteAccount: () => 
     (dispatch, getState) => {
       WebAPI.deleteAccount(getState().user.id, (err, res) => {
-        console.log("err, res: ", err, res);
         if(!err){
           dispatch({
             type: T.LOGOUT
