@@ -14,7 +14,7 @@ const initialState = {
   searchByUrl: true,
   entriesToFetch: {
     all: false,
-    num: 30
+    num: 50
   },
   moreEntriesAvailable: false
 };

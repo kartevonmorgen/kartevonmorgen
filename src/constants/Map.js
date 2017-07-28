@@ -1,8 +1,8 @@
 module.exports = {
-  DEFAULT_ZOOM: 13,
+  DEFAULT_ZOOM: 7,
   DEFAULT_CENTER: {
-    lat: 48.7784,
-    lng: 9.1801
+    lat: 50.8268,
+    lng: 10.9204
   },
   // DEFAULT_BBOX: {
   //   getNorthEast: () => ({
