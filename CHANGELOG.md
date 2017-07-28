@@ -1,3 +1,22 @@
+## v0.1.16 (2017-07-28)
+- new(rating): show explanation for rating contexts when hovering over them
+- new(rating): replace drop downs by radio buttons
+- new(subscribeToBbox): add possibility for logged in user to subscribe to changes in an area of the map -> send notification emails
+- new(login): make deleting account possible (mostly for debugging)
+- new(login): send email to confirm email address
+- new(login): user registration, login, logout
+- new(search): show only the 50 best rated entries in search and pins
+- new(landingPage): make an overview of Germany the initial default view
+- new(rating): added optional sources field to rating form
+- new(routing): route also by search string and tags
+- fix(routing): fixed several issues with routing
+- refactor(routing): put routing into url reducer
+- new(search): show loading message when loading entries
+- fix(search): ignore search when ending with '#', wait for hashtag first
+- fix(entryForm): make finding address work again
+- fix(entryForm): remove 'events' category for now because it produces an error 'react is undefined'
+- chore(*): support es2017
+
 ## v0.1.15 (2017-06-14)
 
 - new(routing): routing by center, zoom and entry
