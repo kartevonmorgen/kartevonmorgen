@@ -12,9 +12,9 @@ const entryForm = (data) => {
   if (data.title == null) {
     errors.title = 'Pflichtangabe';
   } else {
-    if (!((l = data.title.length) <= 40)) {
+    if (!((l = data.title.length) <= 50)) {
       if (errors.title == null) {
-        errors.title = "Zu langer Titel: " + l + " statt max. 40 Zeichen";
+        errors.title = "Zu langer Titel: " + l + " statt max. 50 Zeichen";
       }
     }
     if (!((l = data.title.length) >= 3)) {
