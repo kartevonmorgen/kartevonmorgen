@@ -1,5 +1,5 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
-
+# Geändert durch Helmut 2017
 React    = require "react"
 T        = React.PropTypes
 URLs     = require "../constants/URLs"
@@ -44,6 +44,7 @@ module.exports = pure React.createClass
         """
         Auf der Suche nach der Welt von morgen? Suchen Sie mit uns gemeinsam!
         Hier geht es zur Webseite der Bildungsagenten: www.bildungsagenten.org
+        Und hier beschreiben wir Hintergründe zum Projekt Karte von morgen: www.bildungsagenten.org/kartevonmorgen
         """
 
       p className: "version",
