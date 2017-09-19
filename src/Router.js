@@ -27,7 +27,6 @@ const Router = {
       if(entry){ 
         console.log("route: entry");
         dispatch(Actions.updateStateFromURL(window.location.hash));
-        dispatch(Actions.urlSetCurrentEntry(entry));
         dispatch(Actions.showMap());
         dispatch(Actions.getEntries([entry]));
         dispatch(Actions.setCurrentEntry(entry));

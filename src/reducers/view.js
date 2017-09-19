@@ -176,7 +176,7 @@ module.exports = (state=initialState, action={}) => {
     case T.SET_CURRENT_ENTRY:
       return {
         ...state,
-        left: action.payload != null ? V.ENTRY : V.RESULT,
+        left: action.payload != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT,
         menu: false
       }
 
@@ -184,7 +184,6 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         menu: false,
-        left: V.RESULT
       }
 
     case T.SHOW_SEARCH_RESULTS:
