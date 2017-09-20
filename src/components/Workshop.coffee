@@ -10,42 +10,52 @@ pkg      = require "../../package.json"
 
 module.exports = pure React.createClass
 
-  displayName: "Workshops"
+  displayName: "Hintergrund Infos"
 
   render: ->
     div className: "info",
-      h3 null,
+     h2 null,
+        "Weiterführende Infos zur Karte von morgen"
+        br null
+     h3 null,
+        "Aktuelles"
+        br null
+      p null
+     a href: "", onClick: (-> onClick V.JOIN), ""
+        "Neugikeiten und aktuelles auf "  a href: "https://www.facebook.com/vonmorgen", onClick: (-> onClick V.JOIN), "Facebook"
+        "Fortschrittsberichte auf "  a href: "https://www.betterplace.org/de/projects/36213/newsroom", onClick: (-> onClick V.JOIN), "unserem Blog auf Betterplace"
+        br null
+     h3 null,
+        "Hintergründe und Visionen"
+        br null
+        p null
+        "Was will die " a href: "http://bildungsagenten.org/kartevonmorgen/", onClick: (-> onClick V.JOIN), "Karte von morgen?"
+        "- Was sind die " a href: "http://bildungsagenten.org/kartevonmorgen/2/", onClick: (-> onClick V.JOIN), "Positivfaktoren?"
+        "- Was sind " a href: "http://bildungsagenten.org/kartevonmorgen/3/", onClick: (-> onClick V.JOIN), "Regionalpiloten bzw.  Themenpiloten? Wie nutze ich Widgets?"
+        "- Wie kann ich " a href: "http://bildungsagenten.org/kartevonmorgen/4/", onClick: (-> onClick V.JOIN), "mitmachen oder die Karte von morgen unterstützen?"
+     img style: {float: "left"}, src: require "../img/Team an Tisch.jpg"
+        
+     h3 null,
+        "Spenden"
+        br null
+        p null
+        "Einfach online Spenden über "  a href: "https://www.betterplace.org/de/projects/36213", onClick: (-> onClick V.JOIN), "Betterplace"
+         br null
+        "Etwas Gutes für morgen tun: Die Plattform von morgen finanziert sich über Fördermittel verschiedener Programme 
+        und Wettbewerbe aber zum Großteil über Spenden."
+        p null
+        "Wir, das Team von morgen, arbeiten ehrenamtlich."
+        "Wir freuen uns über jeden kleinen und großen Beitrag und hoffen auch bald in deiner Stadt verfügbar zu sein. Auf bald!"
+        p null
+        "Dankend, das Team von morgen"
+     img style: {float: "left"}, src: require "../img/Eam-in-Action.jpg"
+     h3 null,
         "Workshops von morgen"
         br null
-        "Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen Hoch Drei und deren Bildungsprogramm „Bildungsagenten” bieten wir Workshops zu verschiedenen Themen an," +
-        "u.a. Solidarisches Wirtschaften, Friedliches Ressourcenteilen und Globale Zusammenarbeit.  Stellt uns gerne eine Anfrage und wir konzipieren unsere Workshops nach euren Wünschen!"
-
-      h2 null, "Die Bildungsagenten stellen sich vor:"
-
-      p null,
-        """
-        Die Ideenwerkstatt Bildungsagenten ist eine Initiative von ehemaligen internationalen Freiwilligen.
-        Wir wollen globale- und wirtschaftliche Zusammenhänge in interaktiven Workshops an Schulen und mit
-        Jugendgruppen erlebbar zu machen und durch künstlerische Aktionen ins öffentliche Bewusstsein zu bringen.
-        Unsere Vision ist eine friedliche, bunte Welt in der sich alle Menschen frei begegnen können.
-        """
-
-      p null,
-        """
-        Vorallem entdecken unsere Teilnehmer_Innen in Workshops und Vorträgen positive Beispiele und
-        erfolgreiche Projekte aus der ganzen Welt und entwickeln durch unsere interaktiven Methoden und
-        der Begleitung im Projektmanagement eigene Leuchtturmprojekte auf regionaler Ebene.
-        Dazu gehört das Besuchen von Initativen auf der Karte von morgen,
-        das verzeichnen der eigenen Region oder das Gründen von Projekten
-        und die dann auf der Karte von morgen erscheinen werden.
-        """
-
-      p null,
-        """
-        Auf der Suche nach der Welt von morgen? Suchen Sie mit uns gemeinsam!
-        Hier geht es zur Webseite der Bildungsagenten: www.bildungsagenten.org
-        """
-
+        "Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen³ e.V. und der „Ideenwerkstatt Bildungsagenten”, 
+        bieten wir Workshops zu verschiedenen Themen an.
+        www.bildungsagenten.org"
+     img style: {float: "left"}, src: require "../img/Slider.jpg "
       p className: "version",
         "Version dieses Clients: v#{pkg.version}"
       if (sv = @props.server?.version)?
