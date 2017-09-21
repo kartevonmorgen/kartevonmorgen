@@ -59,7 +59,7 @@ Main = React.createClass
       (x for id in search.result when (x=entries[id])?)
     invisibleEntries =
       (x for id in search.invisible when(x=entries[id])?)
-    rightPanelIsOpen = false #right panel moved into landingpage
+    rightPanelIsOpen = false  # right panel moved into landingpage
     mapCenter = 
       if e?.lat and e?.lng and c=search.current
         e = entries[c]
@@ -129,7 +129,7 @@ Main = React.createClass
         if view.modal?
           React.createElement Modal, { view, dispatch }
 
-        div className:"left #{if view.left? and not view.menu then 'opened' else 'closed'}",
+        div className:"left #{if view.showLeftPanel and not view.menu then 'opened' else 'closed'}",
 
           div className: "search #{
             if view.left? then 'integrated' else 'standalone'
@@ -154,14 +154,13 @@ Main = React.createClass
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
-                    dispatch Actions.setCurrentEntry()
+                    dispatch Actions.setCurrentEntry(null, true)
                   else
                     dispatch Actions.setSearchText ''
                     dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
               onLocate        : -> dispatch Actions.showOwnPosition()
-
           if view.left?
             nav className: "menu pure-g",
               switch view.left
@@ -386,7 +385,12 @@ Main = React.createClass
                 div className: "subscribe-to-bbox",
                   React.createElement SubscribeToBbox,
                     subscriptionExists: user.subscriptionExists
-
+        div className:"hide-sidebar",
+          button
+            onClick: (-> dispatch Actions.toggleSidebarVisibility()) ,
+            i className: "fa fa-angle-double-#{
+                  if view.showLeftPanel then 'left' else 'right'
+                }"
         div className:"right #{
           if rightPanelIsOpen then 'opened' else 'closed'
         }",

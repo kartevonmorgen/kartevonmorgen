@@ -11,10 +11,14 @@ const Router = {
   
   route: (e) => {
     const { params } = parseURL(window.location.hash);
-    const { entry, zoom, center, search, tags, view, confirm_email } = params;
+    const { entry, zoom, center, search, tags, view, confirm_email, left} = params;
     const { server, map } = getState();
     const { entries } = server;
 
+    if(left){
+      console.log("route: left visibility:", left);
+      dispatch(Actions.urlChangeSidebarVisibility(left == "show"));
+    }
     if(!params || Object.keys(params).length == 0){
       console.log("route: nothing");
       if(getState().view.left != V.SUBSCRIBE_TO_BBOX){
@@ -29,7 +33,7 @@ const Router = {
         dispatch(Actions.updateStateFromURL(window.location.hash));
         dispatch(Actions.showMap());
         dispatch(Actions.getEntries([entry]));
-        dispatch(Actions.setCurrentEntry(entry));
+        dispatch(Actions.setCurrentEntry(entry, left ? (left == "show") : true));
         if(entries[entry] != null){
           const e = entries[entry];
           dispatch(Actions.setCenter({lat: e.lat, lng: e.lng}));

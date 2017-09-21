@@ -9,7 +9,8 @@ const initialState = {
   modal: null,
   waiting_for_search_results: true,
   explainRatingContext: null,
-  selectedContext: null
+  selectedContext: null,
+  showLeftPanel: true
 };
 
 module.exports = (state=initialState, action={}) => {
@@ -176,7 +177,9 @@ module.exports = (state=initialState, action={}) => {
     case T.SET_CURRENT_ENTRY:
       return {
         ...state,
-        left: action.payload != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT,
+        left: action.showLeft ? 
+          (action.entry != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT) 
+          : null,
         menu: false
       }
 
@@ -184,6 +187,19 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         menu: false,
+      }
+
+    case T.URL_CHANGE_SIDEBAR_VISIBILITY:
+      return {
+        ...state,
+        left: action.show ? (state.left ? state.left : V.RESULT) : null,
+        showLeftPanel: action.show
+      }
+
+    case T.TOGGLE_SIDEBAR_VISIBILITY:
+      return {
+        ...state,
+        showLeftPanel: !state.showLeftPanel,
       }
 
     case T.SHOW_SEARCH_RESULTS:

@@ -14,7 +14,7 @@ const searchTextToUrlQuery = (text) => {
 }
 
 module.exports = (state=initialState, action={}) => {
-  var { center, zoom, entry, search_text, view } = action;
+  var { center, zoom, entry, search_text, view, show_left } = action;
 
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
@@ -33,7 +33,8 @@ module.exports = (state=initialState, action={}) => {
             ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
             + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
           + "&zoom=" + zoom
-          + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""));
+          + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""))
+          + ((show_left != null) ? ("left=" + show_left ? "show" : "hide") : "");
 
         return window.location.hash;
       }

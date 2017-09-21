@@ -300,7 +300,8 @@ const Actions = {
             if (!err) {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
-                payload: id
+                entry: id,
+                showLeft: showLeft
               });
               if (!(e != null ? e.id : void 0)) {
                 dispatch({
@@ -343,7 +344,8 @@ const Actions = {
             if (!err && res && res.length == 1) {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
-                payload: res[0].id
+                entry: res[0].id,
+                showLeft: showLeft
               });
               dispatch(Actions.getRatings(res[0].ratings));
               dispatch({
@@ -500,10 +502,11 @@ const Actions = {
     };
   },
 
-  setCurrentEntry: (id) => {
+  setCurrentEntry: (id, showLeft) => {
     return {
       type: T.SET_CURRENT_ENTRY,
-      payload: id
+      entry: id,
+      showLeft: showLeft
     };
   },
 
@@ -516,7 +519,22 @@ const Actions = {
         center: getState().map.center,
         zoom: getState().map.zoom,
         search_text: getState().search.text,
-        view: getState().view
+        view: getState().vie
+      });
+    },
+
+  urlChangeSidebarVisibility: (show) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.URL_CHANGE_SIDEBAR_VISIBILITY,
+        show: show
+      });
+    },
+
+  toggleSidebarVisibility: () =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.TOGGLE_SIDEBAR_VISIBILITY
       });
     },
 
@@ -527,7 +545,7 @@ const Actions = {
         center: {lat: center.lat, lng: center.lng},
         zoom: getState().map.zoom,
         search_text: getState().search.text,
-        view: getState().view
+        view: getState().view,
       });
     },
 
