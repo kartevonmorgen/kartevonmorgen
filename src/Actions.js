@@ -301,7 +301,7 @@ const Actions = {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 entry: id,
-                showLeft: showLeft
+                showLeft: true
               });
               if (!(e != null ? e.id : void 0)) {
                 dispatch({
@@ -345,7 +345,7 @@ const Actions = {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 entry: res[0].id,
-                showLeft: showLeft
+                showLeft: true
               });
               dispatch(Actions.getRatings(res[0].ratings));
               dispatch({
