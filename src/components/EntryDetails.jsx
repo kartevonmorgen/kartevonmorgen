@@ -209,12 +209,14 @@ class EntryDetails extends Component {
             : null)
         ]}</div>
         <div className="ratings">
+          <button className="new-rating" onClick={() => { onRate(entry.id) }}>Bewertung abgeben</button>
           <div className="flower">{Flower(ratings,40)}</div>
-          <h4>Bewertungen</h4>
+          <h4 className="ratings">Bewertungen</h4>
           { entry.ratings && entry.ratings.length > 0
             ? <div>
-                { Ratings(ratings) }
-                <button onClick={() => { onRate(entry.id) }}>weitere Bewertung abgeben</button>
+                <div>
+                  { Ratings(ratings) }
+                </div>
               </div>
             : <div>
                 <p>Für diesen Eintrag wurden noch keine Bewertungen abgegeben.</p>

@@ -109,32 +109,32 @@ class RatingForm extends Component {
           </div>
         </fieldset>
         <span onMouseOver={explainSelected}>
-        <p className="form-heading">Bewertung:</p>
-        <fieldset>  
-          <label>
-            <Field name="value" className="radio-button" component="input" type="radio" value="-1" />
-            {" "} von gestern (-1)
-          </label><br />
-          <label>
-            <Field name="value" className="radio-button" component="input" type="radio" value="0" />
-            {" "} von heute (0)
-          </label><br/>
-          <label>
-            <Field name="value" className="radio-button" component="input" type="radio" value="1" />
-            {" "} von morgen (1)
-          </label><br />
-          <label>
-            <Field name="value" className="radio-button" component="input" type="radio" value="2" />
-            {" "} visionär (2)
-          </label>
-          <Field name="value" component={errorMessage} />
-        </fieldset>
         <fieldset>
           <Field name="comment" className="pure-input-1" component="textarea" placeholder="Kommentar"  />
           <Field name="comment" component={errorMessage} />
         </fieldset>
         <fieldset>
           <Field name="source" className="pure-input-1" type="text" component="input" placeholder="Quelle (z.B. ein Link oder 'ich arbeite da'...)" />
+        </fieldset>
+        <p className="form-heading">Bewertung:</p>
+        <fieldset>  
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="2" />
+            {" "} von übermorgen (2)
+          </label><br />
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="1" />
+            {" "} von morgen (1)
+          </label><br/>
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="0" />
+            {" "} von heute (0)
+          </label><br />
+          <label>
+            <Field name="value" className="radio-button" component="input" type="radio" value="-1" />
+            {" "} von gestern (-1)
+          </label>
+          <Field name="value" component={errorMessage} />
         </fieldset>
         </span>
       </div>

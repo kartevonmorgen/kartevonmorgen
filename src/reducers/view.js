@@ -177,9 +177,12 @@ module.exports = (state=initialState, action={}) => {
     case T.SET_CURRENT_ENTRY:
       return {
         ...state,
+        // left: action.showLeft ? 
+        //   (action.entry != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT) 
+        //   : null,
         left: action.showLeft ? 
-          (action.entry != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT) 
-          : null,
+            (action.entry != null ? V.ENTRY : V.RESULT)
+            : null,
         menu: false
       }
 

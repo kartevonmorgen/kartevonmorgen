@@ -191,14 +191,6 @@ Main = React.createClass
                 when V.EDIT, V.NEW
                   [
                     li
-                      key: "save"
-                      className:"pure-u-1-2",
-                      onClick: (=>
-                        @refs.form.submit()
-                      ),
-                        i className: "fa fa-floppy-o"
-                        "speichern"
-                    li
                       key: "cancel"
                       className:"pure-u-1-2",
                       onClick: (->
@@ -209,17 +201,17 @@ Main = React.createClass
                       ),
                         i className: "fa fa-ban"
                         "abbrechen"
-                  ]
-                when V.NEW_RATING
-                  [
                     li
                       key: "save"
                       className:"pure-u-1-2",
                       onClick: (=>
-                        @refs.rating.submit()
+                        @refs.form.submit()
                       ),
                         i className: "fa fa-floppy-o"
-                        "bewerten"
+                        "speichern"
+                  ]
+                when V.NEW_RATING
+                  [
                     li
                       key: "cancel"
                       className:"pure-u-1-2",
@@ -229,6 +221,14 @@ Main = React.createClass
                       ),
                         i className: "fa fa-ban"
                         "abbrechen"
+                    li
+                      key: "save"
+                      className:"pure-u-1-2",
+                      onClick: (=>
+                        @refs.rating.submit()
+                      ),
+                        i className: "fa fa-floppy-o"
+                        "bewerten"
                   ]
                 when V.SUBSCRIBE_TO_BBOX
                   if user.subscriptionExists
