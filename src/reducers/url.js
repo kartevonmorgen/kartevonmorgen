@@ -3,14 +3,14 @@ import V from "../constants/PanelView";
 import mapConst from "../constants/Map";
 import parseURL from "../util/parseURL";
 
-const initialState = "";
+const initialState = {url: ""};
 
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 const searchTextToUrlQuery = (text) => {
   let query = "&search=" 
     + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
-  return query;
+  return {url: query};
 }
 
 module.exports = (state=initialState, action={}) => {
@@ -18,7 +18,7 @@ module.exports = (state=initialState, action={}) => {
 
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
-      return window.location.hash;
+      return {url: window.location.hash};
     case T.URL_SET_CENTER: // falls through
     case T.URL_SET_ZOOM: // falls through
     case T.URL_SET_CURRENT_ENTRY: // falls through
@@ -36,7 +36,7 @@ module.exports = (state=initialState, action={}) => {
           + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""))
           + ((show_left != null) ? ("left=" + show_left ? "show" : "hide") : "");
 
-        return window.location.hash;
+        return {url: window.location.hash};
       }
       return state;
 

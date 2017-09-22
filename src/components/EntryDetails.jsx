@@ -116,7 +116,7 @@ const Ratings = (ratings=[]) => {
     const count = l > 1 ? l +  " Bewertungen" : l + " Bewertung";
 
     return (
-    <div className="rating-context">
+    <div className="rating-context" key={g[0].context}>
       <h5>
         <span style={{color: context_color(g[0].context)}}>{context_name(g[0].context)}</span>
         <span className="count">({count})</span>
