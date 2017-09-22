@@ -12,10 +12,15 @@ const tags = (value) => {
   if ((value == null) || value.length === 0) {
     return value;
   }
+  if ((value == '-') || value == ' ') {
+    return '';
+  }
   return value
     .toLowerCase()
     .replace(' ','-')
     .replace(',,',',')
+    .replace(',-', ',')
+    .replace('--', '-')
 };
 
 const username = (name) => {
