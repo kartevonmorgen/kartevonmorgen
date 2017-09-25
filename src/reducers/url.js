@@ -10,7 +10,7 @@ const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 const searchTextToUrlQuery = (text) => {
   let query = "&search=" 
     + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
-  return {url: query};
+  return query;
 }
 
 module.exports = (state=initialState, action={}) => {
