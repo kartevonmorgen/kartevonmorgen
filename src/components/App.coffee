@@ -414,8 +414,10 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
-              # console.log("move:", coordinates.center);
-              dispatch Actions.urlSetCenter coordinates.center
+              if not view.menu
+                dispatch Actions.urlSetCenter coordinates.center
+              else
+                dispatch Actions.setCenter coordinates.center
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
