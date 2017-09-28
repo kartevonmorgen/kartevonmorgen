@@ -185,51 +185,42 @@ class LandingPage extends Component {
       <div className = "landing">
         <div className = "banner">
           <div className = "content pure-g">
-            <div className = "logo pure-u-2-5">
-              <a onClick={() => onClick('landing')} href="#">
-                <img src={logo} />
-              </a>
+            <div className = "logo-wrapper pure-u-11-24 pure-u-md-1-3">
+              <div className = "logo">
+                <a onClick={() => onClick('landing')} href="#">
+                  <img className="logo pure-img" src={logo} />
+                </a>
+              </div>
             </div>
-            <div className="pure-u-3-5">
+            <div className="menu-wrapper pure-u-1 pure-u-md-2-3">
               <div className="menu pure-menu pure-menu-horizontal">
-                <ul className="pure-menu-list">
-                  <li className="pure-menu-item">
+                <ul className="pure-g">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick={() => onClick('map')} href="#" className="pure-menu-link">
                       Karte
                     </a>
                   </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
-                    <a onClick={() => onClick('new')} href="#" className="pure-menu-link">
-                      Eintrag hinzufügen
-                    </a>
-                  </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick= {() => onClick(V.WORKSHOP)} href="#" className="pure-menu-link">
                       Workshops
                     </a>
                   </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a href="https://www.facebook.com/vonmorgen" className="pure-menu-link">
                       News
                     </a>
                   </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick = {() => onClick(V.INFO)} href="#" className="pure-menu-link">
                       Kontakt
                     </a>
                   </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
                       Spenden
                     </a>
                   </li>
-                  <li className="pure-menu-item">|</li>
-                  <li className="pure-menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     { loggedIn ?
                       <a onClick = {() => onClick(V.LOGOUT)} href="#" className="pure-menu-link">
                         Logout
@@ -245,7 +236,7 @@ class LandingPage extends Component {
           </div>
         </div>
       <div className ={ "search" + (content ? '' : ' start')}>
-        <div className = "content">
+        <div className = "landing-content">
           <h1>Alles Gute auf einer Karte</h1>
           <div className="place-search">
             <div className= "pure-g pure-form">

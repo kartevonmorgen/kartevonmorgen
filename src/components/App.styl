@@ -18,6 +18,10 @@
 @require "~purecss/build/forms.css"
 @require "~purecss/build/buttons.css"
 
+@media only screen and (max-width: 600px) {
+  body { font-size:80%;}
+}
+
 h1, h2, h3, h4, h5, h6, h7
   font-family Museo
 
@@ -232,21 +236,42 @@ button.pure-button i
               background-color: $grayBlue
 
       .banner
-        height  100px
+        /*height  100px*/
+        /*padding-bottom 10px*/
+
 
         .content
           max-width initial
+          padding-bottom 20px
 
-        .logo
-          img
-            padding 1em
-            height  57px
+          div.logo
+            padding-top 1em
+            /*height  57px*/
             margin-left  50px
 
-        .menu
-          margin-top 50px
+          img.logo
+            max-width 137.633px
+            max-height 57px
+            width 100%
+
+        .menu-wrapper
           text-align right
+
+        .menu-wrapper-inner
+          bottom 0
+          width 100%
+          height 20px
+          margin-bottom 10px
+
+        .menu
           font-size  0.9em
+          display inline-block
+          position relative
+          margin-top 20px
+          max-width 655px
+
+          ul
+            margin    0
 
           li
             &:hover, &:active
@@ -254,6 +279,9 @@ button.pure-button i
 
             a
               background  transparent
+
+          .menu-item
+            text-align center
 
       .search
         position relative
@@ -264,14 +292,16 @@ button.pure-button i
         h1
           font-size 3em
 
-        .content
-          position: absolute
-          top    0
+        .landing-content
+          position relative
+          top    25%
           bottom 0
           left   0
           right  0
-          width  50%
+          width  calc(100vw - 50px)
           height 50%
+          margin 0 10px 0 10px
+          display inline-block
 
         h2
           font-weight normal
@@ -309,10 +339,10 @@ button.pure-button i
         left 30%
 
     .left, .right
-      transition  all 0.3s ease-out
+      /*transition  all 0.3s ease-out*/
 
     .center
-      height 100vh
+      /*height 100vh*/
 
       .map
         position absolute
@@ -332,9 +362,8 @@ button.pure-button i
         position        relative
         z-index         1
         overflow-y      scroll
-        height          100vh
-        height          calc(100vh - 7em)
-        padding-bottom  7em;
+        height          calc(100vh - 6.65em)
+        padding-bottom  6.65em;
         box-sizing  border-box
         background      #fff
 
@@ -342,7 +371,7 @@ button.pure-button i
         width 0
       &.opened
         max-width 380px
-        width 91%
+        width 90%
 
         .menu
           width       100%
@@ -403,7 +432,7 @@ button.pure-button i
 
         &:hover
           color       $coal
-          box-shadow  0.5px 2px 2px 0.3px rgba(0,0,0,0.7)
+          box-shadow  px 2px 2px 0.3px rgba(0,0,0,1)
 
         i
           margin-right 0.3em

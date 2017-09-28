@@ -11,6 +11,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
   clz = clz + CSS_CLASSES[entry.categories && entry.categories[0]];
   return (
     <li
+      key           = { entry.id }
       className     = { clz }
       onClick       = { (ev) => { onClick(entry.id) }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
@@ -63,7 +64,7 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick,
       onMouseLeave = { onMouseLeave } />);
   if(moreEntriesAvailable && !waiting){
     results.push(
-      <li>
+      <li key="show-more-entries">
       <div>
         <a onClick = { onMoreEntriesClick } href="#">
           mehr Einträge anzeigen...
