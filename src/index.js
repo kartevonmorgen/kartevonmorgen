@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 import App      from "./components/App";
 import store    from "./Store";
 import Actions  from "./Actions";
-import Router    from "./Router";
+import route    from "./route";
 
 import { Provider, connect } from "react-redux";
 
@@ -20,7 +20,7 @@ if (__DEVELOPMENT__) {
 }
 
 // listen for back button, forward button, etc.
-window.addEventListener("hashchange", Router.route, false);
+window.addEventListener("hashchange", route, false);
 
 const ConnectedApp = connect((s) => s)(App);
 
@@ -35,6 +35,6 @@ if(window.location.hash == ""){
 
 // read the hash url and navigate to the right page
 store.dispatch(Actions.updateStateFromURL);
-Router.route();
+route();
 
 ReactDOM.render(Wrapper, rootElement);

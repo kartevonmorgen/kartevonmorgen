@@ -26,7 +26,6 @@ HUMANITY, TRANSPARENCY, SOLIDARITY } = require "../constants/RatingContexts"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
-Router            = require "../Router"
 
 { GrowlerContainer } = require "flash-notification-react-redux"
 
