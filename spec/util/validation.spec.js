@@ -25,10 +25,10 @@ describe("Validation", () => {
         }).title.should.have.string("Zu kurzer Titel");
       });
 
-      it("should be at most 40 chars long", () => {
+      it("should be at most 50 chars long", () => {
 
         F({
-          title: new Array(41).fill('a').join(''),
+          title: new Array(51).fill('a').join(''),
         }).title.should.have.string("Zu langer Titel");
       });
 
