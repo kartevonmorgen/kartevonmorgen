@@ -9,6 +9,7 @@ import RoutingUsecases from "./constants/RoutingUsecases";
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 export default (event) => {
+  console.log(`ROUTER: "${getState().url.hash}" --> "${window.location.hash}"`);
   dispatch(Actions.updateStateFromURL(window.location.hash));
   const actions = createActionsFromState(getState());
   for (let a of actions) {
