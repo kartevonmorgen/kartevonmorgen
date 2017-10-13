@@ -49,7 +49,7 @@ const createActionsFromState = (state) => {
           actions.push(Actions.setCenter(entry));
         }
         if(!zoom) {
-          actions.push(Actions.urlSetZoom(mapConst.ENTRY_DEFAULT_ZOOM));
+          actions.push(Actions.urlSetZoom(map.center, mapConst.ENTRY_DEFAULT_ZOOM));
         }
         break;
       case RoutingUsecases.CHANGE_CENTER:

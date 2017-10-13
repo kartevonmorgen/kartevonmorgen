@@ -72,7 +72,7 @@ describe("url reducer", () => {
   describe("urlSetSearch", () => {
     it("should put search text into the url", () => {
       let action = null;
-      const first_query_part = "/?center=47.0000,8.0000&zoom=13&";
+      const first_query_part = "#/?center=47.0000,8.0000&zoom=13&";
 
       const dispatch = (arg) => {
         action = arg;
@@ -124,7 +124,7 @@ describe("url reducer", () => {
 
       Actions.urlSetCurrentEntry("f816a9259f9f4fe497b17f7d7b8611b5")(dispatch, getState);
       window.location.hash = "#/?entry=0b6bf94f5be84bd1a6faccabb1b93475&zoom=13";
-      url_reducer({}, action).hash.should.equal("/?entry=f816a9259f9f4fe497b17f7d7b8611b5&zoom=13");
+      url_reducer({}, action).hash.should.equal("#/?entry=f816a9259f9f4fe497b17f7d7b8611b5&zoom=13");
     });
   });
 
@@ -148,14 +148,14 @@ describe("url reducer", () => {
       });
 
       window.location.hash = "#/?center=47.0,9.0&zoom=13&search=blabla";
-      Actions.urlSetCenter({lat: 1.0, lng: 2.0})(dispatch, getState);
+      Actions.urlSetCenter({lat: 1.0, lng: 2.0}, 13)(dispatch, getState);
       url_reducer({hash: "#/?center=47.0,9.0&zoom=13&search=blabla", routing_usecases: {}}, action)
-        .hash.should.equal("/?center=1.0000,2.0000&zoom=13&search=blabla");
+        .hash.should.equal("#/?center=1.0000,2.0000&zoom=13&search=blabla");
 
       window.location.hash = "#";
-      Actions.urlSetCenter({lat: 1.0, lng: 2.0})(dispatch, getState);
+      Actions.urlSetCenter({lat: 1.0, lng: 2.0}, 13)(dispatch, getState);
       url_reducer({hash: "", routing_usecases: {}}, action)
-        .hash.should.equal("/?center=1.0000,2.0000&zoom=13&search=blabla");
+        .hash.should.equal("#/?center=1.0000,2.0000&zoom=13&search=blabla");
     });
 
     it("should not change URL when entry is shown", () => {
@@ -177,9 +177,9 @@ describe("url reducer", () => {
       });
 
       window.location.hash = "#/?entry=f816a9259f9f4fe497b17f7d7b8611b5";
-      Actions.urlSetCenter({lat: 1.0, lng: 2.0})(dispatch, getState);
+      Actions.urlSetCenter({lat: 1.0, lng: 2.0}, 13)(dispatch, getState);
       url_reducer({hash: "#/?entry=f816a9259f9f4fe497b17f7d7b8611b5", routing_usecases: {}}, action)
-        .hash.should.equal("/?entry=f816a9259f9f4fe497b17f7d7b8611b5&zoom=13");
+        .hash.should.equal("#/?entry=f816a9259f9f4fe497b17f7d7b8611b5&zoom=13");
     });
   });
 
@@ -203,8 +203,8 @@ describe("url reducer", () => {
       });
 
       window.location.hash = "#/?center=47.0,9.0&zoom=13&search=blabla";
-      Actions.urlSetZoom(15)(dispatch, getState);
-      url_reducer({}, action).hash.should.equal("/?center=47.0000,8.0000&zoom=15&search=blabla");
+      Actions.urlSetZoom({lat: 47.0, lng: 8.0}, 15)(dispatch, getState);
+      url_reducer({}, action).hash.should.equal("#/?center=47.0000,8.0000&zoom=15&search=blabla");
     });
   });
 });

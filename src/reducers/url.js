@@ -22,9 +22,9 @@ module.exports = (state=initialState, action={}) => {
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
       const { params } = parseURL(action.payload);
-      var { center, zoom, entry, search, tags, confirm_email, left} = params;
+      const { center, zoom, entry, search, tags, confirm_email, left} = params;
 
-      var routing_usecases = [];
+      const routing_usecases = [];
       if(left){
         routing_usecases.push(RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY);
       }
@@ -53,17 +53,20 @@ module.exports = (state=initialState, action={}) => {
       };
 
     case T.CHANGE_URL:
-      var { center, zoom, entry, search_text, view, show_left, hash } = action;
+      const newCenter = action.center;
+      const newZoom = action.zoom;
+      var newEntry = action.entry;
+      const { search_text, view, show_left, hash } = action;
       if(!view || view.left != V.SUBSCRIBE_TO_BBOX){
-        if(!entry && hash.includes("entry")){
-          entry = /entry=([\w\d]*)/.exec(hash)[1];
+        if(!newEntry && hash.includes("entry")){
+          newEntry = /entry=([\w\d]*)/.exec(hash)[1];
         }
-        const newHash = "/?"
-          + ((entry && entry != "NONE") ? ("entry=" + entry) :
-            ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-            + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
-          + "&zoom=" + zoom
-          + ((entry && entry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""))
+        const newHash = "#/?"
+          + ((newEntry && newEntry != "NONE") ? ("entry=" + newEntry) :
+            ("center=" + newCenter.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+            + "," +  newCenter.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
+          + "&zoom=" + newZoom
+          + ((newEntry && newEntry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""))
           + ((show_left != null) ? ("left=" + show_left ? "show" : "hide") : "");
 
         return {

@@ -9,7 +9,7 @@ const initialState = {
 module.exports = (state=initialState, action={}) => {
 
   if (action.error) {
-    console.error(action.error);
+    console.error("Error in server reducer: ", action.payload);
     return state;
   }
 

@@ -148,6 +148,7 @@ const Actions = {
 
   getRatings: (ids=[]) =>
     (dispatch) => {
+      console.log("rating ids: ", ids);
       WebAPI.getRatings(ids, (err, res) => {
         dispatch({
           type: T.RATINGS_RESULT,
@@ -535,25 +536,27 @@ const Actions = {
       updateUrl(getState().url.hash);
     },
 
-  urlSetCenter: (center) => 
+  urlSetCenter: (center, zoom) => 
     (dispatch, getState) => {
+      console.log("urlSetCenter");
       dispatch({
         type: T.CHANGE_URL,
         hash: window.location.hash,
         center: center,
-        zoom: getState().map.zoom,
+        zoom: zoom,
         search_text: getState().search.text,
         view: getState().view,
       });
       updateUrl(getState().url.hash);
     },
 
-  urlSetZoom: (zoom) => 
+  urlSetZoom: (center, zoom) => 
     (dispatch, getState) => {
+      console.log("urlSetZoom");
       dispatch({
         type: T.CHANGE_URL,
         hash: window.location.hash,
-        center: getState().map.center,
+        center: center,
         zoom: zoom,
         search_text: getState().search.text,
         view: getState().view
@@ -694,9 +697,12 @@ const Actions = {
 };
 
 const updateUrl = (hash) => {
-    const newHash = "#" + hash
-    console.log("Action: updateURL: ", newHash);
-    window.location.hash = newHash;
+  if(window.location.hash != hash){
+    console.log("Action updateURL: ", hash);
+    window.location.hash = hash;
+  } else {
+    console.log("Action updateURL: unchanged:", hash);
+  }
 };
 
 const createCookie = (name,value,days) => {

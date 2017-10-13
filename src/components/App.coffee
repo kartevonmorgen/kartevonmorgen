@@ -81,7 +81,7 @@ Main = React.createClass
             onMenuItemClick: (id) -> 
               switch id
                 when 'map'
-                  dispatch Actions.urlSetCenter(mapConst.DEFAULT_CENTER)
+                  dispatch Actions.urlSetCenter mapConst.DEFAULT_CENTER, mapConst.DEFAULT_ZOOM 
                   dispatch Actions.toggleLandingPage()
                   dispatch Actions.setSearchText ''
                   dispatch Actions.search()
@@ -110,8 +110,12 @@ Main = React.createClass
               if city
                 dispatch Actions.urlSetCenter
                   lat: city.lat
-                  lng: city.lon
-                dispatch Actions.urlSetZoom 13
+                  lng: city.lon,
+                  13
+                dispatch Actions.urlSetZoom
+                  lat: city.lat
+                  lng: city.lon,
+                  13
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
                 dispatch Actions.finishCitySearch()
@@ -302,7 +306,8 @@ Main = React.createClass
                         onClick : (city) ->
                           dispatch Actions.urlSetCenter
                             lat: city.lat
-                            lng: city.lon
+                            lng: city.lon,
+                            zoom: map.zoom
                           dispatch Actions.setSearchText ''
 
                   if invisibleEntries and invisibleEntries.length
@@ -414,15 +419,21 @@ Main = React.createClass
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
               if not view.menu
-                console.log "moveend"
-                dispatch Actions.urlSetCenter coordinates.center
+                if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
+                  console.log "MOVEEND"
+                  dispatch Actions.urlSetCenter
+                    lat: coordinates.center.lat
+                    lng: coordinates.center.lng, 
+                    coordinates.zoom
               else
-                dispatch Actions.setCenter coordinates.center
+                dispatch Actions.setCenter 
+                  lat: coordinates.center.lat
+                  lng: coordinates.center.lng
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
-                dispatch Actions.urlSetZoom coordinates.zoom
+                dispatch Actions.urlSetZoom coordinates.center coordinates.zoom
                 dispatch Actions.setBbox coordinates.bbox
             loggedIn
               
