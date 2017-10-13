@@ -414,6 +414,7 @@ Main = React.createClass
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
               if not view.menu
+                console.log "moveend"
                 dispatch Actions.urlSetCenter coordinates.center
               else
                 dispatch Actions.setCenter coordinates.center

@@ -514,22 +514,85 @@ const Actions = {
     (dispatch, getState) => {
       dispatch(Actions.highlight(id ? [id] : []));
       dispatch({
-        type: T.URL_SET_CURRENT_ENTRY,
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
         entry: id,
         center: getState().map.center,
         zoom: getState().map.zoom,
         search_text: getState().search.text,
         view: getState().vie
       });
+      updateUrl(getState().url.hash);
     },
 
   urlChangeSidebarVisibility: (show) =>
     (dispatch, getState) => {
       dispatch({
-        type: T.URL_CHANGE_SIDEBAR_VISIBILITY,
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
         show: show
       });
+      updateUrl(getState().url.hash);
     },
+
+  urlSetCenter: (center) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
+        center: center,
+        zoom: getState().map.zoom,
+        search_text: getState().search.text,
+        view: getState().view,
+      });
+      updateUrl(getState().url.hash);
+    },
+
+  urlSetZoom: (zoom) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
+        center: getState().map.center,
+        zoom: zoom,
+        search_text: getState().search.text,
+        view: getState().view
+      });
+      updateUrl(getState().url.hash);
+    },
+
+  urlSetSearch: (search_text) => 
+    (dispatch, getState) => {
+      dispatch({
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        search_text: search_text,
+        view: getState().view
+      });
+      updateUrl(getState().url.hash);
+    },
+
+  urlSetTags: (tags) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.CHANGE_URL,
+        hash: window.location.hash,
+        center: getState().map.center,
+        zoom: getState().map.zoom,
+        tags: tags,
+        view: getState().view
+       }); 
+      updateUrl(getState().url.hash);
+    },
+
+  updateStateFromURL: (hash) => {
+    return {
+      type: T.UPDATE_STATE_FROM_URL,
+      payload: hash
+    }
+  },
 
   toggleSidebarVisibility: () =>
     (dispatch, getState) => {
@@ -537,51 +600,6 @@ const Actions = {
         type: T.TOGGLE_SIDEBAR_VISIBILITY
       });
     },
-
-  urlSetCenter: (center) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.URL_SET_CENTER,
-        center: {lat: center.lat, lng: center.lng},
-        zoom: getState().map.zoom,
-        search_text: getState().search.text,
-        view: getState().view,
-      });
-    },
-
-  urlSetZoom: (zoom) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.URL_SET_ZOOM,
-        center: getState().map.center,
-        zoom: zoom,
-        search_text: getState().search.text,
-        view: getState().view
-      });
-    },
-
-  urlSetSearch: (search_text) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.URL_SET_SEARCH,
-        center: getState().map.center,
-        zoom: getState().map.zoom,
-        search_text: search_text,
-        view: getState().view
-      });
-    },
-
-  urlSetTags: (tags) =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.URL_SET_TAGS,
-        center: getState().map.center,
-        zoom: getState().map.zoom,
-        tags: tags,
-        view: getState().view
-       }); 
-    },
-
 
   highlight: (id) => {
     if (id == null) {
@@ -667,19 +685,18 @@ const Actions = {
     }
   },
 
-  updateStateFromURL: (hash) => {
-    return {
-      type: T.UPDATE_STATE_FROM_URL,
-      payload: hash
-    }
-  },
-
   explainRatingContext: (context) => {
     return {
       type: T.EXPLAIN_RATING_CONTEXT,
       payload: context
     }
   }
+};
+
+const updateUrl = (hash) => {
+    const newHash = "#" + hash
+    console.log("Action: updateURL: ", newHash);
+    window.location.hash = newHash;
 };
 
 const createCookie = (name,value,days) => {
