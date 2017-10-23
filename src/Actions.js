@@ -101,8 +101,8 @@ const Actions = {
       ids = ids.slice(0, entriesToFetch.num);
 
       const entries = getState().server.entries; 
-      const fetch_ids = ids.filter((x) => entries[x] == null);
-      if (fetch_ids.length > 0) {
+      const fetch_ids_entries = ids.filter((x) => entries[x] == null);
+      if (fetch_ids_entries.length > 0) {
         WebAPI.getEntries(ids, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,
@@ -112,8 +112,10 @@ const Actions = {
           if (!err) {
             const { ratings } = getState().server;
             const ids = flatten(res.map(e => e.ratings));
-            const fetch_ids = ids.filter((x) => ratings[x] == null);
-            dispatch(Actions.getRatings(fetch_ids));
+            const fetch_ids_ratings = ids.filter((x) => ratings[x] == null);
+            if(fetch_ids_ratings.length > 0) {
+              dispatch(Actions.getRatings(fetch_ids_ratings));
+            }
           }
         });
       } else{
