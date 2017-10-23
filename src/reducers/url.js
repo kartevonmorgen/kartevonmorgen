@@ -32,19 +32,18 @@ module.exports = (state=initialState, action={}) => {
         routing_usecases.push(RoutingUsecases.NO_ROUTING);
       } else if(confirm_email){
         routing_usecases.push(RoutingUsecases.CONFIRM_EMAIL);
-      } else if(!view){
-          if(entry){ 
-            routing_usecases.push(RoutingUsecases.SHOW_ENTRY);
-          }   
-          else if (center && center.includes(',') && (center.length >= 3)) {
-            routing_usecases.push(RoutingUsecases.CHANGE_CENTER);   
-          }
-          else if (search || tags || search == "" || tags == "") {
-            routing_usecases.push(RoutingUsecases.CHANGE_SEARCH);
-          }
-          if (zoom) {
-            routing_usecases.push(RoutingUsecases.CHANGE_ZOOM);
-          }
+      } else if(entry){ 
+          routing_usecases.push(RoutingUsecases.SHOW_ENTRY);
+      } else {
+        if (center && center.includes(',') && (center.length >= 3)) {
+          routing_usecases.push(RoutingUsecases.CHANGE_CENTER);   
+        }
+        if (search || tags || search == "" || tags == "") {
+          routing_usecases.push(RoutingUsecases.CHANGE_SEARCH);
+        }
+      }
+      if (zoom) {
+        routing_usecases.push(RoutingUsecases.CHANGE_ZOOM);
       }
 
       return {
