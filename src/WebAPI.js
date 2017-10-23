@@ -27,7 +27,7 @@ module.exports = {
     request
       .get('/search')
       .use(prefix)
-      .query({ text: txt.trim().split(' ') })
+      .query({ text: txt.trim() })
       .query('categories=' + cats.join(','))
       .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
