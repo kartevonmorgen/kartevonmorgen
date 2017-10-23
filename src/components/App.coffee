@@ -433,7 +433,7 @@ Main = React.createClass
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
-                dispatch Actions.urlSetZoom coordinates.center coordinates.zoom
+                dispatch Actions.urlSetZoom coordinates.center, coordinates.zoom
                 dispatch Actions.setBbox coordinates.bbox
             loggedIn
               
