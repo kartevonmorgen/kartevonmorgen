@@ -26,7 +26,7 @@ class LandingPage extends Component {
           onEscape();
           break;
         case "Enter":
-          onSelection(props.cities[0]);
+          onSelection(cities[0]);
       }
     }
 
