@@ -87,10 +87,7 @@ const createActionsFromState = (state) => {
         }
 
         actions.push(Actions.setSearchText(search_str));
-        if(!getState().search.searchByUrl){
-          // search string doesn't come from initial URL but from entering it in the search bar
-          actions.push(Actions.search());
-        }
+        actions.push(Actions.search());
         break;
       case RoutingUsecases.CONFIRM_EMAIL: 
         console.log("route: confirm_email");
