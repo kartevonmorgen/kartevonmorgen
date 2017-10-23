@@ -150,7 +150,6 @@ const Actions = {
 
   getRatings: (ids=[]) =>
     (dispatch) => {
-      console.log("rating ids: ", ids);
       WebAPI.getRatings(ids, (err, res) => {
         dispatch({
           type: T.RATINGS_RESULT,
@@ -554,7 +553,6 @@ const Actions = {
 
   urlSetZoom: (center, zoom) => 
     (dispatch, getState) => {
-      console.log("urlSetZoom");
       dispatch({
         type: T.CHANGE_URL,
         hash: window.location.hash,
@@ -700,11 +698,8 @@ const Actions = {
 
 const updateUrl = (hash) => {
   if(window.location.hash != hash){
-    console.log("Action updateURL: ", hash);
     window.location.hash = hash;
-  } else {
-    console.log("Action updateURL: unchanged:", hash);
-  }
+  } 
 };
 
 const createCookie = (name,value,days) => {

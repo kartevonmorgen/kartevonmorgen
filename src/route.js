@@ -74,7 +74,7 @@ const createActionsFromState = (state) => {
         }
         break;
       case RoutingUsecases.CHANGE_SEARCH: 
-        console.log("route: search", search, tags);
+        console.log(`route: search=${search}, tags=${tags}`);
         var search_str = search ? search : "";
         if(search && tags){
           search_str += " ";
