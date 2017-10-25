@@ -6,7 +6,7 @@ import RoutingUsecases from "../constants/RoutingUsecases";
 
 const initialState = {
   hash: "", 
-  routing_usecases: []
+  routingUsecases: []
 };
 
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
@@ -17,63 +17,83 @@ const searchTextToUrlQuery = (text) => {
   return query;
 }
 
+const constructHash = (entry, center, zoom, searchText, showLeft) => {
+  return "#/?"
+    + ((entry && entry != "NONE") ? ("entry=" + entry) :
+      ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
+      + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
+    + "&zoom=" + zoom
+    + ((entry && entry != "NONE") ? "" : (searchText ? searchTextToUrlQuery(searchText) : ""))
+    + ((showLeft != null) ? ("left=" + showLeft ? "show" : "hide") : "");
+}
+
 module.exports = (state=initialState, action={}) => {
 
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
       const { params } = parseURL(action.payload);
-      const { center, zoom, entry, search, tags, confirm_email, left} = params;
+      const { center, zoom, entry, search, tags, confirmEmail, left} = params;
 
-      const routing_usecases = [];
+      const routingUsecases = [];
       if(left){
-        routing_usecases.push(RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY);
+        routingUsecases.push(RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY);
       }
       if(!params || Object.keys(params).length == 0){
-        routing_usecases.push(RoutingUsecases.NO_ROUTING);
-      } else if(confirm_email){
-        routing_usecases.push(RoutingUsecases.CONFIRM_EMAIL);
+        routingUsecases.push(RoutingUsecases.NO_ROUTING);
+      } else if(confirmEmail){
+        routingUsecases.push(RoutingUsecases.CONFIRM_EMAIL);
       } else if(entry){ 
-          routing_usecases.push(RoutingUsecases.SHOW_ENTRY);
+          routingUsecases.push(RoutingUsecases.SHOW_ENTRY);
       } else {
         if (center && center.includes(',') && (center.length >= 3)) {
-          routing_usecases.push(RoutingUsecases.CHANGE_CENTER);   
+          routingUsecases.push(RoutingUsecases.CHANGE_CENTER);   
         }
         if (search || tags || search == "" || tags == "") {
-          routing_usecases.push(RoutingUsecases.CHANGE_SEARCH);
+          routingUsecases.push(RoutingUsecases.CHANGE_SEARCH);
         }
       }
       if (zoom) {
-        routing_usecases.push(RoutingUsecases.CHANGE_ZOOM);
+        routingUsecases.push(RoutingUsecases.CHANGE_ZOOM);
       }
 
       return {
         hash: action.payload,
-        routing_usecases: routing_usecases
+        routingUsecases: routingUsecases
       };
 
-    case T.CHANGE_URL:
-      const newCenter = action.center;
-      const newZoom = action.zoom;
-      var newEntry = action.entry;
-      const { search_text, view, show_left, hash } = action;
-      if(!view || view.left != V.SUBSCRIBE_TO_BBOX){
-        if(!newEntry && hash.includes("entry")){
-          newEntry = /entry=([\w\d]*)/.exec(hash)[1];
-        }
-        const newHash = "#/?"
-          + ((newEntry && newEntry != "NONE") ? ("entry=" + newEntry) :
-            ("center=" + newCenter.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-            + "," +  newCenter.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
-          + "&zoom=" + newZoom
-          + ((newEntry && newEntry != "NONE") ? "" : (search_text ? searchTextToUrlQuery(search_text) : ""))
-          + ((show_left != null) ? ("left=" + show_left ? "show" : "hide") : "");
+    // case T.CHANGE_URL:
+    //   const newCenter = action.center;
+    //   const newZoom = action.zoom;
+    //   var newEntry = action.entry;
+    //   const { searchText, view, showLeft, hash } = action;
+    //   if(!view || view.left != V.SUBSCRIBE_TO_BBOX){
+    //     if(!newEntry && hash.includes("entry")){
+    //       newEntry = /entry=([\w\d]*)/.exec(hash)[1];
+    //     }
+        
+    //     return {
+    //       ...state,
+    //       hash: constructHash(newEntry, newCenter, newZoom, searchText, showLeft)
+    //     };
+    //   }
+    //   return state;
 
-        return {
-          ...state,
-          hash: newHash
-        };
+    case T.SET_SEARCH_TEXT:
+      const currentParams = parseURL(state.hash).params;
+      const centerStr = parseURL(state.hash).params.center;
+      const currentCenter = {
+        lat: parseFloat(centerStr.split(',')[0]),
+        lng: parseFloat(centerStr.split(',')[1])
       }
-      return state;
+      const currentZoom = parseInt(currentParams.zoom);
+      const currentEntry = currentParams.entry;
+      const currentSearch = currentParams.search;
+      const currentLeft = currentParams.left; // TODO parse boolean?
+
+      return {
+        ...state,
+        hash: constructHash(currentEntry, currentCenter, currentZoom, action.payload, currentLeft)
+      };
 
     default: 
       return state;

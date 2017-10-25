@@ -19,8 +19,8 @@ if (__DEVELOPMENT__) {
   // whyDidYouUpdate(React);
 }
 
-// listen for back button, forward button, etc.
-window.addEventListener("hashchange", route, false);
+// listen for back button, forward button, URL change etc.
+window.onpopstate = route;
 
 const ConnectedApp = connect((s) => s)(App);
 

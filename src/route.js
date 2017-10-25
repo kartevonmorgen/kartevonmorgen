@@ -9,7 +9,7 @@ import RoutingUsecases from "./constants/RoutingUsecases";
 const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 export default (event) => {
-  console.log(`ROUTER: "${getState().url.hash}" --> "${window.location.hash}"`);
+  console.log(`URL CHANGE FROM BROWSER: "${getState().url.hash}" --> "${window.location.hash}"`);
   dispatch(Actions.updateStateFromURL(window.location.hash));
   const actions = createActionsFromState(getState());
   for (let a of actions) {
@@ -20,13 +20,13 @@ export default (event) => {
 const createActionsFromState = (state) => {
   const { server, map, url } = state;
   const { entries } = server;
-  const { hash, routing_usecases } = url;
+  const { hash, routingUsecases } = url;
   const { params } = parseURL(hash);
-  const { entry, zoom, center, search, tags, view, confirm_email, left} = params;
+  const { entry, zoom, center, search, tags, view, confirmEmail, left} = params;
 
   const actions = [];
 
-  for (let usecase of routing_usecases){
+  for (let usecase of routingUsecases){
     switch(usecase){
       case RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY: 
         console.log("route: left visibility:", left);
@@ -75,23 +75,11 @@ const createActionsFromState = (state) => {
         break;
       case RoutingUsecases.CHANGE_SEARCH: 
         console.log(`route: search=${search}, tags=${tags}`);
-        var search_str = search ? search : "";
-        if(search && tags){
-          search_str += " ";
-        }
-        if(tags){
-          search_str += "#" + tags.split(',').reduce((acc, tag) => acc + " #" + tag);
-        }
-        if(tags == ""){
-          search_str += " #";
-        }
-
-        actions.push(Actions.setSearchText(search_str));
         actions.push(Actions.search());
         break;
       case RoutingUsecases.CONFIRM_EMAIL: 
-        console.log("route: confirm_email");
-        actions.push(Actions.confirmEmail(confirm_email));
+        console.log("route: confirmEmail");
+        actions.push(Actions.confirmEmail(confirmEmail));
         break;
     }
   }

@@ -54,6 +54,10 @@ Main = React.createClass
     { entries, ratings } = server
     { waiting_for_search_results, explainRatingContext, selectedContext } = view
 
+    if url.hash != window.location.hash
+      console.log "URL CHANGE FROM APP: " + window.location.hash + " --> " + url.hash
+      window.history.pushState(null, null, window.location.pathname + url.hash);
+
     resultEntries    =
       (x for id in search.result when (x=entries[id])?)
     invisibleEntries =
@@ -81,10 +85,7 @@ Main = React.createClass
             onMenuItemClick: (id) -> 
               switch id
                 when 'map'
-                  dispatch Actions.urlSetCenter mapConst.DEFAULT_CENTER, mapConst.DEFAULT_ZOOM 
                   dispatch Actions.toggleLandingPage()
-                  dispatch Actions.setSearchText ''
-                  dispatch Actions.search()
                 when 'new'
                   dispatch Actions.toggleLandingPage()
                   dispatch Actions.showNewEntry()
@@ -148,12 +149,8 @@ Main = React.createClass
                   dispatch Actions.toggleSearchCategory c
                   dispatch Actions.search()
               onChange        : (txt="") ->
-                dispatch Actions.urlSetCurrentEntry()
-                dispatch Actions.urlSetSearch txt
                 dispatch Actions.setSearchText txt
-                if txt == ""
-                  # need to manually start search because router doesn't search for empty strings
-                  dispatch Actions.search()
+                dispatch Actions.search()
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
@@ -418,10 +415,10 @@ Main = React.createClass
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
             onMoveend     : (coordinates) ->
+              console.log "moveend"
               if not view.menu
                 if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
-                  console.log "MOVEEND"
-                  dispatch Actions.urlSetCenter
+                  dispatch Actions.setCenter
                     lat: coordinates.center.lat
                     lng: coordinates.center.lng, 
                     coordinates.zoom
@@ -432,6 +429,7 @@ Main = React.createClass
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
+              console.log "zoomend"
               if coordinates.zoom != map.zoom
                 dispatch Actions.urlSetZoom coordinates.center, coordinates.zoom
                 dispatch Actions.setBbox coordinates.bbox

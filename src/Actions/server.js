@@ -60,6 +60,10 @@ const Actions = {
       }
     },
 
+  noSearchResults: () => ({
+    type: T.NO_SEARCH_RESULTS
+  }),
+
   searchCity: () =>
     (dispatch, getState) => {
       const s = getState().search;
@@ -224,7 +228,7 @@ const Actions = {
               entry: id,
               center: getState().map.center,
               zoom: getState().map.zoom,
-              search_text: getState().search.text,
+              searchText: getState().search.text,
             });
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {

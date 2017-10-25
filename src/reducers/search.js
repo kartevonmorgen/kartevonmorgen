@@ -1,4 +1,5 @@
 import T from "../constants/ActionTypes";
+import parseURL from "../util/parseURL";
 import { MAIN_IDS, IDS } from "../constants/Categories";
 
 const initialState = {
@@ -80,6 +81,15 @@ module.exports = (state = initialState, action = {}) => {
       return {
         ...state,
         text: action.payload
+      }
+
+    case T.UPDATE_STATE_FROM_URL:
+      const searchText = parseURL(action.payload).params.search;
+      console.log("search:", parseURL(action.payload), parseURL(action.payload).params.search);
+
+      return {
+        ...state,
+        text: searchText || ""
       }
 
     case T.URL_SET_SEARCH:

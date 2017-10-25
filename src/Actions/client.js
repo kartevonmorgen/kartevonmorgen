@@ -8,10 +8,6 @@ const Actions = {
     payload: txt
   }),
 
-  noSearchResults: () => ({
-    type: T.NO_SEARCH_RESULTS
-  }),
-
   setCitySearchText: (txt) => ({
     type: T.SET_CITY_SEARCH_TEXT,
     payload: txt
@@ -115,7 +111,7 @@ const Actions = {
         entry: id,
         center: getState().map.center,
         zoom: getState().map.zoom,
-        search_text: getState().search.text,
+        searchText: getState().search.text,
         view: getState().vie
       });
       updateUrl(getState().url.hash);
@@ -138,7 +134,7 @@ const Actions = {
         hash: window.location.hash,
         center: center,
         zoom: zoom,
-        search_text: getState().search.text,
+        searchText: getState().search.text,
         view: getState().view,
       });
       updateUrl(getState().url.hash);
@@ -151,20 +147,7 @@ const Actions = {
         hash: window.location.hash,
         center: center,
         zoom: zoom,
-        search_text: getState().search.text,
-        view: getState().view
-      });
-      updateUrl(getState().url.hash);
-    },
-
-  urlSetSearch: (search_text) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        center: getState().map.center,
-        zoom: getState().map.zoom,
-        search_text: search_text,
+        searchText: getState().search.text,
         view: getState().view
       });
       updateUrl(getState().url.hash);
