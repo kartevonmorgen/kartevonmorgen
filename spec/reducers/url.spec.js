@@ -68,4 +68,37 @@ describe("url reducer", () => {
       url_reducer({}, action).routingUsecases.should.contain(RoutingUsecases.CHANGE_ZOOM);
     });
   });
+
+  describe("setMapCenter", () => {
+    const center = {
+      lat: 50.100,
+      lng: 10.100
+    };
+
+    const oldState = {
+      hash: "#/?center=0.100,0.100&zoom=10",
+      routingUsecases: []
+    };
+
+    it("should change center in hash state", () => {
+      let action = Actions.setCenter(center);
+      url_reducer(undefined, action).hash.should.equal("#/?center=50.100,10.100");
+      url_reducer(oldState, action).hash.should.equal("#/?center=50.100,10.100&zoom=10");
+    });
+  });
+
+  describe("setZoom", () => {
+    const zoom = 10;
+
+    const oldState = {
+      hash: "#/?center=0.100,0.100&zoom=0",
+      routingUsecases: []
+    };
+
+    it("should change zoom in hash state", () => {
+      let action = Actions.setZoom(zoom);
+      url_reducer(undefined, action).hash.should.equal("#/?zoom=10.00");
+      url_reducer(oldState, action).hash.should.equal("#/?center=0.100,0.100&zoom=10.00");
+    });
+  });
 });
