@@ -15,7 +15,7 @@ export default (entry, center, zoom, searchText, showLeft) => {
       + "," +  center.lng.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES));
   }
   if (zoom) {
-    params.push("zoom=" + zoom);
+    params.push("zoom=" + parseFloat(zoom).toFixed(mapConst.NUM_DECIMALS_FOR_ZOOM));
   }
   // if ((entry && entry != "NONE") {
   if (!(entry && entry != "NONE") && searchText) {

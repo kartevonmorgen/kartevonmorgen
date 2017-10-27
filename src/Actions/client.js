@@ -90,7 +90,7 @@ const Actions = {
   setZoom: (zoom) => {
     return {
       type: T.SET_ZOOM,
-      payload: parseFloat(zoom).toFixed(mapConst.NUM_DECIMALS_FOR_ZOOM)
+      payload: parseFloat(zoom)
     };
   },
 
