@@ -11,21 +11,21 @@ describe("Actions", () => {
       .forEach(([_,v]) => v.should.be.a("function"))
   });
 
-  xit("should return objects or functions", () =>
+  it("should return objects or functions", () =>
     Object
       .entries(A)
       .map(([_,v]) => v())
       .forEach((a) =>
          (typeof a === "object" || typeof a === "function").should.be["true"]));
 
-  xit("should return objects with a type attribute", () =>
+  it("should return objects with a type attribute", () =>
     Object
       .entries(A)
       .map(([_,v]) => v())
       .filter(v => typeof v === "object")
       .forEach((a) => a.type.should.be.a("string")));
 
-  xit("returned object must contain type property", () =>
+  it("returned object must contain type property", () =>
     Object
       .entries(A)
       .map(([_,v]) => v())
