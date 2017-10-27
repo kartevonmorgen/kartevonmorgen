@@ -18,17 +18,18 @@ module.exports = (state = initialState, action = {}) => {
   const { payload } = action;
 
   switch (action.type) {
-    // case T.UPDATE_STATE_FROM_URL:
-    //   const { center, zoom } = parseURL(payload).params;
-    //   const mapCenter = center ? {
-    //     lat: parseInt(center.split(',')[0]),
-    //     lng: parseInt(center.split(',')[1])
-    //   } : null;
-    //   return {
-    //     ...state,
-    //     center: mapCenter || state.center,
-    //     zoom: parseInt(zoom) || state.zoom
-    //   }
+    case T.UPDATE_STATE_FROM_URL:
+      const { center, zoom } = parseUrl(payload).params;
+      const mapCenter = center ? {
+        lat: parseFloat(center.split(',')[0]),
+        lng: parseFloat(center.split(',')[1])
+      } : null;
+
+      return {
+        ...state,
+        center: mapCenter || state.center || mapConst.DEFAULT_CENTER,
+        zoom: parseFloat(zoom) || state.zoom || mapConst.DEFAULT_ZOOM
+    }
     case T.CLOSE_NEW_ENTRY:
     case T.SHOW_NEW_ENTRY:
       return {

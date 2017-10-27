@@ -9,32 +9,30 @@ const initialState = {
   routingUsecases: []
 };
 
-const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
-
-const searchTextToUrlQuery = (text) => {
-  let query = "&search=" 
-    + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
-  return query;
-}
-
-const constructHash = (entry, center, zoom, searchText, showLeft) => {
-  return "#/?"
-    + ((entry && entry != "NONE") ? ("entry=" + entry) :
-      ("center=" + center.lat.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)
-      + "," +  center.lng.toFixed(NUM_DECIMAL_PLACES_FOR_CENTER)))
-    + "&zoom=" + zoom
-    + ((entry && entry != "NONE") ? "" : (searchText ? searchTextToUrlQuery(searchText) : ""))
-    + ((showLeft != null) ? ("left=" + showLeft ? "show" : "hide") : "");
-}
-
 module.exports = (state=initialState, action={}) => {
+
+  if (action.type == T.UPDATE_STATE_FROM_URL) {
+    var params = parseUrl(action.payload).params;
+  } else if (state.hash != "") {
+    params = parseUrl(state.hash).params;
+  }
+
+  if(params){
+    // TODO parse Boolean for left?
+    var { zoom, entry, search, tags, left} = params;
+    var centerStr = params.center;
+    var confirmEmail = params.confirm_email
+
+    var center = centerStr ? {
+      lat: parseFloat(centerStr.split(',')[0]),
+      lng: parseFloat(centerStr.split(',')[1])
+    } : null;
+  }
 
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
-      const { params } = parseURL(action.payload);
-      const { center, zoom, entry, search, tags, confirmEmail, left} = params;
-
       const routingUsecases = [];
+
       if(left){
         routingUsecases.push(RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY);
       }
@@ -45,7 +43,7 @@ module.exports = (state=initialState, action={}) => {
       } else if(entry){ 
           routingUsecases.push(RoutingUsecases.SHOW_ENTRY);
       } else {
-        if (center && center.includes(',') && (center.length >= 3)) {
+        if (centerStr && centerStr.includes(',') && (centerStr.length >= 3)) {
           routingUsecases.push(RoutingUsecases.CHANGE_CENTER);   
         }
         if (search || tags || search == "" || tags == "") {
