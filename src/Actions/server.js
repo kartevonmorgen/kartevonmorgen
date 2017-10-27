@@ -2,6 +2,7 @@ import T                          from "../constants/ActionTypes";
 import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
 import { LICENSE_NAME }           from "../constants/App";
+import clientActions              from "./client"
 import { initialize, stopSubmit } from "redux-form";
 
 
@@ -43,7 +44,7 @@ const Actions = {
           if ((Array.isArray(ids)) && ids.length > 0) {
               dispatch(Actions.getEntries(ids));
           } else{
-            dispatch(Actions.noSearchResults());
+            dispatch(clientActions.noSearchResults());
           }
         });
 
@@ -59,10 +60,6 @@ const Actions = {
         }
       }
     },
-
-  noSearchResults: () => ({
-    type: T.NO_SEARCH_RESULTS
-  }),
 
   searchCity: () =>
     (dispatch, getState) => {

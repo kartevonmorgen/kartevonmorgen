@@ -8,6 +8,10 @@ const Actions = {
     payload: txt
   }),
 
+  noSearchResults: () => ({
+    type: T.NO_SEARCH_RESULTS
+  }),
+
   setCitySearchText: (txt) => ({
     type: T.SET_CITY_SEARCH_TEXT,
     payload: txt
