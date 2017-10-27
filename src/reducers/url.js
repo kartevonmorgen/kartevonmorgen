@@ -1,7 +1,7 @@
 import T from "../constants/ActionTypes";
 import V from "../constants/PanelView";
-import mapConst from "../constants/Map";
-import parseURL from "../util/parseURL";
+import parseUrl from "../util/parseUrl";
+import constructUrl from "../util/constructUrl";
 import RoutingUsecases from "../constants/RoutingUsecases";
 
 const initialState = {

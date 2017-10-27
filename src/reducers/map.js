@@ -1,6 +1,6 @@
 import T from "../constants/ActionTypes";
 import mapConst from "../constants/Map";
-import parseURL from "../util/parseURL";
+import parseUrl from "../util/parseUrl";
 
 const initialState = {
   zoom: mapConst.DEFAULT_ZOOM,

@@ -1,6 +1,6 @@
 import { dispatch, getState } from "./Store";
 import Actions from "./Actions";
-import parseURL from "./util/parseURL";
+import parseUrl from "./util/parseUrl";
 import T        from "./constants/ActionTypes";
 import V        from "./constants/PanelView";
 import mapConst from "./constants/Map";
@@ -21,7 +21,7 @@ const createActionsFromState = (state) => {
   const { server, map, url } = state;
   const { entries } = server;
   const { hash, routingUsecases } = url;
-  const { params } = parseURL(hash);
+  const { params } = parseUrl(hash);
   const { entry, zoom, center, search, tags, view, confirmEmail, left} = params;
 
   const actions = [];
