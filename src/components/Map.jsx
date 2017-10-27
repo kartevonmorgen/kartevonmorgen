@@ -88,6 +88,7 @@ class KVMMap extends Component {
       ref         = 'map'
       center      = { center }
       zoom        = { zoom   }
+      zoomSnap    = { 0.0 }
       zoomControl = { false }
       className   = "map"
       onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
