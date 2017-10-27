@@ -45,7 +45,7 @@ describe("url reducer", () => {
     });
 
     it("should detect the CONFIRM_EMAIL routing usecase", () => {
-      let action = Actions.updateStateFromURL("#/?confirmEmail=e841bd2e156440e6bc1beaf5af03d747");
+      let action = Actions.updateStateFromURL("#/?confirm_email=e841bd2e156440e6bc1beaf5af03d747");
       url_reducer({}, action).routingUsecases.should.contain(RoutingUsecases.CONFIRM_EMAIL);
     });
 
