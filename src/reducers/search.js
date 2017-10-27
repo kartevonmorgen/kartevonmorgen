@@ -143,7 +143,7 @@ module.exports = (state = initialState, action = {}) => {
       break;
 
     case T.SET_CURRENT_ENTRY:
-      const p = action.entry;
+      const p = action.payload;
       if (p != null) {
         return {
           ...state,

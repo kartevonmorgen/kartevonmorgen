@@ -109,14 +109,10 @@ Main = React.createClass
 
             onSelection: (city) ->
               if city
-                dispatch Actions.urlSetCenter
+                dispatch Actions.setCenter
                   lat: city.lat
-                  lng: city.lon,
-                  13
-                dispatch Actions.urlSetZoom
-                  lat: city.lat
-                  lng: city.lon,
-                  13
+                  lng: city.lon
+                dispatch Actions.setZoom mapConst.CITY_DEFAULT_ZOOM
                 dispatch Actions.toggleLandingPage()
                 dispatch Actions.setSearchText ''
                 dispatch Actions.finishCitySearch()
@@ -174,7 +170,7 @@ Main = React.createClass
                   [
                     li
                       onClick: -> 
-                        dispatch Actions.urlSetCurrentEntry("NONE")
+                        dispatch Actions.setCurrentEntry(null)
                         dispatch Actions.showSearchResults()
                       key: "back"
                       className:"pure-u-1-2",
@@ -289,7 +285,7 @@ Main = React.createClass
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight
-                    onClick     : (id) -> dispatch Actions.urlSetCurrentEntry id
+                    onClick     : (id) -> dispatch Actions.setCurrentEntry id
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
                     moreEntriesAvailable: search.moreEntriesAvailable
@@ -301,10 +297,9 @@ Main = React.createClass
                       React.createElement CityList,
                         cities  : cities
                         onClick : (city) ->
-                          dispatch Actions.urlSetCenter
+                          dispatch Actions.setCenter
                             lat: city.lat
                             lng: city.lon,
-                            zoom: map.zoom
                           dispatch Actions.setSearchText ''
 
                   if invisibleEntries and invisibleEntries.length
@@ -319,7 +314,7 @@ Main = React.createClass
                         ratings     : ratings
                         highlight   : highlight
                         onClick     :
-                          (id) -> dispatch Actions.urlSetCurrentEntry id
+                          (id) -> dispatch Actions.setCurrentEntry id
                         onMouseEnter: (id) -> dispatch Actions.highlight id
                         onMouseLeave: (id) -> dispatch Actions.highlight()
               when V.ENTRY
@@ -388,7 +383,7 @@ Main = React.createClass
                     subscriptionExists: user.subscriptionExists
         div className:"hide-sidebar",
           button
-            onClick: (-> dispatch Actions.toggleSidebarVisibility()) ,
+            onClick: (-> if view.showLeftPanel then dispatch Actions.hideLeftPanel() else dispatch Actions.showLeftPanel()),
             i className: "fa fa-angle-double-#{
                   if view.showLeftPanel then 'left' else 'right'
                 }"
@@ -413,26 +408,20 @@ Main = React.createClass
             highlight     : highlight
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
-            onMarkerClick : (id) -> dispatch Actions.urlSetCurrentEntry id
+            onMarkerClick : (id) -> 
+              dispatch Actions.setCurrentEntry id
+              dispatch Actions.showLeftPanel()
             onMoveend     : (coordinates) ->
-              console.log "moveend"
-              if not view.menu
-                if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
-                  dispatch Actions.setCenter
-                    lat: coordinates.center.lat
-                    lng: coordinates.center.lng, 
-                    coordinates.zoom
-              else
-                dispatch Actions.setCenter 
+              if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
+                dispatch Actions.setCenter
                   lat: coordinates.center.lat
                   lng: coordinates.center.lng
               dispatch Actions.setBbox coordinates.bbox
               dispatch Actions.search()
             onZoomend     : (coordinates) ->
-              console.log "zoomend"
               if coordinates.zoom != map.zoom
-                dispatch Actions.urlSetZoom coordinates.center, coordinates.zoom
-                dispatch Actions.setBbox coordinates.bbox
+                dispatch Actions.setZoom coordinates.zoom
+              #   dispatch Actions.setBbox coordinates.bbox
             loggedIn
               
 module.exports = pure(Main)

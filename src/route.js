@@ -30,7 +30,11 @@ const createActionsFromState = (state) => {
     switch(usecase){
       case RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY: 
         console.log("route: left visibility:", left);
-        actions.push(Actions.urlChangeSidebarVisibility(left == "show"));
+        if (left && left == "hide"){
+          actions.push(Actions.hideLeftPanel());
+        } else {
+          actions.push(Actions.showLeftPanel());
+        }
         break;
       case RoutingUsecases.NO_ROUTING: 
         console.log("route: nothing");
@@ -50,7 +54,7 @@ const createActionsFromState = (state) => {
           actions.push(Actions.setCenter(entry));
         }
         if(!zoom) {
-          actions.push(Actions.urlSetZoom(map.center, mapConst.ENTRY_DEFAULT_ZOOM));
+          actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         }
         break;
       case RoutingUsecases.CHANGE_CENTER:

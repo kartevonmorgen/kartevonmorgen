@@ -177,12 +177,7 @@ module.exports = (state=initialState, action={}) => {
     case T.SET_CURRENT_ENTRY:
       return {
         ...state,
-        // left: action.showLeft ? 
-        //   (action.entry != null ? ((state.left == V.EDIT) ? V.EDIT : V.ENTRY) : V.RESULT) 
-        //   : null,
-        left: action.showLeft ? 
-            (action.entry != null ? V.ENTRY : V.RESULT)
-            : null,
+        left: action.payload != null ? V.ENTRY : V.RESULT,
         menu: false
       }
 
@@ -192,17 +187,16 @@ module.exports = (state=initialState, action={}) => {
         menu: false,
       }
 
-    case T.URL_CHANGE_SIDEBAR_VISIBILITY:
+    case T.SHOW_LEFT_PANEL:
       return {
         ...state,
-        left: action.show ? (state.left ? state.left : V.RESULT) : null,
-        showLeftPanel: action.show
+        showLeftPanel: true
       }
 
-    case T.TOGGLE_SIDEBAR_VISIBILITY:
+    case T.HIDE_LEFT_PANEL:
       return {
         ...state,
-        showLeftPanel: !state.showLeftPanel,
+        showLeftPanel: false
       }
 
     case T.SHOW_SEARCH_RESULTS:

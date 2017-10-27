@@ -220,19 +220,11 @@ const Actions = {
         } else {
           const id = (e != null ? e.id : void 0) || res;
           WebAPI.getEntries([id], (err, res) => {
-            dispatch({
-              type: T.URL_SET_CURRENT_ENTRY,
-              entry: id,
-              center: getState().map.center,
-              zoom: getState().map.zoom,
-              searchText: getState().search.text,
-            });
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
-                entry: id,
-                showLeft: true
+                payload: id,
               });
               if (!(e != null ? e.id : void 0)) {
                 dispatch({
@@ -275,8 +267,7 @@ const Actions = {
             if (!err && res && res.length == 1) {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
-                entry: res[0].id,
-                showLeft: true
+                payload: res[0].id,
               });
               dispatch(Actions.getRatings(res[0].ratings));
               dispatch({

@@ -161,20 +161,6 @@ module.exports = (state = initialState, action = {}) => {
       }
       break;
 
-    // case T.URL_SET_CENTER:
-    //   return {
-    //     ...state,
-    //     center: action.center
-    //   }
-    //   break;
-
-    // case T.URL_SET_ZOOM:
-    //   return {
-    //     ...state,
-    //     zoom: action.zoom
-    //   }
-    //   break;
-
     default:
       return state;
   }

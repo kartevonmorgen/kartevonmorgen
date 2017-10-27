@@ -61,41 +61,28 @@ module.exports = (state=initialState, action={}) => {
         routingUsecases: routingUsecases
       };
 
-    // case T.CHANGE_URL:
-    //   const newCenter = action.center;
-    //   const newZoom = action.zoom;
-    //   var newEntry = action.entry;
-    //   const { searchText, view, showLeft, hash } = action;
-    //   if(!view || view.left != V.SUBSCRIBE_TO_BBOX){
-    //     if(!newEntry && hash.includes("entry")){
-    //       newEntry = /entry=([\w\d]*)/.exec(hash)[1];
-    //     }
-        
-    //     return {
-    //       ...state,
-    //       hash: constructHash(newEntry, newCenter, newZoom, searchText, showLeft)
-    //     };
-    //   }
-    //   return state;
 
     case T.SET_SEARCH_TEXT:
-      const currentParams = parseURL(state.hash).params;
-      const centerStr = parseURL(state.hash).params.center;
-      const currentCenter = {
-        lat: parseFloat(centerStr.split(',')[0]),
-        lng: parseFloat(centerStr.split(',')[1])
-      }
-      const currentZoom = parseInt(currentParams.zoom);
-      const currentEntry = currentParams.entry;
-      const currentSearch = currentParams.search;
-      const currentLeft = currentParams.left; // TODO parse boolean?
+      search = action.payload;
+      break;
 
-      return {
-        ...state,
-        hash: constructHash(currentEntry, currentCenter, currentZoom, action.payload, currentLeft)
-      };
+    case T.SET_MAP_CENTER:
+      center = action.payload;
+      break;
+
+    case T.SET_ZOOM:
+      zoom = action.payload;
+      break;
+
+    case T.SET_CURRENT_ENTRY:
+      entry = action.payload;
+      break;
 
     default: 
       return state;
+  }
+  return {
+    ...state,
+    hash: constructUrl(entry, center, zoom, search, left)
   }
 };

@@ -40,6 +40,8 @@ const Actions = {
   cancelRating        : () => ({ type: T.CANCEL_RATING          }),
   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO         }),
   closeIoErrorMessage : () => ({ type: T.CLOSE_IO_ERROR_MESSAGE }),
+  showLeftPanel       : () => ({ type: T.SHOW_LEFT_PANEL }),
+  hideLeftPanel       : () => ({ type: T.HIDE_LEFT_PANEL }),
 
   showAllEntries: () =>
     (dispatch, getState) => {
@@ -99,76 +101,13 @@ const Actions = {
     };
   },
 
-  setCurrentEntry: (id, showLeft) => {
-    return {
-      type: T.SET_CURRENT_ENTRY,
-      entry: id,
-      showLeft: showLeft
-    };
-  },
-
-  urlSetCurrentEntry: (id) => 
+  setCurrentEntry: (id) =>
     (dispatch, getState) => {
       dispatch(Actions.highlight(id ? [id] : []));
       dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        entry: id,
-        center: getState().map.center,
-        zoom: getState().map.zoom,
-        searchText: getState().search.text,
-        view: getState().vie
+        type: T.SET_CURRENT_ENTRY,
+        payload: id,
       });
-      updateUrl(getState().url.hash);
-    },
-
-  urlChangeSidebarVisibility: (show) =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        show: show
-      });
-      updateUrl(getState().url.hash);
-    },
-
-  urlSetCenter: (center, zoom) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        center: center,
-        zoom: zoom,
-        searchText: getState().search.text,
-        view: getState().view,
-      });
-      updateUrl(getState().url.hash);
-    },
-
-  urlSetZoom: (center, zoom) => 
-    (dispatch, getState) => {
-      dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        center: center,
-        zoom: zoom,
-        searchText: getState().search.text,
-        view: getState().view
-      });
-      updateUrl(getState().url.hash);
-    },
-
-  urlSetTags: (tags) =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.CHANGE_URL,
-        hash: window.location.hash,
-        center: getState().map.center,
-        zoom: getState().map.zoom,
-        tags: tags,
-        view: getState().view
-       }); 
-      updateUrl(getState().url.hash);
     },
 
   updateStateFromURL: (hash) => {
@@ -177,13 +116,6 @@ const Actions = {
       payload: hash
     }
   },
-
-  toggleSidebarVisibility: () =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.TOGGLE_SIDEBAR_VISIBILITY
-      });
-    },
 
   highlight: (id) => {
     if (id == null) {
@@ -275,12 +207,6 @@ const Actions = {
       payload: context
     }
   }
-};
-
-const updateUrl = (hash) => {
-  if(window.location.hash != hash){
-    window.location.hash = hash;
-  } 
 };
 
 module.exports = Actions;
