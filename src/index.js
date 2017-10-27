@@ -10,6 +10,7 @@ import App      from "./components/App";
 import store    from "./Store";
 import Actions  from "./Actions";
 import route    from "./route";
+import mapConst from "./constants/Map"
 
 import { Provider, connect } from "react-redux";
 

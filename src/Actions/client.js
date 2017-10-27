@@ -1,5 +1,6 @@
 import T                          from "../constants/ActionTypes";
 import GeoLocation                from "../GeoLocation";
+import mapConst                   from "../constants/Map"
 
 const Actions = {
 
@@ -87,7 +88,7 @@ const Actions = {
   setZoom: (zoom) => {
     return {
       type: T.SET_ZOOM,
-      payload: zoom
+      payload: parseFloat(zoom).toFixed(mapConst.NUM_DECIMALS_FOR_ZOOM)
     };
   },
 
