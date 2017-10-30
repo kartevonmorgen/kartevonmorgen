@@ -1,6 +1,7 @@
 import T                          from "../constants/ActionTypes";
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map"
+import serverActions              from "./server"
 
 const Actions = {
 
@@ -55,7 +56,7 @@ const Actions = {
       if(Array.isArray(getState().search.invisible)){
         allIDs.push(allIDs, getState().search.invisible);
       }
-      dispatch(Actions.getEntries(allIDs));
+      dispatch(serverActions.getEntries(allIDs));
     },
 
   showNewRating: (id) => ({
