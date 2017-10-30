@@ -150,7 +150,7 @@ Main = React.createClass
               onLenseClick    : ->
                 switch view.left
                   when V.ENTRY
-                    dispatch Actions.setCurrentEntry(null, true)
+                    dispatch Actions.setCurrentEntry null, null
                   else
                     dispatch Actions.setSearchText ''
                     dispatch Actions.search()
@@ -170,7 +170,7 @@ Main = React.createClass
                   [
                     li
                       onClick: -> 
-                        dispatch Actions.setCurrentEntry(null)
+                        dispatch Actions.setCurrentEntry null, null
                         dispatch Actions.showSearchResults()
                       key: "back"
                       className:"pure-u-1-2",
@@ -285,7 +285,7 @@ Main = React.createClass
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight
-                    onClick     : (id) -> dispatch Actions.setCurrentEntry id
+                    onClick     : (id, center) -> dispatch Actions.setCurrentEntry id, center
                     onMouseEnter: (id) -> dispatch Actions.highlight id
                     onMouseLeave: (id) -> dispatch Actions.highlight()
                     moreEntriesAvailable: search.moreEntriesAvailable
@@ -313,8 +313,7 @@ Main = React.createClass
                         entries     : invisibleEntries
                         ratings     : ratings
                         highlight   : highlight
-                        onClick     :
-                          (id) -> dispatch Actions.setCurrentEntry id
+                        onClick     : (id, center) -> dispatch Actions.setCurrentEntry id, center
                         onMouseEnter: (id) -> dispatch Actions.highlight id
                         onMouseLeave: (id) -> dispatch Actions.highlight()
               when V.ENTRY
@@ -409,7 +408,7 @@ Main = React.createClass
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> 
-              dispatch Actions.setCurrentEntry id
+              dispatch Actions.setCurrentEntry id, null
               dispatch Actions.showLeftPanel()
             onMoveend     : (coordinates) ->
               if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng

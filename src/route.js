@@ -46,11 +46,11 @@ const createActionsFromState = (state) => {
         console.log("route: entry");
         actions.push(Actions.showMap());
         actions.push(Actions.getEntries([entry]));
-        actions.push(Actions.setCurrentEntry(entry, left ? (left == "show") : true));
         if(entries[entry] != null){
-          const e = entries[entry];
-          actions.push(Actions.setCenter({lat: e.lat, lng: e.lng}));
-        } else{
+          actions.push(Actions.setCurrentEntry(
+            entry, {lat: entries[entry].lat, lng: entries[entry].lng}));
+        } else {
+          actions.push(Actions.setCurrentEntry(entry, null));
           actions.push(Actions.setCenter(entry));
         }
         if(!zoom) {

@@ -77,10 +77,10 @@ const Actions = {
     type: T.LOGOUT
   }),
 
-  setCenter: (center) => {
+  setCenter: (centerOrEntryId) => {
     return {
       type: T.SET_MAP_CENTER,
-      payload: center
+      payload: centerOrEntryId
     };
   },
 
@@ -98,15 +98,16 @@ const Actions = {
     };
   },
 
-  setCurrentEntry: (id) =>
+  setCurrentEntry: (id, center) =>
     (dispatch, getState) => {
       dispatch(Actions.highlight(id ? [id] : []));
       dispatch({
         type: T.SET_CURRENT_ENTRY,
         payload: id,
       });
-      if(id){
+      if(id && center){
         dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
+        dispatch(Actions.setCenter(center));
       }
     },
 
