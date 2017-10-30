@@ -36,7 +36,7 @@ if(window.location.hash == ""){
 
 // read the hash url and navigate to the right page
 store.dispatch(Actions.updateStateFromURL);
-route();
 store.dispatch(Actions.setZoom(mapConst.DEFAULT_ZOOM));
+route();
 
 ReactDOM.render(Wrapper, rootElement);
