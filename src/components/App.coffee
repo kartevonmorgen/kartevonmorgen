@@ -172,6 +172,7 @@ Main = React.createClass
                       onClick: -> 
                         dispatch Actions.setCurrentEntry null, null
                         dispatch Actions.showSearchResults()
+                        dispatch Actions.setCenterInUrl map.center
                       key: "back"
                       className:"pure-u-1-2",
                         i className: "fa fa-chevron-left"
@@ -261,6 +262,7 @@ Main = React.createClass
                         className:"pure-u-1-2",
                         onClick: (->
                           dispatch Actions.showSearchResults()
+                          dispatch Actions.setCenterInUrl map.center
                         ),
                           i className: "fa fa-chevron-left"
                           "zurück"

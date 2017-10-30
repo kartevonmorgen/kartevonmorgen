@@ -118,6 +118,13 @@ const Actions = {
     }
   },
 
+  setCenterInUrl: (center) => {
+    return {
+      type: T.SET_CENTER_IN_URL,
+      payload: center
+    }
+  },
+
   highlight: (id) => {
     if (id == null) {
       id = [];
