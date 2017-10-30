@@ -76,12 +76,11 @@ const Actions = {
 
   getEntries: (ids=[]) =>
     (dispatch,getState) => {
-      // let fetchAllEntries = getState().search.fetchAllEntries;
-      // if (!entriesToFetch.all && (ids.length > entriesToFetch.num)){
-      //   dispatch({
-      //     type: T.SET_MORE_ENTRIES_AVAILABLE
-      //   });
-      // }
+      let { fetchedAllEntries, moreEntriesAvailable } = getState().search;
+      dispatch({
+        type: T.SET_MORE_ENTRIES_AVAILABLE,
+        payload: !fetchedAllEntries && (ids.length > ServerConstants.NUM_ENTRIES_TO_FETCH)
+      });
       ids = ids.slice(0, ServerConstants.NUM_ENTRIES_TO_FETCH);
 
       const entries = getState().server.entries; 

@@ -13,7 +13,7 @@ const initialState = {
   addresses: [],
   cities: [],
   searchByUrl: true,
-  fetchAllEntries: false,
+  showingAllEntries: false,
   moreEntriesAvailable: false
 };
 
@@ -156,14 +156,14 @@ module.exports = (state = initialState, action = {}) => {
     case T.SET_MORE_ENTRIES_AVAILABLE:
       return {
         ...state,
-        moreEntriesAvailable: true,
-        fetchAllEntries: false
+        moreEntriesAvailable: action.payload,
+        showingAllEntries: !action.payload
       }
 
     case T.FETCH_ALL_ENTRIES:
       return {
         ...state,
-        fetchAllEntries: true
+        showingAllEntries: true
       }
 
     case T.FINISH_CITY_SEARCH:
