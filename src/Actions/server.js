@@ -227,20 +227,17 @@ const Actions = {
                 type: T.SET_CURRENT_ENTRY,
                 payload: id,
               });
-              if (!(e != null ? e.id : void 0)) {
-                dispatch({
-                  type: T.NEW_ENTRY_RESULT,
-                  payload: id
-                });
-              } else {
-                dispatch({
-                  type: 'GROWLER__SHOW',
-                  growler: {
-                    text: 'Eintrag wurde gespeichert.',
-                    type: 'growler--success'
-                  }
-                });
-              }
+              dispatch({
+                type: T.NEW_ENTRY_RESULT,
+                payload: res[0]
+              });
+              dispatch({
+                type: 'GROWLER__SHOW',
+                growler: {
+                  text: 'Eintrag wurde gespeichert.',
+                  type: 'growler--success'
+                }
+              });
             }
           });
         }

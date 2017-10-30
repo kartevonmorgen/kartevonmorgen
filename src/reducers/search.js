@@ -123,11 +123,11 @@ module.exports = (state = initialState, action = {}) => {
 
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
-        var o = {};
-        o[state.result.length] = action.payload;
+        var newResult = state.result;
+        newResult.push(action.payload.id);
         return {
           ...state,
-          result: o
+          result: newResult
         }
       }
       break;

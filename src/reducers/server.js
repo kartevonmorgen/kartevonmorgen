@@ -57,6 +57,18 @@ module.exports = (state=initialState, action={}) => {
         };
       }
       return state;
+
+    case T.NEW_ENTRY_RESULT:
+      let o = {};
+      o[payload.id] = payload;
+      return {
+        ...state,
+        entries: {
+          ...state.entries,
+          ...o
+        }
+      }
+      
     default:
       return state;
   }
