@@ -1,4 +1,5 @@
 import T                          from "../constants/ActionTypes";
+import ServerConstants            from "../constants/Server";
 import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
 import { LICENSE_NAME }           from "../constants/App";
@@ -75,12 +76,13 @@ const Actions = {
 
   getEntries: (ids=[]) =>
     (dispatch,getState) => {
-      let entriesToFetch = getState().search.entriesToFetch;
-      dispatch({
-        type: T.SET_MORE_ENTRIES_AVAILABLE,
-        moreEntriesAvailable: !entriesToFetch.all && (ids.length > entriesToFetch.num)
-      });
-      ids = ids.slice(0, entriesToFetch.num);
+      // let fetchAllEntries = getState().search.fetchAllEntries;
+      // if (!entriesToFetch.all && (ids.length > entriesToFetch.num)){
+      //   dispatch({
+      //     type: T.SET_MORE_ENTRIES_AVAILABLE
+      //   });
+      // }
+      ids = ids.slice(0, ServerConstants.NUM_ENTRIES_TO_FETCH);
 
       const entries = getState().server.entries; 
       const fetch_ids_entries = ids.filter((x) => entries[x] == null);

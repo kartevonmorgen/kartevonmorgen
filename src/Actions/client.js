@@ -46,11 +46,7 @@ const Actions = {
   showAllEntries: () =>
     (dispatch, getState) => {
       dispatch({
-        type: T.SET_NUM_ENTRIES_TO_FETCH,
-        entriesToFetch: {
-          all: true,
-          num: getState().search.entriesToFetch.num
-        }
+        type: T.FETCH_ALL_ENTRIES,
       });
       const allIDs = [];
       if(Array.isArray(getState().search.result)){
