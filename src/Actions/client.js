@@ -105,6 +105,9 @@ const Actions = {
         type: T.SET_CURRENT_ENTRY,
         payload: id,
       });
+      if(id){
+        dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
+      }
     },
 
   updateStateFromURL: (hash) => {
