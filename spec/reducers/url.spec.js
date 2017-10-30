@@ -76,14 +76,14 @@ describe("url reducer", () => {
     };
 
     const oldState = {
-      hash: "#/?center=0.100,0.100&zoom=10",
+      hash: "#/?center=0.100,0.100&zoom=10.00",
       routingUsecases: []
     };
 
     it("should change center in hash state", () => {
       let action = Actions.setCenter(center);
       url_reducer(undefined, action).hash.should.equal("#/?center=50.100,10.100");
-      url_reducer(oldState, action).hash.should.equal("#/?center=50.100,10.100&zoom=10");
+      url_reducer(oldState, action).hash.should.equal("#/?center=50.100,10.100&zoom=10.00");
     });
   });
 
