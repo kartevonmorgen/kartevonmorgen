@@ -1,5 +1,5 @@
 import chai from "chai";
-import A    from "../src/Actions";
+import A    from "../../src/Actions";
 
 chai.should();
 
