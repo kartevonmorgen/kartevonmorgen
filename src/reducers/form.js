@@ -1,6 +1,5 @@
 import T            from "../constants/ActionTypes";
 import C            from "../constants/Categories";
-import normalize    from "../util/normalize";
 
 import { reducer as formReducer } from "redux-form";
 
@@ -30,7 +29,6 @@ const reducer = formReducer.plugin({
           },
           kvm_flag_id: action.payload.id
         }
-        break;
       case T.SET_MARKER:
         if (action.manual) {
           return {
@@ -54,7 +52,6 @@ const reducer = formReducer.plugin({
             lng: action.payload.lng
           }
         }
-        break;
       case T.MARKER_ADDRESS_RESULT:
         if (!state.kvm_flag_addressWasEnteredManually && action.payload.address) {
           const addr = action.payload.address;
@@ -69,7 +66,6 @@ const reducer = formReducer.plugin({
           }
         }
         return state;
-        break;
 
       case "@@redux-form/CHANGE":
         const { field } = action.meta;
@@ -91,7 +87,6 @@ const reducer = formReducer.plugin({
           }
         }
         return state;
-        break;
       default:
         return state;
     }
@@ -102,13 +97,13 @@ const reducer = formReducer.plugin({
     const { payload } = action;
 
     switch (action.type) {
-      case T.SHOW_NEW_RATING:
-        return {
-          ...state,
-          kvm_flag_id: payload,
-        };
-      default:
-        return state;
+    case T.SHOW_NEW_RATING:
+      return {
+        ...state,
+        kvm_flag_id: payload,
+      };
+    default:
+      return state;
     }
   }
 

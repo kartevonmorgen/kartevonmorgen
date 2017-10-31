@@ -15,6 +15,8 @@ module.exports = (state=initialState, action={}) => {
 
   const { payload } = action;
 
+  let o = {};
+
   switch (action.type) {
     case T.SERVER_INFO_RESULT:
       return {
@@ -23,12 +25,11 @@ module.exports = (state=initialState, action={}) => {
       };
     case T.ENTRIES_RESULT:
       if (payload != null) {
-        var o = {};
         if (Array.isArray(payload)) {
           payload.filter(e => e != null)
            .forEach(e => { o[e.id] = e; });
         } else {
-          o[p.id] = payload;
+          o[payload.id] = payload;
         }
         return {
           ...state,
@@ -41,12 +42,11 @@ module.exports = (state=initialState, action={}) => {
       return state;
     case T.RATINGS_RESULT:
       if (payload != null) {
-        var o = {};
         if (Array.isArray(payload)) {
           payload.filter(e => e != null)
            .forEach(e => { o[e.id] = e; });
         } else {
-          o[p.id] = payload;
+          o[payload.id] = payload;
         }
         return {
           ...state,
@@ -59,7 +59,6 @@ module.exports = (state=initialState, action={}) => {
       return state;
 
     case T.NEW_ENTRY_RESULT:
-      let o = {};
       o[payload.id] = payload;
       return {
         ...state,

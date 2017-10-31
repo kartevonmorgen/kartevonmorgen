@@ -1,12 +1,9 @@
 import { dispatch, getState } from "./Store";
 import Actions from "./Actions";
 import parseUrl from "./util/parseUrl";
-import T        from "./constants/ActionTypes";
 import V        from "./constants/PanelView";
 import mapConst from "./constants/Map";
 import RoutingUsecases from "./constants/RoutingUsecases";
-
-const NUM_DECIMAL_PLACES_FOR_CENTER = 4;
 
 export default (event) => {
   console.log(`URL CHANGE FROM BROWSER: "${getState().url.hash}" --> "${window.location.hash}"`);
@@ -23,6 +20,8 @@ const createActionsFromState = (state) => {
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
   const { entry, zoom, center, search, tags, view, confirmEmail, left} = params;
+  let [lat, lng] = center ? center.split(',') : [null, null];
+  const zoomValue = Number(zoom)
 
   const actions = [];
 
@@ -58,7 +57,6 @@ const createActionsFromState = (state) => {
         }
         break;
       case RoutingUsecases.CHANGE_CENTER:
-        let [lat, lng] = center.split(',');
         lat = parseFloat(lat);
         lng = parseFloat(lng); 
 
@@ -71,7 +69,6 @@ const createActionsFromState = (state) => {
         }
         break;
       case RoutingUsecases.CHANGE_ZOOM: 
-        const zoomValue = Number(zoom)
         if(!isNaN(zoomValue) && zoomValue != map.zoom){
           console.log("route: zoom", zoomValue, map.zoom);
           actions.push(Actions.setZoom(zoomValue));

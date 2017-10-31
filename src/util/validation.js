@@ -1,9 +1,5 @@
-const isInt = (v) => {
-  return (typeof v) === "number" && (isFinite(v)) && (Math.floor(v)) === v;
-};
-
 const entryForm = (data) => {
-  var errors, h, l, ref;
+  let errors, h, l, ref;
   errors = {};
   if (data == null) {
     errors._error = "Ungültige Daten";
@@ -88,8 +84,8 @@ const entryForm = (data) => {
 };
 
 const ratingForm = (data) => {
-  var h, l, ref;
-  var errors = {};
+  let l;
+  let errors = {};
   if (data == null) {
     errors._error = "Ungültige Daten";
     return errors;
@@ -140,7 +136,7 @@ const ratingForm = (data) => {
 }
 
 const loginForm = (data) => {
-  var errors = {};
+  let errors = {};
   if (data == null) {
     errors._error = "Ungültige Daten";
     return errors;
@@ -148,7 +144,7 @@ const loginForm = (data) => {
   if (data.username == null) {
     errors.username = 'Pflichtangabe';
   } else {
-    var l;
+    let l;
     if (!((l = data.username.length) >= 3)) {
       if (errors.username == null) {
         errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
@@ -158,7 +154,7 @@ const loginForm = (data) => {
   if (data.password == null) {
     errors.password = 'Pflichtangabe';
   } else {
-    var l;
+    let l;
     if (!((l = data.password.length) >= 3)) {
       if (errors.password == null) {
         errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";
@@ -169,7 +165,7 @@ const loginForm = (data) => {
 }
 
 const registerForm = (data) => {
-  var errors = {};
+  let errors = {};
   if (data == null) {
     errors._error = "Ungültige Daten";
     return errors;
@@ -177,7 +173,7 @@ const registerForm = (data) => {
   if (data.username == null) {
     errors.username = 'Pflichtangabe';
   } else {
-    var l;
+    let l;
     if (!((l = data.username.length) >= 3)) {
       if (errors.username == null) {
         errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
@@ -187,8 +183,7 @@ const registerForm = (data) => {
   if (data.email == null) {
     errors.email = 'Pflichtangabe';
   } else {
-    var l;
-    if (!((l = data.email.length) >= 3)) {
+    if (!(data.email.length >= 3)) {
       if (errors.email == null) {
         errors.email = "Ungültige eMail-Adresse";
       }
@@ -197,7 +192,7 @@ const registerForm = (data) => {
   if (data.password == null) {
     errors.password = 'Pflichtangabe';
   } else {
-    var l;
+    let l;
     if (!((l = data.password.length) >= 3)) {
       if (errors.password == null) {
         errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";

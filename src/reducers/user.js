@@ -19,8 +19,8 @@ module.exports = (state=initialState, action={}) => {
     case T.LOGIN_RESULT:
       return {
         ...state,
-        id: action.error ? null : action.payload.body.u_id,
-        email: action.error ? null : action.payload.body.email
+        id: action.error ? null : payload.body.u_id,
+        email: action.error ? null : payload.body.email
       }
 
     case T.LOGOUT:

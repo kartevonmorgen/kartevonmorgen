@@ -4,7 +4,7 @@ import logger   from "redux-logger";
 
 let middlewares = [thunk];
 
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
 if (__DEVELOPMENT__) {
   middlewares.push(logger);

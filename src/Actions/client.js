@@ -60,8 +60,8 @@ const Actions = {
     },
 
   showNewRating: (id) => ({
-     type: T.SHOW_NEW_RATING,
-     payload: id
+    type: T.SHOW_NEW_RATING,
+    payload: id
   }),
 
   showInfo: (key) => ({
@@ -138,32 +138,6 @@ const Actions = {
     };
   },
 
-  editCurrentEntry: () =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.SHOW_IO_WAIT
-      });
-      WebAPI.getEntries([getState().search.current], (err, res) => {
-        if (!err) {
-          dispatch({
-            type: T.ENTRIES_RESULT,
-            payload: res
-          });
-          const state = getState();
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: state.server.entries[state.search.current]
-          });
-        } else {
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: err,
-            error: true
-          });
-        }
-      });
-    },
-
   showOwnPosition: () =>
     (dispatch) => {
       dispatch({
@@ -188,7 +162,7 @@ const Actions = {
           payload: position
         });
       }), 900000);
-  },
+    },
 
   cancelOwnPosition: () => {
     return {

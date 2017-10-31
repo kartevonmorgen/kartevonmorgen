@@ -1,5 +1,4 @@
 import T from "../constants/ActionTypes";
-import V from "../constants/PanelView";
 import parseUrl from "../util/parseUrl";
 import constructUrl from "../util/constructUrl";
 import RoutingUsecases from "../constants/RoutingUsecases";
@@ -29,10 +28,11 @@ module.exports = (state=initialState, action={}) => {
     } : null;
   }
 
+
+  let routingUsecases = [];
+
   switch(action.type){
     case T.UPDATE_STATE_FROM_URL:
-      const routingUsecases = [];
-
       if(left){
         routingUsecases.push(RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY);
       }
@@ -41,7 +41,7 @@ module.exports = (state=initialState, action={}) => {
       } else if(confirmEmail){
         routingUsecases.push(RoutingUsecases.CONFIRM_EMAIL);
       } else if(entry){ 
-          routingUsecases.push(RoutingUsecases.SHOW_ENTRY);
+        routingUsecases.push(RoutingUsecases.SHOW_ENTRY);
       } else {
         if (centerStr && centerStr.includes(',') && (centerStr.length >= 3)) {
           routingUsecases.push(RoutingUsecases.CHANGE_CENTER);   

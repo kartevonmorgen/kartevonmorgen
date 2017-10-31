@@ -16,13 +16,8 @@ module.exports = {
     var ref;
 
     if (!(
-          typeof navigator !== "undefined" && navigator !== null
-          ? (ref = navigator.geolocation) != null
-            ? ref.getCurrentPosition
-            : void 0 
-          : void 0
-       ))
-    {
+        typeof navigator !== "undefined" && navigator !== null ? (ref = navigator.geolocation) != null ? ref.getCurrentPosition : void 0 : void 0
+      )) {
       callback(null);
     } else {
 
@@ -43,8 +38,9 @@ module.exports = {
               .geolocation
               .getCurrentPosition(
                 successCallback,
-                (positionError2) => { callback(null); },
-                {
+                (positionError2) => {
+                  callback(null);
+                }, {
                   enableHighAccuracy: true,
                   timeout: pTimeout,
                   maximumAge: 2e308

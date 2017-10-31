@@ -1,9 +1,9 @@
-const URL       = location.origin + "/api";
+const URL = location.origin + "/api";
 
 const NOMINATIM = "https://nominatim.openstreetmap.org";
 const OVERPASS = "https://search.osmnames.org/q/";
 
-import request  from "superagent/lib/client";
+import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 
 const prefix = saPrefix(URL);
@@ -20,14 +20,22 @@ module.exports = {
 
   search: (txt, cats, bbox, cb) => {
 
-    if (txt == null)  { txt  = ''; }
-    if (cats == null) { cats = []; }
-    if (bbox == null) { bbox = []; }
+    if (txt == null) {
+      txt = '';
+    }
+    if (cats == null) {
+      cats = [];
+    }
+    if (bbox == null) {
+      bbox = [];
+    }
 
     request
       .get('/search')
       .use(prefix)
-      .query({ text: txt.trim() })
+      .query({
+        text: txt.trim()
+      })
       .query('categories=' + cats.join(','))
       .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
@@ -35,7 +43,7 @@ module.exports = {
   },
 
   searchAddressOverpass: (addr, cb) => {
-    if (addr != null && addr != ""){
+    if (addr != null && addr != "") {
       request
         .get(OVERPASS + addr + ".js")
         .set('Accept', 'application/json')
@@ -44,13 +52,21 @@ module.exports = {
   },
 
   searchAddressNominatim: (addr, cb) => {
-    if (addr == null) { addr = ''; }
+    if (addr == null) {
+      addr = '';
+    }
     request
       .get('/search')
       .use(saPrefix(NOMINATIM))
-      .query({ q: addr })
-      .query({ format: 'json' })
-      .query({ addressdetails: 1 })
+      .query({
+        q: addr
+      })
+      .query({
+        format: 'json'
+      })
+      .query({
+        addressdetails: 1
+      })
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
@@ -58,22 +74,35 @@ module.exports = {
   searchGeolocation: (latlng, cb) => {
 
     if (latlng == null) {
-      latlng = { lat: 0.0, lng: 0.0 };
+      latlng = {
+        lat: 0.0,
+        lng: 0.0
+      };
     }
 
     request
       .get('/reverse')
       .use(saPrefix(NOMINATIM))
-      .query({ lat: latlng.lat })
-      .query({ lon: latlng.lng })
-      .query({ zoom: 18 })
-      .query({ format: 'json' })
-      .query({ addressdetails: 1 })
+      .query({
+        lat: latlng.lat
+      })
+      .query({
+        lon: latlng.lng
+      })
+      .query({
+        zoom: 18
+      })
+      .query({
+        format: 'json'
+      })
+      .query({
+        addressdetails: 1
+      })
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
 
-  getEntries: (ids=[], cb) => {
+  getEntries: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids];
@@ -89,7 +118,7 @@ module.exports = {
     }
   },
 
-  getRatings: (ids=[], cb) => {
+  getRatings: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids];
@@ -115,9 +144,10 @@ module.exports = {
         if (err) {
           cb(err);
         } else {
-          cb(null, res.text);
+          console.log("result: ", res);
+          cb(null, res.text.replace(/\"/g,""));
         }
-    });
+      });
   },
 
   saveEntry: (e, cb) => {
@@ -132,7 +162,7 @@ module.exports = {
         } else {
           cb(null, res.text);
         }
-    });
+      });
   },
 
   createRating: (r, cb) => {
@@ -147,7 +177,7 @@ module.exports = {
         } else {
           cb(null, res.text);
         }
-    });
+      });
   },
 
   getAllCategories: (cb) => {
@@ -167,27 +197,43 @@ module.exports = {
         if (err) {
           cb(err);
         } else {
-          cb(null, { version: res.text });
+          cb(null, {
+            version: res.text
+          });
         }
-    });
+      });
   },
 
-  register: ({username,password,email}, cb) => {
+  register: ({
+    username,
+    password,
+    email
+  }, cb) => {
     request
       .post('/users')
       .use(prefix)
       .set('Accept', 'application/json')
-      .send({username,email,password})
+      .send({
+        username,
+        email,
+        password
+      })
       .end(cb);
   },
 
-  login: ({username, password}, cb) => {
+  login: ({
+    username,
+    password
+  }, cb) => {
     request
       .post('/login')
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
-      .send({username,password})
+      .send({
+        username,
+        password
+      })
       .end(cb);
   },
 
@@ -214,7 +260,9 @@ module.exports = {
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
       .use(prefix)
-      .send({u_id})
+      .send({
+        u_id
+      })
       .end(cb);
   },
 
@@ -240,7 +288,7 @@ module.exports = {
         } else {
           cb(null, res.text);
         }
-    });
+      });
   },
 
   getBboxSubscriptions: (cb) => {

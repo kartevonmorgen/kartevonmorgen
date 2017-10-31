@@ -8,7 +8,7 @@ import { initialize, stopSubmit } from "redux-form";
 
 
 const flatten = nestedArray => nestedArray.reduce(
-    (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
+  (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 );
 
 const Actions = {
@@ -31,26 +31,20 @@ const Actions = {
             payload: err || res,
             error: err != null,
             noList: s.text == null
-          }); 
+          });
 
           const ids =
-            Array.isArray(res != null ? res.visible : void 0)
-            ? Array.isArray(res.invisible)
-              ? res.visible.concat(res.invisible)
-              : res.visible
-            : res != null
-              ? res.invisible
-              : void 0;
+            Array.isArray(res != null ? res.visible : void 0) ? Array.isArray(res.invisible) ? res.visible.concat(res.invisible) : res.visible : res != null ? res.invisible : void 0;
 
           if ((Array.isArray(ids)) && ids.length > 0) {
-              dispatch(Actions.getEntries(ids));
-          } else{
+            dispatch(Actions.getEntries(ids));
+          } else {
             dispatch(clientActions.noSearchResults());
           }
         });
 
-        if(s.text != null){
-          const address = s.text .replace(/#/g,"");
+        if (s.text != null) {
+          const address = s.text.replace(/#/g, "");
           WebAPI.searchAddressOverpass(address, (err, res) => {
             dispatch({
               type: T.SEARCH_ADDRESS_RESULT,
@@ -74,16 +68,19 @@ const Actions = {
       });
     },
 
-  getEntries: (ids=[]) =>
-    (dispatch,getState) => {
-      let { fetchedAllEntries, moreEntriesAvailable } = getState().search;
+  getEntries: (ids = []) =>
+    (dispatch, getState) => {
+      let {
+        fetchedAllEntries,
+        moreEntriesAvailable
+      } = getState().search;
       dispatch({
         type: T.SET_MORE_ENTRIES_AVAILABLE,
         payload: !fetchedAllEntries && (ids.length > ServerConstants.NUM_ENTRIES_TO_FETCH)
       });
       ids = ids.slice(0, ServerConstants.NUM_ENTRIES_TO_FETCH);
 
-      const entries = getState().server.entries; 
+      const entries = getState().server.entries;
       const fetch_ids_entries = ids.filter((x) => entries[x] == null);
       if (fetch_ids_entries.length > 0) {
         WebAPI.getEntries(ids, (err, res) => {
@@ -93,15 +90,17 @@ const Actions = {
             error: err != null
           });
           if (!err) {
-            const { ratings } = getState().server;
+            const {
+              ratings
+            } = getState().server;
             const ids = flatten(res.map(e => e.ratings));
             const fetch_ids_ratings = ids.filter((x) => ratings[x] == null);
-            if(fetch_ids_ratings.length > 0) {
+            if (fetch_ids_ratings.length > 0) {
               dispatch(Actions.getRatings(fetch_ids_ratings));
             }
           }
         });
-      } else{
+      } else {
         const entr = Object.keys(entries).map((key) => entries[key])
         dispatch({
           type: T.ENTRIES_RESULT,
@@ -111,7 +110,7 @@ const Actions = {
       }
     },
 
-  getRatings: (ids=[]) =>
+  getRatings: (ids = []) =>
     (dispatch) => {
       WebAPI.getRatings(ids, (err, res) => {
         dispatch({
@@ -144,8 +143,8 @@ const Actions = {
       });
     },
 
-  subscribeToBbox: (bbox, changeExistingBbox) => 
-    (dispatch, getState) => {
+  subscribeToBbox: (bbox, changeExistingBbox) =>
+    (dispatch) => {
       WebAPI.subscribeToBbox(bbox, (err, res) => {
         if (err) {
           dispatch({
@@ -167,8 +166,7 @@ const Actions = {
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {
-              text: changeExistingBbox ? 'Abonnement wurde geändert.' 
-                : 'Kartenausschnitt wurde abonniert.',
+              text: changeExistingBbox ? 'Abonnement wurde geändert.' : 'Kartenausschnitt wurde abonniert.',
               type: 'growler--success'
             }
           });
@@ -178,7 +176,7 @@ const Actions = {
           })
         }
       })
-  },
+    },
 
   unsubscribeFromBboxes: (u_id) =>
     (dispatch, getState) => {
@@ -205,7 +203,7 @@ const Actions = {
           })
         }
       })
-  },
+    },
 
   saveEntry: (e) =>
     (dispatch, getState) => {
@@ -239,6 +237,32 @@ const Actions = {
                 }
               });
             }
+          });
+        }
+      });
+    },
+
+  editCurrentEntry: () =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.SHOW_IO_WAIT
+      });
+      WebAPI.getEntries([getState().search.current], (err, res) => {
+        if (!err) {
+          dispatch({
+            type: T.ENTRIES_RESULT,
+            payload: res
+          });
+          const state = getState();
+          dispatch({
+            type: T.EDIT_CURRENT_ENTRY,
+            payload: state.server.entries[state.search.current]
+          });
+        } else {
+          dispatch({
+            type: T.EDIT_CURRENT_ENTRY,
+            payload: err,
+            error: true
           });
         }
       });
@@ -324,12 +348,15 @@ const Actions = {
       dispatch({
         type: T.LOGIN_SUBMITTING
       });
-      WebAPI.login({username, password}, (err, res) => {
+      WebAPI.login({
+        username,
+        password
+      }, (err, res) => {
         if (err) {
           dispatch(stopSubmit(LOGIN.id, {
             _error: err
           }));
-        } else{
+        } else {
           WebAPI.getUser(username, (err, res) => {
             dispatch({
               type: T.LOGIN_RESULT,
@@ -338,7 +365,7 @@ const Actions = {
             });
           });
           WebAPI.getBboxSubscriptions((err, res) => {
-            if(!err){
+            if (!err) {
               dispatch({
                 type: T.UPDATE_SUBSCRIPTION_INFO,
                 subscriptionExists: res.body.length > 0
@@ -354,16 +381,20 @@ const Actions = {
       dispatch({
         type: T.REGISTER_SUBMITTING
       });
-      WebAPI.register({username, password, email}, (err, res) => {
+      WebAPI.register({
+        username,
+        password,
+        email
+      }, (err, res) => {
         if (err) {
           dispatch(stopSubmit(REGISTER.id, {
             _error: err
           }));
-        } else{
+        } else {
           dispatch({
             type: T.REGISTER_RESULT,
             result: res,
-            email: email 
+            email: email
           });
         }
       });
@@ -372,12 +403,12 @@ const Actions = {
   confirmEmail: (u_id) =>
     (dispatch, getState) => {
       WebAPI.confirmEmail(u_id, (err, res) => {
-        if(err){
+        if (err) {
           dispatch({
             type: T.EMAIL_CONFIRMATION_RESULT,
             error: true
           })
-        } else{
+        } else {
           dispatch({
             type: T.EMAIL_CONFIRMATION_RESULT,
             error: false
@@ -386,10 +417,10 @@ const Actions = {
       })
     },
 
-  deleteAccount: () => 
+  deleteAccount: () =>
     (dispatch, getState) => {
       WebAPI.deleteAccount(getState().user.id, (err, res) => {
-        if(!err){
+        if (!err) {
           dispatch({
             type: T.LOGOUT
           });
@@ -408,33 +439,7 @@ const Actions = {
       type: T.HIGHLIGHT_ENTRIES,
       payload: id
     };
-  },
-
-  editCurrentEntry: () =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.SHOW_IO_WAIT
-      });
-      WebAPI.getEntries([getState().search.current], (err, res) => {
-        if (!err) {
-          dispatch({
-            type: T.ENTRIES_RESULT,
-            payload: res
-          });
-          const state = getState();
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: state.server.entries[state.search.current]
-          });
-        } else {
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: err,
-            error: true
-          });
-        }
-      });
-    }
+  }
 }
 
 module.exports = Actions;

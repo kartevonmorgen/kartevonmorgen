@@ -15,19 +15,21 @@ const initialState = {
 
 module.exports = (state=initialState, action={}) => {
 
+  const { payload } = action;
+  const m = !state.menu;
+  let newView = V[payload];
+
   switch (action.type) {
     case T.TOGGLE_MENU:
       if (state.modal != null) {
         return state;
       }
-      const m = !state.menu;
       return {
         ...state,
         menu: m,
         right: m ? state.right : null,
         left: m ? null : state.left
       }
-      break;
 
     case T.SHOW_MENU:
       return {
@@ -37,7 +39,6 @@ module.exports = (state=initialState, action={}) => {
       }
 
     case T.SHOW_INFO:
-      var newView = V[action.payload];
       if (newView === void 0) {
         newView = null;
       }
@@ -116,7 +117,6 @@ module.exports = (state=initialState, action={}) => {
         ...state,
         left: V.IO_ERROR
       }
-      break;
 
     case T.SHOW_IO_WAIT:
       return {
@@ -151,7 +151,6 @@ module.exports = (state=initialState, action={}) => {
         }
       }
       return state;
-      break;
 
     case T.SEARCH_RESULT:
       if (action.error) {
@@ -231,12 +230,10 @@ module.exports = (state=initialState, action={}) => {
         }
       }
       return state;
-      break;
 
     case T.SHOW_FEATURE_TO_DONATE:
-      const p = action.payload;
-      if (p) {
-        switch (p) {
+      if (payload) {
+        switch (payload) {
           case "events":
             return {
               ...state,
@@ -250,7 +247,6 @@ module.exports = (state=initialState, action={}) => {
         ...state,
         modal: null
       }
-      break;
 
     case T.EXPLAIN_RATING_CONTEXT:
       return{
@@ -287,7 +283,6 @@ module.exports = (state=initialState, action={}) => {
         }
       }
       return state;
-      break;
 
     default:
       return state;
