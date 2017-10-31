@@ -144,7 +144,6 @@ module.exports = {
         if (err) {
           cb(err);
         } else {
-          console.log("result: ", res);
           cb(null, res.text.replace(/\"/g,""));
         }
       });
