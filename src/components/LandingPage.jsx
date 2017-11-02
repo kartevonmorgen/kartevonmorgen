@@ -202,12 +202,7 @@ class LandingPage extends Component {
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick= {() => onClick(V.WORKSHOP)} href="#" className="pure-menu-link">
-                      Workshops
-                    </a>
-                  </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
-                    <a href="https://www.facebook.com/vonmorgen" className="pure-menu-link">
-                      News
+                      Infos
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
