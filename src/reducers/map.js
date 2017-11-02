@@ -76,7 +76,7 @@ module.exports = (state = initialState, action = {}) => {
       }
 
     case T.ENTRIES_RESULT:
-      if ((payload != null) && (state.waiting_for_center_of != null)) {
+      if ((payload != null) && (payload.length > 0) && (state.waiting_for_center_of != null)) {
         var o = {};
         if (Array.isArray(payload)) {
           payload.filter(e => e != null)
