@@ -81,7 +81,7 @@ class LandingPage extends Component {
             gemeinwohl-orientierten Bewertungssytem der einzelnen Orte.
           </p>
           <p>
-            Hier geht es zu unserer Crowdfunding-Kampagne: <a href = {URLs.DONATE.link}>{URLs.DONATE.name}</a>
+            Hier geht es zu unserer Crowdfunding-Kampagne: <a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a>
           </p>
           <p>
             Wir freuen uns über jeden kleinen und großen Beitrag
@@ -160,7 +160,7 @@ class LandingPage extends Component {
             Unsere aktuellen Ausschreibungen findest du hier:
           </p>
           <p>
-            <a href={URLs.JOB_ADS.link}>{URLs.JOB_ADS.name}</a>
+            <a target="_blank" href={URLs.JOB_ADS.link}>{URLs.JOB_ADS.name}</a>
           </p>
           <p>
             Wir suchen Regional- und Themenpiloten
@@ -172,7 +172,7 @@ class LandingPage extends Component {
           <p>
             Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:
             <br />
-            <a href= "mailto:netzwerk@kartevonmorgen.org">
+            <a target="_blank" href= "mailto:netzwerk@kartevonmorgen.org">
               netzwerk@kartevonmorgen.org
             </a>
           </p>
@@ -255,7 +255,7 @@ class LandingPage extends Component {
       </div>
       <div className = "explain">{
         content == null
-          ? <a href= "#tutorial" className= "circleTutorial">
+          ? <a target="_blank" href= "#tutorial" className= "circleTutorial">
               <strong>
                 Tutorial
                 <div style ={{ paddingTop: "10px", fontSize: "12px"}}>
@@ -275,11 +275,11 @@ class LandingPage extends Component {
       <div className= "footer">
         <h3>Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt.</h3>
         <p>
-          Kontakt: <a href={URLs.MAIL.link}>{URLs.MAIL.name}</a>
+          Kontakt: <a target="_blank" href={URLs.MAIL.link}>{URLs.MAIL.name}</a>
           <br />
-          Social Media: <a href={URLs.FACEBOOK.link}>{URLs.FACEBOOK.name}</a>
+          Social Media: <a target="_blank" href={URLs.FACEBOOK.link}>{URLs.FACEBOOK.name}</a>
           <br />
-          Open Source: <a href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
+          Open Source: <a target="_blank" href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
         </p>
         <p>
           <a href="#" onClick={() => onClick(V.IMPRINT)}>Impressum</a>

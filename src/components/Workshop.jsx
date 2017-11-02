@@ -10,24 +10,24 @@ module.exports = ({serverVersion}) =>
             <br />
         <h3>Aktuelles</h3>
         <p>
-            Neuigkeiten und aktuelles auf <a href='https://www.facebook.com/vonmorgen'>Facebook</a><br />
-            Fortschrittsberichte auf <a href='https://www.betterplace.org/de/projects/36213/newsroom'>unserem Blog auf Betterplace</a>
+            Neuigkeiten und aktuelles auf <a target="_blank" href='https://www.facebook.com/vonmorgen'>Facebook</a><br />
+            Fortschrittsberichte auf <a target="_blank" href='https://www.betterplace.org/de/projects/36213/newsroom'>unserem Blog auf Betterplace</a>
         </p>
         <br />
         <h3>Hintergründe und Visionen</h3>
             <p>
                 <ul>
-                    <li>Was will die <a href='http://bildungsagenten.org/kartevonmorgen/'>Karte von morgen?</a></li>
-                    <li>Was sind die <a href='http://bildungsagenten.org/kartevonmorgen/2/'>Positivfaktoren?</a></li>
-                    <li>Was sind <a href='http://bildungsagenten.org/kartevonmorgen/3/'>Regionalpiloten bzw.  Themenpiloten? Wie nutze ich Widgets?</a></li>
-                    <li>Wie kann ich <a href='http://bildungsagenten.org/kartevonmorgen/4/'>mitmachen oder die Karte von morgen unterstützen?</a></li>
+                    <li>Was will die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>Karte von morgen?</a></li>
+                    <li>Was sind die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>Positivfaktoren?</a></li>
+                    <li>Was sind <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>Regionalpiloten bzw.  Themenpiloten? Wie nutze ich Widgets?</a></li>
+                    <li>Wie kann ich <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>mitmachen oder die Karte von morgen unterstützen?</a></li>
                 </ul>
             </p>
         <img className="landing-img" src={team1}/><br /><br />
             
         <h3>Spenden</h3>
             <p>
-                Einfach online Spenden über <a href='https://www.betterplace.org/de/projects/36213'>Betterplace</a>
+                Einfach online Spenden über <a target="_blank" href='https://www.betterplace.org/de/projects/36213'>Betterplace</a>
                 <br />
                 Etwas Gutes für morgen tun: Die Plattform von morgen finanziert sich über Fördermittel verschiedener Programme
                 und Wettbewerbe aber zum Großteil über Spenden.
@@ -44,7 +44,7 @@ module.exports = ({serverVersion}) =>
             <p>
                 Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen³ e.V. und der „Ideenwerkstatt Bildungsagenten”, 
                 bieten wir Workshops zu verschiedenen Themen an. <br />
-                <a href="http://bildungsagenten.org">www.bildungsagenten.org</a>
+                <a target="_blank" href="http://bildungsagenten.org">www.bildungsagenten.org</a>
             </p>
         <img className="landing-img" src={slider} />
         <p className="version">{

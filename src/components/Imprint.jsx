@@ -7,16 +7,16 @@ const Imprint = () =>
     <h3>Kontakt</h3>
     <p>
       <i className = "fa fa-globe" />
-      <a href = { URLs.PROTOTYPE.link } >{ URLs.PROTOTYPE.name }</a>
+      <a target="_blank" href = { URLs.PROTOTYPE.link } >{ URLs.PROTOTYPE.name }</a>
       <br />
       <i className = "fa fa-facebook" />
-      <a href = { URLs.FACEBOOK.link } >{ URLs.FACEBOOK.name }</a>
+      <a target="_blank" href = { URLs.FACEBOOK.link } >{ URLs.FACEBOOK.name }</a>
       <br />
       <i className = "fa fa-envelope-o" />
-      <a href = { URLs.MAIL.link } >{ URLs.MAIL.name }</a>
+      <a target="_blank" href = { URLs.MAIL.link } >{ URLs.MAIL.name }</a>
       <br />
       <i className = "fa fa-github" />
-      <a href = { URLs.REPOSITORY.link } >{ URLs.REPOSITORY.name }</a>
+      <a target="_blank" href = { URLs.REPOSITORY.link } >{ URLs.REPOSITORY.name }</a>
     </p>
     <h3>Impressum</h3>
     <h4>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h4>

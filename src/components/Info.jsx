@@ -55,16 +55,16 @@ class Info extends React.Component {
         </p>
         <p>
           <i className = "fa fa-globe" />
-          <a href = {URLs.PROTOTYPE.link} >{ URLs.PROTOTYPE.name }</a>
+          <a target="_blank" href = {URLs.PROTOTYPE.link} >{ URLs.PROTOTYPE.name }</a>
           <br />
           <i className = "fa fa-facebook" />
-          <a href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
+          <a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
           <br />
           <i className = "fa fa-envelope-o" />
-          <a href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
+          <a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
           <br />
           <i className = "fa fa-github" />
-          <a href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
+          <a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
         </p>
         <br />
         <br />
@@ -75,7 +75,7 @@ class Info extends React.Component {
           Den Quellcode des Gemeinschaftsprojekts findest du unter:
         </p>
         <p>
-          <a href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
+          <a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
         </p>
         <p className = "version">{
            "Version dieses Clients: v" + pkg.version
