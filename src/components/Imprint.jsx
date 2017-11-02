@@ -56,11 +56,11 @@ const Imprint = () =>
       </a>
 
     <h4>Umsetzung & Programmierung</h4>
-      Markus Kohlhase
+      <a href="https://slowtec.de/">slowtec GmbH</a>
       <br />
-      Julius-Hölder-Str. 48
+      Friedrichsberg 55
       <br />
-      70597 Stuttgart
+      70567 Stuttgart
       <br />
       <a href = "mailto:markus@kartevonmorgen.org">
         markus@kartevonmorgen.org
