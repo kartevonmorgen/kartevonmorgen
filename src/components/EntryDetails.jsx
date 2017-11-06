@@ -175,7 +175,7 @@ class EntryDetails extends Component {
           (entry.homepage ?
             <div key="hp" className = "pure-g">
               <i className = "pure-u-2-24 fa fa-globe" />
-              <a className = "pure-u-21-24" href = {entry.homepage}>
+              <a className = "pure-u-21-24" href = {entry.homepage} target="_blank">
                 { entry.homepage }
               </a>
             </div> : null),
