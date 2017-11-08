@@ -28,4 +28,9 @@ describe("parseUrl", () => {
   it("should create a parsed url string", () => {
     parseUrl("foo.com/a/b?x=d#bar/baz/?baz=5").actual.should.equal("/bar/baz?baz=5");
   });
+
+  it("should retrieve a value from a url that contains a subpage with .html-ending", () => {
+    parseUrl("foo.com/businesscard.html#/?entry=5e7cbd595bd34d4fa9d8f26444c3a655")
+      .params.entry.should.equal("5e7cbd595bd34d4fa9d8f26444c3a655");
+  });
 });

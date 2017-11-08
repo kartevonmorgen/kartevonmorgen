@@ -8,10 +8,13 @@ let plugins = [];
 const production = process.env.NODE_ENV
 
 const config = {
-  entry: path.join(__dirname, "src/index.js"),
+  entry: {
+    app: path.join(__dirname, "src/index.js"),
+    businesscard_widget: path.join(__dirname, "src/widgets/businesscard/index.js")
+  },
   output: {
     path: path.join(__dirname, 'dist/'),
-    filename: "app.js"
+    filename: "[name].js"
   },
   devServer: {
     hot: true,
@@ -153,7 +156,17 @@ if (production) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
-plugins.push(new HTMLPlugin(htmlPluginOptions));
+plugins.push(new HTMLPlugin({
+  ...htmlPluginOptions,
+  filename: "index.html",
+  chunks: ["app"]
+}));
+
+plugins.push(new HTMLPlugin({
+  ...htmlPluginOptions,
+  filename: "businesscard.html",
+  chunks: ["businesscard_widget"]
+}));
 
 config.plugins = plugins;
 module.exports = config;
