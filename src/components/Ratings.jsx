@@ -183,29 +183,33 @@ class Ratings extends Component {
         </div>)
     });
 
-    return(
-      <RatingsWrapper>
-        <AdditionalRatingButtonWrapper>
-          { entry.ratings && entry.ratings.length > 0 
-            ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>Bewertung abgeben</AdditionalRatingButton>
-            : ""
+    if(entry){
+      return(
+        <RatingsWrapper>
+          <AdditionalRatingButtonWrapper>
+            { entry.ratings && entry.ratings.length > 0 
+              ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>Bewertung abgeben</AdditionalRatingButton>
+              : ""
+            }
+          </AdditionalRatingButtonWrapper>
+          <FlowerWrapper>
+          {Flower(ratings,40)}
+          </FlowerWrapper>
+          <RatingsHeading>Bewertungen</RatingsHeading>
+          { entry.ratings && entry.ratings.length > 0
+            ? <div>
+                { ratingElements }
+              </div>
+            : <div>
+                <p>Für diesen Eintrag wurden noch keine Bewertungen abgegeben.</p>
+                <FirstRatingButton onClick={() => { onRate(entry.id) }}>jetzt bewerten</FirstRatingButton>
+              </div>
           }
-        </AdditionalRatingButtonWrapper>
-        <FlowerWrapper>
-        {Flower(ratings,40)}
-        </FlowerWrapper>
-        <RatingsHeading>Bewertungen</RatingsHeading>
-        { entry.ratings && entry.ratings.length > 0
-          ? <div>
-              { ratingElements }
-            </div>
-          : <div>
-              <p>Für diesen Eintrag wurden noch keine Bewertungen abgegeben.</p>
-              <FirstRatingButton onClick={() => { onRate(entry.id) }}>jetzt bewerten</FirstRatingButton>
-            </div>
-        }
-      </RatingsWrapper>
-    );
+        </RatingsWrapper>
+      );
+    } else {
+      return(null);
+    }
   }
 }
 
