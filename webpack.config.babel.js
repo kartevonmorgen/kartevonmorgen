@@ -10,7 +10,8 @@ const production = process.env.NODE_ENV
 const config = {
   entry: {
     app: path.join(__dirname, "src/index.js"),
-    businesscard_widget: path.join(__dirname, "src/widgets/businesscard/index.js")
+    businesscard_widget: path.join(__dirname, "src/widgets/businesscard/index.js"),
+    map_widget: path.join(__dirname, "src/widgets/map/index.js")
   },
   output: {
     path: path.join(__dirname, 'dist/'),
@@ -166,6 +167,12 @@ plugins.push(new HTMLPlugin({
   ...htmlPluginOptions,
   filename: "businesscard.html",
   chunks: ["businesscard_widget"]
+}));
+
+plugins.push(new HTMLPlugin({
+  ...htmlPluginOptions,
+  filename: "map.html",
+  chunks: ["map_widget"]
 }));
 
 config.plugins = plugins;
