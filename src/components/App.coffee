@@ -19,6 +19,7 @@ Map               = require "./Map"
 SearchBar         = require "./SearchBar"
 LandingPage       = require "./LandingPage"
 SubscribeToBbox   = require "./SubscribeToBbox"
+Ratings           = require "./Ratings"
 { EDIT, RATING }  = require "../constants/Form"
 URLs              = require "../constants/URLs"
 { DIVERSITY, RENEWABLE, FAIRNESS, 
@@ -321,6 +322,8 @@ Main = React.createClass
               when V.ENTRY
                 div null,
                   React.createElement EntryDetails,
+                    entry   : entries[search.current] || null
+                  React.createElement Ratings,
                     entry   : entries[search.current] || null
                     ratings : (if entries[search.current] then (entries[search.current].ratings || []) else []).map((id) -> ratings[id])
                     onRate  : (id) => dispatch Actions.showNewRating id

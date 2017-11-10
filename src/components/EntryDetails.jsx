@@ -2,196 +2,116 @@ import React, { Component }   from "react";
 import Address                from "./AddressLine";
 import { pure }               from "recompose";
 import { NAMES, CSS_CLASSES } from "../constants/Categories";
-import Flower                 from "./Flower";
+import styled                 from "styled-components";
+import Colors                 from "./styling/Colors"
+import Ratings                from "./Ratings"
 
-const context_name = (id) => {
-  switch(id) {
-    case "diversity":
-      return "Natürlichkeit";
-    case "renewable":
-      return "Erneuerbarkeit";
-    case "fairness":
-      return "Fairness";
-    case "humanity":
-      return "Menschlichkeit";
-    case "transparency":
-      return "Transparenz";
-    case "solidarity":
-      return "Solidarität";
-    default:
-      return id
-  }
-}
+const TagsWrapper = styled.div `
+  margin-top: 0.5em;
+`;
 
-const context_order = (id) => {
-  switch(id) {
-  case "diversity":
-    return "a";
-  case "renewable":
-    return "b";
-  case "fairness":
-    return "c";
-  case "humanity":
-    return "d";
-  case "transparency":
-    return "e";
-  case "solidarity":
-    return "f";
-  default:
-    return id
-  }
-}
+const TagList = styled.ul `
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-const context_color = (id) => {
-  switch(id) {
-    case "diversity":
-      return '#96bf0c'  // GREEN
-    case "renewable":
-      return '#ffdd00'  // YELLOW
-    case "fairness":
-      return '#e56091'  // PINK
-    case "humanity":
-      return '#aa386b'  // RASPBERRY
-    case "transparency":
-      return '#0099ad'  // BLUE
-    case "solidarity":
-      return '#637a84'  // BLUEGRAY
-    default:
-      return "#888"
-  }
-}
-
-const value_name = (v) => {
-  switch(v) {
-    case -1:
-      return "von gestern";
-    case 0:
-      return "von heute";
-    case 1:
-      return "von morgen";
-    case 2:
-      return "visionär";
-    default:
-      return v
-  }
-}
+const Tag = styled.li `
+  display:       inline-block;
+  margin-right:  0.2em;
+  background:    #777;
+  color:         #fff;
+  border-radius: 0.3em;
+  padding:       0.1em;
+  padding-left:  0.4em;
+  padding-right: 0.4em;
+  font-size:     0.9em;
+`;
 
 const Tags = (tags=[]) =>
-  <div key="tags" className = "tags pure-g">
+  <TagsWrapper className = "pure-g">
     <i className = "pure-u-2-24 fa fa-tags" />
-    <span className = "pure-u-21-24">
-      <ul>
+    <span className = "pure-u-22-24">
+      <TagList>
       { tags
           .filter(t => t != "")
-          .map(t => <li key={t}>{t}</li>)
+          .map(t => <Tag key={t}>{t}</Tag>)
       }
-      </ul>
+      </TagList>
     </span>
-  </div>
+  </TagsWrapper>
 
-const rating_groups = (ratings=[]) => {
-  var groups = {};
-  ratings
-    .filter(r => typeof r !== "undefined" && r !== null)
-    .forEach(r =>{
-      let key = context_order(r.context);
-      if (groups[key] == null) {
-        groups[key] = [];
-      }
-      groups[key].push(r);
-    });
-  let groups_sorted = [];
-  for(var k of Object.keys(groups).sort()){
-    groups_sorted.push(groups[k]);
-  }
-  return groups_sorted;
-}
+const EntryDetailPage = styled.div`
+  padding:  1em;
+  max-width: 500px;
+`;
 
-const Ratings = (ratings=[]) => {
+const EntryLink = styled.a`
+  color: ${Colors.darkGray};
+  text-decoration: none;
+`;
 
-  const groups = rating_groups(ratings);
+const EntryTitle = styled.h3`
+  margin-top:  0;
+  color:       ${Colors.anthracite};
+`;
 
-  const ratingElements = groups.map(g => {
-    const l = g.length
-    const count = l > 1 ? l +  " Bewertungen" : l + " Bewertung";
+const EntryDescription = styled.p`
+  color: ${Colors.darkGray};
+`;
 
-    return (
-    <div className="rating-context" key={g[0].context}>
-      <h5>
-        <span style={{color: context_color(g[0].context)}}>{context_name(g[0].context)}</span>
-        <span className="count">({count})</span>
-      </h5>
-      <ul>
-        {
-          g.map(r => <li key={r.id}>{Rating(r)}</li>)
-        }
-      </ul>
-    </div>)
-  })
+const CategoryDescription = styled.div`
+  text-align:      right;
+  text-transform:  uppercase;
+  color:    ${props => Colors[props.category]};
+`;
 
-  return (
-    <div className="rating-list">
-      <ul>{ratingElements}</ul>
-    </div>)
-}
-
-const Rating = (rating) =>
-  <div className="rating">
-    <span>{value_name(rating.value)}:</span><span className="title">{rating.title}</span>
-    <ul className="comments">
-      {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
-    </ul>
-    <div className="source"><span>{(rating.source != "") ? ("(" + rating.source + ")") : ""}</span></div>
-  </div>
-
-const Comment = (comment) =>
-  <div className="comment">
-    {comment.text}
-  </div>
+const EntryDetailsDetails = styled.div`
+  font-family: Museo;
+`;
 
 class EntryDetails extends Component {
 
   render() {
-    const { entry, ratings, onRate } = this.props;
+    const { entry } = this.props;
 
     if (!entry) {
       return(
-        <p className= "entry-loading">
+        <EntryDetailPage>
           <span>Eintrag wird geladen...</span>
-        </p>
+        </EntryDetailPage>
       );
     } 
     else {
-      const clz = CSS_CLASSES[entry.categories && entry.categories[0]];
       return (
-    <div className = {"entry-detail " + clz} id = {entry.id + "-details"}>
-      <div className= "category">
+    <EntryDetailPage> 
+      <CategoryDescription category={CSS_CLASSES[entry.categories && entry.categories[0]]}>
         <span>{NAMES[entry.categories && entry.categories[0]]}</span>
-      </div>
+      </CategoryDescription>
       <div>
-        <h3>{entry.title}</h3>
-        <p>{entry.description}</p>
-        <div>{[
+        <EntryTitle>{entry.title}</EntryTitle>
+        <EntryDescription>{entry.description}</EntryDescription>
+        <EntryDetailsDetails>{[
           (entry.homepage ?
-            <div key="hp" className = "pure-g">
+            <div key="hp" className="pure-g">
               <i className = "pure-u-2-24 fa fa-globe" />
-              <a className = "pure-u-21-24" href = {entry.homepage} target="_blank">
+              <EntryLink className="pure-u-22-24" href={entry.homepage} target="_blank">
                 { entry.homepage }
-              </a>
+              </EntryLink>
             </div> : null),
           (entry.email ?
-            <div key="mail" className= "pure-g">
+            <div key="mail" className="pure-g">
               <i className= "pure-u-2-24 fa fa-envelope" />
-              <a className= "pure-u-21-24" href={ "mailto:" + entry.email}>
+              <EntryLink className="pure-u-22-24" href={ "mailto:" + entry.email}>
                 {entry.email}
-              </a>
+              </EntryLink>
             </div>
             : null),
           (entry.telephone
             ?
-            <div key="tel" className = "pure-g">
-              <i className = "pure-u-2-24 fa fa-phone" />
-              <span className = "pure-u-21-24">
+            <div key="tel" className="pure-g">
+              <i className="pure-u-2-24 fa fa-phone" />
+              <span className="pure-u-22-24">
                 { entry.telephone }
               </span>
             </div>
@@ -199,7 +119,7 @@ class EntryDetails extends Component {
           ((entry.street || entry.zip || entry.city) ?
             <div key="addr" className = "address pure-g">
               <i className = "pure-u-2-24 fa fa-map-marker" />
-              <div className = "pure-u-21-24">
+              <div>
                 <Address { ...entry } />
               </div>
             </div>
@@ -207,30 +127,9 @@ class EntryDetails extends Component {
           (entry.tags && entry.tags.filter(t => t !="").length > 0
             ? Tags(entry.tags)
             : null)
-        ]}</div>
-        <div className="ratings">
-          <div className="additional-rating">
-            { entry.ratings && entry.ratings.length > 0 
-              ? <button onClick={() => { onRate(entry.id) }}>Bewertung abgeben</button>
-              : ""
-            }
-          </div>
-          <div className="flower">{Flower(ratings,40)}</div>
-          <h4 className="ratings">Bewertungen</h4>
-          { entry.ratings && entry.ratings.length > 0
-            ? <div>
-                <div>
-                  { Ratings(ratings) }
-                </div>
-              </div>
-            : <div>
-                <p>Für diesen Eintrag wurden noch keine Bewertungen abgegeben.</p>
-                <button onClick={() => { onRate(entry.id) }}>jetzt bewerten</button>
-              </div>
-          }
-        </div>
+        ]}</EntryDetailsDetails>
       </div>
-    </div>)
+    </EntryDetailPage>)
     }
   }
 }

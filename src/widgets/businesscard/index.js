@@ -11,12 +11,10 @@ const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 );
 
-const onRatingClick = () => {};
-
 let store = {};
 
 const render = () => {
-  ReactDOM.render(Card({entry: store.entry, ratings: store.ratings, onClick: onRatingClick}), rootElement);
+  ReactDOM.render(Card({entry: store.entry}), rootElement);
 };
 
 render();
@@ -26,15 +24,5 @@ WebAPI.getEntries([entryID], (err, res) => {
   if(!err && res.length > 0) {
     store.entry = res[0];
     render();
-
-    const ratingIDs = flatten(res.map(e => e.ratings));
-    if (ratingIDs.length > 0) {
-      WebAPI.getRatings(ratingIDs, (err, res) => {
-        if(!err) {
-          store.ratings = res;
-          render();
-        }
-      });
-    }
   }
 });

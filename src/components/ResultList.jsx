@@ -3,8 +3,14 @@ import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
 import Flower   from "./Flower";
+import styled    from "styled-components";
 
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
+
+const AddressWrapper = styled.div`
+  font-size: 0.8em;
+  color: #888;
+`;
 
 const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave}) => {
   var clz = highlight ? 'highlight-entry ' : '';
@@ -30,7 +36,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <span className= "subtitle">{entry.description}</span>
           </div>
           { (entry.street || entry.zip || entry.city)
-              ? <Address { ...entry } />
+              ? <AddressWrapper><Address { ...entry } /></AddressWrapper>
               : null
           }
           <div className="flower">{ Flower(ratings,30) }</div>

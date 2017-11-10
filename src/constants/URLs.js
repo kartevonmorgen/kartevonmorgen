@@ -3,6 +3,10 @@ module.exports = {
     name: "creativecommons.org/publicdomain/zero/1.0/deed.de",
     link: "https://creativecommons.org/publicdomain/zero/1.0/deed.de"
   },
+  APP: {
+    name: "kartevonmorgen.org",
+    link: "https://kartevonmorgen.org"
+  },
   PROTOTYPE: {
     name: "prototyp.kartevonmorgen.org",
     link: "https://prototyp.kartevonmorgen.org"

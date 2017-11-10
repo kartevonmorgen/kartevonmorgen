@@ -1,5 +1,6 @@
 import Flower from "react-vm-flower";
 import React  from "react";
+import styled from "styled-components";
 
 const rating_groups = (ratings=[]) => {
   var groups = {};
@@ -79,12 +80,14 @@ const KVMFlower = (ratings=[],radius=40) => {
   })
 
   return (
+  <div>
     <svg width={(radius +2) * 2} height = {(radius+2) * 2}>
       <g transform={"translate(" + (radius + 2) + "," + (radius + 2) + ")"}>
         <circle cx={0} cy={0} r={radius+1} fill="#fff" stroke="#ccc" strokeWidth={0.5} />
         <Flower size = {radius * 2} scales={flower_scales(ratings)} colors={colors} />
       </g>
-    </svg>)
+    </svg>
+  </div>)
 }
 
 module.exports = KVMFlower

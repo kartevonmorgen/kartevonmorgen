@@ -1,8 +1,14 @@
 import React         from "react";
 import EntryDetails  from "../../components/EntryDetails";
+import URLs          from "../../constants/URLs";
+import styled        from "styled-components";
 
-module.exports = ({entry, ratings, onClick}) =>
+const MoreInfoLink = styled.a`
+  padding: 1em;
+`;
+
+module.exports = ({entry}) =>
   <div>
-    <EntryDetails entry={entry} ratings={ratings} onRate={onClick} />
-    {entry ? <a href="https://kartevonmorgen.org/#/?entry=">Mehr Informationen...</a> : ""}
+    <EntryDetails entry={entry}/>
+    {entry ? <MoreInfoLink href={URLs.APP.link + "/#/?entry=" + entry.id}>Auf der Karte anzeigen...</MoreInfoLink> : ""}
   </div>
