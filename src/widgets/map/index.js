@@ -1,8 +1,10 @@
-import React    from "react";
-import ReactDOM from "react-dom";
-import WebAPI   from "../../WebAPI";
-import parseUrl from "../../util/parseUrl";
-import Map      from "./map";
+import React        from "react";
+import ReactDOM     from "react-dom";
+import WebAPI       from "../../WebAPI";
+import parseUrl     from "../../util/parseUrl";
+import MapComponent from "./map";
+import mapConst     from "../../constants/Map";
+import Categories   from "../../constants/Categories";
 
 const rootElement = document.querySelector('#app');
 
@@ -10,68 +12,105 @@ const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 );
 
-let store = {};
-
-const render = () => {
-  console.log("store:", store);
-  const center = {
-    lat: store.highlightEntry.lat,
-    lng: store.highlightEntry.lng
-  };
-
-  console.log("highlight entry:", store.highlightEntry);
-
-  const emptyFunction = () => {};
-
-  ReactDOM.render(Map({marker: null, size: 2, center: center, 
-    zoom: 12, category: null, highlight: [store.highlightEntry.id], 
-  entries: store.entries, onClick: emptyFunction , onMarkerClick: emptyFunction, 
-  onMoveend: emptyFunction, onZoomend: emptyFunction, loggedIn: false}), rootElement);
+let state = {
+  searchString: null,
+  currentEntry: null,
+  entries: [],
+  entriesById: {},
+  zoom: mapConst.DEFAULT_ZOOM,
+  center: null,
+  bbox: null,
+  categories: [Categories.IDS.INITIATIVE, Categories.IDS.COMPANY]
 };
 
-// render();
+const render = () => {
+  const emptyFunction = () => {};
 
-const entryID = parseUrl(window.location.href).params.entry;
-WebAPI.getEntries([entryID], (err, res) => {
-  store.entries = {};
-  if(!err && res.length > 0) {
-    store.entries = res;
+  const onMoveend = (coordinates) => {
+    state.bbox = coordinates.bbox;
+  };
 
-    let o = {};
-    if (Array.isArray(res)) {
-      res.filter(e => e != null)
-       .forEach(e => { o[e.id] = e; });
-    } else {
-      o[res.id] = res;
-    }
-    store.highlightEntry = o[entryID];
+  const highlight = state.currentEntry ? [state.currentEntry.id] : [];
 
-    render();
+  ReactDOM.render(MapComponent({marker: null, size: 2, center: state.center, 
+    zoom: state.zoom, category: null, highlight: highlight, 
+  entries: state.entries, onClick: emptyFunction , onMarkerClick: emptyFunction, 
+  onMoveend: onMoveend, onZoomend: emptyFunction, loggedIn: false}), rootElement);
+};
+
+const search = () => {
+  const s = state.searchString;
+  const cats = state.categories;
+  const sw = state.bbox._southWest;
+  const ne = state.bbox._northEast;
+  const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
+
+  if (!cats.length < 1 && (s == null || !s.trim().endsWith("#"))) {
+    WebAPI.search(s, cats, bbox, (err, res) => {
+      if ((Array.isArray(res.visible)) && res.visible.length > 0) {
+        WebAPI.getEntries(res.visible, (entriesErr, entriesRes) => {
+          if(!entriesErr && entriesRes.length > 0) {
+            state.entries = entriesRes;
+
+            console.log("search:", state);
+            render();
+          }
+        });        
+      }
+    });
   }
-});
 
-// marker        = (map.marker if view.left in [V.EDIT, V.NEW])
-//       size          = if view.left? then (if rightPanelIsOpen then 3 else 2) else if rightPanelIsOpen then 1 else 0
-//       center        = mapCenter
-//       zoom          = map.zoom
-//       category      = form[EDIT.id]?.category?.value
-//       highlight     = highlight
-//       entries       = (resultEntries unless view.left in [V.EDIT, V.NEW])
-//       onClick       = (latlng) -> dispatch Actions.setMarker latlng
-//       onMarkerClick = (id) -> 
-//         dispatch Actions.setCurrentEntry id, null
-//         dispatch Actions.showLeftPanel()
-//       onMoveend     : (coordinates) ->
-//         if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
-//           dispatch Actions.setCenter
-//             lat: coordinates.center.lat
-//             lng: coordinates.center.lng
-//         dispatch Actions.setBbox coordinates.bbox
-//         dispatch Actions.search()
-//       onZoomend     : (coordinates) ->
-//         if coordinates.zoom != map.zoom
-//           dispatch Actions.setZoom coordinates.zoom
-//         #   dispatch Actions.setBbox coordinates.bbox
-//       loggedIn
-//       {entry ? <MoreInfoLink href={URLs.APP.link + "/#/?entry=" + entry.id}>Große Karte öffnen...</MoreInfoLink> : ""} />
+  console.log("search:", state);
+}
 
+const { params } = parseUrl(window.location.href);
+let entryId = params.entry;
+let searchStr = params.search;
+let tagsStr = params.tags;
+let zoomStr = params.zoom;
+let centerStr = params.center;
+
+if(zoomStr){
+  state.zoom = parseFloat(zoomStr);
+}
+if(params && Object.keys(params).length != 0){
+  if(entryId){ 
+    state.zoom = mapConst.ENTRY_DEFAULT_ZOOM;
+    WebAPI.getEntries([entryId], (err, res) => {
+      state.entries = {};
+      if(!err && res.length > 0) {
+        state.entries = res;
+
+        state.entriesById = {};
+        if (Array.isArray(res)) {
+          res.filter(e => e != null)
+           .forEach(e => { state.entriesById[e.id] = e; });
+        } else {
+          state.entriesById[res.id] = res;
+        }
+        state.currentEntry = state.entriesById[entryId];
+        state.center = {
+          lat: state.currentEntry.lat,
+          lng: state.currentEntry.lng
+        };
+
+        console.log("getEntries:", state);
+        render();
+      }
+    });
+  } else {
+    if (centerStr && centerStr.includes(',') && (centerStr.length >= 3)) {
+      state.center = {
+        lat: parseFloat(centerStr.split(',')[0]),
+        lng: parseFloat(centerStr.split(',')[1])
+      };
+    }
+    if (search || tags || search == "" || tags == "") {
+      state.searchString = searchStr || "";
+      render(); // necessary to make leaflet define the bbox
+      search();
+    }
+  }
+}
+
+render();

@@ -5,7 +5,14 @@ import styled        from "styled-components";
 import Map           from "../../components/Map";
 
 const MoreInfoLink = styled.a`
-  padding: 1em;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  background: white;
+  left: 0;
+  padding: 6px 25px;
+  font-size: 0.8em;
+  font-family: sans-serif, Helvetica, Arial;
 `;
 
 module.exports = ({marker, size, center, zoom, category, highlight, 
