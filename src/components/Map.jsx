@@ -83,30 +83,40 @@ class KVMMap extends Component {
       })
     }
 
-    return (<Map
-      style       = {{ height: "100%" }}
-      ref         = 'map'
-      center      = { center }
-      zoom        = { zoom   }
-      zoomSnap    = { 0.0 }
-      zoomControl = { false }
-      className   = "map"
-      onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
-      onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
-      onClick     = { (e) => { onClick(e.latlng) }} >
+    return (
+        <Map
+        style = {{
+          height:   "100%",
+          width:    "100%",
+          position: "absolute",
+          margin:   0,
+          zIndex:   0,
+          padding:  0,
+          top:      0,
+          left:     0
+        }}
+        ref         = 'map'
+        center      = { center }
+        zoom        = { zoom   }
+        zoomSnap    = { 0.0 }
+        zoomControl = { false }
+        className   = "map"
+        onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
+        onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
+        onClick     = { (e) => { onClick(e.latlng) }} >
 
-        <TileLayer
-          url = { URLs.OSM_TILES.link }
-          attribution = {
-            '&copy; <a class="osm attr" href=' +
-             URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>' } >
-        </TileLayer>
-        { markers }
-        { marker
-          ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
-          : null
-        }
-      </Map>)
+          <TileLayer
+            url = { URLs.OSM_TILES.link }
+            attribution = {
+              '&copy; <a class="osm attr" href=' +
+               URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>' } >
+          </TileLayer>
+          { markers }
+          { marker
+            ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
+            : null
+          }
+        </Map>)
     }
 }
 
