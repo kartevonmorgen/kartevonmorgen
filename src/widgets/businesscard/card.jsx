@@ -10,5 +10,5 @@ const MoreInfoLink = styled.a`
 module.exports = ({entry}) =>
   <div>
     <EntryDetails entry={entry}/>
-    {entry ? <MoreInfoLink href={URLs.APP.link + "/#/?entry=" + entry.id}>Auf der Karte anzeigen...</MoreInfoLink> : ""}
+    {entry ? <MoreInfoLink target="_blank" href={URLs.APP.link + "/#/?entry=" + entry.id}>Auf der Karte anzeigen...</MoreInfoLink> : ""}
   </div>
