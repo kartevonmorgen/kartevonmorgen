@@ -1,3 +1,26 @@
+## v0.1.17
+- new(mobile): make the app responsive
+- refactor(routing): refactor routing to prevent loops; move logic to react to url changes to url reducer and other reducers via UPDATE_STATE_FROM_URL action
+- refactor(Actions): split actions into client and server actions
+- fix(zoom): fix a bug with zooming that came from the routing chaos
+- new(zoom): make continuous zoom work (especially on mobile devices important for pinch zoom)
+- new(*): open external links in new tab (especially relevant for widgets)
+- new(businesscard-widget): add businesscard-widget that only shows EntryDetails
+- new(map-widget): add map-widget that only shows the map
+- refactor(styling): make EntryDetails, Ratings, Flower and Map styled-components (inline style instead of css) so they are modular, reusable components
+- fix(search): use all tags for search
+- new(navigation): remove "Eintrag hinzufügen" navigation
+- new(Infos): turn the "Workshops" page into a general "Info" page
+- new(mobile): add button to hide left sidebar
+- new(EntryForm): don't add "-" when user adds whitespaces between tags in EntryForm
+- fix(login): fix encoding of confirmation email (sometimes it showed as an empty email)
+- fix(zoom): don't close form when editing entry and then zooming
+- new(ratings): change order of fields in rating form, change "visionär" to "von übermorgen"
+- new(*): put the cancel button always to the left and saving etc always to the right
+- new(entryForm): increase max. title length to 50 chars
+- fix(LandingPage): make enter key work in city search bar
+- new(EntryDetails): set zoom to a certain level when showing an entry
+
 ## v0.1.16 (2017-07-28)
 - new(rating): show explanation for rating contexts when hovering over them
 - new(rating): replace drop downs by radio buttons
