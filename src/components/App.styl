@@ -347,8 +347,7 @@ button.pure-button i
         position        relative
         z-index         1
         overflow-y      scroll
-        height          calc(100vh - 6.65em)
-        padding-bottom  6.65em;
+        height          100%
         box-sizing  border-box
         background      #fff
 
@@ -361,16 +360,12 @@ button.pure-button i
         .menu
           width       100%
 
-      .search.standalone
-        left     1em
-        top      1em
-        width    350px
-        z-index  2
-        position absolute
-
       .search
         position  relative
         z-index   2
+
+        &.closed
+          display none
 
         .main-categories
           height 2.1em

@@ -132,8 +132,8 @@ Main = React.createClass
 
         div className:"left #{if view.showLeftPanel and not view.menu then 'opened' else 'closed'}",
 
-          div className: "search #{
-            if view.left? then 'integrated' else 'standalone'
+          div className: "search integrated #{
+            if view.left in [V.RESULT] then 'open' else 'closed'
           }",
             React.createElement SearchBar,
               searchText      : search.text
