@@ -3,7 +3,6 @@ import ServerConstants            from "../constants/Server";
 import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
 import { LICENSE_NAME }           from "../constants/App";
-import clientActions              from "./client"
 import { initialize, stopSubmit } from "redux-form";
 
 
@@ -39,7 +38,9 @@ const Actions = {
           if ((Array.isArray(ids)) && ids.length > 0) {
             dispatch(Actions.getEntries(ids));
           } else {
-            dispatch(clientActions.noSearchResults());
+            dispatch({
+              type: T.NO_SEARCH_RESULTS
+            });
           }
         });
 
