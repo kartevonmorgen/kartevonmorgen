@@ -77,8 +77,22 @@ class Form extends Component {
         <fieldset>
           <legend>
             <span className="text">Ort</span>
-            <span className="desc">(auf Karte klicken)</span>
           </legend>
+          <div className= "pure-g">
+            <div className= "pure-u-6-24">
+              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ" />
+              <Field name="zip" component={errorMessage} />
+            </div>
+            <div className= "pure-u-18-24">
+              <Field name="city" className="pure-input-1" component="input" placeholder="Stadt" />
+              <Field name="city" component={errorMessage} />
+            </div>
+          </div>
+          <Field name="street" className="pure-input-1" component="input" placeholder="Straße & Hausnummer"/>
+          <Field name="street" component={errorMessage} />
+          </fieldset>
+          <span className="desc">oder auf Karte klicken...</span>
+          <fieldset>
           <div className= "pure-g">
             <label className= "pure-u-2-24">
               <i className= "fa fa-map-marker" />
@@ -93,21 +107,6 @@ class Form extends Component {
                 <Field name="lng" className="pure-input-1" component="input" readOnly={true} />
                 <Field name="lng" component={errorMessage} />
               </div>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <Field name="street" className="pure-input-1" component="input" placeholder="Straße"/>
-          <Field name="street" component={errorMessage} />
-          <div className= "pure-g">
-            <div className= "pure-u-6-24">
-              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ" />
-              <Field name="zip" component={errorMessage} />
-            </div>
-            <div className= "pure-u-18-24">
-              <Field name="city" className="pure-input-1" component="input" placeholder="Stadt" />
-              <Field name="city" component={errorMessage} />
             </div>
           </div>
         </fieldset>
