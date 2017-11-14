@@ -4,6 +4,7 @@ import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
 import { LICENSE_NAME }           from "../constants/App";
 import { initialize, stopSubmit } from "redux-form";
+import mapConst                   from "../constants/Map"
 
 
 const flatten = nestedArray => nestedArray.reduce(
@@ -337,6 +338,10 @@ const Actions = {
                 },
                 manual: false,
                 error: err != null
+              });
+              dispatch({
+                type: T.SET_ZOOM,
+                payload: parseFloat(mapConst.ENTRY_DEFAULT_ZOOM)
               });
             }
           }
