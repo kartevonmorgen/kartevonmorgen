@@ -19,7 +19,8 @@ const createActionsFromState = (state) => {
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
-  const { entry, zoom, center, search, tags, view, confirmEmail, left} = params;
+  const { entry, zoom, center, search, tags, view, left} = params;
+  const confirmEmail = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
 
