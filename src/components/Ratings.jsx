@@ -50,9 +50,9 @@ const context_order = (id) => {
     return "c";
   case "humanity":
     return "d";
-  case "transparency":
-    return "e";
   case "solidarity":
+    return "e";
+  case "transparency":
     return "f";
   default:
     return id
