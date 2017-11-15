@@ -79,13 +79,13 @@ class Form extends Component {
             <span className="text">Ort</span>
           </legend>
           <div className= "pure-g">
-            <div className= "pure-u-6-24">
-              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ" />
-              <Field name="zip" component={errorMessage} />
-            </div>
-            <div className= "pure-u-18-24">
+            <div className= "pure-u-15-24">
               <Field name="city" className="pure-input-1" component="input" placeholder="Stadt" />
               <Field name="city" component={errorMessage} />
+            </div>
+            <div className= "pure-u-9-24">
+              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ(optional)" />
+              <Field name="zip" component={errorMessage} />
             </div>
           </div>
           <Field name="street" className="pure-input-1" component="input" placeholder="Straße & Hausnummer"/>
@@ -112,7 +112,7 @@ class Form extends Component {
         </fieldset>
 
         <fieldset>
-          <legend>Kontakt</legend>
+          <legend>Kontakt (optional)</legend>
           <div className= "pure-g">
             <label className= "pure-u-2-24">
               <i className= "fa fa-globe" />
