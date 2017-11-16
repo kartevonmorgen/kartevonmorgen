@@ -277,7 +277,7 @@ Main = React.createClass
                           "abonnieren"
                     ]
 
-          div className:"content",
+          div className: "content-wrapper",
 
             switch view.left
 
@@ -320,7 +320,7 @@ Main = React.createClass
                         onMouseEnter: (id) -> dispatch Actions.highlight id
                         onMouseLeave: (id) -> dispatch Actions.highlight()
               when V.ENTRY
-                div null,
+                div className: "content",
                   React.createElement EntryDetails,
                     entry   : entries[search.current] || null
                   React.createElement Ratings,
@@ -329,60 +329,64 @@ Main = React.createClass
                     onRate  : (id) => dispatch Actions.showNewRating id
 
               when V.EDIT, V.NEW
-                React.createElement EntryForm,
-                  ref: 'form'
-                  isEdit: form[EDIT.id]?.kvm_flag_id?
-                  onSubmit: (data) ->
-                    dispatch Actions.saveEntry
-                      id          : form[EDIT.id]?.kvm_flag_id
-                      title       : data.title
-                      description : data.description
-                      tags        : data.tags?.split(',')
-                      homepage    : data.homepage
-                      telephone   : data.telephone
-                      lat         : Number data.lat
-                      lng         : Number data.lng
-                      street      : data.street
-                      city        : data.city
-                      email       : data.email
-                      zip         : data.zip
-                      version     : (form[EDIT.id]?.values?.version or 0) + 1
-                      categories  : [data.category]
+                div className: "content",
+                  React.createElement EntryForm,
+                    ref: 'form'
+                    isEdit: form[EDIT.id]?.kvm_flag_id?
+                    onSubmit: (data) ->
+                      dispatch Actions.saveEntry
+                        id          : form[EDIT.id]?.kvm_flag_id
+                        title       : data.title
+                        description : data.description
+                        tags        : data.tags?.split(',')
+                        homepage    : data.homepage
+                        telephone   : data.telephone
+                        lat         : Number data.lat
+                        lng         : Number data.lng
+                        street      : data.street
+                        city        : data.city
+                        email       : data.email
+                        zip         : data.zip
+                        version     : (form[EDIT.id]?.values?.version or 0) + 1
+                        categories  : [data.category]
               when V.NEW_RATING
-                React.createElement RatingForm,
-                  ref         : 'rating'
-                  entryid     : form[RATING.id]?.kvm_flag_id
-                  entryTitle  : entries[form[RATING.id]?.kvm_flag_id]?.title
-                  onSubmit: (data) ->
-                    dispatch Actions.createRating
-                      entry   : form[RATING.id]?.kvm_flag_id
-                      title   : data.title
-                      context : data.context
-                      value   : data.value
-                      comment : data.comment
-                      source : data.source
-                  contextToExplain: explainRatingContext
-                  selectedContext: selectedContext
-                  changeContext: (ratingContext) ->
-                    dispatch Actions.explainRatingContext(ratingContext)
+                div className: "content",
+                  React.createElement RatingForm,
+                    ref         : 'rating'
+                    entryid     : form[RATING.id]?.kvm_flag_id
+                    entryTitle  : entries[form[RATING.id]?.kvm_flag_id]?.title
+                    onSubmit: (data) ->
+                      dispatch Actions.createRating
+                        entry   : form[RATING.id]?.kvm_flag_id
+                        title   : data.title
+                        context : data.context
+                        value   : data.value
+                        comment : data.comment
+                        source : data.source
+                    contextToExplain: explainRatingContext
+                    selectedContext: selectedContext
+                    changeContext: (ratingContext) ->
+                      dispatch Actions.explainRatingContext(ratingContext)
               when V.WAIT
-                React.createElement Message,
-                  iconClass: "fa fa-spinner fa-pulse"
-                  message: " lade Daten vom Server ..."
-                  buttonLabel: "abbrechen"
-                  onCancel: ->
-                    dispatch Actions.cancelWait()
+                div className: "content",
+                  React.createElement Message,
+                    iconClass: "fa fa-spinner fa-pulse"
+                    message: " lade Daten vom Server ..."
+                    buttonLabel: "abbrechen"
+                    onCancel: ->
+                      dispatch Actions.cancelWait()
               when V.IO_ERROR
-                React.createElement Message,
-                  iconClass: "fa fa-exclamation-triangle"
-                  message: " Server nicht erreichbar. " +
-                    "Bitte prüfe Deine Internetverbindung " +
-                    "oder versuche es später nochmal. "
-                  buttonLabel: "schließen"
-                  onCancel: ->
-                    dispatch Actions.closeIoErrorMessage()
+                div className: "content",
+                  React.createElement Message,
+                    iconClass: "fa fa-exclamation-triangle"
+                    message: " Server nicht erreichbar. " +
+                      "Bitte prüfe Deine Internetverbindung " +
+                      "oder versuche es später nochmal. "
+                    buttonLabel: "schließen"
+                    onCancel: ->
+                      dispatch Actions.closeIoErrorMessage()
               when V.SUBSCRIBE_TO_BBOX
-                div className: "subscribe-to-bbox",
+                div className: "content subscribe-to-bbox",
                   React.createElement SubscribeToBbox,
                     subscriptionExists: user.subscriptionExists
         div className:"hide-sidebar",

@@ -343,13 +343,28 @@ button.pure-button i
       overflow-y  hidden
       float left
 
-      .content
-        position        relative
-        z-index         1
-        overflow-y      scroll
-        height          100%
-        box-sizing  border-box
-        background      #fff
+      .content-wrapper
+        height        100vh
+        background    #fff
+        position      relative
+        z-index       2
+
+        .result
+          position        relative
+          z-index         2
+          overflow-y      scroll
+          height          calc(100vh - 107px)
+          box-sizing      border-box
+          padding-bottom  30px
+
+        .content
+          position        relative
+          z-index         2
+          overflow-y      scroll
+          height          calc(100vh - 42px)
+          box-sizing      border-box
+          background      #fff
+          padding-bottom  30px
 
       &.closed
         width 0
