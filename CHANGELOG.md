@@ -1,3 +1,11 @@
+## v0.1.18
+- fix(Accounts): fix bug confirmEmail routing
+- fix(Ratings): put Positivfaktoren in correct order
+- fix(Actions): remove dependency of server actions to client actions
+- new(SearchBar): show searchbar only when in search-result mode
+- new(EntryForm): zoom in when finding address
+- new(EntryForm): mark contacts-field and zip code as optional to make adding entries simpler
+
 ## v0.1.17
 - new(mobile): make the app responsive
 - refactor(routing): refactor routing to prevent loops; move logic to react to url changes to url reducer and other reducers via UPDATE_STATE_FROM_URL action
