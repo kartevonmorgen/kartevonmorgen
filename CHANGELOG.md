@@ -1,3 +1,6 @@
+## v0.1.19 (2017-11-16)
+- fix(styling): fix height of sidebar (bug was introduced by e96e902)
+
 ## v0.1.18
 - fix(Accounts): fix bug confirmEmail routing
 - fix(Ratings): put Positivfaktoren in correct order
