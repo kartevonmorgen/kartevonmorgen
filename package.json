@@ -30,6 +30,8 @@
     "lodash": "^3.10.1",
     "museo": "^0.1.0",
     "normalize.css": "^3.0.3",
+    "preact": "^8.2.6",
+    "preact-compat": "^3.17.0",
     "purecss": "^0.6.0",
     "react": "^15.4",
     "react-dom": "^15.4",

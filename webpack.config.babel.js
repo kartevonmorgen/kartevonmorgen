@@ -120,7 +120,11 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js", ".coffee"]
+    extensions: [".jsx", ".js", ".coffee"],
+    alias: {
+      "react": "preact-compat",
+      "react-dom": "preact-compat"
+    }
   }
 };
 
