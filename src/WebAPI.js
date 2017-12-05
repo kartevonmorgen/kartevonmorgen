@@ -1,10 +1,11 @@
 const URL = location.origin + "/api";
 
-const NOMINATIM = "https://nominatim.openstreetmap.org";
-const OVERPASS = "https://search.osmnames.org/q/";
+const NOMINATIM_URL = "https://nominatim.openstreetmap.org";
+const TILEHOSTING_URL = "https://geocoder.tilehosting.com/q/<query>.js?key=<key>";
 
 import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
+import { TILEHOSTING_API_KEY } from "./constants/App";
 
 const prefix = saPrefix(URL);
 
@@ -42,10 +43,11 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchAddressOverpass: (addr, cb) => {
+  searchAddressTilehosting: (addr, cb) => {
+    let query = TILEHOSTING_URL.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
     if (addr != null && addr != "") {
       request
-        .get(OVERPASS + addr + ".js")
+        .get(query)
         .set('Accept', 'application/json')
         .end(jsonCallback(cb));
     }
@@ -57,7 +59,7 @@ module.exports = {
     }
     request
       .get('/search')
-      .use(saPrefix(NOMINATIM))
+      .use(saPrefix(NOMINATIM_URL))
       .query({
         q: addr
       })
@@ -82,7 +84,7 @@ module.exports = {
 
     request
       .get('/reverse')
-      .use(saPrefix(NOMINATIM))
+      .use(saPrefix(NOMINATIM_URL))
       .query({
         lat: latlng.lat
       })
