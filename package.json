@@ -1,6 +1,6 @@
 {
   "name": "kartevonmorgen",
-  "version": "0.1.20-dev",
+  "version": "0.1.20",
   "description": "Karte von Morgen",
   "scripts": {
     "lint": "eslint src/",

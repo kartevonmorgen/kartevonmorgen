@@ -1,3 +1,7 @@
+## v0.1.20 (2017-12-05)
+- fix(citySearch): fix citySearch as the osmnames API changed, use tilehosting API with API key
+- new(citySearch): show error when citySearch results in an error, show when citySearch doesn't return any results
+
 ## v0.1.19 (2017-11-16)
 - fix(styling): fix height of sidebar (bug was introduced by e96e902)
 
