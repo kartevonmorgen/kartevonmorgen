@@ -243,19 +243,24 @@ class LandingPage extends Component {
                 type        = 'text'
                 placeholder = "Welchen Ort möchtest du entdecken?"
                 />
-              { searchError
-                  ? <div className = "pure-u-1 error">
-                      Fehler bei der Städte-Suche.&nbsp;&nbsp;
+                <div className = "pure-u-1">
+                { searchText && searchText.length > 3
+                  ? (searchError
+                    ? <div className="error">
+                      <span className="errorText">Fehler bei der Städte-Suche.</span>&nbsp;&nbsp;
                       <a onClick={() => onClick('map')} href="#" className="link">
                         Karte anzeigen...
-                      </a>
-                    </div>
-                  : cities && cities.length > 0 && searchText && searchText.length > 3
-                    ? <div className = "pure-u-1">
-                        <CityList cities={cities} onClick={onSelection} />
-                      </div>
-                    : null
-              }
+                      </a></div>
+                    : cities && cities.length > 0
+                        ? <CityList cities={cities} onClick={onSelection} />
+                        : <div className="error">Konnte keine Stadt finden.&nbsp;&nbsp;
+                        <a onClick={() => onClick('map')} href="#" className="link">
+                        Karte anzeigen...
+                        </a></div>
+                    )
+                  : null
+                }
+                </div>
             </div>
           </div>
         </div>
