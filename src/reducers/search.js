@@ -6,6 +6,7 @@ const initialState = {
   text: null,
   city: null,
   result: [],
+  error: false,
   current: null,
   categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
   highlight: [],
@@ -111,13 +112,16 @@ module.exports = (state = initialState, action = {}) => {
         return {
           ...state,
           addresses: d,
-          cities: unique(d.filter(isCity))
+          cities: unique(d.filter(isCity)),
+          error: false
         }
-      }
-      return {
-        ...state,
-        addresses: [],
-        cities: []
+      } else {
+        return {
+          ...state,
+          addresses: [],
+          cities: [],
+          error: true
+        }
       }
       break;
 

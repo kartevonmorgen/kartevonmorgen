@@ -15,7 +15,7 @@ class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, cities, onSelection, onEscape, 
+    const { content, searchText, searchError, cities, onSelection, onEscape, 
       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount } = this.props;
     const onClick = this.props.onMenuItemClick;
 
@@ -243,11 +243,18 @@ class LandingPage extends Component {
                 type        = 'text'
                 placeholder = "Welchen Ort möchtest du entdecken?"
                 />
-              { cities && cities.length > 0
-                  ? <div className = "pure-u-1">
-                      <CityList cities={cities} onClick={onSelection} />
+              { searchError
+                  ? <div className = "pure-u-1 error">
+                      Fehler bei der Städte-Suche.&nbsp;&nbsp;
+                      <a onClick={() => onClick('map')} href="#" className="link">
+                        Karte anzeigen...
+                      </a>
                     </div>
-                  : null
+                  : cities && cities.length > 0 && searchText && searchText.length > 3
+                    ? <div className = "pure-u-1">
+                        <CityList cities={cities} onClick={onSelection} />
+                      </div>
+                    : null
               }
             </div>
           </div>
@@ -299,6 +306,7 @@ const T = React.PropTypes;
 LandingPage.propTypes = {
   content     : T.string,
   searchText  : T.string,
+  searchError : T.boolean,
   cities      : T.array,
   onChange    : T.func,
   onEscape    : T.func,
