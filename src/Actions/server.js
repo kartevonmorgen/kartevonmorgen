@@ -47,7 +47,7 @@ const Actions = {
 
         if (s.text != null) {
           const address = s.text.replace(/#/g, "");
-          WebAPI.searchAddressOverpass(address, (err, res) => {
+          WebAPI.searchAddressTilehosting(address, (err, res) => {
             dispatch({
               type: T.SEARCH_ADDRESS_RESULT,
               payload: err || res.results,
@@ -61,7 +61,7 @@ const Actions = {
   searchCity: () =>
     (dispatch, getState) => {
       const s = getState().search;
-      WebAPI.searchAddressOverpass(s.city, (err, res) => {
+      WebAPI.searchAddressTilehosting(s.city, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
           payload: err || res.results,

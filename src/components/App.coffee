@@ -102,9 +102,11 @@ Main = React.createClass
                   dispatch Actions.showInfo id
             onChange: (city) ->
               dispatch Actions.setCitySearchText city
-              dispatch Actions.searchCity()
+              if city and city.length > 3
+                dispatch Actions.searchCity()
             content: view.right
             searchText: search.city
+            searchError: search.error
             cities: search.cities
             onEscape: -> dispatch Actions.setCitySearchText ''
 
