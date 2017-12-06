@@ -64,12 +64,17 @@ To build a Nix derivation, run
 
 ### Local development setup
 
-First make sure [Neo4j is installed](https://github.com/flosse/openfairdb#installing-neo4j) and runnig.
+Download the OpenFairDB Server
 
-    git clone https://github.com/flosse/openfairdb
-    cd openfairdb/
-    cargo build
-    RUST_LOG=debug ./target/debug/openfairdb
+    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.2.10.tar.gz
+
+unpack it
+
+    tar xzf openfairdb-x86_64-linux-v0.2.10.tar.gz
+
+and run it
+
+    ./openfairdb
 
 Now `openfairdb` is listening on port 6767.
 
