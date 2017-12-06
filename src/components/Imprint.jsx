@@ -19,23 +19,31 @@ const Imprint = () =>
       <a target="_blank" href = { URLs.REPOSITORY.link } >{ URLs.REPOSITORY.name }</a>
     </p>
     <h3>Impressum</h3>
-    <h4>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h4>
-      T. Thao Tran
+  <h4>Rechtlicher Träger im Sinne der Gemeinnützigkeit</h4>
+      Ideen³ e.V. // Räume für Entwicklung, Vertreten durch den Vorstand Helmut Wolman
       <br />
-      Gleimstraße 27
+      Görreshof 180, 53347 Alfter
       <br />
-      10437 Berlin
+      <a href = "http://ideenhochdrei.org">Ideenhochdrei.org</a>
       <br />
-      <a href = "mailto:thao.tran@kartevonmorgen.org">
-        thao.tran@kartevonmorgen.org
+      <a href = "mailto:info@ideenhochdrei.org">
+        info@ideenhochdrei.org
       </a>
-
+  
+    
     <h4>Konzept</h4>
+      Helmut Wolman
+      <br />
+      Turley-Platz 9
+      <br />
+      68167 Mannheim
+      <br />
+      <a href = "mailto:helmut.wolman@kartevonmorgen.org">
+        helmut.wolman@kartevonmorgen.org
+      </a>
+  
+  <h4>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h4>
       T. Thao Tran
-      <br />
-      Gleimstraße 27
-      <br />
-      10437 Berlin
       <br />
       <a href = "mailto:thao.tran@kartevonmorgen.org">
         thao.tran@kartevonmorgen.org
