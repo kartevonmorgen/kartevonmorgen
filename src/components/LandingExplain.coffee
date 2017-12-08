@@ -91,71 +91,68 @@ module.exports = pure React.createClass
 
       hr null
       h2 null, "Das Team von morgen"
-
+p null,
+        "Das Team von morgen ist so bunt wie der Wandel. Ehemalige entwicklungspolitische Freiwillige, Studierende, Wandelgestalter*innen und Stipendiaten - Menschen, die sich ehrenamtlich für die Gesellschaft von morgen einsetzen wollen."
+       
       div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Anja.jpg"
-        div null, "Anja Dannemann -"
-        div null, "Graphic Design"
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/Thao.jpg"
+        div null, "Thao Tran - "
+        div null, "Theaterstudentin"
+        div null, "Brand Management"
       div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Ben.jpg"
-        div null, "Benedikt Roth -"
+        div className: "circle pink",
+          a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/"
+            img className: "teamImage", src: require "../img/team/Helmut.jpg"
+        div null, "Helmut Wolman -"
+        div null, "Vorstand von Ideen³ e.V." 
         div null, "Network & Development"
       div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Lisa.jpg"
+        div null, "Lisa Stehr -"
+        div null, "Promoviert in Psychologie"
+        div null, "Funding & Strategy"
+       div className: "teamMember",
         div className: "circle berry",
           img className: "teamImage", src: require "../img/team/David.jpg"
         div null, "David Ziegler -"
         div null, "Softwaredevelopment"
+      div className: "teamMember",
+        div className: "circle green",
+         a href:"https://slowtec.de/team.html#"
+           img className: "teamImage", src: require "../img/team/Markus.jpg"
+        div null, "Markus Kohlhase -"
+        div null, "SlowTec GmbH"
+        div null, "Software Development"
       div className: "teamMember",
         div className: "circle pink",
           img className: "teamImage", src: require "../img/team/placeholder_1.png"
         div null, "Florian Jostock -"
         div null, "Software Development"
       div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Frederik.jpg"
-        div null, "Frederik Schütz -"
-        div null, "Business & Finance"
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Anja.jpg"
+        div null, "Anja Dannemann -"
+        div null, "Designerin"
+        div null, "Graphic Design"
       div className: "teamMember",
-        div className: "circle pink",
-          img className: "teamImage", src: require "../img/team/Helmut.jpg"
-        div null, "Helmut Wolman -"
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Ben.jpg"
+        div null, "Benedikt Roth -"
+        div null, "Organisationsgstalter"
         div null, "Network & Development"
       div className: "teamMember",
         div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Lisa.jpg"
-        div null, "Lisa Stehr -"
-        div null, "Funding & Strategy"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Markus.jpg"
-        div null, "Markus Kohlhase -"
-        div null, "Software Development"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/placeholder_2.png"
-        div null, "Nina Bärnreuther -"
-        div null, "PR & Marketing"
-      div className: "teamMember",
-        div className: "circle grayBlue",
-          img className: "teamImage", src: require "../img/team/placeholder_3.png"
-        div null, "Peter Gericke -"
-        div null, "Graphic Design"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/Thao.jpg"
-        div null, "Thao Tran - Brand &"
-        div null, "Project Management"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/Tomas.jpg"
-        div null, "Tomas Gerlitz -"
+          img className: "teamImage", src: require "../img/team/Frederik.jpg"
+        div null, "Frederik Schütz -"
+        div null, "Netzwerk-Ass"
         div null, "Business & Finance"
       div className: "teamMember",
         div className: "circle berry",
           img className: "teamImage", src: require "../img/team/Xueqian.jpg"
         div null, "Xueqian Chen -"
+        div null, "Unternehmensberaterin"
         div null, "PR & Marketing"
       div className: "teamMember",
         div className: "circle blue",
@@ -167,12 +164,12 @@ module.exports = pure React.createClass
 
       h2 null,
         "Unsere Partner",
-      a href:"http://germany.ashoka.org",
-        img className: "partnerLogo", src: require "../img/Pep.png"
+      a href:"https://www.engagement-global.de/rueckkehrende.html",
+        img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/EngagementGlobal.jpg"  
+      a href:"http://www.bmz.de/",
+        img className: "partnerLogo", src: require "../img/BMZjpg"
       a href:"https://www.boell.de/de",
         img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
-      a href:"https://www.think-big.org",
-        img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/Think_Big.jpg"
       a href:"http://slowtec.de",
         img className: "partnerLogo", src: require "../img/slowtec.png"
       a href:"http://www.ideenhochdrei.org/de/",
