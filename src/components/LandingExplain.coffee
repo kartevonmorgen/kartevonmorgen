@@ -91,83 +91,84 @@ module.exports = pure React.createClass
 
       hr null
       h2 null, "Das Team von morgen"
-p null,
+      p null,
         "Das Team von morgen ist so bunt wie der Wandel. Ehemalige entwicklungspolitische Freiwillige, Studierende, Wandelgestalter*innen und Stipendiaten - Menschen, die sich ehrenamtlich für die Gesellschaft von morgen einsetzen wollen."
        
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/Thao.jpg"
-        div null, "Thao Tran - "
-        div null, "Theaterstudentin"
-        div null, "Brand Management"
-      div className: "teamMember",
-        div className: "circle pink",
-          a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/"
-            img className: "teamImage", src: require "../img/team/Helmut.jpg"
-        div null, "Helmut Wolman -"
-        div null, "Vorstand von Ideen³ e.V." 
-        div null, "Network & Development"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Lisa.jpg"
-        div null, "Lisa Stehr -"
-        div null, "Promoviert in Psychologie"
-        div null, "Funding & Strategy"
-       div className: "teamMember",
-        div className: "circle berry",
-          img className: "teamImage", src: require "../img/team/David.jpg"
-        div null, "David Ziegler -"
-        div null, "Softwaredevelopment"
-      div className: "teamMember",
-        div className: "circle green",
-         a href:"https://slowtec.de/team.html#"
-           img className: "teamImage", src: require "../img/team/Markus.jpg"
-        div null, "Markus Kohlhase -"
-        div null, "SlowTec GmbH"
-        div null, "Software Development"
-      div className: "teamMember",
-        div className: "circle pink",
-          img className: "teamImage", src: require "../img/team/placeholder_1.png"
-        div null, "Florian Jostock -"
-        div null, "Software Development"
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Anja.jpg"
-        div null, "Anja Dannemann -"
-        div null, "Designerin"
-        div null, "Graphic Design"
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Ben.jpg"
-        div null, "Benedikt Roth -"
-        div null, "Organisationsgstalter"
-        div null, "Network & Development"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Frederik.jpg"
-        div null, "Frederik Schütz -"
-        div null, "Netzwerk-Ass"
-        div null, "Business & Finance"
-      div className: "teamMember",
-        div className: "circle berry",
-          img className: "teamImage", src: require "../img/team/Xueqian.jpg"
-        div null, "Xueqian Chen -"
-        div null, "Unternehmensberaterin"
-        div null, "PR & Marketing"
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/placeholder_4.png"
-        div null, "Wir freuen uns über neue"
-        div null, "Teammitglieder!"
+      div className: "team",
+        div className: "teamMember",
+          div className: "circle yellow",
+            img className: "teamImage", src: require "../img/team/Thao.jpg"
+          div className: "team-member-name", "Thao Tran"
+          div null, "Theaterstudentin"
+          div null, "Brand Management"
+        div className: "teamMember",
+          div className: "circle pink",
+            a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
+              img className: "teamImage", src: require "../img/team/Helmut.jpg"
+          div className: "team-member-name", "Helmut Wolman"
+          div null, "Vorstand von Ideen³ e.V." 
+          div null, "Network & Development"
+        div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Lisa.jpg"
+          div className: "team-member-name", "Lisa Stehr"
+          div null, "Promoviert in Psychologie"
+          div null, "Funding & Strategy"
+         div className: "teamMember",
+          div className: "circle berry",
+            img className: "teamImage", src: require "../img/team/David.jpg"
+          div className: "team-member-name", "David Ziegler"
+          div null, "Softwaredevelopment"
+        div className: "teamMember",
+          div className: "circle green",
+           a href:"https://slowtec.de/team.html#",
+             img className: "teamImage", src: require "../img/team/Markus.jpg"
+          div className: "team-member-name", "Markus Kohlhase"
+          div null, "SlowTec GmbH"
+          div null, "Software Development"
+        div className: "teamMember",
+          div className: "circle pink",
+            img className: "teamImage", src: require "../img/team/placeholder_1.png"
+          div className: "team-member-name", "Florian Jostock"
+          div null, "Software Development"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/Anja.jpg"
+          div className: "team-member-name", "Anja Dannemann"
+          div null, "Designerin"
+          div null, "Graphic Design"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/Ben.jpg"
+          div className: "team-member-name", "Benedikt Roth"
+          div null, "Organisationsgestalter"
+          div null, "Network & Development"
+        div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Frederik.jpg"
+          div className: "team-member-name", "Frederik Schütz"
+          div null, "Netzwerk-Ass"
+          div null, "Business & Finance"
+        div className: "teamMember",
+          div className: "circle berry",
+            img className: "teamImage", src: require "../img/team/Xueqian.jpg"
+          div className: "team-member-name", "Xueqian Chen"
+          div null, "Unternehmensberaterin"
+          div null, "PR & Marketing"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/placeholder_4.png"
+          div className: "team-member-name", "Wir freuen uns über neue"
+          div null, "Teammitglieder!"
 
       hr null
 
       h2 null,
         "Unsere Partner",
       a href:"https://www.engagement-global.de/rueckkehrende.html",
-        img className: "partnerLogo", style: {padding: "0 20px 0 10px"}, src: require "../img/EngagementGlobal.jpg"  
+        img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"  
       a href:"http://www.bmz.de/",
-        img className: "partnerLogo", src: require "../img/BMZjpg"
+        img className: "partnerLogo", src: require "../img/BMZ.jpg"
       a href:"https://www.boell.de/de",
         img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
       a href:"http://slowtec.de",
