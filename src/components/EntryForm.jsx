@@ -4,7 +4,8 @@ import validation           from "../util/validation"
 import normalize            from "../util/normalize";
 import { reduxForm, Field } from "redux-form"
 import { IDS              } from "../constants/Categories"
-import { CC_LICENSE       } from "../constants/URLs"
+import URLs                 from "../constants/URLs"
+import LICENSES             from "../constants/Licenses"
 import { EDIT             } from "../constants/Form"
 
 const errorMessage = ({meta}) =>
@@ -16,7 +17,7 @@ class Form extends Component {
 
   render() {
 
-    const { isEdit } = this.props;
+    const { isEdit, license } = this.props;
 
     return (
     <form
@@ -152,7 +153,6 @@ class Form extends Component {
         <fieldset>
           <legend>
             <span className="text">Lizenz</span>
-            <span className="desc">(CC-0)</span>
           </legend>
           <div className= "pure-g license">
             <label className= "pure-u-2-24">
@@ -164,10 +164,14 @@ class Form extends Component {
             <div className= "pure-u-20-24">
               <Field name="license" component={errorMessage} />
               Ich habe die {" "}
-              <a target="_blank" href={CC_LICENSE.link}>
-                Bestimmungen der Creative-Commons Lizenz CC0
-              </a> {" "}
-              gelesen und akzeptiere sie
+              { license == LICENSES.ODBL
+                ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
+                    Bestimmungen der Open Database Lizenz
+                  </a>
+                : <a target="_blank" href={URLs.CC_LICENSE.link}>
+                    Bestimmungen der Creative Commons Lizenz CC0
+                  </a>
+              } {" "} gelesen und akzeptiere sie
             </div>
           </div>
         </fieldset>
@@ -178,7 +182,10 @@ class Form extends Component {
 
 const T = React.PropTypes;
 
-Form.propTypes = { isEdit : T.bool };
+Form.propTypes = {
+  isEdit : T.bool,
+  license: T.string
+};
 
 module.exports = reduxForm({
   form            : EDIT.id,

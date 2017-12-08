@@ -3,6 +3,10 @@ module.exports = {
     name: "creativecommons.org/publicdomain/zero/1.0/deed.de",
     link: "https://creativecommons.org/publicdomain/zero/1.0/deed.de"
   },
+  ODBL_LICENSE: {
+    name: "opendatacommons.org/licenses/odbl/summary/",
+    link: "https://opendatacommons.org/licenses/odbl/summary/"
+  },
   APP: {
     name: "kartevonmorgen.org",
     link: "https://kartevonmorgen.org"

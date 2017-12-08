@@ -335,6 +335,7 @@ Main = React.createClass
                   React.createElement EntryForm,
                     ref: 'form'
                     isEdit: form[EDIT.id]?.kvm_flag_id?
+                    license: entries[search.current].license
                     onSubmit: (data) ->
                       dispatch Actions.saveEntry
                         id          : form[EDIT.id]?.kvm_flag_id
