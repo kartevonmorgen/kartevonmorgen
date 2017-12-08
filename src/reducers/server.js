@@ -8,11 +8,6 @@ const initialState = {
 
 module.exports = (state=initialState, action={}) => {
 
-  if (action.error) {
-    console.error("Error in server reducer: ", action.payload);
-    return state;
-  }
-
   const { payload } = action;
 
   let o = {};
@@ -24,6 +19,10 @@ module.exports = (state=initialState, action={}) => {
         version: payload.version
       };
     case T.ENTRIES_RESULT:
+      if(action.error) {
+        console.error("Error in server reducer: ", action);
+        return state;
+      }
       if (payload != null) {
         if (Array.isArray(payload)) {
           payload.filter(e => e != null)
@@ -41,6 +40,10 @@ module.exports = (state=initialState, action={}) => {
       }
       return state;
     case T.RATINGS_RESULT:
+      if(action.error) {
+        console.error("Error in server reducer: ", action);
+        return state;
+      }
       if (payload != null) {
         if (Array.isArray(payload)) {
           payload.filter(e => e != null)
