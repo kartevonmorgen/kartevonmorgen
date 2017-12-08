@@ -1,3 +1,8 @@
+## v0.1.21 (2017-12-08)
+- new(prototype): show 'prototype'-banner when packing with 'npm run pack-prototype'
+- new(EntryForm): show either CC0 or ODBL license (OSM)
+- new(EntryForm): when saving entry use ODBL license for OSM entries and CC0 otherwise (OSM)
+
 ## v0.1.20 (2017-12-05)
 - fix(citySearch): fix citySearch as the osmnames API changed, use tilehosting API with API key
 - new(citySearch): show error when citySearch results in an error, show when citySearch doesn't return any results

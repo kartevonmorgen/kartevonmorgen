@@ -8,6 +8,7 @@
     "test": "karma start",
     "watch-test": "karma start --auto-watch --no-single-run",
     "pack": "NODE_ENV=production webpack --progress",
+    "pack-prototype": "NODE_ENV=production KVM_PROTOTYPE=true webpack --progress",
     "build": "webpack --progress",
     "start": "webpack-dev-server --progress",
     "storybook": "start-storybook -p 9001"

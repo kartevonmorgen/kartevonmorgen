@@ -6,6 +6,7 @@ import nib         from "nib"
 let plugins = [];
 
 const production = process.env.NODE_ENV
+const is_prototype = process.env.KVM_PROTOTYPE === "true"
 
 const config = {
   entry: {
@@ -128,7 +129,8 @@ let htmlPluginOptions = {
   template : "./src/index.html",
   title    : "Karte von morgen",
   favicon  : "./src/img/favicon.ico",
-  inject   : 'body'
+  inject   : 'body',
+  prototype: is_prototype
 };
 
 if (production) {

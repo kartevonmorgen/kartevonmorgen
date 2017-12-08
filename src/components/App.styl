@@ -397,7 +397,7 @@ button.pure-button i
 
         .main-categories
           height 2.1em
-      
+
       nav.menu
         z-index     10
         padding     0
@@ -426,6 +426,7 @@ button.pure-button i
     .hide-sidebar
       position relative
       z-index 1
+      height 0
 
       button
         position        relative
@@ -436,7 +437,7 @@ button.pure-button i
         border          1px solid $lightGray
         border-radius   0 0.2em 0.2em 0
         padding         0.5em 0 0.5em 0.3em
-        box-shadow  0.5px 1px 2px 0.3px rgba(0,0,0,0.5)
+        box-shadow      0.5px 1px 2px 0.3px rgba(0,0,0,0.5)
 
         &:hover
           color       $coal
@@ -452,7 +453,7 @@ button.pure-button i
       &.opened
         width 28em
       &.closed
-        position absolute
+        position relative
         top 0
         right 0
         width 0
@@ -470,7 +471,7 @@ button.pure-button i
       .menu-toggle, .content-toggle
         button
           outline         none
-          position        absolute
+          position        relative
           z-index         1
           top             10pt
           font-size       15pt
@@ -829,3 +830,15 @@ button.pure-button i
               padding-right 0.2em
               font-size     0.8em
               border        0
+
+.banner
+  position relative
+  z-index 10
+  color #eee
+  background #ff2c2c
+  text-align center
+  padding-top 1em
+  padding-bottom 1em
+
+  .banner-link
+    color #000
