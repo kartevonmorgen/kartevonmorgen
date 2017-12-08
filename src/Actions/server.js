@@ -2,14 +2,23 @@ import T                          from "../constants/ActionTypes";
 import ServerConstants            from "../constants/Server";
 import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
-import { LICENSE_NAME }           from "../constants/App";
+import { NEW_ENTRY_LICENSE }      from "../constants/App";
 import { initialize, stopSubmit } from "redux-form";
-import mapConst                   from "../constants/Map"
+import mapConst                   from "../constants/Map";
+import LICENSES                   from "../constants/Licenses";
 
 
 const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 );
+
+const getLicenseForEntry = currentLicense => {
+  if (currentLicense && currentLicense == LICENSES.ODBL) {
+    return currentLicense;
+  } else {
+    return NEW_ENTRY_LICENSE;
+  }
+};
 
 const Actions = {
 
@@ -210,9 +219,8 @@ const Actions = {
   saveEntry: (e) =>
     (dispatch, getState) => {
       const saveFunc = (e != null ? e.id : void 0) ? WebAPI.saveEntry : WebAPI.saveNewEntry;
-      if (e.license == null) {
-        e.license = LICENSE_NAME;
-      }
+      e.license = getLicenseForEntry(e.license);
+
       saveFunc(e, (err, res) => {
         if (err) {
           dispatch(stopSubmit(EDIT.id, {
@@ -448,4 +456,7 @@ const Actions = {
   }
 }
 
-module.exports = Actions;
+module.exports = {
+  Actions: Actions,
+  getLicenseForEntry: getLicenseForEntry
+};
