@@ -11,6 +11,6 @@ module.exports = ({street, zip, city}) =>
     {street ? <span>{street}</span> : null}
     {street && (zip || city)?
       <span className = "delimiter">, </span> : null}
-    {zip  ? <span>{zip}</span> : null}
+    {zip  ? <span>{zip} </span>: null}
     {city ? <span>{city}</span> : null}
   </AddressLine>
