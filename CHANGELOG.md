@@ -1,4 +1,5 @@
 ## v0.1.21 (2017-12-08)
+- edit(LandingPage): change team and partners in landing page
 - new(prototype): show 'prototype'-banner when packing with 'npm run pack-prototype'
 - new(EntryForm): show either CC0 or ODBL license (OSM)
 - new(EntryForm): when saving entry use ODBL license for OSM entries and CC0 otherwise (OSM)
