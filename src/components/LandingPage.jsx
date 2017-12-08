@@ -311,7 +311,7 @@ const T = React.PropTypes;
 LandingPage.propTypes = {
   content     : T.string,
   searchText  : T.string,
-  searchError : T.boolean,
+  searchError : T.bool,
   cities      : T.array,
   onChange    : T.func,
   onEscape    : T.func,
