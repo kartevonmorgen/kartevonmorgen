@@ -116,8 +116,8 @@ module.exports = pure React.createClass
           div className: "circle green",
             img className: "teamImage", src: require "../img/team/Lisa.jpg"
           div className: "team-member-name", "Lisa Stehr"
-          div null, "Psychologin"
-          div null, "Funding & Strategy"
+          div null, "Politikwissenschaftlerin"
+          div null, "Strategie und Wirkung "
         div className: "teamMember",
           div className: "circle green",
            a href:"http://martenroebel.de/",
