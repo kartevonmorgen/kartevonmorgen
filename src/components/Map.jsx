@@ -1,11 +1,13 @@
 import "./Map.styl"
 
 import React, { Component }         from "react"
-import { Map, TileLayer, Marker }   from "react-leaflet"
+import { Map, TileLayer, Marker, CircleMarker, Circle }   from "react-leaflet"
 import { icons }                    from "vm-leaflet-icons"
 import URLs                         from "../constants/URLs"
 import { pure }                     from "recompose"
 import { NAMES, CSS_CLASSES, IDS }  from  "../constants/Categories"
+import COLORS                       from "./styling/Colors"
+import { avg_rating_for_entry }            from "../rating"
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
@@ -21,6 +23,19 @@ class KVMMap extends Component {
         return icons.company;
       default:
         return icons.unknown;
+    }
+  }
+
+  getCategoryColorById(id){
+    switch (id) {
+      case INITIATIVE:
+        return COLORS.initiative;
+      case EVENT: 
+        return COLORS.event;
+      case COMPANY:
+        return COLORS.company;
+      default:
+        return COLORS.coal;
     }
   }
 
@@ -69,17 +84,36 @@ class KVMMap extends Component {
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
         markers.push(
-          <Marker
-            onClick   = { () => { onMarkerClick(e.id) }}
+          <CircleMarker
+            // onClick   = { () => { onMarkerClick(e.id) }}
             key       = { e.id }
-            position  = {{ lat: e.lat, lng: e.lng }}
+            center    = {{ lat: e.lat, lng: e.lng }}
             opacity   = { highlight.length > 0
                             ? highlight.indexOf(e.id) < 0 ? 0.3 : 1
                             : 1
                         }
-            icon      = { this.getIconById(e.categories[0]) }
+            radius    = { 5 }
+            color     = { "#000" }
+            weight    = { 1.5 }
+            fillColor = { this.getCategoryColorById(e.categories[0]) }
+            fillOpacity = { 1 }
+            />);
+        markers.push(
+          <CircleMarker
+            onClick   = { () => { onMarkerClick(e.id) }}
+            key       = { e.id + "-overlay"}
+            center    = {{ lat: e.lat, lng: e.lng }}
+            opacity   = { highlight.length > 0
+                            ? highlight.indexOf(e.id) < 0 ? 0.3 : 1
+                            : 1777
+                        }
+            radius    = { 10 }
+            color     = { "#000" }
+            weight    = { 0 }
+            fillColor = { this.getCategoryColorById(e.categories[0]) }
+            fillOpacity = { 0.3 }
             />
-          )
+          );
       })
     }
 
