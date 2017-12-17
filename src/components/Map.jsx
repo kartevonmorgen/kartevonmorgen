@@ -88,32 +88,36 @@ class KVMMap extends Component {
             // onClick   = { () => { onMarkerClick(e.id) }}
             key       = { e.id }
             center    = {{ lat: e.lat, lng: e.lng }}
-            opacity   = { highlight.length > 0
-                            ? highlight.indexOf(e.id) < 0 ? 0.3 : 1
-                            : 1
-                        }
+            opacity   = { 1 }
             radius    = { 5 }
             color     = { "#000" }
-            weight    = { 1.5 }
+            weight    = { 0.6 }
             fillColor = { this.getCategoryColorById(e.categories[0]) }
             fillOpacity = { 1 }
             />);
+        // to make clicking the circle easier add a larger circle with 0 opacity:
         markers.push(
           <CircleMarker
             onClick   = { () => { onMarkerClick(e.id) }}
             key       = { e.id + "-overlay"}
             center    = {{ lat: e.lat, lng: e.lng }}
-            opacity   = { highlight.length > 0
-                            ? highlight.indexOf(e.id) < 0 ? 0.3 : 1
-                            : 1777
-                        }
+            opacity   = { 1 }
             radius    = { 10 }
-            color     = { "#000" }
             weight    = { 0 }
             fillColor = { this.getCategoryColorById(e.categories[0]) }
-            fillOpacity = { 0.3 }
+            fillOpacity = { 0 }
             />
           );
+        if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+          markers.push(
+            <Marker
+              key       = { e.id + "-highlight" }
+              onClick   = { () => { onMarkerClick(e.id) }}
+              position  = {{ lat: e.lat, lng: e.lng }}
+              icon      = { this.getIconById(e.categories[0]) }
+            />
+          );
+        }
       })
     }
 
