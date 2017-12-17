@@ -7,7 +7,7 @@ import URLs                         from "../constants/URLs"
 import { pure }                     from "recompose"
 import { NAMES, CSS_CLASSES, IDS }  from  "../constants/Categories"
 import COLORS                       from "./styling/Colors"
-import { avg_rating_for_entry }            from "../rating"
+import { avg_rating_for_entry }     from "../rating"
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
