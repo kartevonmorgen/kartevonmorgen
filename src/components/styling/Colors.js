@@ -23,4 +23,5 @@ module.exports = {
   company:    blue,
   initiative: green,
   event:      pink,
+  otherCategory: lightGray,
 };

@@ -35,7 +35,7 @@ class KVMMap extends Component {
       case COMPANY:
         return COLORS.company;
       default:
-        return COLORS.coal;
+        return COLORS.otherCategory;
     }
   }
 
