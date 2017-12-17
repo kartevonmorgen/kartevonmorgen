@@ -433,6 +433,5 @@ Main = React.createClass
               if coordinates.zoom != map.zoom
                 dispatch Actions.setZoom coordinates.zoom
               #   dispatch Actions.setBbox coordinates.bbox
-            loggedIn
               
 module.exports = pure(Main)

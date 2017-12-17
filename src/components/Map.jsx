@@ -77,8 +77,7 @@ class KVMMap extends Component {
       onMoveend,
       onZoomend,
       onClick,
-      onMarkerClick,
-      loggedIn
+      onMarkerClick
     } = this.props;
 
     if (entries && entries.length > 0 ) {
