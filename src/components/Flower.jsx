@@ -1,19 +1,7 @@
 import Flower from "react-vm-flower";
 import React  from "react";
 import styled from "styled-components";
-
-const rating_groups = (ratings=[]) => {
-  var groups = {};
-  ratings
-    .filter(r => typeof r !== "undefined" && r !== null)
-    .forEach(r =>{
-      if (groups[r.context] == null) {
-        groups[r.context] = [];
-      }
-      groups[r.context].push(r);
-    });
-  return groups;
-}
+import { rating_groups } from "../rating";
 
 const flower_scales = (ratings=[]) => {
   var scales = [0.6,0.6,0.6,0.6,0.6,0.6];
