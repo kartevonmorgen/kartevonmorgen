@@ -77,24 +77,12 @@ class KVMMap extends Component {
       onMoveend,
       onZoomend,
       onClick,
-      onMarkerClick
+      onMarkerClick,
+      ratings
     } = this.props;
 
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
-        markers.push(
-          <CircleMarker
-            // onClick   = { () => { onMarkerClick(e.id) }}
-            key       = { e.id }
-            center    = {{ lat: e.lat, lng: e.lng }}
-            opacity   = { 1 }
-            radius    = { 5 }
-            color     = { "#000" }
-            weight    = { 0.6 }
-            fillColor = { this.getCategoryColorById(e.categories[0]) }
-            fillOpacity = { 1 }
-            />);
-        // to make clicking the circle easier add a larger circle with 0 opacity:
         markers.push(
           <CircleMarker
             onClick   = { () => { onMarkerClick(e.id) }}
@@ -104,9 +92,23 @@ class KVMMap extends Component {
             radius    = { 10 }
             weight    = { 0 }
             fillColor = { this.getCategoryColorById(e.categories[0]) }
-            fillOpacity = { 0 }
+            fillOpacity = { 0.0 }
             />
           );
+        markers.push(
+          <CircleMarker
+            onClick   = { () => { onMarkerClick(e.id) }}
+            key       = { e.id }
+            center    = {{ lat: e.lat, lng: e.lng }}
+            opacity   = { 1 }
+            radius    = { 6 }
+            color     = { "#000" }
+            weight    = { 0.7 }
+            fillColor = { this.getCategoryColorById(e.categories[0]) }
+            fillOpacity = { 1.0 }
+            />);
+        // to make clicking the circle easier add a larger circle with 0 opacity:
+
         if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
           markers.push(
             <Marker
