@@ -60,9 +60,9 @@ Main = React.createClass
       window.history.pushState(null, null, window.location.pathname + url.hash);
 
     resultEntries    =
-      (x for id in search.result when (x=entries[id])?)
+      (x for entry in search.result when (x=entries[entry.id])?)
     invisibleEntries =
-      (x for id in search.invisible when(x=entries[id])?)
+      (x for entry in search.invisible when(x=entries[entry.id])?)
     rightPanelIsOpen = false  # right panel moved into landingpage
     mapCenter = 
       if e?.lat and e?.lng and c=search.current

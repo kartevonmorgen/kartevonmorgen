@@ -47,10 +47,10 @@ const Actions = {
       });
       const allIDs = [];
       if(Array.isArray(getState().search.result)){
-        allIDs.push(allIDs, getState().search.result);
+        allIDs.push(allIDs, getState().search.result.map(e => e.id));
       }
       if(Array.isArray(getState().search.invisible)){
-        allIDs.push(allIDs, getState().search.invisible);
+        allIDs.push(allIDs, getState().search.invisible.map(e => e.id));
       }
       dispatch(serverActions.getEntries(allIDs));
     },

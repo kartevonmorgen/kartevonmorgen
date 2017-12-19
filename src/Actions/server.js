@@ -42,8 +42,9 @@ const Actions = {
             noList: s.text == null
           });
 
-          const ids =
+          const entries =
             Array.isArray(res != null ? res.visible : void 0) ? Array.isArray(res.invisible) ? res.visible.concat(res.invisible) : res.visible : res != null ? res.invisible : void 0;
+          const ids = entries.map(e => e.id);
 
           if ((Array.isArray(ids)) && ids.length > 0) {
             dispatch(Actions.getEntries(ids));
