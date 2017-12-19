@@ -1,3 +1,3 @@
 module.exports = {
-  NUM_ENTRIES_TO_FETCH: 200
+  NUM_ENTRIES_TO_FETCH: 50
 };
