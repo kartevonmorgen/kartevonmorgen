@@ -81,43 +81,66 @@ class KVMMap extends Component {
       ratings
     } = this.props;
 
+
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
-        markers.push(
-          <CircleMarker
-            onClick   = { () => { onMarkerClick(e.id) }}
-            key       = { e.id + "-overlay"}
-            center    = {{ lat: e.lat, lng: e.lng }}
-            opacity   = { 1 }
-            radius    = { 10 }
-            weight    = { 0 }
-            fillColor = { this.getCategoryColorById(e.categories[0]) }
-            fillOpacity = { 0.0 }
-            />
-          );
-        markers.push(
-          <CircleMarker
-            onClick   = { () => { onMarkerClick(e.id) }}
-            key       = { e.id }
-            center    = {{ lat: e.lat, lng: e.lng }}
-            opacity   = { 1 }
-            radius    = { 6 }
-            color     = { "#000" }
-            weight    = { 0.7 }
-            fillColor = { this.getCategoryColorById(e.categories[0]) }
-            fillOpacity = { 1.0 }
-            />);
-        // to make clicking the circle easier add a larger circle with 0 opacity:
+        let avg_rating = null;
 
-        if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+        if(e.ratings.length > 0 && Object.keys(ratings).length > 0){
+          const ratings_for_entry = (e.ratings || []).map(id => ratings[id]);
+          avg_rating = avg_rating_for_entry(ratings_for_entry);
+        }
+
+        if(e.ratings.length > 0 && avg_rating && avg_rating > 0){
           markers.push(
             <Marker
-              key       = { e.id + "-highlight" }
+              key       = { e.id }
               onClick   = { () => { onMarkerClick(e.id) }}
               position  = {{ lat: e.lat, lng: e.lng }}
               icon      = { this.getIconById(e.categories[0]) }
             />
           );
+        } else {
+          markers.push(
+          // to make clicking the circle easier add a larger circle with 0 opacity:
+            <CircleMarker
+              onClick   = { () => { onMarkerClick(e.id) }}
+              key       = { e.id + "-overlay"}
+              center    = {{ lat: e.lat, lng: e.lng }}
+              opacity   = { 1 }
+              radius    = { 10 }
+              weight    = { 0 }
+              fillColor = { this.getCategoryColorById(e.categories[0]) }
+              fillOpacity = { 0.0 }
+              />
+            );
+          markers.push(
+            <CircleMarker
+              onClick   = { () => { onMarkerClick(e.id) }}
+              key       = { e.id }
+              center    = {{ lat: e.lat, lng: e.lng }}
+              opacity   = { 1 }
+              radius    = { 6 }
+              color     = { "#000" }
+              weight    = { 0.7 }
+              fillColor = { this.getCategoryColorById(e.categories[0]) }
+              fillOpacity = { 1.0 }
+              />);
+        }
+
+        if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+          markers.push(
+            <CircleMarker
+              onClick   = { () => { onMarkerClick(e.id) }}
+              key       = { e.id + "-highlight"}
+              center    = {{ lat: e.lat, lng: e.lng }}
+              opacity   = { 1 }
+              radius    = { 6.5 }
+              color     = { "#000" }
+              fillColor = { this.getCategoryColorById(e.categories[0]) }
+              weight    = { 2.5 }
+              fillOpacity = { 1 }
+          />);
         }
       })
     }
@@ -163,6 +186,7 @@ const T = React.PropTypes;
 
 KVMMap.propTypes = {
     entries       : T.array,
+    ratings       : T.object,
     highlight     : T.array,
     center        : T.object,
     zoom          : T.number,

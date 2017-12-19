@@ -418,6 +418,7 @@ Main = React.createClass
             category      : form[EDIT.id]?.category?.value
             highlight     : highlight
             entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
+            ratings       : ratings
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> 
               dispatch Actions.setCurrentEntry id, null
