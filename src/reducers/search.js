@@ -8,7 +8,7 @@ const initialState = {
   result: [],
   error: false,
   current: null,
-  categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
+  categories: [],
   highlight: [],
   invisible: [],
   addresses: [],
