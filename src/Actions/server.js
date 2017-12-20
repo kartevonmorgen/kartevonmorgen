@@ -264,11 +264,19 @@ const Actions = {
             type: T.ENTRIES_RESULT,
             payload: res
           });
-          const state = getState();
+          const currentEntry = getState().server.entries[getState().search.current]
           dispatch({
             type: T.EDIT_CURRENT_ENTRY,
-            payload: state.server.entries[state.search.current]
+            payload: currentEntry
           });
+          if(!currentEntry.street || !currentEntry.zip || !currentEntry.city){
+            const latlng = {
+              lat: currentEntry.lat,
+              lng: currentEntry.lng
+            }
+            console.log("\n\nSET ADDRESS FROM MARKER\n\n", latlng);
+            dispatch(Actions.setMarker(latlng));
+          }
         } else {
           dispatch({
             type: T.EDIT_CURRENT_ENTRY,
