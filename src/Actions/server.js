@@ -6,6 +6,7 @@ import { NEW_ENTRY_LICENSE }      from "../constants/App";
 import { initialize, stopSubmit } from "redux-form";
 import mapConst                   from "../constants/Map";
 import LICENSES                   from "../constants/Licenses";
+import { MAIN_IDS, IDS }          from "../constants/Categories";
 
 
 const flatten = nestedArray => nestedArray.reduce(
@@ -27,12 +28,17 @@ const Actions = {
 
       const s = getState().search;
       const m = getState().map;
-      const cats = s.categories;
+      var cats = s.categories;
       const sw = m.bbox._southWest;
       const ne = m.bbox._northEast;
       const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-      if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {
+      // show no-category entries (e.g. from OSM) when standard categories are shown:
+      if(cats && cats.includes(MAIN_IDS[0]) && cats.includes(MAIN_IDS[2])) {
+        cats = [];
+      }
+
+      if (s.text == null || !s.text.trim().endsWith("#")) {
         WebAPI.search(s.text, cats, bbox, (err, res) => {
 
           dispatch({
