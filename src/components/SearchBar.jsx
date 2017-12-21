@@ -67,15 +67,13 @@ class SearchBar extends React.Component {
 
     return (
       <div className = "SearchBar pure-g">
-        {
-        // <div className = "main-categories pure-u-1 pure-g">
-        //   <CategoryButtons
-        //     active    = { categories }
-        //     disabled  = { disabled   }
-        //     onToggle  = { toggleCat  }
-        //    />
-        // </div>
-        }
+        <div className = "main-categories pure-u-1 pure-g">
+          <CategoryButtons
+            active    = { categories }
+            disabled  = { disabled   }
+            onToggle  = { toggleCat  }
+           />
+        </div>
 
         <div className = "pure-u-1">
           <a onClick = { this.props.onLenseClick } className = "search-icon">

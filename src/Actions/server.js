@@ -32,7 +32,7 @@ const Actions = {
       const ne = m.bbox._northEast;
       const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-      if (s.text == null || !s.text.trim().endsWith("#")) {
+      if (!cats.length < 1 && (s.text == null || !s.text.trim().endsWith("#"))) {
         WebAPI.search(s.text, cats, bbox, (err, res) => {
 
           dispatch({

@@ -37,7 +37,7 @@ module.exports = {
       .query({
         text: txt.trim()
       })
-      .query((cats.length > 0) ? 'categories=' + cats.join(',') : "")
+      .query('categories=' + cats.join(','))
       .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
