@@ -417,7 +417,7 @@ Main = React.createClass
             zoom          : map.zoom
             category      : form[EDIT.id]?.category?.value
             highlight     : highlight
-            entries       : (resultEntries unless view.left in [V.EDIT, V.NEW])
+            entries       : resultEntries
             ratings       : ratings
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
             onMarkerClick : (id) -> 
