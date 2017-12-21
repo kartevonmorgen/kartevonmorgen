@@ -128,7 +128,7 @@ module.exports = (state = initialState, action = {}) => {
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
         var newResult = state.result;
-        newResult.push(action.payload.id);
+        newResult.push({id: action.payload.id});
         return {
           ...state,
           result: newResult
