@@ -17,15 +17,15 @@ class RawCategoryButtons extends React.Component {
   render() {
     const { disabled, active, onToggle } = this.props;
     const buttons = MAIN_IDS.map((c) => {
-      const act = [].indexOf.call(active || [], c) >= 0 ? ' active' : '';
+      const act = [].indexOf.call(active || [], c) >= 0;
       return (
         <button
           key       = { c }
           disabled  = { disabled }
           onClick   = { () => { onToggle(c) }}
-          className = { CSS_CLASSES[c] + " " + CSS_CLASS_SIZE[c] + " " + act } >
-          { NAMES[c] }
-          <i className = 'toggle'><i /></i>
+          className = { CSS_CLASSES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")} >
+          { NAMES[c] + " " }
+          <i className = {'fa fa-toggle' + (act ? "-on" : "-off")}><i /></i>
         </button>);
     });
     return (<div>{ buttons }</div>);
