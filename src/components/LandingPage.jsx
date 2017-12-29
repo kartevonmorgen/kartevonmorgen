@@ -68,25 +68,72 @@ class LandingPage extends Component {
         contentComp = <div>
           <h2>Etwas Gutes für morgen tun.</h2>
           <p>
-            Die Plattform von morgen finanziert sich über Fördermittel
-            verschiedener Programme und Wettbewerbe, als auch über Spenden.
-            Wir, das Team von morgen, arbeiten ehrenamtlich.
+            Die Karte von morgen wird euch für immer kostenfrei zur Verfügung stehen! Open Source und frei.
+            Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden 
+            von Nutzer*innen und den kartierten Initiativen und Unternehmen von morgen ermöglicht werden.
+            Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln. 
+            Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit 
+            zu gewährleisten.
+           
+          </p>
+            <script type="text/javascript">
+  /* Configure at https://www.betterplace.org/de/projects/36213-von-morgen-alles-gute-auf-einer-karte/manage/iframe_donation_form/new */
+  var _bp_iframe        = _bp_iframe || {};
+  _bp_iframe.project_id = 36213; /* REQUIRED */
+  _bp_iframe.lang       = 'de'; /* Language of the form */
+  _bp_iframe.width = 600; /* Custom iframe-tag-width, integer */
+  _bp_iframe.color = '6c9c2e'; /* Button and banderole color, hex without "#" */
+  _bp_iframe.background_color = 'ffffff'; /* Background-color, hex without "#" */
+  _bp_iframe.default_amount = 12; /* Donation-amount, integer 1-99 */
+  _bp_iframe.default_data_transfer_accepted = true; /* true (default), false */
+  _bp_iframe.recurring_interval = 'monthly'; /* Interval for recurring donations, string out of ["single", "monthly", "quarter_yearly", "half_yearly", "yearly"] */
+  _bp_iframe.bottom_logo = true;
+  (function() {
+    var bp = document.createElement('script'); bp.type = 'text/javascript'; bp.async = true;
+    bp.src = 'https://asset1.betterplace.org/assets/load_donation_iframe.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+<div id="betterplace_donation_iframe" style="background: transparent url('https://www.betterplace.org/assets/new_spinner.gif') 275px 20px no-repeat;"><strong><a href="https://www.betterplace.org/de/projects/36213-von-morgen-alles-gute-auf-einer-karte/donations/new">Jetzt Spenden für „von morgen - Alles Gute auf einer Karte“ bei unserem Partner betterplace.org</a></strong></div>
+
+          <p>
+            Spendenkonto: <br/>
+            Ideen hoch drei e.V. <br/>
+            IBAN: DE05 4306 0967 4031 0759 00 <br/>
+            BIC-Code: GENODEM1GLS  bei der GLS Bank <br/>
+            Verwendungszweck: Karte von morgen <br/>
+            
+             Die Plattform von morgen finanziert sich zusätzlich über Fördermittel verschiedener Programme und Ideen-Wettbewerbe.
+            Wir, das Team von morgen, arbeiten noch ehrenamtlich, wollen aber langfristig die Entwicklung und Betreuung
+            professionalisieren und fair bezahlen.
           </p>
           <p>
-            Die Beiträge möchten wir für die Weiterentwicklung
-            der Plattform verwenden.
-            Verschieden Features sind in Planung,
-            u.a. die Themenkarte zur Einbettung in eigene
-            Websites und den Positivfaktoren - dem
-            gemeinwohl-orientierten Bewertungssytem der einzelnen Orte.
+            <h1>Assoziative Solidargemeinschaften von morgen</h1>
+          </p>
+           
+          <p> 
+            Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, getragen von den regionalen 
+            Solidargemeinschaften von morgen, die lokal durch eine*n Regionalpilot*in moderiert werden.
+            
+            Werden Mitglied in deiner regionalen Solidargemeinschaft von morgen (per Mail oder mit folgendem  
+            <a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">Formular</a>)
+            und unterstütze die sozial-ökologische Transformation.
+          </p>
+            
+          <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza" 
+              width="800" height="550" frameborder="0" 
+              allowfullscreen webkitallowfullscreen msallowfullscreen>
+          </iframe>
+           
+          
+          <p>
+            Welche Funktionen gerade am dringendsten gebraucht werden, siehst du auf unserer Betterplace-Spendenseite:
+            <a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a> <br/>
+            Viel Ressourcen brauchen aber auch die kleinen Bugs, Optimierungen und Aktualisierungen.
           </p>
           <p>
-            Hier geht es zu unserer Crowdfunding-Kampagne: <a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a>
-          </p>
-          <p>
-            Wir freuen uns über jeden kleinen und großen Beitrag
-            und hoffen auch bald in deiner Stadt verfügbar zu
-            sein. Auf bald!
+            Wir freuen uns über jeden kleinen und großen Beitrag.
+            Auf bald!
           </p>
           <p>Dankend, das Team von morgen</p>
         </div>;
@@ -250,7 +297,8 @@ class LandingPage extends Component {
                       <span className="errorText">Fehler bei der Städte-Suche.</span>&nbsp;&nbsp;
                       <a onClick={() => onClick('map')} href="#" className="link">
                         Karte anzeigen...
-                      </a></div>
+
+                     </a></div>
                     : cities && cities.length > 0
                         ? <CityList cities={cities} onClick={onSelection} />
                         : <div className="error">Konnte keine Stadt finden.&nbsp;&nbsp;
