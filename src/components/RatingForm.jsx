@@ -95,13 +95,13 @@ class RatingForm extends Component {
           <label>
             <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
             {" "} Solidarität
-          </label><br />
+          </label>
+          </span><br />
+          <span onMouseOver={explainSolidarity}>
           <label>
             <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
             {" "} Transparenz
           </label>
-          </span>
-          <span onMouseOver={explainSolidarity}>
           </span>
           <Field name="context" component={errorMessage} />
           <div className="rating-context-explanation">
