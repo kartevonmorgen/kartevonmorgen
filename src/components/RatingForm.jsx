@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { reduxForm, Field } from "redux-form"
 import validation           from "../util/validation"
+import styled               from "styled-components"
 import { DIVERSITY, RENEWABLE, FAIRNESS, HUMANITY,
          TRANSPARENCY, SOLIDARITY, EXPLANATION } from "../constants/RatingContexts";
 
@@ -8,6 +9,18 @@ const errorMessage = ({meta}) =>
   meta.error && meta.touched
     ? <div className="err">{meta.error}</div>
     : null    
+
+const IntroText = styled.div `
+  margin-bottom: 10px;
+`;
+
+const AspectLabel = styled.label `
+  font-weight: bold;
+`;
+
+const AspectExplanation = styled.div `
+
+`;
 
 class RatingForm extends Component {
 
@@ -49,7 +62,11 @@ class RatingForm extends Component {
       className = "new-rating-form"
       action    = 'javascript:void();' >
 
-      <h3>Neue Bewertung</h3>
+      <h3>Neue Bewertung für {entryTitle}</h3>
+      <IntroText>
+      Positivfaktoren entscheiden darüber, wie sichtbar ein Eintrag auf der Karte von morgen ist. Je größer der Anteil positiver Aspekte einer Organisation ist, desto höher steigt der Pin in den Suchergebnissen.
+      { } <a href="http://bildungsagenten.org/kartevonmorgen/2/">weitere Infos...</a>
+      </IntroText>
       { this.props.error &&
         <div className= "err">
           Die Bewertung konnte nicht gespeichert werden: {this.props.error.message}
@@ -60,12 +77,10 @@ class RatingForm extends Component {
           <Field name="license" component={errorMessage} />
         </div>
       }
+      <div>
+      Wähle einen Aspekt der Nachhaltigkeit für deine Bewertung: 
+      </div>
       <div className= "pure-form">
-        <p>Bewertung für <span className="title">{entryTitle}</span></p>
-        <fieldset>
-          <Field name="title" className="pure-input-1" type="text" component="input" placeholder="Titel" />
-          <Field name="title" component={errorMessage} />
-        </fieldset>
         <fieldset>
           <span onMouseOver={explainDiversity}>
           <label>
@@ -108,9 +123,12 @@ class RatingForm extends Component {
             {contextToExplain ? EXPLANATION[contextToExplain] : EXPLANATION["null"]}
           </div>
         </fieldset>
-        <span onMouseOver={explainSelected}>
         <fieldset>
-          <Field name="comment" className="pure-input-1" component="textarea" placeholder="Kommentar"  />
+          <Field name="title" className="pure-input-1" type="text" component="input" placeholder="Überschrift" />
+          <Field name="title" component={errorMessage} />
+        </fieldset>
+        <fieldset>
+          <Field name="comment" className="pure-input-1" component="textarea" placeholder="Kommentar/Erklärung"  />
           <Field name="comment" component={errorMessage} />
         </fieldset>
         <fieldset>
@@ -120,23 +138,22 @@ class RatingForm extends Component {
         <fieldset>  
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="2" />
-            {" "} von übermorgen (2)
+            {" "} von übermorgen (besser geht's nicht!)
           </label><br />
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="1" />
-            {" "} von morgen (1)
+            {" "} von morgen (zukunftsweisend)
           </label><br/>
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="0" />
-            {" "} von heute (0)
+            {" "} von heute (nicht besonders nachhaltig)
           </label><br />
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="-1" />
-            {" "} von gestern (-1)
+            {" "} von gestern (einige Kritikpunkte)
           </label>
           <Field name="value" component={errorMessage} />
         </fieldset>
-        </span>
       </div>
     </form>)
   }
