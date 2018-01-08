@@ -8,8 +8,27 @@ import { pure }                     from "recompose"
 import { NAMES, CSS_CLASSES, IDS }  from  "../constants/Categories"
 import COLORS                       from "./styling/Colors"
 import { avg_rating_for_entry }     from "../rating"
+import styled                       from "styled-components";
+
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
+
+const LocateButton = styled.a `
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  bottom: 88px;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  cursor: pointer !important;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  font-size: 14px;
+  color: #333;
+`;
 
 class KVMMap extends Component {
 
@@ -146,6 +165,7 @@ class KVMMap extends Component {
     }
 
     return (
+        <div>
         <Map
         style = {{
           height:   "100%",
@@ -178,7 +198,15 @@ class KVMMap extends Component {
             ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
             : null
           }
-        </Map>)
+          }
+        </Map>
+        <LocateButton
+          className   = "locate-icon"
+          onClick     = { this.props.onLocate }
+          title       = "Zeige meine Position" >
+          <i className = "fa fa-location-arrow" />
+        </LocateButton>
+        </div>)
     }
 }
 
@@ -194,7 +222,8 @@ KVMMap.propTypes = {
     onClick       : T.func,
     onMoveend     : T.func,
     onZoomend     : T.func,
-    onMarkerClick : T.func
+    onMarkerClick : T.func,
+    onLocate      : T.func
 };
 
 module.exports = pure(KVMMap);

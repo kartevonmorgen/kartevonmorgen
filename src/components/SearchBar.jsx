@@ -86,12 +86,6 @@ class SearchBar extends React.Component {
             value       = { searchText || '' }
             className   = "pure-u-1"
             placeholder = "Wonach suchst du? (# für Tags)" />
-          <a
-            className   = "locate-icon"
-            onClick     = { this.props.onLocate }
-            title       = "Zeige meine Position" >
-            <i className = "fa fa-location-arrow" />
-          </a>
         </div>
       </div>)
   }
@@ -104,8 +98,7 @@ SearchBar.propTypes = {
   toggleCat   : T.func,
   onChange    : T.func,
   onEnter     : T.func,
-  onEscape    : T.func,
-  onLocate    : T.func
+  onEscape    : T.func
 }
 
 module.exports = pure(SearchBar);

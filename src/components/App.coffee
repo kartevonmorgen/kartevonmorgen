@@ -159,7 +159,6 @@ Main = React.createClass
                     dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
-              onLocate        : -> dispatch Actions.showOwnPosition()
           if view.left?
             nav className: "menu pure-g",
               switch view.left
@@ -434,5 +433,6 @@ Main = React.createClass
               if coordinates.zoom != map.zoom
                 dispatch Actions.setZoom coordinates.zoom
               #   dispatch Actions.setBbox coordinates.bbox
+            onLocate      : -> dispatch Actions.showOwnPosition()
               
 module.exports = pure(Main)
