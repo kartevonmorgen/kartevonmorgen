@@ -12,7 +12,7 @@ const rating_groups = (ratings=[]) => {
 };
 
 const avg_rating_for_entry = (ratings_for_entry) => {
-  return ratings_for_entry.reduce((acc, r) => {return acc+r.value;}, 0) / ratings_for_entry.length
+  return ratings_for_entry.reduce((acc, r) => {if(r){return acc+r.value;} else {return 0;}}, 0) / ratings_for_entry.length
 };
 
 module.exports = { rating_groups, avg_rating_for_entry };
