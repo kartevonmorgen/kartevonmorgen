@@ -150,13 +150,6 @@ Main = React.createClass
               onChange        : (txt="") ->
                 dispatch Actions.setSearchText txt
                 dispatch Actions.search()
-              onLenseClick    : ->
-                switch view.left
-                  when V.ENTRY
-                    dispatch Actions.setCurrentEntry null, null
-                  else
-                    dispatch Actions.setSearchText ''
-                    dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
           if view.left?

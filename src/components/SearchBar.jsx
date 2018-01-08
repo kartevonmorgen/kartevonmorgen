@@ -76,9 +76,9 @@ class SearchBar extends React.Component {
         </div>
 
         <div className = "pure-u-1">
-          <a onClick = { this.props.onLenseClick } className = "search-icon">
+          <div onClick = { this.props.onLenseClick } className = "search-icon">
             <i className = "fa fa-search" />
-          </a>
+          </div>
           <input
             onChange    = { this.onChange }
             disabled    = { disabled }
