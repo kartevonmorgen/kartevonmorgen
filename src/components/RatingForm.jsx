@@ -29,34 +29,6 @@ class RatingForm extends Component {
     const { entryId, entryTitle, contextToExplain, 
       changeContext, selectedContext } = this.props;
 
-    const explainDiversity = () => {
-      changeContext(DIVERSITY);
-    }
-
-    const explainRenewable = () => {
-      changeContext(RENEWABLE);
-    }
-
-    const explainFairness = () => {
-      changeContext(FAIRNESS);
-    }
-
-    const explainHumanity = () => {
-      changeContext(HUMANITY);
-    }
-
-    const explainTransparency = () => {
-      changeContext(TRANSPARENCY);
-    }
-
-    const explainSolidarity = () => {
-      changeContext(SOLIDARITY);
-    }
-
-    const explainSelected = () => {
-      changeContext(selectedContext);
-    }
-
     return (
     <form
       className = "new-rating-form"
@@ -82,46 +54,49 @@ class RatingForm extends Component {
       </div>
       <div className= "pure-form">
         <fieldset>
-          <span onMouseOver={explainDiversity}>
-          <label>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="diversity" />
             {" "} Natürlichkeit
-          </label>
-          </span><br />
-          <span onMouseOver={explainRenewable}>
-          <label>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.diversity }
+          </AspectExplanation>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="renewable" />
             {" "} Erneuerbarkeit
-          </label>
-          </span><br />
-          <span onMouseOver={explainFairness}>
-          <label>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.renewable }
+          </AspectExplanation>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="fairness" />
             {" "} Fairness
-          </label>
-          </span><br />
-          <span onMouseOver={explainHumanity}>
-          <label>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.fairness }
+          </AspectExplanation>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="humanity" />
             {" "} Menschlichkeit
-          </label>
-          </span><br />
-          <span onMouseOver={explainTransparency}>
-          <label>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.humanity }
+          </AspectExplanation>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
             {" "} Solidarität
-          </label>
-          </span><br />
-          <span onMouseOver={explainSolidarity}>
-          <label>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.solidarity }
+          </AspectExplanation>
+          <AspectLabel>
             <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
             {" "} Transparenz
-          </label>
-          </span>
+          </AspectLabel>
+          <AspectExplanation>
+            { EXPLANATION.transparency }
+          </AspectExplanation>
           <Field name="context" component={errorMessage} />
-          <div className="rating-context-explanation">
-            {contextToExplain ? EXPLANATION[contextToExplain] : EXPLANATION["null"]}
-          </div>
         </fieldset>
         <fieldset>
           <Field name="title" className="pure-input-1" type="text" component="input" placeholder="Überschrift" />
