@@ -53,7 +53,7 @@ const Actions = {
       if(Array.isArray(getState().search.invisible)){
         allIDs.push(allIDs, getState().search.invisible.map(e => e.id));
       }
-      dispatch(serverActions.getEntries(allIDs));
+      dispatch(serverActions.Actions.getEntries(allIDs));
     },
 
   showNewRating: (id) => ({
