@@ -1,7 +1,8 @@
 import T                          from "../constants/ActionTypes";
 import GeoLocation                from "../GeoLocation";
-import mapConst                   from "../constants/Map"
-import serverActions              from "./server"
+import mapConst                   from "../constants/Map";
+import appConst                   from "../constants/App";
+import serverActions              from "./server";
 
 const Actions = {
 
@@ -184,7 +185,31 @@ const Actions = {
       type: T.EXPLAIN_RATING_CONTEXT,
       payload: context
     }
-  }
+  },
+
+  onMoveend: (coordinates, mapCenter) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.SET_MOVEEND_TIME,
+        payload: Date.now()
+      });
+      setTimeout(() => {
+        if(getState().timedActions.moveendLastTriggered && (Date.now() - getState().timedActions.moveendLastTriggered > appConst.MOVEEND_DELAY)){
+          if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
+            dispatch(Actions.setCenter({
+              lat: coordinates.center.lat,
+              lng: coordinates.center.lng
+            }));
+          }
+          dispatch(Actions.setBbox(coordinates.bbox));
+          dispatch(serverActions.Actions.search());
+          dispatch({
+            type: T.SET_MOVEEND_TIME,
+            payload: null
+          });
+        }
+      }, appConst.MOVEEND_DELAY);
+    }
 };
 
 module.exports = Actions;

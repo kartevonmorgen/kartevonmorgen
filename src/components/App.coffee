@@ -49,7 +49,7 @@ Main = React.createClass
 
   render: ->
 
-    { dispatch, search, view, server, map, form, growler, url, user } = @props
+    { dispatch, search, view, server, map, form, growler, url, user, timedActions } = @props
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -416,12 +416,7 @@ Main = React.createClass
               dispatch Actions.setCurrentEntry id, null
               dispatch Actions.showLeftPanel()
             onMoveend     : (coordinates) ->
-              if map.center.lat.toFixed(4) != coordinates.center.lat and map.center.lng.toFixed(4) != coordinates.center.lng
-                dispatch Actions.setCenter
-                  lat: coordinates.center.lat
-                  lng: coordinates.center.lng
-              dispatch Actions.setBbox coordinates.bbox
-              dispatch Actions.search()
+              dispatch Actions.onMoveend(coordinates, map.center, timedActions.moveendLastTriggered)
             onZoomend     : (coordinates) ->
               if coordinates.zoom != map.zoom
                 dispatch Actions.setZoom coordinates.zoom
