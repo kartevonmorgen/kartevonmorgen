@@ -416,11 +416,9 @@ Main = React.createClass
               dispatch Actions.setCurrentEntry id, null
               dispatch Actions.showLeftPanel()
             onMoveend     : (coordinates) ->
-              dispatch Actions.onMoveend(coordinates, map.center, timedActions.moveendLastTriggered)
+              dispatch Actions.onMoveend(coordinates, map.center)
             onZoomend     : (coordinates) ->
-              if coordinates.zoom != map.zoom
-                dispatch Actions.setZoom coordinates.zoom
-              #   dispatch Actions.setBbox coordinates.bbox
+              dispatch Actions.onZoomend(coordinates, map.zoom)
             onLocate      : -> dispatch Actions.showOwnPosition()
               
 module.exports = pure(Main)

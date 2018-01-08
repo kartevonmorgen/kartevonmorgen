@@ -209,6 +209,26 @@ const Actions = {
           });
         }
       }, appConst.MOVEEND_DELAY);
+    },
+
+  onZoomend: (coordinates, zoom) =>
+    (dispatch, getState) => {
+      dispatch({
+        type: T.SET_ZOOMEND_TIME,
+        payload: Date.now()
+      });
+      setTimeout(() => {
+        const zoomendLastTriggered = getState().timedActions.zoomendLastTriggered;
+        if(zoomendLastTriggered && (Date.now() - zoomendLastTriggered > appConst.ZOOMEND_DELAY)){
+          if(coordinates.zoom != zoom){
+            dispatch(Actions.setZoom(coordinates.zoom));
+          }
+          dispatch({
+            type: T.SET_ZOOMEND_TIME,
+            payload: null
+          });
+        }
+      }, appConst.ZOOMEND_DELAY);
     }
 };
 
