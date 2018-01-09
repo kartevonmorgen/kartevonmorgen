@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo                 from "../img/logo.png";
 import CityList             from "./CityList";
 import Info                 from "./Info";
-import Workshop             from "./Workshop";
+import Contact              from "./Contact";
 import Imprint              from "./Imprint";
 import Explain              from "./LandingExplain";
 import Register             from "./Register";
@@ -15,7 +15,7 @@ class LandingPage extends Component {
 
   render() {
 
-    const { content, searchText, searchError, cities, onSelection, onEscape, 
+    const { content, searchText, searchError, cities, onSelection, onEscape,
       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount } = this.props;
     const onClick = this.props.onMenuItemClick;
 
@@ -39,7 +39,7 @@ class LandingPage extends Component {
       onChange(v);
     }
 
-    let subscriptionLink = user.subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen" 
+    let subscriptionLink = user.subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
     : "über Änderungen in deiner Stadt auf dem Laufenden bleiben";
 
     let loginInfo = <div className="login-info">
@@ -56,23 +56,25 @@ class LandingPage extends Component {
       case V.IMPRINT:
         contentComp = <Imprint />;
         break;
-      case V.INFO:
       case V.MAP_INFO:
       case V.OPEN_SOURCE:
         contentComp = <Info />;
         break;
-      case V.WORKSHOP:
-        contentComp = <Workshop />;
+      case V.INFO:
+        contentComp = <Info />;
+        break;
+      case V.CONTACT:
+        contentComp = <Contact />;
         break;
       case V.DONATE:
         contentComp = <div>
           <h2>Etwas Gutes für morgen tun.</h2>
           <p>
             Die Karte von morgen wird euch für immer kostenfrei zur Verfügung stehen! Open Source und frei.
-            Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden 
+            Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden
             von Nutzer*innen und den kartierten Initiativen und Unternehmen von morgen ermöglicht werden.
-            Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln. 
-            Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit 
+            Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln.
+            Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit
             zu gewährleisten.
           </p>
           <strong>
@@ -86,7 +88,7 @@ class LandingPage extends Component {
             IBAN: DE05 4306 0967 4031 0759 00 <br/>
             BIC-Code: GENODEM1GLS  bei der GLS Bank <br/>
             Verwendungszweck: Karte von morgen <br/>
-            
+
              Die Plattform von morgen finanziert sich zusätzlich über Fördermittel verschiedener Programme und Ideen-Wettbewerbe.
             Wir, das Team von morgen, arbeiten noch ehrenamtlich, wollen aber langfristig die Entwicklung und Betreuung
             professionalisieren und fair bezahlen.
@@ -94,19 +96,19 @@ class LandingPage extends Component {
           <p>
             <h1>Assoziative Solidargemeinschaften von morgen</h1>
           </p>
-           
-          <p> 
-            Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, getragen von den regionalen 
+
+          <p>
+            Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, getragen von den regionalen
             Solidargemeinschaften von morgen, die lokal durch eine*n Regionalpilot*in moderiert werden.
-            
-            Werde Mitglied in deiner regionalen Solidargemeinschaft von morgen (per Mail oder mit folgendem 
+
+            Werde Mitglied in deiner regionalen Solidargemeinschaft von morgen (per Mail oder mit folgendem
             {" "}<a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">Formular</a>)
             und unterstütze die sozial-ökologische Transformation.
           </p>
-          <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza" 
-              width="800" height="550" frameborder="0" 
+          <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
+              width="800" height="550" frameborder="0"
               allowfullscreen webkitallowfullscreen msallowfullscreen>
-          </iframe>  
+          </iframe>
           <p>
             Welche Funktionen gerade am dringendsten gebraucht werden, siehst du auf unserer Betterplace-Spendenseite:
             {" "}<a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a> <br/>
@@ -229,12 +231,12 @@ class LandingPage extends Component {
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
-                    <a onClick= {() => onClick(V.WORKSHOP)} href="#" className="pure-menu-link">
+                    <a onClick= {() => onClick(V.INFO)} href="#" className="pure-menu-link">
                       Infos
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
-                    <a onClick = {() => onClick(V.INFO)} href="#" className="pure-menu-link">
+                    <a onClick = {() => onClick(V.CONTACT)} href="#" className="pure-menu-link">
                       Kontakt
                     </a>
                   </li>
@@ -252,7 +254,7 @@ class LandingPage extends Component {
                         Login
                       </a>
                     }
-                  </li>        
+                  </li>
                 </ul>
               </div>
             </div>

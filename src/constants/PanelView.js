@@ -5,7 +5,7 @@ module.exports = {
   RESULT: 'RESULT',
   ENTRY: 'ENTRY',
   INFO: 'INFO',
-  WORKSHOP: 'WORKSHOP',
+  CONTACT: 'CONTACT',
   MAP_INFO: 'MAP_INO',
   DONATE: 'DONATE',
   JOIN: 'JOIN',
