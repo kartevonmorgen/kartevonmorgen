@@ -161,22 +161,17 @@ module.exports = pure React.createClass
           div null, "Teammitglieder!"
 
       hr null
-      
-     h2 null,
-        "Ein Projekt von",
-      a href:"http://www.ideenhochdrei.org/de/",
-        img className: "partnerLogo", src: require "../img/ideen.png"
-      a href:"http://slowtec.de",
-        img className: "partnerLogo", src: require "../img/slowtec.png"
-     
-      h2 null,
-        "Unsere Partner",
-      a href:"https://www.engagement-global.de/rueckkehrende.html",
-        img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"  
-      a href:"http://www.bmz.de/",
-        img className: "partnerLogo", src: require "../img/BMZ.jpg"
-      a href:"https://www.boell.de/de",
-        img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
-        
-       
-      hr null
+
+      h2 null, "Ein Projekt von"
+        a href:"http://www.ideenhochdrei.org/de/",
+          img className: "partnerLogo", src: require "../img/ideen.png"
+        a href:"http://slowtec.de",
+          img className: "partnerLogo", src: require "../img/slowtec.png"
+
+      h2 null, "Unsere Partner",
+        a href:"https://www.engagement-global.de/rueckkehrende.html",
+          img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"
+        a href:"http://www.bmz.de/",
+          img className: "partnerLogo", src: require "../img/BMZ.jpg"
+        a href:"https://www.boell.de/de",
+          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
