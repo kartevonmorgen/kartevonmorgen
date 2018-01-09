@@ -99,26 +99,32 @@ module.exports = pure React.createClass
           div className: "circle yellow",
             img className: "teamImage", src: require "../img/team/Thao.jpg"
           div className: "team-member-name", "Thao Tran"
-          div null, "Theaterstudentin"
-          div null, "Brand Management"
+          div null, "Lebensgefühl von morgen"
         div className: "teamMember",
           div className: "circle pink",
             a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
               img className: "teamImage", src: require "../img/team/Helmut.jpg"
           div className: "team-member-name", "Helmut Wolman"
-          div null, "Vorstand von Ideen³ e.V." 
-          div null, "Network & Development"
+          div null, "Vorstand Ideen³ e.V." 
+          div null, "Projektentwicklung"
         div className: "teamMember",
-          div className: "circle green",
-            img className: "teamImage", src: require "../img/team/Lisa.jpg"
-          div className: "team-member-name", "Lisa Stehr"
-          div null, "Promoviert in Psychologie"
-          div null, "Funding & Strategy"
-         div className: "teamMember",
           div className: "circle berry",
             img className: "teamImage", src: require "../img/team/David.jpg"
           div className: "team-member-name", "David Ziegler"
           div null, "Softwaredevelopment"
+        div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Lisa.jpg"
+          div className: "team-member-name", "Lisa Stehr"
+          div null, "Politikwissenschaftlerin"
+          div null, "Strategie und Wirkung "
+        div className: "teamMember",
+          div className: "circle green",
+           a href:"http://martenroebel.de/",
+             img className: "teamImage", src: require "../img/team/Marten.jpg"
+          div className: "team-member-name", "Marten Röbel"
+          div null, "Achtsamkeit und "
+          div null, "Change-Psychologie"
         div className: "teamMember",
           div className: "circle green",
            a href:"https://slowtec.de/team.html#",
@@ -130,13 +136,25 @@ module.exports = pure React.createClass
           div className: "circle pink",
             img className: "teamImage", src: require "../img/team/placeholder_1.png"
           div className: "team-member-name", "Florian Jostock"
-          div null, "Software Development"
+          div null, "Beratung Webentwicklung"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/Louisa.JPG"
+          div className: "team-member-name", "Louisa Pieper"
+          div null, "PR und Marketing"
+          div null, "Regionalpilotin Köln"
         div className: "teamMember",
           div className: "circle blue",
             img className: "teamImage", src: require "../img/team/Anja.jpg"
           div className: "team-member-name", "Anja Dannemann"
           div null, "Designerin"
           div null, "Graphic Design"
+        div className: "teamMember",
+          div className: "circle berry",
+            img className: "teamImage", src: require "../img/team/Xueqian.jpg"
+          div className: "team-member-name", "Xueqian Chen"
+          div null, "Unternehmensberaterin"
+          div null, "PR & Marketing"
         div className: "teamMember",
           div className: "circle blue",
             img className: "teamImage", src: require "../img/team/Ben.jpg"
@@ -149,12 +167,6 @@ module.exports = pure React.createClass
           div className: "team-member-name", "Frederik Schütz"
           div null, "Netzwerk-Ass"
           div null, "Business & Finance"
-        div className: "teamMember",
-          div className: "circle berry",
-            img className: "teamImage", src: require "../img/team/Xueqian.jpg"
-          div className: "team-member-name", "Xueqian Chen"
-          div null, "Unternehmensberaterin"
-          div null, "PR & Marketing"
         div className: "teamMember",
           div className: "circle blue",
             img className: "teamImage", src: require "../img/team/placeholder_4.png"
