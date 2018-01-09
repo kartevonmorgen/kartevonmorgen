@@ -129,6 +129,19 @@ module.exports = pure React.createClass
           div null, "Change-Psychologie"
         div className: "teamMember",
           div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Lisa.jpg"
+          div className: "team-member-name", "Lisa Stehr"
+          div null, "Politikwissenschaftlerin"
+          div null, "Strategie und Wirkung "
+        div className: "teamMember",
+          div className: "circle green",
+           a href:"http://martenroebel.de/",
+             img className: "teamImage", src: require "../img/team/Marten.jpg"
+          div className: "team-member-name", "Marten Röbel"
+          div null, "Achtsamkeit und "
+          div null, "Change-Psychologie"
+        div className: "teamMember",
+          div className: "circle green",
            a href:"https://slowtec.de/team.html#",
              img className: "teamImage", src: require "../img/team/Markus.jpg"
           div className: "team-member-name", "Markus Kohlhase"
