@@ -17,46 +17,17 @@ class Info extends React.Component {
 
     return (
       <div className = "info">
-        <h2>Das Projekt</h2>
+        <h2>Kontakt</h2>
         <p>
-          Unsere interaktive Karte zeigt dir Orte in deiner Umgebung,
-          an denen man sich schon heute für eine Welt von morgen einsetzt.
+          Das Team von morgen, vertreten durch  <br />
+          Helmut Wolman  <br />
+          Turley-Platz 9  <br />
+          68167 Mannheim  <br />
+           
+          <a target="_blank" href = 'https://www.kartevonmorgen.org/#/?entry=0b89e6d0945740b3a77f240d9cdab0e9&zoom=15.00'>Ort auf der Karte von morgen</a>
         </p>
         <p>
-          Du hast eine Initiative, für die du Mitstreiter suchst?
-          Du kennst ein Unternehmen, das nachhaltig wirtschaftet?
-        </p>
-        <p>
-          Auf unserer Website kannst du andere darauf
-          aufmerksam machen – und dich so für eine Sache
-          einsetzen, die dir persönlich am Herzen liegt.
-        </p>
-        <p>
-          Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und
-          Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen
-          Umbrüchen alternativ entgegen wirken.
-          Ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine
-          erhöhte Aufmerksamkeit ermöglichen.
-        </p>
-        <p>
-          Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen
-          sich und andere auf der Karte eintragen und so ihre Mitmenschen
-          erreichen.
-          Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten
-          sichern vor Ort die Qualität der Karteneinträge und haben neben einer
-          redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und
-          Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und
-          Unternehmen zu stärken.
-        </p>
-        <p>
-          von morgen fragt nach Werten, die unsere Gesellschaft fundieren und
-          bewegen.
-          Wir zeigen Menschen, die Guten tun, wo es Gutes gibt.
-        </p>
-        <p>
-          <i className = "fa fa-globe" />
-          <a target="_blank" href = {URLs.PROTOTYPE.link} >{ URLs.PROTOTYPE.name }</a>
-          <br />
+         
           <i className = "fa fa-facebook" />
           <a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
           <br />
@@ -66,20 +37,7 @@ class Info extends React.Component {
           <i className = "fa fa-github" />
           <a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
         </p>
-        <br />
-        <br />
-        <h2>Wir lieben Open Source!</h2>
-        <p>
-          Wir wollen mit gutem Beispiel vorangehen und entwickeln daher
-          die Software transparent und offen.
-          Den Quellcode des Gemeinschaftsprojekts findest du unter:
-        </p>
-        <p>
-          <a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
-        </p>
-        <p className = "version">{
-           "Version dieses Clients: v" + pkg.version
-        }</p>
+        
         {sv }
       </div>);
   }
