@@ -139,8 +139,8 @@ class KVMMap extends Component {
               key       = { e.id }
               center    = {{ lat: e.lat, lng: e.lng }}
               opacity   = { 1 }
-              radius    = { 6 }
-              color     = { "#000" }
+              radius    = { 5 }
+              color     = { "#555" }
               weight    = { 0.7 }
               fillColor = { this.getCategoryColorById(e.categories[0]) }
               fillOpacity = { 1.0 }
@@ -154,7 +154,7 @@ class KVMMap extends Component {
               key       = { e.id + "-highlight"}
               center    = {{ lat: e.lat, lng: e.lng }}
               opacity   = { 1 }
-              radius    = { 6.5 }
+              radius    = { 5.5 }
               color     = { "#000" }
               fillColor = { this.getCategoryColorById(e.categories[0]) }
               weight    = { 2.5 }
