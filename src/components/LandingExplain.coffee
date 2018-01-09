@@ -99,8 +99,7 @@ module.exports = pure React.createClass
           div className: "circle yellow",
             img className: "teamImage", src: require "../img/team/Thao.jpg"
           div className: "team-member-name", "Thao Tran"
-          div null, "Theaterstudentin"
-          div null, "Brand Management"
+          div null, "Brand & Project Management"
         div className: "teamMember",
           div className: "circle pink",
             a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
@@ -118,13 +117,13 @@ module.exports = pure React.createClass
           div className: "circle berry",
             img className: "teamImage", src: require "../img/team/David.jpg"
           div className: "team-member-name", "David Ziegler"
-          div null, "Softwaredevelopment"
+          div null, "Software Development"
         div className: "teamMember",
           div className: "circle green",
            a href:"https://slowtec.de/team.html#",
              img className: "teamImage", src: require "../img/team/Markus.jpg"
           div className: "team-member-name", "Markus Kohlhase"
-          div null, "SlowTec GmbH"
+          div null, "slowtec GmbH"
           div null, "Software Development"
         div className: "teamMember",
           div className: "circle pink",
