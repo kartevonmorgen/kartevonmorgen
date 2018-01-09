@@ -51,25 +51,21 @@ module.exports = ({serverVersion}) =>
         </p>
     <img className="landing-img" src={team1}/><br /><br />
       <h3>Hintergründe und Visionen</h3>
-            <p>
-                <ul>
-                    <li>Was will die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>Karte von morgen?</a></li>
-                    <li>Was sind die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>Positivfaktoren?</a></li>
-                    <li>Was sind <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>Regionalpiloten bzw.  Themenpiloten? </a></li>
-                    <li>Wie kann ich die Karte <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/#Widget_zum_Einbetten'>auf meiner Homepage einbetten? </a></li>
-                    <li>Wie kann ich <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>mitmachen oder die Karte von morgen unterstützen?</a></li>
-                </ul>
-            </p>
-
+        <ul>
+            <li>Was will die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>Karte von morgen?</a></li>
+            <li>Was sind die <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>Positivfaktoren?</a></li>
+            <li>Was sind <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>Regionalpiloten bzw.  Themenpiloten? </a></li>
+            <li>Wie kann ich die Karte <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/#Widget_zum_Einbetten'>auf meiner Homepage einbetten? </a></li>
+            <li>Wie kann ich <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>mitmachen oder die Karte von morgen unterstützen?</a></li>
+        </ul>
         <p>
-
-          <br />
-          <i className = "fa fa-facebook" />
-          {" "}<a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
-          <br />
-          <i className = "fa fa-envelope-o" />
-          {" "}<a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
-          <br />
+        <br />
+        <i className = "fa fa-facebook" />
+        {" "}<a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
+        <br />
+        <i className = "fa fa-envelope-o" />
+        {" "}<a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
+        <br />
 
         </p>
         <br />

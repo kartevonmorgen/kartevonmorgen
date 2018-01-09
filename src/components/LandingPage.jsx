@@ -93,9 +93,7 @@ class LandingPage extends Component {
             Wir, das Team von morgen, arbeiten noch ehrenamtlich, wollen aber langfristig die Entwicklung und Betreuung
             professionalisieren und fair bezahlen.
           </p>
-          <p>
-            <h1>Assoziative Solidargemeinschaften von morgen</h1>
-          </p>
+          <h1>Assoziative Solidargemeinschaften von morgen</h1>
 
           <p>
             Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, getragen von den regionalen
@@ -106,8 +104,7 @@ class LandingPage extends Component {
             und unterstütze die sozial-ökologische Transformation.
           </p>
           <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
-              width="800" height="550" frameborder="0"
-              allowfullscreen webkitallowfullscreen msallowfullscreen>
+              width="800" height="550" frameborder="0">
           </iframe>
           <p>
             Welche Funktionen gerade am dringendsten gebraucht werden, siehst du auf unserer Betterplace-Spendenseite:
