@@ -296,7 +296,7 @@ class LandingPage extends Component {
       </div>
       <div className = "explain">{
         content == null
-          ? <a target="_blank" href= "#tutorial" className= "circleTutorial">
+          ? <a href= "#tutorial" className= "circleTutorial">
               <strong>
                 Tutorial
                 <div style ={{ paddingTop: "10px", fontSize: "12px"}}>

@@ -38,7 +38,9 @@ module.exports = pure React.createClass
         p null, "Gemeinsam mit dir möchten wir den positiven Wandel " +
             "unserer Gesellschaft sichtbar und erfahrbar machen."
       div style: clear: "both"
-      hr id: "tutorial"
+
+      a id: "tutorial"
+      hr null
 
       h2 null, "Wie funktioniert die Karte von morgen?"
       div className: "tutorial",
