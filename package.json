@@ -27,6 +27,8 @@
     "es6-promise": "^3.1.2",
     "flash-notification-react-redux": "git+https://github.com/cmkshaw/redux-flash-notification.git",
     "font-awesome": "^4.5.0",
+    "i18next": "^10.2.2",
+    "i18next-browser-languagedetector": "^2.1.0",
     "leaflet": "^1.2.0",
     "lodash": "^3.10.1",
     "museo": "^0.1.0",
@@ -34,6 +36,7 @@
     "purecss": "^0.6.0",
     "react": "^15.4",
     "react-dom": "^15.4",
+    "react-i18next": "^7.3.1",
     "react-leaflet": "^1.7.8",
     "react-redux": "^5.0.2",
     "react-vm-flower": "^0.2.0",
@@ -46,6 +49,7 @@
     "styled-components": "^2.2.3",
     "superagent": "^3.5.2",
     "superagent-prefix": "0.0.2",
+    "updeep": "^1.0.0",
     "vm-leaflet-icons": "^0.1.0"
   },
   "optionalDependencies": {
