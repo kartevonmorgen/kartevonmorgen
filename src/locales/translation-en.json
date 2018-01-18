@@ -28,8 +28,9 @@
 		"email":"email",
 		"cancel":"cancel",
 		"save":"save",
-		"edit":"New Entry",
-		"new":"Edit Entry"
+		"edit":"edit entry",
+		"new":"new entry",
+		"back":"back"
 	},
 	"landingExplain" : {
 		"chapter1" : {

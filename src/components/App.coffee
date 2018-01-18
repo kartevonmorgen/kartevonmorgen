@@ -173,13 +173,13 @@ Main = React.createClass
                       key: "back"
                       className:"pure-u-1-2",
                         i className: "fa fa-chevron-left"
-                        "zurück"
+                        t "entryForm.back"
                     li
                       onClick: -> dispatch Actions.editCurrentEntry()
                       key: "edit"
                       className:"pure-u-1-2",
                         i className: "fa fa-pencil"
-                        "bearbeiten"
+                        t "entryForm.edit"
                   ]
 
                 when V.EDIT, V.NEW
@@ -194,7 +194,7 @@ Main = React.createClass
                           when V.EDIT then Actions.cancelEdit()
                       ),
                         i className: "fa fa-ban"
-                        "abbrechen"
+                        t "entryForm.cancel"
                     li
                       key: "save"
                       className:"pure-u-1-2",
@@ -203,23 +203,6 @@ Main = React.createClass
                       ),
                         i className: "fa fa-floppy-o"
                         t "entryForm.save"
-                    li
-                      key: "cancel"
-                      className:"pure-u-1-2",
-                      onClick: (->
-                        dispatch initialize RATING.id, {}, RATING.fields
-                        dispatch Actions.cancelRating()
-                      ),
-                        i className: "fa fa-ban"
-            			      t "entryForm.cancel"
-                    li
-                      key: "save"
-                      className:"pure-u-1-2",
-                      onClick: (=>
-                        @refs.rating.submit()
-                      ),
-                        i className: "fa fa-floppy-o"
-                        "bewerten"
                   ]
                 when V.SUBSCRIBE_TO_BBOX
                   if user.subscriptionExists

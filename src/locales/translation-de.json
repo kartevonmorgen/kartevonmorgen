@@ -8,6 +8,7 @@
 		"donate" : "Spenden"
 	},
 	"addEntry":"Eintrag hinzufügen",
+	"edit":"bearbeiten",
 	"slogan" : "Alles gute auf einer Karte",
 	"discover" : "Welchen Ort möchtest du entdecken?",
 	"entryForm":{
@@ -28,8 +29,9 @@
 		"email":"E-Mailadresse",
 		"cancel":"abbrechen",
 		"save":"speichern",
-		"edit":"Eintrag bearbeiten",
-		"new":"Neuer Eintrag"
+		"edit":"bearbeiten",
+		"new":"Neuer Eintrag",
+		"back":"zurück"
 	},
 	"landingExplain" : {
 		"chapter1" : {
