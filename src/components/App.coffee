@@ -210,7 +210,7 @@ Main = React.createClass
                         dispatch Actions.cancelRating()
                       ),
                         i className: "fa fa-ban"
-			 t "entryForm.cancel"
+            			      t "entryForm.cancel"
                     li
                       key: "save"
                       className:"pure-u-1-2",
