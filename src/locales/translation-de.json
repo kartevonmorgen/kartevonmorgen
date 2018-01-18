@@ -60,9 +60,9 @@
 		"chapter4" : {
 			"heading" : "Möchtest du dabei sein?",
 			"text" : {
-				"1" : "Unterstütze</br>unser Projekt",
-				"2" : "Wir suchen Regional-<br>und Themenpiloten",
-				"3" : "Werde Teil</br>unseres Teams"
+				"1" : "Unterstütze unser Projekt",
+				"2" : "Wir suchen Regional und Themenpiloten",
+				"3" : "Werde Teil unseres Teams"
 			},
 			"learnMore" : "mehr erfahren"
 		},
@@ -73,6 +73,9 @@
 			}
 		},
 		"chapter6" : {
+			"heading" : "Ein Projekt von"
+		},
+		"chapter7" : {
 			"heading" : "Unsere Partner"
 		}
 	},

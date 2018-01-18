@@ -4,10 +4,11 @@ React     = require "react"
 T         = React.PropTypes
 V         = require "../constants/PanelView"
 { pure }  = require "recompose"
+{ translate } = require "react-i18next"
 
 { div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
 
-module.exports = pure React.createClass
+module.exports = translate('translation')(pure React.createClass
 
   displayName: "LandingExplain"
 
@@ -15,8 +16,7 @@ module.exports = pure React.createClass
     onClick  : T.func
 
   render: ->
-    t = (x) -> x
-    { onClick } = @props
+    { onClick, t } = @props
     div null,
       h2 null, t "landingExplain.chapter1.heading"
       div
@@ -58,15 +58,12 @@ module.exports = pure React.createClass
       h2 null, t "landingExplain.chapter4.heading"
       div style: float: "left", paddingTop: "1px",
         h4 null, t "landingExplain.chapter4.text.1"
-        p null, ""
         a href: "#", onClick: (-> onClick V.DONATE), t "landingExplain.chapter4.learnMore"
       div style: float: "right", paddingTop: "1px",
-        h4 null, t "landingExplain.chapter4.text.1"
-        p null, ""
+        h4 null, t "landingExplain.chapter4.text.2"
         a href: "#", onClick: (-> onClick V.JOIN), t "landingExplain.chapter4.learnMore"
       div style: paddingTop: "1px",
-        h4 null, t "landingExplain.chapter4.text.1"
-        p null, ""
+        h4 null, t "landingExplain.chapter4.text.3"
         a href: "#", onClick: (-> onClick V.JOIN), t "landingExplain.chapter4.learnMore"
 
       hr null
@@ -144,7 +141,7 @@ module.exports = pure React.createClass
 
       hr null
 
-      h2 null,t "landingExplain.chapter6.heading",
+      h2 null, t "landingExplain.chapter6.heading"
         a href:"http://www.ideenhochdrei.org/de/",
           img className: "partnerLogo", src: require "../img/ideen.png"
         a href:"http://slowtec.de",
@@ -152,10 +149,10 @@ module.exports = pure React.createClass
 
       hr null
 
-      h2 null, "Unsere Partner"
+      h2 null, t "landingExplain.chapter7.heading"
         a href:"https://www.engagement-global.de/rueckkehrende.html",
           img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"
         a href:"http://www.bmz.de/",
           img className: "partnerLogo", src: require "../img/BMZ.jpg"
         a href:"https://www.boell.de/de",
-          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
+          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg")
