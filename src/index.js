@@ -12,8 +12,7 @@ import Actions  from "./Actions";
 import route    from "./route";
 import mapConst from "./constants/Map"
 import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n' // initialized i18next instance
-
+import i18n from './i18n';
 import { Provider, connect } from "react-redux";
 
 if (__DEVELOPMENT__) {

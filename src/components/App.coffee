@@ -27,6 +27,7 @@ HUMANITY, TRANSPARENCY, SOLIDARITY } = require "../constants/RatingContexts"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
+{ translate }     = require "react-i18next"
 
 { GrowlerContainer } = require "flash-notification-react-redux"
 
@@ -46,11 +47,11 @@ Main = React.createClass
     growler : T.object.isRequired
     url     : T.object.isRequired
     user    : T.object.isRequired
+    timedActions : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, server, map, form, growler, url, user, timedActions } = @props
-    t = (x) -> x
+    { dispatch, search, view, server, map, form, growler, url, user, timedActions, t } = @props
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -419,4 +420,4 @@ Main = React.createClass
               dispatch Actions.onZoomend(coordinates, map.zoom)
             onLocate      : -> dispatch Actions.showOwnPosition()
               
-module.exports = pure(Main)
+module.exports = translate('translation')(pure(Main))
