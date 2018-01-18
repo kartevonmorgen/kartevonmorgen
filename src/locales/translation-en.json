@@ -1,0 +1,141 @@
+{
+	"menu" : {
+		"map" : "Map",
+		"addEntry" : "New Entry",
+		"workshops" : "Workshops",
+		"news" : "News",
+		"contact" : "Contact",
+		"donate" : "Donate"
+	},
+	"addEntry":"Add a new entry",
+	"slogan" : "Mapping for Good",
+	"discover" : "Search for a location",
+	"entryForm":{
+		"choseCategory":"- Select category -",
+		"location":"Location",
+		"clickMap":"(click on the map)",
+		"contact":"Contact",
+		"iHaveRead":"I have read and accept the Terms of the ",
+		"creativeCommonsAccepted":"Creative-Commons Lizenz CC0",
+		"license":"License",
+		"title":"Title",
+		"description":"Description",
+		"homepage":"Homepage",
+		"phone":"Phone",
+		"street":"Address",
+		"city":"City",
+		"zip":"ZIP Code",
+		"email":"email",
+		"cancel":"cancel",
+		"save":"save",
+		"edit":"New Entry",
+		"new":"Edit Entry"
+	},
+	"landingExplain" : {
+		"chapter1" : {
+			"heading" : "The world is full of explorers, and full of things to be explored.",
+			"paragraph1" : {
+				"heading" : "Discover places from an inspiring point of view.",
+				"text" : "Our map invites you to explore forward-thinking projects, companies and soon to come events in your immediate surrounding."
+			},
+			"paragraph2" : {
+				"heading" : "Take part! ",
+				"text" : "Find all the information you need to get in touch with projects you want to engage with. Stop by to say Hello! "
+			},
+			"paragraph3" : {
+				"heading" : "Let’s create a world for tomorrow.",
+				"text" : "Together, we want to show and embrace the positive change in our society."
+			}
+		},
+		"chapter2" : {
+			"heading" : "How to use the map von morgen"
+		},
+		"chapter3" : {
+			"heading" : "We have a vision",
+			"text" : {
+				"1" : "von morgen supports creativity, sustainability and joint action.",
+				"2" : "We believe in a modern society in wich we all can embrace a self-determined, contend and environmental-friendly life. Our goal: a benevolent future."
+			}
+		},
+		"chapter4" : {
+			"heading" : "Are you with us?",
+			"text" : {
+				"1" : "Support our project",
+				"2" : "Become a local scout",
+				"3" : "Join our team"
+			},
+			"learnMore" : "more"
+		},
+		"chapter5" : {
+			"heading" : "Our team",
+			"text" : {
+				"1" : "We are always looking for new members!"
+			}
+		},
+		"chapter6" : {
+			"heading" : "Our partners"
+		}
+	},
+	"donate" : {
+		"heading" : "Etwas Gutes für morgen tun.",
+		"text" : {
+			"1" : "Die Plattform von morgen finanziert sich über Fördermittel verschiedener Programme und Wettbewerbe, als auch über Spenden. Wir, das Team von morgen, arbeiten ehrenamtlich.",
+			"2" : "Die Beiträge möchten wir für die Weiterentwicklung der Plattform verwenden. Verschieden Features sind in Planung, u.a. die Themenkarte zur Einbettung in eigene Websites und den Positivfaktoren - dem gemeinwohl-orientierten Bewertungssytem der einzelnen Orte.",
+			"3" : "Hier geht es zu unserer Crowdfunding-Kampagne: ",
+			"4" : "Wir freuen uns über jeden kleinen und großen Beitrag und hoffen auch bald in deiner Stadt verfügbar zu sein. Auf bald!"
+		},
+		"ending" : "Dankend, das Team von morgen"
+	},
+	"join" : {
+		"heading" :{
+			"1":"Werde Teil unseres Teams",
+			"2":"Werde Regional- oder Themenpilot"
+		},
+		"text" : {
+			"1" : "Wir sind ein deutschlandweites Team und immer auf der Suche nach neuen Mitgliedern! Unsere aktuellen Ausschreibungen findest du hier:",
+			"2" : "Wir suchen Regional- und Themenpiloten Stark lokal: als direkter Ansprechpartner vor Ort, sicherst du die Qualität der Karteneinträge, organisierst z.B. Aktionen und Workshops und zeigst deine Stadt von ihrer besten Seite!",
+			"3" : "Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:"
+		}
+	},
+	"info" : {
+		"heading" : "Das Projekt",
+		"text" : {
+			"1" : "Unsere interaktive Karte zeigt dir Orte in deiner Umgebung, an denen man sich schon heute für eine Welt von morgen einsetzt.",
+			"2" : "Du hast eine Initiative, für die du Mitstreiter suchst? Du kennst ein Unternehmen, das nachhaltig wirtschaftet?",
+			"3" : "Auf unserer Website kannst du andere darauf aufmerksam machen – und dich so für eine Sache einsetzen, die dir persönlich am Herzen liegt.",
+			"4" : "Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen Umbrüchen alternativ entgegen wirken. Ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine erhöhte Aufmerksamkeit ermöglichen.",
+			"5" : "Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen sich und andere auf der Karte eintragen und so ihre Mitmenschen erreichen. Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten sichern vor Ort die Qualität der Karteneinträge und haben neben einer redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und Unternehmen zu stärken.",
+			"6" : "von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Guten tun, wo es Gutes gibt.",
+			"paragraph1" : {
+				"heading" : "Wir lieben Open Source!",
+				"text" : "Wir wollen mit gutem Beispiel vorangehen und entwickeln daher die Software transparent und offen. Den Quellcode des Gemeinschaftsprojekts findest du unter:"
+			},
+			"clientVersion" : "Version dieses Clients:",
+			"serverVersion" : "Version des Servers:"
+		}
+	},
+	"workshop" : {
+		"heading" : "Workshops von morgen",
+		"text":"Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen Hoch Drei und deren Bildungsprogramm „Bildungsagenten” bieten wir Workshops zu verschiedenen Themen an, u.a. Solidarisches Wirtschaften, Friedliches Ressourcenteilen und Globale Zusammenarbeit.  Stellt uns gerne eine Anfrage und wir konzipieren unsere Workshops nach euren Wünschen!",
+		"paragraph1" : {
+			"heading" : "Die Bildungsagenten stellen sich vor:",
+			"text" : {
+				"1" : "Die Ideenwerkstatt Bildungsagenten ist eine Initiative von ehemaligen internationalen Freiwilligen. Wir wollen globale- und wirtschaftliche Zusammenhänge in interaktiven Workshops an Schulen und mit Jugendgruppen erlebbar zu machen und durch künstlerische Aktionen ins öffentliche Bewusstsein zu bringen. Unsere Vision ist eine friedliche, bunte Welt in der sich alle Menschen frei begegnen können.",
+				"2" : "Vorallem entdecken unsere Teilnehmer_Innen in Workshops und Vorträgen positive Beispiele underfolgreiche Projekte aus der ganzen Welt und entwickeln durch unsere interaktiven Methoden undder Begleitung im Projektmanagement eigene Leuchtturmprojekte auf regionaler Ebene.Dazu gehört das Besuchen von Initativen auf der Karte von morgen,das verzeichnen der eigenen Region oder das Gründen von Projektenund die dann auf der Karte von morgen erscheinen werden.",
+				"3" : "Auf der Suche nach der Welt von morgen? Suchen Sie mit uns gemeinsam!Hier geht es zur Webseite der Bildungsagenten: www.bildungsagenten.org"
+			}
+		}
+	},
+	"category":{
+		"initiative":"Project",
+		"Event":"Event",
+		"company":"Company"
+	},
+	"footer" : {
+		"heading" : "Tomorrow starts today.",
+		"contact" : "Contact: ",
+		"socialMedia" : "Social Media: ",
+		"openSource" : "Open Source: ",
+		"impressum" : "Imprint: "
+	}
+}

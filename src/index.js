@@ -11,6 +11,8 @@ import store    from "./Store";
 import Actions  from "./Actions";
 import route    from "./route";
 import mapConst from "./constants/Map"
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n' // initialized i18next instance
 
 import { Provider, connect } from "react-redux";
 
@@ -28,7 +30,12 @@ const ConnectedApp = connect((s) => s)(App);
 const rootElement = document.querySelector('#app');
 
 // inject the 'dispatch' method and the state
-const Wrapper = <Provider store = {store} ><ConnectedApp /></Provider>;
+const Wrapper = (
+  <Provider store = {store} >
+    <I18nextProvider i18n={ i18n } >
+      <ConnectedApp />
+    </I18nextProvider>
+  </Provider>);
 
 if(window.location.hash == ""){
   store.dispatch(Actions.showMenu());

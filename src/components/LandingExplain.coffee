@@ -15,34 +15,31 @@ module.exports = pure React.createClass
     onClick  : T.func
 
   render: ->
+    t = (x) -> x
     { onClick } = @props
     div null,
-      h2 null, "Die Welt steckt voller Entdecker. Und voller Orte, die darauf warten entdeckt zu werden."
+      h2 null, t "landingExplain.chapter1.heading"
       div
       img className: "pure-img", style: {float: "left"}, src: require "../img/lp_illu1.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Entdecke Orte von ihren besten Seiten."
-        p null, "Unsere Karte zeigt dir zukunftsorientierte Initiativen," +
-            " Unternehmen und bald auch Events direkt in deiner Umgebung."
+        h3 null, t "landingExplain.chapter1.paragraph1.heading"
+        p null, t "landingExplain.chapter1.paragraph1.text"
       div style: clear: "both"
       img className: "pure-img", style: {float: "right"}, src: require "../img/lp_illu2.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Sei dabei!"
-        p null, "Du hast an einer Initiative besonderes Interesse?" +
-            " Bei uns findest du die nötigen Informationen," +
-            " um Kontakt aufzunehmen und vorbei zu schauen."
+        h3 null,  t "landingExplain.chapter1.paragraph2.heading"
+        p null, t "landingExplain.chapter1.paragraph2.text"
       div style: clear: "both"
       img className: "pure-img", style: {float: "left"}, src: require "../img/lp_illu3.jpg"
       div style: {marginTop: "200px"},
-        h3 null, "Gestalte die Welt von morgen."
-        p null, "Gemeinsam mit dir möchten wir den positiven Wandel " +
-            "unserer Gesellschaft sichtbar und erfahrbar machen."
+        h3 null, t "landingExplain.chapter1.paragraph3.heading"
+        p null, t "landingExplain.chapter1.paragraph3.text"
       div style: clear: "both"
 
       a id: "tutorial"
       hr null
 
-      h2 null, "Wie funktioniert die Karte von morgen?"
+      h2 null, t "landingExplain.chapter2.heading"
       div className: "tutorial",
         img src: require "../img/tutorial/1.jpg"
         img src: require "../img/tutorial/2.jpg"
@@ -51,146 +48,103 @@ module.exports = pure React.createClass
         img src: require "../img/tutorial/5.jpg"
         img src: require "../img/tutorial/6.jpg"
 
-
-      h2 null, "Die Vision von morgen"
-      p null,
-        "von morgen fördert Kreativität, Umweltfreundlichkeit und"
-        br null
-        "gemeinsames Handeln im bunten Feld des gesellschaftlichen Wandels."
-      p null,
-        "von morgen hat die Vision einer intakten Welt, in der die Menschen"
-        br null
-        "miteinander ein selbstbestimmtes, glückliches und umweltbewusstes Leben führen."
-        br null
-        "Das Ziel: eine menschliche Zukunft."
-
       div style: overflow: "visible",
         img className: "pure-img", style: {width: "100%"}, src: require "../img/postkarte.jpg"
 
-      h2 null,
-        "Möchtest du dabei sein?",
+      h2 null, t "landingExplain.chapter3.heading"
+      p null, t "landingExplain.chapter3.text.1"
+      p null, t "landingExplain.chapter3.text.2"
+      hr null
+      h2 null, t "landingExplain.chapter4.heading"
       div style: float: "left", paddingTop: "1px",
-        h4 null,
-          "Unterstütze",
-          br null
-          "unser Projekt"
+        h4 null, t "landingExplain.chapter4.text.1"
         p null, ""
-        a href: "#", onClick: (-> onClick V.DONATE), "mehr erfahren"
+        a href: "#", onClick: (-> onClick V.DONATE), t "landingExplain.chapter4.learnMore"
       div style: float: "right", paddingTop: "1px",
-        h4 null,
-          "Wir suchen Regional-",
-          br null
-          "und Themenpiloten"
+        h4 null, t "landingExplain.chapter4.text.1"
         p null, ""
-        a href: "#", onClick: (-> onClick V.JOIN), "mehr erfahren"
+        a href: "#", onClick: (-> onClick V.JOIN), t "landingExplain.chapter4.learnMore"
       div style: paddingTop: "1px",
-        h4 null,
-          "Werde Teil",
-          br null
-          "unseres Teams"
+        h4 null, t "landingExplain.chapter4.text.1"
         p null, ""
-        a href: "#", onClick: (-> onClick V.JOIN), "mehr erfahren"
+        a href: "#", onClick: (-> onClick V.JOIN), t "landingExplain.chapter4.learnMore"
 
       hr null
-      h2 null, "Das Team von morgen"
-      p null,
-        "Das Team von morgen ist so bunt wie der Wandel. Ehemalige entwicklungspolitische Freiwillige, Studierende, Wandelgestalter*innen und Stipendiaten - Menschen, die sich ehrenamtlich für die Gesellschaft von morgen einsetzen wollen."
+      h2 null, t "landingExplain.chapter5.heading"
 
-      div className: "team",
-        div className: "teamMember",
-          div className: "circle yellow",
-            img className: "teamImage", src: require "../img/team/Thao.jpg"
-          div className: "team-member-name", "Thao Tran"
-          div null, "Brand & Project Management"
-        div className: "teamMember",
-          div className: "circle pink",
-            a href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
-              img className: "teamImage", src: require "../img/team/Helmut.jpg"
-          div className: "team-member-name", "Helmut Wolman"
-          div null, "Vorstand Ideen³ e.V."
-          div null, "Projektentwicklung"
-        div className: "teamMember",
-          div className: "circle berry",
-            img className: "teamImage", src: require "../img/team/David.jpg"
-          div className: "team-member-name", "David Ziegler"
-          div null, "Softwareentwicklung"
-        div className: "teamMember",
-          div className: "circle green",
-            img className: "teamImage", src: require "../img/team/Lisa.jpg"
-          div className: "team-member-name", "Lisa Stehr"
-          div null, "Politikwissenschaftlerin"
-          div null, "Strategie und Wirkung "
-        div className: "teamMember",
-          div className: "circle green",
-           a href:"http://martenroebel.de/",
-             img className: "teamImage", src: require "../img/team/Marten.jpg"
-          div className: "team-member-name", "Marten Röbel"
-          div null, "Achtsamkeit und "
-          div null, "Change-Psychologie"
-        div className: "teamMember",
-          div className: "circle green",
-            img className: "teamImage", src: require "../img/team/Lisa.jpg"
-          div className: "team-member-name", "Lisa Stehr"
-          div null, "Politikwissenschaftlerin"
-          div null, "Strategie und Wirkung "
-        div className: "teamMember",
-          div className: "circle green",
-           a href:"http://martenroebel.de/",
-             img className: "teamImage", src: require "../img/team/Marten.jpg"
-          div className: "team-member-name", "Marten Röbel"
-          div null, "Achtsamkeit und "
-          div null, "Change-Psychologie"
-        div className: "teamMember",
-          div className: "circle green",
-           a href:"https://slowtec.de/team.html#",
-             img className: "teamImage", src: require "../img/team/Markus.jpg"
-          div className: "team-member-name", "Markus Kohlhase"
-          div null, "slowtec GmbH"
-          div null, "Softwareentwicklung"
-        div className: "teamMember",
-          div className: "circle pink",
-            img className: "teamImage", src: require "../img/team/placeholder_1.png"
-          div className: "team-member-name", "Florian Jostock"
-          div null, "Beratung Softwareentwicklung"
-        div className: "teamMember",
-          div className: "circle blue",
-            img className: "teamImage", src: require "../img/team/Louisa.jpg"
-          div className: "team-member-name", "Louisa Pieper"
-          div null, "PR und Marketing"
-          div null, "Regionalpilotin Köln"
-        div className: "teamMember",
-          div className: "circle blue",
-            img className: "teamImage", src: require "../img/team/Anja.jpg"
-          div className: "team-member-name", "Anja Dannemann"
-          div null, "Designerin"
-          div null, "Graphic Design"
-        div className: "teamMember",
-          div className: "circle berry",
-            img className: "teamImage", src: require "../img/team/Xueqian.jpg"
-          div className: "team-member-name", "Xueqian Chen"
-          div null, "Unternehmensberaterin"
-          div null, "PR & Marketing"
-        div className: "teamMember",
-          div className: "circle blue",
-            img className: "teamImage", src: require "../img/team/Ben.jpg"
-          div className: "team-member-name", "Benedikt Roth"
-          div null, "Organisationsgestalter"
-          div null, "Network & Development"
-        div className: "teamMember",
-          div className: "circle green",
-            img className: "teamImage", src: require "../img/team/Frederik.jpg"
-          div className: "team-member-name", "Frederik Schütz"
-          div null, "Netzwerk-Ass"
-          div null, "Business & Finance"
-        div className: "teamMember",
-          div className: "circle blue",
-            img className: "teamImage", src: require "../img/team/placeholder_4.png"
-          div null, "Wir freuen uns über"
-          div className: "team-member-name", "neue Teammitglieder!"
+      div className: "teamMember",
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Anja.jpg"
+        div null, "Anja Dannemann -"
+        div null, "Graphic Design"
+      div className: "teamMember",
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/Ben.jpg"
+        div null, "Benedikt Roth -"
+        div null, "Network & Development"
+      div className: "teamMember",
+        div className: "circle berry",
+          img className: "teamImage", src: require "../img/team/David.jpg"
+        div null, "David Ziegler -"
+        div null, "Softwaredevelopment"
+      div className: "teamMember",
+        div className: "circle pink",
+          img className: "teamImage", src: require "../img/team/placeholder_1.png"
+        div null, "Florian Jostock -"
+        div null, "Software Development"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Frederik.jpg"
+        div null, "Frederik Schütz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle pink",
+          img className: "teamImage", src: require "../img/team/Helmut.jpg"
+        div null, "Helmut Wolman -"
+        div null, "Network & Development"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Lisa.jpg"
+        div null, "Lisa Stehr -"
+        div null, "Funding & Strategy"
+      div className: "teamMember",
+        div className: "circle green",
+          img className: "teamImage", src: require "../img/team/Markus.jpg"
+        div null, "Markus Kohlhase -"
+        div null, "Software Development"
+      div className: "teamMember",
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/placeholder_2.png"
+        div null, "Nina Bärnreuther -"
+        div null, "PR & Marketing"
+      div className: "teamMember",
+        div className: "circle grayBlue",
+          img className: "teamImage", src: require "../img/team/placeholder_3.png"
+        div null, "Peter Gericke -"
+        div null, "Graphic Design"
+      div className: "teamMember",
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/Thao.jpg"
+        div null, "Thao Tran - Brand &"
+        div null, "Project Management"
+      div className: "teamMember",
+        div className: "circle yellow",
+          img className: "teamImage", src: require "../img/team/Tomas.jpg"
+        div null, "Tomas Gerlitz -"
+        div null, "Business & Finance"
+      div className: "teamMember",
+        div className: "circle berry",
+          img className: "teamImage", src: require "../img/team/Xueqian.jpg"
+        div null, "Xueqian Chen -"
+        div null, "PR & Marketing"
+      div className: "teamMember",
+        div className: "circle blue",
+          img className: "teamImage", src: require "../img/team/placeholder_4.png"
+        div null, t "landingExplain.chapter5.text.1"
 
       hr null
 
-      h2 null, "Ein Projekt von"
+      h2 null,t "landingExplain.chapter6.heading",
         a href:"http://www.ideenhochdrei.org/de/",
           img className: "partnerLogo", src: require "../img/ideen.png"
         a href:"http://slowtec.de",

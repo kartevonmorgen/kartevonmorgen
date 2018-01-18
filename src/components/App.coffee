@@ -50,6 +50,7 @@ Main = React.createClass
   render: ->
 
     { dispatch, search, view, server, map, form, growler, url, user, timedActions } = @props
+    t = (x) -> x
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -160,7 +161,7 @@ Main = React.createClass
                     onClick: -> dispatch Actions.showNewEntry()
                     className:"pure-u-1",
                       i className: "fa fa-plus"
-                      "Eintrag hinzufügen"
+                      t "addEntry"
                 when V.ENTRY
                   [
                     li
@@ -200,10 +201,7 @@ Main = React.createClass
                         @refs.form.submit()
                       ),
                         i className: "fa fa-floppy-o"
-                        "speichern"
-                  ]
-                when V.NEW_RATING
-                  [
+                        t "entryForm.save"
                     li
                       key: "cancel"
                       className:"pure-u-1-2",
@@ -212,7 +210,7 @@ Main = React.createClass
                         dispatch Actions.cancelRating()
                       ),
                         i className: "fa fa-ban"
-                        "abbrechen"
+			 t "entryForm.cancel"
                     li
                       key: "save"
                       className:"pure-u-1-2",
