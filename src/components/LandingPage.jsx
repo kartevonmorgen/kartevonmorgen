@@ -20,6 +20,9 @@ class LandingPage extends Component {
     const { content, searchText, searchError, cities, onSelection, onEscape,
       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount } = this.props;
     const onClick = this.props.onMenuItemClick;
+    var t = (key) => {
+      return this.props.t("landingPage." + key);
+    };
 
     const onKeyUp = ev => {
       ev.preventDefault();
@@ -41,11 +44,11 @@ class LandingPage extends Component {
       onChange(v);
     }
 
-    let subscriptionLink = user.subscriptionExists ? "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
-    : "über Änderungen in deiner Stadt auf dem Laufenden bleiben";
+    let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
+    : t("subscribeToBbox.new-link");
 
     let loginInfo = <div className="login-info">
-      <p>Du bist eingeloggt. Wenn du magst kannst du <br/>
+      <p>{t("subscribeToBbox.message")}<br/>
       <a onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)} href="#">{subscriptionLink}</a>.</p>
     </div>;
 
@@ -70,54 +73,43 @@ class LandingPage extends Component {
         break;
       case V.DONATE:
         contentComp = <div>
-          <h2>Etwas Gutes für morgen tun.</h2>
+          <h2>{t("donate.heading")}</h2>
           <p>
-            Die Karte von morgen wird euch für immer kostenfrei zur Verfügung stehen! Open Source und frei.
-            Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden
-            von Nutzer*innen und den kartierten Initiativen und Unternehmen von morgen ermöglicht werden.
-            Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln.
-            Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit
-            zu gewährleisten.
+            {t("donate.paragraph1")}
           </p>
           <strong>
             <a target="_blank" href="https://www.betterplace.org/de/projects/36213-von-morgen-alles-gute-auf-einer-karte/donations/new">
-            Jetzt Spenden für „von morgen - Alles Gute auf einer Karte“ bei unserem Partner betterplace.org
+            {t("donate.betterplace-link")}
             </a>
           </strong>
           <p>
-            <strong>Spendenkonto:</strong> <br/>
-            Ideen hoch drei e.V. <br/>
-            IBAN: DE05 4306 0967 4031 0759 00 <br/>
-            BIC-Code: GENODEM1GLS  bei der GLS Bank <br/>
-            Verwendungszweck: Karte von morgen <br/>
+            <strong>{t("donate.paragraph2.bank-details1")}</strong> <br/>
+            <br/>
+            {t("donate.paragraph2.bank-details2")}<br/>
+            {t("donate.paragraph2.bank-details3")}<br/>
+            {t("donate.paragraph2.bank-details4")}<br/>
 
-             Die Plattform von morgen finanziert sich zusätzlich über Fördermittel verschiedener Programme und Ideen-Wettbewerbe.
-            Wir, das Team von morgen, arbeiten noch ehrenamtlich, wollen aber langfristig die Entwicklung und Betreuung
-            professionalisieren und fair bezahlen.
+            {t("donate.paragraph2.text")}
           </p>
-          <h1>Assoziative Solidargemeinschaften von morgen</h1>
+          <h1>{t("donate.paragraph3.heading")}</h1>
 
           <p>
-            Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, getragen von den regionalen
-            Solidargemeinschaften von morgen, die lokal durch eine*n Regionalpilot*in moderiert werden.
-
-            Werde Mitglied in deiner regionalen Solidargemeinschaft von morgen (per Mail oder mit folgendem
-            {" "}<a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">Formular</a>)
-            und unterstütze die sozial-ökologische Transformation.
+            {t("donate.paragraph3.text1")}
+            {" "}<a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">{t("donate.paragraph3.form-link")}</a>)
+            {t("donate.paragraph3.text2")}
           </p>
           <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
               width="800" height="550" frameborder="0">
           </iframe>
           <p>
-            Welche Funktionen gerade am dringendsten gebraucht werden, siehst du auf unserer Betterplace-Spendenseite:
+            {t("donate.paragraph3.text3")}
             {" "}<a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a> <br/>
-            Viel Ressourcen brauchen aber auch die kleinen Bugs, Optimierungen und Aktualisierungen.
+            {t("donate.paragraph3.text4")}
           </p>
           <p>
-            Wir freuen uns über jeden kleinen und großen Beitrag.
-            Auf bald!
+            {t("donate.paragraph3.text5")}
           </p>
-          <p>Dankend, das Team von morgen</p>
+          <p>{t("donate.paragraph3.text6")}</p>
         </div>;
         break;
       case V.REGISTER:
@@ -133,31 +125,32 @@ class LandingPage extends Component {
       case V.REGISTER_SUCCESS:
         contentComp = <div>
           <p>
-          Du hast dich erfolgreich registriert. Bitte bestätige deine Email-Adresse, dann kannst <br/>
-          du dich einloggen. Dazu ging eben eine Email an {user.email} raus.
+            {t("user.register-success.text1")}<br/>
+            {t("user.register-success.text2")} {user.email} {t("user.register-success.text3")}
           </p>
         </div>;
         break;
       case V.CONFIRMING_EMAIL:
         contentComp = <div>
           <p>
-          Deine Email-Adresse wird gerade bestätigt... <br/>
+          {t("user.confirming-email-address.text")}<br/>
           </p>
           </div>;
           break;
       case V.CONFIRM_EMAIL_ERROR:
         contentComp = <div>
           <p>
-          Oups! Es gab einen Fehler beim Bestätigen deiner Email-Adresse. Bitte probiere, dich
-          mit einem neuen Benutzernamen erneut zu <a onClick={() => {onClick(V.REGISTER)}} href="#">registrieren</a>.<br/>
+          {t("user.confirm-email-error.message")}
+          <a onClick={() => {onClick(V.REGISTER)}} href="#">{t("user.confirm-email-error.link")}</a>.<br/>
           </p>
           </div>;
           break;
       case V.EMAIL_CONFIRMED:
         contentComp = <div>
           <p>
-          Deine Email-Adresse wurde bestätigt. <br/>
-          Du kannst dich jetzt <a onClick={() => {onClick(V.LOGIN)}} href="#">anmelden.</a>
+          {t("user.email-confirmed.text1")}<br/>
+          {t("user.email-confirmed.text2")}
+          <a onClick={() => {onClick(V.LOGIN)}} href="#">{t("user.email-confirmed.link")}</a>.
           </p>
           </div>;
           break;
@@ -177,29 +170,23 @@ class LandingPage extends Component {
         break;
       case V.LOGOUT:
         contentComp = <div>
-          <p>Du bist ausgeloggt</p>
+          <p>{t("user.logged-out")}</p>
         </div>;
         break;
       case V.JOIN:
         contentComp = <div>
-          <h3>Werde Teil unseres Teams</h3>
+          <h3>{t("join.heading")}</h3>
           <p>
-            Wir sind ein deutschlandweites Team und immer auf der
-            Suche nach neuen Mitgliedern!
-            Unsere aktuellen Ausschreibungen findest du hier:
+            {t("join.paragraph1")}
           </p>
           <p>
             <a target="_blank" href={URLs.JOB_ADS.link}>{URLs.JOB_ADS.name}</a>
           </p>
           <p>
-            Wir suchen Regional- und Themenpiloten
-            Stark lokal: als direkter Ansprechpartner vor Ort,
-            sicherst du die Qualität der Karteneinträge,
-            organisierst z.B. Aktionen und Workshops und zeigst
-            deine Stadt von ihrer besten Seite!
+            {t("join.paragraph2")}
           </p>
           <p>
-            Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:
+            {t("join.paragraph3")}
             <br />
             <a target="_blank" href= "mailto:netzwerk@kartevonmorgen.org">
               netzwerk@kartevonmorgen.org
@@ -233,31 +220,31 @@ class LandingPage extends Component {
                 <ul className="pure-g">
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick={() => onClick('map')} href="#" className="pure-menu-link">
-                      Karte
+                      {t("menu.map")}
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick= {() => onClick(V.INFO)} href="#" className="pure-menu-link">
-                      Infos
+                      {t("menu.infos")}
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick = {() => onClick(V.CONTACT)} href="#" className="pure-menu-link">
-                      Kontakt
+                      {t("menu.contact")}
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
-                      Spenden
+                      {t("menu.donate")}
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
                     { loggedIn ?
                       <a onClick = {() => onClick(V.LOGOUT)} href="#" className="pure-menu-link">
-                        Logout
+                        {t("menu.logout")}
                       </a>
                       : <a onClick = {() => onClick(V.LOGIN)} href="#" className="pure-menu-link">
-                        Login
+                        {t("menu.login")}
                       </a>
                     }
                   </li>
@@ -268,7 +255,7 @@ class LandingPage extends Component {
         </div>
       <div className ={ "search" + (content ? '' : ' start')}>
         <div className = "landing-content">
-          <h1>Alles Gute auf einer Karte</h1>
+          <h1>{t("slogan")}</h1>
           <div className="place-search">
             <div className= "pure-g pure-form">
               <input
@@ -277,22 +264,22 @@ class LandingPage extends Component {
                 onKeyUp     = {onKeyUp}
                 value       = {searchText || ''}
                 type        = 'text'
-                placeholder = "Welchen Ort möchtest du entdecken?"
+                placeholder = {t("city-search.placeholder")}
                 />
                 <div className = "pure-u-1">
                 { searchText && searchText.length > 3
                   ? (searchError
                     ? <div className="error">
-                      <span className="errorText">Fehler bei der Städte-Suche.</span>&nbsp;&nbsp;
+                      <span className="errorText">{t("city-search.error")}</span>&nbsp;&nbsp;
                       <a onClick={() => onClick('map')} href="#" className="link">
-                        Karte anzeigen...
+                        {t("city-search.show-map")}
 
                      </a></div>
                     : cities && cities.length > 0
                         ? <CityList cities={cities} onClick={onSelection} />
-                        : <div className="error">Konnte keine Stadt finden.&nbsp;&nbsp;
+                        : <div className="error">{t("city-search.no-results")}&nbsp;&nbsp;
                         <a onClick={() => onClick('map')} href="#" className="link">
-                        Karte anzeigen...
+                        {t("city-search.show-map")}
                         </a></div>
                     )
                   : null
@@ -322,16 +309,16 @@ class LandingPage extends Component {
         }</div>
       </div>
       <div className= "footer">
-        <h3>Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt.</h3>
+        <h3>{t("footer.heading")}</h3>
         <p>
-          Kontakt: <a target="_blank" href={URLs.MAIL.link}>{URLs.MAIL.name}</a>
+          {t("footer.contact")}<a target="_blank" href={URLs.MAIL.link}>{URLs.MAIL.name}</a>
           <br />
-          Social Media: <a target="_blank" href={URLs.FACEBOOK.link}>{URLs.FACEBOOK.name}</a>
+          {t("footer.social-media")}<a target="_blank" href={URLs.FACEBOOK.link}>{URLs.FACEBOOK.name}</a>
           <br />
-          Open Source: <a target="_blank" href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
+          {t("footer.open-source")}<a target="_blank" href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
         </p>
         <p>
-          <a href="#" onClick={() => onClick(V.IMPRINT)}>Impressum</a>
+          <a href="#" onClick={() => onClick(V.IMPRINT)}>{t("footer.imprint")}</a>
         </p>
         <p>
           {user.id != null ? <a onClick={onDeleteAccount} href="#">
@@ -355,4 +342,4 @@ LandingPage.propTypes = {
   onSelection : T.func
 };
 
-module.exports = pure(LandingPage)
+module.exports = translate('translation')(pure(LandingPage))

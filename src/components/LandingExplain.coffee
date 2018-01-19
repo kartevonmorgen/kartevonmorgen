@@ -73,71 +73,71 @@ module.exports = translate('translation')(pure React.createClass
         div className: "circle blue",
           img className: "teamImage", src: require "../img/team/Anja.jpg"
         div null, "Anja Dannemann -"
-        div null, "Graphic Design"
+        div null, t "landingExplain.chapter5.graphic-design"
       div className: "teamMember",
         div className: "circle blue",
           img className: "teamImage", src: require "../img/team/Ben.jpg"
         div null, "Benedikt Roth -"
-        div null, "Network & Development"
+        div null, t "landingExplain.chapter5.network-development"
       div className: "teamMember",
         div className: "circle berry",
           img className: "teamImage", src: require "../img/team/David.jpg"
         div null, "David Ziegler -"
-        div null, "Softwaredevelopment"
+        div null, t "landingExplain.chapter5.software-development"
       div className: "teamMember",
         div className: "circle pink",
           img className: "teamImage", src: require "../img/team/placeholder_1.png"
         div null, "Florian Jostock -"
-        div null, "Software Development"
+        div null, t "landingExplain.chapter5.software-development"
       div className: "teamMember",
         div className: "circle green",
           img className: "teamImage", src: require "../img/team/Frederik.jpg"
         div null, "Frederik Schütz -"
-        div null, "Business & Finance"
+        div null, t "landingExplain.chapter5.business-finance"
       div className: "teamMember",
         div className: "circle pink",
           img className: "teamImage", src: require "../img/team/Helmut.jpg"
         div null, "Helmut Wolman -"
-        div null, "Network & Development"
+        div null, t "landingExplain.chapter5.network-development"
       div className: "teamMember",
         div className: "circle green",
           img className: "teamImage", src: require "../img/team/Lisa.jpg"
         div null, "Lisa Stehr -"
-        div null, "Funding & Strategy"
+        div null, t "landingExplain.chapter5.funding-strategy"
       div className: "teamMember",
         div className: "circle green",
           img className: "teamImage", src: require "../img/team/Markus.jpg"
         div null, "Markus Kohlhase -"
-        div null, "Software Development"
+        div null, t "landingExplain.chapter5.software-development"
       div className: "teamMember",
         div className: "circle yellow",
           img className: "teamImage", src: require "../img/team/placeholder_2.png"
         div null, "Nina Bärnreuther -"
-        div null, "PR & Marketing"
+        div null, t "landingExplain.chapter5.pr-marketing"
       div className: "teamMember",
         div className: "circle grayBlue",
           img className: "teamImage", src: require "../img/team/placeholder_3.png"
         div null, "Peter Gericke -"
-        div null, "Graphic Design"
+        div null, t "landingExplain.chapter5.graphic-design"
       div className: "teamMember",
         div className: "circle yellow",
           img className: "teamImage", src: require "../img/team/Thao.jpg"
         div null, "Thao Tran - Brand &"
-        div null, "Project Management"
+        div null, t "landingExplain.chapter5.project-management"
       div className: "teamMember",
         div className: "circle yellow",
           img className: "teamImage", src: require "../img/team/Tomas.jpg"
         div null, "Tomas Gerlitz -"
-        div null, "Business & Finance"
+        div null, t "landingExplain.chapter5.business-finance"
       div className: "teamMember",
         div className: "circle berry",
           img className: "teamImage", src: require "../img/team/Xueqian.jpg"
         div null, "Xueqian Chen -"
-        div null, "PR & Marketing"
+        div null, t "landingExplain.chapter5.pr-marketing"
       div className: "teamMember",
         div className: "circle blue",
           img className: "teamImage", src: require "../img/team/placeholder_4.png"
-        div null, t "landingExplain.chapter5.text.1"
+        div null, t "landingExplain.chapter5.new-members"
 
       hr null
 
