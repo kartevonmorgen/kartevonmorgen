@@ -32,6 +32,24 @@
 		"new":"new entry",
 		"back":"back"
 	},
+	"subscribeToBbox" : {
+		"cancel": "cancel",
+		"edit": "edit",
+		"unsubscribe": "unsubscribe",
+		"back": "back",
+		"subscribe": "subscribe"
+	},
+	"search-results" : {
+		"cities" : "cities",
+		"results-out-of-bbox" : "More results outside the visible map area:"
+	},
+	"loading-entries" : {
+		"cancel" : "back"
+	},
+	"io-error" : {
+		"message" : " Can't reach the server. Please check your internet connection or try again later.",
+		"close" : "close"
+	},
 	"landingExplain" : {
 		"chapter1" : {
 			"heading" : "The world is full of explorers, and full of things to be explored.",

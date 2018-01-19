@@ -214,7 +214,7 @@ Main = React.createClass
                           dispatch Actions.showMap()
                         ),
                           i className: "fa fa-chevron-left"
-                          "abbrechen"
+                          t "subscribeToBbox.back"
                       li
                         key: "save"
                         className:"pure-u-1-2",
@@ -222,7 +222,7 @@ Main = React.createClass
                           dispatch Actions.subscribeToBbox(map.bbox, true)
                         ),
                           i className: "fa fa-envelope"
-                          "ändern"
+                          t "edit"
                       li
                         key: "delete"
                         className:"pure-u-1-1",
@@ -230,7 +230,7 @@ Main = React.createClass
                           dispatch Actions.unsubscribeFromBboxes(user.id)
                         ),
                           i className: "fa fa-trash"
-                          "Abonnement abbestellen"
+                          t "unsubscribe"
                     ]
                   else
                     [
@@ -242,7 +242,7 @@ Main = React.createClass
                           dispatch Actions.setCenterInUrl map.center
                         ),
                           i className: "fa fa-chevron-left"
-                          "zurück"
+                          t "back"
                       li
                         key: "save"
                         className:"pure-u-1-2",
@@ -250,7 +250,7 @@ Main = React.createClass
                           dispatch Actions.subscribeToBbox(map.bbox, false)
                         ),
                           i className: "fa fa-envelope"
-                          "abonnieren"
+                          t "subscribe"
                     ]
 
           div className: "content-wrapper",
@@ -272,7 +272,7 @@ Main = React.createClass
 
                   if cities.length > 0
                     div null,
-                      div className: 'group-header', "Städte:"
+                      div className: 'group-header', t "search-results.cities"
                       React.createElement CityList,
                         cities  : cities
                         onClick : (city) ->
@@ -283,11 +283,7 @@ Main = React.createClass
 
                   if invisibleEntries and invisibleEntries.length
                     div null,
-                      div className: 'group-header',
-                        """
-                        Weitere Ergebnisse außerhalb
-                        des sichtbaren Bereichs der Karte:
-                        """
+                      div className: 'group-header', t "search-results.results-out-of-bbox"
                       React.createElement ResultList,
                         entries     : invisibleEntries
                         ratings     : ratings
@@ -349,17 +345,15 @@ Main = React.createClass
                   React.createElement Message,
                     iconClass: "fa fa-spinner fa-pulse"
                     message: " lade Daten vom Server ..."
-                    buttonLabel: "abbrechen"
+                    buttonLabel: t "loading-entries.cancel"
                     onCancel: ->
                       dispatch Actions.cancelWait()
               when V.IO_ERROR
                 div className: "content",
                   React.createElement Message,
                     iconClass: "fa fa-exclamation-triangle"
-                    message: " Server nicht erreichbar. " +
-                      "Bitte prüfe Deine Internetverbindung " +
-                      "oder versuche es später nochmal. "
-                    buttonLabel: "schließen"
+                    message: t "io-error.message"
+                    buttonLabel: t "io-error.close"
                     onCancel: ->
                       dispatch Actions.closeIoErrorMessage()
               when V.SUBSCRIBE_TO_BBOX

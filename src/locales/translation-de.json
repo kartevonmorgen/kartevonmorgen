@@ -33,6 +33,24 @@
 		"new":"Neuer Eintrag",
 		"back":"zurück"
 	},
+	"search-results" : {
+		"cities" : "Städte",
+		"results-out-of-bbox" : "Weitere Ergebnisse außerhalb des sichtbaren Bereichs der Karte:"
+	},
+	"loading-entries" : {
+		"cancel" : "abbrechen"
+	},
+	"io-error" : {
+		"message" : " Server nicht erreichbar. Bitte prüfe Deine Internetverbindung oder versuche es später nochmal. ",
+		"close" : "schließen"
+	},
+	"subscribeToBbox" : {
+		"cancel": "abbrechen",
+		"edit": "ändern",
+		"unsubscribe": "Abonnement abbestellen",
+		"back": "zurück",
+		"subscribe": "abonnieren"
+	},
 	"landingExplain" : {
 		"chapter1" : {
 			"heading" : "Die Welt steckt voller Entdecker. Und voller Orte, die darauf warten entdeckt zu werden.",
