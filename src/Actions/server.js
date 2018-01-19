@@ -101,11 +101,13 @@ const Actions = {
           const duration = Date.now() - lastTriggered;
           if (duration > appConst.SEARCH_DELAY) {
             searchFn();
+          } else {
+            setTimeout(triggerSearch, appConst.SEARCH_DELAY);
           }
         }
       };
 
-      setTimeout(triggerSearch, appConst.SEARCH_DELAY);
+      setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
 
     },
 
