@@ -26,18 +26,22 @@ const Actions = {
 
   search: () =>
     (dispatch, getState) => {
+
       dispatch({
         type: T.SET_SEARCH_TIME,
         payload: Date.now()
       });
-      setTimeout(() => {
-        if(getState().timedActions.searchLastTriggered && (Date.now() - getState().timedActions.searchLastTriggered > appConst.SEARCH_DELAY)){
+
+      const searchFn = () => {
+          dispatch({
+            type: T.SET_SEARCH_TIME,
+            payload: null
+          });
           console.log("SEARCH\n");
-          const s = getState().search;
-          const m = getState().map;
-          var cats = s.categories;
-          const sw = m.bbox._southWest;
-          const ne = m.bbox._northEast;
+          const { search, map } = getState();
+          var cats = search.categories;
+          const sw = map.bbox._southWest;
+          const ne = map.bbox._northEast;
           const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
           // show no-category entries (e.g. from OSM) when standard categories are shown:
@@ -45,18 +49,25 @@ const Actions = {
             cats = [];
           }
 
-          if (s.text == null || !s.text.trim().endsWith("#")) {
-            WebAPI.search(s.text, cats, bbox, (err, res) => {
+          if (search.text == null || !search.text.trim().endsWith("#")) {
 
+            WebAPI.search(search.text, cats, bbox, (err, res) => {
               dispatch({
                 type: T.SEARCH_RESULT,
                 payload: err || res,
                 error: err != null,
-                noList: s.text == null
+                noList: search.text == null
               });
 
-              const entries =
-                Array.isArray(res != null ? res.visible : void 0) ? Array.isArray(res.invisible) ? res.visible.concat(res.invisible) : res.visible : res != null ? res.invisible : void 0;
+              const entries = Array.isArray(res != null ? res.visible : void 0)
+
+                ? Array.isArray(res.invisible)
+                  ? res.visible.concat(res.invisible)
+                  : res.visible
+                : res != null
+                  ? res.invisible
+                  : void 0;
+
               const ids = entries.map(e => e.id);
 
               if ((Array.isArray(ids)) && ids.length > 0) {
@@ -68,8 +79,8 @@ const Actions = {
               }
             });
 
-            if (s.text != null) {
-              const address = s.text.replace(/#/g, "");
+            if (search.text != null) {
+              const address = search.text.replace(/#/g, "");
               WebAPI.searchAddressTilehosting(address, (err, res) => {
                 dispatch({
                   type: T.SEARCH_ADDRESS_RESULT,
@@ -79,8 +90,25 @@ const Actions = {
               });
             }
           }
+      };
+
+      const triggerSearch = () => {
+
+        const { timedActions } = getState();
+        const lastTriggered = timedActions.searchLastTriggered;
+
+        if (lastTriggered != null) {
+          const duration = Date.now() - lastTriggered;
+          if (duration > appConst.SEARCH_DELAY) {
+            searchFn();
+          } else {
+            setTimeout(triggerSearch, appConst.SEARCH_DELAY);
+          }
         }
-      }, appConst.SEARCH_DELAY);
+      };
+
+      setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
+
     },
 
   searchCity: () =>
