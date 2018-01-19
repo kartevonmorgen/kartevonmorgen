@@ -33,6 +33,10 @@ const Actions = {
       });
 
       const searchFn = () => {
+          dispatch({
+            type: T.SET_SEARCH_TIME,
+            payload: null
+          });
           console.log("SEARCH\n");
           const { search, map } = getState();
           var cats = search.categories;
