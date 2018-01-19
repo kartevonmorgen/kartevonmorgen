@@ -272,8 +272,28 @@ button.pure-button i
             max-height 57px
             width 100%
 
+
         .menu-wrapper
           text-align right
+
+          .language-wrapper
+            margin-right 1em
+            font-size 0.8em
+            color #777
+
+            .language-link
+              margin 3pt
+              text-decoration none
+
+              &.selected
+                color #777
+                pointer-events none
+
+              &.unselected
+                color #555
+
+                &:hover
+                  color #000
 
         .menu-wrapper-inner
           bottom 0

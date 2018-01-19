@@ -4,10 +4,30 @@ import en   from './locales/translation-en.json';
 
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+const lngDetectorOptions = {
+  // order and from where user language should be detected
+  order: ['navigator', 'querystring', 'cookie', 'localStorage', 'htmlTag'],
+
+  // keys or params to lookup language from
+  lookupQuerystring: 'lng',
+  lookupCookie: 'i18next',
+  lookupLocalStorage: 'i18nextLng',
+
+  // cache user language on
+  caches: ['localStorage', 'cookie'],
+  excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
+
+  // optional expire and domain for set cookie
+  cookieMinutes: 10,
+  cookieDomain: 'myDomain',
+
+  // optional htmlTag with lang attribute, the default is:
+  htmlTag: document.documentElement
+};
+
 i18n
   .use(LanguageDetector)
   .init({
-    lng: 'de',
     resources: {
       de: { translation: de },
       en: { translation: en }
@@ -17,7 +37,7 @@ i18n
     },
     ns: ['translation'],
     defaultNs: 'translation',
-    fallbackLng: 'de',
+    detection: lngDetectorOptions
   });
 
 export default i18n;

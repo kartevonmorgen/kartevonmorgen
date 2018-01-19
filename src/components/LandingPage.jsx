@@ -10,6 +10,8 @@ import Login                from "./Login";
 import URLs                 from "../constants/URLs";
 import V                    from "../constants/PanelView";
 import { pure }             from "recompose";
+import { translate }        from "react-i18next";
+import i18n                 from "../i18n";
 
 class LandingPage extends Component {
 
@@ -220,6 +222,13 @@ class LandingPage extends Component {
               </div>
             </div>
             <div className="menu-wrapper pure-u-1 pure-u-md-2-3">
+              <div className = "language-wrapper">
+                <a onClick={() => {i18n.changeLanguage('de');}} href="#"
+                  className={"language-link" + ((i18n.language == "de") ? " selected" : " unselected")}>de</a>
+                {" "}
+                <a onClick={() => {i18n.changeLanguage('en');}} href="#"
+                  className={"language-link" + ((i18n.language == "en") ? " selected" : " unselected")}>en</a>
+              </div>
               <div className="menu pure-menu pure-menu-horizontal">
                 <ul className="pure-g">
                   <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
