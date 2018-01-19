@@ -191,80 +191,31 @@ const Actions = {
     (dispatch, getState) => {
 
       dispatch({
-        type: T.SET_MOVEEND_TIME,
+        type: T.SET_SEARCH_TIME,
         payload: Date.now()
       });
 
-      const fn = () => {
-
-        dispatch({
-          type: T.SET_MOVEEND_TIME,
-          payload: null
-        });
-
-        if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
-          dispatch(Actions.setCenter({
-            lat: coordinates.center.lat,
-            lng: coordinates.center.lng
-          }));
-        }
-        dispatch(Actions.setBbox(coordinates.bbox));
-        dispatch(serverActions.Actions.search());
-      };
-
-      const trigger = () => {
-
-        const { timedActions } = getState();
-        const lastTriggered = timedActions.moveendLastTriggered;
-
-        if (lastTriggered != null) {
-          const duration = Date.now() - lastTriggered;
-
-          if(duration > appConst.MOVEEND_DELAY) {
-            fn();
-          }
-        }
-
-      };
-
-      setTimeout(trigger, appConst.MOVEEND_DELAY);
+      if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
+        dispatch(Actions.setCenter({
+          lat: coordinates.center.lat,
+          lng: coordinates.center.lng
+        }));
+      }
+      dispatch(Actions.setBbox(coordinates.bbox));
+      dispatch(serverActions.Actions.search());
 
     },
 
   onZoomend: (coordinates, zoom) =>
     (dispatch, getState) => {
       dispatch({
-        type: T.SET_ZOOMEND_TIME,
+        type: T.SET_SEARCH_TIME,
         payload: Date.now()
       });
 
-      const fn = () => {
-        dispatch({
-          type: T.SET_ZOOMEND_TIME,
-          payload: null
-        });
-
-        if(coordinates.zoom != zoom){
-          dispatch(Actions.setZoom(coordinates.zoom));
-        }
-      };
-
-      const trigger = () => {
-
-        const { timedActions } = getState();
-        const { zoomendLastTriggered } = timedActions;
-
-        if (zoomendLastTriggered != null) {
-
-          const duration = Date.now() - zoomendLastTriggered;
-
-          if(duration > appConst.ZOOMEND_DELAY) {
-            fn();
-          }
-        }
-      };
-
-      setTimeout(trigger, appConst.ZOOMEND_DELAY);
+      if(coordinates.zoom != zoom){
+        dispatch(Actions.setZoom(coordinates.zoom));
+      }
     }
 };
 
