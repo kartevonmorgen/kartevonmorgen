@@ -66,11 +66,11 @@ To build a Nix derivation, run
 
 Download the OpenFairDB Server
 
-    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.3.0.tar.gz
+    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.3.1.tar.gz
 
 unpack it
 
-    tar xzf openfairdb-x86_64-linux-v0.3.0.tar.gz
+    tar xzf openfairdb-x86_64-linux-v0.3.1.tar.gz
 
 and run it
 
