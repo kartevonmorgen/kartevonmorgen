@@ -26,10 +26,4 @@ c.CSS_CLASS_SIZE[c.IDS.COMPANY] = "pure-u-9-24";
 
 c.NAMES = {};
 
-c.NAMES[c.IDS.INITIATIVE] = "Initiative";
-
-c.NAMES[c.IDS.EVENT] = "Event";
-
-c.NAMES[c.IDS.COMPANY] = "Unternehmen";
-
 module.exports = c;

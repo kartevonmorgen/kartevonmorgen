@@ -1,4 +1,5 @@
 require('./SearchBar.styl');
+import { translate } from "react-i18next";
 
 import React from "react";
 import { pure } from "recompose";
@@ -7,7 +8,6 @@ const T = React.PropTypes
 
 import {
   MAIN_IDS,
-  NAMES,
   CSS_CLASSES,
   CSS_CLASS_SIZE
 } from "../constants/Categories";
@@ -15,7 +15,7 @@ import {
 class RawCategoryButtons extends React.Component {
 
   render() {
-    const { disabled, active, onToggle } = this.props;
+    const { disabled, active, onToggle, t } = this.props;
     const buttons = MAIN_IDS.map((c) => {
       const act = [].indexOf.call(active || [], c) >= 0;
       return (
@@ -24,7 +24,7 @@ class RawCategoryButtons extends React.Component {
           disabled  = { disabled }
           onClick   = { () => { onToggle(c) }}
           className = { CSS_CLASSES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")} >
-          { NAMES[c] + " " }
+          { t("category." + CSS_CLASSES[c]) + " " }
           <i className = {'fa fa-toggle' + (act ? "-on" : "-off")}><i /></i>
         </button>);
     });
@@ -63,7 +63,7 @@ class SearchBar extends React.Component {
 
   render() {
 
-    const { categories, disabled, toggleCat, searchText } = this.props;
+    const { categories, disabled, toggleCat, searchText, t } = this.props;
 
     return (
       <div className = "SearchBar pure-g">
@@ -72,6 +72,7 @@ class SearchBar extends React.Component {
             active    = { categories }
             disabled  = { disabled   }
             onToggle  = { toggleCat  }
+            t         = { t }
            />
         </div>
 
@@ -85,7 +86,7 @@ class SearchBar extends React.Component {
             onKeyUp     = { this.onKeyUp }
             value       = { searchText || '' }
             className   = "pure-u-1"
-            placeholder = "Wonach suchst du? (# für Tags)" />
+            placeholder = { t("searchbar.placeholder") } />
         </div>
       </div>)
   }
@@ -98,7 +99,8 @@ SearchBar.propTypes = {
   toggleCat   : T.func,
   onChange    : T.func,
   onEnter     : T.func,
-  onEscape    : T.func
+  onEscape    : T.func,
+  t           : T.func
 }
 
-module.exports = pure(SearchBar);
+module.exports = translate('translation')(pure(SearchBar))

@@ -206,7 +206,10 @@
 	},
 	"category":{
 		"initiative":"Project",
-		"Event":"Event",
+		"event":"Event",
 		"company":"Company"
+	},
+	"searchbar":{
+		"placeholder":"What are you looking for? (# for tags)"
 	}
 }

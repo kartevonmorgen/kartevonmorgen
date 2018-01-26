@@ -210,7 +210,10 @@
 	},
 	"category":{
 		"initiative":"Initiative",
-		"Event":"Event",
+		"event":"Event",
 		"company":"Unternehmen"
+	},
+	"searchbar":{
+		"placeholder":"Wonach suchst du? (# für Tags)"
 	}
 }
