@@ -1,5 +1,5 @@
 {
-	"addEntry":"Add a new entry",
+	"addEntry":"add a new entry",
 	"entryForm":{
 		"choseCategory":"- Select category -",
 		"location":"Location",
@@ -21,6 +21,10 @@
 		"edit":"edit entry",
 		"new":"new entry",
 		"back":"back"
+	},
+	"rating-form":{
+		"cancel":"cancel",
+		"save-rating":"save rating"
 	},
 	"subscribeToBbox" : {
 		"cancel": "cancel",

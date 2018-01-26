@@ -204,6 +204,26 @@ Main = React.createClass
                         i className: "fa fa-floppy-o"
                         t "entryForm.save"
                   ]
+                when V.NEW_RATING
+                  [
+                    li
+                      key: "cancel"
+                      className:"pure-u-1-2",
+                      onClick: (->
+                        dispatch initialize RATING.id, {}, RATING.fields
+                        dispatch Actions.cancelRating()
+                      ),
+                        i className: "fa fa-ban"
+                        t "rating-form.cancel"
+                    li
+                      key: "save"
+                      className:"pure-u-1-2",
+                      onClick: (=>
+                        @refs.rating.submit()
+                      ),
+                        i className: "fa fa-floppy-o"
+                        t "rating-form.save-rating"
+                  ]
                 when V.SUBSCRIBE_TO_BBOX
                   if user.subscriptionExists
                     [
