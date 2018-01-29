@@ -193,7 +193,6 @@
 		},
 		"user" : {
 			"register-success" : {
-				"TODO" : "TRANSLATE",
 				"text1" : "Du hast dich erfolgreich registriert. Bitte bestätige deine Email-Adresse, dann kannst ",
 				"text2" : "du dich einloggen. Dazu ging eben eine Email an ",
 				"text3" : " raus."
@@ -296,21 +295,37 @@
 		}
 	},
 	"info" : {
-		"heading" : "Das Projekt",
-		"text" : {
-			"1" : "Unsere interaktive Karte zeigt dir Orte in deiner Umgebung, an denen man sich schon heute für eine Welt von morgen einsetzt.",
-			"2" : "Du hast eine Initiative, für die du Mitstreiter suchst? Du kennst ein Unternehmen, das nachhaltig wirtschaftet?",
-			"3" : "Auf unserer Website kannst du andere darauf aufmerksam machen – und dich so für eine Sache einsetzen, die dir persönlich am Herzen liegt.",
-			"4" : "Wir sind auf der Suche nach vielfältigen Projekten, Initiativen und Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen Umbrüchen alternativ entgegen wirken. Ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine erhöhte Aufmerksamkeit ermöglichen.",
-			"5" : "Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen sich und andere auf der Karte eintragen und so ihre Mitmenschen erreichen. Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten sichern vor Ort die Qualität der Karteneinträge und haben neben einer redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und Unternehmen zu stärken.",
-			"6" : "von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Guten tun, wo es Gutes gibt.",
-			"paragraph1" : {
-				"heading" : "Wir lieben Open Source!",
-				"text" : "Wir wollen mit gutem Beispiel vorangehen und entwickeln daher die Software transparent und offen. Den Quellcode des Gemeinschaftsprojekts findest du unter:"
-			},
-			"clientVersion" : "Version dieses Clients:",
-			"serverVersion" : "Version des Servers:"
-		}
+		"heading1": "Das Projekt",
+		"facebook":"Neuigkeiten und aktuelles auf",
+		"betterplace":"Fortschrittsberichte auf",
+		"text1" : {
+			"1":"Unsere interaktive Karte zeigt dir Orte in deiner Umgebung, an denen man sich schon heute für eine Welt von morgen einsetzt.",
+			"2":"Du hast eine Initiative, für die du Mitstreiter suchst?",
+			"3":"Du kennst ein Unternehmen, das nachhaltig wirtschaftet?",
+			"4":"Auf unserer Website kannst du andere darauf aufmerksam machen – und dich so für einen von Menschen gestalteten Ort einsetzen, der dir persönlich am Herzen liegt.",
+			"5":"Wir sind auf der Suche nach vielfältigen Ideen, Initiativen und Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen Umbrüchen alternativ entgegen wirken. Diese möchten wir vernetzten und ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine erhöhte Aufmerksamkeit ermöglichen.",
+			"6":"Nach dem Wiki-Prinzip können alle Nutzer, Initiativen und Unternehmen sich und andere auf der Karte eintragen und so ihre Mitmenschen erreichen. Doch von morgen ist mehr als eine Onlineplattform: Regionalpiloten sichern vor Ort die Qualität der Karteneinträge und haben neben einer redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und Aktionen den regionalen Austausch zwischen Bürgern, Initiativen und Unternehmen zu stärken.",
+			"7":"von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Guten tun, wo es Gutes gibt."
+		},
+		"heading2":"Hintergründe und Visionen",
+		"text2":{
+			"goal":"Was will die",
+			"goalLink":"Karte von morgen",
+			"ratings":"Was sind die",
+			"ratingsLink":"Positivfaktoren",
+			"regionalpilot":"Was sind",
+			"regionalpilotLink":"Regionalpiloten bzw. Themenpiloten",
+			"embedMap":"Wie kann ich die Karte",
+			"embedMapLink":"auf meiner Homepage einbetten?",
+			"join":"Wie kann ich",
+			"joinLink":"mitmachen oder die Karte von morgen unterstützen?"
+		},
+		"heading3":"Wir lieben Open Source!",
+		"text3":"Wir wollen mit gutem Beispiel vorangehen und entwickeln daher die Software transparent und offen. Den Quellcode des Gemeinschaftsprojekts findest du unter:",
+		"heading4":"Bildungsarbeit, Aktionen und Kultur von morgen",
+		"text4":"Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen³ e.V. und der \"Ideenwerkstatt Bildungsagenten\", bieten wir Workshops zu verschiedenen Themen an, um die sozial-ökologische Transformation zu unterstützen.",
+		"clientVersion":"Version dieses Clients:",
+		"serverVersion":"Version des Servers:"
 	},
 	"category":{
 		"initiative":"Initiative",
@@ -338,6 +353,17 @@
 		"heading":"Kontakt",
 		"text1":"Das Team von morgen, vertreten durch",
 		"showOnKVM":"Ort auf der Karte von morgen"
+	},
+	"imprint":{
+		"contact":"Kontakt",
+		"imprint":"Impressum",
+		"heading1":"Rechtlicher Träger im Sinne der Gemeinnützigkeit",
+		"representedByChair":"Vertreten durch den Vorstand",
+		"heading2":"Konzept",
+		"heading3":"Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+		"heading4":"Design",
+		"heading5":"Illustrationen",
+		"heading6":"Umsetzung & Programmierung"
 	},
 	"businesscardWidget":{
 		"showOnMap":"Auf der Karte anzeigen..."
