@@ -3,10 +3,11 @@ import Actions              from "../Actions"
 import validation           from "../util/validation"
 import normalize            from "../util/normalize";
 import { reduxForm, Field } from "redux-form"
-import { IDS              } from "../constants/Categories"
+import { IDS, CSS_CLASSES } from "../constants/Categories"
 import URLs                 from "../constants/URLs"
 import LICENSES             from "../constants/Licenses"
 import { EDIT             } from "../constants/Form"
+import { translate        } from "react-i18next";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -18,30 +19,33 @@ class Form extends Component {
   render() {
 
     const { isEdit, license } = this.props;
+    var t = (key) => {
+      return this.props.t("entryForm." + key);
+    };
 
     return (
     <form
       className = "add-entry-form"
       action    = 'javascript:void();' >
 
-      <h3>{isEdit ? "Eintrag bearbeiten" : "Neuer Eintrag"}</h3>
+      <h3>{isEdit ? t("edit") :  t("new")}</h3>
       { this.props.error &&
         <div className= "err">
-          Der Eintrag konnte nicht gespeichert werden: {this.props.error.message}
+          { t("savingError") + ":" + this.props.error.message}
         </div>
       }
       { (!this.props.error) && this.props.submitFailed &&
-        <div className="err">Bitte überprüfen Sie ihre Eingaben!
+        <div className="err"> { t("valueError") }
           <Field name="license" component={errorMessage} />
         </div>
       }
       <div className= "pure-form">
         <fieldset>
           <Field className="pure-input-1" name="category" component="select">
-            <option value={-1}>- Eintragstyp auswählen -</option>
-            <option value={IDS.INITIATIVE}>Initiative</option>
+            <option value={-1}>- {t("chooseCategory")} -</option>
+            <option value={IDS.INITIATIVE}>{this.props.t("category." + CSS_CLASSES[IDS.INITIATIVE])}</option>
             {/*<option value={IDS.EVENT}>Event</option>*/}
-            <option value={IDS.COMPANY}>Unternehmen</option>
+            <option value={IDS.COMPANY}>{this.props.t("category." + CSS_CLASSES[IDS.COMPANY])}</option>
           </Field>
           <Field name="category" component={errorMessage} />
 
@@ -51,13 +55,13 @@ class Form extends Component {
             className="pure-input-1"
             type="text"
             component="input"
-            placeholder="Titel" />
+            placeholder={t("title")} />
 
           <Field
             name="title"
             component={errorMessage} />
 
-          <Field name="description" className="pure-input-1" component="textarea" placeholder="Beschreibung"  />
+          <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
           <Field name="description" component={errorMessage} />
 
         </fieldset>
@@ -68,7 +72,7 @@ class Form extends Component {
             required={true}
             className="pure-input-1"
             component="input"
-            placeholder="Stichworte (Komma getrennt)"
+            placeholder={t("tags")}
             normalize={normalize.tags} />
           <Field
             name="tags"
@@ -81,18 +85,18 @@ class Form extends Component {
           </legend>
           <div className= "pure-g">
             <div className= "pure-u-15-24">
-              <Field name="city" className="pure-input-1" component="input" placeholder="Stadt" />
+              <Field name="city" className="pure-input-1" component="input" placeholder={t("city")} />
               <Field name="city" component={errorMessage} />
             </div>
             <div className= "pure-u-9-24">
-              <Field name="zip" className="pure-input-1" component="input" placeholder="PLZ(optional)" />
+              <Field name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
               <Field name="zip" component={errorMessage} />
             </div>
           </div>
-          <Field name="street" className="pure-input-1" component="input" placeholder="Straße & Hausnummer"/>
+          <Field name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
           <Field name="street" component={errorMessage} />
           </fieldset>
-          <span className="desc">oder auf Karte klicken...</span>
+          <span className="desc">{t("clickOnMap")}</span>
           <fieldset>
           <div className= "pure-g">
             <label className= "pure-u-2-24">
@@ -113,7 +117,7 @@ class Form extends Component {
         </fieldset>
 
         <fieldset>
-          <legend>Kontakt (optional)</legend>
+          <legend>{t("contact")}</legend>
           <div className= "pure-g">
             <label className= "pure-u-2-24">
               <i className= "fa fa-globe" />
@@ -123,7 +127,7 @@ class Form extends Component {
                 name="homepage"
                 className="pure-input-1"
                 component="input"
-                placeholder="Homepage" />
+                placeholder={t("homepage")} />
               <Field name="homepage" component={errorMessage} />
             </div>
           </div>
@@ -133,7 +137,7 @@ class Form extends Component {
               <i className= "fa fa-envelope" />
             </label>
             <div className= "pure-u-22-24">
-              <Field name="email" type="email" className="pure-input-1" component="input" placeholder="eMail" />
+              <Field name="email" type="email" className="pure-input-1" component="input" placeholder={t("email")} />
               <Field name="email" component={errorMessage} />
             </div>
           </div>
@@ -143,7 +147,7 @@ class Form extends Component {
               <i className= "fa fa-phone" />
             </label>
             <div className= "pure-u-22-24">
-              <Field name="telephone" className="pure-input-1" component="input" placeholder="Telefon" />
+              <Field name="telephone" className="pure-input-1" component="input" placeholder={t("phone")} />
               <Field name="telephone" component={errorMessage} />
             </div>
           </div>
@@ -152,7 +156,7 @@ class Form extends Component {
 
         <fieldset>
           <legend>
-            <span className="text">Lizenz</span>
+            <span className="text">{t("license")}</span>
           </legend>
           <div className= "pure-g license">
             <label className= "pure-u-2-24">
@@ -163,15 +167,15 @@ class Form extends Component {
             </div>
             <div className= "pure-u-20-24">
               <Field name="license" component={errorMessage} />
-              Ich habe die {" "}
+              {t("iHaveRead") + " "}
               { license == LICENSES.ODBL
                 ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
-                    Bestimmungen der Open Database Lizenz
+                    {t("openDatabaseLicense")}
                   </a>
                 : <a target="_blank" href={URLs.CC_LICENSE.link}>
-                    Bestimmungen der Creative Commons Lizenz CC0
+                    {t("creativeCommonsLicense")}
                   </a>
-              } {" "} gelesen und akzeptiere sie
+              } {" " + t("licenseAccepted")}
             </div>
           </div>
         </fieldset>
@@ -200,4 +204,4 @@ module.exports = reduxForm({
       ));
       return new Promise((resolve, reject) => resolve());
   }
-})(Form)
+})(translate('translation')(Form))

@@ -1,30 +1,131 @@
 {
 	"addEntry":"add a new entry",
 	"entryForm":{
-		"choseCategory":"- Select category -",
+		"chooseCategory":"Select category",
 		"location":"Location",
 		"clickMap":"(click on the map)",
 		"contact":"Contact",
 		"iHaveRead":"I have read and accept the Terms of the ",
-		"creativeCommonsAccepted":"Creative-Commons Lizenz CC0",
+		"creativeCommonsLicense":"Creative-Commons License CC0",
+		"openDatabaseLicense":"OpenDatabase License",
+		"licenseAccepted":"",
 		"license":"License",
 		"title":"Title",
 		"description":"Description",
+		"tags":"Tags (separate by comma)",
 		"homepage":"Homepage",
 		"phone":"Phone",
 		"street":"Address",
 		"city":"City",
 		"zip":"ZIP Code",
-		"email":"email",
+		"email":"Email",
+		"clickOnMap":"or click on the map...",
+		"contact":"Contact (optional)",
 		"cancel":"cancel",
 		"save":"save",
 		"edit":"edit entry",
 		"new":"new entry",
-		"back":"back"
+		"back":"back",
+		"savingError":"Error while trying to save the entry...",
+		"valueError":"Something is missing, please check below.",
+		"requiredField":"required field",
+		"titleTooLong":"Title too long",
+		"titleTooShort":"Title too short",
+		"maxNumCharactersTitle":"out of max. 50 characters",
+		"minNumCharactersTitle":"characters, minimum: 3",
+		"invalidValues":"Invalid values",
+		"descriptionTooLong":"Description too long",
+		"descriptionTooShort":"Description too short",
+		"maxNumCharactersDescription":"out of max. 250 characters",
+		"minNumCharactersDescription":"characters, minimum: 10",
+		"invalidLatitude":"Invalid Latitude",
+		"invalidLongitude":"Invalid Longitude",
+		"invalidCategory":"Invalid Category",
+		"invalidTags":"Invalid tags",
+		"minNumCharactersTags":"please provide tags with a minimum of 3 characters",
+		"acceptLicense":"Please accept the license",
+		"invalidLicenseAgreement":"Invalid License Agreement",
+		"invalidURL":"Invalid URL",
+		"httpMissing":"\"http://\" or \"https://\" missing)"
 	},
-	"rating-form":{
+	"loginForm":{
+		"invalidValues":"Invalid values",
+		"invalidUsername":"Invalid username",
+		"invalidPassword":"Invalids password",
+		"minNumCharactersUsername":"characters, minimum: 3",
+		"minNumCharacters":"characters, minimum: 3"
+	},
+	"registerForm":{
+		"invalidValues":"Invalid values",
+		"invalidUsername":"Invalidr username",
+		"invalidPassword":"Invalids password",
+		"minNumCharactersUsername":"characters, minimum: 3",
+		"minNumCharacters":"characters, minimum: 3",
+		"invalidEmail":"Invalid email-address",
+		"repeatPassword":"Please repeat the password here",
+		"passwordsDontAgree":"You entered two different passwords"
+	},
+	"ratings":{
+		"TODO":"TRANSLATE (die Namen der Positivfaktoren etc.)",
+		"rating":"rating",
+		"ratings":"ratings",
+		"heading":"Ratings",
+		"noRatingsYet":"There are no ratings for this entry yet.",
+		"giveFirstRating":"rate this entry",
+		"newRating":"rate this entry",
+		"contextName":{
+			"diversity":"Natürlichkeit",
+		    "renewable":"Erneuerbarkeit",
+		    "fairness":"Fairness",
+		    "humanity":"Menschlichkeit",
+		    "transparency":"Transparenz",
+		    "solidarity":"Solidarität"
+		},
+		"contextExplanation":{
+			"diversity": "Ökologische Vielfalt, Bio, wenige Zusatzstoffe etc.",
+		    "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy etc.",
+		    "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
+		    "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
+		    "transparency": "Produktions-, Finanzierungs- und Handelskette öffentlich nachvollziehbar? ",
+		    "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel etc."
+		},
+		"valueName":{
+			"minusOne":"von gestern",
+			"zero":"von heute",
+			"one":"von morgen",
+			"two":"visionär"
+		},
+		"valueNameExplanation":{
+			"minusOne":"einige Kritikpunkte",
+			"zero":"nicht besonders nachhaltig",
+			"one":"zukunftsweisend",
+			"two":"besser geht's nicht!"
+		}
+	},
+	"ratingForm":{
+		"newRatingFor":"New rating for",
+		"introText":"Ratings are making sustainable entries more visible. Well rated entries are higher ranked in the Karte von morgen search results.",
+		"moreInfoLink":"more info...",
+		"savingError":"Your rating couldn't be saved",
+		"valuesError":"Something is missing, please check below.",
+		"chooseContext":"Choose a sustainability aspect to rate",
+		"title":"Title",
+		"comment":"Comment/Explanation",
+		"reference":"Reference (e.g. a link or \"I work there.\"...)",
+		"ratingHeading":"Rating",
 		"cancel":"cancel",
-		"save-rating":"save rating"
+		"save-rating":"save rating",
+		"requiredField":"required field",
+		"titleTooLong":"Title too long",
+		"titleTooShort":"Title too short",
+		"maxNumCharactersTitle":"out of max. 40 characters",
+		"minNumCharactersTitle":"characters, minimum: 3",
+		"invalidRatingContext":"Invalid Rating Context",
+		"invalidRating":"Invalid Rating",
+		"commentTooLong":"Comment too long",
+		"commentTooShort":"Comment too short",
+		"maxNumCharactersComment":"out of max. 500 characters",
+		"minNumCharactersComment":"characters, min: 10"
 	},
 	"subscribeToBbox" : {
 		"cancel": "cancel",
@@ -215,5 +316,19 @@
 	},
 	"searchbar":{
 		"placeholder":"What are you looking for? (# for tags)"
+	},
+	"resultlist":{
+		"showMoreEntries":"show more entries...",
+		"entriesLoading":"loading entries...",
+		"noEntriesFound":"Couldn't find any entries"
+	},
+	"growler":{
+		"INFO FOR TRANSLATORS":"Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
+		"genericError":"Oups! An error occurred...",
+		"subscriptionChanged":"You changed your subscription.",
+		"subscriptionAdded":"You subscribed to a map view.",
+		"unsubscribingSuccessfull":"You unsubscribed from the map view",
+		"entrySaved":"Entry has been saved.",
+		"ratingSaved":"Rating has been saved."
 	}
 }

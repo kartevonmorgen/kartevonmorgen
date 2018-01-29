@@ -22,8 +22,6 @@ SubscribeToBbox   = require "./SubscribeToBbox"
 Ratings           = require "./Ratings"
 { EDIT, RATING }  = require "../constants/Form"
 URLs              = require "../constants/URLs"
-{ DIVERSITY, RENEWABLE, FAIRNESS, 
-HUMANITY, TRANSPARENCY, SOLIDARITY } = require "../constants/RatingContexts"
 { pure }          = require "recompose"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
@@ -214,7 +212,7 @@ Main = React.createClass
                         dispatch Actions.cancelRating()
                       ),
                         i className: "fa fa-ban"
-                        t "rating-form.cancel"
+                        t "ratingForm.cancel"
                     li
                       key: "save"
                       className:"pure-u-1-2",
@@ -222,7 +220,7 @@ Main = React.createClass
                         @refs.rating.submit()
                       ),
                         i className: "fa fa-floppy-o"
-                        t "rating-form.save-rating"
+                        t "ratingForm.save-rating"
                   ]
                 when V.SUBSCRIBE_TO_BBOX
                   if user.subscriptionExists

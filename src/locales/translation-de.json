@@ -2,30 +2,130 @@
 	"addEntry":"Eintrag hinzufügen",
 	"edit":"bearbeiten",
 	"entryForm":{
-		"choseCategory":"- Kategorie auswählen -",
+		"chooseCategory":"Kategorie auswählen",
 		"location":"Ort",
 		"clickMap":"(auf Karte klicken)",
 		"contact":"Kontakt",
 		"iHaveRead":"Ich habe die",
-		"creativeCommonsAccepted":"Bestimmungen der Creative-Commons Lizenz CC0 gelesen und akzeptiere sie",
+		"creativeCommonsLicense":"Bestimmungen der Creative-Commons Lizenz CC0",
+		"openDatabaseLicense":"Bestimmungen der OpenDatabase Lizenz",
+		"licenseAccepted":"gelesen und akzeptiere sie",
 		"license":"Lizenz",
 		"title":"Titel",
 		"description":"Beschreibung",
+		"tags":"Stichworte (Komma getrennt)",
 		"homepage":"Homepage",
 		"phone":"Telefon",
-		"street":"Straße",
+		"street":"Straße & Hausnummer",
 		"city":"Stadt",
 		"zip":"PLZ",
-		"email":"E-Mailadresse",
+		"email":"Email-Adresse",
+		"clickOnMap":"oder auf Karte klicken...",
+		"contact":"Kontakt (optional)",
 		"cancel":"abbrechen",
 		"save":"speichern",
 		"edit":"bearbeiten",
 		"new":"Neuer Eintrag",
-		"back":"zurück"
+		"back":"zurück",
+		"savingError":"Der Eintrag konnte nicht gespeichert werden",
+		"valueError":"Bitte überprüfen Sie ihre Eingaben.",
+		"requiredField":"Pflichtangabe",
+		"titleTooLong":"Zu langer Titel",
+		"titleTooShort":"Zu kurzer Titel",
+		"maxNumCharactersTitle":"statt max. 50 Zeichen",
+		"minNumCharactersTitle":"von mind. 3 Zeichen",
+		"invalidValues":"Ungültige Daten",
+		"descriptionTooLong":"Zu lange Beschreibung",
+		"descriptionTooShort":"Zu wenig Text",
+		"maxNumCharactersDescription":"statt max. 250 Zeichen",
+		"minNumCharactersDescription":"von mind. 10 Zeichen",
+		"invalidLatitude":"Ungültiger Breitengrad",
+		"invalidLongitude":"Ungültiger Längengrad",
+		"invalidCategory":"Ungültige Kategorie",
+		"invalidTags":"Ungültige Stichworte",
+		"minNumCharactersTags":"Mindestlänge von Stichworten: 3 Zeichen",
+		"acceptLicense":"Lizenzzustimmung ist nötig",
+		"invalidLicenseAgreement":"Ungültige Zustimmung",
+		"invalidURL":"Ungültige URL",
+		"httpMissing":"\"http://\" oder \"https://\" fehlt)"
 	},
-	"rating-form":{
+	"loginForm":{
+		"invalidValues":"Ungültige Daten",
+		"invalidUsername":"Ungültiger Benutzername",
+		"invalidPassword":"Ungültiges Passwort",
+		"minNumCharactersUsername":"von mind. 3 Zeichen",
+		"minNumCharacters":"von mind. 3 Zeichen"
+	},
+	"registerForm":{
+		"invalidValues":"Ungültige Daten",
+		"invalidUsername":"Ungültiger Benutzername",
+		"invalidPassword":"Ungültiges Passwort",
+		"minNumCharactersUsername":"von mind. 3 Zeichen",
+		"minNumCharacters":"von mind. 3 Zeichen",
+		"invalidEmail":"Ungültige Email-Adresse",
+		"repeatPassword":"Bitte gib das Passwort zum Überprüfen hier nochmal ein.",
+		"passwordsDontAgree":"Passwörter stimmen nicht überein"
+	},
+	"ratings":{
+		"rating":"Bewertung",
+		"ratings":"Bewertungen",
+		"heading":"Bewertungen",
+		"noRatingsYet":"Für diesen Eintrag wurden noch keine Bewertungen abgegeben.",
+		"giveFirstRating":"jetzt bewerten",
+		"newRating":"Bewertung abgeben",
+		"contextName":{
+			"diversity":"Natürlichkeit",
+		    "renewable":"Erneuerbarkeit",
+		    "fairness":"Fairness",
+		    "humanity":"Menschlichkeit",
+		    "transparency":"Transparenz",
+		    "solidarity":"Solidarität"
+		},
+		"contextExplanation":{
+			"diversity": "Ökologische Vielfalt, Bio, wenige Zusatzstoffe etc.",
+		    "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy etc.",
+		    "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
+		    "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
+		    "transparency": "Produktions-, Finanzierungs- und Handelskette öffentlich nachvollziehbar? ",
+		    "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel etc."
+		},
+		"valueName":{
+			"minusOne":"von gestern",
+			"zero":"von heute",
+			"one":"von morgen",
+			"two":"visionär"
+		},
+		"valueNameExplanation":{
+			"minusOne":"einige Kritikpunkte",
+			"zero":"nicht besonders nachhaltig",
+			"one":"zukunftsweisend",
+			"two":"besser geht's nicht!"
+		}
+	},
+	"ratingForm":{
+		"newRatingFor":"Neue Bewertung für",
+		"introText":"Positivfaktoren entscheiden darüber, wie sichtbar ein Eintrag auf der Karte von morgen ist. Je größer der Anteil positiver Aspekte einer Organisation ist, desto höher steigt der Pin in den Suchergebnissen.",
+		"moreInfoLink":"weitere Infos...",
+		"savingError":"Die Bewertung konnte nicht gespeichert werden",
+		"valuesError":"Bitte überprüfen Sie ihre Eingaben.",
+		"chooseContext":"Wähle einen Aspekt der Nachhaltigkeit für deine Bewertung",
+		"title":"Überschrift",
+		"comment":"Kommentar/Erklärung",
+		"reference":"Quelle (z.B. ein Link oder 'ich arbeite da'...)",
+		"ratingHeading":"Bewertung",
 		"cancel":"abbrechen",
-		"save-rating":"bewerten"
+		"save-rating":"bewerten",
+		"requiredField":"Pflichtangabe",
+		"titleTooLong":"Zu langer Titel",
+		"titleTooShort":"Zu kurzer Titel",
+		"maxNumCharactersTitle":"statt max. 40 Zeichen",
+		"minNumCharactersTitle":"von mind. 3 Zeichen",
+		"invalidRatingContext":"Ungültiger Bewertungskontext",
+		"invalidRating":"Ungültige Bewertung",
+		"commentTooLong":"Zu langer Kommentar",
+		"commentTooShort":"Zu wenig Text",
+		"maxNumCharactersComment":"statt max. 500 Zeichen",
+		"minNumCharactersComment":"von mind. 10 Zeichen"
 	},
 	"subscribeToBbox" : {
 		"cancel": "abbrechen",
@@ -219,5 +319,19 @@
 	},
 	"searchbar":{
 		"placeholder":"Wonach suchst du? (# für Tags)"
+	},
+	"resultlist":{
+		"showMoreEntries":"mehr Einträge anzeigen...",
+		"entriesLoading":"Einträge werden geladen...",
+		"noEntriesFound":"Es konnten keine Einträge gefunden werden"
+	},
+	"growler":{
+		"INFO FOR TRANSLATORS":"Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
+		"genericError":"Oups! Es ist ein Fehler aufgetreten...",
+		"subscriptionChanged":"Abonnement wurde geändert.",
+		"subscriptionAdded":"Kartenausschnitt wurde abonniert.",
+		"unsubscribingSuccessfull":"Abonnement wurde abbestellt",
+		"entrySaved":"Eintrag wurde gespeichert.",
+		"ratingSaved":"Bewertung wurde gespeichert."
 	}
 }

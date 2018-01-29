@@ -37,7 +37,8 @@ i18n
     },
     ns: ['translation'],
     defaultNs: 'translation',
-    detection: lngDetectorOptions
+    detection: lngDetectorOptions,
+    fallbackLng: 'de'
   });
 
 export default i18n;

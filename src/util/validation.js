@@ -1,83 +1,90 @@
+import i18n from "../i18n";
+
 const entryForm = (data) => {
   let errors, h, l, ref;
   errors = {};
+
+  const t = (key) => {
+    return i18n.t("entryForm." + key);
+  }
+
   if (data == null) {
-    errors._error = "Ungültige Daten";
+    errors._error = t("invalidValues");
     return errors;
   }
   if (data.title == null) {
-    errors.title = 'Pflichtangabe';
+    errors.title = t("requiredField");
   } else {
     if (!((l = data.title.length) <= 50)) {
       if (errors.title == null) {
-        errors.title = "Zu langer Titel: " + l + " statt max. 50 Zeichen";
+        errors.title = t("titleTooLong") + ": " + l + " " + t("maxNumCharactersTitle");
       }
     }
     if (!((l = data.title.length) >= 3)) {
       if (errors.title == null) {
-        errors.title = "Zu kurzer Titel: " + l + " von mind. 3 Zeichen";
+        errors.title = t("titleTooShort") + ": " + l + " " + t("minNumCharactersTitle");
       }
     }
   }
   if (data.description == null) {
-    errors.description = 'Pflichtangabe';
+    errors.description = t("requiredField");
   } else {
     if (!((l = data.description.length) <= 250)) {
       if (errors.description == null) {
-        errors.description = "Zu lange Beschreibung: " + l + " statt max. 250 Zeichen";
+        errors.description = t("descriptionTooLong") + ": " + l + " " + t("maxNumCharactersDescription");
       }
     }
     if (!((l = data.description.length) >= 10)) {
       if (errors.description == null) {
-        errors.description = "Zu wenig Text: " + l + " von mind. 10 Zeichen";
+        errors.description =  t("descriptionTooShort") + ": " + l + " " + t("maxNumCharactersDescription");
       }
     }
   }
   if (data.lat == null) {
-    errors.lat = 'Pflichtangabe';
+    errors.lat = t("requiredField");
   } else {
     if (!(data.lat * 1)) {
-      errors.lat = 'Ungültiger Breitengrad';
+      errors.lat = t("invalidLatitude");
     }
   }
   if (data.lng == null) {
-    errors.lng = 'Pflichtangabe';
+    errors.lng = t("requiredField");
   } else {
     if (!(data.lng * 1)) {
-      errors.lng = 'Ungültiger Längengrad';
+      errors.lng = t("invalidLongitude");
     }
   }
   if (data.category == null) {
-    errors.category = 'Pflichtangabe';
+    errors.category = t("requiredField");
   } else {
     if ((typeof data.category) !== "string") {
-      errors.category = 'Ungültige Kategorie';
+      errors.category = t("invalidCategory");
     }
   }
   if (data.tags == null) {
-    errors.tags = 'Pflichtangabe';
+    errors.tags = t("requiredField");
   } else {
     if ((typeof data.tags) !== "string") {
-      errors.tags = 'Ungültige Stichworte';
+      errors.tags = t("invalidTags");
     } else if (data.tags.length < 3) {
-      errors.tags = 'Mindestlänge von Stichworten: 3 Zeichen';
+      errors.tags = t("minNumCharactersTags");
     }
   }
   if (data.license == null) {
-    errors.license = 'Lizenzzustimmung ist nötig';
+    errors.license = t("acceptLicense");
   } else {
     if ((typeof data.license) !== "boolean") {
-      errors.license = 'Ungültige Zustimmung';
+      errors.license = t("invalidLicenseAgreement");
     } else if (data.license === false) {
-      errors.license = 'Lizenzzustimmung ist nötig';
+      errors.license = t("acceptLicense");
     }
   }
   if ((h = data.homepage) != null) {
     if (!((h.indexOf("http://") === 0) || (h.indexOf("https://") === 0))) {
-      errors.homepage = 'Ungültige URL ("http://" oder "https://" fehlt)';
+      errors.homepage = t("invalidURL") + t("httpMissing");
     }
     if (((ref = (h = data.homepage)) != null ? ref.length : void 0) < 9) {
-      errors.homepage = 'Ungültige URL';
+      errors.homepage = t("invalidURL");
     }
   }
   return errors;
@@ -86,49 +93,54 @@ const entryForm = (data) => {
 const ratingForm = (data) => {
   let l;
   let errors = {};
+
+  const t = (key) => {
+    return i18n.t("ratingForm." + key);
+  }
+
   if (data == null) {
-    errors._error = "Ungültige Daten";
+    errors._error = t("invalidValues");
     return errors;
   }
   if (data.title == null) {
-    errors.title = 'Pflichtangabe';
+    errors.title = t("requiredField");
   } else {
     if (!((l = data.title.length) <= 40)) {
       if (errors.title == null) {
-        errors.title = "Zu langer Titel: " + l + " statt max. 40 Zeichen";
+        errors.title = t("titleTooLong") + ": " + l + " " + t("maxNumCharactersTitle");
       }
     }
     if (!((l = data.title.length) >= 3)) {
       if (errors.title == null) {
-        errors.title = "Zu kurzer Titel: " + l + " von mind. 3 Zeichen";
+        errors.title = t("titleTooShort") + ": " + l + " " + t("minNumCharactersTitle");
       }
     }
   }
   if (data.context == null) {
-    errors.context = 'Pflichtangabe';
+    errors.context = t("requiredField");
   } else {
     if ((typeof data.context) !== "string") {
-      errors.context = 'Ungültiger Bewertungskontext';
+      errors.context = t("invalidRatingContext");
     }
   }
   if (data.value == null) {
-    errors.value = 'Pflichtangabe';
+    errors.value = t("requiredField");
   } else {
     if (data.value < -1 || data.value > 2) {
-      errors.value = 'Ungültige Bewertung';
+      errors.value = t("invalidRating");
     }
   }
   if (data.comment == null) {
-    errors.comment = 'Pflichtangabe';
+    errors.comment = t("requiredField");
   } else {
     if (!((l = data.comment.length) <= 500)) {
       if (errors.comment == null) {
-        errors.comment = "Zu langer Kommentar: " + l + " statt max. 500 Zeichen";
+        errors.comment = t("commentTooLong") + ": " + l + " " + t("maxNumCharactersComment");
       }
     }
     if (!((l = data.comment.length) >= 10)) {
       if (errors.comment == null) {
-        errors.comment = "Zu wenig Text: " + l + " von mind. 10 Zeichen";
+        errors.comment = t("commentTooShort") + ": " + l + " " + t("minNumCharactersComment");
       }
     }
   }
@@ -137,27 +149,32 @@ const ratingForm = (data) => {
 
 const loginForm = (data) => {
   let errors = {};
+
+  const t = (key) => {
+    return i18n.t("loginForm." + key);
+  }
+
   if (data == null) {
-    errors._error = "Ungültige Daten";
+    errors._error = t("invalidValues");
     return errors;
   }
   if (data.username == null) {
-    errors.username = 'Pflichtangabe';
+    errors.username = t("requiredField");
   } else {
     let l;
     if (!((l = data.username.length) >= 3)) {
       if (errors.username == null) {
-        errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
+        errors.username = t("invalidUsername") + ": " + l + " " + t("minNumCharactersUsername");
       }
     }
   }
   if (data.password == null) {
-    errors.password = 'Pflichtangabe';
+    errors.password = t("requiredField");
   } else {
     let l;
     if (!((l = data.password.length) >= 3)) {
       if (errors.password == null) {
-        errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";
+        errors.password = t("invalidPassword") +  ": " + l + " " + t("minNumCharactersPassword");
       }
     }
   }
@@ -166,44 +183,49 @@ const loginForm = (data) => {
 
 const registerForm = (data) => {
   let errors = {};
+
+  const t = (key) => {
+    return i18n.t("registerForm." + key);
+  }
+
   if (data == null) {
-    errors._error = "Ungültige Daten";
+    errors._error = t("invalidValues");
     return errors;
   }
   if (data.username == null) {
-    errors.username = 'Pflichtangabe';
+    errors.username = t("requiredField");
   } else {
     let l;
     if (!((l = data.username.length) >= 3)) {
       if (errors.username == null) {
-        errors.username = "Ungültiger Benutzername: " + l + " von mind. 3 Zeichen";
+        errors.username = t("invalidUsername") + ": " + l + " " + t("minNumCharactersUsername");
       }
     }
   }
   if (data.email == null) {
-    errors.email = 'Pflichtangabe';
+    errors.email = t("requiredField");
   } else {
     if (!(data.email.length >= 3)) {
       if (errors.email == null) {
-        errors.email = "Ungültige eMail-Adresse";
+        errors.email = t("invalidEmail");
       }
     }
   }
   if (data.password == null) {
-    errors.password = 'Pflichtangabe';
+    errors.password = t("requiredField");
   } else {
     let l;
     if (!((l = data.password.length) >= 3)) {
       if (errors.password == null) {
-        errors.password = "Ungültiges Passwort: " + l + " von mind. 3 Zeichen";
+        errors.password = t("invalidPassword") +  ": " + l + " " + t("minNumCharactersPassword");
       }
     }
   }
   if (data.password2 == null) {
-    errors.password2 = 'Bitte gib das Passwort zum Überprüfen hier nochmal ein.';
+    errors.password2 = t("repeatPassword");
   } else if (data.password != data.password2){
     if (errors.password2 == null) {
-      errors.password2 = 'Passwörter stimmen nicht überein';
+      errors.password2 = t("passwordsDontAgree");
     }
   }
   return errors;

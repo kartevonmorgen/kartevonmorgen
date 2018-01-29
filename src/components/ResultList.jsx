@@ -3,8 +3,8 @@ import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
 import Flower   from "./Flower";
-import styled    from "styled-components";
-
+import styled   from "styled-components";
+import i18n from "../i18n";
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
 
 const AddressWrapper = styled.div`
@@ -57,8 +57,13 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </li>)
 }
 
-const ResultList = ({ waiting, entries, ratings, highlight, onClick, 
+const ResultList = ({ waiting, entries, ratings, highlight, onClick,
   onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick}) => {
+
+  const t = (key) => {
+    return i18n.t("resultlist." + key);
+  }
+
   let results = entries.map( e =>
     <ResultListElement
       entry        = { e            }
@@ -73,25 +78,25 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick,
       <li key="show-more-entries">
       <div>
         <a onClick = { onMoreEntriesClick } href="#">
-          mehr Einträge anzeigen...
+          {t("showMoreEntries")}
         </a>
       </div>
       </li>
     );
   }
 
-  return ( 
+  return (
     <div className= "result-list">
     {
       (results.length > 0)
         ? <ul>{results}</ul>
-        : (waiting ? 
+        : (waiting ?
         <p className= "loading">
-          <span>Einträge werden geladen...</span>
+          <span>{t("entriesLoading")}</span>
         </p>
         : <p className= "no-results">
             <i className= "fa fa-frown-o" />
-            <span>Es konnten keine Einträge gefunden werden</span>
+            <span>{t("noEntriesFound")}</span>
           </p>)
     }
     </div>)

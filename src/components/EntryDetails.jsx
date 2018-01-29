@@ -5,6 +5,7 @@ import { NAMES, CSS_CLASSES } from "../constants/Categories";
 import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import Ratings                from "./Ratings"
+import { translate          } from "react-i18next";
 
 const TagsWrapper = styled.div `
   margin-top: 0.5em;
@@ -134,4 +135,4 @@ class EntryDetails extends Component {
   }
 }
 
-module.exports = pure(EntryDetails)
+module.exports = translate('translation')(pure(EntryDetails))

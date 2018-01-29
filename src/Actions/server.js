@@ -8,6 +8,7 @@ import mapConst                   from "../constants/Map";
 import appConst                   from "../constants/App";
 import LICENSES                   from "../constants/Licenses";
 import { MAIN_IDS, IDS }          from "../constants/Categories";
+import i18n                       from "../i18n";
 
 
 const flatten = nestedArray => nestedArray.reduce(
@@ -181,7 +182,7 @@ const Actions = {
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {
-              text: 'Oups! Es ist ein Fehler aufgetreten...',
+              text: i18n.t("growler.genericError"),
               type: 'growler--error'
             }
           });
@@ -193,7 +194,7 @@ const Actions = {
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {
-              text: changeExistingBbox ? 'Abonnement wurde geändert.' : 'Kartenausschnitt wurde abonniert.',
+              text: changeExistingBbox ? i18n.t("growler.subscriptionChanged") : i18n.t("growler.subscriptionAdded"),
               type: 'growler--success'
             }
           });
@@ -212,7 +213,7 @@ const Actions = {
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {
-              text: 'Oups! Es ist ein Fehler aufgetreten...',
+              text: i18n.t("growler.genericError"),
               type: 'growler--error'
             }
           });
@@ -220,7 +221,7 @@ const Actions = {
           dispatch({
             type: 'GROWLER__SHOW',
             growler: {
-              text: 'Abonnement wurde abbestellt',
+              text: i18n.t("growler.unsubscribingSuccessfull"),
               type: 'growler--success'
             }
           });
@@ -258,7 +259,7 @@ const Actions = {
               dispatch({
                 type: 'GROWLER__SHOW',
                 growler: {
-                  text: 'Eintrag wurde gespeichert.',
+                  text: i18n.t("growler.entrySaved"),
                   type: 'growler--success'
                 }
               });
@@ -329,7 +330,7 @@ const Actions = {
               dispatch({
                 type: 'GROWLER__SHOW',
                 growler: {
-                  text: 'Bewertung wurde gespeichert.',
+                  text: i18n.t("growler.ratingSaved"),
                   type: 'growler--success'
                 }
               });
