@@ -333,5 +333,16 @@
 		"unsubscribingSuccessfull":"Abonnement wurde abbestellt",
 		"entrySaved":"Eintrag wurde gespeichert.",
 		"ratingSaved":"Bewertung wurde gespeichert."
+	},
+	"contact":{
+		"heading":"Kontakt",
+		"text1":"Das Team von morgen, vertreten durch",
+		"showOnKVM":"Ort auf der Karte von morgen"
+	},
+	"businesscardWidget":{
+		"showOnMap":"Auf der Karte anzeigen..."
+	},
+	"mapWidget":{
+		"showLargeMap":"Große Karte öffnen..."
 	}
 }

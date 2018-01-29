@@ -2,20 +2,25 @@ import React    from "react";
 import { pure } from "recompose";
 import URLs     from "../constants/URLs";
 import pkg      from "../../package.json";
+import {translate} from "react-i18next";
 
 class Contact extends React.Component {
 
   render () {
+    var t = (key) => {
+      return this.props.t("contact." + key);
+    };
+
     return (
       <div>
-        <h2>Kontakt</h2>
+        <h2>{t("heading")}</h2>
         <p>
-          Das Team von morgen, vertreten durch  <br />
+          {t("text1")}<br />
           Helmut Wolman  <br />
           Turley-Platz 9  <br />
           68167 Mannheim  <br />
 
-          <a target="_blank" href = 'https://www.kartevonmorgen.org/#/?entry=0b89e6d0945740b3a77f240d9cdab0e9&zoom=15.00'>Ort auf der Karte von morgen</a>
+          <a href = 'https://www.kartevonmorgen.org/#/?entry=0b89e6d0945740b3a77f240d9cdab0e9&zoom=15.00'>{t("showOnKVM")}</a>
         </p>
         <p>
 
@@ -33,4 +38,4 @@ class Contact extends React.Component {
   }
 }
 
-module.exports = pure(Contact);
+module.exports = translate("translation")(pure(Contact));

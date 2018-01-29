@@ -330,5 +330,16 @@
 		"unsubscribingSuccessfull":"You unsubscribed from the map view",
 		"entrySaved":"Entry has been saved.",
 		"ratingSaved":"Rating has been saved."
+	},
+	"contact":{
+		"heading":"Contact",
+		"text1":"The von morgen team, represented by",
+		"showOnKVM":"Show on the map"
+	},
+	"businesscardWidget":{
+		"showOnMap":"Show on the map..."
+	},
+	"mapWidget":{
+		"showLargeMap":"Open large map..."
 	}
 }

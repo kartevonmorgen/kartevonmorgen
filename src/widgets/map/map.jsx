@@ -3,6 +3,7 @@ import EntryDetails  from "../../components/EntryDetails";
 import URLs          from "../../constants/URLs";
 import styled        from "styled-components";
 import Map           from "../../components/Map";
+import i18n          from "../../i18n";
 
 const MoreInfoLink = styled.a`
   position: absolute;
@@ -32,5 +33,5 @@ module.exports = ({marker, size, center, zoom, category, highlight,
       onZoomend = {onZoomend}
       loggedIn = {loggedIn}
       />
-    <MoreInfoLink target="_blank" href={URLs.APP.link + (highlight ? ("/#/?entry=" + highlight) : "")}>Große Karte öffnen...</MoreInfoLink>
+    <MoreInfoLink target="_blank" href={URLs.APP.link + (highlight ? ("/#/?entry=" + highlight) : "")}>{i18n.t("mapWidget.showLargeMap")}</MoreInfoLink>
   </div>
