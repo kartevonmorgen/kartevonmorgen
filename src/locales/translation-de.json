@@ -197,7 +197,6 @@
 			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
 		},
 		"donate" : {
-			"TODO": "TRANSLATE",
 			"heading" : "Etwas Gutes für morgen tun.",
 			"paragraph1" : "Die Karte von morgen wird euch für immer kostenfrei zur Verfügung stehen! Open Source und frei. Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden von Nutzer*innen und den kartierten Initiativen und Unternehmen von morgen ermöglicht werden. Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln. Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit zu gewährleisten.",
 			"betterplace-link" : "Jetzt Spenden für „von morgen - Alles Gute auf einer Karte“ bei unserem Partner betterplace.org",
@@ -219,7 +218,6 @@
 				"text5": "Wir freuen uns über jeden kleinen und großen Beitrag. Auf bald!",
 				"text6": "Dankend, das Team von morgen"
 			}
-
 		},
 		"user" : {
 			"register-success" : {
@@ -292,9 +290,14 @@
 		},
 		"chapter5" : {
 			"heading" : "Das Team von morgen",
-			"text" : {
-				"1" : "Wir freuen uns über neue Teammitglieder!"
-			}
+			"new-members" : "Wir freuen uns über neue Teammitglieder!",
+			"graphic-design" : "Graphic Design",
+			"network-development": "Network & Development",
+			"software-development" : "Software Development",
+			"business-finance" : "Business & Finance",
+			"funding-strategy" : "Finding & Strategy",
+			"pr-marketing" : "PR & Marketing",
+			"project-management" : "Project Management"
 		},
 		"chapter6" : {
 			"heading" : "Ein Projekt von"

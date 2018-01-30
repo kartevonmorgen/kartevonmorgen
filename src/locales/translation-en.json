@@ -1,5 +1,6 @@
 {
 	"addEntry":"add a new entry",
+	"edit":"edit",
 	"entryForm":{
 		"chooseCategory":"Select category",
 		"location":"Location",
@@ -220,7 +221,6 @@
 				"text5": "Wir freuen uns über jeden kleinen und großen Beitrag. Auf bald!",
 				"text6": "Dankend, das Team von morgen"
 			}
-
 		},
 		"user" : {
 			"TODO":"TRANSLATE",
