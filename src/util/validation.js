@@ -151,7 +151,7 @@ const loginForm = (data) => {
   let errors = {};
 
   const t = (key) => {
-    return i18n.t("loginForm." + key);
+    return i18n.t("login." + key);
   }
 
   if (data == null) {
@@ -185,7 +185,7 @@ const registerForm = (data) => {
   let errors = {};
 
   const t = (key) => {
-    return i18n.t("registerForm." + key);
+    return i18n.t("register." + key);
   }
 
   if (data == null) {

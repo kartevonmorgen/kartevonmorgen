@@ -2,6 +2,11 @@ import Message    from "./Message";
 import Actions    from "../Actions";
 import { DONATE } from "../constants/URLs";
 import V          from "../constants/PanelView";
+import i18n       from "../i18n";
+
+const t = (key) => {
+  return i18n.t("modal." + key);
+}
 
 module.exports = ({view, dispatch}) => {
 
@@ -12,8 +17,8 @@ module.exports = ({view, dispatch}) => {
         <div className= 'modal'>
           <Message
             iconClass = "fa fa-spinner fa-pulse"
-            message = " Dein aktueller Standort wird gesucht ..."
-            cancelButtonLabel = "abbrechen"
+            message = {"  " + t("locate.inProgress")}
+            cancelButtonLabel = {t("locate.cancel")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
             />
         </div>
@@ -24,14 +29,10 @@ module.exports = ({view, dispatch}) => {
         <div className = 'modal'>
           <Message
             iconClass = "fa fa-exclamation-triangle"
-            message = { " " +
-              `Der Standort kann nicht ermittelt werden.
-              Die Standortbestimmung ist in den Browser-
-              oder System-Einstellungen deaktiviert, oder
-              das GPS hat keinen Empfang.` }
-            cancelButtonLabel = "schließen"
+            message = { "  " + t("locate.failed") }
+            cancelButtonLabel = {t("locate.close")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
-            actionButtonLabel = "nochmal versuchen"
+            actionButtonLabel = {t("locate.tryAgain")}
             actionButtonIcon = "fa fa-repeat"
             onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
             />
@@ -43,19 +44,10 @@ module.exports = ({view, dispatch}) => {
         <div className = 'modal'>
           <Message
             iconClass = "fa fa-info-circle"
-            message = { " " +
-              `Events werden zur Zeit noch nicht unterstützt.
-
-              Ob Tagung, Konferenz oder Festival - auf der Karte von morgen
-              sollen auch bald Events eingetragen werden.
-              Wir planen außerdem einen Veranstaltungskalender,
-              der die Ergebnisse anzeigt und exportiert.
-
-              Helfe mit, damit diese Funktion schon bald verfügbar ist
-              und beteilige Dich an der Spendenaktion auf betterplace.org!` }
-            cancelButtonLabel = "schließen"
+            message = { "   " + t("events.text") } 
+            cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.showFeatureToDonate(null)) }
-            actionButtonLabel = "Spenden"
+            actionButtonLabel = {t("events.donate")}
             actionButtonIcon = "fa fa-external-link"
             onAction = { () => window.open(DONATE.link, '_blank').focus() }
             />

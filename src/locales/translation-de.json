@@ -49,24 +49,44 @@
 		"invalidURL":"Ungültige URL",
 		"httpMissing":"\"http://\" oder \"https://\" fehlt)"
 	},
-	"loginForm":{
+	"login":{
+		"requiredField":"Pflichtangabe",
+		"loginFailed":"Der Login ist fehlgeschlagen",
 		"invalidValues":"Ungültige Daten",
 		"invalidUsername":"Ungültiger Benutzername",
 		"invalidPassword":"Ungültiges Passwort",
+		"invalidPasswordOrUsername":"falsches Passwort oder falscher Benutzername.",
+		"emailUnconfirmed":"Email-Adresse noch nicht bestätigt. Bitte schaue in deinem Postfach nach, möglicherweise auch im Spam-Ordner.",
 		"minNumCharactersUsername":"von mind. 3 Zeichen",
-		"minNumCharacters":"von mind. 3 Zeichen"
+		"minNumCharactersPassword":"von mind. 3 Zeichen",
+		"username":"Benutzername",
+		"password":"Passwort",
+		"loginButton":"Log In",
+		"registerText":"Du hast noch keinen Account? Dann kannst du dich",
+		"registerLink":"hier kostenlos registrieren"
 	},
-	"registerForm":{
+	"register":{
+		"heading":"Registrieren",
+		"genericError":"Die Registrierung ist fehlgeschlagen. Der Benutzername oder die Email-Adresse ist schon registriert.",
+		"username":"Benutzername",
+		"email":"Email-Adresse",
+		"password1":"Passwort",
+		"password2":"Passwort wiederholen",
+		"submitButton":"Registrieren",
+		"loginText":"Du hast schon einen Account? Dann kannst du dich",
+		"loginLink":"hier einloggen",
+		"requiredField":"Pflichtangabe",
 		"invalidValues":"Ungültige Daten",
 		"invalidUsername":"Ungültiger Benutzername",
 		"invalidPassword":"Ungültiges Passwort",
 		"minNumCharactersUsername":"von mind. 3 Zeichen",
-		"minNumCharacters":"von mind. 3 Zeichen",
+		"minNumCharactersPassword":"von mind. 3 Zeichen",
 		"invalidEmail":"Ungültige Email-Adresse",
 		"repeatPassword":"Bitte gib das Passwort zum Überprüfen hier nochmal ein.",
 		"passwordsDontAgree":"Passwörter stimmen nicht überein"
 	},
 	"ratings":{
+		"requiredField":"Pflichtangabe",
 		"rating":"Bewertung",
 		"ratings":"Bewertungen",
 		"heading":"Bewertungen",
@@ -128,6 +148,16 @@
 		"minNumCharactersComment":"von mind. 10 Zeichen"
 	},
 	"subscribeToBbox" : {
+		"changeSubscription":{
+			"heading":"Dein Abonnement",
+			"text1":"Du hast einen Kartenausschnitt abonniert und wirst bei neuen Einträgen und Änderungen in diesem Bereich per Email benachrichtigt.",
+			"text2":"Wenn du den abonnierten Kartenausschnitt ändern möchtest navigiere zu dem Kartenausschnitt der dich interessiert und klicke dann auf \"ändern\""
+		},
+		"newSubscription":{
+			"heading":"Kartenausschnitt abonnieren",
+			"text1":"Navigiere zu dem Kartenausschnitt der dich interessiert und klicke auf \"abonnieren\". Dann wirst du per Email über neue Einträge und Änderungenan Einträgen in dieser Region auf dem Laufenden gehalten.",
+			"text2":"Du kannst das Abonnement jederzeit wieder hier abbestellen oder ändern."
+		},
 		"cancel": "abbrechen",
 		"edit": "ändern",
 		"unsubscribe": "Abonnement abbestellen",
@@ -167,7 +197,7 @@
 			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
 		},
 		"donate" : {
-			"TODO": "TRANSLATE",	
+			"TODO": "TRANSLATE",
 			"heading" : "Etwas Gutes für morgen tun.",
 			"paragraph1" : "Die Karte von morgen wird euch für immer kostenfrei zur Verfügung stehen! Open Source und frei. Die Weiterentwicklung der Karte von morgen soll durch solidarische Spenden von Nutzer*innen und den kartierten Initiativen und Unternehmen von morgen ermöglicht werden. Wenn jedes Unternehmen monatlich 25 € spendet, kann sich die Plattform unabhängig und organisch entwickeln. Initiativen und Nutzer*innen empfehlen wir eine Unterstützung von 3 €/Monat um eine echte Unabhängigkeit zu gewährleisten.",
 			"betterplace-link" : "Jetzt Spenden für „von morgen - Alles Gute auf einer Karte“ bei unserem Partner betterplace.org",
@@ -370,5 +400,19 @@
 	},
 	"mapWidget":{
 		"showLargeMap":"Große Karte öffnen..."
+	},
+	"modal":{
+		"locate":{
+			"inProgress":"Dein aktueller Standort wird gesucht...",
+			"cancel":"abbrechen",
+			"failed":"Der Standort kann nicht ermittelt werden. Die Standortbestimmung ist in den Browser- oder System-Einstellungen deaktiviert, oder das GPS hat keinen Empfang.",
+			"close":"schließen",
+			"tryAgain":"nochmal versuchen"
+		},
+		"events":{
+			"text":"Events werden zur Zeit noch nicht unterstützt.\n\n Ob Tagung, Konferenz oder Festival - auf der Karte von morgen sollen auch bald Events eingetragen werden. Wir planen außerdem einen Veranstaltungskalender, der die Ergebnisse anzeigt und exportiert.\n\n Helfe mit, damit diese Funktion schon bald verfügbar ist und beteilige Dich an der Spendenaktion auf betterplace.org!",
+			"close":"schließen",
+			"donate":"spenden"
+		}
 	}
 }

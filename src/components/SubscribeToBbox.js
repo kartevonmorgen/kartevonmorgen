@@ -1,26 +1,25 @@
 import React    from "react"
 import Actions  from "../Actions"
+import i18n     from "../i18n"
+
+const t = (key) => {
+  return i18n.t("subscribeToBbox." + key);
+}
 
 const subscribeToBbox = ({subscriptionExists}) => {
   if(subscriptionExists){
     return ( 
       <div className= "subscribe-to-bbox">
-        <h3>Dein Abonnement</h3>
-        <p>Du hast einen Kartenausschnitt abonniert und wirst bei neuen Einträgen und 
-        Änderungen in diesem Bereich per Email benachrichtigt.</p>
-
-        <p>Wenn du den abonnierten Kartenausschnitt ändern möchtest navigiere 
-        zu dem Kartenausschnitt der dich interessiert und klicke dann auf "ändern".</p>
+        <h3>{t("changeSubscription.heading")}</h3>
+        <p>{t("changeSubscription.text1")}</p>
+        <p>{t("changeSubscription.text2")}</p>
       </div>)
   } else {
     return ( 
       <div className= "subscribe-to-bbox">
-        <h3>Kartenausschnitt abonnieren</h3>
-        <p>Navigiere zu dem Kartenausschnitt der dich interessiert und klicke auf 
-        "abonnieren". Dann wirst du per Email über neue Einträge und Änderungen
-        an Einträgen in dieser Region auf dem Laufenden gehalten.</p>
-
-        <p>Du kannst das Abonnement jederzeit wieder hier abbestellen oder ändern.</p>
+        <h3>{t("newSubscription.heading")}</h3>
+        <p>{t("newSubscription.text1")}</p>
+        <p>{t("newSubscription.text2")}</p>
       </div>)
   }
 }

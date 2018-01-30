@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form"
 import validation           from "../util/validation"
 import normalize            from "../util/normalize";
 import { REGISTER }         from "../constants/Form";
+import i18n                 from "i18next";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -12,6 +13,9 @@ const errorMessage = ({meta}) =>
 const Register = (props) => {
 
   const { error, submitting, handleSubmit, onLogin } = props;
+  const t = (key) => {
+    return i18n.t("register." + key);
+  }
 
   return (
   <form
@@ -19,10 +23,10 @@ const Register = (props) => {
     action    = 'javascript:void(0);'
     onSubmit  = { handleSubmit } >
 
-    <h3>Registrieren</h3>
+    <h3>{t("heading")}</h3>
     { error &&
       <div className= "err">
-        Die Registrierung ist fehlgeschlagen. Der Benutzername oder die Email-Adresse ist schon registriert.
+        {t("genericError")}
       </div>
     }
     <div className= "pure-form">
@@ -33,19 +37,19 @@ const Register = (props) => {
           type="text"
           component="input"
           required={true}
-          placeholder="Benutzername"
+          placeholder={t("username")}
           normalize={normalize.username} />
         <Field name="username" component={errorMessage} />
-        <Field name="email" className="pure-input-1" type="email" component="input" required={true} placeholder="eMail" />
+        <Field name="email" className="pure-input-1" type="email" component="input" required={true} placeholder={t("email")} />
         <Field name="email" component={errorMessage} />
-        <Field name="password" className="pure-input-1" type="password" component="input" required={true} placeholder="Password" />
+        <Field name="password" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password1")} />
         <Field name="password" component={errorMessage} />
-        <Field name="password2" className="pure-input-1" type="password" component="input" required={true} placeholder="Password wiederholen" />
+        <Field name="password2" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password2")} />
         <Field name="password2" component={errorMessage} />
-        <button type="submit" className="pure-button pure-button-primary" disabled={submitting}>Registrieren</button>
+        <button type="submit" className="pure-button pure-button-primary" disabled={submitting}>{t("submitButton")}</button>
       </fieldset>
       <p>
-        Du hast schon einen Account? Dann kannst du dich <a onClick={onLogin} href="#">hier einloggen</a>.
+        {t("loginText")} <a onClick={onLogin} href="#">{t("loginLink")}</a>.
       </p>
     </div>
   </form>)
