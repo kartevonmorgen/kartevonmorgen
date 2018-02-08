@@ -10,7 +10,7 @@
     "pack": "NODE_ENV=production webpack --progress",
     "pack-prototype": "NODE_ENV=production KVM_PROTOTYPE=true webpack --progress",
     "build": "webpack --progress",
-    "start": "webpack-dev-server --progress",
+    "start": "webpack-dev-server --progress --host 0.0.0.0 --hot",
     "storybook": "start-storybook -p 9001"
   },
   "repository": {
