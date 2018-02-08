@@ -8,6 +8,7 @@ import URLs                 from "../constants/URLs"
 import LICENSES             from "../constants/Licenses"
 import { EDIT             } from "../constants/Form"
 import { translate        } from "react-i18next";
+import T                    from "prop-types";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -183,8 +184,6 @@ class Form extends Component {
     </form>)
   }
 }
-
-const T = React.PropTypes;
 
 Form.propTypes = {
   isEdit : T.bool,

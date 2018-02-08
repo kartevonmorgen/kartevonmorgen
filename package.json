@@ -33,6 +33,7 @@
     "lodash": "^3.10.1",
     "museo": "^0.1.0",
     "normalize.css": "^3.0.3",
+    "prop-types": "^15.6.0",
     "purecss": "^0.6.0",
     "react": "^15.4",
     "react-dom": "^15.4",

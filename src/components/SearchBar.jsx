@@ -1,10 +1,8 @@
 require('./SearchBar.styl');
 import { translate } from "react-i18next";
-
 import React from "react";
 import { pure } from "recompose";
-
-const T = React.PropTypes
+import T from "prop-types";
 
 import {
   MAIN_IDS,

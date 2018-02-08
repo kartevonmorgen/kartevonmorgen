@@ -1,7 +1,7 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 React     = require "react"
-T         = React.PropTypes
+T         = require "prop-types"
 V         = require "../constants/PanelView"
 { pure }  = require "recompose"
 { translate } = require "react-i18next"

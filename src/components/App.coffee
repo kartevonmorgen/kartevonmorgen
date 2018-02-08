@@ -3,7 +3,7 @@
 require "./App.styl"
 
 React             = require "react"
-T                 = React.PropTypes
+T                 = require "prop-types"
 V                 = require "../constants/PanelView"
 C                 = require "../constants/Categories"
 Actions           = require "../Actions"

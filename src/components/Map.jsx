@@ -1,5 +1,4 @@
 import "./Map.styl"
-
 import React, { Component }         from "react"
 import { Map, TileLayer, Marker, CircleMarker, Circle }   from "react-leaflet"
 import { icons }                    from "vm-leaflet-icons"
@@ -9,7 +8,7 @@ import { NAMES, CSS_CLASSES, IDS }  from  "../constants/Categories"
 import COLORS                       from "./styling/Colors"
 import { avg_rating_for_entry }     from "../rating"
 import styled                       from "styled-components";
-
+import T                            from "prop-types";
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
@@ -209,8 +208,6 @@ class KVMMap extends Component {
         </div>)
     }
 }
-
-const T = React.PropTypes;
 
 KVMMap.propTypes = {
     entries       : T.array,

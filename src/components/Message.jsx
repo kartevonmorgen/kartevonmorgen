@@ -1,5 +1,6 @@
 import React from "react";
 import { pure } from "recompose";
+import T from "prop-types";
 
 class Message extends React.Component {
 
@@ -36,8 +37,6 @@ class Message extends React.Component {
     );
   }
 }
-
-const T = React.PropTypes;
 
 Message.propTypes = {
   onCancel: T.func,

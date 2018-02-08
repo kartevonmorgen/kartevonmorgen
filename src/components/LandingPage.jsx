@@ -12,6 +12,7 @@ import V                    from "../constants/PanelView";
 import { pure }             from "recompose";
 import { translate }        from "react-i18next";
 import i18n                 from "../i18n";
+import T                    from "prop-types";
 
 class LandingPage extends Component {
 
@@ -329,8 +330,6 @@ class LandingPage extends Component {
     </div>);
   }
 }
-
-const T = React.PropTypes;
 
 LandingPage.propTypes = {
   content     : T.string,
