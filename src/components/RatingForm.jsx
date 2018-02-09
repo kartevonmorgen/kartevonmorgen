@@ -98,15 +98,15 @@ class RatingForm extends Component {
           <Field name="context" component={errorMessage} />
         </fieldset>
         <fieldset>
-          <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("title")} />
+          <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.title")} />
           <Field name="title" component={errorMessage} />
         </fieldset>
         <fieldset>
-          <Field name="comment" className="pure-input-1" component="textarea" placeholder={t("comment")} />
+          <Field name="comment" className="pure-input-1" component="textarea" placeholder={t("ratingForm.comment")} />
           <Field name="comment" component={errorMessage} />
         </fieldset>
         <fieldset>
-          <Field name="source" className="pure-input-1" type="text" component="input" placeholder={t("reference")} />
+          <Field name="source" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.reference")} />
         </fieldset>
         <p className="form-heading">{t("ratings.rating")}:</p>
         <fieldset>
