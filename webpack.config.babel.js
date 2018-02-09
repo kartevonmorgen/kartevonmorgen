@@ -10,9 +10,9 @@ const is_prototype = process.env.KVM_PROTOTYPE === "true"
 
 const config = {
   entry: {
-    app: path.join(__dirname, "src/index.js"),
-    businesscard_widget: path.join(__dirname, "src/widgets/businesscard/index.js"),
-    map_widget: path.join(__dirname, "src/widgets/map/index.js")
+    app: ['babel-polyfill', path.join(__dirname, "src/index.js")],
+    businesscard_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/businesscard/index.js")],
+    map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")]
   },
   output: {
     path: path.join(__dirname, 'dist/'),
