@@ -189,46 +189,33 @@ const Actions = {
 
   onMoveend: (coordinates, mapCenter) =>
     (dispatch, getState) => {
+
       dispatch({
-        type: T.SET_MOVEEND_TIME,
+        type: T.SET_SEARCH_TIME,
         payload: Date.now()
       });
-      setTimeout(() => {
-        if(getState().timedActions.moveendLastTriggered && (Date.now() - getState().timedActions.moveendLastTriggered > appConst.MOVEEND_DELAY)){
-          if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
-            dispatch(Actions.setCenter({
-              lat: coordinates.center.lat,
-              lng: coordinates.center.lng
-            }));
-          }
-          dispatch(Actions.setBbox(coordinates.bbox));
-          dispatch(serverActions.Actions.search());
-          dispatch({
-            type: T.SET_MOVEEND_TIME,
-            payload: null
-          });
-        }
-      }, appConst.MOVEEND_DELAY);
+
+      if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
+        dispatch(Actions.setCenter({
+          lat: coordinates.center.lat,
+          lng: coordinates.center.lng
+        }));
+      }
+      dispatch(Actions.setBbox(coordinates.bbox));
+      dispatch(serverActions.Actions.search());
+
     },
 
   onZoomend: (coordinates, zoom) =>
     (dispatch, getState) => {
       dispatch({
-        type: T.SET_ZOOMEND_TIME,
+        type: T.SET_SEARCH_TIME,
         payload: Date.now()
       });
-      setTimeout(() => {
-        const zoomendLastTriggered = getState().timedActions.zoomendLastTriggered;
-        if(zoomendLastTriggered && (Date.now() - zoomendLastTriggered > appConst.ZOOMEND_DELAY)){
-          if(coordinates.zoom != zoom){
-            dispatch(Actions.setZoom(coordinates.zoom));
-          }
-          dispatch({
-            type: T.SET_ZOOMEND_TIME,
-            payload: null
-          });
-        }
-      }, appConst.ZOOMEND_DELAY);
+
+      if(coordinates.zoom != zoom){
+        dispatch(Actions.setZoom(coordinates.zoom));
+      }
     }
 };
 
