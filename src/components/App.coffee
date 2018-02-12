@@ -240,7 +240,7 @@ Main = React.createClass
                           dispatch Actions.subscribeToBbox(map.bbox, true)
                         ),
                           i className: "fa fa-envelope"
-                          t "edit"
+                          t "subscribeToBbox.edit"
                       li
                         key: "delete"
                         className:"pure-u-1-1",
@@ -248,7 +248,7 @@ Main = React.createClass
                           dispatch Actions.unsubscribeFromBboxes(user.id)
                         ),
                           i className: "fa fa-trash"
-                          t "unsubscribe"
+                          t "subscribeToBbox.unsubscribe"
                     ]
                   else
                     [
@@ -260,7 +260,7 @@ Main = React.createClass
                           dispatch Actions.setCenterInUrl map.center
                         ),
                           i className: "fa fa-chevron-left"
-                          t "back"
+                          t "subscribeToBbox.back"
                       li
                         key: "save"
                         className:"pure-u-1-2",
@@ -268,7 +268,7 @@ Main = React.createClass
                           dispatch Actions.subscribeToBbox(map.bbox, false)
                         ),
                           i className: "fa fa-envelope"
-                          t "subscribe"
+                          t "subscribeToBbox.subscribe"
                     ]
 
           div className: "content-wrapper",
