@@ -69,76 +69,79 @@ module.exports = translate('translation')(pure React.createClass
 
       hr null
       h2 null, t "landingExplain.chapter5.heading"
+        p null, t "landingExplain.chapter5.text"
 
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Anja.jpg"
-        div null, "Anja Dannemann -"
-        div null, t "landingExplain.chapter5.graphic-design"
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/Ben.jpg"
-        div null, "Benedikt Roth -"
-        div null, t "landingExplain.chapter5.network-development"
-      div className: "teamMember",
-        div className: "circle berry",
-          img className: "teamImage", src: require "../img/team/David.jpg"
-        div null, "David Ziegler -"
-        div null, t "landingExplain.chapter5.software-development"
-      div className: "teamMember",
-        div className: "circle pink",
-          img className: "teamImage", src: require "../img/team/placeholder_1.png"
-        div null, "Florian Jostock -"
-        div null, t "landingExplain.chapter5.software-development"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Frederik.jpg"
-        div null, "Frederik Schütz -"
-        div null, t "landingExplain.chapter5.business-finance"
-      div className: "teamMember",
-        div className: "circle pink",
-          img className: "teamImage", src: require "../img/team/Helmut.jpg"
-        div null, "Helmut Wolman -"
-        div null, t "landingExplain.chapter5.network-development"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Lisa.jpg"
-        div null, "Lisa Stehr -"
-        div null, t "landingExplain.chapter5.funding-strategy"
-      div className: "teamMember",
-        div className: "circle green",
-          img className: "teamImage", src: require "../img/team/Markus.jpg"
-        div null, "Markus Kohlhase -"
-        div null, t "landingExplain.chapter5.software-development"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/placeholder_2.png"
-        div null, "Nina Bärnreuther -"
-        div null, t "landingExplain.chapter5.pr-marketing"
-      div className: "teamMember",
-        div className: "circle grayBlue",
-          img className: "teamImage", src: require "../img/team/placeholder_3.png"
-        div null, "Peter Gericke -"
-        div null, t "landingExplain.chapter5.graphic-design"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/Thao.jpg"
-        div null, "Thao Tran - Brand &"
-        div null, t "landingExplain.chapter5.project-management"
-      div className: "teamMember",
-        div className: "circle yellow",
-          img className: "teamImage", src: require "../img/team/Tomas.jpg"
-        div null, "Tomas Gerlitz -"
-        div null, t "landingExplain.chapter5.business-finance"
-      div className: "teamMember",
-        div className: "circle berry",
-          img className: "teamImage", src: require "../img/team/Xueqian.jpg"
-        div null, "Xueqian Chen -"
-        div null, t "landingExplain.chapter5.pr-marketing"
-      div className: "teamMember",
-        div className: "circle blue",
-          img className: "teamImage", src: require "../img/team/placeholder_4.png"
-        div null, t "landingExplain.chapter5.new-members"
+      div className: "team",
+        div className: "teamMember",
+          div className: "circle yellow",
+            img className: "teamImage", src: require "../img/team/Thao.jpg"
+          div className: "team-member-name", "Thao Tran"
+          div null, t "landingExplain.chapter5.brand-project-management"
+        div className: "teamMember",
+          div className: "circle pink",
+            a target: "_blank", href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
+              img className: "teamImage", src: require "../img/team/Helmut.jpg"
+          div className: "team-member-name", "Helmut Wolman"
+          div null, (t "landingExplain.chapter5.chair") + " Ideen³ e.V."
+          div null, t "landingExplain.chapter5.project-development"
+        div className: "teamMember",
+          div className: "circle berry",
+          a target: "_blank", href:"https://slowtec.de/team.html#",
+            img className: "teamImage", src: require "../img/team/David.jpg"
+          div className: "team-member-name", "David Ziegler"
+          div null, "slowtec GmbH" 
+          div null, t "landingExplain.chapter5.software-development"
+        div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Lisa.jpg"
+          div className: "team-member-name", "Lisa Stehr"
+          div null, t "landingExplain.chapter5.lisa1"
+          div null, t "landingExplain.chapter5.lisa2"
+        div className: "teamMember",
+          div className: "circle green",
+           a target: "_blank", href:"http://martenroebel.de/",
+             img className: "teamImage", src: require "../img/team/Marten.jpg"
+          div className: "team-member-name", "Marten Röbel"
+          div null, t "landingExplain.chapter5.marten"
+        div className: "teamMember",
+          div className: "circle green",
+           a target: "_blank", href:"https://slowtec.de/team.html#",
+             img className: "teamImage", src: require "../img/team/Markus.jpg"
+          div className: "team-member-name", "Markus Kohlhase"
+          div null, "slowtec GmbH"
+          div null, t "landingExplain.chapter5.software-development"
+        div className: "teamMember",
+          div className: "circle pink",
+            img className: "teamImage", src: require "../img/team/placeholder_1.png"
+          div className: "team-member-name", "Florian Jostock"
+          div null, t "landingExplain.chapter5.florian"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/Louisa.jpg"
+          div className: "team-member-name", "Louisa Pieper"
+          div null, t "landingExplain.chapter5.pr-marketing"
+          div null, t "landingExplain.chapter5.louisa"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/Anja.jpg"
+          div className: "team-member-name", "Anja Dannemann"
+          div null, t "landingExplain.chapter5.anja"
+          div null, t "landingExplain.chapter5.graphic-design"
+        div className: "teamMember",
+          div className: "circle berry",
+            img className: "teamImage", src: require "../img/team/Xueqian.jpg"
+          div className: "team-member-name", "Xueqian Chen"
+          div null, t "landingExplain.chapter5.xueqian"
+          div null, t "landingExplain.chapter5.pr-marketing"
+        div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Frederik.jpg"
+          div className: "team-member-name", "Frederik Schütz"
+          div null, t "landingExplain.chapter5.business-finance"
+        div className: "teamMember",
+          div className: "circle blue",
+            img className: "teamImage", src: require "../img/team/placeholder_4.png"
+          div null, t "landingExplain.chapter5.new-members"
 
       hr null
 

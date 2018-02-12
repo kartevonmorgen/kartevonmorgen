@@ -291,14 +291,22 @@
 		},
 		"chapter5" : {
 			"heading" : "Das Team von morgen",
+			"text": "Das Team von morgen ist so bunt wie der Wandel. Ehemalige entwicklungspolitische Freiwillige, Studierende, Wandelgestalter*innen und Stipendiaten - Menschen, die sich ehrenamtlich für die Gesellschaft von morgen einsetzen wollen.",
 			"new-members" : "Wir freuen uns über neue Teammitglieder!",
 			"graphic-design" : "Graphic Design",
-			"network-development": "Network & Development",
-			"software-development" : "Software Development",
+			"software-development" : "Softwareentwicklung",
 			"business-finance" : "Business & Finance",
-			"funding-strategy" : "Finding & Strategy",
 			"pr-marketing" : "PR & Marketing",
-			"project-management" : "Project Management"
+			"brand-project-management" : "Brand & Project Management",
+			"project-development" : "Projektentwicklung",
+			"chair" : "Vorstand",
+			"lisa1" : "Politikwissenschaftlerin",
+			"lisa2" : "Strategie & Wirkung",
+			"marten" : "Achtsamkeit und Change-Psychologie",
+			"florian" : "Beratung Softwareentwicklung",
+			"louisa" : "Regionalpilotin Köln",
+			"anja" : "Designerin",
+			"xueqian" : "Unternehmensberaterin"
 		},
 		"chapter6" : {
 			"heading" : "Ein Projekt von"
