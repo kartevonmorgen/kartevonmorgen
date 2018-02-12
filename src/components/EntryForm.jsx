@@ -29,7 +29,7 @@ class Form extends Component {
       className = "add-entry-form"
       action    = 'javascript:void();' >
 
-      <h3>{isEdit ? t("edit") :  t("new")}</h3>
+      <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
       { this.props.error &&
         <div className= "err">
           { t("savingError") + ":" + this.props.error.message}
