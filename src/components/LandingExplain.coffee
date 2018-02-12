@@ -154,10 +154,9 @@ module.exports = translate('translation')(pure React.createClass
       hr null
 
       h2 null, t "landingExplain.chapter7.heading"
-        a href:"https://www.engagement-global.de/rueckkehrende.html",
-          img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"
-        a href:"http://www.bmz.de/",
-          img className: "partnerLogo", src: require "../img/BMZ.jpg"
-        a href:"https://www.boell.de/de",
-          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
+        div null,
+          a href:"https://www.engagement-global.de/rueckkehrende.html",
+            img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"
+          a href:"http://www.bmz.de/",
+            img className: "partnerLogo", src: require "../img/BMZ.jpg"
 )
