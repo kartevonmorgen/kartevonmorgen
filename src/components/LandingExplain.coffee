@@ -48,13 +48,14 @@ module.exports = translate('translation')(pure React.createClass
         img src: require "../img/tutorial/5.jpg"
         img src: require "../img/tutorial/6.jpg"
 
-      div style: overflow: "visible",
-        img className: "pure-img", style: {width: "100%"}, src: require "../img/postkarte.jpg"
-
       h2 null, t "landingExplain.chapter3.heading"
       p null, t "landingExplain.chapter3.text.1"
       p null, t "landingExplain.chapter3.text.2"
-      hr null
+      div style: overflow: "visible",
+        img className: "pure-img", style: {width: "100%"}, src: require "../img/postkarte.jpg"
+      br null
+      br null
+
       h2 null, t "landingExplain.chapter4.heading"
       div style: float: "left", paddingTop: "1px",
         h4 null, t "landingExplain.chapter4.text.1"
@@ -155,4 +156,5 @@ module.exports = translate('translation')(pure React.createClass
         a href:"http://www.bmz.de/",
           img className: "partnerLogo", src: require "../img/BMZ.jpg"
         a href:"https://www.boell.de/de",
-          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg")
+          img className: "partnerLogo", src: require "../img/Heinrich_Böll.jpg"
+)
