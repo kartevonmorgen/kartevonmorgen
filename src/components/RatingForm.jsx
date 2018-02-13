@@ -108,7 +108,7 @@ class RatingForm extends Component {
         <fieldset>
           <Field name="source" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.reference")} />
         </fieldset>
-        <p className="form-heading">{t("ratings.rating")}:</p>
+        <p className="form-heading">{t("ratings.rating-heading")}:</p>
         <fieldset>
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="2" />
