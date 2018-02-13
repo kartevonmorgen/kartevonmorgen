@@ -158,4 +158,5 @@ module.exports = translate('translation')(pure React.createClass
             img className: "partnerLogo", src: require "../img/EngagementGlobal.jpg"
           a href:"http://www.bmz.de/",
             img className: "partnerLogo", src: require "../img/BMZ.jpg"
+        p null, t "landingExplain.chapter7.boell-foundation"
 )
