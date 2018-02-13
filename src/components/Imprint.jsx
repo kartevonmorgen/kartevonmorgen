@@ -36,7 +36,7 @@ const Imprint = () =>
         <a href = "mailto:info@ideenhochdrei.org">
           info@ideenhochdrei.org
         </a>
-  
+
       <h4 className="imprint-heading">{t("heading2")}</h4>
         {t("kvmTeamRepresentedBy")}
         <br />
@@ -49,7 +49,7 @@ const Imprint = () =>
         <a href = "mailto:helmut.wolman@kartevonmorgen.org">
           helmut.wolman@kartevonmorgen.org
         </a>
-    
+
       <h4 className="imprint-heading">{t("heading3")}</h4>
         {t("kvmTeamRepresentedBy")}
         <br />
@@ -182,17 +182,8 @@ const Imprint = () =>
     <p>
       Da wir der Ansicht sind, dass du nicht verpflichtet sein solltest,
       personenbezogene Daten bereitzustellen, um am freien Wissensaustausch
-      teilzunehmen, kannst du:
-      <ul>
-        <li>
-          alle Seiten der Karte von morgen ohne Einrichtung eines Benutzerkontos
-          lesen, bearbeiten oder nutzen;
-        </li>
-        <li>
-          ein Benutzerkonto ohne Angabe deiner E-Mail-Adresse oder deines echten
-          Namens erstellen.
-        </li>
-      </ul>
+      teilzunehmen, kannst du alle Einträge der Karte von morgen ohne Einrichtung
+      eines Benutzerkontos lesen, bearbeiten und nutzen;
     </p>
     <p>
       Da wir verstehen wollen, wie die Seite der Karte von morgen genutzt wird,
