@@ -69,14 +69,13 @@ module.exports = translate('translation')(pure React.createClass
 
       hr null
       h2 null, t "landingExplain.chapter5.heading"
-        p null, t "landingExplain.chapter5.text"
 
       div className: "team",
         div className: "teamMember",
           div className: "circle yellow",
             img className: "teamImage", src: require "../img/team/Thao.jpg"
           div className: "team-member-name", "Thao Tran"
-          div null, t "landingExplain.chapter5.brand-project-management"
+          div null, t "landingExplain.chapter5.thao"
         div className: "teamMember",
           div className: "circle pink",
             a target: "_blank", href:"http://www.ideenhochdrei.org/de/verein/kennenlernen/menschen/helmut-wolmann/",
@@ -137,7 +136,7 @@ module.exports = translate('translation')(pure React.createClass
           div className: "circle green",
             img className: "teamImage", src: require "../img/team/Frederik.jpg"
           div className: "team-member-name", "Frederik Schütz"
-          div null, t "landingExplain.chapter5.business-finance"
+          div null, t "landingExplain.chapter5.project-development"
         div className: "teamMember",
           div className: "circle blue",
             img className: "teamImage", src: require "../img/team/placeholder_4.png"
