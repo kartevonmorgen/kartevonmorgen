@@ -35,7 +35,9 @@ const Imprint = () =>
           info@ideenhochdrei.org
         </a>
   
-      <h4>{t("heading2")}</h4>
+      <h4 className="imprint-heading">{t("heading2")}</h4>
+        {t("kvmTeamRepresentedBy")}
+        <br />
         Helmut Wolman
         <br />
         Turley-Platz 9
@@ -46,28 +48,30 @@ const Imprint = () =>
           helmut.wolman@kartevonmorgen.org
         </a>
     
-      <h4>{t("heading3")}</h4>
+      <h4 className="imprint-heading">{t("heading3")}</h4>
+        {t("kvmTeamRepresentedBy")}
+        <br />
         T. Thao Tran
         <br />
         <a href = "mailto:thao.tran@kartevonmorgen.org">
           thao.tran@kartevonmorgen.org
         </a>
 
-      <h4>{t("heading4")}</h4>
+      <h4 className="imprint-heading">{t("heading4")}</h4>
         Anja Dannemann
         <br />
         <a href= "mailto:anja.dannemann@kartevonmorgen.org">
           anja.dannemann@kartevonmorgen.org
         </a>
 
-      <h4>{t("heading5")}</h4>
+      <h4 className="imprint-heading">{t("heading5")}</h4>
         Lisa Tegtmeier
         <br />
         <a target="_blank" href = "http://www.lisategtmeier.de">
          www.lisategtmeier.de
         </a>
 
-      <h4>{t("heading6")}</h4>
+      <h4 className="imprint-heading">{t("heading6")}</h4>
         <a target="_blank" href="https://slowtec.de/">slowtec GmbH</a>
         <br />
         Friedrichsberg 55
