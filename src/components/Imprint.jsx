@@ -25,7 +25,9 @@ const Imprint = () =>
     </p>
     <h3>{t("imprint")}</h3>
       <h4>{t("heading1")}</h4>
-        Ideen³ e.V. // Räume für Entwicklung, {t("representedByChair")} Helmut Wolman
+        Ideen³ e.V. // Räume für Entwicklung
+        <br />
+        {t("representedByChair")} Helmut Wolman
         <br />
         Görreshof 180, 53347 Alfter
         <br />
