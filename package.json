@@ -1,7 +1,7 @@
 {
   "name": "kartevonmorgen",
-  "version": "0.1.21",
-  "description": "Karte von Morgen",
+  "version": "0.1.22",
+  "description": "Karte von morgen",
   "scripts": {
     "lint": "eslint src/",
     "pretest": "npm run lint",
