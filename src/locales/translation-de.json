@@ -343,6 +343,7 @@
 		"heading1": "Das Projekt",
 		"facebook":"Neuigkeiten und aktuelles auf",
 		"betterplace":"Fortschrittsberichte auf",
+		"betterplace-link":"unserem Blog auf Betterplace",
 		"text1" : {
 			"1":"Unsere interaktive Karte zeigt dir Orte in deiner Umgebung, an denen man sich schon heute für eine Welt von morgen einsetzt.",
 			"2":"Du hast eine Initiative, für die du Mitstreiter*innen suchst?",
@@ -354,16 +355,11 @@
 		},
 		"heading2":"Hintergründe und Visionen",
 		"text2":{
-			"goal":"Was will die",
-			"goalLink":"Karte von morgen?",
-			"ratings":"Was sind die",
-			"ratingsLink":"Positivfaktoren?",
-			"regionalpilot":"Was sind",
-			"regionalpilotLink":"Regionalpilot*innen bzw. Themenpilot*innen?",
-			"embedMap":"Wie kann ich die Karte",
-			"embedMapLink":"auf meiner Homepage einbetten?",
-			"join":"Wie kann ich",
-			"joinLink":"mitmachen oder die Karte von morgen unterstützen?"
+			"goalLink":"Was will die Karte von morgen?",
+			"ratingsLink":"Was sind die Positivfaktoren?",
+			"regionalpilotLink":"Was sind Regionalpilot*innen bzw. Themenpilot*innen?",
+			"embedMapLink":"Wie kann ich die Karte auf meiner Homepage einbetten?",
+			"joinLink":"Wie kann ich mitmachen oder die Karte von morgen unterstützen?"
 		},
 		"heading3":"Wir lieben Open Source!",
 		"text3":"Wir wollen mit gutem Beispiel vorangehen und entwickeln daher die Software transparent und offen. Den Quellcode des Gemeinschaftsprojekts findest du unter:",

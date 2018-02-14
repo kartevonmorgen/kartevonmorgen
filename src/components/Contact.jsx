@@ -15,7 +15,7 @@ class Contact extends React.Component {
       <div>
         <h2>{t("heading")}</h2>
         <p>
-          {t("text1")}<br />
+          {t("text1")}<br /><br />
           Helmut Wolman  <br />
           Turley-Platz 9  <br />
           68167 Mannheim  <br />

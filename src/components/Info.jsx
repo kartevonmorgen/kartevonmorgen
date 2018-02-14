@@ -15,7 +15,7 @@ module.exports = ({serverVersion}) =>
         <h2>{t("heading1")}</h2>
         <p>
             {t("facebook")} <a target="_blank" href='https://www.facebook.com/vonmorgen'>Facebook</a><br />
-            {t("betterplace")} <a target="_blank" href='https://www.betterplace.org/de/projects/36213/newsroom'>unserem Blog auf Betterplace</a>
+            {t("betterplace")} <a target="_blank" href='https://www.betterplace.org/de/projects/36213/newsroom'>{t("betterplace-link")}</a>
         </p>
         <br />
 
@@ -32,13 +32,11 @@ module.exports = ({serverVersion}) =>
         <p>{t("text1.7")}</p>
     <img className="landing-img" src={team1}/><br /><br />
       <h3>{t("heading2")}</h3>
-        <ul>
-            <li>{t("text2.goal")} <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>{t("text2.goalLink")}</a></li>
-            <li>{t("text2.ratings")} <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>{t("text2.ratingsLink")}</a></li>
-            <li>{t("text2.regionalpilot")} <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>{t("text2.regionalpilotLink")}</a></li>
-            <li>{t("text2.embedMap")} <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/#Widget_zum_Einbetten'>{t("text2.embedMapLink")}</a></li>
-            <li>{t("text2.join")} <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>{t("text2.joinLink")}</a></li>
-        </ul>
+        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>{t("text2.goalLink")}</a><br />
+        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>{t("text2.ratingsLink")}</a><br />
+        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>{t("text2.regionalpilotLink")}</a><br />
+        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/#Widget_zum_Einbetten'>{t("text2.embedMapLink")}</a><br />
+        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>{t("text2.joinLink")}</a><br />
         <p>
         <br />
         <i className = "fa fa-facebook" />

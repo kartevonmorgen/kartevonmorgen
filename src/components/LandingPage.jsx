@@ -88,7 +88,7 @@ class LandingPage extends Component {
             <br/>
             {t("donate.paragraph2.bank-details2")}<br/>
             {t("donate.paragraph2.bank-details3")}<br/>
-            {t("donate.paragraph2.bank-details4")}<br/>
+            {t("donate.paragraph2.bank-details4")}<br/><br/>
 
             {t("donate.paragraph2.text")}
           </p>

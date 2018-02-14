@@ -343,6 +343,7 @@
 		"heading1": "The Project",
 		"facebook":"News and Updates on",
 		"betterplace":"Reports on current developments on",
+		"betterplace-link":"our blog at Betterplace",
 		"text1" : {
 			"1":"Our interactive map shows you places in your area that are already committed to a world of tomorrow.",
 			"2":"You are part of a project that is looking for new team members?",
@@ -354,16 +355,11 @@
 		},
 		"heading2":"Background and Vision",
 		"text2":{
-			"goal":"What is the goal of",
-			"goalLink":"von morgen?",
-			"ratings":"What are",
-			"ratingsLink":"sustainability criteria?",
-			"regionalpilot":"What are",
-			"regionalpilotLink":"local scouts?",
-			"embedMap":"How can I",
-			"embedMapLink":"embed the map on my homepage?",
-			"join":"How can I",
-			"joinLink":"be part of the team or support the von morgen map?"
+			"goalLink":"What is the goal of von morgen?",
+			"ratingsLink":"What are sustainability criteria?",
+			"regionalpilotLink":"What are local scouts?",
+			"embedMapLink":"How can I embed the map on my homepage?",
+			"joinLink":"How can I be part of the team or support the von morgen map?"
 		},
 		"heading3":"We love Open Source!",
 		"text3":"We want to set a good example and therefore develop the software transparently and openly. The source code of this project can be found under:",
