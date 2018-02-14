@@ -15,7 +15,7 @@ favorite places in the world. Places that are forward‐thinking and inspiring.
 The goal is to collect projects, companies and events that make a world of
 tomorrow, already experienceable today.
 
-Demo: [https://prototyp.kartevonmorgen.org/](https://prototyp.kartevonmorgen.org/)
+Demo: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
 
 ## Development
 
@@ -66,11 +66,11 @@ To build a Nix derivation, run
 
 Download the OpenFairDB Server
 
-    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.2.10.tar.gz
+    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.3.1.tar.gz
 
 unpack it
 
-    tar xzf openfairdb-x86_64-linux-v0.2.10.tar.gz
+    tar xzf openfairdb-x86_64-linux-v0.3.1.tar.gz
 
 and run it
 
@@ -116,6 +116,6 @@ KVM uses the [OpenFairDB](https://github.com/flosse/openfairdb) as its backend.
 
 ## License
 
-Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
+Copyright (c) 2015 - 2018 Markus Kohlhase <mail@markus-kohlhase.de>
 
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).
