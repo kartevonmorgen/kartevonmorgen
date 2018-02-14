@@ -48,7 +48,7 @@
 		"acceptLicense":"Please accept the license",
 		"invalidLicenseAgreement":"Invalid License Agreement",
 		"invalidURL":"Invalid URL",
-		"httpMissing":"\"http://\" or \"https://\" missing)"
+		"httpMissing":"\"http://\" or \"https://\" missing"
 	},
 	"login":{
 		"requiredField":"required field",

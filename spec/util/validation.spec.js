@@ -16,20 +16,39 @@ describe("Validation", () => {
       it("should exist", () => {
         F({
           title: null
-        }).title.should.have.string("Pflicht");
-      });
+        }).title.should.satisfy((error) => {
+          if(error.includes("Pflicht") || error.includes("required")){
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+      );
 
       it("should be at least 3 chars long", () => {
         F({
           title: "a"
-        }).title.should.have.string("Zu kurzer Titel");
+        }).title.should.satisfy((error) => {
+          if(error.includes("Zu kurzer Titel") || error.includes("Title too short")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should be at most 50 chars long", () => {
 
         F({
           title: new Array(51).fill('a').join(''),
-        }).title.should.have.string("Zu langer Titel");
+        }).title.should.satisfy((error) => {
+          if(error.includes("Zu kurzer Titel") || error.includes("Title too long")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should not throw error if valid", () => {
@@ -44,19 +63,37 @@ describe("Validation", () => {
       it("should exist", () => {
         F({
           description: null
-        }).description.should.have.string("Pflicht");
+        }).description.should.satisfy((error) => {
+          if(error.includes("Pflich") || error.includes("required")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should be at least 10 chars long", () => {
         F({
           description: "asadf"
-        }).description.should.have.string("Zu wenig Text");
+        }).description.should.satisfy((error) => {
+          if(error.includes("Zu wenig Text") || error.includes("too short")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should be at most 250 chars long", () => {
         F({
           description: new Array(251).fill('a').join(''),
-        }).description.should.have.string("Zu lange Beschreibung");
+        }).description.should.satisfy((error) => {
+          if(error.includes("Beschreibung zu lang") || error.includes("too long")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should not throw error if valid", () => {
@@ -71,19 +108,42 @@ describe("Validation", () => {
       it("should exist", () => {
         F({
           lat: null
-        }).lat.should.have.string("Pflicht");
+        }).lat.should.satisfy((error) => {
+          if(error.includes("Pflicht") || error.includes("required")){
+            return true;
+          } else {
+            return false;
+          }
+        })
         F({
           lng: null
-        }).lng.should.have.string("Pflicht");
+        }).lng.should.satisfy((error) => {
+          if(error.includes("Pflicht") || error.includes("required")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should be a number ", () => {
         F({
           lat: "ab"
-        }).lat.should.have.string("Ungültiger Breitengrad");
+        }).lat.should.satisfy((error) => {
+          if(error.includes("Ungültiger Breitengrad") || error.includes("Invalid Latitude")){
+            return true;
+          } else {
+            return false;
+          }
+        })
         F({
           lng: "ab"
-        }).lng.should.have.string("Ungültiger Längengrad");
+        }).lng.should.satisfy((error) => {
+          if(error.includes("Ungültiger Längengrad") || error.includes("Invalid Longitude")){
+            return true;
+          } else {
+            return false;
+          }});
         should.not.exist(F({
           lat: "1"
         }).lat);
@@ -107,22 +167,48 @@ describe("Validation", () => {
       it("should exist", () => {
         F({
           category: null
-        }).category.should.have.string("Pflicht");
+        }).category.should.satisfy((error) => {
+          if(error.includes("Pflicht") || error.includes("required")){
+            return true;
+          } else {
+            return false;
+          }
+        })
       });
 
       it("should be a string", () => {
         F({
           category: 1
-        }).category.should.have.string("Ungültig");
+        }).category.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           category: 1.7
-        }).category.should.have.string("Ungültig");
+        }).category.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           category: {}
-        }).category.should.have.string("Ungültig");
+        }).category.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           category: []
-        }).category.should.have.string("Ungültig");
+        }).category.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
       });
 
       it("should not throw error if valid", () => {
@@ -137,31 +223,61 @@ describe("Validation", () => {
       it("should exist", () => {
         F({
           license: null
-        }).license.should.have.string("Lizenzzustimmung");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Lizenzzustimmung") || error.includes("Please accept")){
+            return true;
+          } else {
+            return false;
+          }});
       });
 
       it("should be a boolean", () => {
         F({
           license: 1
-        }).license.should.have.string("Ungültig");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           license: 1.7
-        }).license.should.have.string("Ungültig");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           license: {}
-        }).license.should.have.string("Ungültig");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           license: []
-        }).license.should.have.string("Ungültig");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Ungültig") || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
       });
 
       it("should be accepted", () => {
         F({
           license: false
-        }).license.should.have.string("Lizenzzustimmung ist nötig");
+        }).license.should.satisfy((error) => {
+          if(error.includes("Lizenzzustimmung") || error.includes("Please accept")){
+            return true;
+          } else {
+            return false;
+          }});
         should.not.exist(F({
           license: true
-        }).license);
+        }).license)
       });
     });
 
@@ -170,10 +286,22 @@ describe("Validation", () => {
       it("should contain the protocol", () => {
         F({
           homepage: "example.org"
-        }).homepage.should.have.string('Ungültige URL ("http://" oder "https://" fehlt)');
+        }).homepage.should.satisfy((error) => {
+          if(error.includes("Ungültige URL: \"http://\" oder \"https://\" fehlt") 
+            || error.includes("Invalid URL: \"http://\" or \"https://\" missing")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           homepage: "www.example.org"
-        }).homepage.should.have.string("Ungültig");
+        }).homepage.should.satisfy((error) => {
+          if(error.includes("Ungültige URL: \"http://\" oder \"https://\" fehlt") 
+            || error.includes("Invalid URL: \"http://\" or \"https://\" missing")){
+            return true;
+          } else {
+            return false;
+          }});
         should.not.exist(F({
           homepage: "http://foo.bar"
         }).homepage);
@@ -185,10 +313,22 @@ describe("Validation", () => {
       it("should be long enough", () => {
         F({
           homepage: "http://"
-        }).homepage.should.have.string("Ungültig");
+        }).homepage.should.satisfy((error) => {
+          if(error.includes("Ungültig") 
+            || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
         F({
           homepage: "https://"
-        }).homepage.should.have.string("Ungültig");
+        }).homepage.should.satisfy((error) => {
+          if(error.includes("Ungültig") 
+            || error.includes("Invalid")){
+            return true;
+          } else {
+            return false;
+          }});
       });
     });
   });

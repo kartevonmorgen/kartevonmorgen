@@ -81,7 +81,7 @@ const entryForm = (data) => {
   }
   if ((h = data.homepage) != null) {
     if (!((h.indexOf("http://") === 0) || (h.indexOf("https://") === 0))) {
-      errors.homepage = t("invalidURL") + t("httpMissing");
+      errors.homepage = t("invalidURL") + ": " + t("httpMissing");
     }
     if (((ref = (h = data.homepage)) != null ? ref.length : void 0) < 9) {
       errors.homepage = t("invalidURL");
