@@ -17,7 +17,7 @@ const MoreInfoLink = styled.a`
 `;
 
 module.exports = ({marker, size, center, zoom, category, highlight, 
-  entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn}) =>
+  entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
   <div>
     <Map
       marker = {marker}
@@ -32,6 +32,7 @@ module.exports = ({marker, size, center, zoom, category, highlight,
       onMoveend = {onMoveend}
       onZoomend = {onZoomend}
       loggedIn = {loggedIn}
+      ratings = {ratings}
       />
     <MoreInfoLink target="_blank" href={URLs.APP.link + (highlight ? ("/#/?entry=" + highlight) : "")}>{i18n.t("mapWidget.showLargeMap")}</MoreInfoLink>
   </div>
