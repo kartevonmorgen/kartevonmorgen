@@ -3,6 +3,7 @@ import Actions    from "../Actions";
 import { DONATE } from "../constants/URLs";
 import V          from "../constants/PanelView";
 import i18n       from "../i18n";
+import React      from "react";
 
 const t = (key) => {
   return i18n.t("modal." + key);
