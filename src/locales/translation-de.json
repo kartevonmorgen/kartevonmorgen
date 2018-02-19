@@ -50,6 +50,9 @@
 		"invalidURL":"Ungültige URL",
 		"httpMissing":"\"http://\" oder \"https://\" fehlt)"
 	},
+	"entryDetails":{
+		"loadingEntry": "Eintrag wird geladen..."
+	},
 	"login":{
 		"requiredField":"Pflichtangabe",
 		"loginFailed":"Der Login ist fehlgeschlagen",

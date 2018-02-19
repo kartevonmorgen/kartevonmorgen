@@ -74,12 +74,12 @@ const EntryDetailsDetails = styled.div`
 class EntryDetails extends Component {
 
   render() {
-    const { entry } = this.props;
+    const { entry, t } = this.props;
 
     if (!entry) {
       return(
         <EntryDetailPage>
-          <span>Eintrag wird geladen...</span>
+          <span>{t("entryDetails.loadingEntry")}</span>
         </EntryDetailPage>
       );
     } 

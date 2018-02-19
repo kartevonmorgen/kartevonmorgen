@@ -50,6 +50,9 @@
 		"invalidURL":"Invalid URL",
 		"httpMissing":"\"http://\" or \"https://\" missing"
 	},
+	"entryDetails":{
+		"loadingEntry": "loading entry..."
+	},
 	"login":{
 		"requiredField":"required field",
 		"loginFailed":"Logging in failed",
