@@ -225,7 +225,7 @@ KVMMap.propTypes = {
     onZoomend     : T.func,
     onMarkerClick : T.func,
     onLocate      : T.func,
-    showLocateButton : T.boolean
+    showLocateButton : T.bool
 };
 
 module.exports = pure(KVMMap);
