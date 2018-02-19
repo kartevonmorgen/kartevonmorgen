@@ -12,19 +12,14 @@ import T                            from "prop-types";
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
-const LocateButton = styled.a `
+const LocateButtonContainer = styled.div`
+  bottom: 85px;
   position: absolute;
-  z-index: 1;
-  right: 10px;
-  bottom: 88px;
-  border-radius: 4px;
-  background-color: #f4f4f4;
-  width: 26px;
-  height: 26px;
-  text-align: center;
-  line-height: 26px;
-  cursor: pointer !important;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  z-index: 1000;
+`;
+
+const LocateButton = styled.a `
+  cursor: pointer;
   font-size: 14px;
   color: #333;
 `;
@@ -201,12 +196,18 @@ class KVMMap extends Component {
           }
         </Map>
         {showLocateButton ? 
-          <LocateButton
-            className   = "locate-icon"
-            onClick     = { this.props.onLocate }
-            title       = "Zeige meine Position" >
-            <i className = "fa fa-location-arrow" />
-          </LocateButton>
+          <div className="leaflet-control-container">
+            <LocateButtonContainer className="leaflet-right">
+                <div className = "leaflet-control-locate leaflet-bar leaflet-control">
+                  <LocateButton
+                    className   = "leaflet-bar-part leaflet-bar-part-single" //"locate-icon"
+                    onClick     = { this.props.onLocate }
+                    title       = "Zeige meine Position" >
+                    <i className = "fa fa-location-arrow" />
+                  </LocateButton>
+                </div>
+            </LocateButtonContainer>
+          </div>
           : null }
         </div>)
     }
