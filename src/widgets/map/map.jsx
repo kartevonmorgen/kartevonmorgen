@@ -2,8 +2,8 @@ import React         from "react";
 import EntryDetails  from "../../components/EntryDetails";
 import URLs          from "../../constants/URLs";
 import styled        from "styled-components";
-import Map           from "../../components/Map";
 import i18n          from "../../i18n";
+import Map           from "../../components/Map";
 
 const MoreInfoLink = styled.a`
   position: absolute;

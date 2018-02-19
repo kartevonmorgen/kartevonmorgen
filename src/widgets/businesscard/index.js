@@ -4,6 +4,8 @@ import Card     from "./card";
 import WebAPI   from "../../WebAPI";
 import parseUrl from "../../util/parseUrl";
 import "../../components/App.styl";
+import { I18nextProvider } from 'react-i18next';
+import i18n     from "../../i18n";
 
 const rootElement = document.querySelector('#app');
 
@@ -14,7 +16,10 @@ const flatten = nestedArray => nestedArray.reduce(
 let store = {};
 
 const render = () => {
-  ReactDOM.render(Card({entry: store.entry}), rootElement);
+  ReactDOM.render(
+    <I18nextProvider i18n={ i18n } >
+      <Card entry={ store.entry }/>
+    </I18nextProvider>, rootElement);
 };
 
 render();
