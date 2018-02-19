@@ -15,7 +15,7 @@ const { INITIATIVE, EVENT, COMPANY } = IDS;
 const LocateButtonContainer = styled.div`
   bottom: 85px;
   position: absolute;
-  z-index: 1000;
+  z-index: 0;
 `;
 
 const LocateButton = styled.a `
