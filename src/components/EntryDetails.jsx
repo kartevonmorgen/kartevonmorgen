@@ -30,7 +30,7 @@ const Tag = styled.li `
 `;
 
 const Tags = (tags=[]) =>
-  <TagsWrapper className = "pure-g">
+  <TagsWrapper key="tags" className = "pure-g">
     <i className = "pure-u-2-24 fa fa-tags" />
     <span className = "pure-u-22-24">
       <TagList>
