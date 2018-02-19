@@ -112,19 +112,19 @@ class RatingForm extends Component {
         <fieldset>
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="2" />
-            {" " + t("ratings.valueName.minusOne") + " (" + t("ratings.valueNameExplanation.minusOne") + ")"}
+            {" " + t("ratings.valueName.two") + " (" + t("ratings.valueNameExplanation.two") + ")"}
           </label><br />
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="1" />
-            {" " + t("ratings.valueName.zero") + " (" + t("ratings.valueNameExplanation.zero") + ")"}
+            {" " + t("ratings.valueName.one") + " (" + t("ratings.valueNameExplanation.one") + ")"}
           </label><br/>
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="0" />
-            {" " + t("ratings.valueName.one") + " (" + t("ratings.valueNameExplanation.one") + ")"}
+            {" " + t("ratings.valueName.zero") + " (" + t("ratings.valueNameExplanation.zero") + ")"}
           </label><br />
           <label>
             <Field name="value" className="radio-button" component="input" type="radio" value="-1" />
-            {" " + t("ratings.valueName.two") + " (" + t("ratings.valueNameExplanation.two") + ")"}
+            {" " + t("ratings.valueName.minusOne") + " (" + t("ratings.valueNameExplanation.minusOne") + ")"}
           </label>
           <Field name="value" component={errorMessage} />
         </fieldset>
