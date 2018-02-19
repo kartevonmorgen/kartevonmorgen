@@ -414,5 +414,6 @@ Main = React.createClass
             onZoomend     : (coordinates) ->
               dispatch Actions.onZoomend(coordinates, map.zoom)
             onLocate      : -> dispatch Actions.showOwnPosition()
+            showLocateButton : true
               
 module.exports = translate('translation')(pure(Main))

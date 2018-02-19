@@ -96,7 +96,8 @@ class KVMMap extends Component {
       onZoomend,
       onClick,
       onMarkerClick,
-      ratings
+      ratings,
+      showLocateButton
     } = this.props;
 
 
@@ -199,12 +200,14 @@ class KVMMap extends Component {
           }
           }
         </Map>
-        <LocateButton
-          className   = "locate-icon"
-          onClick     = { this.props.onLocate }
-          title       = "Zeige meine Position" >
-          <i className = "fa fa-location-arrow" />
-        </LocateButton>
+        {showLocateButton ? 
+          <LocateButton
+            className   = "locate-icon"
+            onClick     = { this.props.onLocate }
+            title       = "Zeige meine Position" >
+            <i className = "fa fa-location-arrow" />
+          </LocateButton>
+          : null }
         </div>)
     }
 }
@@ -220,7 +223,8 @@ KVMMap.propTypes = {
     onMoveend     : T.func,
     onZoomend     : T.func,
     onMarkerClick : T.func,
-    onLocate      : T.func
+    onLocate      : T.func,
+    showLocateButton : T.boolean
 };
 
 module.exports = pure(KVMMap);
