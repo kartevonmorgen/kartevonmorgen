@@ -18,7 +18,7 @@ let state = {
   entries: [],
   entriesById: {},
   zoom: mapConst.DEFAULT_ZOOM,
-  center: null,
+  center: mapConst.DEFAULT_CENTER,
   bbox: null,
   categories: [Categories.IDS.INITIATIVE, Categories.IDS.COMPANY]
 };
