@@ -302,6 +302,7 @@
 			"software-development" : "Softwareentwicklung",
 			"business-finance" : "Projektentwicklung",
 			"pr-marketing" : "PR & Marketing",
+			"communication-marketing" : "Kommunikation und Marketing",
 			"thao" : "Inhalte & Kommunikation",
 			"project-development" : "Projektentwicklung",
 			"chair" : "Vorstand",
@@ -311,7 +312,8 @@
 			"florian" : "Beratung Softwareentwicklung",
 			"louisa" : "Soziale Arbeit",
 			"anja" : "Designerin",
-			"xueqian" : "Unternehmensberaterin"
+			"xueqian" : "Unternehmensberaterin",
+			"linus" : "Globale Soziologie"
 		},
 		"chapter6" : {
 			"heading" : "Ein Projekt von"

@@ -138,6 +138,12 @@ module.exports = translate('translation')(pure React.createClass
           div className: "team-member-name", "Frederik Schütz"
           div null, t "landingExplain.chapter5.project-development"
         div className: "teamMember",
+          div className: "circle green",
+            img className: "teamImage", src: require "../img/team/Linus.jpg"
+          div className: "team-member-name", "Linus Covic"
+          div null, t "landingExplain.chapter5.linus"
+          div null, t "landingExplain.chapter5.communication-marketing"
+        div className: "teamMember",
           div className: "circle blue",
             img className: "teamImage", src: require "../img/team/placeholder_4.png"
           div null, t "landingExplain.chapter5.new-members"

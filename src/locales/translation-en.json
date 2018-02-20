@@ -302,6 +302,7 @@
 			"graphic-design" : "Graphic Design",
 			"software-development" : "Software Development",
 			"pr-marketing" : "PR & Marketing",
+			"communication-marketing" : "Communication & Marketing",
 			"thao" : "Content & Communication",
 			"project-development" : "Project Development",
 			"chair" : "Chair",
@@ -311,7 +312,8 @@
 			"florian" : "Software Development",
 			"louisa" : "Social Worker",
 			"anja" : "Designer",
-			"xueqian" : "Consultant"
+			"xueqian" : "Consultant",
+			"linus" : "Global Sociology"
 		},
 		"chapter6" : {
 			"heading" : "A project by"
