@@ -71,7 +71,7 @@ Main = React.createClass
         lng: e?.lng
       else
         map.center
-    loggedIn = if user.username then true else false
+    loggedIn = if user.id then true else false
 
     div className:"app",
 
@@ -245,7 +245,7 @@ Main = React.createClass
                         key: "delete"
                         className:"pure-u-1-1",
                         onClick: (->
-                          dispatch Actions.unsubscribeFromBboxes()
+                          dispatch Actions.unsubscribeFromBboxes(user.id)
                         ),
                           i className: "fa fa-trash"
                           t "subscribeToBbox.unsubscribe"

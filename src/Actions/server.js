@@ -234,7 +234,7 @@ const Actions = {
       })
     },
 
-  unsubscribeFromBboxes: () =>
+  unsubscribeFromBboxes: (u_id) =>
     (dispatch, getState) => {
       WebAPI.unsubscribeFromBboxes((err, res) => {
         if (err) {
