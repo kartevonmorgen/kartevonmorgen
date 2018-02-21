@@ -199,7 +199,7 @@
 		"subscribeToBbox" : {
 			"message" : "Du bist eingeloggt. Wenn du magst kannst du ",
 			"new-link" : "über Änderungen in deiner Stadt auf dem Laufenden bleiben",
-			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen."
+			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
 		},
 		"donate" : {
 			"heading" : "Etwas Gutes für morgen tun.",
