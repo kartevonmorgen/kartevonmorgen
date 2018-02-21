@@ -180,6 +180,12 @@ const Actions = {
     }
   },
 
+  showResultList: () => {
+    return {
+      type: T.SHOW_SEARCH_RESULTS
+    }
+  },
+
   explainRatingContext: (context) => {
     return {
       type: T.EXPLAIN_RATING_CONTEXT,

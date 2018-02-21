@@ -166,7 +166,7 @@
 		"cancel": "cancel",
 		"edit": "edit",
 		"unsubscribe": "unsubscribe",
-		"back": "back",
+		"back": "cancel",
 		"subscribe": "subscribe"
 	},
 	"search-results" : {

@@ -229,7 +229,7 @@ Main = React.createClass
                         key: "back"
                         className:"pure-u-1-2",
                         onClick: (->
-                          dispatch Actions.showMap()
+                          dispatch Actions.showSearchResults()
                         ),
                           i className: "fa fa-chevron-left"
                           t "subscribeToBbox.back"
