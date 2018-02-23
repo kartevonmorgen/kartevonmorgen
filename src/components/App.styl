@@ -384,28 +384,19 @@ button.pure-button i
 
     .left
       position relative
+      z-index 2
       order -1
       height 100vh
       overflow-y  hidden
       float left
+      background-color #fff
 
       .content-wrapper
-        height        100vh
-        background    #fff
-        position      relative
-        z-index       2
-
         .result
-          position        relative
-          z-index         2
-          overflow-y      scroll
-          height          calc(100vh - 107px)
           box-sizing      border-box
           padding-bottom  30px
 
         .content
-          position        relative
-          z-index         2
           overflow-y      scroll
           height          calc(100vh - 42px)
           box-sizing      border-box
@@ -423,9 +414,6 @@ button.pure-button i
           width       100%
 
       .search
-        position  relative
-        z-index   2
-
         &.closed
           display none
 
@@ -764,8 +752,10 @@ button.pure-button i
     padding 0.7em
 
   .result-list
-    overflow  hidden
+    overflow-y  scroll
+    height      calc(100vh - 107px)
     background  #f7f7f7
+
     p.no-results
       margin 0
       padding 1em
