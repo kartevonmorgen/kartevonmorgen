@@ -1,7 +1,7 @@
 import React, { Component }   from "react";
 import Address                from "./AddressLine";
 import { pure }               from "recompose";
-import { NAMES, CSS_CLASSES } from "../constants/Categories";
+import { NAMES }              from "../constants/Categories";
 import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import Ratings                from "./Ratings"
@@ -82,12 +82,12 @@ class EntryDetails extends Component {
           <span>{t("entryDetails.loadingEntry")}</span>
         </EntryDetailPage>
       );
-    } 
+    }
     else {
       return (
-    <EntryDetailPage> 
-      <CategoryDescription category={CSS_CLASSES[entry.categories && entry.categories[0]]}>
-        <span>{NAMES[entry.categories && entry.categories[0]]}</span>
+    <EntryDetailPage>
+      <CategoryDescription category={NAMES[entry.categories && entry.categories[0]]}>
+        <span>{ t("category." + NAMES[[entry.categories && entry.categories[0]]])}</span>
       </CategoryDescription>
       <div>
         <EntryTitle>{entry.title}</EntryTitle>

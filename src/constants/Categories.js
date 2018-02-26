@@ -6,24 +6,16 @@ c.IDS = {
   COMPANY: "77b3c33a92554bcf8e8c2c86cedd6f6f"
 };
 
+c.NAMES = {};
+c.NAMES[c.IDS.INITIATIVE] = "initiative"
+c.NAMES[c.IDS.EVENT] = "event"
+c.NAMES[c.IDS.COMPANY] = "company"
+
 c.MAIN_IDS = [c.IDS.INITIATIVE, c.IDS.EVENT, c.IDS.COMPANY];
 
-c.CSS_CLASSES = {};
-
-c.CSS_CLASSES[c.IDS.INITIATIVE] = "initiative";
-
-c.CSS_CLASSES[c.IDS.EVENT] = "event";
-
-c.CSS_CLASSES[c.IDS.COMPANY] = "company";
-
 c.CSS_CLASS_SIZE = {};
-
 c.CSS_CLASS_SIZE[c.IDS.INITIATIVE] = "pure-u-8-24";
-
 c.CSS_CLASS_SIZE[c.IDS.EVENT] = "pure-u-7-24";
-
 c.CSS_CLASS_SIZE[c.IDS.COMPANY] = "pure-u-9-24";
-
-c.NAMES = {};
 
 module.exports = c;

@@ -3,12 +3,7 @@ import { translate } from "react-i18next";
 import React from "react";
 import { pure } from "recompose";
 import T from "prop-types";
-
-import {
-  MAIN_IDS,
-  CSS_CLASSES,
-  CSS_CLASS_SIZE
-} from "../constants/Categories";
+import { MAIN_IDS, CSS_CLASS_SIZE, NAMES } from "../constants/Categories";
 
 class RawCategoryButtons extends React.Component {
 
@@ -21,8 +16,8 @@ class RawCategoryButtons extends React.Component {
           key       = { c }
           disabled  = { disabled }
           onClick   = { () => { onToggle(c) }}
-          className = { CSS_CLASSES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")} >
-          { t("category." + CSS_CLASSES[c]) + " " }
+          className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
+          { t("category." + NAMES[c]) + " " }
           <i className = {'fa fa-toggle' + (act ? "-on" : "-off")}><i /></i>
         </button>);
     });

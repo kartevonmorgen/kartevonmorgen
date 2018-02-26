@@ -5,29 +5,30 @@ import { pure } from "recompose"
 import Flower   from "./Flower";
 import NavButton from "./NavButton";
 import styled   from "styled-components";
-import i18n from "../i18n";
-import { NAMES, CSS_CLASSES } from "../constants/Categories"
+import i18n     from "../i18n";
+import { NAMES } from "../constants/Categories"
+import { translate          } from "react-i18next";
 
 const AddressWrapper = styled.div`
   font-size: 0.8em;
   color: #888;
 `;
 
-const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave}) => {
-  var clz = highlight ? 'highlight-entry ' : '';
-  clz = clz + CSS_CLASSES[entry.categories && entry.categories[0]];
+const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+  var css_class = highlight ? 'highlight-entry ' : '';
+  css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   return (
     <li
       key           = { entry.id }
-      className     = { clz }
+      className     = { css_class }
       onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
-      onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
-      onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
+      onMouseEnter  = { (ev) => { ev.preventDefaultrans(); onMouseEnter(entry.id) }}
+      onMouseLeave  = { (ev) => { ev.preventDefaultrans(); onMouseLeave(entry.id) }} >
       <div className = "pure-g">
         <div className = "pure-u-23-24">
           <div className="category">
             <span className="category">
-              { NAMES[entry.categories && entry.categories[0]] }
+              { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
           </div>
           <div>
@@ -59,11 +60,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
 }
 
 const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
-  onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick}) => {
-
-  const t = (key) => {
-    return i18n.t("resultList." + key);
-  }
+  onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick, t}) => {
 
   let results = entries.map( e =>
     <ResultListElement
@@ -73,13 +70,14 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
       highlight    = { highlight.indexOf(e.id) >= 0 }
       onClick      = { onClick      }
       onMouseEnter = { onMouseEnter }
-      onMouseLeave = { onMouseLeave } />);
+      onMouseLeave = { onMouseLeave } 
+      t            = { t } />);
   if(moreEntriesAvailable && !waiting){
     results.push(
       <li key="show-more-entries">
       <div>
         <a onClick = { onMoreEntriesClick } href="#">
-          {t("showMoreEntries")}
+          {t("resultList.showMoreEntries")}
         </a>
       </div>
       </li>
@@ -94,11 +92,11 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           ? <ul>{results}</ul>
           : (waiting ?
           <p className= "loading">
-            <span>{t("entriesLoading")}</span>
+            <span>{t("resultList.entriesLoading")}</span>
           </p>
           : <p className= "no-results">
               <i className= "fa fa-frown-o" />
-              <span>{t("noEntriesFound")}</span>
+              <span>{t("resultList.noEntriesFound")}</span>
             </p>)
       }
       </div>
@@ -106,7 +104,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
         <NavButton
           classname = "pure-u-1"
           icon = "fa fa-plus"
-          text = {t("addEntry")}
+          text = {t("resultList.addEntry")}
           onClick = {() => {
             dispatch(Actions.showNewEntry())
           }}
@@ -115,4 +113,4 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
     </div>)
 }
 
-module.exports = pure(ResultList)
+module.exports = translate("translation")(pure(ResultList))

@@ -3,7 +3,7 @@ import Actions              from "../Actions"
 import validation           from "../util/validation"
 import normalize            from "../util/normalize";
 import { reduxForm, Field } from "redux-form"
-import { IDS, CSS_CLASSES } from "../constants/Categories"
+import { IDS, NAMES }       from "../constants/Categories"
 import URLs                 from "../constants/URLs"
 import LICENSES             from "../constants/Licenses"
 import { EDIT             } from "../constants/Form"
@@ -44,9 +44,9 @@ class Form extends Component {
         <fieldset>
           <Field className="pure-input-1" name="category" component="select">
             <option value={-1}>- {t("chooseCategory")} -</option>
-            <option value={IDS.INITIATIVE}>{this.props.t("category." + CSS_CLASSES[IDS.INITIATIVE])}</option>
+            <option value={IDS.INITIATIVE}>{this.props.t("category." + NAMES[IDS.INITIATIVE])}</option>
             {/*<option value={IDS.EVENT}>Event</option>*/}
-            <option value={IDS.COMPANY}>{this.props.t("category." + CSS_CLASSES[IDS.COMPANY])}</option>
+            <option value={IDS.COMPANY}>{this.props.t("category." + NAMES[IDS.COMPANY])}</option>
           </Field>
           <Field name="category" component={errorMessage} />
 
