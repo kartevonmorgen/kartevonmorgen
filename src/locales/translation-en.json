@@ -1,6 +1,9 @@
 {
-	"addEntry":"add a new entry",
 	"edit":"edit",
+	"resultList" : {
+		"addEntry":"add a new entry",
+		"entriesLoading":"loading entries..."
+	},
 	"entryForm":{
 		"chooseCategory":"Select category",
 		"location":"Location",

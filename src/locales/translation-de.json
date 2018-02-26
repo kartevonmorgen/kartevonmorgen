@@ -1,6 +1,9 @@
 {
-	"addEntry":"Eintrag hinzufügen",
 	"edit":"bearbeiten",
+	"resultList" : {
+		"addEntry":"Eintrag hinzufügen",
+		"entriesLoading":"Einträge werden geladen..."
+	},
 	"entryForm":{
 		"chooseCategory":"Kategorie auswählen",
 		"location":"Ort",

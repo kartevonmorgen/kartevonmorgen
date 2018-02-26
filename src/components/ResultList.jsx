@@ -3,6 +3,7 @@ import Actions  from "../Actions"
 import Address  from "./AddressLine"
 import { pure } from "recompose"
 import Flower   from "./Flower";
+import NavButton from "./NavButton";
 import styled   from "styled-components";
 import i18n from "../i18n";
 import { NAMES, CSS_CLASSES } from "../constants/Categories"
@@ -61,7 +62,7 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick,
   onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick}) => {
 
   const t = (key) => {
-    return i18n.t("resultlist." + key);
+    return i18n.t("resultList." + key);
   }
 
   let results = entries.map( e =>
@@ -86,19 +87,28 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick,
   }
 
   return (
-    <div className= "result-list">
-    {
-      (results.length > 0)
-        ? <ul>{results}</ul>
-        : (waiting ?
-        <p className= "loading">
-          <span>{t("entriesLoading")}</span>
-        </p>
-        : <p className= "no-results">
-            <i className= "fa fa-frown-o" />
-            <span>{t("noEntriesFound")}</span>
-          </p>)
-    }
+    <div>
+      <div className= "result-list">
+      {
+        (results.length > 0)
+          ? <ul>{results}</ul>
+          : (waiting ?
+          <p className= "loading">
+            <span>{t("entriesLoading")}</span>
+          </p>
+          : <p className= "no-results">
+              <i className= "fa fa-frown-o" />
+              <span>{t("noEntriesFound")}</span>
+            </p>)
+      }
+      </div>
+      <nav className="menu pure-g">
+        <NavButton
+          classname = "pure-u-1"
+          icon = "fa fa-plus"
+          text = {t("addEntry")}
+          actions = {[Actions.showNewEntry()]} />
+      </nav>
     </div>)
 }
 

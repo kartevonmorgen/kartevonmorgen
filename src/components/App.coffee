@@ -155,12 +155,6 @@ Main = React.createClass
           if view.left?
             nav className: "menu pure-g",
               switch view.left
-                when V.RESULT
-                  li
-                    onClick: -> dispatch Actions.showNewEntry()
-                    className:"pure-u-1",
-                      i className: "fa fa-plus"
-                      t "addEntry"
                 when V.ENTRY
                   [
                     li
