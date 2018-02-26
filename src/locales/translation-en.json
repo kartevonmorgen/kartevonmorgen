@@ -1,5 +1,4 @@
 {
-	"edit":"edit",
 	"resultList" : {
 		"addEntry":"add a new entry",
 		"entriesLoading":"loading entries..."
@@ -27,10 +26,8 @@
 		"contact":"Contact (optional)",
 		"cancel":"cancel",
 		"save":"save",
-		"edit":"edit",
 		"editEntryHeading":"Edit entry",
 		"newEntryHeading":"New entry",
-		"back":"back",
 		"savingError":"Error while trying to save the entry...",
 		"valueError":"Something is missing, please check below.",
 		"requiredField":"required field",
@@ -54,7 +51,9 @@
 		"httpMissing":"\"http://\" or \"https://\" missing"
 	},
 	"entryDetails":{
-		"loadingEntry": "loading entry..."
+		"loadingEntry": "loading entry...",
+		"back" : "back",
+		"edit" : "edit"
 	},
 	"login":{
 		"requiredField":"required field",

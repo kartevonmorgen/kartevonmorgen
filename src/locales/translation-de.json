@@ -1,5 +1,4 @@
 {
-	"edit":"bearbeiten",
 	"resultList" : {
 		"addEntry":"Eintrag hinzufügen",
 		"entriesLoading":"Einträge werden geladen..."
@@ -27,10 +26,8 @@
 		"contact":"Kontakt (optional)",
 		"cancel":"abbrechen",
 		"save":"speichern",
-		"edit":"bearbeiten",
 		"editEntryHeading":"Eintrag bearbeiten",
 		"newEntryHeading":"Neuer Eintrag",
-		"back":"zurück",
 		"savingError":"Der Eintrag konnte nicht gespeichert werden",
 		"valueError":"Bitte überprüfen Sie ihre Eingaben.",
 		"requiredField":"Pflichtangabe",
@@ -54,7 +51,9 @@
 		"httpMissing":"\"http://\" oder \"https://\" fehlt)"
 	},
 	"entryDetails":{
-		"loadingEntry": "Eintrag wird geladen..."
+		"loadingEntry": "Eintrag wird geladen...",
+		"back" : "zurück",
+		"edit" : "bearbeiten"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",

@@ -6,11 +6,11 @@ const NavigationButton = styled.li`
   color: #00f;
 `;
 
-const NavButton = ({ key, classname, icon, text, onClick }) => {
+const NavButton = ({ keyName, classname, icon, text, onClick }) => {
 
   return (
     <NavigationButton
-      key = { key }
+      key = { keyName }
       className = { classname }
       onClick = { onClick }>
       { text }

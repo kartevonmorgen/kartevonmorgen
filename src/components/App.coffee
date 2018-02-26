@@ -155,25 +155,6 @@ Main = React.createClass
           if view.left?
             nav className: "menu pure-g",
               switch view.left
-                when V.ENTRY
-                  [
-                    li
-                      onClick: ->
-                        dispatch Actions.setCurrentEntry null, null
-                        dispatch Actions.showSearchResults()
-                        dispatch Actions.setCenterInUrl map.center
-                      key: "back"
-                      className:"pure-u-1-2",
-                        i className: "fa fa-chevron-left"
-                        t "entryForm.back"
-                    li
-                      onClick: -> dispatch Actions.editCurrentEntry()
-                      key: "edit"
-                      className:"pure-u-1-2",
-                        i className: "fa fa-pencil"
-                        t "entryForm.edit"
-                  ]
-
                 when V.EDIT, V.NEW
                   [
                     li
@@ -308,6 +289,7 @@ Main = React.createClass
                 div className: "content",
                   React.createElement EntryDetails,
                     entry   : entries[search.current] || null
+                    dispatch : dispatch
                   React.createElement Ratings,
                     entry   : entries[search.current] || null
                     ratings : (if entries[search.current] then (entries[search.current].ratings || []) else []).map((id) -> ratings[id])
