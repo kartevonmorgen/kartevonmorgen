@@ -64,7 +64,7 @@ Main = React.createClass
     invisibleEntries =
       (x for entry in search.invisible when(x=entries[entry.id])?)
     rightPanelIsOpen = false  # right panel moved into landingpage
-    mapCenter = 
+    mapCenter =
       if e?.lat and e?.lng and c=search.current
         e = entries[c]
         lat: e?.lat
@@ -83,7 +83,7 @@ Main = React.createClass
 
         if view.menu
           React.createElement LandingPage,
-            onMenuItemClick: (id) -> 
+            onMenuItemClick: (id) ->
               switch id
                 when 'map'
                   dispatch Actions.toggleLandingPage()
@@ -158,7 +158,7 @@ Main = React.createClass
                 when V.ENTRY
                   [
                     li
-                      onClick: -> 
+                      onClick: ->
                         dispatch Actions.setCurrentEntry null, null
                         dispatch Actions.showSearchResults()
                         dispatch Actions.setCenterInUrl map.center
@@ -281,6 +281,7 @@ Main = React.createClass
                     onMouseLeave: (id) -> dispatch Actions.highlight()
                     moreEntriesAvailable: search.moreEntriesAvailable
                     onMoreEntriesClick: () -> dispatch Actions.showAllEntries()
+                    dispatch    : dispatch
 
                   if cities.length > 0
                     div null,
@@ -400,7 +401,7 @@ Main = React.createClass
             entries       : resultEntries
             ratings       : ratings
             onClick       : (latlng) -> dispatch Actions.setMarker latlng
-            onMarkerClick : (id) -> 
+            onMarkerClick : (id) ->
               dispatch Actions.setCurrentEntry id, null
               dispatch Actions.showLeftPanel()
             onMoveend     : (coordinates) ->
@@ -409,5 +410,5 @@ Main = React.createClass
               dispatch Actions.onZoomend(coordinates, map.zoom)
             onLocate      : -> dispatch Actions.showOwnPosition()
             showLocateButton : true
-              
+
 module.exports = translate('translation')(pure(Main))

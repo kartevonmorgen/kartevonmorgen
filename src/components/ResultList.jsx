@@ -58,7 +58,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </li>)
 }
 
-const ResultList = ({ waiting, entries, ratings, highlight, onClick,
+const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
   onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick}) => {
 
   const t = (key) => {
@@ -107,7 +107,10 @@ const ResultList = ({ waiting, entries, ratings, highlight, onClick,
           classname = "pure-u-1"
           icon = "fa fa-plus"
           text = {t("addEntry")}
-          actions = {[Actions.showNewEntry()]} />
+          onClick = {() => {
+            dispatch(Actions.showNewEntry())
+          }}
+          />
       </nav>
     </div>)
 }
