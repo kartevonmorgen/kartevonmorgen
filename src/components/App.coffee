@@ -155,28 +155,6 @@ Main = React.createClass
           if view.left?
             nav className: "menu pure-g",
               switch view.left
-                when V.EDIT, V.NEW
-                  [
-                    li
-                      key: "cancel"
-                      className:"pure-u-1-2",
-                      onClick: (->
-                        dispatch initialize EDIT.id, {}, EDIT.fields
-                        dispatch switch view.left
-                          when V.NEW  then Actions.cancelNew()
-                          when V.EDIT then Actions.cancelEdit()
-                      ),
-                        i className: "fa fa-ban"
-                        t "entryForm.cancel"
-                    li
-                      key: "save"
-                      className:"pure-u-1-2",
-                      onClick: (=>
-                        @refs.form.submit()
-                      ),
-                        i className: "fa fa-floppy-o"
-                        t "entryForm.save"
-                  ]
                 when V.NEW_RATING
                   [
                     li
@@ -302,6 +280,7 @@ Main = React.createClass
                     ref: 'form'
                     isEdit: form[EDIT.id]?.kvm_flag_id?
                     license: entries[search.current]?.license
+                    dispatch: dispatch
                     onSubmit: (data) ->
                       dispatch Actions.saveEntry
                         id          : form[EDIT.id]?.kvm_flag_id

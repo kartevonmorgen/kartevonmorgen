@@ -1,12 +1,13 @@
-import React, { Component } from "react"
-import Actions              from "../Actions"
-import validation           from "../util/validation"
+import React, { Component } from "react";
+import Actions              from "../Actions";
+import validation           from "../util/validation";
 import normalize            from "../util/normalize";
-import { reduxForm, Field } from "redux-form"
-import { IDS, NAMES }       from "../constants/Categories"
-import URLs                 from "../constants/URLs"
-import LICENSES             from "../constants/Licenses"
-import { EDIT             } from "../constants/Form"
+import { reduxForm, Field, initialize } from "redux-form";
+import NavButton            from "./NavButton";
+import { IDS, NAMES }       from "../constants/Categories";
+import URLs                 from "../constants/URLs";
+import LICENSES             from "../constants/Licenses";
+import { EDIT             } from "../constants/Form";
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 
@@ -19,175 +20,199 @@ class Form extends Component {
 
   render() {
 
-    const { isEdit, license } = this.props;
+    const { isEdit, license, dispatch, handleSubmit } = this.props;
     var t = (key) => {
       return this.props.t("entryForm." + key);
     };
 
     return (
-    <form
-      className = "add-entry-form"
-      action    = 'javascript:void();' >
+    <div>
+      <form
+        className = "add-entry-form"
+        action    = 'javascript:void();' >
 
-      <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
-      { this.props.error &&
-        <div className= "err">
-          { t("savingError") + ":" + this.props.error.message}
-        </div>
-      }
-      { (!this.props.error) && this.props.submitFailed &&
-        <div className="err"> { t("valueError") }
-          <Field name="license" component={errorMessage} />
-        </div>
-      }
-      <div className= "pure-form">
-        <fieldset>
-          <Field className="pure-input-1" name="category" component="select">
-            <option value={-1}>- {t("chooseCategory")} -</option>
-            <option value={IDS.INITIATIVE}>{this.props.t("category." + NAMES[IDS.INITIATIVE])}</option>
-            {/*<option value={IDS.EVENT}>Event</option>*/}
-            <option value={IDS.COMPANY}>{this.props.t("category." + NAMES[IDS.COMPANY])}</option>
-          </Field>
-          <Field name="category" component={errorMessage} />
-
-          <Field
-            name="title"
-            required={true}
-            className="pure-input-1"
-            type="text"
-            component="input"
-            placeholder={t("title")} />
-
-          <Field
-            name="title"
-            component={errorMessage} />
-
-          <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
-          <Field name="description" component={errorMessage} />
-
-        </fieldset>
-
-        <fieldset>
-          <Field
-            name="tags"
-            required={true}
-            className="pure-input-1"
-            component="input"
-            placeholder={t("tags")}
-            normalize={normalize.tags} />
-          <Field
-            name="tags"
-            component={errorMessage} />
-        </fieldset>
-
-        <fieldset>
-          <legend>
-            <span className="text">Ort</span>
-          </legend>
-          <div className= "pure-g">
-            <div className= "pure-u-15-24">
-              <Field name="city" className="pure-input-1" component="input" placeholder={t("city")} />
-              <Field name="city" component={errorMessage} />
-            </div>
-            <div className= "pure-u-9-24">
-              <Field name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
-              <Field name="zip" component={errorMessage} />
-            </div>
+        <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
+        { this.props.error &&
+          <div className= "err">
+            { t("savingError") + ":" + this.props.error.message}
           </div>
-          <Field name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
-          <Field name="street" component={errorMessage} />
-          </fieldset>
-          <span className="desc">{t("clickOnMap")}</span>
+        }
+        { (!this.props.error) && this.props.submitFailed &&
+          <div className="err"> { t("valueError") }
+            <Field name="license" component={errorMessage} />
+          </div>
+        }
+        <div className= "pure-form">
           <fieldset>
-          <div className= "pure-g">
-            <label className= "pure-u-2-24">
-              <i className= "fa fa-map-marker" />
-            </label>
-            <div className= "pure-u-22-24 pure-g">
-              <div className= "pure-u-11-24">
-                <Field name="lat" className="pure-input-1" component="input" readOnly={true}/>
-                <Field name="lat" component={errorMessage} />
+            <Field className="pure-input-1" name="category" component="select">
+              <option value={-1}>- {t("chooseCategory")} -</option>
+              <option value={IDS.INITIATIVE}>{this.props.t("category." + NAMES[IDS.INITIATIVE])}</option>
+              {/*<option value={IDS.EVENT}>Event</option>*/}
+              <option value={IDS.COMPANY}>{this.props.t("category." + NAMES[IDS.COMPANY])}</option>
+            </Field>
+            <Field name="category" component={errorMessage} />
+
+            <Field
+              name="title"
+              required={true}
+              className="pure-input-1"
+              type="text"
+              component="input"
+              placeholder={t("title")} />
+
+            <Field
+              name="title"
+              component={errorMessage} />
+
+            <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
+            <Field name="description" component={errorMessage} />
+
+          </fieldset>
+
+          <fieldset>
+            <Field
+              name="tags"
+              required={true}
+              className="pure-input-1"
+              component="input"
+              placeholder={t("tags")}
+              normalize={normalize.tags} />
+            <Field
+              name="tags"
+              component={errorMessage} />
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              <span className="text">Ort</span>
+            </legend>
+            <div className= "pure-g">
+              <div className= "pure-u-15-24">
+                <Field name="city" className="pure-input-1" component="input" placeholder={t("city")} />
+                <Field name="city" component={errorMessage} />
               </div>
-              <div className= "pure-u-2-24"></div>
-              <div className= "pure-u-11-24">
-                <Field name="lng" className="pure-input-1" component="input" readOnly={true} />
-                <Field name="lng" component={errorMessage} />
+              <div className= "pure-u-9-24">
+                <Field name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
+                <Field name="zip" component={errorMessage} />
               </div>
             </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>{t("contact")}</legend>
-          <div className= "pure-g">
-            <label className= "pure-u-2-24">
-              <i className= "fa fa-globe" />
-            </label>
-            <div className= "pure-u-22-24">
-              <Field
-                name="homepage"
-                className="pure-input-1"
-                component="input"
-                placeholder={t("homepage")} />
-              <Field name="homepage" component={errorMessage} />
+            <Field name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
+            <Field name="street" component={errorMessage} />
+            </fieldset>
+            <span className="desc">{t("clickOnMap")}</span>
+            <fieldset>
+            <div className= "pure-g">
+              <label className= "pure-u-2-24">
+                <i className= "fa fa-map-marker" />
+              </label>
+              <div className= "pure-u-22-24 pure-g">
+                <div className= "pure-u-11-24">
+                  <Field name="lat" className="pure-input-1" component="input" readOnly={true}/>
+                  <Field name="lat" component={errorMessage} />
+                </div>
+                <div className= "pure-u-2-24"></div>
+                <div className= "pure-u-11-24">
+                  <Field name="lng" className="pure-input-1" component="input" readOnly={true} />
+                  <Field name="lng" component={errorMessage} />
+                </div>
+              </div>
             </div>
-          </div>
+          </fieldset>
 
-          <div className= "pure-g">
-            <label className= "pure-u-2-24">
-              <i className= "fa fa-envelope" />
-            </label>
-            <div className= "pure-u-22-24">
-              <Field name="email" type="email" className="pure-input-1" component="input" placeholder={t("email")} />
-              <Field name="email" component={errorMessage} />
+          <fieldset>
+            <legend>{t("contact")}</legend>
+            <div className= "pure-g">
+              <label className= "pure-u-2-24">
+                <i className= "fa fa-globe" />
+              </label>
+              <div className= "pure-u-22-24">
+                <Field
+                  name="homepage"
+                  className="pure-input-1"
+                  component="input"
+                  placeholder={t("homepage")} />
+                <Field name="homepage" component={errorMessage} />
+              </div>
             </div>
-          </div>
 
-          <div className= "pure-g">
-            <label className= "pure-u-2-24">
-              <i className= "fa fa-phone" />
-            </label>
-            <div className= "pure-u-22-24">
-              <Field name="telephone" className="pure-input-1" component="input" placeholder={t("phone")} />
-              <Field name="telephone" component={errorMessage} />
+            <div className= "pure-g">
+              <label className= "pure-u-2-24">
+                <i className= "fa fa-envelope" />
+              </label>
+              <div className= "pure-u-22-24">
+                <Field name="email" type="email" className="pure-input-1" component="input" placeholder={t("email")} />
+                <Field name="email" component={errorMessage} />
+              </div>
             </div>
-          </div>
 
-        </fieldset>
+            <div className= "pure-g">
+              <label className= "pure-u-2-24">
+                <i className= "fa fa-phone" />
+              </label>
+              <div className= "pure-u-22-24">
+                <Field name="telephone" className="pure-input-1" component="input" placeholder={t("phone")} />
+                <Field name="telephone" component={errorMessage} />
+              </div>
+            </div>
 
-        <fieldset>
-          <legend>
-            <span className="text">{t("license")}</span>
-          </legend>
-          <div className= "pure-g license">
-            <label className= "pure-u-2-24">
-              <i className= "fa fa-creative-commons" />
-            </label>
-            <div className= "pure-u-2-24 pure-controls">
-              <Field name="license" component="input" type="checkbox" />
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              <span className="text">{t("license")}</span>
+            </legend>
+            <div className= "pure-g license">
+              <label className= "pure-u-2-24">
+                <i className= "fa fa-creative-commons" />
+              </label>
+              <div className= "pure-u-2-24 pure-controls">
+                <Field name="license" component="input" type="checkbox" />
+              </div>
+              <div className= "pure-u-20-24">
+                <Field name="license" component={errorMessage} />
+                {t("iHaveRead") + " "}
+                { license == LICENSES.ODBL
+                  ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
+                      {t("openDatabaseLicense")}
+                    </a>
+                  : <a target="_blank" href={URLs.CC_LICENSE.link}>
+                      {t("creativeCommonsLicense")}
+                    </a>
+                } {" " + t("licenseAccepted")}
+              </div>
             </div>
-            <div className= "pure-u-20-24">
-              <Field name="license" component={errorMessage} />
-              {t("iHaveRead") + " "}
-              { license == LICENSES.ODBL
-                ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
-                    {t("openDatabaseLicense")}
-                  </a>
-                : <a target="_blank" href={URLs.CC_LICENSE.link}>
-                    {t("creativeCommonsLicense")}
-                  </a>
-              } {" " + t("licenseAccepted")}
-            </div>
-          </div>
-        </fieldset>
-      </div>
-    </form>)
+          </fieldset>
+        </div>
+        </form>
+        <nav className="menu pure-g">
+          <NavButton
+            keyName = "cancel"
+            classname = "pure-u-1-2"
+            onClick = {() => {
+              this.props.dispatch(initialize(EDIT.id, {}, EDIT.fields));
+              this.props.dispatch(isEdit ? Actions.cancelEdit() : Actions.cancelNew());
+            }}
+            icon = "fa fa-ban"
+            text = { t("cancel") }
+          />
+          <NavButton
+            keyName = "save"
+            classname = "pure-u-1-2"
+            onClick = { () => {
+              this.props.handleSubmit();
+            }}
+            icon = "fa fa-floppy-o"
+            text = { t("save") }
+          />
+        </nav>
+      </div>)
   }
 }
 
 Form.propTypes = {
   isEdit : T.bool,
-  license: T.string
+  license: T.string,
+  dispatch: T.func
 };
 
 module.exports = reduxForm({
