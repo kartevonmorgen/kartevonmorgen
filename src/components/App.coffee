@@ -285,6 +285,7 @@ Main = React.createClass
                         onClick     : (id, center) -> dispatch Actions.setCurrentEntry id, center
                         onMouseEnter: (id) -> dispatch Actions.highlight id
                         onMouseLeave: (id) -> dispatch Actions.highlight()
+                        dispatch    : dispatch
               when V.ENTRY
                 div className: "content",
                   React.createElement EntryDetails,

@@ -1,8 +1,4 @@
 {
-	"resultList" : {
-		"addEntry":"add a new entry",
-		"entriesLoading":"loading entries..."
-	},
 	"entryForm":{
 		"chooseCategory":"Select category",
 		"location":"Location",
@@ -386,7 +382,9 @@
 	"resultlist":{
 		"showMoreEntries":"Show more entries...",
 		"entriesLoading":"Entries are loaded...",
-		"noEntriesFound":"No entries found."
+		"noEntriesFound":"No entries found.",
+		"addEntry":"add a new entry",
+		"entriesLoading":"loading entries..."
 	},
 	"growler":{
 		"INFO FOR TRANSLATORS":"Growler is the green or red bar that appears at the top of the screen for example when saving an entry",

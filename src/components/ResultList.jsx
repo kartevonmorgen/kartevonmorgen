@@ -77,7 +77,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
       <li key="show-more-entries">
       <div>
         <a onClick = { onMoreEntriesClick } href="#">
-          {t("resultList.showMoreEntries")}
+          {t("resultlist.showMoreEntries")}
         </a>
       </div>
       </li>
@@ -92,11 +92,11 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           ? <ul>{results}</ul>
           : (waiting ?
           <p className= "loading">
-            <span>{t("resultList.entriesLoading")}</span>
+            <span>{t("resultlist.entriesLoading")}</span>
           </p>
           : <p className= "no-results">
               <i className= "fa fa-frown-o" />
-              <span>{t("resultList.noEntriesFound")}</span>
+              <span>{t("resultlist.noEntriesFound")}</span>
             </p>)
       }
       </div>
@@ -105,7 +105,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           key = "back"
           classname = "pure-u-1"
           icon = "fa fa-plus"
-          text = {t("resultList.addEntry")}
+          text = {t("resultlist.addEntry")}
           onClick = {() => {
             dispatch(Actions.showNewEntry());
           }}
