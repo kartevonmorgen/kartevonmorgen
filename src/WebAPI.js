@@ -256,20 +256,20 @@ module.exports = {
       .end(cb);
   },
 
-  confirmEmail: (u_id, cb) => {
+  confirmEmail: (username, cb) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
       .use(prefix)
       .send({
-        u_id
+        username
       })
       .end(cb);
   },
 
-  deleteAccount: (u_id, cb) => {
+  deleteAccount: (username, cb) => {
     request
-      .delete('/users/' + u_id)
+      .delete('/users/' + username)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()

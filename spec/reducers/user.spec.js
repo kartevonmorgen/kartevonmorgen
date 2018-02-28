@@ -12,27 +12,27 @@ describe("user reducer", () => {
   });
 
   describe("login", () => {
-    it("should set user.id when successful and set it to null when not successful", () => {
+    it("should set user.username when successful and set it to null when not successful", () => {
 
       let action = {
         type: T.LOGIN_RESULT,
         payload: {
           body: {
-            u_id: "u_id",
+            username: "username",
             email: "email"
           }
         },
         error: false
       };
-      should.exist(user_reducer(undefined, action).id);
-      user_reducer(undefined, action).id.should.equal("u_id");
+      should.exist(user_reducer(undefined, action).username);
+      user_reducer(undefined, action).username.should.equal("username");
 
       action = {
         type: T.LOGIN_RESULT,
         payload: "error",
         error: true
       };
-      should.not.exist(user_reducer(undefined, action).id);
+      should.not.exist(user_reducer(undefined, action).username);
 
       return true;
     });

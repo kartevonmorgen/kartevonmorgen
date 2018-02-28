@@ -71,7 +71,7 @@ Main = React.createClass
         lng: e?.lng
       else
         map.center
-    loggedIn = if user.id then true else false
+    loggedIn = if user.username then true else false
 
     div className:"app",
 

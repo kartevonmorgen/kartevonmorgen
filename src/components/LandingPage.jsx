@@ -322,7 +322,7 @@ class LandingPage extends Component {
           <a href="#" onClick={() => onClick(V.IMPRINT)}>{t("footer.imprint")}</a>
         </p>
         <p>
-          {user.id != null ? <a onClick={onDeleteAccount} href="#">
+          {user.username != null ? <a onClick={onDeleteAccount} href="#">
             Account löschen
           </a> : ""}
         </p>

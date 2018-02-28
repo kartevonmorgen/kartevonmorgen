@@ -234,7 +234,7 @@ const Actions = {
       })
     },
 
-  unsubscribeFromBboxes: (u_id) =>
+  unsubscribeFromBboxes: (username) =>
     (dispatch, getState) => {
       WebAPI.unsubscribeFromBboxes((err, res) => {
         if (err) {
@@ -467,9 +467,9 @@ const Actions = {
       });
     },
 
-  confirmEmail: (u_id) =>
+  confirmEmail: (username) =>
     (dispatch, getState) => {
-      WebAPI.confirmEmail(u_id, (err, res) => {
+      WebAPI.confirmEmail(username, (err, res) => {
         if (err) {
           dispatch({
             type: T.EMAIL_CONFIRMATION_RESULT,
@@ -486,7 +486,7 @@ const Actions = {
 
   deleteAccount: () =>
     (dispatch, getState) => {
-      WebAPI.deleteAccount(getState().user.id, (err, res) => {
+      WebAPI.deleteAccount(getState().user.username, (err, res) => {
         if (!err) {
           dispatch({
             type: T.LOGOUT
