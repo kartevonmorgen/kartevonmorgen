@@ -22,8 +22,8 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
       key           = { entry.id }
       className     = { css_class }
       onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
-      onMouseEnter  = { (ev) => { ev.preventDefaultrans(); onMouseEnter(entry.id) }}
-      onMouseLeave  = { (ev) => { ev.preventDefaultrans(); onMouseLeave(entry.id) }} >
+      onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
+      onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
       <div className = "pure-g">
         <div className = "pure-u-23-24">
           <div className="category">
