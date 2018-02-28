@@ -13,6 +13,7 @@ const NavButton = ({ keyName, classname, icon, text, onClick }) => {
       key = { keyName }
       className = { classname }
       onClick = { onClick }>
+      <i className= { icon }></i>
       { text }
     </NavigationButton>)
 }
