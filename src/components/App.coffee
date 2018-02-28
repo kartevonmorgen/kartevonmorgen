@@ -155,26 +155,6 @@ Main = React.createClass
           if view.left?
             nav className: "menu pure-g",
               switch view.left
-                when V.NEW_RATING
-                  [
-                    li
-                      key: "cancel"
-                      className:"pure-u-1-2",
-                      onClick: (->
-                        dispatch initialize RATING.id, {}, RATING.fields
-                        dispatch Actions.cancelRating()
-                      ),
-                        i className: "fa fa-ban"
-                        t "ratingForm.cancel"
-                    li
-                      key: "save"
-                      className:"pure-u-1-2",
-                      onClick: (=>
-                        @refs.rating.submit()
-                      ),
-                        i className: "fa fa-floppy-o"
-                        t "ratingForm.save-rating"
-                  ]
                 when V.SUBSCRIBE_TO_BBOX
                   if user.subscriptionExists
                     [
@@ -236,8 +216,6 @@ Main = React.createClass
                     ratings     : ratings
                     highlight   : highlight
                     onClick     : (id, center) -> dispatch Actions.setCurrentEntry id, center
-                    onMouseEnter: (id) -> dispatch Actions.highlight id
-                    onMouseLeave: (id) -> dispatch Actions.highlight()
                     moreEntriesAvailable: search.moreEntriesAvailable
                     onMoreEntriesClick: () -> dispatch Actions.showAllEntries()
                     dispatch    : dispatch
