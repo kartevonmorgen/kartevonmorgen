@@ -152,57 +152,6 @@ Main = React.createClass
                 dispatch Actions.search()
               onEscape        : -> dispatch Actions.setSearchText ''
               onEnter         : -> # currently not used
-          if view.left?
-            nav className: "menu pure-g",
-              switch view.left
-                when V.SUBSCRIBE_TO_BBOX
-                  if user.subscriptionExists
-                    [
-                      li
-                        key: "back"
-                        className:"pure-u-1-2",
-                        onClick: (->
-                          dispatch Actions.showSearchResults()
-                        ),
-                          i className: "fa fa-chevron-left"
-                          t "subscribeToBbox.back"
-                      li
-                        key: "save"
-                        className:"pure-u-1-2",
-                        onClick: (=>
-                          dispatch Actions.subscribeToBbox(map.bbox, true)
-                        ),
-                          i className: "fa fa-envelope"
-                          t "subscribeToBbox.edit"
-                      li
-                        key: "delete"
-                        className:"pure-u-1-1",
-                        onClick: (->
-                          dispatch Actions.unsubscribeFromBboxes(user.id)
-                        ),
-                          i className: "fa fa-trash"
-                          t "subscribeToBbox.unsubscribe"
-                    ]
-                  else
-                    [
-                      li
-                        key: "back"
-                        className:"pure-u-1-2",
-                        onClick: (->
-                          dispatch Actions.showSearchResults()
-                          dispatch Actions.setCenterInUrl map.center
-                        ),
-                          i className: "fa fa-chevron-left"
-                          t "subscribeToBbox.back"
-                      li
-                        key: "save"
-                        className:"pure-u-1-2",
-                        onClick: (=>
-                          dispatch Actions.subscribeToBbox(map.bbox, false)
-                        ),
-                          i className: "fa fa-envelope"
-                          t "subscribeToBbox.subscribe"
-                    ]
 
           div className: "content-wrapper",
 
@@ -310,9 +259,13 @@ Main = React.createClass
                     onCancel: ->
                       dispatch Actions.closeIoErrorMessage()
               when V.SUBSCRIBE_TO_BBOX
-                div className: "content subscribe-to-bbox",
+                div className: "content",
                   React.createElement SubscribeToBbox,
                     subscriptionExists: user.subscriptionExists
+                    dispatch : dispatch
+                    bbox : map.bbox
+                    username: user.username
+                    mapCenter: map.center
         div className:"hide-sidebar",
           button
             onClick: (-> if view.showLeftPanel then dispatch Actions.hideLeftPanel() else dispatch Actions.showLeftPanel()),
