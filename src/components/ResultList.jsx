@@ -60,7 +60,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
 }
 
 const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
-  onMouseEnter, onMouseLeave, moreEntriesAvailable, onMoreEntriesClick, t}) => {
+  moreEntriesAvailable, onMoreEntriesClick, t}) => {
 
   let results = entries.map( e =>
     <ResultListElement
@@ -68,9 +68,9 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
       ratings      = { (e.ratings || []).map(id => ratings[id])}
       key          = { e.id         }
       highlight    = { highlight.indexOf(e.id) >= 0 }
-      onClick      = { onClick      }
-      onMouseEnter = { onMouseEnter }
-      onMouseLeave = { onMouseLeave } 
+      onClick      = { (id, center) => { dispatch(Actions.setCurrentEntry(id, center)) }}
+      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+      onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
       t            = { t } />);
   if(moreEntriesAvailable && !waiting){
     results.push(
