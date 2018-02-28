@@ -76,7 +76,7 @@ const EntryDetailsOtherData = styled.div`
 class EntryDetails extends Component {
 
   render() {
-    const { entry, t, dispatch } = this.props;
+    const { entry, t, dispatch, mapCenter } = this.props;
 
     if (!entry) {
       return(
@@ -143,7 +143,7 @@ class EntryDetails extends Component {
             onClick = {() => {
               this.props.dispatch(Actions.setCurrentEntry(null, null));
               this.props.dispatch(Actions.showSearchResults());
-              this.props.dispatch(Actions.setCenterInUrl(map.center));
+              this.props.dispatch(Actions.setCenterInUrl(mapCenter));
             }}
           />
           <NavButton

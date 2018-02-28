@@ -269,6 +269,7 @@ Main = React.createClass
                   React.createElement EntryDetails,
                     entry   : entries[search.current] || null
                     dispatch : dispatch
+                    mapCenter : map.center
                   React.createElement Ratings,
                     entry   : entries[search.current] || null
                     ratings : (if entries[search.current] then (entries[search.current].ratings || []) else []).map((id) -> ratings[id])
