@@ -215,7 +215,6 @@ Main = React.createClass
                     entries     : resultEntries
                     ratings     : ratings
                     highlight   : highlight
-                    onClick     : (id, center) -> dispatch Actions.setCurrentEntry id, center
                     moreEntriesAvailable: search.moreEntriesAvailable
                     onMoreEntriesClick: () -> dispatch Actions.showAllEntries()
                     dispatch    : dispatch
