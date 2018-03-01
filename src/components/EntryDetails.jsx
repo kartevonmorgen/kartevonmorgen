@@ -1,7 +1,6 @@
 import React, { Component }   from "react";
 import Address                from "./AddressLine";
 import { pure }               from "recompose";
-import { NAMES }              from "../constants/Categories";
 import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import Ratings                from "./Ratings";
@@ -45,7 +44,8 @@ const Tags = (tags=[]) =>
   </TagsWrapper>
 
 const EntryDetailPage = styled.div`
-  padding:  1em;
+  padding-left: 1em;
+  padding-right: 1em;
   max-width: 500px;
 `;
 
@@ -55,18 +55,11 @@ const EntryLink = styled.a`
 `;
 
 const EntryTitle = styled.h3`
-  margin-top:  0;
   color:       ${Colors.anthracite};
 `;
 
 const EntryDescription = styled.p`
   color: ${Colors.darkGray};
-`;
-
-const CategoryDescription = styled.div`
-  text-align:      right;
-  text-transform:  uppercase;
-  color:    ${props => Colors[props.category]};
 `;
 
 const EntryDetailsOtherData = styled.div`
@@ -89,9 +82,6 @@ class EntryDetails extends Component {
       return (
       <div>
         <EntryDetailPage>
-          <CategoryDescription category={NAMES[entry.categories && entry.categories[0]]}>
-            <span>{ t("category." + NAMES[[entry.categories && entry.categories[0]]])}</span>
-          </CategoryDescription>
           <div>
             <EntryTitle>{entry.title}</EntryTitle>
             <EntryDescription>{entry.description}</EntryDescription>
