@@ -136,7 +136,7 @@
 		"reference":"Quelle (z.B. einen Link oder 'ich arbeite da' etc.)",
 		"ratingHeading":"Bewertung",
 		"cancel":"abbrechen",
-		"save-rating":"bewerten",
+		"save":"bewerten",
 		"requiredField":"Pflichtangabe",
 		"titleTooLong":"Zu langer Titel",
 		"titleTooShort":"Zu kurzer Titel",

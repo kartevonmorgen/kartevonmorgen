@@ -136,7 +136,7 @@
 		"reference":"Reference (e.g. a link or \"I work there.\" etc.)",
 		"ratingHeading":"Rating",
 		"cancel":"cancel",
-		"save-rating":"save rating",
+		"save":"save rating",
 		"requiredField":"required field",
 		"titleTooLong":"Title too long",
 		"titleTooShort":"Title too short",

@@ -143,7 +143,7 @@ class RatingForm extends Component {
             this.props.dispatch(Actions.cancelRating());
           }}
           icon = "fa fa-ban"
-          text = { t("cancel") }
+          text = { t("ratingForm.cancel") }
         />
         <NavButton
           keyName = "save"
@@ -152,7 +152,7 @@ class RatingForm extends Component {
             this.props.handleSubmit();
           }}
           icon = "fa fa-floppy-o"
-          text = { t("save") }
+          text = { t("ratingForm.save") }
         />
       </nav>
     </div>)
