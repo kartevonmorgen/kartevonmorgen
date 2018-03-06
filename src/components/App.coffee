@@ -202,7 +202,7 @@ Main = React.createClass
                     onRate  : (id) => dispatch Actions.showNewRating id
 
               when V.EDIT, V.NEW
-                div className: "content",
+                div className: "content-above-buttons",
                   React.createElement EntryForm,
                     ref: 'form'
                     isEdit: form[EDIT.id]?.kvm_flag_id?
@@ -225,7 +225,7 @@ Main = React.createClass
                         version     : (form[EDIT.id]?.values?.version or 0) + 1
                         categories  : [data.category]
               when V.NEW_RATING
-                div className: "content",
+                div className: "content-above-buttons",
                   React.createElement RatingForm,
                     ref         : 'rating'
                     entryid     : form[RATING.id]?.kvm_flag_id
@@ -243,7 +243,7 @@ Main = React.createClass
                     changeContext: (ratingContext) ->
                       dispatch Actions.explainRatingContext(ratingContext)
               when V.WAIT
-                div className: "content",
+                div className: "content-above-buttons",
                   React.createElement Message,
                     iconClass: "fa fa-spinner fa-pulse"
                     message: " lade Daten vom Server ..."
@@ -251,7 +251,7 @@ Main = React.createClass
                     onCancel: ->
                       dispatch Actions.cancelWait()
               when V.IO_ERROR
-                div className: "content",
+                div className: "content-above-buttons",
                   React.createElement Message,
                     iconClass: "fa fa-exclamation-triangle"
                     message: t "io-error.message"
@@ -259,7 +259,7 @@ Main = React.createClass
                     onCancel: ->
                       dispatch Actions.closeIoErrorMessage()
               when V.SUBSCRIBE_TO_BBOX
-                div className: "content",
+                div className: "content-above-buttons",
                   React.createElement SubscribeToBbox,
                     subscriptionExists: user.subscriptionExists
                     dispatch : dispatch
