@@ -402,7 +402,7 @@ button.pure-button i
           box-sizing      border-box
           background      #fff
           padding-bottom  30px
-          padding-top     15px
+          padding-top     0
 
       &.closed
         width 0
@@ -424,10 +424,10 @@ button.pure-button i
         z-index     10
         padding     0
         margin      0
-        position    absolute
-        bottom      0
         background  $coal
         text-align  center
+        position    absolute
+        bottom      0
         li
           cursor        pointer
           box-sizing    border-box
@@ -444,6 +444,12 @@ button.pure-button i
             border-bottom 4px solid #fff
           i
             margin-right 0.5em
+
+      nav.menu-top
+        top             0
+        display         flex
+        flex-direction  row
+        padding         9pt 6pt 8pt 7pt
 
     .hide-sidebar
       position relative
@@ -660,7 +666,7 @@ button.pure-button i
 
   .add-entry-form
     h3
-      margin-top    0.5em
+      margin-top    1em
       margin-bottom 0.2em
 
   .new-rating-form

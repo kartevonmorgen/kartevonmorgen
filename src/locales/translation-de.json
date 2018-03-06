@@ -48,8 +48,7 @@
 	},
 	"entryDetails":{
 		"loadingEntry": "Eintrag wird geladen...",
-		"back" : "zurück",
-		"edit" : "bearbeiten"
+		"back" : "zurück"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",

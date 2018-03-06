@@ -5,6 +5,7 @@ import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import Ratings                from "./Ratings";
 import NavButton              from "./NavButton";
+import NavButtonWhite         from "./NavButtonWhite";
 import { translate }          from "react-i18next";
 import Actions                from "../Actions";
 
@@ -66,6 +67,10 @@ const EntryDetailsOtherData = styled.div`
   font-family: Museo;
 `;
 
+const LoadingEntryMessage = styled.div`
+  padding-top: 1em;
+`;
+
 class EntryDetails extends Component {
 
   render() {
@@ -74,13 +79,37 @@ class EntryDetails extends Component {
     if (!entry) {
       return(
         <EntryDetailPage>
-          <span>{t("entryDetails.loadingEntry")}</span>
+          <LoadingEntryMessage>
+            {t("entryDetails.loadingEntry")}
+          </LoadingEntryMessage>
         </EntryDetailPage>
       );
     }
     else {
       return (
       <div>
+        <nav className="menu-top">
+          <NavButtonWhite
+            keyName = "back"
+            buttonRight = { false }
+            icon = "fa fa-chevron-left"
+            text = {t("entryDetails.back")}
+            onClick = {() => {
+              this.props.dispatch(Actions.setCurrentEntry(null, null));
+              this.props.dispatch(Actions.showSearchResults());
+              this.props.dispatch(Actions.setCenterInUrl(mapCenter));
+            }}
+          />
+          <NavButtonWhite
+            keyName = "edit"
+            buttonRight = { true }
+            icon = "fa fa-pencil"
+            text = ""
+            onClick = {() => {
+              this.props.dispatch(Actions.editCurrentEntry());
+            }}
+          />
+        </nav>
         <EntryDetailPage>
           <div>
             <EntryTitle>{entry.title}</EntryTitle>
@@ -124,28 +153,6 @@ class EntryDetails extends Component {
             ]}</EntryDetailsOtherData>
           </div>
         </EntryDetailPage>
-        <nav className="menu pure-g">
-          <NavButton
-            keyName = "back"
-            classname = "pure-u-1-2"
-            icon = "fa fa-chevron-left"
-            text = {t("entryDetails.back")}
-            onClick = {() => {
-              this.props.dispatch(Actions.setCurrentEntry(null, null));
-              this.props.dispatch(Actions.showSearchResults());
-              this.props.dispatch(Actions.setCenterInUrl(mapCenter));
-            }}
-          />
-          <NavButton
-            keyName = "edit"
-            classname = "pure-u-1-2"
-            icon = "fa fa-pencil"
-            text = {t("entryDetails.edit")}
-            onClick = {() => {
-              this.props.dispatch(Actions.editCurrentEntry());
-            }}
-          />
-        </nav>
       </div>)
     }
   }

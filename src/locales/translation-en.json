@@ -48,8 +48,7 @@
 	},
 	"entryDetails":{
 		"loadingEntry": "loading entry...",
-		"back" : "back",
-		"edit" : "edit"
+		"back" : "back"
 	},
 	"login":{
 		"requiredField":"required field",
