@@ -43,7 +43,7 @@ class KVMMap extends Component {
     switch (id) {
       case INITIATIVE:
         return COLORS.initiative;
-      case EVENT: 
+      case EVENT:
         return COLORS.event;
       case COMPANY:
         return COLORS.company;
@@ -106,17 +106,30 @@ class KVMMap extends Component {
         }
 
         if(e.ratings.length > 0 && avg_rating && avg_rating > 0){
-          markers.push(
-            <Marker
-              key       = { e.id }
-              onClick   = { () => { onMarkerClick(e.id) }}
-              position  = {{ lat: e.lat, lng: e.lng }}
-              icon      = { this.getIconById(e.categories[0]) }
-            />
-          );
+          if(highlight.indexOf(e.id) == 0 || highlight.length == 0){
+            markers.push(
+              <Marker
+                key       = { e.id }
+                onClick   = { () => { onMarkerClick(e.id) }}
+                position  = {{ lat: e.lat, lng: e.lng }}
+                icon      = { this.getIconById(e.categories[0]) }
+                opacity   = { 1 }
+              />
+            );
+          } else if(highlight.length > 0){
+            markers.push(
+              <Marker
+                key       = { e.id }
+                onClick   = { () => { onMarkerClick(e.id) }}
+                position  = {{ lat: e.lat, lng: e.lng }}
+                icon      = { this.getIconById(e.categories[0]) }
+                opacity   = { 0.5 }
+              />
+            );
+          }
         } else {
-          markers.push(
           // to make clicking the circle easier add a larger circle with 0 opacity:
+          markers.push(
             <CircleMarker
               onClick   = { () => { onMarkerClick(e.id) }}
               key       = { e.id + "-overlay"}
@@ -126,20 +139,35 @@ class KVMMap extends Component {
               weight    = { 0 }
               fillColor = { this.getCategoryColorById(e.categories[0]) }
               fillOpacity = { 0.0 }
-              />
-            );
-          markers.push(
-            <CircleMarker
-              onClick   = { () => { onMarkerClick(e.id) }}
-              key       = { e.id }
-              center    = {{ lat: e.lat, lng: e.lng }}
-              opacity   = { 1 }
-              radius    = { 5 }
-              color     = { "#555" }
-              weight    = { 0.7 }
-              fillColor = { this.getCategoryColorById(e.categories[0]) }
-              fillOpacity = { 1.0 }
+            />);
+
+          if(highlight.indexOf(e.id) == 0 || highlight.length == 0){
+            markers.push(
+              <CircleMarker
+                onClick   = { () => { onMarkerClick(e.id) }}
+                key       = { e.id }
+                center    = {{ lat: e.lat, lng: e.lng }}
+                opacity   = { 1 }
+                radius    = { 5 }
+                color     = { "#555" }
+                weight    = { 0.7 }
+                fillColor = { this.getCategoryColorById(e.categories[0]) }
+                fillOpacity = { 1.0 }
               />);
+          } else if(highlight.length > 0){
+            markers.push(
+              <CircleMarker
+                onClick   = { () => { onMarkerClick(e.id) }}
+                key       = { e.id }
+                center    = {{ lat: e.lat, lng: e.lng }}
+                opacity   = { 1 }
+                radius    = { 5 }
+                color     = { "#555" }
+                weight    = { 0.7 }
+                fillColor = { this.getCategoryColorById(e.categories[0]) }
+                fillOpacity = { 0.5 }
+              />);
+          }
         }
 
         if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
@@ -154,9 +182,9 @@ class KVMMap extends Component {
               fillColor = { this.getCategoryColorById(e.categories[0]) }
               weight    = { 2.5 }
               fillOpacity = { 1 }
-          />);
+            />);
         }
-      })
+      });
     }
 
     return (
@@ -195,7 +223,7 @@ class KVMMap extends Component {
           }
           }
         </Map>
-        {showLocateButton ? 
+        {showLocateButton ?
           <div className="leaflet-control-container">
             <LocateButtonContainer className="leaflet-right">
                 <div className = "leaflet-control-locate leaflet-bar leaflet-control">
