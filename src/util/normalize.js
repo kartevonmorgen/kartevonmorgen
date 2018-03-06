@@ -17,7 +17,7 @@ const tags = (value) => {
   }
   return value
     .toLowerCase()
-    .replace(' ','-')
+    .replace(' ',',')
     .replace(',,',',')
     .replace(',-', ',')
     .replace('--', '-')
