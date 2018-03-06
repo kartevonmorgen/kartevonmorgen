@@ -79,7 +79,7 @@ Main = React.createClass
 
         React.createElement GrowlerContainer,
           growler: growler
-          shownFor: 2000
+          shownFor: 1000
 
         if view.menu
           React.createElement LandingPage,
