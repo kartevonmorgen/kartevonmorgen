@@ -60,8 +60,8 @@ const Actions = {
                 noList: search.text == null
               });
 
-              const entries = Array.isArray(res != null ? res.visible : void 0)
-
+              const entries =
+                Array.isArray(res != null ? res.visible : void 0)
                 ? Array.isArray(res.invisible)
                   ? res.visible.concat(res.invisible)
                   : res.visible
@@ -69,9 +69,9 @@ const Actions = {
                   ? res.invisible
                   : void 0;
 
-              const ids = entries.map(e => e.id);
+              const ids = entries ? entries.map(e => e.id) : null;
 
-              if ((Array.isArray(ids)) && ids.length > 0) {
+              if (ids && (Array.isArray(ids)) && ids.length > 0) {
                 dispatch(Actions.getEntries(ids));
               } else {
                 dispatch({
