@@ -172,7 +172,7 @@ Main = React.createClass
                     div null,
                       div className: 'group-header', t "search-results.cities"
                       React.createElement CityList,
-                        cities  : cities
+                        cities  : cities.slice(0,5)
                         onClick : (city) ->
                           dispatch Actions.setCenter
                             lat: city.lat
