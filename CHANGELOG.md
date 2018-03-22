@@ -1,3 +1,15 @@
+## v0.1.24 (2018-03-22)
+- fix(IE-bug): fix bug with IE10 and lower which can't access window.location.origin
+- fix(ConfirmEmail): send u_id to confirm-email API call
+- fix(i18n): fix some i18n-keys
+- refactor(sidebar): move all navigation buttons from App.coffee to the corresponding components
+- styling(EntryDetails): move back- and edit-button up to make them more visible
+- new(EntryForm): replace whitespace by comma when entering tags (instead of hyphen)
+- new(Map): shade out unselected pins
+- new(ResultList): only show up to 5 city results in order to make search results below more visible
+- fix(*): fix bugs in SubscribeToBbox, EntryDetails, ResultList some of which have to do with values that could be null
+- fix(Login): don't use user_id anywhere, only username (adapt to OFDB API change)
+
 ## v0.1.23 (2018-02-21)
 - fix(rating): correct rating labels
 - fix(widgets): fix bugs in widgets introduced by i18n v0.1.22
