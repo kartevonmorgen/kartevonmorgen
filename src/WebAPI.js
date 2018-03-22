@@ -260,13 +260,13 @@ module.exports = {
       .end(cb);
   },
 
-  confirmEmail: (username, cb) => {
+  confirmEmail: (u_id, cb) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
       .use(prefix)
       .send({
-        username
+        u_id
       })
       .end(cb);
   },

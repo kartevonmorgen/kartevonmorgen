@@ -20,7 +20,7 @@ const createActionsFromState = (state) => {
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
   const { entry, zoom, center, search, tags, view, left} = params;
-  const confirmEmail = params.confirm_email;
+  const user_id = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
 
@@ -81,7 +81,7 @@ const createActionsFromState = (state) => {
         break;
       case RoutingUsecases.CONFIRM_EMAIL: 
         console.log("route: confirmEmail");
-        actions.push(Actions.confirmEmail(confirmEmail));
+        actions.push(Actions.confirmEmail(user_id));
         break;
     }
   }
