@@ -28,6 +28,8 @@ mapConst          = require "../constants/Map"
 { translate }     = require "react-i18next"
 
 { GrowlerContainer } = require "flash-notification-react-redux"
+Swipe         = (require "react-swipe-component/lib/Swipe.js").default
+
 
 { div, span, button, nav, li, i, a, br, h3, p } = React.DOM
 
@@ -132,7 +134,13 @@ Main = React.createClass
         if view.modal?
           React.createElement Modal, { view, dispatch }
 
-        div className:"left #{if view.showLeftPanel and not view.menu then 'opened' else 'closed'}",
+        React.createElement Swipe,
+          {
+            nodeName:"div",
+            className:"left #{if view.showLeftPanel and not view.menu then 'opened' else 'closed'}",
+            onSwipedLeft:->dispatch Actions.hideLeftPanel(),
+            onSwipedRight:->dispatch Actions.showLeftPanel()
+          },
 
           div className: "search integrated #{
             if view.left in [V.RESULT] then 'open' else 'closed'
