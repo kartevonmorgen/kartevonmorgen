@@ -1,0 +1,434 @@
+{
+	"entryForm":{
+		"chooseCategory":"Kategorie auswählen",
+		"location":"Ort",
+		"clickMap":"(auf Karte klicken)",
+		"contact":"Kontakt",
+		"iHaveRead":"Ich habe die",
+		"creativeCommonsLicense":"Bestimmungen der Creative-Commons Lizenz CC0",
+		"openDatabaseLicense":"Bestimmungen der OpenDatabase Lizenz",
+		"licenseAccepted":"gelesen und akzeptiere sie",
+		"license":"Lizenz",
+		"title":"Titel",
+		"description":"Beschreibung",
+		"tags":"Stichworte (Komma getrennt)",
+		"homepage":"Homepage",
+		"phone":"Telefon",
+		"street":"Straße & Hausnummer",
+		"city":"Stadt",
+		"zip":"PLZ",
+		"email":"Email-Adresse",
+		"clickOnMap":"oder auf Karte klicken...",
+		"contact":"Kontakt (optional)",
+		"cancel":"abbrechen",
+		"save":"speichern",
+		"editEntryHeading":"Eintrag bearbeiten",
+		"newEntryHeading":"Neuer Eintrag",
+		"savingError":"Der Eintrag konnte nicht gespeichert werden",
+		"valueError":"Bitte überprüfen Sie ihre Eingaben.",
+		"requiredField":"Pflichtangabe",
+		"titleTooLong":"Zu langer Titel",
+		"titleTooShort":"Zu kurzer Titel",
+		"maxNumCharactersTitle":"statt max. 50 Zeichen",
+		"minNumCharactersTitle":"von mind. 3 Zeichen",
+		"invalidValues":"Ungültige Daten",
+		"descriptionTooLong":"Zu lange Beschreibung",
+		"descriptionTooShort":"Zu wenig Text",
+		"maxNumCharactersDescription":"statt max. 250 Zeichen",
+		"minNumCharactersDescription":"von mind. 10 Zeichen",
+		"invalidLatitude":"Ungültiger Breitengrad",
+		"invalidLongitude":"Ungültiger Längengrad",
+		"invalidCategory":"Ungültige Kategorie",
+		"invalidTags":"Ungültige Stichworte",
+		"minNumCharactersTags":"Mindestlänge von Stichworten: 3 Zeichen",
+		"acceptLicense":"Lizenzzustimmung ist nötig",
+		"invalidLicenseAgreement":"Ungültige Zustimmung",
+		"invalidURL":"Ungültige URL",
+		"httpMissing":"\"http://\" oder \"https://\" fehlt)"
+	},
+	"entryDetails":{
+		"loadingEntry": "Eintrag wird geladen...",
+		"back" : "zurück"
+	},
+	"login":{
+		"requiredField":"Pflichtangabe",
+		"loginFailed":"Der Login ist fehlgeschlagen",
+		"invalidValues":"Ungültige Daten",
+		"invalidUsername":"Ungültiger Benutzername",
+		"invalidPassword":"Ungültiges Passwort",
+		"invalidPasswordOrUsername":"falsches Passwort oder falscher Benutzername.",
+		"emailUnconfirmed":"Email-Adresse noch nicht bestätigt. Bitte schaue in deinem Postfach nach, möglicherweise auch im Spam-Ordner.",
+		"minNumCharactersUsername":"von mind. 3 Zeichen",
+		"minNumCharactersPassword":"von mind. 3 Zeichen",
+		"username":"Benutzername",
+		"password":"Passwort",
+		"loginButton":"Log In",
+		"registerText":"Du hast noch keinen Account? Dann kannst du dich",
+		"registerLink":"hier kostenlos registrieren."
+	},
+	"register":{
+		"heading":"Registrieren",
+		"genericError":"Die Registrierung ist fehlgeschlagen. Der Benutzername oder die Email-Adresse ist schon registriert.",
+		"username":"Benutzername",
+		"email":"Email-Adresse",
+		"password1":"Passwort",
+		"password2":"Passwort wiederholen",
+		"submitButton":"Registrieren",
+		"loginText":"Du hast schon einen Account? Dann kannst du dich",
+		"loginLink":"hier einloggen",
+		"requiredField":"Pflichtangabe",
+		"invalidValues":"Ungültige Daten",
+		"invalidUsername":"Ungültiger Benutzername",
+		"invalidPassword":"Ungültiges Passwort",
+		"minNumCharactersUsername":"von mind. 3 Zeichen",
+		"minNumCharactersPassword":"von mind. 3 Zeichen",
+		"invalidEmail":"Ungültige Email-Adresse",
+		"repeatPassword":"Bitte gib das Passwort zum Überprüfen hier nochmal ein.",
+		"passwordsDontAgree":"Passwörter stimmen nicht überein"
+	},
+	"ratings":{
+		"requiredField":"Pflichtangabe",
+		"rating":"Bewertung",
+		"rating-heading":"Bewertung",
+		"ratings":"Bewertungen",
+		"heading":"Bewertungen",
+		"noRatingsYet":"Für diesen Eintrag wurden noch keine Bewertungen abgegeben.",
+		"giveFirstRating":"jetzt bewerten",
+		"newRating":"Bewertung abgeben",
+		"contextName":{
+			"diversity":"Natürlichkeit",
+		    "renewable":"Erneuerbarkeit",
+		    "fairness":"Fairness",
+		    "humanity":"Menschlichkeit",
+		    "transparency":"Transparenz",
+		    "solidarity":"Solidarität"
+		},
+		"contextExplanation":{
+			"diversity": "Ökologische Vielfalt, Bio, wenige Zusatzstoffe etc.",
+		    "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy etc.",
+		    "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
+		    "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
+		    "transparency": "Sind Produktions-, Finanzierungs- und Handelsketten öffentlich nachvollziehbar? ",
+		    "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel etc."
+		},
+		"valueName":{
+			"minusOne":"von gestern",
+			"zero":"von heute",
+			"one":"von morgen",
+			"two":"visionär"
+		},
+		"valueNameExplanation":{
+			"minusOne":"einige Kritikpunkte",
+			"zero":"nicht besonders nachhaltig",
+			"one":"zukunftsweisend",
+			"two":"besser geht's nicht!"
+		}
+	},
+	"ratingForm":{
+		"newRatingFor":"Neue Bewertung für",
+		"introText":"Positivfaktoren entscheiden darüber, wie sichtbar ein Eintrag auf der Karte von morgen ist. Je größer der Anteil positiver Aspekte einer Organisation ist, desto höher steigt der Pin in den Suchergebnissen.",
+		"moreInfoLink":"weitere Infos",
+		"savingError":"Die Bewertung konnte nicht gespeichert werden",
+		"valuesError":"Bitte überprüfe deine Eingaben.",
+		"chooseContext":"Wähle einen Aspekt der Nachhaltigkeit für deine Bewertung",
+		"title":"Überschrift",
+		"comment":"Kommentar/Erklärung",
+		"reference":"Quelle (z.B. einen Link oder 'ich arbeite da' etc.)",
+		"ratingHeading":"Bewertung",
+		"cancel":"abbrechen",
+		"save":"bewerten",
+		"requiredField":"Pflichtangabe",
+		"titleTooLong":"Zu langer Titel",
+		"titleTooShort":"Zu kurzer Titel",
+		"maxNumCharactersTitle":"statt max. 40 Zeichen",
+		"minNumCharactersTitle":"von mind. 3 Zeichen",
+		"invalidRatingContext":"Ungültiger Bewertungskontext",
+		"invalidRating":"Ungültige Bewertung",
+		"commentTooLong":"Zu langer Kommentar",
+		"commentTooShort":"Zu wenig Text",
+		"maxNumCharactersComment":"statt max. 500 Zeichen",
+		"minNumCharactersComment":"von mind. 10 Zeichen"
+	},
+	"subscribeToBbox" : {
+		"changeSubscription":{
+			"heading":"Dein Abonnement",
+			"text1":"Du hast einen Kartenausschnitt abonniert und wirst bei neuen Einträgen und Änderungen in diesem Bereich per Email benachrichtigt.",
+			"text2":"Wenn du den abonnierten Kartenausschnitt ändern möchtest navigiere zu dem Kartenausschnitt der dich interessiert und klicke dann auf \"ändern\""
+		},
+		"newSubscription":{
+			"heading":"Kartenausschnitt abonnieren",
+			"text1":"Navigiere zu dem Kartenausschnitt, der dich interessiert und klicke auf \"abonnieren\". Dann wirst du per Email über neue Einträge und Änderungen an Einträgen in dieser Region auf dem Laufenden gehalten.",
+			"text2":"Du kannst das Abonnement jederzeit wieder hier abbestellen oder ändern."
+		},
+		"cancel": "abbrechen",
+		"edit": "ändern",
+		"unsubscribe": "Abonnement abbestellen",
+		"back": "abbrechen",
+		"subscribe": "abonnieren"
+	},
+	"search-results" : {
+		"cities" : "Städte",
+		"results-out-of-bbox" : "Weitere Ergebnisse außerhalb des sichtbaren Bereichs der Karte:"
+	},
+	"loading-entries" : {
+		"cancel" : "abbrechen"
+	},
+	"io-error" : {
+		"message" : " Server nicht erreichbar. Bitte prüfe deine Internetverbindung oder versuche es später nochmal. ",
+		"close" : "schließen"
+	},
+	"landingPage" : {
+		"menu" : {
+			"map" : "Karte",
+			"infos" : "Über uns",
+			"contact" : "Kontakt",
+			"donate" : "Spenden",
+			"login" : "Login",
+			"logout" : "Logout"
+		},
+		"slogan" : "Alles Gute auf einer Karte",
+		"city-search" : {
+			"placeholder" : "Welchen Ort möchtest du entdecken?",
+			"error" : "Fehler bei der Städte-Suche.",
+			"no-results" : "Konnte keine Stadt mit diesem Namen finden.",
+			"show-map" : "Karte anzeigen..."
+		},
+		"subscribeToBbox" : {
+			"message" : "Du bist eingeloggt. Wenn du magst kannst du ",
+			"new-link" : "über Änderungen in deiner Stadt auf dem Laufenden bleiben",
+			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
+		},
+		"donate" : {
+			"heading" : "Etwas Gutes für morgen tun.",
+			"paragraph1" : "Die Karte von morgen soll unserer Community stets kostenfrei zur Verfügung stehen. Dafür entwickeln wir sie Open Source. Durch solidarische Spenden von Nutzer*innen und den kartierten Initiativen und Unternehmen wird die technische Weiterentwicklung und Wartung ermöglicht. Dafür empfehlen wir einen monatlichen Beitrag von 15€ bis 25€ im Monat für Unternehmen und bis zu 3€ pro Monat für Initiativen und Nutzer*innen, um ein organisches Wachstum zu gewährleisten und unabhängig zu bleiben.",
+			"betterplace-link" : "Jetzt Spenden für „von morgen - Alles Gute auf einer Karte“ bei unserem Partner betterplace.org",
+			"paragraph2" : {
+				"heading" : "Spendenkonto:",
+				"bank-details1": "Ideen hoch drei e.V. ",
+				"bank-details2": "IBAN: DE05 4306 0967 4031 0759 00",
+				"bank-details3": "BIC: GENODEM1GLS  bei der GLS Bank",
+				"bank-details4": "Verwendungszweck: Karte von morgen",
+				
+				"text" : "Die Plattform von morgen finanziert sich zusätzlich über Fördermittel verschiedener Programme und Ideen-Wettbewerbe. Wir, das Team von morgen, arbeiten noch ehrenamtlich, wollen aber langfristig die Entwicklung und Betreuung professionalisieren und fair bezahlen."
+			},
+			"paragraph3": {
+				"heading": "Pilotregionen von morgen",
+				"text1": "Wir sehen uns als visionäre und vielfältige Vernetzungsinitiative, die den positiven Wandel in unserer Gesellschaft sichtbar machen möchte. Um dies bestmöglich zu gewährleisten, entwickeln wir derzeit Pilotregionen von morgen, die lokal durch eine*n Regionalpilot*in moderiert werden. Du kennst dich in deiner Umgebung bestens aus und möchtest Teil einer Pilotregion von morgen sein? Dann melde dich gern bei uns per Mail oder mit diesem",
+				"form-link": "Formular",
+				"text2": ". Gemeinsam machen wir eine Welt von morgen bereits heute sichtbar.",
+				"text3": "Eine aktuelle Übersicht aller Funktionen, die für die Karte von morgen entwickelt werden sollen, findest du auf unserer Betterplace-Spendenseite:",
+				"text4": "Aber auch die kleinen Bugs, Optimierungen und Aktualisierungen benötigen Ressourcen.",
+				"text5": "Wir freuen uns daher über jeden kleinen und großen Beitrag.",
+				"text6": "Lieben Dank!",
+				"text7": "das Team von morgen"
+			}
+		},
+		"user" : {
+			"register-success" : {
+				"text1" : "Du hast dich erfolgreich registriert. Bitte bestätige deine Email-Adresse, dann kannst ",
+				"text2" : "du dich einloggen. Dazu haben wir soeben eine Email an ",
+				"text3" : " rausgeschickt."
+			},
+			"confirming-email-address" : {
+				"text" : "Deine Email-Adresse wird gerade bestätigt."
+			},
+			"confirm-email-error" : {
+				"message" : "Ups! Es gab einen Fehler beim Bestätigen deiner Email-Adresse. Bitte probiere, dich mit einem neuen Benutzernamen erneut zu ",
+				"link" : "registrieren"
+			},
+			"email-confirmed" : {
+				"text1": "Deine Email-Adresse wurde bestätigt.",
+				"text2": "Du kannst dich jetzt ",
+				"link": "anmelden"
+			},
+			"logged-out" : "Du bist ausgeloggt."
+		},
+		"join" : {
+			"heading" : " Werde Teil unseres Teams",
+			"paragraph1": "Wir sind ein deutschlandweites Team und immer auf der Suche nach neuen Mitgliedern! Unsere aktuellen Ausschreibungen findest du hier:",
+			"paragraph2": "Wir suchen Regional- und Themenpilot *innen: als direkte*r Ansprechpartner*in vor Ort, sicherst du die Qualität der Karteneinträge, organisierst z.B. Aktionen und Workshops und zeigst deine Stadt von ihrer besten Seite!",
+			"paragraph3": "Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:"
+		},
+		"footer" : {
+			"heading": "Wir zeigen Menschen, die Gutes tun wollen, wo es Gutes gibt.",
+			"contact": "Kontakt: ",
+			"social-media": "Social Media: ",
+			"open-source": "Open Source: ",
+			"imprint": "Impressum"
+		}
+	},
+	"landingExplain" : {
+		"chapter1" : {
+			"heading" : "Die Welt steckt voller Entdecker. Und voller Orte, die darauf warten entdeckt zu werden.",
+			"paragraph1" : {
+				"heading" : "Entdecke Orte von ihren besten Seiten.",
+				"text" : "Unsere Karte zeigt dir zukunftsorientierte Initiativen, Unternehmen und bald auch Events direkt in deiner Umgebung."
+			},
+			"paragraph2" : {
+				"heading" : "Sei dabei!",
+				"text" : "Du hast an einer Initiative besonderes Interesse? Bei uns findest du die nötigen Informationen, um Kontakt aufzunehmen und vorbei zu schauen."
+			},
+			"paragraph3" : {
+				"heading" : "Gestalte die Welt von morgen.",
+				"text" : "Gemeinsam mit dir möchten wir den positiven Wandel unserer Gesellschaft sichtbar und erfahrbar machen."
+			}
+		},
+		"chapter2" : {
+			"heading" : "Wie funktioniert die Karte von morgen?"
+		},
+		"chapter3" : {
+			"heading" : "Die Vision von morgen.",
+			"text" : {
+				"1" : "von morgen fördert Kreativität, Umweltfreundlichkeit und gemeinsames Handeln im bunten Feld des gesellschaftlichen Wandels.",
+				"2" : "von morgen hat die Vision einer intakten Welt, in der die Menschen miteinander ein selbstbestimmtes, glückliches und umweltbewusstes Leben führen. Das Ziel: eine menschliche Zukunft."
+			}
+		},
+		"chapter4" : {
+			"heading" : "Möchtest du dabei sein?",
+			"text" : {
+				"1" : "Unterstütze unser Projekt",
+				"2" : "Wir suchen Regional- und Themenpilot*innen",
+				"3" : "Werde Teil unseres Teams"
+			},
+			"learnMore" : "mehr erfahren"
+		},
+		"chapter5" : {
+			"heading" : "Das Team von morgen",
+			"new-members" : "Wir freuen uns über neue Teammitglieder!",
+			"graphic-design" : "Grafik Design",
+			"software-development" : "Softwareentwicklung",
+			"business-finance" : "Projektentwicklung",
+			"pr-marketing" : "PR & Marketing",
+			"communication-marketing" : "Kommunikation und Marketing",
+			"thao" : "Inhalte & Kommunikation",
+			"project-development" : "Projektentwicklung",
+			"chair" : "Vorstand",
+			"lisa1" : "Politikwissenschaftlerin",
+			"lisa2" : "Strategie & Wirkung",
+			"marten" : "Achtsamkeit und Change-Psychologie",
+			"florian" : "Beratung Softwareentwicklung",
+			"louisa" : "Soziale Arbeit",
+			"anja" : "Designerin",
+			"xueqian" : "Unternehmensberaterin",
+			"linus" : "Globale Soziologie"
+		},
+		"chapter6" : {
+			"heading" : "Ein Projekt von"
+		},
+		"chapter7" : {
+			"heading" : "Unsere Partner",
+			"boell-foundation" : "Das Projekt wurde in der Pilotphase von der Heinrich-Böll-Stiftung gefördert."
+		}
+	},
+	"donate" : {
+		"heading" : "Etwas Gutes für morgen tun.",
+		"text" : {
+			"1" : "Die Plattform von morgen finanziert sich über Fördermittel verschiedener Programme und Wettbewerbe, als auch über Spenden. Wir, das Team von morgen, arbeiten ehrenamtlich.",
+			"2" : "Die Beiträge möchten wir für die Weiterentwicklung der Plattform verwenden. Verschieden Features sind in Planung.",
+			"3" : "Hier geht es zu unserer Crowdfunding-Kampagne: ",
+			"4" : "Wir freuen uns über jeden kleinen und großen Beitrag und hoffen auch bald in deiner Stadt verfügbar zu sein."
+		},
+		"ending" : "Lieben Dank, das Team von morgen"
+	},
+	"join" : {
+		"heading" :{
+			"1":"Werde Teil unseres Teams",
+			"2":"Werde Regional- oder Themenpilot*in"
+		},
+		"text" : {
+			"1" : "Wir sind ein deutschlandweites Team und immer auf der Suche nach neuen Mitgliedern! Unsere aktuellen Ausschreibungen findest du hier:",
+			"2" : "Wir suchen Regional- und Themenpilot*innen: als direkte*r Ansprechpartner*in vor Ort, sicherst du die Qualität der Karteneinträge, organisierst z.B. Aktionen und Workshops und zeigst deine Stadt von ihrer besten Seite!",
+			"3" : "Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:"
+		}
+	},
+	"info" : {
+		"heading1": "Das Projekt",
+		"facebook":"Neuigkeiten und aktuelles auf",
+		"betterplace":"Fortschrittsberichte auf",
+		"betterplace-link":"unserem Blog auf Betterplace",
+		"text1" : {
+			"1":"Unsere interaktive Karte zeigt dir Orte in deiner Umgebung, an denen man sich schon heute für eine Welt von morgen einsetzt.",
+			"2":"Du hast eine Initiative, für die du Mitstreiter*innen suchst?",
+			"3":"Du kennst ein Unternehmen, das nachhaltig wirtschaftet?",
+			"4":"Auf unserer Website kannst du andere darauf aufmerksam machen – und dich so für einen von Menschen gestalteten Ort einsetzen, der dir persönlich am Herzen liegt.",
+			"5":"Wir sind auf der Suche nach vielfältigen Ideen, Initiativen und Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen Umbrüchen alternativ entgegen wirken. Diese möchten wir vernetzten und ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine erhöhte Aufmerksamkeit ermöglichen.",
+			"6":"Nach dem Wiki-Prinzip können alle Nutzer*innen, Initiativen und Unternehmen sich und andere auf der Karte eintragen und so ihre Mitmenschen erreichen. Doch von morgen ist mehr als eine Onlineplattform: Regionalpilot*innen sichern vor Ort die Qualität der Karteneinträge und haben neben einer redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und Aktionen den regionalen Austausch zwischen Bürger*innen, Initiativen und Unternehmen zu stärken.",
+			"7":"von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Guten tun, wo es Gutes gibt."
+		},
+		"heading2":"Hintergründe und Visionen",
+		"text2":{
+			"goalLink":"Was will die Karte von morgen?",
+			"ratingsLink":"Was sind die Positivfaktoren?",
+			"regionalpilotLink":"Was sind Regionalpilot*innen bzw. Themenpilot*innen?",
+			"embedMapLink":"Wie kann ich die Karte auf meiner Homepage einbetten?",
+			"joinLink":"Wie kann ich mitmachen oder die Karte von morgen unterstützen?"
+		},
+		"heading3":"Wir lieben Open Source!",
+		"text3":"Wir wollen mit gutem Beispiel vorangehen und entwickeln daher die Software transparent und offen. Den Quellcode des Gemeinschaftsprojekts findest du unter:",
+		"heading4":"Workshops und Aktionen von morgen",
+		"text4":"Gemeinsam mit unserem Partner, dem gemeinnützigen Verein Ideen³ e.V. und der \"Ideenwerkstatt Bildungsagenten\", bieten wir Workshops zu verschiedenen Themen an, um die sozial-ökologische Transformation zu unterstützen.",
+		"clientVersion":"Version dieses Clients:",
+		"serverVersion":"Version des Servers:"
+	},
+	"category":{
+		"initiative":"Initiative",
+		"event":"Event",
+		"company":"Unternehmen"
+	},
+	"searchbar":{
+		"placeholder":"Wonach suchst du? (# für Tags)"
+	},
+	"resultlist":{
+		"showMoreEntries":"mehr Einträge anzeigen...",
+		"entriesLoading":"Einträge werden geladen...",
+		"noEntriesFound":"Es konnten keine Einträge gefunden werden.",
+		"addEntry":"Eintrag hinzufügen",
+		"entriesLoading":"Einträge werden geladen..."
+	},
+	"growler":{
+		"INFO FOR TRANSLATORS":"Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
+		"genericError":"Ups! Es ist ein Fehler aufgetreten...",
+		"subscriptionChanged":"Abonnement wurde geändert.",
+		"subscriptionAdded":"Kartenausschnitt wurde abonniert.",
+		"unsubscribingSuccessfull":"Abonnement wurde abbestellt",
+		"entrySaved":"Eintrag wurde gespeichert.",
+		"ratingSaved":"Bewertung wurde gespeichert."
+	},
+	"contact":{
+		"heading":"Kontakt",
+		"text1":"Das Team von morgen, vertreten durch",
+		"showOnKVM":"Ort auf der Karte von morgen"
+	},
+	"imprint":{
+		"contact":"Kontakt",
+		"imprint":"Impressum",
+		"heading1":"Rechtlicher Träger im Sinne der Gemeinnützigkeit",
+		"representedByChair":"Vertreten durch den Vorstand",
+		"kvmTeamRepresentedBy":"Das Team von morgen, vertreten durch",
+		"heading2":"Konzept",
+		"heading3":"Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+		"heading4":"Design",
+		"heading5":"Illustrationen",
+		"heading6":"Umsetzung & Programmierung"
+	},
+	"businesscardWidget":{
+		"showOnMap":"Auf der Karte anzeigen..."
+	},
+	"mapWidget":{
+		"showLargeMap":"Große Karte öffnen..."
+	},
+	"modal":{
+		"locate":{
+			"inProgress":"Dein aktueller Standort wird gesucht...",
+			"cancel":"abbrechen",
+			"failed":"Der Standort kann nicht ermittelt werden. Die Standortbestimmung ist in den Browser- oder System-Einstellungen deaktiviert, oder das GPS hat keinen Empfang.",
+			"close":"schließen",
+			"tryAgain":"nochmal versuchen"
+		},
+		"events":{
+			"text":"Events werden zur Zeit noch nicht unterstützt.\n\n Ob Tagung, Konferenz oder Festival - auf der Karte von morgen sollen auch bald Events eingetragen werden. Wir planen außerdem einen Veranstaltungskalender, der die Ergebnisse anzeigt und exportiert.\n\n Helfe mit, damit diese Funktion schon bald verfügbar ist und beteilige Dich an der Spendenaktion auf betterplace.org!",
+			"close":"schließen",
+			"donate":"spenden"
+		}
+	}
+}
