@@ -7,7 +7,7 @@
 		"iHaveRead":"Eu li",
 		"creativeCommonsLicense":"os regulamentos de licença Creative-Commons CC0",
 		"openDatabaseLicense":"Regulamentos de licença OpenDatabase ",
-		"licenseAccepted":"e aceito",
+		"licenseAccepted":"eu aceito",
 		"license":"Licença",
 		"title":"Titúlo",
 		"description":"Descrição",
@@ -106,8 +106,8 @@
 		"contextExplanation":{
 			"diversity": "Diversidade biológica, orgânico, sem químicas etc.",
 		    "renewable": "Proteção ambiental,produtos regionais, eficiente/baixo uso de materia prima e energia, economia circular etc.",
-		    "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
-		    "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
+		    "fairness": "Condições seguras e justas  de trabalho em todos os processos.",
+		    "humanity": "Opotunidade de partipação democratica e desenvolvimento individual, inclusão, espaço para idéias próprias, diversidade cultural, etc... 
 		    "transparency": "Sind Produktions-, Finanzierungs- und Handelsketten öffentlich nachvollziehbar? ",
 		    "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel etc."
 		},
