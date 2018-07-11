@@ -3,7 +3,6 @@ import Address                from "./AddressLine";
 import { pure }               from "recompose";
 import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
-import Ratings                from "./Ratings";
 import NavButton              from "./NavButton";
 import NavButtonWhite         from "./NavButtonWhite";
 import { translate }          from "react-i18next";
