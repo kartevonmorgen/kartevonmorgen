@@ -54,7 +54,7 @@ const entryForm = (data) => {
       errors.lng = t("invalidLongitude");
     }
   }
-  if (data.category == null) {
+  if (data.category == null || data.category == "-1") {
     errors.category = t("requiredField");
   } else {
     if ((typeof data.category) !== "string") {
