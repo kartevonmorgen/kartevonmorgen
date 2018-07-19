@@ -25,7 +25,7 @@
   "homepage": "https://github.com/flosse/kartevonmorgen",
   "dependencies": {
     "es6-promise": "^3.1.2",
-    "flash-notification-react-redux": "git+https://github.com/cmkshaw/redux-flash-notification.git",
+    "flash-notification-react-redux": "^1.0.5",
     "font-awesome": "^4.5.0",
     "i18next": "^10.2.2",
     "i18next-browser-languagedetector": "^2.1.0",
