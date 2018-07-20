@@ -263,7 +263,8 @@ const Actions = {
 
   saveEntry: (e) =>
     (dispatch, getState) => {
-      const saveFunc = (e != null ? e.id : void 0) ? WebAPI.saveEntry : WebAPI.saveNewEntry;
+      const entryExists = (e != null ? e.id : void 0);
+      const saveFunc = entryExists ? WebAPI.saveEntry : WebAPI.saveNewEntry;
       e.license = getLicenseForEntry(e.license);
 
       saveFunc(e, (err, res) => {
@@ -280,17 +281,13 @@ const Actions = {
                 type: T.SET_CURRENT_ENTRY,
                 payload: id,
               });
-              dispatch({
-                type: T.NEW_ENTRY_RESULT,
-                payload: res[0]
-              });
-              dispatch({
-                type: 'GROWLER__SHOW',
-                growler: {
-                  text: i18n.t("growler.entrySaved"),
-                  type: 'growler--success'
-                }
-              });
+
+              if(!entryExists){
+                dispatch({
+                  type: T.NEW_ENTRY_RESULT,
+                  payload: res[0]
+                });
+              }
             }
           });
         }
