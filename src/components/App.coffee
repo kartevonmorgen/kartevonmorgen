@@ -26,8 +26,8 @@ URLs              = require "../constants/URLs"
 { initialize }    = require "redux-form"
 mapConst          = require "../constants/Map"
 { translate }     = require "react-i18next"
-
-{ GrowlerContainer } = require "flash-notification-react-redux"
+NotificationsSystem = require "reapop"
+theme             = require "reapop-theme-wybo"
 Swipe         = (require "react-swipe-component/lib/Swipe.js").default
 
 
@@ -44,14 +44,13 @@ Main = React.createClass
     search  : T.object.isRequired
     form    : T.object.isRequired
     server  : T.object.isRequired
-    growler : T.object.isRequired
     url     : T.object.isRequired
     user    : T.object.isRequired
     timedActions : T.object.isRequired
 
   render: ->
 
-    { dispatch, search, view, server, map, form, growler, url, user, timedActions, t } = @props
+    { dispatch, search, view, server, map, form, url, user, timedActions, t } = @props
 
     { highlight, addresses, cities } = search
     { entries, ratings } = server
@@ -77,11 +76,10 @@ Main = React.createClass
 
     div className:"app",
 
-      div className:"main",
+      React.createElement NotificationsSystem,
+        theme: theme
 
-        React.createElement GrowlerContainer,
-          growler: growler
-          shownFor: 1000
+      div className:"main",
 
         if view.menu
           React.createElement LandingPage,

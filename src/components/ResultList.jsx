@@ -1,13 +1,13 @@
-import React    from "react"
-import Actions  from "../Actions"
-import Address  from "./AddressLine"
-import { pure } from "recompose"
-import Flower   from "./Flower";
-import NavButton from "./NavButton";
-import styled   from "styled-components";
-import i18n     from "../i18n";
-import { NAMES } from "../constants/Categories"
-import { translate          } from "react-i18next";
+import React         from "react"
+import Actions       from "../Actions"
+import Address       from "./AddressLine"
+import { pure }      from "recompose"
+import Flower        from "./Flower";
+import NavButton     from "./NavButton";
+import styled        from "styled-components";
+import i18n          from "../i18n";
+import { NAMES }     from "../constants/Categories"
+import { translate } from "react-i18next";
 
 const AddressWrapper = styled.div`
   font-size: 0.8em;

@@ -106,7 +106,6 @@ class KVMMap extends Component {
       showLocateButton
     } = this.props;
 
-
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
         let avg_rating = null;

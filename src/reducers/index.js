@@ -6,11 +6,11 @@ import server   from "./server";
 import url      from "./url";
 import user     from "./user";
 import timedActions from "./timedActions";
-
-import { GrowlerReducer as growler } from "flash-notification-react-redux"
+import {reducer as notificationsReducer} from 'reapop';
 import { combineReducers           } from "redux";
 
 module.exports = combineReducers({
+  notifications: notificationsReducer(),
   form,
   search,
   map,
@@ -19,5 +19,4 @@ module.exports = combineReducers({
   url,
   user,
   timedActions,
-  growler
 });

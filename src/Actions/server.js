@@ -9,7 +9,7 @@ import appConst                   from "../constants/App";
 import LICENSES                   from "../constants/Licenses";
 import { MAIN_IDS, IDS }          from "../constants/Categories";
 import i18n                       from "../i18n";
-
+import { notify }                 from "reapop";
 
 const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
@@ -207,13 +207,14 @@ const Actions = {
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: err
           });
-          dispatch({
-            type: 'GROWLER__SHOW',
-            growler: {
-              text: i18n.t("growler.genericError"),
-              type: 'growler--error'
-            }
-          });
+
+          dispatch(notify({
+            message: "<div style='height: 40px'>" + i18n.t("growler.genericError") + "</div>",
+            status: "error",
+            position: "tc",
+            dismissAfter: 2000,
+            allowHTML: true
+          }));
         } else {
           dispatch({
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
@@ -277,6 +278,14 @@ const Actions = {
           WebAPI.getEntries([id], (err, res) => {
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
+              dispatch(notify({
+                message: "<div style='height: 40px'>" + i18n.t("growler.entrySaved") + "</div>",
+                status: "success",
+                position: "tc",
+                dismissAfter: 2000,
+                allowHTML: true
+              }));
+
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 payload: id,

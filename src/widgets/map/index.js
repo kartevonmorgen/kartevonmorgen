@@ -52,15 +52,12 @@ const search = () => {
           if(!entriesErr && entriesRes.length > 0) {
             state.entries = entriesRes;
 
-            console.log("search:", state);
             render();
           }
         });        
       }
     });
   }
-
-  console.log("search:", state);
 }
 
 const { params } = parseUrl(window.location.href);
@@ -93,8 +90,6 @@ if(params && Object.keys(params).length != 0){
           lat: state.currentEntry.lat,
           lng: state.currentEntry.lng
         };
-
-        console.log("getEntries:", state);
         render();
       }
     });

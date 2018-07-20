@@ -8,6 +8,9 @@ import NavButtonWhite         from "./NavButtonWhite";
 import { translate }          from "react-i18next";
 import Actions                from "../Actions";
 
+import NotificationsSystem    from "reapop";
+import theme                  from "reapop-theme-wybo";
+
 const TagsWrapper = styled.div `
   margin-top: 0.5em;
 `;
