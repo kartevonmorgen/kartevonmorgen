@@ -22,7 +22,7 @@
 		"contact":"Contact (optional)",
 		"entryImage":"Image (optional)",
 		"imageUrl":"URL of an image",
-		"imageLink":"Link (when clicking on the image)",
+		"imageLink":"Link (when clicking on the image, optional)",
 		"cancel":"cancel",
 		"save":"save",
 		"editEntryHeading":"Edit entry",

@@ -12,14 +12,17 @@ const NavigationButtonWrapperRight = styled.div`
 `;
 
 const NavigationButton = styled.span`
-  color: #888;
+  color: #fff;
   cursor: pointer;
   padding: 4px 7px;
   border-radius: 2px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 
   :hover {
     color: #000;
     background-color: #f5f5f5;
+    text-shadow: none;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   }
 `;
 

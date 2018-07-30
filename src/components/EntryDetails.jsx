@@ -45,6 +45,7 @@ const Tags = (tags=[]) =>
   </TagsWrapper>
 
 const EntryDetailPage = styled.div`
+  margin-top: 235px;
   padding-left: 1em;
   padding-right: 1em;
   max-width: 500px;
@@ -71,6 +72,11 @@ const LoadingEntryMessage = styled.div`
   padding-top: 1em;
 `;
 
+const Navbar = styled.nav`
+  position: relative;
+  z-index: 1;
+`;
+
 class EntryDetails extends Component {
 
   render() {
@@ -88,7 +94,7 @@ class EntryDetails extends Component {
     else {
       return (
       <div>
-        <nav className="menu-top">
+        <Navbar className="menu-top">
           <NavButtonWhite
             keyName = "back"
             buttonRight = { false }
@@ -109,7 +115,7 @@ class EntryDetails extends Component {
               this.props.dispatch(Actions.editCurrentEntry());
             }}
           />
-        </nav>
+        </Navbar>
         {
           entry.image_url ?
             <EntryImage image_url={entry.image_url} image_link={entry.image_link} />
