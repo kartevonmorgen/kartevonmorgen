@@ -8,6 +8,7 @@ import EntryDetails         from "./EntryDetails"
 import EntryForm            from "./EntryForm"
 import RatingForm           from "./RatingForm"
 import Message              from "./Message"
+import CityList             from "./CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
 
