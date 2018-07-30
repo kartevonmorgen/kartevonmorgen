@@ -1,7 +1,7 @@
 import i18n from "../i18n";
 
 const entryForm = (data) => {
-  let errors, h, l, ref;
+  let errors, h, l, ref, u;
   errors = {};
 
   const t = (key) => {
@@ -85,6 +85,14 @@ const entryForm = (data) => {
     }
     if (((ref = (h = data.homepage)) != null ? ref.length : void 0) < 9) {
       errors.homepage = t("invalidURL");
+    }
+  }
+  if ((u = data.image_url) != null) {
+    if (!((u.indexOf("http://") === 0) || (u.indexOf("https://") === 0))) {
+      errors.image_url = t("invalidURL") + ": " + t("httpMissing");
+    }
+    if (((ref = (u = data.image_url)) != null ? ref.length : void 0) < 9) {
+      errors.image_url = t("invalidURL");
     }
   }
   return errors;

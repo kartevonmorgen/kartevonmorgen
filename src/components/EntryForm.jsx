@@ -10,6 +10,19 @@ import LICENSES             from "../constants/Licenses";
 import { EDIT             } from "../constants/Form";
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
+import styled               from "styled-components";
+
+const Fieldset = styled.fieldset`
+  margin-top: 10px !important;
+`;
+
+const OptionalFieldLabel = styled.label`
+  color: #bbb;
+`;
+
+const OptionalLegend = styled.legend`
+  color: #bbb !important;
+`;
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -43,7 +56,7 @@ class Form extends Component {
           </div>
         }
         <div className= "pure-form">
-          <fieldset>
+          <Fieldset>
             <Field className="pure-input-1" name="category" component="select">
               <option value={-1}>- {t("chooseCategory")} -</option>
               <option value={IDS.INITIATIVE}>{this.props.t("category." + NAMES[IDS.INITIATIVE])}</option>
@@ -67,9 +80,6 @@ class Form extends Component {
             <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
             <Field name="description" component={errorMessage} />
 
-          </fieldset>
-
-          <fieldset>
             <Field
               name="tags"
               required={true}
@@ -80,9 +90,9 @@ class Form extends Component {
             <Field
               name="tags"
               component={errorMessage} />
-          </fieldset>
+          </Fieldset>
 
-          <fieldset>
+          <Fieldset>
             <legend>
               <span className="text">Ort</span>
             </legend>
@@ -98,9 +108,9 @@ class Form extends Component {
             </div>
             <Field name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
             <Field name="street" component={errorMessage} />
-            </fieldset>
+            </Fieldset>
             <span className="desc">{t("clickOnMap")}</span>
-            <fieldset>
+            <Fieldset>
             <div className= "pure-g">
               <label className= "pure-u-2-24">
                 <i className= "fa fa-map-marker" />
@@ -117,18 +127,18 @@ class Form extends Component {
                 </div>
               </div>
             </div>
-          </fieldset>
+          </Fieldset>
 
-          <fieldset>
-            <legend>{t("contact")}</legend>
+          <Fieldset>
+            <OptionalLegend>{t("contact")}</OptionalLegend>
             <div className= "pure-g">
-              <label className= "pure-u-2-24">
+              <OptionalFieldLabel className= "pure-u-2-24">
                 <i className= "fa fa-globe" />
-              </label>
+              </OptionalFieldLabel>
               <div className= "pure-u-22-24">
                 <Field
                   name="homepage"
-                  className="pure-input-1"
+                  className="pure-input-1 optional"
                   component="input"
                   placeholder={t("homepage")} />
                 <Field name="homepage" component={errorMessage} />
@@ -136,28 +146,49 @@ class Form extends Component {
             </div>
 
             <div className= "pure-g">
-              <label className= "pure-u-2-24">
+              <OptionalFieldLabel className= "pure-u-2-24">
                 <i className= "fa fa-envelope" />
-              </label>
+              </OptionalFieldLabel>
               <div className= "pure-u-22-24">
-                <Field name="email" type="email" className="pure-input-1" component="input" placeholder={t("email")} />
+                <Field name="email" type="email" className="pure-input-1 optional" component="input" placeholder={t("email")} />
                 <Field name="email" component={errorMessage} />
               </div>
             </div>
 
             <div className= "pure-g">
-              <label className= "pure-u-2-24">
+              <OptionalFieldLabel className= "pure-u-2-24">
                 <i className= "fa fa-phone" />
-              </label>
+              </OptionalFieldLabel>
               <div className= "pure-u-22-24">
-                <Field name="telephone" className="pure-input-1" component="input" placeholder={t("phone")} />
+                <Field name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
                 <Field name="telephone" component={errorMessage} />
               </div>
             </div>
+          </Fieldset>
 
-          </fieldset>
+          <Fieldset>
+            <OptionalLegend>{t("entryImage")}</OptionalLegend>
+            <div className= "pure-g">
+              <OptionalFieldLabel className= "pure-u-2-24">
+                <i className= "fa fa-camera" />
+              </OptionalFieldLabel>
+              <div className= "pure-u-22-24">
+                <Field name="image_url" className="pure-input-1 optional" component="input" placeholder={t("imageUrl")} />
+                <Field name="image_url" component={errorMessage} />
+              </div>
+            </div>
+            <div className= "pure-g">
+              <OptionalFieldLabel className= "pure-u-2-24">
+                <i className= "fa fa-link" />
+              </OptionalFieldLabel>
+              <div className= "pure-u-22-24">
+                <Field name="image_link" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
+                <Field name="image_link" component={errorMessage} />
+              </div>
+            </div>
+          </Fieldset>
 
-          <fieldset>
+          <Fieldset>
             <legend>
               <span className="text">{t("license")}</span>
             </legend>
@@ -181,7 +212,8 @@ class Form extends Component {
                 } {" " + t("licenseAccepted")}
               </div>
             </div>
-          </fieldset>
+          </Fieldset>
+
         </div>
         </form>
         <nav className="menu pure-g">
