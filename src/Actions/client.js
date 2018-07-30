@@ -37,7 +37,6 @@ const Actions = {
   cancelEdit          : () => ({ type: T.CANCEL_EDIT            }),
   cancelRating        : () => ({ type: T.CANCEL_RATING          }),
   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO         }),
-  closeIoErrorMessage : () => ({ type: T.CLOSE_IO_ERROR_MESSAGE }),
   showLeftPanel       : () => ({ type: T.SHOW_LEFT_PANEL }),
   hideLeftPanel       : () => ({ type: T.HIDE_LEFT_PANEL }),
 

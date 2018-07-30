@@ -184,8 +184,6 @@ class Sidebar extends Component {
               <Message
                 iconClass={ "fa fa-exclamation-triangle" }
                 message={ t("io-error.message") }
-                buttonLabel={ t("io-error.close") }
-                onCancel={ () => { return dispatch(Actions.closeIoErrorMessage()); }}
               />
             </div>
           );

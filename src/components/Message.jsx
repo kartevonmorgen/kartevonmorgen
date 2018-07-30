@@ -7,6 +7,7 @@ class Message extends React.Component {
   render() {
 
     let actionButton = null;
+    let cancelButton = null;
     var l;
 
     if (l = this.props.actionButtonLabel) {
@@ -18,6 +19,15 @@ class Message extends React.Component {
           { l }
         </button>;
     }
+    if (l = this.props.cancelButtonLabel) {
+      cancelButton =
+        <button
+          onClick = { (ev) => { ev.preventDefault(); this.props.onCancel(); }}
+          className = "pure-button" >
+          <i className = "fa fa-ban" />
+          { l }
+        </button>
+    }
     return (
       <div className = 'dialog'>
         <div className = "message">
@@ -25,12 +35,7 @@ class Message extends React.Component {
           { this.props.message }
         </div>
         <div className = "close-button">
-          <button
-            onClick = { (ev) => { ev.preventDefault(); this.props.onCancel(); }}
-            className = "pure-button" >
-            <i className = "fa fa-ban" />
-            { this.props.cancelButtonLabel }
-          </button>
+          { cancelButton }
           { actionButton }
         </div>
       </div>

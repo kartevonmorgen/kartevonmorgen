@@ -130,11 +130,6 @@ module.exports = (state=initialState, action={}) => {
         ...state,
         left: V.RESULT
       }
-    case T.CLOSE_IO_ERROR_MESSAGE:
-      return {
-        ...state,
-        left: null
-      }
 
     case T.CANCEL_RATING:
     case T.CANCEL_EDIT:
