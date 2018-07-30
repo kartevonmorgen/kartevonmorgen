@@ -1,13 +1,14 @@
-import React    from "react"
-import Actions  from "../Actions"
-import Address  from "./AddressLine"
-import { pure } from "recompose"
-import Flower   from "./Flower";
-import NavButton from "./NavButton";
-import styled   from "styled-components";
-import i18n     from "../i18n";
-import { NAMES } from "../constants/Categories"
-import { translate          } from "react-i18next";
+import React        from "react"
+import Actions      from "../Actions"
+import Address      from "./AddressLine"
+import { pure }     from "recompose"
+import Flower       from "./Flower";
+import NavButton    from "./NavButton";
+import styled       from "styled-components";
+import i18n         from "../i18n";
+import { NAMES }    from "../constants/Categories"
+import { translate} from "react-i18next";
+import PropTypes    from "prop-types";
 
 const AddressWrapper = styled.div`
   font-size: 0.8em;
@@ -17,6 +18,7 @@ const AddressWrapper = styled.div`
 const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
+
   return (
     <li
       key           = { entry.id }
@@ -43,13 +45,14 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           }
           <div className="flower">{ Flower(ratings,30) }</div>
           {
-            (entry.tags.length > 0)
+            entry.tags ? (entry.tags.length > 0)
               ? <div className="tags" >
                   <ul >
                   { entry.tags.map(t => <li key={t}>{t}</li>) }
                   </ul>
                 </div>
               : null
+            : null
           }
         </div>
         <div className = "pure-u-1-24 chevron">
@@ -112,6 +115,18 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           />
       </nav>
     </div>)
+}
+
+ResultList.propTypes = {
+  dispatch:             PropTypes.func.isRequired,
+  waiting:              PropTypes.bool.isRequired,
+  entries:              PropTypes.array.isRequired,
+  ratings:              PropTypes.object.isRequired,
+  highlight:            PropTypes.array.isRequired,
+  moreEntriesAvailable: PropTypes.bool.isRequired,
+  onMoreEntriesClick:   PropTypes.func.isRequired,
+  t:                    PropTypes.func.isRequired,
+  onClick:              PropTypes.func
 }
 
 module.exports = translate("translation")(pure(ResultList))

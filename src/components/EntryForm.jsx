@@ -210,7 +210,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  isEdit : T.bool,
+  isEdit : T.string,
   license: T.string,
   dispatch: T.func
 };

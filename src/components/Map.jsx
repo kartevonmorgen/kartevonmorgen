@@ -97,15 +97,14 @@ class KVMMap extends Component {
       center,
       zoom,
       marker,
-      highlight,
       onMoveend,
       onZoomend,
       onClick,
       onMarkerClick,
       ratings,
-      showLocateButton
+      showLocateButton,
+      highlight
     } = this.props;
-
 
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
