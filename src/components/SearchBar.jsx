@@ -1,9 +1,18 @@
 require('./SearchBar.styl');
-import { translate } from "react-i18next";
-import React from "react";
-import { pure } from "recompose";
-import T from "prop-types";
-import { MAIN_IDS, CSS_CLASS_SIZE, NAMES } from "../constants/Categories";
+import { translate }                          from "react-i18next";
+import React                                  from "react";
+import { pure }                               from "recompose";
+import T                                      from "prop-types";
+import { MAIN_IDS, CSS_CLASS_SIZE, NAMES }    from "../constants/Categories";
+import styled                                 from "styled-components";
+
+const SearchInput = styled.input `
+  ::placeholder{
+    color: #bbb;
+  }
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  border-radius: 0px !important;
+`;
 
 class RawCategoryButtons extends React.Component {
 
@@ -73,7 +82,7 @@ class SearchBar extends React.Component {
           <div onClick = { this.props.onLenseClick } className = "search-icon">
             <i className = "fa fa-search" />
           </div>
-          <input
+          <SearchInput
             onChange    = { this.onChange }
             disabled    = { disabled }
             onKeyUp     = { this.onKeyUp }
