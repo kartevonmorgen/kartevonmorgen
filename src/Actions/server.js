@@ -267,6 +267,11 @@ const Actions = {
           dispatch(stopSubmit(EDIT.id, {
             _error: err
           }));
+          dispatch(notify({
+            ...notificationSettings,
+            message: i18n.t("growler.genericError"),
+            status: "error"
+          }));
         } else {
           const id = (e != null ? e.id : void 0) || res;
           WebAPI.getEntries([id], (err, res) => {
