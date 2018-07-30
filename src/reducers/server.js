@@ -70,6 +70,16 @@ module.exports = (state=initialState, action={}) => {
           ...o
         }
       }
+
+    case T.SAVED_ENTRY_RESULT:
+      o[payload.id] = payload;
+      return {
+        ...state,
+        entries: {
+          ...state.entries,
+          ...o
+        }
+      }
       
     default:
       return state;

@@ -293,6 +293,11 @@ const Actions = {
                   type: T.NEW_ENTRY_RESULT,
                   payload: res[0]
                 });
+              } else {
+                dispatch({
+                  type: T.SAVED_ENTRY_RESULT,
+                  payload: res[0]
+                });
               }
             }
           });
