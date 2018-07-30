@@ -31,7 +31,7 @@ class Sidebar extends Component {
                 entries={ resultEntries }
                 ratings={ ratings }
                 highlight={ search.highlight}
-                moreEntriesAvailable={search.moreEntriesAvailable}
+                moreEntriesAvailable={ search.moreEntriesAvailable }
                 onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
                 dispatch={dispatch}
               />
@@ -68,6 +68,9 @@ class Sidebar extends Component {
                       onMouseEnter={ id => { return dispatch(Actions.highlight(id)); }}
                       onMouseLeave={ id => { return dispatch(Actions.highlight()); }}
                       dispatch={ dispatch }
+                      waiting={ waiting_for_search_results }
+                      moreEntriesAvailable={ search.moreEntriesAvailable }
+                      onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
                     />
                   </div>
                 : ""
