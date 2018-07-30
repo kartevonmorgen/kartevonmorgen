@@ -20,6 +20,8 @@ import { pure }             from "recompose"
 import { initialize }       from "redux-form"
 import mapConst             from "../constants/Map"
 import { translate }        from "react-i18next"
+import NotificationsSystem  from "reapop";
+import theme                from "reapop-theme-wybo";
 const Swipe =               require("react-swipe-component/lib/Swipe.js").default;
 
 const { div, span, button, nav, li, i, a, br, h3, p } = React.DOM;
@@ -55,6 +57,7 @@ class Main extends Component {
     return (
       <div className="app">
         <div className="main">
+          <NotificationsSystem theme={theme}/>
           { 
             view.menu ? 
               <LandingPage

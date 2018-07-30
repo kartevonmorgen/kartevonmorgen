@@ -15,6 +15,8 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import { Provider, connect } from "react-redux";
 
+import "babel-polyfill";
+
 if (__DEVELOPMENT__) {
   window.React = React;
   // const { whyDidYouUpdate } = require('why-did-you-update');

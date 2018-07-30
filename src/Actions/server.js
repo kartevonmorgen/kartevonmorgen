@@ -6,10 +6,11 @@ import { NEW_ENTRY_LICENSE }      from "../constants/App";
 import { initialize, stopSubmit } from "redux-form";
 import mapConst                   from "../constants/Map";
 import appConst                   from "../constants/App";
+import { notificationSettings }   from "../constants/view";
 import LICENSES                   from "../constants/Licenses";
 import { MAIN_IDS, IDS }          from "../constants/Categories";
 import i18n                       from "../i18n";
-
+import { notify }                 from "reapop";
 
 const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
@@ -207,25 +208,23 @@ const Actions = {
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: err
           });
-          dispatch({
-            type: 'GROWLER__SHOW',
-            growler: {
-              text: i18n.t("growler.genericError"),
-              type: 'growler--error'
-            }
-          });
+
+
+          dispatch(notify({
+            ...notificationSettings,
+            message: i18n.t("growler.genericError"),
+            status: "error"
+          }));
         } else {
           dispatch({
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: res
           });
-          dispatch({
-            type: 'GROWLER__SHOW',
-            growler: {
-              text: changeExistingBbox ? i18n.t("growler.subscriptionChanged") : i18n.t("growler.subscriptionAdded"),
-              type: 'growler--success'
-            }
-          });
+          dispatch(notify({
+            ...notificationSettings,
+            message: changeExistingBbox ? i18n.t("growler.subscriptionChanged") : i18n.t("growler.subscriptionAdded"),
+            status: "error"
+          }));
           dispatch({
             type: 'UPDATE_SUBSCRIPTION_INFO',
             subscriptionExists: true
@@ -238,21 +237,17 @@ const Actions = {
     (dispatch, getState) => {
       WebAPI.unsubscribeFromBboxes((err, res) => {
         if (err) {
-          dispatch({
-            type: 'GROWLER__SHOW',
-            growler: {
-              text: i18n.t("growler.genericError"),
-              type: 'growler--error'
-            }
-          });
+          dispatch(notify({
+            ...notificationSettings,
+            message: i18n.t("growler.genericError"),
+            status: "error"
+          }));
         } else {
-          dispatch({
-            type: 'GROWLER__SHOW',
-            growler: {
-              text: i18n.t("growler.unsubscribingSuccessfull"),
-              type: 'growler--success'
-            }
-          });
+          dispatch(notify({
+            ...notificationSettings,
+            message: i18n.t("growler.unsubscribingSuccessfull"),
+            status: "success"
+          }));
           dispatch({
             type: 'UPDATE_SUBSCRIPTION_INFO',
             subscriptionExists: false
@@ -277,6 +272,12 @@ const Actions = {
           WebAPI.getEntries([id], (err, res) => {
             dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
+              dispatch(notify({
+                ...notificationSettings,
+                message: i18n.t("growler.entrySaved"),
+                status: "success"
+              }));
+
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 payload: id,
@@ -352,13 +353,11 @@ const Actions = {
                 payload: res[0].id,
               });
               dispatch(Actions.getRatings(res[0].ratings));
-              dispatch({
-                type: 'GROWLER__SHOW',
-                growler: {
-                  text: i18n.t("growler.ratingSaved"),
-                  type: 'growler--success'
-                }
-              });
+              dispatch(notify({
+                ...notificationSettings,
+                message: i18n.t("growler.ratingSaved"),
+                status: "success"
+              }));
               dispatch(initialize(RATING.id, {}, RATING.fields));
             }
           });
