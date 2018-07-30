@@ -5,6 +5,7 @@ import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import NavButton              from "./NavButton";
 import NavButtonWhite         from "./NavButtonWhite";
+import EntryImage             from "./EntryImage";
 import { translate }          from "react-i18next";
 import Actions                from "../Actions";
 
@@ -109,6 +110,11 @@ class EntryDetails extends Component {
             }}
           />
         </nav>
+        {
+          entry.image_url ?
+            <EntryImage image_url={entry.image_url} image_link={entry.image_link} />
+            : null
+        }
         <EntryDetailPage>
           <div>
             <EntryTitle>{entry.title}</EntryTitle>
