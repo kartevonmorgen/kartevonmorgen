@@ -9,11 +9,10 @@ const ImageWrapper = styled.div`
   width:      100%;
   text-align: center;
   z-index:    0;
-  height:     250px;
 `;
 
 const Image = styled.div`
-  height:     250px;
+  height:     300px;
   max-width:  100%;
   background-position: center center !important;
   background-size: auto 100% !important;
@@ -39,7 +38,7 @@ class EntryImage extends Component {
             <Image src={image_url} style={ backgroundImageStyle }></Image>
           </a>
           :
-          <Image src={image_url}></Image>
+          <Image src={image_url} style={ backgroundImageStyle }></Image>
         }
       </ImageWrapper>
     );

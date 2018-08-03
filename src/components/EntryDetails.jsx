@@ -45,10 +45,12 @@ const Tags = (tags=[]) =>
   </TagsWrapper>
 
 const EntryDetailPage = styled.div`
-  margin-top: 235px;
-  padding-left: 1em;
-  padding-right: 1em;
+  z-index: 2;
+  position: relative;
+  padding: 1px 1em 0 1em;
   max-width: 500px;
+  background-color: #fff;
+  margin-top: ${props => props.hasImage ? "235px" : "0"};
 `;
 
 const EntryLink = styled.a`
@@ -81,7 +83,7 @@ class EntryDetails extends Component {
 
   render() {
     const { entry, t, dispatch, mapCenter } = this.props;
-
+    const hasImage = entry.image_url ? true : false;
     if (!entry) {
       return(
         <EntryDetailPage>
@@ -105,6 +107,7 @@ class EntryDetails extends Component {
               this.props.dispatch(Actions.showSearchResults());
               this.props.dispatch(Actions.setCenterInUrl(mapCenter));
             }}
+            aboveImage={hasImage}
           />
           <NavButtonWhite
             keyName = "edit"
@@ -114,14 +117,15 @@ class EntryDetails extends Component {
             onClick = {() => {
               this.props.dispatch(Actions.editCurrentEntry());
             }}
+            aboveImage={hasImage}
           />
         </Navbar>
         {
-          entry.image_url ?
+          hasImage ?
             <EntryImage image_url={entry.image_url} image_link={entry.image_link} />
             : null
         }
-        <EntryDetailPage>
+        <EntryDetailPage hasImage={hasImage}>
           <div>
             <EntryTitle>{entry.title}</EntryTitle>
             <EntryDescription>{entry.description}</EntryDescription>
