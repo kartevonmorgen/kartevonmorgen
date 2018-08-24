@@ -83,7 +83,7 @@ class EntryDetails extends Component {
 
   render() {
     const { entry, t, dispatch, mapCenter } = this.props;
-    const hasImage = entry.image_url ? true : false;
+    const hasImage = entry ? (entry.image_url ? true : false) : false;
     if (!entry) {
       return(
         <EntryDetailPage>
