@@ -17,11 +17,16 @@ const Fieldset = styled.fieldset`
 `;
 
 const OptionalFieldLabel = styled.label`
-  color: #bbb;
+  color: #777;
+`;
+
+const OptionalFieldText = styled.div`
+  color: #777;
+  margin-bottom: 4px;
 `;
 
 const OptionalLegend = styled.legend`
-  color: #bbb !important;
+  color: #777 !important;
 `;
 
 const errorMessage = ({meta}) =>
@@ -168,6 +173,7 @@ class Form extends Component {
 
           <Fieldset>
             <OptionalLegend>{t("entryImage")}</OptionalLegend>
+            <OptionalFieldText>{t("imageUrlExplanation")}</OptionalFieldText>
             <div className= "pure-g">
               <OptionalFieldLabel className= "pure-u-2-24">
                 <i className= "fa fa-camera" />
