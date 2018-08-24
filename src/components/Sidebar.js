@@ -123,7 +123,9 @@ class Sidebar extends Component {
                       email: data.email,
                       zip: data.zip,
                       version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
-                      categories: [data.category]
+                      categories: [data.category],
+                      image_url: data.image_url,
+                      image_link_url: data.image_link_url
                     }
                   ));
                 }}

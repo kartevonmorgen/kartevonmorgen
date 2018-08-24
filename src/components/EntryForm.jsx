@@ -188,8 +188,8 @@ class Form extends Component {
                 <i className= "fa fa-link" />
               </OptionalFieldLabel>
               <div className= "pure-u-22-24">
-                <Field name="image_link" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
-                <Field name="image_link" component={errorMessage} />
+                <Field name="image_link_url" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
+                <Field name="image_link_url" component={errorMessage} />
               </div>
             </div>
           </Fieldset>
