@@ -233,7 +233,6 @@ Main.propTypes = {
   map:            T.object.isRequired,
   search :        T.object.isRequired,
   form :          T.object.isRequired,
-  server :        T.object.isRequired,
   url:            T.object.isRequired,
   user :          T.object.isRequired,
   timedActions :  T.object.isRequired
