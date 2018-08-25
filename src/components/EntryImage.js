@@ -23,11 +23,6 @@ class EntryImage extends Component {
     const { image_url, image_link } = this.props;
 
     const backgroundImageStyle = {
-      background: "-moz-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + " no-repeat;",
-      background: "-webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(15%, rgba(0, 0, 0, 0.1)), color-stop(30%, rgba(0, 0, 0, 0))), url(" + image_url + " no-repeat;",
-      background: "-webkit-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + " no-repeat;",
-      background: "-o-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + " no-repeat;",
-      background: "-ms-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + " no-repeat;",
       background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + ") no-repeat",
     };
 
