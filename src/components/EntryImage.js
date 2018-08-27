@@ -20,7 +20,7 @@ const Image = styled.div`
 
 class EntryImage extends Component {
   render(){
-    const { image_url, image_link } = this.props;
+    const { image_url, image_link_url } = this.props;
 
     const backgroundImageStyle = {
       background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0) 30%), url(" + image_url + ") no-repeat",
@@ -28,8 +28,8 @@ class EntryImage extends Component {
 
     return (
       <ImageWrapper>
-        { image_link ?
-          <a href={ image_link } target="_blank">
+        { image_link_url ?
+          <a href={ image_link_url } target="_blank">
             <Image src={image_url} style={ backgroundImageStyle }></Image>
           </a>
           :
@@ -42,7 +42,7 @@ class EntryImage extends Component {
 
 EntryImage.propTypes = {
   image_url:     PropTypes.string.isRequired,
-  image_link:    PropTypes.string
+  image_link_url:    PropTypes.string
 }
 
 export default EntryImage

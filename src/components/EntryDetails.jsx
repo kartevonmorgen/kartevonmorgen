@@ -122,7 +122,7 @@ class EntryDetails extends Component {
         </Navbar>
         {
           hasImage ?
-            <EntryImage image_url={entry.image_url} image_link={entry.image_link} />
+            <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
             : null
         }
         <EntryDetailPage hasImage={hasImage}>
