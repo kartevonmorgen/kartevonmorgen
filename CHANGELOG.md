@@ -1,3 +1,13 @@
+## v0.1.25 (2018-08-27)
+- new(EntryDetails): add optional image to entry pages
+- refactor(*): transfer part of App.js into Sidebar.js
+- refactor(*): turn App.coffee into JavaScript
+- new(i18n): make English the default fallback language (if browser language is not German)
+- fix(styling): fix appearance of locate-button
+- new(notification): replace redux-flash-notification with reapop as the former is not maintained anymore
+- new(LandingPage): add 'Stadt Mannheim' as partner
+
+
 ## v0.1.24 (2018-03-22)
 - fix(IE-bug): fix bug with IE10 and lower which can't access window.location.origin
 - fix(ConfirmEmail): send u_id to confirm-email API call
