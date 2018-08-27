@@ -22,7 +22,6 @@ import mapConst             from "../constants/Map"
 import { translate }        from "react-i18next"
 import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
-const Swipe =               require("react-swipe-component/lib/Swipe.js").default;
 
 const { div, span, button, nav, li, i, a, br, h3, p } = React.DOM;
 
@@ -125,13 +124,7 @@ class Main extends Component {
             view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
           }
 
-          <Swipe
-            nodeName={"div"}
-            className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
-            onSwipedLeft={ () => { return dispatch(Actions.hideLeftPanel()); }}
-            onSwipedRight={() => { return dispatch(Actions.showLeftPanel()); }}
-          >
-
+          <div className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}>
             <div className={"search integrated " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
               <SearchBar
                 searchText={search.text}
@@ -173,7 +166,7 @@ class Main extends Component {
                 t={ t }
               />
             </div>
-          </Swipe>
+          </div>
 
           <div className="hide-sidebar">
             <button
