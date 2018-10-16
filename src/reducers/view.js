@@ -91,6 +91,13 @@ module.exports = (state=initialState, action={}) => {
         right: V.IMPRINT
       }
 
+    case T.SHOW_PRIVACY_STATEMENT:
+      return {
+        ...state,
+        menu: true,
+        right: V.PRIVACY_STATEMENT
+      }
+
     case T.SHOW_NEW_ENTRY:
       return {
         ...state,

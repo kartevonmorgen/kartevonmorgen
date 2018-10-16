@@ -4,6 +4,7 @@ import CityList             from "./CityList";
 import Info                 from "./Info";
 import Contact              from "./Contact";
 import Imprint              from "./Imprint";
+import PrivacyStatement     from "./PrivacyStatement";
 import Explain              from "./LandingExplain";
 import Register             from "./Register";
 import Login                from "./Login";
@@ -58,6 +59,9 @@ class LandingPage extends Component {
       case V.TEAM:
       case V.SUPPORTERS:
         contentComp = <Explain onClick={onClick} />;
+        break;
+      case V.PRIVACY_STATEMENT:
+        contentComp = <PrivacyStatement />;
         break;
       case V.IMPRINT:
         contentComp = <Imprint />;
@@ -319,7 +323,8 @@ class LandingPage extends Component {
           {t("footer.open-source")}<a target="_blank" href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
         </p>
         <p>
-          <a href="#" onClick={() => onClick(V.IMPRINT)}>{t("footer.imprint")}</a>
+          <a className="smallLink" href="#" onClick={() => onClick(V.IMPRINT)}>{t("footer.imprint")}</a>
+          <a className="smallLink" href="#" onClick={() => onClick(V.PRIVACY_STATEMENT)}>{t("footer.privacyStatement")}</a>
         </p>
         <p>
           {user.username != null ? <a onClick={onDeleteAccount} href="#">
