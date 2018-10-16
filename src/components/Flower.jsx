@@ -1,6 +1,5 @@
 import Flower from "react-vm-flower";
 import React  from "react";
-import styled from "styled-components";
 import { rating_groups } from "../rating";
 
 const flower_scales = (ratings=[]) => {
