@@ -1,4 +1,4 @@
-require('./SearchBar.styl');
+require('./styling/SearchBar.styl');
 import { translate }                          from "react-i18next";
 import React                                  from "react";
 import { pure }                               from "recompose";

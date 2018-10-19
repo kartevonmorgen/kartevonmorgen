@@ -1,6 +1,6 @@
 // Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
 
-import "./App.styl"
+import "./styling/App.styl"
 
 import React, { Component } from "react"
 import T                    from "prop-types"

@@ -1,4 +1,4 @@
-import "./Map.styl"
+import "./styling/Map.styl"
 import React, { Component }         from "react"
 import { Map, TileLayer, Marker, CircleMarker, Circle }   from "react-leaflet"
 import { icons }                    from "vm-leaflet-icons"
