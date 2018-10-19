@@ -7,7 +7,7 @@ const flower_scales = (ratings=[]) => {
   const groups = rating_groups(ratings);
   Object.keys(groups).forEach(g => {
     const rtngs = groups[g];
-    if (rtngs && rtngs.length > 0) { 
+    if (rtngs && rtngs.length > 0) {
       const av = rtngs.reduce((acc, r) => {return acc+r.value;}, 0) / rtngs.length;
       const scale = 0.233 * av + 0.533;
       switch (g) {

@@ -6,23 +6,31 @@ import styled               from "styled-components";
 import { translate }        from "react-i18next";
 import NavButton            from "./NavButton";
 import Actions              from "../Actions";
+import COLORS               from "./styling/Colors";
+
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
     ? <div className="err">{meta.error}</div>
     : null
 
-const IntroText = styled.div `
+const IntroText = styled.div`
   margin-bottom: 10px;
-`;
+  color: ${COLORS.darkGray};
+`
 
-const AspectLabel = styled.label `
+const Aspect = styled.div`
+  margin: 10px 0;
+`
+
+const AspectLabel = styled.label`
   font-weight: bold;
-`;
+`
 
-const AspectExplanation = styled.div `
-
-`;
+const AspectExplanation = styled.div`
+  margin-top: 5px;
+  color: ${COLORS.darkGray};
+`
 
 class RatingForm extends Component {
 
@@ -57,48 +65,62 @@ class RatingForm extends Component {
         </div>
         <div className= "pure-form">
           <fieldset>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="diversity" />
-              {" " + t("ratings.contextName.diversity")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.diversity") }
-            </AspectExplanation>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="renewable" />
-              {" " + t("ratings.contextName.renewable")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.renewable") }
-            </AspectExplanation>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="fairness" />
-              {" " + t("ratings.contextName.fairness")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.fairness") }
-            </AspectExplanation>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="humanity" />
-              {" " + t("ratings.contextName.humanity")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.humanity") }
-            </AspectExplanation>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
-              {" " + t("ratings.contextName.solidarity")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.solidarity") }
-            </AspectExplanation>
-            <AspectLabel>
-              <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
-              {" " + t("ratings.contextName.transparency")}
-            </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation.transparency") }
-            </AspectExplanation>
+            <Aspect>
+              <Aspect>
+                <AspectLabel>
+                  <Field name="context" className="radio-button" component="input" type="radio" value="diversity" />
+                  {" " + t("ratings.contextName.diversity")}
+                </AspectLabel>
+                <AspectExplanation>
+                  { t("ratings.contextExplanation.diversity") }
+                </AspectExplanation>
+              </Aspect>
+            </Aspect>
+            <Aspect>
+              <AspectLabel>
+                <Field name="context" className="radio-button" component="input" type="radio" value="renewable" />
+                {" " + t("ratings.contextName.renewable")}
+              </AspectLabel>
+              <AspectExplanation>
+                { t("ratings.contextExplanation.renewable") }
+              </AspectExplanation>
+            </Aspect>
+            <Aspect>
+              <AspectLabel>
+                <Field name="context" className="radio-button" component="input" type="radio" value="fairness" />
+                {" " + t("ratings.contextName.fairness")}
+              </AspectLabel>
+              <AspectExplanation>
+                { t("ratings.contextExplanation.fairness") }
+              </AspectExplanation>
+            </Aspect>
+            <Aspect>
+              <AspectLabel>
+                <Field name="context" className="radio-button" component="input" type="radio" value="humanity" />
+                {" " + t("ratings.contextName.humanity")}
+              </AspectLabel>
+              <AspectExplanation>
+                { t("ratings.contextExplanation.humanity") }
+              </AspectExplanation>
+            </Aspect>
+            <Aspect>
+              <AspectLabel>
+                <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
+                {" " + t("ratings.contextName.solidarity")}
+              </AspectLabel>
+              <AspectExplanation>
+                { t("ratings.contextExplanation.solidarity") }
+              </AspectExplanation>
+            </Aspect>
+            <Aspect>
+              <AspectLabel>
+                <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
+                {" " + t("ratings.contextName.transparency")}
+              </AspectLabel>
+              <AspectExplanation>
+                { t("ratings.contextExplanation.transparency") }
+              </AspectExplanation>
+            </Aspect>
             <Field name="context" component={errorMessage} />
           </fieldset>
           <fieldset>
