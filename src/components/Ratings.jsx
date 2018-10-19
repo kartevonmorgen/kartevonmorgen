@@ -1,8 +1,9 @@
 import React, { Component }   from "react";
 import Flower                 from "./Flower";
+import ReactVMFlower          from "react-vm-flower";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";
-import { rating_contexts as contextColors } from "./styling/Colors";
+import COLORS                 from "./styling/Colors";
 
 const context_order = (id) => {
   switch(id) {
@@ -44,47 +45,48 @@ const rating_groups = (ratings=[]) => {
 const RatingsWrapper = styled.div `
   padding: 1em;
   color: #333;
-`;
+`
 
 const AdditionalRatingButtonWrapper = styled.div `
   margin-top: 70px;
   height: 20px;
   font-size: 0.8em;
-`;
+`
 
 const AdditionalRatingButton = styled.button`
   float: none;
-`;
+`
 
 const FirstRatingButton = styled.button`
   margin-top: 1em;
   float: right;
   font-size: 0.9em;
-`;
+`
 
 const RatingsHeading = styled.h4`
   border-bottom: 1px solid #aaa;
   margin-top: 40px;
-`;
+`
 
 const RatingList = styled.ul`
   list-style:  none;
   margin:      0;
   margin-left: 0;
   padding:     0;
-`;
+`
 
 const RatingListForContext = styled.ul`
   margin-left: 0.5em;
   margin-top: 0;
   padding-left: 0;
   list-style: none;
-`;
+`
 
 const RatingContextHeading = styled.h5`
   border-bottom: 1px solid #ddd;
   margin-bottom: 0.5em;
-`;
+  width: 83%;
+`
 
 const RatingCommentList = styled.ul`
   margin-left: 1.2em;
@@ -92,20 +94,30 @@ const RatingCommentList = styled.ul`
   margin-bottom: 0.5em;
   list-style: none;
   padding-left: 0;
-`;
+`
 
 const RatingCount = styled.span`
   font-weight: normal;
   margin-left: 0.3em;
   color: #888;
-`;
+`
 
 const FlowerWrapper = styled.div `
   margin-top: 0px;
   float: right;
   position: relative;
   top: -70px;
-`;
+`
+
+const RatingContextWrapper = styled.div`
+  position: relative;
+`
+
+const LeafWrapper = styled.div`
+  position: absolute;
+  right: -18px;
+  top: -3px;
+`
 
 class Ratings extends Component {
 
@@ -121,18 +133,30 @@ class Ratings extends Component {
       const context = g[0].context;
       const l = g.length;
       const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
+      const Leaf = ReactVMFlower.Leaf
+      const leafHeight = 35
       return (
-        <div key={context}>
+        <RatingContextWrapper key={context}>
           <RatingContextHeading>
-            <span style={{color: contextColors.context}}>{t("contextName." + context)}</span>
-            <RatingCount>({count})</RatingCount>
+            <span>{t("contextName." + context)}</span>
           </RatingContextHeading>
+          <LeafWrapper>
+            <svg width={80} height = {80}>
+              <g transform={"translate(40, 40)"}>
+                <Leaf
+                    transform = {"rotate(180)"}
+                    color     = {COLORS.rating_contexts[context]}
+                    height    = { leafHeight }
+                    width     = {0.7 * leafHeight} />
+              </g>
+            </svg>
+          </LeafWrapper>
           <RatingListForContext>
             {
               g.map(r => <li key={r.id}>{Rating(r, t)}</li>)
             }
           </RatingListForContext>
-        </div>)
+        </RatingContextWrapper>)
     });
 
     if(entry){
@@ -172,17 +196,17 @@ const Comment = (comment) =>
 
 const RatingWrapper = styled.div`
   font-size: 0.9em;
-`;
+`
 
 const RatingTitle = styled.span`
   margin-left: 0.3em;
   font-weight: bold;
-`;
+`
 
 const SourceWrapper = styled.div`
   color: #AAA;
   text-align: right;
-`;
+`
 
 const rating_value_key = (value) => {
   switch(value){
