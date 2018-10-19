@@ -41,7 +41,7 @@
     "react-leaflet": "^1.7.8",
     "react-redux": "^5.0.2",
     "react-swipe-component": "^1.4.0",
-    "react-vm-flower": "^0.2.0",
+    "react-vm-flower": "^0.2.1",
     "recompose": "^0.20.2",
     "reapop": "^2.0.0",
     "reapop-theme-wybo": "^1.0.2",
