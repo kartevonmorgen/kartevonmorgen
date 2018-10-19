@@ -43,6 +43,8 @@
     "react-swipe-component": "^1.4.0",
     "react-vm-flower": "^0.2.0",
     "recompose": "^0.20.2",
+    "reapop": "^2.0.0",
+    "reapop-theme-wybo": "^1.0.2",
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
     "redux-logger": "^3.0.6",
@@ -52,9 +54,7 @@
     "superagent": "^3.5.2",
     "superagent-prefix": "0.0.2",
     "updeep": "^1.0.0",
-    "vm-leaflet-icons": "^0.1.0",
-    "reapop": "^2.0.0",
-    "reapop-theme-wybo": "^1.0.2"
+    "vm-leaflet-icons": "^0.1.0"
   },
   "optionalDependencies": {
     "@kadira/storybook": "~1.8.0"
