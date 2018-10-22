@@ -115,8 +115,9 @@ const RatingContextWrapper = styled.div`
 
 const LeafWrapper = styled.div`
   position: absolute;
-  right: -18px;
+  right: 0;
   top: -3px;
+  padding: 0 !important;
 `
 
 class Ratings extends Component {
@@ -141,8 +142,8 @@ class Ratings extends Component {
             <span>{t("contextName." + context)}</span>
           </RatingContextHeading>
           <LeafWrapper>
-            <svg width={80} height = {80}>
-              <g transform={"translate(40, 40)"}>
+            <svg width={leafHeight} height={leafHeight}>
+              <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
                 <Leaf
                     transform = {"rotate(180)"}
                     color     = {COLORS.rating_contexts[context]}
