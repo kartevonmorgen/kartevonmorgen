@@ -197,11 +197,16 @@ const Comment = (comment) =>
 
 const RatingWrapper = styled.div`
   font-size: 0.9em;
+  overflow: hidden;
 `
 
 const RatingTitle = styled.span`
   margin-left: 0.3em;
   font-weight: bold;
+`
+
+const RatingTitleWrapper = styled.div`
+  max-width: 288px;
 `
 
 const SourceWrapper = styled.div`
@@ -211,17 +216,19 @@ const SourceWrapper = styled.div`
 
 const rating_value_key = (value) => {
   switch(value){
-    case -1: return"minusOne";
+    case -1: return "minusOne";
     case 0: return "zero";
-    case 1: return"one";
-    case 2: return"two";
-    default: return"invalidRatingValue";
+    case 1: return "one";
+    case 2: return "two";
+    default: return "invalidRatingValue";
   }
 }
 
 const Rating = (rating, t) =>
   <RatingWrapper>
-    <span>{t("valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
+    <RatingTitleWrapper>
+      <span>{t("valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
+    </RatingTitleWrapper>
     <RatingCommentList>
       {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
     </RatingCommentList>

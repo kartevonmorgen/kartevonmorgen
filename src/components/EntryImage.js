@@ -7,6 +7,7 @@ const ImageWrapper = styled.div`
   top:        0;
   bottom:     0;
   width:      100%;
+  height:     285px;
   text-align: center;
   z-index:    0;
 `;
