@@ -85,6 +85,7 @@ class BusinessCard extends Component {
       );
     }
     else {
+      const shortHomepage = entry.homepage ? entry.homepage.replace("http://", "").replace("https://", "").replace("www.", "") : ""
       return (
         <EntryDetailPage hasImage={hasImage}>
           <EntryTitle>{entry.title}</EntryTitle>
@@ -94,7 +95,7 @@ class BusinessCard extends Component {
               <div key="hp" className="pure-g">
                 <i className = "pure-u-2-24 fa fa-globe" />
                 <EntryLink className="pure-u-22-24" href={entry.homepage} target="_blank">
-                  { entry.homepage }
+                  { shortHomepage }
                 </EntryLink>
               </div> : null),
             (entry.email ?
