@@ -79,20 +79,20 @@ const entryForm = (data) => {
       errors.license = t("acceptLicense");
     }
   }
+  const urlRegexp =  /^(?:(?:https?):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
   if ((h = data.homepage) != null) {
-    if (!((h.indexOf("http://") === 0) || (h.indexOf("https://") === 0))) {
-      errors.homepage = t("invalidURL") + ": " + t("httpMissing");
-    }
-    if (((ref = (h = data.homepage)) != null ? ref.length : void 0) < 9) {
+    if (!urlRegexp.test(h)) {
       errors.homepage = t("invalidURL");
     }
   }
   if ((u = data.image_url) != null) {
-    if (!((u.indexOf("http://") === 0) || (u.indexOf("https://") === 0))) {
-      errors.image_url = t("invalidURL") + ": " + t("httpMissing");
-    }
-    if (((ref = (u = data.image_url)) != null ? ref.length : void 0) < 9) {
+    if (!urlRegexp.test(u)) {
       errors.image_url = t("invalidURL");
+    }
+  }
+  if ((u = data.image_link_url) != null) {
+    if (!urlRegexp.test(u)) {
+      errors.image_link_url = t("invalidURL");
     }
   }
   return errors;
