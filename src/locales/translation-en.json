@@ -21,7 +21,7 @@
 		"clickOnMap":"or click on the map...",
 		"contact":"Contact (optional)",
 		"entryImage":"Image (optional)",
-		"imageUrlExplanation":"min 300x300 pixel, landscape format or quadratic, max. 200KB",
+		"imageUrlExplanation":"suggested: landscape format, min. 400x300 pixel, max. 300KB",
 		"imageUrl":"URL of an image",
 		"imageLink":"Link (when clicking on the image, optional)",
 		"cancel":"cancel",

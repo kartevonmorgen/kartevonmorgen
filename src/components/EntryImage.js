@@ -12,7 +12,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.div`
-  height:     300px;
+  height:     285px;
   max-width:  100%;
   background-position: center center !important;
   background-size: auto 100% !important;

@@ -21,7 +21,7 @@
 		"clickOnMap":"oder auf Karte klicken...",
 		"contact":"Kontakt (optional)",
 		"entryImage":"Titelbild (optional)",
-		"imageUrlExplanation":"min 300x300 Pixel, kein Hochformat, max.200KB",
+		"imageUrlExplanation":"Empfohlen: Querformat, min. 400x300 Pixel, max. 300KB",
 		"imageUrl":"URL des Bildes",
 		"imageLink":"Link (bei Klick auf das Bild, optional)",
 		"cancel":"abbrechen",

@@ -12,7 +12,7 @@ const EntryDetailPage = styled.div`
   padding: 1px 1em 0 1em;
   max-width: 500px;
   background-color: #fff;
-  margin-top: ${props => props.hasImage ? "235px" : "0"};
+  margin-top: ${props => props.hasImage ? "244px" : "0"};
 `;
 
 const LoadingEntryMessage = styled.div`
