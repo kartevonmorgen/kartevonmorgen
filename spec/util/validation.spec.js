@@ -282,49 +282,11 @@ describe("Validation", () => {
     });
 
     describe("homepage", () => {
-
-      it("should contain the protocol", () => {
+      it("should have a top-level domain", () => {
         F({
-          homepage: "example.org"
+          homepage: "blabla"
         }).homepage.should.satisfy((error) => {
-          if(error.includes("Ungültige URL: \"http://\" oder \"https://\" fehlt") 
-            || error.includes("Invalid URL: \"http://\" or \"https://\" missing")){
-            return true;
-          } else {
-            return false;
-          }});
-        F({
-          homepage: "www.example.org"
-        }).homepage.should.satisfy((error) => {
-          if(error.includes("Ungültige URL: \"http://\" oder \"https://\" fehlt") 
-            || error.includes("Invalid URL: \"http://\" or \"https://\" missing")){
-            return true;
-          } else {
-            return false;
-          }});
-        should.not.exist(F({
-          homepage: "http://foo.bar"
-        }).homepage);
-        should.not.exist(F({
-          homepage: "https://foo.bar"
-        }).homepage);
-      });
-
-      it("should be long enough", () => {
-        F({
-          homepage: "http://"
-        }).homepage.should.satisfy((error) => {
-          if(error.includes("Ungültig") 
-            || error.includes("Invalid")){
-            return true;
-          } else {
-            return false;
-          }});
-        F({
-          homepage: "https://"
-        }).homepage.should.satisfy((error) => {
-          if(error.includes("Ungültig") 
-            || error.includes("Invalid")){
+          if(error.includes("Ungültige URL") || error.includes("Invalid URL")){
             return true;
           } else {
             return false;
