@@ -9,10 +9,12 @@ module.exports = {
       "__DEVELOPMENT__": true,
       "module": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
+            "jsx": true,
+	    "modules": true
         },
         "sourceType": "module"
     },
