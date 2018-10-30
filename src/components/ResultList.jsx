@@ -49,11 +49,10 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           {
             entry.tags ? (entry.tags.length > 0)
               ? <div className="tags" >
-                <ul >
-                  { entry.tags.map(t => <li key={t}>{t}</li>) }
-                </ul>
-              </div>
-              : null
+                  <ul >
+                    { entry.tags.slice(0, 5).map(t => <li key={t}>#{t}</li>) }
+                  </ul>
+                </div>
               : null
           }
         </div>

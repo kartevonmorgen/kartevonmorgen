@@ -5,6 +5,7 @@ import { translate }          from "react-i18next";
 import { pure }               from "recompose";
 import Address                from "./AddressLine";
 import T                      from "prop-types";
+import Actions                from "../Actions";
 
 const EntryDetailPage = styled.div`
   z-index: 2;
@@ -35,11 +36,11 @@ const EntryDescription = styled.p`
 `;
 
 const EntryDetailsOtherData = styled.div`
-  font-family: Museo;
+  font-family: Rubik, sans-serif;
 `;
 
 const TagsWrapper = styled.div `
-  margin-top: 0.5em;
+  margin-top: 1.5em;
 `;
 
 const TagList = styled.ul `
@@ -49,26 +50,44 @@ const TagList = styled.ul `
 `;
 
 const Tag = styled.li `
-  display:       inline-block;
-  margin-right:  0.2em;
-  background:    #777;
-  color:         #fff;
-  border-radius: 0.3em;
-  padding:       0.1em;
-  padding-left:  0.4em;
-  padding-right: 0.4em;
-  font-size:     0.9em;
+  display: inline;
 `;
 
-const Tags = (tags=[]) =>
+const TagLink = styled.a `
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  background: #eaeaea;
+  border-radius: 0.3em;
+  padding: .2em .4em;
+  font-size: 0.75em;
+  margin-bottom: 0.2rem;
+  margin-right: 0.4em;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: #333;
+  }
+`
+
+const Tags = (tags=[], dispatch) =>
   <TagsWrapper key="tags" className = "pure-g">
     <i className = "pure-u-2-24 fa fa-tags" />
     <span className = "pure-u-22-24">
       <TagList>
       { tags
           .filter(t => t != "")
-          .map(t => <Tag key={t}>{t}</Tag>)
-      }
+          .map(t => 
+            <Tag key={t}><TagLink 
+              onClick={ () => {
+                dispatch(Actions.showSearchResults());
+                dispatch(Actions.setSearchText('#'+t));
+                return dispatch(Actions.search());
+              }}
+            >#{t}</TagLink></Tag>
+          )}
       </TagList>
     </span>
   </TagsWrapper>
@@ -85,7 +104,7 @@ class BusinessCard extends Component {
   }
 
   render () {
-    const { entry, hasImage, t } = this.props;
+    const { entry, hasImage, dispatch, t } = this.props;
 
     if (!entry) {
       return(
@@ -135,7 +154,7 @@ class BusinessCard extends Component {
               </div>
               : null),
             (entry.tags && entry.tags.filter(t => t !="").length > 0
-              ? Tags(entry.tags)
+              ? Tags(entry.tags, dispatch)
               : null)
           ]}</EntryDetailsOtherData>
         </EntryDetailPage>)

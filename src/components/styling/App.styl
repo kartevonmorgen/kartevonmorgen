@@ -23,7 +23,7 @@
 }
 
 h1, h2, h3, h4, h5, h6, h7
-  font-family Museo
+  font-family Museo, sans-serif
 
 html, button, input, select, textarea
   font-family Source Sans Pro Light, sans-serif
@@ -395,6 +395,9 @@ button.pure-button i
       background-color #fff
       box-shadow 1px 1px 5px rgba(0,0,0,0.5)
 
+      .entry h3
+        font-size 1.3rem
+      
       .content-wrapper
         .result
           box-sizing      border-box
@@ -859,23 +862,22 @@ button.pure-button i
           &.event div.chevron
             color $event
         .tags
-          margin-top  0.1em
-          float       right
+          margin-top  0.4em
           ul
             list-style none
             padding 0
             margin 0
             li
               display       inline-block
-              margin-right  0.2em
-              background    #aaa
-              color         #fff
-              border-radius 0.2em
-              padding       0.15em
-              padding-left  0.2em
-              padding-right 0.2em
-              font-size     0.8em
+              margin-right  0.4em
+              margin-bottom 0.2em
+              background    #eaeaea
+              color         #333
+              border-radius 0.3em
+              padding       .2em .4em
+              font-size     0.75em
               border        0
+              letter-spacing 0.06em
 
 .banner
   position relative

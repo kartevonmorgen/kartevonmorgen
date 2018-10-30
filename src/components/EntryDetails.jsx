@@ -31,7 +31,7 @@ class EntryDetails extends Component {
     }
     else {
       return (
-        <div>
+        <div className="entry">
           <Navbar className="menu-top">
             <NavButtonWhite
               keyName = "back"
@@ -61,7 +61,7 @@ class EntryDetails extends Component {
               <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
               : null
           }
-          <BusinessCard entry={entry} hasImage={hasImage}/>
+          <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} />
         </div>)
     }
   }
