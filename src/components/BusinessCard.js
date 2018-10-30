@@ -36,7 +36,7 @@ const EntryDescription = styled.p`
 `;
 
 const EntryDetailsOtherData = styled.div`
-  font-family: Museo;
+  font-family: Rubik, sans-serif;
 `;
 
 const TagsWrapper = styled.div `
@@ -57,7 +57,7 @@ const TagLink = styled.a `
   color: #333;
   text-decoration: none;
   display: inline-block;
-  background: #ddd;
+  background: #eaeaea;
   border-radius: 0.3em;
   padding: .2em .4em;
   font-size: 0.75em;
@@ -82,8 +82,8 @@ const Tags = (tags=[], dispatch) =>
           .map(t => 
             <Tag key={t}><TagLink 
               onClick={ () => {
-                dispatch(Actions.setSearchText('#'+t));
                 dispatch(Actions.showSearchResults());
+                dispatch(Actions.setSearchText('#'+t));
                 return dispatch(Actions.search());
               }}
             >#{t}</TagLink></Tag>
