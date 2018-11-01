@@ -1,6 +1,7 @@
 import React    from "react"
 import { pure } from "recompose"
 import styled   from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NavigationButton = styled.li`
   color: #00f;
@@ -13,8 +14,7 @@ const NavButton = ({ keyName, classname, icon, text, onClick }) => {
       key = { keyName }
       className = { classname }
       onClick = { onClick }>
-      <i className= { icon }></i>
-      { text }
+      <FontAwesomeIcon icon={ icon } /> { text }
     </NavigationButton>)
 }
 

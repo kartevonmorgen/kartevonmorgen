@@ -17,7 +17,7 @@ module.exports = ({view, dispatch}) => {
       return (
         <div className= 'modal'>
           <Message
-            iconClass = "fa fa-spinner fa-pulse"
+            iconClass = "spinner"
             message = {"  " + t("locate.inProgress")}
             cancelButtonLabel = {t("locate.cancel")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
@@ -29,12 +29,12 @@ module.exports = ({view, dispatch}) => {
       return (
         <div className = 'modal'>
           <Message
-            iconClass = "fa fa-exclamation-triangle"
+            iconClass = "exclamation-triangle"
             message = { "  " + t("locate.failed") }
             cancelButtonLabel = {t("locate.close")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
             actionButtonLabel = {t("locate.tryAgain")}
-            actionButtonIcon = "fa fa-repeat"
+            actionButtonIcon = "repeat"
             onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
             />
         </div>
@@ -44,12 +44,12 @@ module.exports = ({view, dispatch}) => {
       return (
         <div className = 'modal'>
           <Message
-            iconClass = "fa fa-info-circle"
+            iconClass = "info-circle"
             message = { "   " + t("events.text") } 
             cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.showFeatureToDonate(null)) }
             actionButtonLabel = {t("events.donate")}
-            actionButtonIcon = "fa fa-external-link"
+            actionButtonIcon = "external-link"
             onAction = { () => window.open(DONATE.link, '_blank').focus() }
             />
         </div>

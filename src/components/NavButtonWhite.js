@@ -1,6 +1,7 @@
 import React    from "react"
 import { pure } from "recompose"
 import styled   from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NavigationButtonWrapper = styled.div`
   width: 50%;
@@ -33,7 +34,7 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) =>
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>
-        <i className= { icon }></i>
+        <FontAwesomeIcon icon={ icon } />
         { " " + text }
       </NavigationButton>
     </NavigationButtonWrapperRight>
@@ -43,7 +44,7 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) =>
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>
-        <i className= { icon }></i>
+        <FontAwesomeIcon icon={ icon } />
         { " " + text }
       </NavigationButton>
     </NavigationButtonWrapper>;

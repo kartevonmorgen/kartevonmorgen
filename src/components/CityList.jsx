@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const CityListElement = ({ city, onClick }) => {
 
@@ -18,7 +19,7 @@ const CityListElement = ({ city, onClick }) => {
           </div>
         </div>
         <div className = "pure-u-1-24 chevron">
-          <i className = "fa fa-chevron-right" />
+          <FontAwesomeIcon icon="chevron-right" />
         </div>
       </div>
     </li>)

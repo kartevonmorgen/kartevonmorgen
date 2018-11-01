@@ -3,7 +3,6 @@
 @require 'nib'
 
 @require "~normalize.css/normalize.css"
-@require "~font-awesome/css/font-awesome.css"
 @require "~source-sans-pro/source-sans-pro.css"
 @require "~museo/300/museo-300.css"
 @require "~museo/500/museo-500.css"
@@ -32,7 +31,9 @@ html, button, input, select, textarea
   color #000
 
 .fa
-  font-family: FontAwesome !important;
+  font-family: FontAwesome !important
+  font-weight: normal
+  text-align: center
 
 .pure-g [class *= "pure-u"]
   font-family Museo
@@ -54,8 +55,9 @@ form
     &.err
       border-color #f44
 
-button.pure-button i
+button.pure-button svg
   margin-right 0.5em
+  
 
 ::-webkit-scrollbar
   background-color  #eee
@@ -487,8 +489,9 @@ button.pure-button i
           color       $coal
           box-shadow  px 2px 2px 0.3px rgba(0,0,0,1)
 
-        i
-          margin-right 0.3em
+        svg
+          margin-right .3em
+          width 0.7em
 
     .right
       float right
@@ -718,7 +721,8 @@ button.pure-button i
   div.chevron
     position relative
     color    $lightGray
-    i
+    
+    svg
       position  absolute
       display   inline-table
       top       0

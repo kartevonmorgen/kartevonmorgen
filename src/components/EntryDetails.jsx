@@ -36,7 +36,7 @@ class EntryDetails extends Component {
             <NavButtonWhite
               keyName = "back"
               buttonRight = { false }
-              icon = "fa fa-chevron-left"
+              icon = "chevron-left"
               text = {t("entryDetails.back")}
               onClick = {() => {
                 this.props.dispatch(Actions.setCurrentEntry(null, null));
@@ -48,7 +48,7 @@ class EntryDetails extends Component {
             <NavButtonWhite
               keyName = "edit"
               buttonRight = { true }
-              icon = "fa fa-pencil"
+              icon = "pencil-alt"
               text = ""
               onClick = {() => {
                 this.props.dispatch(Actions.editCurrentEntry());
