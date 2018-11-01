@@ -64,23 +64,31 @@ To build a Nix derivation, run
 
 ### Local development setup
 
-Download the OpenFairDB Server
+The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/flosse/openfairdb). To do so change `src/constants/URLs.js` to
 
-    wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.3.1.tar.gz
+``` js
+OFDB_API: {
+  //link: window.location.origin + "/api" //use when you run openfairdb locally
+  link: window.location.protocol + "//" + "api.ofdb.io/v0" //use this to use the remote api
+}
+```
 
-unpack it
+The alternative is to run OpenFairDB Server locally:
 
-    tar xzf openfairdb-x86_64-linux-v0.3.1.tar.gz
+Download, unpack and run (on linux):
+``` sh
+wget https://download.ofdb.io/openfairdb-x86_64-linux-v0.3.1.tar.gz
+tar xzf openfairdb-x86_64-linux-v0.3.1.tar.gz
+./openfairdb
+```
+`openfairdb` should now be listening on port 6767.
+To actually get started to also need to add some [content](https://github.com/flosse/openfairdb/issues/112#issuecomment-432724965).
 
-and run it
-
-    ./openfairdb
-
-Now `openfairdb` is listening on port 6767.
-
+Get the web app running:
+``` sh
     cd /path/to/kartevonmorgen/
     npm start
-
+```
 The web app is now listening on port 8080.
 Open it in your browser `http://localhost:8080`.
 

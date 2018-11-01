@@ -1,17 +1,9 @@
-// for Internet Explorer:
-if (!window.location.origin) {
-  window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
-}
-const URL = location.origin + "/api";
-
-const NOMINATIM_URL = "https://nominatim.openstreetmap.org";
-const TILEHOSTING_URL = "https://geocoder.tilehosting.com/q/<query>.js?key=<key>";
-
 import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
+import { OFDB_API, TH_GEOCODER, NOMINATIM } from "../constants/URLs"
 
-const prefix = saPrefix(URL);
+const prefix = saPrefix(OFDB_API.link);
 
 const jsonCallback = (cb) => (err, res) => {
   if (err) {
@@ -48,7 +40,7 @@ module.exports = {
   },
 
   searchAddressTilehosting: (addr, cb) => {
-    let query = TILEHOSTING_URL.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
+    let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
     if (addr != null && addr != "") {
       request
         .get(query)
@@ -63,7 +55,7 @@ module.exports = {
     }
     request
       .get('/search')
-      .use(saPrefix(NOMINATIM_URL))
+      .use(saPrefix(NOMINATIM.link))
       .query({
         q: addr
       })
@@ -88,7 +80,7 @@ module.exports = {
 
     request
       .get('/reverse')
-      .use(saPrefix(NOMINATIM_URL))
+      .use(saPrefix(NOMINATIM.link))
       .query({
         lat: latlng.lat
       })
