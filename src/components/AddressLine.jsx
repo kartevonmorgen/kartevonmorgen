@@ -4,6 +4,7 @@ import styled     from "styled-components";
 
 const AddressLine = styled.div`
   width: 100%;
+  margin-left: .52rem;
 `;
 
 module.exports = ({street, zip, city}) =>

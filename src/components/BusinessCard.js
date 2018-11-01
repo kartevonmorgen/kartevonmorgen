@@ -3,8 +3,11 @@ import styled                 from "styled-components";
 import Colors                 from "./styling/Colors"
 import { translate }          from "react-i18next";
 import { pure }               from "recompose";
-import Address                from "./AddressLine";
+import AddressLine                from "./AddressLine";
 import T                      from "prop-types";
+import Actions                from "../Actions";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ROUTEPLANNER }         from "../constants/URLs.js"
 
 const EntryDetailPage = styled.div`
   z-index: 2;
@@ -22,6 +25,10 @@ const LoadingEntryMessage = styled.div`
 const EntryLink = styled.a`
   color: ${Colors.darkGray};
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: #000;
+  }
 `;
 
 const EntryTitle = styled.h3`
@@ -60,17 +67,21 @@ const Tag = styled.li `
   font-size:     0.9em;
 `;
 
-const Tags = (tags=[]) =>
-  <TagsWrapper key="tags" className = "pure-g">
-    <i className = "pure-u-2-24 fa fa-tags" />
-    <span className = "pure-u-22-24">
-      <TagList>
-      { tags
-          .filter(t => t != "")
-          .map(t => <Tag key={t}>{t}</Tag>)
-      }
-      </TagList>
-    </span>
+const Tags = (tags=[], dispatch) =>
+  <TagsWrapper key="tags">
+    <TagList>
+    { tags
+        .filter(t => t != "")
+        .map(t => 
+          <Tag key={t}><TagLink 
+            onClick={ () => {
+              dispatch(Actions.showSearchResults());
+              dispatch(Actions.setSearchText('#'+t));
+              return dispatch(Actions.search());
+            }}
+          >#{t}</TagLink></Tag>
+        )}
+    </TagList>
   </TagsWrapper>
 
 class BusinessCard extends Component {
@@ -95,7 +106,8 @@ class BusinessCard extends Component {
       );
     }
     else {
-      const shortHomepage = this.homepageLink(t)
+      const shortHomepage = entry.homepage ? entry.homepage.replace("http://", "").replace("https://", "").replace("www.", "") : ""
+      const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
 
       return (
         <EntryDetailPage hasImage={hasImage}>
@@ -103,36 +115,38 @@ class BusinessCard extends Component {
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
             (entry.homepage ?
-              <div key="hp" className="pure-g">
-                <i className = "pure-u-2-24 fa fa-globe" />
-                <EntryLink className="pure-u-22-24" href={entry.homepage} target="_blank">
+              <div key="hp">
+                <FontAwesomeIcon icon="globe-africa" />&nbsp;
+                <EntryLink href={entry.homepage} target="_blank">
                   { shortHomepage }
                 </EntryLink>
               </div> : null),
             (entry.email ?
-              <div key="mail" className="pure-g">
-                <i className= "pure-u-2-24 fa fa-envelope" />
-                <EntryLink className="pure-u-22-24" href={ "mailto:" + entry.email}>
+              <div key="mail">
+                <FontAwesomeIcon icon="envelope" />&nbsp;
+                <EntryLink href={ "mailto:" + entry.email}>
                   {entry.email}
                 </EntryLink>
               </div>
               : null),
             (entry.telephone
               ?
-              <div key="tel" className="pure-g">
-                <i className="pure-u-2-24 fa fa-phone" />
-                <span className="pure-u-22-24">
-                  { entry.telephone }
-                </span>
+              <div key="tel">
+                <FontAwesomeIcon icon="phone" />&nbsp;{ entry.telephone }
               </div>
               : null),
             ((entry.street || entry.zip || entry.city) ?
-              <div key="addr" className = "address pure-g">
-                <i className = "pure-u-2-24 fa fa-map-marker" />
-                <div>
-                  <Address { ...entry } />
+              <div>
+                <div key="addr" className="address pure-g">
+                  <FontAwesomeIcon className="pure-u-2-24" icon="map-marker-alt" />
+                  <div className="pure-u-22-24">
+                    <AddressLine { ...entry } />
+                  </div>
                 </div>
-              </div>
+                <div key="route">
+                  <FontAwesomeIcon icon="route" />&nbsp;
+                  <EntryLink title={ "Hinfinden mit "+ROUTEPLANNER.name } href={routeUrl} target="_blank">Routenplaner</EntryLink>
+              </div></div>
               : null),
             (entry.tags && entry.tags.filter(t => t !="").length > 0
               ? Tags(entry.tags)

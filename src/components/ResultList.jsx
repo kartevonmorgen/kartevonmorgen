@@ -9,6 +9,7 @@ import i18n         from "../i18n";
 import { NAMES }    from "../constants/Categories"
 import { translate} from "react-i18next";
 import PropTypes    from "prop-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AddressWrapper = styled.div`
   font-size: 0.8em;
@@ -56,7 +57,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           }
         </div>
         <div className = "pure-u-1-24 chevron">
-          <i className = "fa fa-chevron-right" />
+          <FontAwesomeIcon icon="chevron-right" />
         </div>
       </div>
     </li>)
@@ -98,8 +99,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
             <span>{t("resultlist.entriesLoading")}</span>
           </p>
           : <p className= "no-results">
-              <i className= "fa fa-frown-o" />
-              <span>{t("resultlist.noEntriesFound")}</span>
+              <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
             </p>)
       }
       </div>
@@ -107,7 +107,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
         <NavButton
           key = "back"
           classname = "pure-u-1"
-          icon = "fa fa-plus"
+          icon = "plus"
           text = {t("resultlist.addEntry")}
           onClick = {() => {
             dispatch(Actions.showNewEntry());

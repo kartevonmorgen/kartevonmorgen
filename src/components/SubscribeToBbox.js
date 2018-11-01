@@ -3,6 +3,7 @@ import Actions  from "../Actions";
 import NavButton from "./NavButton";
 import styled   from "styled-components";
 import i18n     from "../i18n";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SubscribeToBboxContent = styled.div`
   padding-left: 1.4em;
@@ -29,7 +30,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             onClick = { () => {
               dispatch(Actions.showSearchResults());
             }}
-            icon = "fa fa-chevron-left"
+            icon = "chevron-left"
             text = { t("back") }
           />
           <NavButton
@@ -38,7 +39,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             onClick = { () => {
               dispatch(Actions.subscribeToBbox(bbox, true));
             }}
-            icon = "fa fa-pencil"
+            icon = "pencil"
             text = { t("edit") }
           />
           <NavButton
@@ -47,7 +48,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             onClick = { () => {
               dispatch(Actions.unsubscribeFromBboxes(username));
             }}
-            icon = "fa fa-trash"
+            icon = "trash"
             text = { t("unsubscribe") }
           />
         </nav>
@@ -68,7 +69,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
               dispatch(Actions.showSearchResults());
               dispatch(Actions.setCenterInUrl(mapCenter));
             }}
-            icon = "fa fa-chevron-left"
+            icon = "chevron-left"
             text = { t("back") }
           />
           <NavButton
@@ -77,7 +78,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             onClick = { () => {
               dispatch(Actions.subscribeToBbox(bbox, false));
             }}
-            icon = "fa fa-envelope"
+            icon = "envelope"
             text = { t("subscribe") }
           />
         </nav>

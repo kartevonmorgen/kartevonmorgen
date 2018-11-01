@@ -11,7 +11,7 @@ import Message              from "./Message"
 import CityList             from "./CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Sidebar extends Component {
   render(){

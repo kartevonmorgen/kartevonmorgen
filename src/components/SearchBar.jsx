@@ -5,6 +5,7 @@ import { pure }                               from "recompose";
 import T                                      from "prop-types";
 import { MAIN_IDS, CSS_CLASS_SIZE, NAMES }    from "../constants/Categories";
 import styled                                 from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchInput = styled.input `
   ::placeholder{
@@ -27,7 +28,7 @@ class RawCategoryButtons extends React.Component {
           onClick   = { () => { onToggle(c) }}
           className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
           { t("category." + NAMES[c]) + " " }
-          <i className = {'fa fa-toggle' + (act ? "-on" : "-off")}><i /></i>
+          <FontAwesomeIcon icon={'toggle' + (act ? "-on" : "-off")} />
         </button>);
     });
     return (<div>{ buttons }</div>);
@@ -80,7 +81,7 @@ class SearchBar extends React.Component {
 
         <div className = "pure-u-1">
           <div onClick = { this.props.onLenseClick } className = "search-icon">
-            <i className = "fa fa-search" />
+            <FontAwesomeIcon icon="search" />
           </div>
           <SearchInput
             onChange    = { this.onChange }

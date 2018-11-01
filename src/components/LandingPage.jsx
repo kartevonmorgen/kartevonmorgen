@@ -14,6 +14,7 @@ import { pure }             from "recompose";
 import { translate }        from "react-i18next";
 import i18n                 from "../i18n";
 import T                    from "prop-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class LandingPage extends Component {
 
@@ -300,7 +301,7 @@ class LandingPage extends Component {
               <strong>
                 Tutorial
                 <div style ={{ paddingTop: "10px", fontSize: "12px"}}>
-                  <i className = "fa fa-chevron-down" />
+                  <FontAwesomeIcon icon="chevron-down"/>
                 </div>
               </strong>
             </a>

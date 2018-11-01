@@ -3,6 +3,7 @@ import { pure } from "recompose";
 import URLs     from "../constants/URLs";
 import pkg      from "../../package.json";
 import {translate} from "react-i18next";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Contact extends React.Component {
 
@@ -24,13 +25,13 @@ class Contact extends React.Component {
         </p>
         <p>
 
-          <i className = "fa fa-facebook" />
+          <FontAwesomeIcon icon={['fab', 'facebook']} />
           {" "}<a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
           <br />
-          <i className = "fa fa-envelope-o" />
+          <FontAwesomeIcon icon="envelope" />
           {" "}<a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
           <br />
-          <i className = "fa fa-github" />
+          <FontAwesomeIcon icon={['fab', 'github']} />
           {" "}<a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
         </p>
       <hr />

@@ -5,6 +5,7 @@ import team2    from "../img/team_in_action.jpg";
 import slider   from "../img/Slider.jpg";
 import URLs     from "../constants/URLs";
 import i18n     from "../i18n";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const t = (key) => {
   return i18n.t("info." + key);
@@ -39,10 +40,10 @@ module.exports = ({serverVersion}) =>
         <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>{t("text2.joinLink")}</a><br />
         <p>
         <br />
-        <i className = "fa fa-facebook" />
+        <FontAwesomeIcon icon={['fab', 'facebook']} />&nbsp;
         {" "}<a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
         <br />
-        <i className = "fa fa-envelope-o" />
+        <FontAwesomeIcon icon="envelope" />&nbsp;
         {" "}<a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
         <br />
 
@@ -54,7 +55,7 @@ module.exports = ({serverVersion}) =>
           {t("text3")}
         </p>
         <p>
-          <i className = "fa fa-github" />
+          <FontAwesomeIcon icon={['fab', 'github']} />
           {" "}<a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
         </p>
 

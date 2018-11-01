@@ -53,6 +53,10 @@ module.exports = {
   NOMINATIM: {
     link: "https://nominatim.openstreetmap.org"
   },
+  ROUTEPLANNER: {
+    name: "Graphhopper Maps",
+    link: "https://graphhopper.com/maps/?point=&point={lat}%2C{lng}&locale=de-DE&vehicle=bike&weighting=fastest&elevation=false&use_miles=false&layer=Omniscale"
+  },
   DONATE: {
     name: "www.betterplace.org/de/projects/36213",
     link: "https://www.betterplace.org/de/projects/36213"
