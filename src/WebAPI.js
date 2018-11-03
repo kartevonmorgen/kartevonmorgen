@@ -150,7 +150,7 @@ module.exports = {
         if (err) {
           cb(err);
         } else {
-          cb(null, res.text.replace(/\"/g,""));
+          cb(null, res.text.replace( /"/g ,""));
         }
       });
   },
