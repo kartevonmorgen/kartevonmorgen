@@ -1,7 +1,7 @@
 import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
-import { OFDB_API, TH_GEOCODER, NOMINATIM } from "../constants/URLs"
+import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
 
 const prefix = saPrefix(OFDB_API.link);
 
