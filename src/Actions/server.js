@@ -35,34 +35,34 @@ const Actions = {
       });
 
       const searchFn = () => {
-          dispatch({
-            type: T.SET_SEARCH_TIME,
-            payload: null
-          });
-          console.log("SEARCH\n");
-          const { search, map } = getState();
-          var cats = search.categories;
-          const sw = map.bbox._southWest;
-          const ne = map.bbox._northEast;
-          const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
+        dispatch({
+          type: T.SET_SEARCH_TIME,
+          payload: null
+        });
+        console.log("SEARCH\n");
+        const { search, map } = getState();
+        var cats = search.categories;
+        const sw = map.bbox._southWest;
+        const ne = map.bbox._northEast;
+        const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-          // show no-category entries (e.g. from OSM) when standard categories are shown:
-          if(cats && cats.includes(MAIN_IDS[0]) && cats.includes(MAIN_IDS[2])) {
-            cats = [];
-          }
+        // show no-category entries (e.g. from OSM) when standard categories are shown:
+        if(cats && cats.includes(MAIN_IDS[0]) && cats.includes(MAIN_IDS[2])) {
+          cats = [];
+        }
 
-          if (search.text == null || !search.text.trim().endsWith("#")) {
+        if (search.text == null || !search.text.trim().endsWith("#")) {
 
-            WebAPI.search(search.text, cats, bbox, (err, res) => {
-              dispatch({
-                type: T.SEARCH_RESULT,
-                payload: err || res,
-                error: err != null,
-                noList: search.text == null
-              });
+          WebAPI.search(search.text, cats, bbox, (err, res) => {
+            dispatch({
+              type: T.SEARCH_RESULT,
+              payload: err || res,
+              error: err != null,
+              noList: search.text == null
+            });
 
-              const entries =
-                Array.isArray(res != null ? res.visible : void 0)
+            const entries =
+              Array.isArray(res != null ? res.visible : void 0)
                 ? Array.isArray(res.invisible)
                   ? res.visible.concat(res.invisible)
                   : res.visible
@@ -70,28 +70,28 @@ const Actions = {
                   ? res.invisible
                   : void 0;
 
-              const ids = entries ? entries.map(e => e.id) : null;
+            const ids = entries ? entries.map(e => e.id) : null;
 
-              if (ids && (Array.isArray(ids)) && ids.length > 0) {
-                dispatch(Actions.getEntries(ids));
-              } else {
-                dispatch({
-                  type: T.NO_SEARCH_RESULTS
-                });
-              }
-            });
-
-            if (search.text != null) {
-              const address = search.text.replace(/#/g, "");
-              WebAPI.searchAddressTilehosting(address, (err, res) => {
-                dispatch({
-                  type: T.SEARCH_ADDRESS_RESULT,
-                  payload: err || res.results,
-                  error: err != null
-                });
+            if (ids && (Array.isArray(ids)) && ids.length > 0) {
+              dispatch(Actions.getEntries(ids));
+            } else {
+              dispatch({
+                type: T.NO_SEARCH_RESULTS
               });
             }
+          });
+
+          if (search.text != null) {
+            const address = search.text.replace(/#/g, "");
+            WebAPI.searchAddressTilehosting(address, (err, res) => {
+              dispatch({
+                type: T.SEARCH_ADDRESS_RESULT,
+                payload: err || res.results,
+                error: err != null
+              });
+            });
           }
+        }
       };
 
       const triggerSearch = () => {

@@ -1,3 +1,8 @@
+// for Internet Explorer:
+if (!window.location.origin) {
+  window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+}
+
 module.exports = {
   CC_LICENSE: {
     name: "creativecommons.org/publicdomain/zero/1.0/deed.de",
@@ -33,6 +38,16 @@ module.exports = {
   },
   OSM_TILES: {
     link: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  },
+  OFDB_API: {
+    link: window.location.origin + "/api" //use when you run openfairdb locally
+    //link: window.location.protocol + "//" + "api.ofdb.io/v0" //use this to use the remote api
+  },
+  TH_GEOCODER: {
+    link: "https://geocoder.tilehosting.com/q/<query>.js?key=<key>"
+  },
+  NOMINATIM: {
+    link: "https://nominatim.openstreetmap.org"
   },
   DONATE: {
     name: "www.betterplace.org/de/projects/36213",
