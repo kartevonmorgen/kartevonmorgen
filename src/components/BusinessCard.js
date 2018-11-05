@@ -74,6 +74,16 @@ const Tags = (tags=[]) =>
   </TagsWrapper>
 
 class BusinessCard extends Component {
+
+  homepageLink (){
+    const { entry } = this.props;
+    if(!entry.homepage) return '';
+    let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "")
+    if(shortLink.length>30) shortLink = shortLink.split('/')[0] + "/…"
+    if(shortLink.length>30) shortLink = "Homepage"
+    return shortLink 
+  }
+
   render () {
     const { entry, hasImage, t } = this.props;
 
@@ -85,7 +95,8 @@ class BusinessCard extends Component {
       );
     }
     else {
-      const shortHomepage = entry.homepage ? entry.homepage.replace("http://", "").replace("https://", "").replace("www.", "") : ""
+      const shortHomepage = this.homepageLink()
+
       return (
         <EntryDetailPage hasImage={hasImage}>
           <EntryTitle>{entry.title}</EntryTitle>
