@@ -1,5 +1,10 @@
 {
 	"entryForm":{
+		"category":{
+			"initiative":"Initiative (commitment, inspiration & change)",
+			"event":"Event",
+			"company":"Enterprise (shops, services & needs)"
+		},
 		"chooseCategory":"Select category",
 		"location":"Location",
 		"clickMap":"(click on the map)",
@@ -376,9 +381,9 @@
 		"serverVersion":"Version des Servers:"
 	},
 	"category":{
-		"initiative":"Initiatives (commitment, inspiration & change)",
+		"initiative":"Initiative",
 		"event":"Event",
-		"company":"Enterprise (shops, services & needs)"
+		"company":"Enterprise"
 	},
 	"searchbar":{
 		"placeholder":"What are you looking for? (# for tags)"

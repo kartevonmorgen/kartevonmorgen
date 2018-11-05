@@ -64,9 +64,9 @@ class Form extends Component {
           <Fieldset>
             <Field className="pure-input-1" name="category" component="select">
               <option value={-1}>- {t("chooseCategory")} -</option>
-              <option value={IDS.INITIATIVE}>{this.props.t("category." + NAMES[IDS.INITIATIVE])}</option>
+              <option value={IDS.INITIATIVE}>{t("category." + NAMES[IDS.INITIATIVE])}</option>
               {/*<option value={IDS.EVENT}>Event</option>*/}
-              <option value={IDS.COMPANY}>{this.props.t("category." + NAMES[IDS.COMPANY])}</option>
+              <option value={IDS.COMPANY}>{t("category." + NAMES[IDS.COMPANY])}</option>
             </Field>
             <Field name="category" component={errorMessage} />
 
