@@ -187,7 +187,7 @@
 			"infos" : "Über uns",
 			"contact" : "Kontakt",
 			"donate" : "Spenden",
-			"login" : "Login",
+			"login" : "Register/ Login",
 			"logout" : "Logout"
 		},
 		"slogan" : "Alles Gute auf einer Karte",
@@ -376,9 +376,9 @@
 		"serverVersion":"Version des Servers:"
 	},
 	"category":{
-		"initiative":"Initiative",
+		"initiative":"Initiative (Engagement, Inspiration & Veränderung)",
 		"event":"Event",
-		"company":"Unternehmen"
+		"company":"Unternehmen (Läden, Dienstleistungen & Bedürfnisse)"
 	},
 	"searchbar":{
 		"placeholder":"Wonach suchst du? (# für Tags)"

@@ -376,9 +376,9 @@
 		"serverVersion":"Version des Servers:"
 	},
 	"category":{
-		"initiative":"Project",
+		"initiative":"Initiatives (commitment, inspiration & change)",
 		"event":"Event",
-		"company":"Company"
+		"company":"Enterprise (shops, services & needs)"
 	},
 	"searchbar":{
 		"placeholder":"What are you looking for? (# for tags)"
