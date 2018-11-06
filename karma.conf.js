@@ -1,7 +1,7 @@
 require("babel-core/register");
-var webpackCfg = require("./webpack.config.babel.js");
+var webpackConfig = require("./webpack.config.babel.js");
 
-webpackCfg.entry = null;
+webpackConfig.entry = null;
 
 module.exports = (config) => {
 
@@ -11,7 +11,7 @@ module.exports = (config) => {
 
     frameworks: ['mocha', 'chai'],
 
-    files: [ 'spec/**/*.spec.js' ],
+    files: [ './spec/**/*.spec.js' ],
 
     preprocessors: {
       '**/*.spec.js': ['webpack']
@@ -25,10 +25,10 @@ module.exports = (config) => {
 
     autoWatch: false,
 
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
     singleRun: true,
 
-    webpack: webpackCfg
+    webpack: webpackConfig
   })
 }

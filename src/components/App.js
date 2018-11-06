@@ -31,7 +31,6 @@ const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
   padding-right: .45rem;
 `;
 
-const { div, span, button, nav, li, i, a, br, h3, p } = React.DOM;
 
 class Main extends Component {
   
