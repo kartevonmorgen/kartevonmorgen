@@ -57,7 +57,8 @@
 	},
 	"entryDetails":{
 		"loadingEntry": "Eintrag wird geladen...",
-		"back" : "zurück"
+		"back" : "zurück",
+		"homepagePlaceholder": "Homepage"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",
