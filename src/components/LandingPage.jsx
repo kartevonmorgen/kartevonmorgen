@@ -5,7 +5,7 @@ import Info                 from "./Info";
 import Contact              from "./Contact";
 import Imprint              from "./Imprint";
 import PrivacyStatement     from "./PrivacyStatement";
-import Explain              from "./LandingExplain";
+// import Explain              from "./LandingExplain";
 import Register             from "./Register";
 import Login                from "./Login";
 import URLs                 from "../constants/URLs";
@@ -58,7 +58,7 @@ class LandingPage extends Component {
     switch (content) {
       case V.TEAM:
       case V.SUPPORTERS:
-        contentComp = <Explain onClick={onClick} />;
+        //contentComp = <Explain onClick={onClick} />;
         break;
       case V.PRIVACY_STATEMENT:
         contentComp = <PrivacyStatement />;
@@ -308,7 +308,7 @@ class LandingPage extends Component {
         <div className = "content">{
           content == null
             ? <div>
-              {loggedIn ? loginInfo : null} <Explain onClick = { onClick } />
+              {/* {loggedIn ? loginInfo : null} <Explain onClick = { onClick } /> */}
               </div>
             : contentComp
         }</div>

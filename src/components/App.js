@@ -3,6 +3,7 @@
 import "./styling/App.styl"
 
 import React, { Component } from "react"
+import ReactDOM             from "react-dom"
 import T                    from "prop-types"
 import V                    from "../constants/PanelView"
 import C                    from "../constants/Categories"
@@ -23,7 +24,7 @@ import { translate }        from "react-i18next"
 import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
 
-const { div, span, button, nav, li, i, a, br, h3, p } = React.DOM;
+const { div, span, button, nav, li, i, a, br, h3, p } = ReactDOM;
 
 class Main extends Component {
 

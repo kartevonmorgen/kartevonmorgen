@@ -37,7 +37,7 @@ const config = {
       {
         test:   /\.coffee$/,
         use: [
-          "react-hot-loader",
+          //"react-hot-loader",
           "coffee-loader"
         ]
       },

@@ -1,12 +1,13 @@
 # Copyright (c) 2015 - 2016 Markus Kohlhase <mail@markus-kohlhase.de>
 
 React     = require "react"
+ReactDOM  = require "react-dom"
 T         = require "prop-types"
 V         = require "../constants/PanelView"
 { pure }  = require "recompose"
 { translate } = require "react-i18next"
 
-{ div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = React.DOM
+{ div, h1, h2, h3, h4, br, input, button, ul, li, a, img, p, strong, hr } = ReactDOM
 
 module.exports = translate('translation')(pure React.createClass
 
