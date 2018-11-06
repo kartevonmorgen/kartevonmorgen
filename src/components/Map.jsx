@@ -197,35 +197,37 @@ class KVMMap extends Component {
       });
     }
 
+    let attribution = ""
+    URLs.TILE_SERVER_ATTR.name ? attribution = '<a class="osm attr" href=' + URLs.TILE_SERVER_ATTR.link + '>' + URLs.TILE_SERVER_ATTR.name + '</a> | '  : null
+    attribution += '&copy; <a class="osm attr" href=' + URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>'
+
     return (
-        <div>
+      <div>
         <Map
-        style = {{
-          height:   "100%",
-          width:    "100%",
-          position: "absolute",
-          margin:   0,
-          zIndex:   0,
-          padding:  0,
-          top:      0,
-          left:     0
-        }}
-        ref         = 'map'
-        center      = { center }
-        zoom        = { zoom }
-        zoomSnap    = { 1.0 }
-        zoomControl = { false }
-        className   = "map"
-        onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
-        onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
-        onClick     = { (e) => { onClick(e.latlng) }} >
+          style = {{
+            height:   "100%",
+            width:    "100%",
+            position: "absolute",
+            margin:   0,
+            zIndex:   0,
+            padding:  0,
+            top:      0,
+            left:     0
+          }}
+          ref         = 'map'
+          center      = { center }
+          zoom        = { zoom }
+          zoomSnap    = { 1.0 }
+          zoomControl = { false }
+          className   = "map"
+          onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
+          onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
+          onClick     = { (e) => { onClick(e.latlng) }} >
 
           <TileLayer
-            url = { URLs.OSM_TILES.link }
-            attribution = {
-              '&copy; <a class="osm attr" href=' +
-               URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>' } >
-          </TileLayer>
+            url = { URLs.TILE_SERVER.link }
+            attribution = { attribution }
+          />
           { markers }
           { marker
             ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
@@ -236,34 +238,34 @@ class KVMMap extends Component {
         {showLocateButton ?
           <div className="leaflet-control-container">
             <LocateButtonContainer className="leaflet-right">
-                <LocateButtonInnerContainer className = "leaflet-control-locate leaflet-bar leaflet-control">
-                  <LocateButton
-                    className   = "leaflet-bar-part leaflet-bar-part-single" //"locate-icon"
-                    onClick     = { this.props.onLocate }
-                    title       = "Zeige meine Position" >
-                    <i className = "fa fa-location-arrow" />
-                  </LocateButton>
-                </LocateButtonInnerContainer>
+              <LocateButtonInnerContainer className = "leaflet-control-locate leaflet-bar leaflet-control">
+                <LocateButton
+                  className   = "leaflet-bar-part leaflet-bar-part-single" //"locate-icon"
+                  onClick     = { this.props.onLocate }
+                  title       = "Zeige meine Position" >
+                  <i className = "fa fa-location-arrow" />
+                </LocateButton>
+              </LocateButtonInnerContainer>
             </LocateButtonContainer>
           </div>
           : null }
-        </div>)
-    }
+      </div>)
+  }
 }
 
 KVMMap.propTypes = {
-    entries       : T.array,
-    ratings       : T.object,
-    highlight     : T.array,
-    center        : T.object,
-    zoom          : T.number,
-    marker        : T.object,
-    onClick       : T.func,
-    onMoveend     : T.func,
-    onZoomend     : T.func,
-    onMarkerClick : T.func,
-    onLocate      : T.func,
-    showLocateButton : T.bool
+  entries       : T.array,
+  ratings       : T.object,
+  highlight     : T.array,
+  center        : T.object,
+  zoom          : T.number,
+  marker        : T.object,
+  onClick       : T.func,
+  onMoveend     : T.func,
+  onZoomend     : T.func,
+  onMarkerClick : T.func,
+  onLocate      : T.func,
+  showLocateButton : T.bool
 };
 
 module.exports = pure(KVMMap);
