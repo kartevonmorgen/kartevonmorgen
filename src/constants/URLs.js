@@ -36,8 +36,12 @@ module.exports = {
     name: "OpenStreetMap",
     link: "https://osm.org/copyright"
   },
-  OSM_TILES: {
-    link: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  TILE_SERVER: {
+    link: "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
+  },
+  TILE_SERVER_ATTR: {
+    name: "Wikimedia",
+    link: "https://wikimediafoundation.org/wiki/Maps_Terms_of_Use"
   },
   OFDB_API: {
     link: window.location.origin + "/api" //use when you run openfairdb locally

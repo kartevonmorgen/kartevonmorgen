@@ -180,6 +180,10 @@ class KVMMap extends Component {
       });
     }
 
+    let attribution = ""
+    URLs.TILE_SERVER_ATTR.name ? attribution = '<a class="osm attr" href=' + URLs.TILE_SERVER_ATTR.link + '>' + URLs.TILE_SERVER_ATTR.name + '</a> | '  : null
+    attribution += '&copy; <a class="osm attr" href=' + URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>'
+
     return (
       <div>
         <Map
@@ -204,11 +208,9 @@ class KVMMap extends Component {
           onClick     = { (e) => { onClick(e.latlng) }} >
 
           <TileLayer
-            url = { URLs.OSM_TILES.link }
-            attribution = {
-              '&copy; <a class="osm attr" href=' +
-               URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>' } >
-          </TileLayer>
+            url = { URLs.TILE_SERVER.link }
+            attribution = { attribution }
+          />
           { markers }
           { marker
             ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
