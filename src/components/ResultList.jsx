@@ -40,19 +40,21 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <span className= "subtitle">{entry.description}</span>
           </div>
           { (entry.street || entry.zip || entry.city)
-              ? <AddressWrapper><Address { ...entry } /></AddressWrapper>
-              : null
+            ? <AddressWrapper><Address { ...entry } /></AddressWrapper>
+            : null
           }
-          <div className="flower">{ Flower(ratings,30) }</div>
+          <div className="flower">
+            <Flower ratings={ratings} radius={30} />
+          </div>
           {
             entry.tags ? (entry.tags.length > 0)
               ? <div className="tags" >
-                  <ul >
+                <ul >
                   { entry.tags.map(t => <li key={t}>{t}</li>) }
-                  </ul>
-                </div>
+                </ul>
+              </div>
               : null
-            : null
+              : null
           }
         </div>
         <div className = "pure-u-1-24 chevron">
@@ -78,11 +80,11 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
   if(moreEntriesAvailable && !waiting){
     results.push(
       <li key="show-more-entries">
-      <div>
-        <a onClick = { onMoreEntriesClick } href="#">
-          {t("resultlist.showMoreEntries")}
-        </a>
-      </div>
+        <div>
+          <a onClick = { onMoreEntriesClick } href="#">
+            {t("resultlist.showMoreEntries")}
+          </a>
+        </div>
       </li>
     );
   }
@@ -90,18 +92,18 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
   return (
     <div>
       <div className= "result-list">
-      {
-        (results.length > 0)
-          ? <ul>{results}</ul>
-          : (waiting ?
-          <p className= "loading">
-            <span>{t("resultlist.entriesLoading")}</span>
-          </p>
-          : <p className= "no-results">
-              <i className= "fa fa-frown-o" />
-              <span>{t("resultlist.noEntriesFound")}</span>
-            </p>)
-      }
+        {
+          (results.length > 0)
+            ? <ul>{results}</ul>
+            : (waiting ?
+              <p className= "loading">
+                <span>{t("resultlist.entriesLoading")}</span>
+              </p>
+              : <p className= "no-results">
+                <i className= "fa fa-frown-o" />
+                <span>{t("resultlist.noEntriesFound")}</span>
+              </p>)
+        }
       </div>
       <nav className="menu pure-g">
         <NavButton
@@ -112,7 +114,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           onClick = {() => {
             dispatch(Actions.showNewEntry());
           }}
-          />
+        />
       </nav>
     </div>)
 }

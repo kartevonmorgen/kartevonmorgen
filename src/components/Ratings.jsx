@@ -1,26 +1,26 @@
 import React, { Component }   from "react";
-import Flower                 from "./Flower";
-import ReactVMFlower          from "react-vm-flower";
+import Flower             from "./Flower";
+import FlowerLeaf             from "./Flower/FlowerLeaf";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";
 import COLORS                 from "./styling/Colors";
 
 const context_order = (id) => {
   switch(id) {
-  case "diversity":
-    return "a";
-  case "renewable":
-    return "b";
-  case "fairness":
-    return "c";
-  case "humanity":
-    return "d";
-  case "solidarity":
-    return "e";
-  case "transparency":
-    return "f";
-  default:
-    return id
+    case "diversity":
+      return "a";
+    case "renewable":
+      return "b";
+    case "fairness":
+      return "c";
+    case "humanity":
+      return "d";
+    case "solidarity":
+      return "e";
+    case "transparency":
+      return "f";
+    default:
+      return id
   }
 };
 
@@ -48,7 +48,7 @@ const RatingsWrapper = styled.div `
 `
 
 const AdditionalRatingButtonWrapper = styled.div `
-  margin-top: 70px;
+  text-align: right;
   height: 20px;
   font-size: 0.8em;
 `
@@ -65,7 +65,6 @@ const FirstRatingButton = styled.button`
 
 const RatingsHeading = styled.h4`
   border-bottom: 1px solid #aaa;
-  margin-top: 40px;
 `
 
 const RatingList = styled.ul`
@@ -103,10 +102,8 @@ const RatingCount = styled.span`
 `
 
 const FlowerWrapper = styled.div `
-  margin-top: 0px;
-  float: right;
-  position: relative;
-  top: -70px;
+  margin-top: 1em;
+  text-align: center;
 `
 
 const RatingContextWrapper = styled.div`
@@ -134,21 +131,21 @@ class Ratings extends Component {
       const context = g[0].context;
       const l = g.length;
       const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
-      const Leaf = ReactVMFlower.Leaf
       const leafHeight = 35
+
       return (
         <RatingContextWrapper key={context}>
           <RatingContextHeading>
-            <span>{t("contextName." + context)}</span>
+            <span style={{ color: COLORS.rating_contexts[context] }} >{t("contextName." + context)}</span>
           </RatingContextHeading>
           <LeafWrapper>
             <svg width={leafHeight} height={leafHeight}>
               <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
-                <Leaf
-                    transform = {"rotate(180)"}
-                    color     = {COLORS.rating_contexts[context]}
-                    height    = { leafHeight }
-                    width     = {0.7 * leafHeight} />
+                <FlowerLeaf
+                  transform = {"rotate(180)"}
+                  color     = {COLORS.rating_contexts[context]}
+                  height    = { leafHeight }
+                  width     = {0.7 * leafHeight} />
               </g>
             </svg>
           </LeafWrapper>
@@ -163,24 +160,24 @@ class Ratings extends Component {
     if(entry){
       return(
         <RatingsWrapper>
+          <FlowerWrapper>
+            <Flower ratings={ratings} radius={40} />
+          </FlowerWrapper>
+          <RatingsHeading>{t("heading")}</RatingsHeading>
           <AdditionalRatingButtonWrapper>
             { entry.ratings && entry.ratings.length > 0
               ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
               : ""
             }
           </AdditionalRatingButtonWrapper>
-          <FlowerWrapper>
-          {Flower(ratings,40)}
-          </FlowerWrapper>
-          <RatingsHeading>{t("heading")}</RatingsHeading>
           { entry.ratings && entry.ratings.length > 0
             ? <div>
-                { ratingElements }
-              </div>
+              { ratingElements }
+            </div>
             : <div>
-                <p>{t("noRatingsYet")}</p>
-                <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
-              </div>
+              <p>{t("noRatingsYet")}</p>
+              <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
+            </div>
           }
         </RatingsWrapper>
       );
