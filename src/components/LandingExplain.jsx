@@ -25,8 +25,10 @@ class LandingExplain extends Component {
   getTeamMembers(t) {
     return teamArray.map( member => {
       const link = !!member.homepage && member.image
+      const key = member.name ? member.name : member.position
+
       return(
-        <div className="teamMember">
+        <div key={key} className="teamMember">
           <div className={ "circle "+member.color }>
             { link
               ? <a target="_blank" href={member.homepage}><img className="teamImage" src={member.image} /></a>
@@ -35,7 +37,7 @@ class LandingExplain extends Component {
           </div>
           <div className="team-member-name">{member.name}</div>
           { member.position.map( pos => 
-            <div>{ pos.startsWith('landingExplain.') ? t(pos) : pos  }</div>
+            <div key={pos}>{ pos.startsWith('landingExplain.') ? t(pos) : pos  }</div>
           )}
         </div>
       )
@@ -112,10 +114,10 @@ class LandingExplain extends Component {
 
         <h2>{t("landingExplain.chapter6.heading")}</h2>
         <a href="http://www.ideenhochdrei.org/de/">
-          <img class="partnerLogo" src={require("../img/ideen.png")} />
+          <img className="partnerLogo" src={require("../img/ideen.png")} />
         </a>
         <a href="http://slowtec.de">
-          <img class="partnerLogo" src={require("../img/slowtec.png")} />
+          <img className="partnerLogo" src={require("../img/slowtec.png")} />
         </a>
 
         <hr />
@@ -123,13 +125,13 @@ class LandingExplain extends Component {
         <h2>{t("landingExplain.chapter7.heading")}</h2>
         <div>
           <a href="https://www.mannheim.de/">
-            <img class="partnerLogo" src={require("../img/mannheim.jpg")}/>
+            <img className="partnerLogo" src={require("../img/mannheim.jpg")}/>
           </a>
           <a href="https://www.engagement-global.de/rueckkehrende.html">
-            <img class="partnerLogo" src={require("../img/EngagementGlobal.jpg")}/>
+            <img className="partnerLogo" src={require("../img/EngagementGlobal.jpg")}/>
           </a>
           <a href="http://www.bmz.de/">
-            <img class="partnerLogo" src={require("../img/BMZ.jpg")}/>
+            <img className="partnerLogo" src={require("../img/BMZ.jpg")}/>
           </a>
         </div>
         <p>{t("landingExplain.chapter7.boell-foundation")}</p>

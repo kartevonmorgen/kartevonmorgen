@@ -35,13 +35,6 @@ const config = {
   module: {
     rules: [
       {
-        test:   /\.coffee$/,
-        use: [
-          //"react-hot-loader",
-          "coffee-loader"
-        ]
-      },
-      {
         test:   /\.jsx?$/,
         loader: "babel-loader",
         query: {
@@ -77,14 +70,6 @@ const config = {
 
       },
       {
-        test:   /\.less$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "less-loader"
-        ]
-      },
-      {
         test:   /\.jpe?g$|\.gif$|\.png$/,
         loader: "url-loader?limit=10000"
       },
@@ -107,14 +92,6 @@ const config = {
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url-loader?limit=10000&mimetype=image/svg+xml"
-      },
-      {
-        test: [/\.scss$/],
-        use: [
-          "css-loader?localIdentName=[path]",
-          "postcss-loader",
-          "sass-loader"
-        ],
       }
     ],
     noParse: [
@@ -122,7 +99,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js", ".coffee"]
+    extensions: [".jsx", ".js"]
   }
 };
 
