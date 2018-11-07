@@ -13,8 +13,8 @@ const rating_contexts = {
   "renewable": "#ffdd00",      // YELLOW
   "fairness": "#e56091",       // PINK
   "humanity": "#aa386b",       // RASPBERRY
-  "transparency": "#0099ad",   // BLUE
-  "solidarity": "#637a84",     // BLUEGRAY
+  "transparency": "#637a84",   // BLUEGRAY
+  "solidarity": "#0099ad",     // BLUE
   "default": "#888"
 }
 
