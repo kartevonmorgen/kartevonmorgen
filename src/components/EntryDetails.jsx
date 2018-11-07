@@ -31,38 +31,38 @@ class EntryDetails extends Component {
     }
     else {
       return (
-      <div>
-        <Navbar className="menu-top">
-          <NavButtonWhite
-            keyName = "back"
-            buttonRight = { false }
-            icon = "fa fa-chevron-left"
-            text = {t("entryDetails.back")}
-            onClick = {() => {
-              this.props.dispatch(Actions.setCurrentEntry(null, null));
-              this.props.dispatch(Actions.showSearchResults());
-              this.props.dispatch(Actions.setCenterInUrl(mapCenter));
-            }}
-            aboveImage={hasImage}
-          />
-          <NavButtonWhite
-            keyName = "edit"
-            buttonRight = { true }
-            icon = "fa fa-pencil"
-            text = ""
-            onClick = {() => {
-              this.props.dispatch(Actions.editCurrentEntry());
-            }}
-            aboveImage={hasImage}
-          />
-        </Navbar>
-        {
-          hasImage ?
-            <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
-            : null
-        }
-        <BusinessCard entry={entry} hasImage={hasImage}/>
-      </div>)
+        <div>
+          <Navbar className="menu-top">
+            <NavButtonWhite
+              keyName = "back"
+              buttonRight = { false }
+              icon = "fa fa-chevron-left"
+              text = {t("entryDetails.back")}
+              onClick = {() => {
+                this.props.dispatch(Actions.setCurrentEntry(null, null));
+                this.props.dispatch(Actions.showSearchResults());
+                this.props.dispatch(Actions.setCenterInUrl(mapCenter));
+              }}
+              aboveImage={hasImage}
+            />
+            <NavButtonWhite
+              keyName = "edit"
+              buttonRight = { true }
+              icon = "fa fa-pencil"
+              text = ""
+              onClick = {() => {
+                this.props.dispatch(Actions.editCurrentEntry());
+              }}
+              aboveImage={hasImage}
+            />
+          </Navbar>
+          {
+            hasImage ?
+              <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
+              : null
+          }
+          <BusinessCard entry={entry} hasImage={hasImage}/>
+        </div>)
     }
   }
 }
