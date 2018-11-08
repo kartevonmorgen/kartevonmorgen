@@ -19,8 +19,6 @@ import "babel-polyfill";
 
 if (__DEVELOPMENT__) {
   window.React = React;
-  // const { whyDidYouUpdate } = require('why-did-you-update');
-  // whyDidYouUpdate(React);
 }
 
 // listen for back button, forward button, URL change etc.
