@@ -4,24 +4,21 @@ import Address      from "./AddressLine"
 import { pure }     from "recompose"
 import Flower       from "./Flower";
 import NavButton    from "./NavButton";
-import styled       from "styled-components";
 import i18n         from "../i18n";
 import { NAMES }    from "../constants/Categories"
 import { translate} from "react-i18next";
 import PropTypes    from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import STYLE        from "./styling/Variables"
+import styled       from "styled-components";
 
-const AddressWrapper = styled.div`
-  font-size: 0.8em;
-  color: #888;
-`;
 
 const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
 
   return (
-    <li
+    <ListElement
       key           = { entry.id }
       className     = { css_class }
       onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
@@ -49,11 +46,11 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           </div>
           {
             entry.tags ? (entry.tags.length > 0)
-              ? <div className="tags" >
-                  <ul >
-                    { entry.tags.slice(0, 5).map(t => <li key={t}>#{t}</li>) }
-                  </ul>
-                </div>
+              <TagsWrapper>
+                <ul >
+                  { entry.tags.slice(0, 5).map(t => <Tag key={t}>#{t}</Tag>) }
+                </ul>
+              </TagsWrapper>
               : null
           }
         </div>
@@ -61,7 +58,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           <FontAwesomeIcon icon="chevron-right" />
         </div>
       </div>
-    </li>)
+    </ListElement>)
 }
 
 const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
@@ -79,18 +76,18 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
       t            = { t } />);
   if(moreEntriesAvailable && !waiting){
     results.push(
-      <li key="show-more-entries">
+      <ListElement key="show-more-entries">
         <div>
           <a onClick = { onMoreEntriesClick } href="#">
             {t("resultlist.showMoreEntries")}
           </a>
         </div>
-      </li>
+      </ListElement>
     );
   }
 
   return (
-    <div>
+    <Wrapper>
       <div className= "result-list">
       {
         (results.length > 0)
@@ -115,7 +112,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
           }}
         />
       </nav>
-    </div>)
+    </Wrapper>)
 }
 
 ResultList.propTypes = {
@@ -131,3 +128,153 @@ ResultList.propTypes = {
 }
 
 module.exports = translate("translation")(pure(ResultList))
+
+const AddressWrapper = styled.div`
+  font-size: 0.8em;
+  color: ${STYLE.gray};
+`;
+
+const ListElement = styled.li `
+  cursor: pointer;
+  margin: 0;
+  padding-left: 0.7em;
+  padding-top: 0.7em;
+  padding-right: 0.5em;
+  padding-bottom: 0.7em;
+  border-bottom: 1px solid #ddd;
+  border-left: 5px solid transparent;
+  div {
+    &:first-child {
+      margin-bottom: 0.1em;
+    }
+    &.category {
+      height: 1.2em;
+    }
+  }
+  &.current-entry {
+    background: ${STYLE.white};
+  }
+  &:hover {
+    background: ${STYLE.white};
+  }
+  &.event {
+    &.current-entry {
+      border-left: 5px solid ${STYLE.event};
+    }
+    &:hover {
+      border-left: 5px solid ${STYLE.event};
+    }
+    span.category {
+      color: ${STYLE.event};
+    }
+  }
+  &.company {
+    &.current-entry {
+      border-left: 5px solid ${STYLE.company};
+    }
+    &:hover {
+      border-left: 5px solid ${STYLE.company};
+    }
+    span.category {
+      color: ${STYLE.company};
+    }
+  }
+  &.initiative {
+    &.current-entry {
+      border-left: 5px solid ${STYLE.initiative};
+    }
+    &:hover {
+      border-left: 5px solid ${STYLE.initiative};
+    }
+    span.category {
+      color: ${STYLE.initiative};
+    }
+  }
+  span {
+    &.category {
+      font-size: 0.8em;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+    &.title {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-right: 0.3em;
+    }
+    &.subtitle {
+      font-size: 0.8em;
+      color: #555;
+    }
+  }
+  .highlight-entry {
+    div.chevron {
+      color: $darkGray;
+    }
+    &.initiative div.chevron {
+      color: $initiative;
+    }
+    &.company div.chevron {
+      color: $company;
+    }
+    &.event div.chevron {
+      color: $event;
+    }
+  }
+`
+
+const TagsWrapper = styled.div `
+  margin-top: 0.1em;
+  float: right;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+`
+
+const Tag = styled.div `
+  display: inline-block;
+  margin-right: 0.2em;
+  background: #aaa;
+  color: #fff;
+  border-radius: 0.2em;
+  padding: 0.15em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  font-size: 0.8em;
+  border: 0;
+`
+
+const Wrapper = styled.div `
+.result-list {
+  p {
+    &.no-results {
+      margin: 0;
+      padding: 1em;
+      font-size: 0.9em;
+      span {
+        margin-left: 0.5em;
+      }
+    }
+    &.loading {
+      margin: 0;
+      padding: 1em;
+      font-size: 0.9em;
+      span {
+        margin-left: 0.5em;
+      }
+    }
+  }
+  .flower {
+    float: right;
+    margin-top: -65px;
+    margin-right: 10px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+  }
+}
+`

@@ -4,6 +4,7 @@ import { DONATE } from "../constants/URLs";
 import V          from "../constants/PanelView";
 import i18n       from "../i18n";
 import React      from "react";
+import styled,{ keyframes } from "styled-components";
 
 const t = (key) => {
   return i18n.t("modal." + key);
@@ -58,3 +59,23 @@ module.exports = ({view, dispatch}) => {
       return <div></div>;
   }
 }
+
+
+const fadein = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
+
+const Modal = styled.div `
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  animation: fadein 500ms;
+`

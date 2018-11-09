@@ -3,7 +3,7 @@ import Flower             from "./Flower";
 import FlowerLeaf             from "./Flower/FlowerLeaf";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";
-import COLORS                 from "./styling/Colors";
+import STYLE                  from "./styling/Variables";
 
 const context_order = (id) => {
   switch(id) {
@@ -141,9 +141,9 @@ class Ratings extends Component {
           <LeafWrapper>
             <svg width={leafHeight} height={leafHeight}>
               <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
-                <FlowerLeaf
+                <Leaf
                   transform = {"rotate(180)"}
-                  color     = {COLORS.rating_contexts[context]}
+                  color     = {STYLE.rating_contexts[context]}
                   height    = { leafHeight }
                   width     = {0.7 * leafHeight} />
               </g>

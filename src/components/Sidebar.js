@@ -12,6 +12,9 @@ import CityList             from "./CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import STYLE                from "./styling/Variables"
+import styled               from "styled-components";
+
 
 class Sidebar extends Component {
 
@@ -36,7 +39,7 @@ class Sidebar extends Component {
     switch (view.left) {
       case V.RESULT:
         content = (
-          <div className="result">
+          <ResultWrapper className="result">
             <ResultList
               waiting={ waiting_for_search_results }
               entries={ resultEntries }
@@ -49,9 +52,9 @@ class Sidebar extends Component {
             {
               (search.cities.length > 0) ?
                 <div>
-                  <div className='group-header'>
+                  <GroupHeader>
                     { t("search-results.cities") }
-                  </div>
+                  </GroupHeader>
                   <CityList
                     cities={ search.cities.slice(0, 5) }
                     onClick={ city => {
@@ -68,9 +71,9 @@ class Sidebar extends Component {
             {
               (invisibleEntries && invisibleEntries.length) ?
                 <div>
-                  <div className='group-header'>
+                  <GroupHeader>
                     { t("search-results.results-out-of-bbox") }
-                  </div>
+                  </GroupHeader>
                   <ResultList
                     entries={ invisibleEntries }
                     ratings={ ratings }
@@ -86,7 +89,7 @@ class Sidebar extends Component {
                 </div>
                 : ""
             }
-          </div>
+          </ResultWrapper>
         );
         break;
 
@@ -239,3 +242,50 @@ Sidebar.propTypes = {
 }
 
 export default Sidebar
+
+
+const GroupHeader = styled.div `
+  border-top: 3px solid ${STYLE.lightGray};
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 0;
+  background: #eaeaea;
+  color: #666;
+`
+
+
+const ResultWrapper = styled.div `
+  padding-bottom: 1.5em;
+  height: calc(100vh - 107px);
+  overflow-y: scroll;
+  background: #f7f7f7;
+
+   /* city list only for sidebar, not landing page TODO: where to put this? */
+  .city-list ul {
+    background: #f7f7f7;
+    li {
+      padding: 0.2em;
+      padding-left: 0.7em;
+      padding-right: 0.7em;
+      line-height: 0.9;
+      border-left: 5px solid transparent;
+      &:hover {
+        background: #fff;
+        border-left: 5px solid ${STYLE.darkGray};
+        div.chevron {
+          color: ${STYLE.darkGray};
+        }
+      }
+      span {
+        &.state {
+          color: #555;
+        }
+        &.country {
+          color: #888;
+        }
+        &.prefix {
+          color: #888;
+        }
+      }
+    }
+  }
+`

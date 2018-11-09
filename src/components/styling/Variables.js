@@ -7,17 +7,22 @@ const berry      = "rgb(170,  56,   108)";
 const coal       = "rgb(26,   26,   26)";
 const anthracite = "rgb(45,   45,   45)";
 const darkGray   = "rgb(102,  102,  102)";
-const lightGray  = "rgb(130,  130,  130)";
+const gray       = "rgb(136,  136,  136)";
+const lightGray  = "rgb(221,  221,  221)";
 
 const rating_contexts = {
-  "diversity": "#96bf0c",      // GREEN
-  "renewable": "#ffdd00",      // YELLOW
-  "fairness": "#e56091",       // PINK
-  "humanity": "#aa386b",       // RASPBERRY
-  "transparency": "#637a84",   // BLUEGRAY
-  "solidarity": "#0099ad",     // BLUE
-  "default": "#888"
+  "diversity": green,      // GREEN
+  "renewable": yellow,      // YELLOW
+  "fairness": pink,       // PINK
+  "humanity": berry,       // RASPBERRY
+  "transparency": grayBlue,   // BLUEGRAY
+  "solidarity": blue,     // BLUE
+  "default": gray
 }
+
+const bodyFont= `"Source Sans Pro Light", sans-serif`;
+const headerFont= `"Museo", sans-serif`;
+
 
 module.exports = {
   grayBlue:   grayBlue,
@@ -28,6 +33,7 @@ module.exports = {
   berry:      berry,
   coal:       coal,
   anthracite: anthracite,
+  lightGray:  lightGray,
   darkGray:   darkGray,
 
   company:    blue,
@@ -35,5 +41,8 @@ module.exports = {
   event:      pink,
   otherCategory: lightGray,
 
-  rating_contexts: rating_contexts
+  rating_contexts: rating_contexts,
+
+  bodyFont: bodyFont,
+  headerFont: headerFont
 };

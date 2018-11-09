@@ -6,7 +6,7 @@ import styled               from "styled-components";
 import { translate }        from "react-i18next";
 import NavButton            from "./NavButton";
 import Actions              from "../Actions";
-import COLORS               from "./styling/Colors";
+import STYLE                from "./styling/Variables";
 
 
 const errorMessage = ({meta}) =>
@@ -16,7 +16,7 @@ const errorMessage = ({meta}) =>
 
 const IntroText = styled.div`
   margin-bottom: 10px;
-  color: ${COLORS.darkGray};
+  color: ${STYLE.darkGray};
 `
 
 const Aspect = styled.div`
@@ -29,7 +29,7 @@ const AspectLabel = styled.label`
 
 const AspectExplanation = styled.div`
   margin-top: 5px;
-  color: ${COLORS.darkGray};
+  color: ${STYLE.darkGray};
 `
 
 class RatingForm extends Component {

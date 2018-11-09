@@ -1,6 +1,6 @@
 {
   "presets": ["env", "react", "stage-0"],
-  "plugins": ["transform-decorators-legacy","transform-runtime"],
+  "plugins": ["transform-decorators-legacy","transform-runtime","babel-plugin-styled-components"],
   "env": {
     "development": { }
   }

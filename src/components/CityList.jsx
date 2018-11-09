@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled from "styled-components";
 
 const CityListElement = ({ city, onClick }) => {
 
@@ -11,7 +12,7 @@ const CityListElement = ({ city, onClick }) => {
       <div className= "pure-g">
         <div className= "pure-u-23-24">
           <div>
-              <span className= "city">{cityname || name}</span>
+            <span className= "city">{cityname || name}</span>
           </div>
           <div>
             <span className = "state">{state}</span>
@@ -26,14 +27,51 @@ const CityListElement = ({ city, onClick }) => {
 }
 
 const CityList = ({ cities=[], onClick }) =>
-    <div className= "city-list">
-      <ul>{
-        cities.map(c =>
-          <CityListElement
-            city    = {c}
-            key     = {c.osm_id}
-            onClick = {onClick} />
-      )}</ul>
-    </div>
+  <ListWrapper className= "city-list">
+    <ul>{
+      cities.map(c =>
+        <CityListElement
+          city    = {c}
+          key     = {c.osm_id}
+          onClick = {onClick} />
+      )}
+    </ul>
+  </ListWrapper>
 
 module.exports = CityList
+
+
+const ListWrapper = styled.div`
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    cursor: pointer;
+    padding: 0.4em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    span {
+      margin-right: 0.5em;
+      &.city {
+        font-weight: bold;
+      }
+      &.county {
+        font-weight: bold;
+      }
+      &.state {
+        opacity: 0.8;
+        font-size: 0.9em;
+      }
+      &.country {
+        font-size: 0.8em;
+        opacity: 0.6;
+      }
+      &.prefix {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+`

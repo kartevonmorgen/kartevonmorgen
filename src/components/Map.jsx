@@ -1,53 +1,22 @@
-import "./styling/Map.styl"
 import React, { Component }         from "react"
 import { Map, TileLayer, Marker, CircleMarker, Tooltip }   from "react-leaflet"
 import { icons }                    from "vm-leaflet-icons"
 import URLs                         from "../constants/URLs"
 import { pure }                     from "recompose"
 import { IDS }                      from  "../constants/Categories"
-import COLORS                       from "./styling/Colors"
+import STYLE                        from "./styling/Variables"
 import { avg_rating_for_entry }     from "../rating"
 import styled                       from "styled-components";
 import T                            from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
+import  "leaflet/dist/leaflet.css"
 
-const LocateButtonContainer = styled.div`
-  bottom: 95px;
-  position: absolute;
-  z-index: 0;
-`;
-
-const LocateButtonInnerContainer = styled.div`
-  box-shadow: none !important;
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(0,0,0,0.2);
-  background-clip: padding-box;
-`;
-
-const LocateButton = styled.a `
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-  width: 30px !important;
-  height: 30px !important;
-  line-height: 30px !important;
-`;
-
-const SmallTooltip = styled(Tooltip)`
-  > h3 {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 0.75rem;
-  }
-`
 
 class KVMMap extends Component {
 
-  getIconById(id){
+  getIconById(id) {
     switch (id) {
       case INITIATIVE:
         return icons.initiative;
@@ -63,13 +32,13 @@ class KVMMap extends Component {
   getCategoryColorById(id){
     switch (id) {
       case INITIATIVE:
-        return COLORS.initiative;
+        return STYLE.initiative;
       case EVENT:
-        return COLORS.event;
+        return STYLE.event;
       case COMPANY:
-        return COLORS.company;
+        return STYLE.company;
       default:
-        return COLORS.otherCategory;
+        return STYLE.otherCategory;
     }
   }
 
@@ -77,7 +46,7 @@ class KVMMap extends Component {
     //workaround due to a bug in react-leaflet:
     const map = this.refs.map;
     if (map) {
-      map.fireLeafletEvent('load', map)
+      //map.fireLeafletEvent('load', map) 
       map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
     }
@@ -186,18 +155,8 @@ class KVMMap extends Component {
     attribution += '&copy; <a class="osm attr" href=' + URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>'
 
     return (
-      <div>
+      <Wrapper>
         <Map
-          style = {{
-            height:   "100%",
-            width:    "100%",
-            position: "absolute",
-            margin:   0,
-            zIndex:   0,
-            padding:  0,
-            top:      0,
-            left:     0
-          }}
           ref         = 'map'
           center      = { center }
           zoom        = { zoom }
@@ -233,7 +192,7 @@ class KVMMap extends Component {
             </LocateButtonContainer>
           </div>
           : null }
-      </div>)
+      </Wrapper>)
   }
 }
 
@@ -253,3 +212,54 @@ KVMMap.propTypes = {
 };
 
 module.exports = pure(KVMMap);
+
+
+
+const Wrapper = styled.div`
+
+  div.map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    z-index: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+  }
+  .osm.attr, .leaflet-control-attribution.leaflet-control a {
+    color: ${ STYLE.darkGray }
+  }
+`;
+
+const LocateButtonContainer = styled.div`
+  bottom: 95px;
+  position: absolute;
+  z-index: 0;
+`;
+
+const LocateButtonInnerContainer = styled.div`
+  box-shadow: none !important;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(0,0,0,0.2);
+  background-clip: padding-box;
+`;
+
+const LocateButton = styled.a `
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+`;
+
+const SmallTooltip = styled(Tooltip)`
+  > h3 {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+  }
+`
