@@ -11,30 +11,11 @@ import { EDIT             } from "../constants/Form";
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
+import SelectTags           from './SelectTags';
 
-const Fieldset = styled.fieldset`
-  margin-top: 10px !important;
-`;
-
-const OptionalFieldLabel = styled.label`
-  color: #777;
-`;
-
-const OptionalFieldText = styled.div`
-  color: #777;
-  margin-bottom: 4px;
-`;
-
-const OptionalLegend = styled.legend`
-  color: #777 !important;
-`;
-
-const errorMessage = ({meta}) =>
-  meta.error && meta.touched
-    ? <div className="err">{meta.error}</div>
-    : null
 
 class Form extends Component {
+
 
   render() {
 
@@ -44,7 +25,8 @@ class Form extends Component {
     };
 
     return (
-    <div>
+    <FormWrapper>
+
       <form
         className = "add-entry-form"
         action    = 'javascript:void();' >
@@ -89,9 +71,9 @@ class Form extends Component {
               name="tags"
               required={true}
               className="pure-input-1"
-              component="input"
+              component={SelectTags}
               placeholder={t("tags")}
-              normalize={normalize.tags} />
+            />
             <Field
               name="tags"
               component={errorMessage} />
@@ -243,14 +225,15 @@ class Form extends Component {
             text = { t("save") }
           />
         </nav>
-      </div>)
+      </FormWrapper>)
   }
 }
 
 Form.propTypes = {
   isEdit : T.string,
   license: T.string,
-  dispatch: T.func
+  dispatch: T.func,
+  tags: T.array
 };
 
 module.exports = reduxForm({
@@ -267,3 +250,39 @@ module.exports = reduxForm({
       return new Promise((resolve, reject) => resolve());
   }
 })(translate('translation')(Form))
+
+
+
+
+const FormWrapper = styled.div`
+  select, input, textarea, .pure-input-1 {
+    margin: 0.25rem 0;
+  }
+
+  textarea.pure-input-1 {
+    min-height: 6rem;
+    margin-bottom: 1rem;
+  }
+`
+
+const Fieldset = styled.fieldset`
+  margin-top: 10px !important;
+`;
+
+const OptionalFieldLabel = styled.label`
+  color: #777;
+`;
+
+const OptionalFieldText = styled.div`
+  color: #777;
+  margin-bottom: 4px;
+`;
+
+const OptionalLegend = styled.legend`
+  color: #777 !important;
+`;
+
+const errorMessage = ({meta}) =>
+  meta.error && meta.touched
+    ? <div className="err">{meta.error}</div>
+    : null
