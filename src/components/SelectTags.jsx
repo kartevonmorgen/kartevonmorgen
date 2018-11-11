@@ -117,7 +117,6 @@ class SelectTags extends Component {
         onBlur={() => this.props.input.onBlur(this.props.input.value) }
         value={ this.valueToArray() }
         isValidNewOption = { this.validate }
-        // getNewOptionDatafunction = {this.getNewOptionData}
       />
     )
   }
