@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Select, { Creatable }  from 'react-select';
 import request from "superagent/lib/client";
 import { translate } from "react-i18next";
+import normalize from "../util/normalize";
+
 
 class SelectTags extends Component {
   
@@ -13,7 +15,7 @@ class SelectTags extends Component {
       options: []
     };
     
-    //TODO: List of Tags should probably be done with the WebAPI or use Async react-select  (started to build "getAllTags" already). (…)
+    //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select  (started to build "getAllTags" already). (…)
     
     request
       .get('http://api.ofdb.io/v0/tags/')
@@ -39,6 +41,8 @@ class SelectTags extends Component {
 
   onInputChange(input,action) {
     this.filterOptions(input)
+
+    this.state.lastInput
   }
 
   filterOptions(input) {
@@ -70,14 +74,29 @@ class SelectTags extends Component {
     })
   }
 
-  valueToString(cb,newValue) {
-    const val = newValue ? newValue : this.props.input.value
+  valueToString(cb,newValue,event) {
 
+    const val = newValue  // ? newValue : this.props.input.value
     if( typeof val === "string" ) return val
-    const str = val.map((t) => {
-      return t.value
-    }).join(',')
-    cb( str );
+
+    const currentTagsArray = this.props.input.value.split(',')
+
+
+    let arr = []
+    for (let i = 0; i < val.length; i++) {
+      const normalized = normalize.tags(val[i].value)
+      if ( normalized==false ) continue
+      
+      const isNew = (i == (val.length -1) && event.action == "create-option")
+      if (isNew ) if (currentTagsArray.indexOf(normalized) != -1 ) return false
+
+      arr.push( normalized )
+    }
+    cb( arr.join(',') );
+  }
+
+  validate(input) {
+    return (input.length > 2 )
   }
 
   render(){
@@ -92,12 +111,15 @@ class SelectTags extends Component {
         options={this.state.options || []}
         placeholder={this.props.t("entryForm.tags")}
         noOptionsMessage={() => this.props.t("entryForm.noTagSuggestion") }
-        formatCreateLabel={(inputValue) => this.props.t("entryForm.newTag")+" "+inputValue }
+        formatCreateLabel={(inputValue) => this.props.t("entryForm.newTag")+" "+normalize.tags(inputValue) }
 
         onInputChange={this.onInputChange.bind(this)}
-        onChange={ (value) => this.valueToString( this.props.input.onChange, value ) }
-        onBlur={() => this.valueToString(this.props.input.onBlur) }
+        onChange={ (value,event) => {this.valueToString( this.props.input.onChange, value, event ) } }
+        onBlur={() => this.props.input.onBlur([this.props.input.value]) }
+        onBlur={() => this.props.input.onBlur(this.props.input.value) }
         value={ this.valueToArray() }
+        isValidNewOption = { this.validate }
+        getNewOptionDatafunction = {this.getNewOptionData}
       />
     )
   }

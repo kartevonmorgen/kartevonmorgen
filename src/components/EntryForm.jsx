@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Actions              from "../Actions";
 import validation           from "../util/validation";
-import normalize            from "../util/normalize";
 import { reduxForm, Field, initialize } from "redux-form";
 import NavButton            from "./NavButton";
 import { IDS, NAMES }       from "../constants/Categories";
