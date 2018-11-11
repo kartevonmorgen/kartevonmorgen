@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Actions              from "../Actions";
 import validation           from "../util/validation";
-import normalize            from "../util/normalize";
 import { reduxForm, Field, initialize } from "redux-form";
 import NavButton            from "./NavButton";
 import { IDS, NAMES }       from "../constants/Categories";
@@ -11,31 +10,11 @@ import { EDIT             } from "../constants/Form";
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SelectTags           from './SelectTags';
 
-const Fieldset = styled.fieldset`
-  margin-top: 10px !important;
-`;
-
-const OptionalFieldLabel = styled.label`
-  color: #777;
-`;
-
-const OptionalFieldText = styled.div`
-  color: #777;
-  margin-bottom: 4px;
-`;
-
-const OptionalLegend = styled.legend`
-  color: #777 !important;
-`;
-
-const errorMessage = ({meta}) =>
-  meta.error && meta.touched
-    ? <div className="err">{meta.error}</div>
-    : null
 
 class Form extends Component {
+
 
   render() {
 
@@ -45,10 +24,11 @@ class Form extends Component {
     };
 
     return (
-      <div>
-        <form
-          className = "add-entry-form"
-          action    = 'javascript:void();' >
+    <FormWrapper>
+
+      <form
+        className = "add-entry-form"
+        action    = 'javascript:void();' >
 
           <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
           { this.props.error &&
@@ -86,17 +66,17 @@ class Form extends Component {
               <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
               <Field name="description" component={errorMessage} />
 
-              <Field
-                name="tags"
-                required={true}
-                className="pure-input-1"
-                component="input"
-                placeholder={t("tags")}
-                normalize={normalize.tags} />
-              <Field
-                name="tags"
-                component={errorMessage} />
-            </Fieldset>
+            <Field
+              name="tags"
+              required={true}
+              className="pure-input-1"
+              component={SelectTags}
+              placeholder={t("tags")}
+            />
+            <Field
+              name="tags"
+              component={errorMessage} />
+          </Fieldset>
 
             <Fieldset>
               <legend>
@@ -244,14 +224,15 @@ class Form extends Component {
             text = { t("save") }
           />
         </nav>
-      </div>)
+      </FormWrapper>)
   }
 }
 
 Form.propTypes = {
   isEdit : T.string,
   license: T.string,
-  dispatch: T.func
+  dispatch: T.func,
+  tags: T.array
 };
 
 module.exports = reduxForm({
@@ -268,3 +249,39 @@ module.exports = reduxForm({
       return new Promise((resolve, reject) => resolve());
   }
 })(translate('translation')(Form))
+
+
+
+
+const FormWrapper = styled.div`
+  select, input, textarea, .pure-input-1 {
+    margin: 0.25rem 0;
+  }
+
+  textarea.pure-input-1 {
+    min-height: 6rem;
+    margin-bottom: 1rem;
+  }
+`
+
+const Fieldset = styled.fieldset`
+  margin-top: 10px !important;
+`;
+
+const OptionalFieldLabel = styled.label`
+  color: #777;
+`;
+
+const OptionalFieldText = styled.div`
+  color: #777;
+  margin-bottom: 4px;
+`;
+
+const OptionalLegend = styled.legend`
+  color: #777 !important;
+`;
+
+const errorMessage = ({meta}) =>
+  meta.error && meta.touched
+    ? <div className="err">{meta.error}</div>
+    : null
