@@ -26,6 +26,31 @@ import theme                from "reapop-theme-wybo";
 const { div, span, button, nav, li, i, a, br, h3, p } = React.DOM;
 
 class Main extends Component {
+  
+  escFunction(event){
+    if(event.keyCode === 27) { //ESC
+      const { view, dispatch}  = this.props
+      if(view.menu) return dispatch(Actions.toggleLandingPage())
+      if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
+      if(view.left === V.ENTRY) {
+        dispatch(Actions.setCurrentEntry(null, null));
+        dispatch(Actions.showSearchResults());
+        return dispatch(Actions.setCenterInUrl(this.props.map.mapCenter));
+      }
+      if(view.left === V.RESULT){
+        dispatch(Actions.setSearchText(''))
+        return dispatch(Actions.search())
+      } 
+    }
+  }
+
+  componentDidMount(){
+    document.addEventListener("keydown", (e) => this.escFunction(e), false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown");
+  }
 
   render(){
     const { dispatch, search, view, server, map, form, url, user, timedActions, t } = this.props;

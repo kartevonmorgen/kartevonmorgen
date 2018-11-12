@@ -52,6 +52,10 @@ class SearchBar extends React.Component {
     this.props.onChange(v);
   }
 
+  onFocus = (ev) => {
+    ev.target.select();
+  }
+
   onKeyUp = (ev) => {
     ev.preventDefault();
     switch (ev.key) {
@@ -86,6 +90,7 @@ class SearchBar extends React.Component {
             onChange    = { this.onChange }
             disabled    = { disabled }
             onKeyUp     = { this.onKeyUp }
+            onFocus     = { this.onFocus }
             value       = { searchText || '' }
             className   = "pure-u-1"
             placeholder = { t("searchbar.placeholder") } />

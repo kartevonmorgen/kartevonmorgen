@@ -14,6 +14,17 @@ import Actions              from "../Actions"
 
 
 class Sidebar extends Component {
+
+  entryContent = null;
+
+  setEntryContentRef = (elem) => {
+    this.entryContent = elem;
+  };
+
+  scrollToTop = () =>{
+    if(this.entryContent) this.entryContent.scrollTo(0,0)
+  }
+
   render(){
     const { view, search, user, resultEntries, entries,
       ratings, dispatch, map, form, t } = this.props;
@@ -80,8 +91,9 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
+        this.scrollToTop()
         content = (
-          <div className="content">
+          <div className="content" ref={this.setEntryContentRef}>
             <EntryDetails
               entry={ entries[search.current] || null }
               dispatch={ dispatch }
