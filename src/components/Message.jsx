@@ -31,9 +31,7 @@ class Message extends React.Component {
     }
     return (
       <Dialog>
-        <div className = "message">
-          <FontAwesomeIcon icon={ this.props.iconClass } pulse={ this.props.iconClass ==='spinner' ? true : false } /> { this.props.message }
-        </div>
+        <FontAwesomeIconElement icon={ this.props.iconClass } pulse={ this.props.iconClass ==='spinner' ? true : false } /> { this.props.message }
         <div className = "close-button">
           { cancelButton }
           { actionButton }
@@ -52,14 +50,14 @@ Message.propTypes = {
 
 module.exports = pure(Message);
 
+const FontAwesomeIconElement = styled(FontAwesomeIcon)`
+  margin: 0 10px 0 10px;
+`
 
 const Dialog = styled.div `
+  margin-top: 20px;
   background-color: #fff;
   padding: 10px;
-  border: 1px solid ${STYLE.lightGray};
-  box-shadow: 0 0 10px;
   position: relative;
-  top: 20%;
-  margin: auto;
   max-width: 600px;
 `
