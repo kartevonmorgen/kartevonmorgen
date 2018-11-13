@@ -59,14 +59,14 @@ class BusinessCard extends Component {
           <EntryDetailsOtherData>{[
             (entry.homepage ?
               <div key="hp">
-                <FontAwesomeIconElement icon="globe-africa" />&nbsp;
+                <FontAwesomeIconElement icon="globe-africa" />
                 <EntryLink href={entry.homepage} target="_blank">
                   { shortHomepage }
                 </EntryLink>
               </div> : null),
             (entry.email ?
               <div key="mail">
-                <FontAwesomeIconElement icon="envelope" />&nbsp;
+                <FontAwesomeIconElement icon="envelope" />
                 <EntryLink href={ "mailto:" + entry.email}>
                   {entry.email}
                 </EntryLink>
@@ -75,19 +75,19 @@ class BusinessCard extends Component {
             (entry.telephone
               ?
               <div key="tel">
-                <FontAwesomeIconElement icon="phone" />&nbsp;{ entry.telephone }
+                <FontAwesomeIconElement icon="phone" />{ entry.telephone }
               </div>
               : null),
             ((entry.street || entry.zip || entry.city) ?
               <div>
                 <div key="addr" className="address pure-g">
                   <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
-                  <div className="pure-u-22-24">
+                  <AddressWrapper className="pure-u-22-24">
                     <AddressLine { ...entry } />
-                  </div>
+                  </AddressWrapper>
                 </div>
                 <div key="route">
-                  <FontAwesomeIconElement icon="route" />&nbsp;
+                  <FontAwesomeIconElement icon="route" />
                   <EntryLink title={ "Hinfinden mit "+ROUTEPLANNER.name } href={routeUrl} target="_blank">Routenplaner</EntryLink>
               </div></div>
               : null),
@@ -108,7 +108,11 @@ module.exports = translate('translation')(pure(BusinessCard))
 
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
-  margin-right: 8px;
+  margin-right: 12px;
+`;
+
+const AddressWrapper = styled.div`
+  margin-left: -4px;
 `;
 
 const EntryDetailPage = styled.div`
