@@ -42,12 +42,12 @@ const rating_groups = (ratings=[]) => {
   return groups_sorted;
 }
 
-const RatingsWrapper = styled.div `
+const RatingsWrapper = styled.div`
   padding: 1em;
   color: #333;
 `
 
-const AdditionalRatingButtonWrapper = styled.div `
+const AdditionalRatingButtonWrapper = styled.div`
   text-align: right;
   height: 20px;
   font-size: 0.8em;
@@ -57,10 +57,13 @@ const AdditionalRatingButton = styled.button`
   float: none;
 `
 
+const FirstRatingButtonWrapper = styled.div`
+  margin-top: -30px;
+`
+
 const FirstRatingButton = styled.button`
-  margin-top: 1em;
   float: right;
-  font-size: 0.9em;
+  font-size: 0.8em;
 `
 
 const RatingsHeading = styled.h4`
@@ -172,12 +175,12 @@ class Ratings extends Component {
           </AdditionalRatingButtonWrapper>
           { entry.ratings && entry.ratings.length > 0
             ? <div>
-              { ratingElements }
-            </div>
-            : <div>
-              <p>{t("noRatingsYet")}</p>
-              <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
-            </div>
+                { ratingElements }
+              </div>
+            : <FirstRatingButtonWrapper>
+                <p>{t("noRatingsYet")}</p>
+                <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
+              </FirstRatingButtonWrapper>
           }
         </RatingsWrapper>
       );
