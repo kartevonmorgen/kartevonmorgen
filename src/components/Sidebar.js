@@ -118,7 +118,6 @@ class Sidebar extends Component {
         content = (
           <div className="content-above-buttons">
             <EntryForm
-              ref={ form}
               isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null}
               license={ entries[search.current] ? entries[search.current].license : null}
               dispatch={ dispatch }
