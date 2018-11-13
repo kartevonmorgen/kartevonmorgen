@@ -159,8 +159,8 @@ class Sidebar extends Component {
               entryid={ kvm_flag_id }
               entryTitle={
                 form[RATING.id]
-                  ? ref = entries[form[RATING.id].kvm_flag_id]
-                    ? ref.title
+                  ? entries[form[RATING.id].kvm_flag_id]
+                    ? entries[form[RATING.id].kvm_flag_id].title
                     : null
                   : null
               }
