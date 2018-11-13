@@ -65,15 +65,7 @@ class Main extends Component {
     }
     
     const resultEntries = search.result.filter(e => entries[e.id]).map(e => entries[e.id]);
-    // TODO:
-    // const mapCenter = (e && e.lat && e.lng && search.current) 
-    //   ? {
-    //       lat: entries[search.current].lat,
-    //       lng: entries[search.current].lng
-    //     } 
-    //   : map.center;
     const mapCenter = map.center;
-
     const loggedIn = user.username ? true : false;
     
     return (
