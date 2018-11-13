@@ -17,7 +17,7 @@ const NavigationButton = styled.span`
   cursor: pointer;
   padding: 4px 7px;
   border-radius: 2px;
-  text-shadow: ${props => props.aboveImage ? "1px 1px 5px rgba(0,0,0,0.5)" : "none"};
+  filter: ${props => props.aboveImage ? "drop-shadow(1px 1px 1px rgba(0,0,0,0.5))" : "none"};
 
   :hover {
     color: #000;
