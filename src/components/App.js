@@ -65,9 +65,6 @@ class Main extends Component {
     }
     
     const resultEntries = search.result.filter(e => entries[e.id]).map(e => entries[e.id]);
-
-    const rightPanelIsOpen = false;   // rightpanel moved into landingpage, TODO
-    
     // TODO:
     // const mapCenter = (e && e.lat && e.lng && search.current) 
     //   ? {
@@ -209,11 +206,11 @@ class Main extends Component {
             </button>
           </HiddenSidebar>   
           
-          <RightPanel open={rightPanelIsOpen}>
+          <RightPanel>
             <div className="menu-toggle">
               <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
                 <span className="pincloud">
-                  <MenuFontAwesomeIcon icon={(rightPanelIsOpen ? 'times' : 'bars')} />
+                  <MenuFontAwesomeIcon icon={'bars'} />
                 </span>
               </button>
             </div>
@@ -222,7 +219,6 @@ class Main extends Component {
           <div className="center">
             <Map
               marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
-              size={ view.left != null ? (rightPanelIsOpen ? 3 : 2) : rightPanelIsOpen ? 1 : 0}
               highlight={ search.highlight }
               center={ mapCenter}
               zoom={ map.zoom}
@@ -378,141 +374,12 @@ const LeftPanel = styled.div `
 `
 
 const RightPanel = styled.div `
-
   float: right;
-  height: 100vh;
-  
   background: #fff;
   color: ${STYLE.coal};
   position: relative;
-  &.opened {
-    width: 28em;
-    button {
-      margin-left: 0;
-      color: ${STYLE.darkGray};
-      box-shadow: none;
-      border: none;
-      .pincloud {
-        width: 2em;
-        background: none;
-      }
-      &:hover {
-        box-shadow: none;
-        border: none;
-      }
-    }
-  }
-  &.closed {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 0;
-    z-index: 1;
-    button {
-      width: 3.8em;
-      margin-left: -3.8em;
-    }
-  }
-  a {
-    text-decoration: none;
-    color: ${STYLE.darkGray};
-  }
-  .logo {
-    cursor: pointer;
-    margin-top: 2em;
-    background: url("../../img/logo.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 95px;
-  }
-  div {
-    &.menu-content {
-      padding: 2.5em;
-      position: absolute;
-      top: 10em;
-      bottom: 2em;
-      left: 0;
-      right: 0;
-      overflow: auto;
-      a {
-        padding-bottom: 0.05em;
-        border-bottom: 1px solid rgba(255,255,255,0.4);
-        &:hover {
-          color: #000;
-          border-bottom: 1px solid #000;
-        }
-      }
-    }
-    &.menu-footer {
-      display: block;
-      cursor: pointer;
-      text-transform: uppercase;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.85em;
-      a:hover {
-        color: #000;
-        border-bottom: 2px solid #000;
-      }
-      &.active > a {
-        color: ${STYLE.coal};
-        border-bottom: 2px solid ${STYLE.darkGray};
-      }
-    }
-  }
-  ul {
-    &.menu {
-      margin: 2.5em 0 0 0;
-      list-style: none;
-      padding: 0;
-      text-align: center;
-      > li {
-        margin-top: 2.5em;
-        display: block;
-        cursor: pointer;
-        text-transform: uppercase;
-        > a {
-          font-weight: bold;
-          font-size: 20px;
-        }
-        a:hover {
-          color: #000;
-          border-bottom: 2px solid #000;
-        }
-        &.active > a {
-          color: ${STYLE.coal};
-          border-bottom: 2px solid ${STYLE.darkGray};
-        }
-      }
-    }
-    &.submenu {
-      margin: 0;
-      list-style: none;
-      padding: 0;
-      text-align: center;
-      > li {
-        margin-top: 0.75em;
-        font-size: 0.85em;
-        display: block;
-        cursor: pointer;
-        text-transform: uppercase;
-        a:hover {
-          color: #000;
-          border-bottom: 2px solid #000;
-        }
-        &.active > a {
-          color: ${STYLE.coal};
-          border-bottom: 2px solid ${STYLE.darkGray};
-        }
-      }
-    }
-  }
 
-  .menu-toggle button, .content-toggle button {
+  .menu-toggle button {
     outline: none;
     position: relative;
     z-index: 1;
@@ -543,20 +410,6 @@ const RightPanel = styled.div `
     i {
       margin-right: 0.3em;
     }
-  }
-  .subscribe-link a {
-    outline: none;
-    position: absolute;
-    z-index: 2;
-    top: 5em;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    text-align: right;
-    color: ${STYLE.darkGray};
-    background: #fff;
-    border: 1px solid ${STYLE.lightGray};
-    border-radius: 0.2em 0 0 0.2em;
-    padding: 0.2em;
   }
 `
 
