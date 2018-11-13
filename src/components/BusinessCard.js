@@ -11,7 +11,7 @@ import { ROUTEPLANNER } from "../constants/URLs.js"
 
 
 const Tags = (tags=[], dispatch) =>
-  <TagsWrapper>
+  <TagsWrapper key="tags">
     <TagList>
     { tags
         .filter(t => t != "")
@@ -79,7 +79,7 @@ class BusinessCard extends Component {
               </div>
               : null),
             ((entry.street || entry.zip || entry.city) ?
-              <div>
+              <div key="addr">
                 <div key="addr" className="address pure-g">
                   <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
                   <AddressWrapper className="pure-u-22-24">
