@@ -59,14 +59,14 @@ class BusinessCard extends Component {
           <EntryDetailsOtherData>{[
             (entry.homepage ?
               <div key="hp">
-                <FontAwesomeIcon icon="globe-africa" />&nbsp;
+                <FontAwesomeIconElement icon="globe-africa" />&nbsp;
                 <EntryLink href={entry.homepage} target="_blank">
                   { shortHomepage }
                 </EntryLink>
               </div> : null),
             (entry.email ?
               <div key="mail">
-                <FontAwesomeIcon icon="envelope" />&nbsp;
+                <FontAwesomeIconElement icon="envelope" />&nbsp;
                 <EntryLink href={ "mailto:" + entry.email}>
                   {entry.email}
                 </EntryLink>
@@ -75,19 +75,19 @@ class BusinessCard extends Component {
             (entry.telephone
               ?
               <div key="tel">
-                <FontAwesomeIcon icon="phone" />&nbsp;{ entry.telephone }
+                <FontAwesomeIconElement icon="phone" />&nbsp;{ entry.telephone }
               </div>
               : null),
             ((entry.street || entry.zip || entry.city) ?
               <div>
                 <div key="addr" className="address pure-g">
-                  <FontAwesomeIcon className="pure-u-2-24" icon="map-marker-alt" />
+                  <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
                   <div className="pure-u-22-24">
                     <AddressLine { ...entry } />
                   </div>
                 </div>
                 <div key="route">
-                  <FontAwesomeIcon icon="route" />&nbsp;
+                  <FontAwesomeIconElement icon="route" />&nbsp;
                   <EntryLink title={ "Hinfinden mit "+ROUTEPLANNER.name } href={routeUrl} target="_blank">Routenplaner</EntryLink>
               </div></div>
               : null),
@@ -107,6 +107,9 @@ BusinessCard.propTypes = {
 module.exports = translate('translation')(pure(BusinessCard))
 
 
+const FontAwesomeIconElement = styled(FontAwesomeIcon)`
+  margin-right: 8px;
+`;
 
 const EntryDetailPage = styled.div`
   z-index: 2;
