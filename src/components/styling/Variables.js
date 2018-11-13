@@ -17,7 +17,7 @@ const rating_contexts = {
   "humanity": berry,       // RASPBERRY
   "transparency": grayBlue,   // BLUEGRAY
   "solidarity": blue,     // BLUE
-  "default": gray
+  "default": lightGray
 }
 
 const bodyFont= `"Museo", sans-serif`;
