@@ -52,12 +52,6 @@ class KVMMap extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.size != this.props.size) {
-      this.refs.map.leafletElement.invalidateSize()
-    }
-  }
-
   getMapCoordinates(){
     const m = this.refs.map.leafletElement
     return {
