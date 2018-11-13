@@ -205,7 +205,7 @@ class Main extends Component {
                   return dispatch(Actions.showLeftPanel());
                 }
               }}>
-              <ToggleLeftSidebarIcon icon={"angle-double-" + (view.showLeftPanel ? 'left' : 'right')} />
+              <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
             </button>
           </HiddenSidebar>   
           
@@ -566,14 +566,15 @@ const HiddenSidebar = styled.div `
   height: 0;
   >button {
     position: relative;
+    padding: 10px 5px 10px 5px;
     top: 65px;
     font-size: 13pt;
     color: ${STYLE.darkGray};
     background: ${STYLE.white};
-    border: 1px solid ${STYLE.lightGray};
+    border: none;
+    border-left: 1px solid ${STYLE.lightGray};
     border-radius: 0 0.2em 0.2em 0;
-    padding: 0.5em 0 0.5em 0.3em;
-    box-shadow: 1px 1px 2px 0.3px rgba(0,0,0,50);
+    box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
     &:hover {
       color: ${STYLE.coal};
       box-shadow: px 2px 2px 0.3px #000;
