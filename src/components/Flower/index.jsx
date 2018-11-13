@@ -4,9 +4,9 @@ import { rating_groups } from "../../rating"
 import Tooltip from "react-tooltip"
 import T from "prop-types"
 import styled     from "styled-components"
-import rating_contexts from "../styling/Colors"
 import i18n                 from "../../i18n";
-const colors = rating_contexts.rating_contexts;
+import STYLE        from "../styling/Variables"
+const colors = STYLE.rating_contexts;
 
 //styles below
 
@@ -141,7 +141,7 @@ export default styled(Flower)`
 const KVTooltip = styled(Tooltip)`
   max-width: 130px;
   color: #333 !important;
-  background: ${colors["default"]} !important;
+  background: #f2f2f2 !important;
   margin-top: 2px !important;
   opacity: 1 !important;
   border-radius: 0.5rem !important;
@@ -149,8 +149,9 @@ const KVTooltip = styled(Tooltip)`
   hyphens: auto; 
 
   &:after {
-    border-bottom-color: ${colors["default"]} !important;
+    border-bottom-color: #f2f2f2 !important;
   }
+  
   > h3{
     font-family: sans-serif;
     margin: .5rem 0 -.5rem 0;

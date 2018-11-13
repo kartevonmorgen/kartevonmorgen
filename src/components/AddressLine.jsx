@@ -3,13 +3,14 @@ import styled     from "styled-components";
 
 const AddressLine = styled.div`
   width: 100%;
+  margin-left: .52rem;
   span {
     margin-right: 0.3em;
     
     &.delimiter {
       margin-left: -0.3em;
     }
-  }
+  }   
 `
 
 module.exports = ({street, zip, city}) =>

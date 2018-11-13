@@ -45,12 +45,13 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <Flower ratings={ratings} radius={30} />
           </div>
           {
-            entry.tags ? (entry.tags.length > 0)
-              <TagsWrapper>
+            entry.tags ? (entry.tags.length > 0) 
+              ? <TagsWrapper>
                 <ul >
                   { entry.tags.slice(0, 5).map(t => <Tag key={t}>#{t}</Tag>) }
                 </ul>
               </TagsWrapper>
+              : null
               : null
           }
         </div>

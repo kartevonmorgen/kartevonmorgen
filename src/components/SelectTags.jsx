@@ -3,7 +3,7 @@ import Select, { Creatable }  from 'react-select';
 import request from "superagent/lib/client";
 import { translate } from "react-i18next";
 import normalize from "../util/normalize";
-
+import { OFDB_API }  from "../constants/URLs"
 
 class SelectTags extends Component {
   
@@ -15,10 +15,10 @@ class SelectTags extends Component {
       options: []
     };
     
-    //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select  (started to build "getAllTags" already). (…)
+    //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select
     
     request
-      .get('http://api.ofdb.io/v0/tags/')
+      .get( OFDB_API.link +'/tags/')
       .accept('json')
       .end((err, response) => {
         if (err) {
@@ -32,18 +32,15 @@ class SelectTags extends Component {
               "label": response.body[i]
             }
           } 
-          this.state = {
+          this.setState({
             allOptions: options
-          }
+          })
         }
       });
   }
 
-  onInputChange(input,action) {
-    this.filterOptions(input)
-
-    this.state.lastInput
-  }
+  onInputChange(input) {
+    this.filterOptions(input)  }
 
   filterOptions(input) {
     let res
@@ -58,7 +55,6 @@ class SelectTags extends Component {
     }
     
     res = res.slice(0, 30)
-
     this.setState({
       options: res
     })
@@ -119,7 +115,7 @@ class SelectTags extends Component {
         onBlur={() => this.props.input.onBlur(this.props.input.value) }
         value={ this.valueToArray() }
         isValidNewOption = { this.validate }
-        getNewOptionDatafunction = {this.getNewOptionData}
+        // getNewOptionDatafunction = {this.getNewOptionData}
       />
     )
   }

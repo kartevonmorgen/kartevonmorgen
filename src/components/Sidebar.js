@@ -186,7 +186,7 @@ class Sidebar extends Component {
         content = (
           <div className={ "content-above-buttons" }>
             <Message
-              iconClass={ "fa fa-spinner fa-pulse" }
+              iconClass={ "spinner" }
               message={ " lade Daten vom Server ..." }
               buttonLabel={ t("loading-entries.cancel") }
               onCancel={ () => { return dispatch(Actions.cancelWait()); }}

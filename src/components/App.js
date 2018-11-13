@@ -26,10 +26,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled,{ keyframes } from "styled-components";
 import STYLE                from "./styling/Variables"
 
-const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
-  padding-right: .45rem;
-`;
-
 class Main extends Component {
   
   escFunction(event){
@@ -209,7 +205,7 @@ class Main extends Component {
                   return dispatch(Actions.showLeftPanel());
                 }
               }}>
-              <FontAwesomeIcon icon={"angle-double-" + (view.showLeftPanel ? 'left' : 'right')} />
+              <ToggleLeftSidebarIcon icon={"angle-double-" + (view.showLeftPanel ? 'left' : 'right')} />
             </button>
           </HiddenSidebar>   
           
@@ -282,6 +278,15 @@ import pincloud from "../img/pincloud.png";
 
 const MainWrapper = styled.div `
   height: 100vh;
+`
+
+const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
+  padding-right: .45rem;
+`;
+
+const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
+  margin-right: 0.3em;
+  width: 0.7em;
 `
 
 const LeftPanel = styled.div `

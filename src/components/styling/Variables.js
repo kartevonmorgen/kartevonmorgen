@@ -20,7 +20,7 @@ const rating_contexts = {
   "default": gray
 }
 
-const bodyFont= `"Source Sans Pro Light", sans-serif`;
+const bodyFont= `"Museo", sans-serif`;
 const headerFont= `"Museo", sans-serif`;
 
 

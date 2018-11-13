@@ -9,81 +9,14 @@ import Actions                from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ROUTEPLANNER }         from "../constants/URLs.js"
 
-const EntryDetailPage = styled.div`
-  z-index: 2;
-  position: relative;
-  padding: 1px 1em 0 1em;
-  max-width: 500px;
-  background-color: #fff;
-  margin-top: ${props => props.hasImage ? "244px" : "0"};
-`;
 
-const LoadingEntryMessage = styled.div`
-  padding: 1.5em;
-`;
-
-const EntryLink = styled.a`
-  color: ${STYLE.darkGray};
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-    color: #000;
-  }
-`;
-
-const EntryTitle = styled.h3`
-  color:       ${STYLE.anthracite};
-  margin-bottom: -6px;
-  margin-top: 20px;
-`;
-
-const EntryDescription = styled.p`
-  color: ${STYLE.darkGray};
-`;
-
-const EntryDetailsOtherData = styled.div`
-  font-family: Rubik, sans-serif;
-`;
-
-const TagsWrapper = styled.div `
-  margin-top: 1.5em;
-`;
-
-const TagList = styled.ul `
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const Tag = styled.li `
-  display: inline;
-`;
-
-const TagLink = styled.a `
-  color: #333;
-  text-decoration: none;
-  display: inline-block;
-  background: #eaeaea;
-  border-radius: 0.3em;
-  padding: .2em .4em;
-  font-size: 0.75em;
-  margin-bottom: 0.2rem;
-  margin-right: 0.4em;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-
-  &:hover {
-    color: #fff;
-    background-color: #333;
-  }
-`
 const Tags = (tags=[], dispatch) =>
-  <TagsWrapper key="tags">
+  <TagsWrapper>
     <TagList>
     { tags
         .filter(t => t != "")
-        .map(t => 
-          <Tag key={t}><TagLink 
+        .map( (t,index) => 
+          <Tag key={"Tag"+t}><TagLink 
             onClick={ () => {
               dispatch(Actions.showSearchResults());
               dispatch(Actions.setSearchText('#'+t));
@@ -96,7 +29,7 @@ const Tags = (tags=[], dispatch) =>
 
 class BusinessCard extends Component {
 
-  homepageLink (t){
+  homepageLink (){
     const { entry } = this.props;
     if(!entry.homepage) return '';
     let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "")
@@ -116,7 +49,7 @@ class BusinessCard extends Component {
       );
     }
     else {
-      const shortHomepage = entry.homepage ? entry.homepage.replace("http://", "").replace("https://", "").replace("www.", "") : ""
+      const shortHomepage = this.homepageLink()
       const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
 
       return (
@@ -172,3 +105,74 @@ BusinessCard.propTypes = {
 }
 
 module.exports = translate('translation')(pure(BusinessCard))
+
+
+
+const EntryDetailPage = styled.div`
+  z-index: 2;
+  position: relative;
+  padding: 1px 1em 0 1em;
+  max-width: 500px;
+  background-color: #fff;
+  margin-top: ${props => props.hasImage ? "244px" : "0"};
+`;
+
+const LoadingEntryMessage = styled.div`
+  padding: 1.5em;
+`;
+
+const EntryLink = styled.a`
+  color: ${STYLE.darkGray};
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: #000;
+  }
+`;
+
+const EntryTitle = styled.h3`
+  color:       ${STYLE.anthracite};
+  margin-bottom: -6px;
+  margin-top: 20px;
+`;
+
+const EntryDescription = styled.p`
+  color: ${STYLE.darkGray};
+`;
+
+const EntryDetailsOtherData = styled.div`
+  font-family: ${STYLE.headerFont};
+`;
+
+const TagsWrapper = styled.div `
+  margin-top: 1.5em;
+`;
+
+const TagList = styled.ul `
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const Tag = styled.li `
+  display: inline;
+`;
+
+const TagLink = styled.a `
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  background: #eaeaea;
+  border-radius: 0.3em;
+  padding: .2em .4em;
+  font-size: 0.75em;
+  margin-bottom: 0.2rem;
+  margin-right: 0.4em;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: #333;
+  }
+`

@@ -136,12 +136,12 @@ class Ratings extends Component {
       return (
         <RatingContextWrapper key={context}>
           <RatingContextHeading>
-            <span style={{ color: COLORS.rating_contexts[context] }} >{t("contextName." + context)}</span>
+            <span style={{ color: STYLE.rating_contexts[context] }} >{t("contextName." + context)}</span>
           </RatingContextHeading>
           <LeafWrapper>
             <svg width={leafHeight} height={leafHeight}>
               <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
-                <Leaf
+                <FlowerLeaf
                   transform = {"rotate(180)"}
                   color     = {STYLE.rating_contexts[context]}
                   height    = { leafHeight }

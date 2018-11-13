@@ -16,34 +16,34 @@ module.exports = ({view, dispatch}) => {
 
     case V.LOCATE:
       return (
-        <div className= 'modal'>
+        <Modal className= 'modal'>
           <Message
             iconClass = "spinner"
             message = {"  " + t("locate.inProgress")}
             cancelButtonLabel = {t("locate.cancel")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
             />
-        </div>
+        </Modal>
       );
 
     case V.LOCATE_DISABLED:
       return (
-        <div className = 'modal'>
+        <Modal className = 'modal'>
           <Message
             iconClass = "exclamation-triangle"
             message = { "  " + t("locate.failed") }
             cancelButtonLabel = {t("locate.close")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
             actionButtonLabel = {t("locate.tryAgain")}
-            actionButtonIcon = "repeat"
+            actionButtonIcon = "sync-alt"
             onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
             />
-        </div>
+        </Modal>
       );
 
     case V.DONATE_FOR_EVENTS:
       return (
-        <div className = 'modal'>
+        <Modal className = 'modal'>
           <Message
             iconClass = "info-circle"
             message = { "   " + t("events.text") } 
@@ -53,7 +53,7 @@ module.exports = ({view, dispatch}) => {
             actionButtonIcon = "external-link"
             onAction = { () => window.open(DONATE.link, '_blank').focus() }
             />
-        </div>
+        </Modal>
       );
     default:
       return <div></div>;
