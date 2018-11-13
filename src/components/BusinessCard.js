@@ -1,13 +1,13 @@
-import React, { Component }   from "react";
-import styled                 from "styled-components";
-import STYLE                 from "./styling/Variables"
-import { translate }          from "react-i18next";
-import { pure }               from "recompose";
-import AddressLine                from "./AddressLine";
-import T                      from "prop-types";
-import Actions                from "../Actions";
+import React, { Component } from "react";
+import styled from "styled-components";
+import STYLE from "./styling/Variables"
+import { translate } from "react-i18next";
+import { pure } from "recompose";
+import AddressLine from "./AddressLine";
+import T from "prop-types";
+import Actions from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ROUTEPLANNER }         from "../constants/URLs.js"
+import { ROUTEPLANNER } from "../constants/URLs.js"
 
 
 const Tags = (tags=[], dispatch) =>
