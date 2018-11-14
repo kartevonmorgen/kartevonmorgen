@@ -153,10 +153,10 @@ const ListElement = styled.li `
     }
   }
   &.current-entry {
-    background: ${STYLE.white};
+    background: #fff;
   }
   &:hover {
-    background: ${STYLE.white};
+    background: #fff;
   }
   &.event {
     &.current-entry {

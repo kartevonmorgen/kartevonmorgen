@@ -415,7 +415,7 @@ const HiddenSidebar = styled.div `
     top: 65px;
     font-size: 13pt;
     color: ${STYLE.darkGray};
-    background: ${STYLE.white};
+    background: #fff;
     border: none;
     border-left: 1px solid ${STYLE.lightGray};
     border-radius: 0 0.2em 0.2em 0;
