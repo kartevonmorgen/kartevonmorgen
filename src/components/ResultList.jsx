@@ -36,9 +36,9 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           <div>
             <Description>{entry.description}</Description>
           </div>
-          <div className="flower">
+          <FlowerWrapper>
             <Flower ratings={ratings} radius={30} />
-          </div>
+          </FlowerWrapper>
           {
             entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
@@ -126,9 +126,12 @@ const EntryTitle = styled.h3`
   font-size: 1.2em;
   margin: .2rem .3em .2rem 0;
   font-weight: 500;
+  position: relative;
+  z-index: 3;
 `;
 
 const ListElement = styled.li `
+  position: relative;
   cursor: pointer;
   margin: 0;
   padding-left: 0.7em;
@@ -217,12 +220,16 @@ const ListElement = styled.li `
 `
 
 const Description = styled.div`
+  position: relative;
+  z-index: 3;
   font-size: 0.8em;
   color: #555;
   text-shadow: 0.3px 0.3px 8px #fff;
 `;
 
 const TagsWrapper = styled.div `
+  position: relative;
+  z-index: 3;
   margin-top: 0.1em;
   float: left;
   ul {
@@ -245,6 +252,13 @@ const Tag = styled.div `
   letter-spacing: 0.06em;
 `
 
+const FlowerWrapper = styled.div `
+  position: absolute;
+  z-index: 2;
+  top: 35px;
+  right: 20px;
+`
+
 const Wrapper = styled.div `
 .result-list {
   p {
@@ -264,11 +278,6 @@ const Wrapper = styled.div `
         margin-left: 0.5em;
       }
     }
-  }
-  .flower {
-    float: right;
-    margin-top: -65px;
-    margin-right: 10px;
   }
   ul {
     list-style: none;
