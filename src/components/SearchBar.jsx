@@ -208,7 +208,7 @@ const Bar = styled.div `
     outline: none;
   }
 
-  input, span.search-icon, a.locate-icon {
+  input, span.search-icon {
     font-size: 1.2em;
   }
 
@@ -217,23 +217,13 @@ const Bar = styled.div `
     padding-left:  2em;
   }
 
-  .search-icon, .locate-icon {
-    display: inline-block;
-    z-index: 5;
-    color: ${STYLE.darkGray};
-    position: absolute;
-  }
-
   .search-icon{
+    position: absolute;
     display: inline-block;
+    color: ${STYLE.darkGray};
+    z-index: 5;
     padding-top: 0.4em;
     left: 0.6em;
     font-size: 1.2rem;
   }
-
-  .locate-icon{
-    margin-left: -2em;
-    padding: 0.4em 0.6em;
-  }
-
 `
