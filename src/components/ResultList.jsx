@@ -1,6 +1,5 @@
 import React        from "react"
 import Actions      from "../Actions"
-import Address      from "./AddressLine"
 import { pure }     from "recompose"
 import Flower       from "./Flower";
 import NavButton    from "./NavButton";
@@ -37,10 +36,6 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           <div>
             <Description>{entry.description}</Description>
           </div>
-          { (entry.street || entry.zip || entry.city)
-            ? <AddressWrapper><Address { ...entry } /></AddressWrapper>
-            : null
-          }
           <div className="flower">
             <Flower ratings={ratings} radius={30} />
           </div>
@@ -129,11 +124,6 @@ ResultList.propTypes = {
 }
 
 module.exports = translate("translation")(pure(ResultList))
-
-const AddressWrapper = styled.div`
-  font-size: 0.8em;
-  color: ${STYLE.gray};
-`;
 
 const EntryTitle = styled.h3`
   font-size: 1.2em;
