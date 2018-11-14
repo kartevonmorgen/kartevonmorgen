@@ -226,7 +226,7 @@ const ListElement = styled.li `
 const Description = styled.div`
   font-size: 0.8em;
   color: #555;
-  text-shadow: 1px 1px 2px rgb(247, 247, 247);
+  text-shadow: 0.3px 0.3px 8px #fff;
 `;
 
 const TagsWrapper = styled.div `
