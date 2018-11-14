@@ -25,24 +25,24 @@ const headerFont= `"Museo", sans-serif`;
 
 
 module.exports = {
-  grayBlue:   grayBlue,
-  blue:       blue,
-  green:      green,
-  yellow:     yellow,
-  pink:       pink,
-  berry:      berry,
-  coal:       coal,
-  anthracite: anthracite,
-  lightGray:  lightGray,
-  darkGray:   darkGray,
+  grayBlue,
+  blue,
+  green,
+  yellow,
+  pink,
+  berry,
+  coal,
+  anthracite,
+  lightGray,
+  darkGray,
 
   company:    blue,
   initiative: green,
   event:      pink,
   otherCategory: lightGray,
 
-  rating_contexts: rating_contexts,
+  rating_contexts,
 
-  bodyFont: bodyFont,
-  headerFont: headerFont
+  bodyFont,
+  headerFont
 };
