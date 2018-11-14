@@ -176,10 +176,14 @@ const MainCategories = styled.div `
 
 const SearchInput = styled.input `
   ::placeholder{
-    color: #bbb;
+    color: #aaa;
   }
   border: 1px solid rgba(0,0,0,0.1) !important;
   border-radius: 0px !important;
+  font-size: 1.1em !important;
+  line-height: 1.7em !important;
+  font-weight: 300;
+  padding-left: 2.5em !important;
 `;
 
 
@@ -220,10 +224,9 @@ const Bar = styled.div `
   .search-icon{
     position: absolute;
     display: inline-block;
+    padding: 0.6em 0 0 0.7em;
     color: ${STYLE.darkGray};
     z-index: 5;
-    padding-top: 0.4em;
-    left: 0.6em;
     font-size: 1.2rem;
   }
 `
