@@ -35,7 +35,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <span className="title">{entry.title}</span>
           </div>
           <div>
-            <span className= "subtitle">{entry.description}</span>
+            <Description>{entry.description}</Description>
           </div>
           { (entry.street || entry.zip || entry.city)
             ? <AddressWrapper><Address { ...entry } /></AddressWrapper>
@@ -222,6 +222,12 @@ const ListElement = styled.li `
     }
   }
 `
+
+const Description = styled.div`
+  font-size: 0.8em;
+  color: #555;
+  text-shadow: 1px 1px 2px rgb(247, 247, 247);
+`;
 
 const TagsWrapper = styled.div `
   margin-top: 0.1em;
