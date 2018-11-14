@@ -30,7 +30,7 @@ const Tags = (tags=[], dispatch) =>
 class BusinessCard extends Component {
 
   homepageLink (){
-    const { entry } = this.props;
+    const { entry, t } = this.props;
     if(!entry.homepage) return '';
     let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "")
     if(shortLink.length>30) shortLink = shortLink.split('/')[0] + "/…"
