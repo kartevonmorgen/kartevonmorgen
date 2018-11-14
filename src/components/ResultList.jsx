@@ -227,7 +227,7 @@ const Description = styled.div`
 
 const TagsWrapper = styled.div `
   margin-top: 0.1em;
-  float: right;
+  float: left;
   ul {
     list-style: none;
     padding: 0;
