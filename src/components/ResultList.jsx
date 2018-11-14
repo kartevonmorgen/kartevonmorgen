@@ -50,9 +50,6 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
               : null
           }
         </div>
-        <div className = "pure-u-1-24 chevron">
-          <FontAwesomeIcon icon="chevron-right" />
-        </div>
       </div>
     </ListElement>)
 }
