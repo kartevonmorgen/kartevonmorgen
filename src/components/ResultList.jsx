@@ -32,7 +32,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             </span>
           </div>
           <div>
-            <span className="title">{entry.title}</span>
+            <EntryTitle className="title">{entry.title}</EntryTitle>
           </div>
           <div>
             <Description>{entry.description}</Description>
@@ -45,7 +45,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <Flower ratings={ratings} radius={30} />
           </div>
           {
-            entry.tags ? (entry.tags.length > 0) 
+            entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
                 <ul >
                   { entry.tags.slice(0, 5).map(t => <Tag key={t}>#{t}</Tag>) }
@@ -133,6 +133,12 @@ module.exports = translate("translation")(pure(ResultList))
 const AddressWrapper = styled.div`
   font-size: 0.8em;
   color: ${STYLE.gray};
+`;
+
+const EntryTitle = styled.h3`
+  font-size: 1.2em;
+  margin: .2rem .3em .2rem 0;
+  font-weight: 500;
 `;
 
 const ListElement = styled.li `
@@ -281,7 +287,7 @@ const Wrapper = styled.div `
     list-style: none;
     margin: 0;
     padding: 0;
-   
+
   }
 }
 `

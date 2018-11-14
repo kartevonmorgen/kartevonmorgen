@@ -15,8 +15,8 @@ const Tags = (tags=[], dispatch) =>
     <TagList>
     { tags
         .filter(t => t != "")
-        .map( (t,index) => 
-          <Tag key={"Tag"+t}><TagLink 
+        .map( (t,index) =>
+          <Tag key={"Tag"+t}><TagLink
             onClick={ () => {
               dispatch(Actions.showSearchResults());
               dispatch(Actions.setSearchText('#'+t));
@@ -139,6 +139,7 @@ const EntryLink = styled.a`
 
 const EntryTitle = styled.h3`
   color:       ${STYLE.anthracite};
+  font-size: 1.3rem;
   margin-bottom: -6px;
   margin-top: 20px;
 `;

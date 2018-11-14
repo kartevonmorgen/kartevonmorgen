@@ -454,6 +454,7 @@ const StyledApp = styled.div `
 
   h1, h2, h3, h4, h5, h6, h7 {
     font-family: ${STYLE.headerFont};
+    font-weight: 500;
   }
 
   button {
@@ -612,7 +613,7 @@ const StyledApp = styled.div `
       font-style: italic;
     }
     .title {
-      font-weight: bold;
+      margin-bottom: 0.5em;
     }
   }
   .optional::placeholder {
