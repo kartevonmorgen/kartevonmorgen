@@ -85,6 +85,7 @@ const RatingListForContext = styled.ul`
 `
 
 const RatingContextHeading = styled.h5`
+  font-size: 0.9em;
   border-bottom: 1px solid #ddd;
   margin-bottom: 0.5em;
   width: 83%;
@@ -135,11 +136,12 @@ class Ratings extends Component {
       const l = g.length;
       const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
       const leafHeight = 35
+      const headingColor = (context !== "renewable" ? STYLE.rating_contexts[context] : STYLE.yellowText)
 
       return (
         <RatingContextWrapper key={context}>
           <RatingContextHeading>
-            <span style={{ color: STYLE.rating_contexts[context] }} >{t("contextName." + context)}</span>
+            <span style={{ color: headingColor }} >{t("contextName." + context)}</span>
           </RatingContextHeading>
           <LeafWrapper>
             <svg width={leafHeight} height={leafHeight}>
