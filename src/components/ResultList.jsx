@@ -246,16 +246,16 @@ const TagsWrapper = styled.div `
 `
 
 const Tag = styled.div `
+  font-size: 0.75em;
   display: inline-block;
-  margin-right: 0.2em;
-  background: #aaa;
-  color: #fff;
-  border-radius: 0.2em;
-  padding: 0.15em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  font-size: 0.8em;
+  background: #eaeaea;
+  color: #333;
+  border-radius: 0.3em;
+  padding: 0.2em 0.4em;
+  margin-right: 0.4em;
+  margin-bottom: 0.2em;
   border: 0;
+  letter-spacing: 0.06em;
 `
 
 const Wrapper = styled.div `
