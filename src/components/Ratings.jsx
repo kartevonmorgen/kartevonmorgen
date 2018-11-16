@@ -48,7 +48,9 @@ const RatingsWrapper = styled.div`
 `
 
 const AdditionalRatingButtonWrapper = styled.div`
-  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   height: 20px;
   font-size: 0.8em;
 `
@@ -66,9 +68,10 @@ const FirstRatingButton = styled.button`
   font-size: 0.8em;
 `
 
-const RatingsHeading = styled.h4`
-  border-bottom: 1px solid #aaa;
-`
+const HeadingWrapper = styled.div`
+  position: relative;
+  margin-top: 2em;
+`;
 
 const RatingList = styled.ul`
   list-style:  none;
@@ -168,13 +171,15 @@ class Ratings extends Component {
           <FlowerWrapper>
             <Flower ratings={ratings} radius={40} />
           </FlowerWrapper>
-          <RatingsHeading>{t("heading")}</RatingsHeading>
-          <AdditionalRatingButtonWrapper>
-            { entry.ratings && entry.ratings.length > 0
-              ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
-              : ""
-            }
-          </AdditionalRatingButtonWrapper>
+          <HeadingWrapper>
+            <h3>{t("heading")}</h3>
+            <AdditionalRatingButtonWrapper>
+              { entry.ratings && entry.ratings.length > 0
+                ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
+                : ""
+              }
+            </AdditionalRatingButtonWrapper>
+          </HeadingWrapper>
           { entry.ratings && entry.ratings.length > 0
             ? <div>
                 { ratingElements }
