@@ -223,7 +223,7 @@ const Actions = {
           dispatch(notify({
             ...notificationSettings,
             message: changeExistingBbox ? i18n.t("growler.subscriptionChanged") : i18n.t("growler.subscriptionAdded"),
-            status: "error"
+            status: "success"
           }));
           dispatch({
             type: 'UPDATE_SUBSCRIPTION_INFO',
