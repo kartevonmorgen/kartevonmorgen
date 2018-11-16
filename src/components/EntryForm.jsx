@@ -79,7 +79,7 @@ class Form extends Component {
 
             <Fieldset>
               <legend>
-                <span className="text">{t("location")}</span>
+                <span className="fieldsetTitle">{t("location")}</span>
               </legend>
               <div className= "pure-g">
                 <div className= "pure-u-15-24">
@@ -113,18 +113,20 @@ class Form extends Component {
             </Fieldset>
 
             <Fieldset>
-              <OptionalLegend>{t("contact")}</OptionalLegend>
+              <OptionalLegend>
+                <span className="fieldsetTitle">{t("contact")}</span>
+              </OptionalLegend>
               <div className= "pure-g">
                 <OptionalFieldLabel className= "pure-u-2-24">
                   <FontAwesomeIcon icon="globe-africa" />
                 </OptionalFieldLabel>
                 <div className= "pure-u-22-24">
-                  <Field
+                  <FieldElement
                     name="homepage"
                     className="pure-input-1 optional"
                     component="input"
                     placeholder={t("homepage")} />
-                  <Field name="homepage" component={errorMessage} />
+                  <FieldElement name="homepage" component={errorMessage} />
                 </div>
               </div>
 
@@ -133,8 +135,8 @@ class Form extends Component {
                   <FontAwesomeIcon icon="envelope" />
                 </OptionalFieldLabel>
                 <div className= "pure-u-22-24">
-                  <Field name="email" type="email" className="pure-input-1 optional" component="input" placeholder={t("email")} />
-                  <Field name="email" component={errorMessage} />
+                  <FieldElement name="email" type="email" className="pure-input-1 optional" component="input" placeholder={t("email")} />
+                  <FieldElement name="email" component={errorMessage} />
                 </div>
               </div>
 
@@ -143,22 +145,24 @@ class Form extends Component {
                   <FontAwesomeIcon icon="phone" />
                 </OptionalFieldLabel>
                 <div className= "pure-u-22-24">
-                  <Field name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
-                  <Field name="telephone" component={errorMessage} />
+                  <FieldElement name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
+                  <FieldElement name="telephone" component={errorMessage} />
                 </div>
               </div>
             </Fieldset>
 
             <Fieldset>
-              <OptionalLegend>{t("entryImage")}</OptionalLegend>
+              <OptionalLegend>
+                <span className="fieldsetTitle">{t("entryImage")}</span>
+              </OptionalLegend>
               <OptionalFieldText>{t("imageUrlExplanation")}</OptionalFieldText>
               <div className= "pure-g">
                 <OptionalFieldLabel className= "pure-u-2-24">
                   <FontAwesomeIcon icon="camera" />
                 </OptionalFieldLabel>
                 <div className= "pure-u-22-24">
-                  <Field name="image_url" className="pure-input-1 optional" component="input" placeholder={t("imageUrl")} />
-                  <Field name="image_url" component={errorMessage} />
+                  <FieldElement name="image_url" className="pure-input-1 optional" component="input" placeholder={t("imageUrl")} />
+                  <FieldElement name="image_url" component={errorMessage} />
                 </div>
               </div>
               <div className= "pure-g">
@@ -166,25 +170,25 @@ class Form extends Component {
                   <FontAwesomeIcon icon="link" />
                 </OptionalFieldLabel>
                 <div className= "pure-u-22-24">
-                  <Field name="image_link_url" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
-                  <Field name="image_link_url" component={errorMessage} />
+                  <FieldElement name="image_link_url" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
+                  <FieldElement name="image_link_url" component={errorMessage} />
                 </div>
               </div>
             </Fieldset>
 
             <Fieldset>
               <legend>
-                <span className="text">{t("license")}</span>
+                <span className="fieldsetTitle">{t("license")}</span>
               </legend>
               <div className= "pure-g license">
                 <label className= "pure-u-2-24">
                   <FontAwesomeIcon icon={['fab', 'creative-commons']} />
                 </label>
                 <div className= "pure-u-2-24 pure-controls">
-                  <Field name="license" component="input" type="checkbox" />
+                  <FieldElement name="license" component="input" type="checkbox" />
                 </div>
                 <div className= "pure-u-20-24">
-                  <Field name="license" component={errorMessage} />
+                  <FieldElement name="license" component={errorMessage} />
                   {t("iHaveRead") + " "}
                   { license == LICENSES.ODBL
                     ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
@@ -253,19 +257,10 @@ const AddEntryForm = styled.form`
   select {
     height: 2.5em;
   }
-  .radio-button {
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
-  }
-  .form-heading {
+  .fieldsetTitle {
     font-weight: bold;
     margin-top: 0.5em;
     margin-bottom: 0;
-  }
-  .rating-context-explanation {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    font-style: italic;
   }
   h3 {
     margin-bottom: -1em;
@@ -287,8 +282,12 @@ const FormWrapper = styled.div`
   }
 `
 
+const FieldElement = styled(Field)`
+
+`;
+
 const Fieldset = styled.fieldset`
-  margin-top: 10px !important;
+  margin: 1.5em 0 0.75em !important;
 `;
 
 const OptionalFieldLabel = styled.label`
