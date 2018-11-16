@@ -65,6 +65,7 @@ class SelectTags extends Component {
   valueToArray() {
     const value = this.props.input.value
 
+    if(!value) return null
     if( typeof value !== "string") return value
     return value.split(',').map( val => {
       return {value: val, label: val }
