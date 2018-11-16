@@ -262,9 +262,6 @@ const AddEntryForm = styled.form`
     margin-top: 0.5em;
     margin-bottom: 0;
   }
-  h3 {
-    margin-bottom: -1em;
-  }
 `
 
 const ClickOnMapText = styled.div`
@@ -287,7 +284,7 @@ const FieldElement = styled(Field)`
 `;
 
 const Fieldset = styled.fieldset`
-  margin: 1.5em 0 0.75em !important;
+  margin: 1em 0 1.5em !important;
 `;
 
 const OptionalFieldLabel = styled.label`
