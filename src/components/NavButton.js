@@ -7,6 +7,10 @@ const NavigationButton = styled.li`
   color: #00f;
 `;
 
+const Icon = styled(FontAwesomeIcon)`
+  margin-right: 10px !important;
+`
+
 const NavButton = ({ keyName, classname, icon, text, onClick }) => {
 
   return (
@@ -14,7 +18,7 @@ const NavButton = ({ keyName, classname, icon, text, onClick }) => {
       key = { keyName }
       className = { classname }
       onClick = { onClick }>
-      <FontAwesomeIcon icon={ icon } /> { text }
+      <Icon icon={ icon } />{ text }
     </NavigationButton>)
 }
 
