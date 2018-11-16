@@ -60,7 +60,7 @@ const AdditionalRatingButton = styled.button`
 `
 
 const FirstRatingButtonWrapper = styled.div`
-  margin-top: -30px;
+  margin-top: -5px;
 `
 
 const FirstRatingButton = styled.button`
