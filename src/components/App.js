@@ -569,12 +569,9 @@ const StyledApp = styled.div `
   }
   .new-rating-form {
     margin: 2em 1.8em 1.8em 1.8em;
-    select {
-      height: 2.5em;
-    }
+
     .radio-button {
-      margin-top: 0.2em;
-      margin-bottom: 0.2em;
+      margin: 0.2em 0.3em 0.2em 0;
     }
     .form-heading {
       font-weight: bold;
