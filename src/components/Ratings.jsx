@@ -43,7 +43,7 @@ const rating_groups = (ratings=[]) => {
 }
 
 const RatingsWrapper = styled.div`
-  padding: 1em;
+  margin: 1.8em;
   color: #333;
 `
 

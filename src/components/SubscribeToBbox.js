@@ -6,8 +6,7 @@ import i18n     from "../i18n";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SubscribeToBboxContent = styled.div`
-  padding-left: 1.4em;
-  padding-right: 1.4em;
+  margin: 2em 1.8em 1.8em 1.8em;
 `;
 
 const t = (key) => {

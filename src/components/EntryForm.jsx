@@ -26,8 +26,7 @@ class Form extends Component {
     return (
     <FormWrapper>
 
-      <form
-        className = "add-entry-form"
+      <AddEntryForm
         action    = 'javascript:void();' >
 
           <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
@@ -202,7 +201,7 @@ class Form extends Component {
             </Fieldset>
 
           </div>
-        </form>
+        </AddEntryForm>
         <nav className="menu pure-g">
           <NavButton
             keyName = "cancel"
@@ -251,7 +250,33 @@ module.exports = reduxForm({
 })(translate('translation')(Form))
 
 
+const AddEntryForm = styled.form`
+  margin: 2em 1.6em 0;
+  select {
+    height: 2.5em;
+  }
+  .radio-button {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+  }
+  .form-heading {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+  .rating-context-explanation {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-style: italic;
+  }
+  h3 {
+    margin-bottom: -1em;
+  }
+`
 
+const ClickOnMapText = styled.div`
+  margin: 0.5em 0;
+`
 
 const FormWrapper = styled.div`
   select, input, textarea, .pure-input-1 {

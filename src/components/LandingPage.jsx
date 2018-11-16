@@ -367,6 +367,7 @@ const LandingWrapper = styled.div`
   }
   h3 {
     font-size: 1.5em;
+    margin: 0.3em 0;
   }
   h2 {
     font-size: 2em;
@@ -375,6 +376,9 @@ const LandingWrapper = styled.div`
   }
   input {
     font-size: 1.2em;
+  }
+  p {
+    margin-block-start: 0.1em;
   }
   .place-search {
     max-width: 500px;

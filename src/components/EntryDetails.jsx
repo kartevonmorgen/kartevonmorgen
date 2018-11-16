@@ -8,7 +8,7 @@ import { translate }          from "react-i18next";
 import Actions                from "../Actions";
 
 const LoadingEntryMessage = styled.div`
-  padding: 1.5em;
+  margin: 3em 2em; !important;
 `;
 
 const Navbar = styled.nav`

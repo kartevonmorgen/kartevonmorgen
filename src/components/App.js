@@ -567,34 +567,8 @@ const StyledApp = styled.div `
     margin: 0;
     padding: 1em;
   }
-  .add-entry-form {
-    margin-left: 1em;
-    margin-right: 1em;
-    select {
-      height: 2.5em;
-    }
-    .radio-button {
-      margin-top: 0.2em;
-      margin-bottom: 0.2em;
-    }
-    .form-heading {
-      font-weight: bold;
-      margin-top: 0.5em;
-      margin-bottom: 0;
-    }
-    .rating-context-explanation {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-      font-style: italic;
-    }
-    h3 {
-      margin-top: 1em;
-      margin-bottom: 0.2em;
-    }
-  }
   .new-rating-form {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 2em 1.8em 1.8em 1.8em;
     select {
       height: 2.5em;
     }

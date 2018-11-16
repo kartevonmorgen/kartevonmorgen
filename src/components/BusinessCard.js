@@ -118,10 +118,9 @@ const AddressWrapper = styled.div`
 const EntryDetailPage = styled.div`
   z-index: 2;
   position: relative;
-  padding: 1px 1em 0 1em;
   max-width: 500px;
   background-color: #fff;
-  margin-top: ${props => props.hasImage ? "244px" : "0"};
+  margin: ${props => props.hasImage ? "270px" : "0px"} 1.8em 0 1.8em;
 `;
 
 const LoadingEntryMessage = styled.div`

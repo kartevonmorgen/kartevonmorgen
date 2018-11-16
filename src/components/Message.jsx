@@ -51,13 +51,12 @@ Message.propTypes = {
 module.exports = pure(Message);
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
-  margin: 0 10px 0 10px;
+  margin: 0 10px;
 `
 
 const Dialog = styled.div `
-  margin-top: 20px;
+  margin: 3em 2em;
   background-color: #fff;
-  padding: 10px;
   position: relative;
   max-width: 600px;
 `
