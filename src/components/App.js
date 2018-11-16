@@ -413,7 +413,7 @@ const HiddenSidebar = styled.div `
   >button {
     position: relative;
     padding: 10px 3px 10px 7px;
-    top: 65px;
+    top: 72px;
     font-size: 13pt;
     color: ${STYLE.darkGray};
     background: #fff;
