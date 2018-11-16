@@ -3,10 +3,10 @@ import React                                  from "react";
 import { pure }                               from "recompose";
 import T                                      from "prop-types";
 import { MAIN_IDS, CSS_CLASS_SIZE, NAMES }    from "../constants/Categories";
-import styled                                 from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled, { keyframes }                  from "styled-components";
+import { FontAwesomeIcon }                    from '@fortawesome/react-fontawesome'
 import STYLE                                  from "./styling/Variables"
-
+import { SpinLoader }                         from 'react-loaders-spinners';
 
 class RawCategoryButtons extends React.Component {
 
@@ -36,7 +36,7 @@ RawCategoryButtons.propTypes = {
 const CategoryButtons = pure(RawCategoryButtons);
 
 class SearchBar extends React.Component {
-  
+
   onChange = (ev) => {
     var ref, v;
     if ((v = (ref = ev.target) != null ? ref.value : void 0) == null) {
@@ -62,7 +62,7 @@ class SearchBar extends React.Component {
 
   render() {
 
-    const { categories, disabled, toggleCat, searchText, t } = this.props;
+    const { categories, disabled, toggleCat, searchText, t, loading } = this.props;
 
 
     return (
@@ -79,8 +79,17 @@ class SearchBar extends React.Component {
 
         <div className = "pure-u-1">
           <div onClick = { this.props.onLenseClick } className = "search-icon">
-            <FontAwesomeIcon icon="search" />
+            { loading ?
+                <SpinLoader
+                  height={17}
+                  width={17}
+                  thickness={3}
+                  pColor="#4168de"
+                  sColor="white"/>
+              : <MagnifyingGlassIcon icon="search" />
+            }
           </div>
+
           <SearchInput
             onChange    = { this.onChange }
             disabled    = { disabled }
@@ -111,9 +120,24 @@ module.exports = translate('translation')(pure(SearchBar))
 
 const borderRadius = '0.4em'
 
+const MagnifyingGlassIcon = styled(FontAwesomeIcon)`
+  margin: 0.1em 0 0 0.1em;
+  animation-duration: 150ms;
+  animation-name: turn;
+
+  @keyframes turn {
+    from {
+      transform: rotate(330deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`
 
 const MainCategories = styled.div `
-    
+
   font-size: 0.8em;
   color: ${STYLE.darkGray};
 
@@ -184,7 +208,7 @@ const SearchInput = styled.input `
   font-size: 1.1em !important;
   line-height: 1.7em !important;
   font-weight: 300;
-  padding-left: 2.5em !important;
+  padding-left: 3.1em !important;
 `;
 
 
@@ -224,8 +248,8 @@ const Bar = styled.div `
 
   .search-icon{
     position: absolute;
+    margin: 0.5em 0 0 0.9em;
     display: inline-block;
-    padding: 0.6em 0 0 0.7em;
     color: ${STYLE.darkGray};
     z-index: 5;
     font-size: 1.2rem;

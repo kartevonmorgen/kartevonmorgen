@@ -45,6 +45,7 @@
     "react-dom": "^16.6.1",
     "react-i18next": "^7.13.0",
     "react-leaflet": "^1.9.1",
+    "react-loaders-spinners": "^0.4.0",
     "react-redux": "^5.1.0",
     "react-select": "^2.1.1",
     "react-swipe-component": "^1.4.0",

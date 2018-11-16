@@ -3,7 +3,8 @@ import T from "../constants/ActionTypes";
 const initialState = {
   version: null,
   entries: {},
-  ratings: {}
+  ratings: {},
+  loadingSearch: false
 };
 
 module.exports = (state=initialState, action={}) => {
@@ -79,6 +80,18 @@ module.exports = (state=initialState, action={}) => {
           ...state.entries,
           ...o
         }
+      }
+
+    case T.SET_SEARCH_TIME:
+      return {
+        ...state,
+        loadingSearch: true
+      }
+
+    case T.SEARCH_RESULT:
+      return {
+        ...state,
+        loadingSearch: false
       }
       
     default:

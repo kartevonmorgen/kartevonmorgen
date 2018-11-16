@@ -165,6 +165,7 @@ class Main extends Component {
                   return dispatch(Actions.setSearchText(''));
                 }}
                 onEnter={ () => {}}      // currently not used, TODO
+                loading={ server.loadingSearch }
               />
             </div>
 
