@@ -21,7 +21,6 @@ class RawCategoryButtons extends React.Component {
           onClick   = { () => { onToggle(c) }}
           className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
           { t("category." + NAMES[c]) + " " }
-          <FontAwesomeIcon icon={'toggle' + (act ? "-on" : "-off")} />
         </button>);
     });
     return (<div>{ buttons }</div>);
@@ -121,6 +120,7 @@ const MainCategories = styled.div `
   button {
     padding: 0.5em;
     text-transform: uppercase;
+    background-color: #f7f7f7;
   }
 
   button > i.toggle {
@@ -159,6 +159,7 @@ const MainCategories = styled.div `
 
   .active{
     color: #fff;
+    box-shadow: inset 0.2px 0.2px 2px 1px rgba(0, 0, 0, 0.4);
   }
 
   .initiative.active{
@@ -167,7 +168,7 @@ const MainCategories = styled.div `
 
   .event.active {
     background: ${STYLE.event};
-    }
+  }
 
   .company.active {
     background: ${STYLE.company};
