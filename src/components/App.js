@@ -366,16 +366,18 @@ const LeftPanel = styled.div `
 `
 
 const RightPanel = styled.div `
-  float: right;
+  position: absolute;
+  top: 15px;
+  right: 0;
   background: #fff;
   color: ${STYLE.coal};
-  position: relative;
 
   .menu-toggle button {
     outline: none;
     position: relative;
     z-index: 1;
-    top: 10pt;
+    top: 0;
+    right: 0;
     font-size: 15pt;
     text-transform: uppercase;
     text-align: right;
@@ -385,7 +387,6 @@ const RightPanel = styled.div `
     border-radius: 0.2em 0 0 0.2em;
     padding: 0.2em;
     box-shadow: 0 1px 3px 0.2px rgba(0,0,0,0.5);
-    right: 0;
     &:hover {
       color: ${STYLE.coal};
       box-shadow: 0 1px 3px 0.2px #000;
