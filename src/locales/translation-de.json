@@ -183,9 +183,6 @@
 		"cities" : "Städte",
 		"results-out-of-bbox" : "Weitere Ergebnisse außerhalb des sichtbaren Bereichs der Karte:"
 	},
-	"loading-entries" : {
-		"cancel" : "abbrechen"
-	},
 	"loading-message" : "Lade Daten vom Server...",
 	"io-error" : {
 		"message" : "Server nicht erreichbar. Bitte prüfe deine Internetverbindung oder versuche es später nochmal.",

@@ -183,9 +183,7 @@
 		"cities" : "cities",
 		"results-out-of-bbox" : "More results outside the visible map area:"
 	},
-	"loading-entries" : {
-		"cancel" : "back"
-	},
+	"loading-message" : "Loading data from server...",
 	"io-error" : {
 		"message" : " Can't reach the server. Please check your internet connection or try again later.",
 		"close" : "close"

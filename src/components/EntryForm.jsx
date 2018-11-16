@@ -37,20 +37,20 @@ class Form extends Component {
           }
           { (!this.props.error) && this.props.submitFailed &&
             <div className="err"> { t("valueError") }
-              <Field name="license" component={errorMessage} />
+              <FieldElement name="license" component={errorMessage} />
             </div>
           }
           <div className= "pure-form">
             <Fieldset>
-              <Field className="pure-input-1" name="category" component="select">
+              <FieldElement className="pure-input-1" name="category" component="select">
                 <option value={-1}>- {t("chooseCategory")} -</option>
                 <option value={IDS.INITIATIVE}>{t("category." + NAMES[IDS.INITIATIVE])}</option>
                 {/*<option value={IDS.EVENT}>Event</option>*/}
                 <option value={IDS.COMPANY}>{t("category." + NAMES[IDS.COMPANY])}</option>
-              </Field>
-              <Field name="category" component={errorMessage} />
+              </FieldElement>
+              <FieldElement name="category" component={errorMessage} />
 
-              <Field
+              <FieldElement
                 name="title"
                 required={true}
                 className="pure-input-1"
@@ -58,21 +58,21 @@ class Form extends Component {
                 component="input"
                 placeholder={t("title")} />
 
-              <Field
+              <FieldElement
                 name="title"
                 component={errorMessage} />
 
-              <Field name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
-              <Field name="description" component={errorMessage} />
+              <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
+              <FieldElement name="description" component={errorMessage} />
 
-            <Field
+            <FieldElement
               name="tags"
               required={true}
               className="pure-input-1"
               component={SelectTags}
               placeholder={t("tags")}
             />
-            <Field
+            <FieldElement
               name="tags"
               component={errorMessage} />
           </Fieldset>
@@ -83,32 +83,30 @@ class Form extends Component {
               </legend>
               <div className= "pure-g">
                 <div className= "pure-u-15-24">
-                  <Field name="city" className="pure-input-1" component="input" placeholder={t("city")} />
-                  <Field name="city" component={errorMessage} />
+                  <FieldElement name="city" className="pure-input-1" component="input" placeholder={t("city")} />
+                  <FieldElement name="city" component={errorMessage} />
                 </div>
                 <div className= "pure-u-9-24">
-                  <Field name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
-                  <Field name="zip" component={errorMessage} />
+                  <FieldElement name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
+                  <FieldElement name="zip" component={errorMessage} />
                 </div>
               </div>
-              <Field name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
-              <Field name="street" component={errorMessage} />
-            </Fieldset>
-            <span className="desc">{t("clickOnMap")}</span>
-            <Fieldset>
+              <FieldElement name="street" className="pure-input-1" component="input" placeholder={t("street")}/>
+              <FieldElement name="street" component={errorMessage} />
+              <ClickOnMapText>{t("clickOnMap")}</ClickOnMapText>
               <div className= "pure-g">
                 <label className= "pure-u-2-24">
                   <FontAwesomeIcon icon="map-marker" />
                 </label>
                 <div className= "pure-u-22-24 pure-g">
                   <div className= "pure-u-11-24">
-                    <Field name="lat" className="pure-input-1" component="input" readOnly={true}/>
-                    <Field name="lat" component={errorMessage} />
+                    <FieldElement name="lat" className="pure-input-1" component="input" readOnly={true}/>
+                    <FieldElement name="lat" component={errorMessage} />
                   </div>
                   <div className= "pure-u-2-24"></div>
                   <div className= "pure-u-11-24">
-                    <Field name="lng" className="pure-input-1" component="input" readOnly={true} />
-                    <Field name="lng" component={errorMessage} />
+                    <FieldElement name="lng" className="pure-input-1" component="input" readOnly={true} />
+                    <FieldElement name="lng" component={errorMessage} />
                   </div>
                 </div>
               </div>
