@@ -16,7 +16,7 @@
 		"license":"Lizenz",
 		"title":"Titel",
 		"description":"Beschreibung",
-		"tags":"Stichworte (Komma-getrennt)",
+		"tags":"Stichworte",
 		"newTag":"Neu:",
 		"noTagSuggestion":"Tippen für Vorschläge.",
 		"tagsLoading":"Vorschläge werden geladen…",
