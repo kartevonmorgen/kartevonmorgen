@@ -383,8 +383,8 @@ const RightPanel = styled.div `
     text-align: right;
     color: ${STYLE.darkGray};
     background: #fff;
-    border: 1px solid ${STYLE.lightGray};
     border-radius: 0.2em 0 0 0.2em;
+    border: none;
     padding: 0.2em;
     box-shadow: 0 1px 3px 0.2px rgba(0,0,0,0.5);
     &:hover {
