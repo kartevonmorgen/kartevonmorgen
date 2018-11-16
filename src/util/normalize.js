@@ -9,23 +9,18 @@ const url = (value) => {
 };
 
 const tags = (value) => {
-  if (value == null || value == undefined) {
-    return false;
+  if ((value == null) || value.length === 0) {
+    return value;
   }
-  value = value.split(',')[0]
-
-  value = value
+  if ((value == '-') || value == ' ') {
+    return '';
+  }
+  return value
     .toLowerCase()
-    .replace(/[_ ]/g,'-')
-    .replace(' ','-')
+    .replace(' ',',')
+    .replace(',,',',')
+    .replace(',-', ',')
     .replace('--', '-')
-    .replace(/[^a-zA-Z0-9äöüÄÖÜß\-, ]/gi, '')
-
-  if (value.length < 3 ){
-    return false;
-  }
-  
-  return value;
 };
 
 const username = (name) => {
