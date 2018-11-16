@@ -80,7 +80,7 @@ class Form extends Component {
 
             <Fieldset>
               <legend>
-                <span className="text">Ort</span>
+                <span className="text">{t("location")}</span>
               </legend>
               <div className= "pure-g">
                 <div className= "pure-u-15-24">
