@@ -40,7 +40,8 @@ class SelectTags extends Component {
   }
 
   onInputChange(input) {
-    this.filterOptions(input)  }
+    this.filterOptions(input)
+  }
 
   filterOptions(input) {
     let res
