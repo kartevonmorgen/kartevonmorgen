@@ -84,7 +84,7 @@ class SearchBar extends React.Component {
                   height={17}
                   width={17}
                   thickness={3}
-                  pColor="#4168de"
+                  pColor={STYLE.darkGray}
                   sColor="white"/>
               : <MagnifyingGlassIcon icon="search" />
             }
