@@ -8,7 +8,7 @@ import T from "prop-types";
 import Actions from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ROUTEPLANNER } from "../constants/URLs.js"
-
+import { NAMES } from "../constants/Categories"
 
 const Tags = (tags=[], dispatch) =>
   <TagsWrapper key="tags">
@@ -46,6 +46,7 @@ class BusinessCard extends Component {
 
   render () {
     const { entry, hasImage, dispatch, t } = this.props;
+    const categoryName = NAMES[entry.categories && entry.categories[0]]
 
     if (!entry) {
       return(
@@ -61,6 +62,11 @@ class BusinessCard extends Component {
 
       return (
         <EntryDetailPage hasImage={hasImage}>
+          <EntryCategory category={categoryName}>
+            <span>
+              { t("category." + categoryName) }
+            </span>
+          </EntryCategory>
           <EntryTitle>{entry.title}</EntryTitle>
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
@@ -147,8 +153,15 @@ const EntryTitle = styled.h3`
   color:       ${STYLE.anthracite};
   font-size: 1.3rem;
   margin-bottom: -6px;
-  margin-top: 20px;
+  margin-top: .4rem;
 `;
+
+const EntryCategory = styled.div`
+  font-size: 0.8em;
+  color: ${props => STYLE[props.category]};
+  text-transform: uppercase;
+  margin-top: .9rem;
+`
 
 const EntryDescription = styled.p`
   color: ${STYLE.darkGray};
