@@ -1,15 +1,15 @@
-import React        from "react"
-import Actions      from "../Actions"
-import { pure }     from "recompose"
-import Flower       from "./Flower";
-import NavButton    from "./NavButton";
-import i18n         from "../i18n";
-import { NAMES }    from "../constants/Categories"
+import React, { Component } from "react"
+import Actions from "../Actions"
+import { pure } from "recompose"
+import Flower from "./Flower";
+import NavButton from "./NavButton";
+import i18n from "../i18n";
+import { NAMES } from "../constants/Categories"
 import { translate} from "react-i18next";
-import PropTypes    from "prop-types";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import STYLE        from "./styling/Variables"
-import styled       from "styled-components";
+import STYLE from "./styling/Variables"
+import styled from "styled-components";
 
 
 const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
@@ -54,30 +54,39 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </ListElement>)
 }
 
-const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
-  moreEntriesAvailable, onMoreEntriesClick, t}) => {
 
-  let results = entries.map( e =>
-    <ResultListElement
-      entry        = { e            }
-      ratings      = { (e.ratings || []).map(id => ratings[id])}
-      key          = { e.id         }
-      highlight    = { highlight.indexOf(e.id) >= 0 }
-      onClick      = { (id, center) => { dispatch(Actions.setCurrentEntry(id, center)) }}
-      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-      onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-      t            = { t } />);
-  if(moreEntriesAvailable && !waiting){
-    results.push(
-      <ListElement key="show-more-entries">
-        <div>
-          <a onClick = { onMoreEntriesClick } href="#">
-            {t("resultlist.showMoreEntries")}
-          </a>
-        </div>
-      </ListElement>
-    );
+class ResultList extends Component {
+  shouldComponentUpdate(nextProps) {
+    return (
+      Object.keys(nextProps.entries).join() !== Object.keys(this.props.entries).join()
+    )
   }
+
+  render() {
+    const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
+
+    let results = entries.map( e => 
+      <ResultListElement
+        entry        = { e            }
+        ratings      = { (e.ratings || []).map(id => ratings[id])}
+        key          = { e.id         }
+        highlight    = { highlight.indexOf(e.id) >= 0 }
+        onClick      = { (id, center) => { dispatch(Actions.setCurrentEntry(id, center)) }}
+        onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+        onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+        t            = { t } />);
+
+    if(moreEntriesAvailable && !waiting){
+      results.push(
+        <ListElement key="show-more-entries">
+          <div>
+            <a onClick = { onMoreEntriesClick } href="#">
+              {t("resultlist.showMoreEntries")}
+            </a>
+          </div>
+        </ListElement>
+      );
+    }
 
   return (
     <Wrapper>
@@ -106,6 +115,7 @@ const ResultList = ({ dispatch, waiting, entries, ratings, highlight, onClick,
         />
       </nav>
     </Wrapper>)
+  }
 }
 
 ResultList.propTypes = {
