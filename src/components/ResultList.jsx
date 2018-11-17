@@ -12,7 +12,7 @@ import STYLE from "./styling/Variables"
 import styled from "styled-components";
 
 
-const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
 
@@ -54,13 +54,10 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </ListElement>)
 }
 
+const ResultListElement = pure(_ResultListElement)
+
 
 class ResultList extends Component {
-  // shouldComponentUpdate(nextProps) {
-  //   return (
-  //     Object.keys(nextProps.entries).join() !== Object.keys(this.props.entries).join()
-  //   )
-  // }
 
   render() {
     const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
