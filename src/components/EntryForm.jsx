@@ -11,6 +11,7 @@ import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
 import SelectTags           from './SelectTags';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Form extends Component {
 
