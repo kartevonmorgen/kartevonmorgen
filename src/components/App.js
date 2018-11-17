@@ -179,7 +179,7 @@ class Main extends Component {
                 entries={entries}
                 resultEntries={ resultEntries }
                 ratings={ ratings }
-                LeftPanelentries={ server.entries }
+                // LeftPanelentries={ server.entries } never used…?
                 dispatch={ dispatch }
                 t={ t }
               />

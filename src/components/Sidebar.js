@@ -20,12 +20,31 @@ class Sidebar extends Component {
 
   entryContent = null;
 
+  shouldComponentUpdate(nextProps) {
+    if (!nextProps.view.showLeftPanel) return false
+    if (!this.props.view.showLeftPanel && nextProps.view.showLeftPanel) return true
+    if (nextProps.view.left !== this.props.view.left) return true
+    if( nextProps.view.left === this.props.view.left === V.ENTRY && nextProps.search.highlight === this.props.search.highlight ) return false
+    if( nextProps.view.left === V.RESULT
+        && Object.keys(nextProps.resultEntries).join() === Object.keys(this.props.resultEntries).join()
+        && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
+    ) return false
+    return true
+  }
+
+  componentDidUpdate(prevProps){
+    if( this.props.view.left === V.ENTRY && prevProps.search.highlight !== this.props.search.highlight) this.scrollToTop()
+  }
+
   setEntryContentRef = (elem) => {
     this.entryContent = elem;
   };
 
   scrollToTop = () =>{
-    if(this.entryContent) this.entryContent.scrollTo(0,0)
+    if(this.entryContent){
+      this.entryContent.scrollTop = 0;
+      this.entryContent.scrollLeft = 0;
+    } 
   }
 
   render(){
@@ -94,7 +113,6 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
-        this.scrollToTop()
         content = (
           <div className="content" ref={this.setEntryContentRef}>
             <EntryDetails

@@ -56,11 +56,11 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
 
 
 class ResultList extends Component {
-  shouldComponentUpdate(nextProps) {
-    return (
-      Object.keys(nextProps.entries).join() !== Object.keys(this.props.entries).join()
-    )
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return (
+  //     Object.keys(nextProps.entries).join() !== Object.keys(this.props.entries).join()
+  //   )
+  // }
 
   render() {
     const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
