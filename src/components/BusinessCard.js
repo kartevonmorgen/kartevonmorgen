@@ -38,6 +38,12 @@ class BusinessCard extends Component {
     return shortLink
   }
 
+  mailLink (){
+    const mail = this.props.entry.email
+    if (!mail) return '';
+    return (mail.length > 30) ? "E-Mail" : mail
+  }
+
   render () {
     const { entry, hasImage, dispatch, t } = this.props;
 
@@ -50,6 +56,7 @@ class BusinessCard extends Component {
     }
     else {
       const shortHomepage = this.homepageLink()
+      const shortMail = this.mailLink()
       const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
 
       return (
@@ -68,7 +75,7 @@ class BusinessCard extends Component {
               <div key="mail">
                 <FontAwesomeIconElement icon="envelope" />
                 <EntryLink href={ "mailto:" + entry.email}>
-                  {entry.email}
+                  {shortMail}
                 </EntryLink>
               </div>
               : null),
