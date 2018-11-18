@@ -8,7 +8,6 @@
 		"chooseCategory":"Kategorie auswählen",
 		"location":"Ort",
 		"clickMap":"(auf Karte klicken)",
-		"contact":"Kontakt",
 		"iHaveRead":"Ich habe die",
 		"creativeCommonsLicense":"Bestimmungen der Creative-Commons Lizenz CC0",
 		"openDatabaseLicense":"Bestimmungen der OpenDatabase Lizenz",
@@ -199,7 +198,9 @@
 			"placeholder" : "Welchen Ort möchtest du entdecken?",
 			"error" : "Fehler bei der Städte-Suche.",
 			"no-results" : "Konnte keine Stadt mit diesem Namen finden.",
-			"show-map" : "Karte anzeigen..."
+			"show-map" : "Karte anzeigen...",
+			"germany" : "Deutschland",
+			"states" : {"bremen": "Bremen", "hamburg": "Hamburg", "berlin": "Berlin", "saarland": "Saarland", "schleswig-holstein": "Schleswig Holstein", "thuringia": "Thüringen", "saxony": "Sachsen", "rhineland-palatinate": "Rheinland Pfalz", "saxony-anhalt": "Sachsen Anhalt", "hesse": "Hessen", "mecklenburg-vorpommern": "Mecklenburg Vorpommern", "brandenburg": "Brandenburg", "north rhine-westphalia": "Nordrhein-Westfalen", "baden-wurttemberg": "Baden-Württemberg", "lower saxony": "Niedersachsen", "bavaria": "Bayern"} 
 		},
 		"subscribeToBbox" : {
 			"message" : "Du bist eingeloggt. Wenn du magst kannst du ",
