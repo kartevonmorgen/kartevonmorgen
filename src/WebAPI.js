@@ -2,6 +2,7 @@ import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
 import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
+import i18n from "./i18n";
 
 const prefix = saPrefix(OFDB_API.link);
 
@@ -41,7 +42,8 @@ module.exports = {
 
   searchAddressTilehosting: (addr, cb) => {
     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
-    if (addr != null && addr != "") {
+
+    if (addr != null && addr.length > 2) {
       request
         .get(query)
         .set('Accept', 'application/json')
