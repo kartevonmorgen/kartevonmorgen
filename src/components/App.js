@@ -100,6 +100,7 @@ class Main extends Component {
                     return dispatch(Actions.searchCity());
                   }
                 }}
+                onMapClick={ () => { dispatch(Actions.showSearchResults()); return dispatch(Actions.toggleLandingPage());  }}
                 content={ view.right }
                 searchText={ search.city }
                 searchError={ search.error }

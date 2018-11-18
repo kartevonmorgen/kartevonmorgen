@@ -23,7 +23,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, searchError, cities, onSelection, onEscape,
-      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount } = this.props;
+      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, onMapClick } = this.props;
     const onClick = this.props.onMenuItemClick;
     var t = (key) => {
       return this.props.t("landingPage." + key);
@@ -31,6 +31,7 @@ class LandingPage extends Component {
 
     const onKeyUp = ev => {
       ev.preventDefault();
+      console.log(ev.key);
       switch (ev.key) {
         case "Escape":
           onEscape();
@@ -47,6 +48,10 @@ class LandingPage extends Component {
         return;
       }
       onChange(v);
+    }
+
+    const _onMapClick = ev => {
+      if (ev.target.nodeName.toLowerCase() === "div") this.props.onMapClick();
     }
 
     let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
@@ -262,7 +267,7 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-        <div className ={ "search" + (content ? '' : ' start')}>
+        <div onClick={_onMapClick} className ={ "search" + (content ? '' : ' start')}>
           <div className = "landing-content">
             <h1>{t("slogan")}</h1>
             <div className="place-search">
@@ -646,6 +651,10 @@ const LandingWrapper = styled.div`
     }
     &.start {
       height: calc(100% - 100px);
+      cursor: pointer;
+      h1 {
+        cursor: auto;
+      }
       .content {
         height: 30%;
       }
