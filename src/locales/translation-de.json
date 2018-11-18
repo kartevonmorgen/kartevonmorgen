@@ -58,7 +58,13 @@
 	"entryDetails":{
 		"loadingEntry": "Eintrag wird geladen...",
 		"back" : "zurück",
-		"homepagePlaceholder": "Homepage"
+		"homepagePlaceholder": "Homepage",
+		"reportLink": "Diesen Eintrag Melden",
+		"reportSubject": "Eintrag Melden",
+		"reportBody": "Mit dem Eintrag {link} gibt es folgendes Problem:",
+		"lastEdit": "letzte änderung:",
+		"today": "heute",
+		"daysAgo": "tage her"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",
