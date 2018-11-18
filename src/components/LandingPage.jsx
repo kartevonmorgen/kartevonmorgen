@@ -611,7 +611,7 @@ const LandingWrapper = styled.div`
   }
   .search {
     text-align: center;
-    padding: 50px 1em;
+    padding: 0 1em;
     position: relative;
     text-align: center;
     color: #fff;
@@ -630,9 +630,8 @@ const LandingWrapper = styled.div`
       bottom: 0;
       left: 0;
       right: 0;
-      width: calc(100vw - 50px);
+      width: 100%;
       height: 50%;
-      margin: 0 10px;
       display: inline-block;
     }
     h2 {
