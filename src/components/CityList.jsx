@@ -1,22 +1,35 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components";
+import i18n from "../i18n";
+import { translate } from "react-i18next"
 
-const CityListElement = ({ city, onClick }) => {
+const CityListEl = ({ city, onClick, t  }) => {
 
-  const { village, state, country, name } = city || {};
-  const cityname = city.city;
+  const { state, country, name, wikipedia } = city || {};
+  
+  let _name = city.city || name;
+  let _country = country
+  let _state = state
+
+  if(i18n.language.indexOf("de") === 0) {
+    if(wikipedia && wikipedia.indexOf("de:") === 0 ) _name = wikipedia.substring(3,wikipedia.length)
+    if(country === "Germany"){
+      _country = t("landingPage.city-search."+country.toLowerCase())
+      _state = t("landingPage.city-search.states."+state.toLowerCase().replace('ü','u'))
+    }
+  }
 
   return (
     <li onClick={ev => {ev.preventDefault(); onClick(city)}}>
       <div className= "pure-g">
         <div className= "pure-u-23-24">
           <div>
-            <span className= "city">{cityname || name}</span>
+            <span className= "city">{_name}</span>
           </div>
           <div>
-            <span className = "state">{state}</span>
-            <span className = "country">{country}</span>
+            <span className = "state">{_state}</span>
+            <span className = "country">{_country}</span>
           </div>
         </div>
         <div className = "pure-u-1-24 chevron">
