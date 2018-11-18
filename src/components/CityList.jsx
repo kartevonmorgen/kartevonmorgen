@@ -26,18 +26,34 @@ const CityListElement = ({ city, onClick }) => {
     </li>)
 }
 
-const CityList = ({ cities=[], onClick }) =>
-  <ListWrapper className= "city-list">
-    <ul>{
-      cities.map(c =>
-        <CityListElement
-          city    = {c}
-          key     = {c.osm_id}
-          onClick = {onClick} />
-      )}
-    </ul>
-  </ListWrapper>
+const CityListElement = translate('translation')(CityListEl)
 
+const CityList = ({ cities=[], onClick, maxEntries }) => {
+
+  cities.sort((a, b) => parseInt(a.place_rank) - parseInt(b.place_rank) )
+
+  if(i18n.language.indexOf("de")===0){
+    const compareString = "GermanyAustriaSwitzerland"
+    cities.sort((a, b) =>{
+      const a_points = compareString.indexOf(a.country) ? 0 : 1
+      const b_points = compareString.indexOf(b.country) ? 0 : 1
+      return parseInt(b_points) - parseInt(a_points)
+    })
+  }
+
+  return (
+    <ListWrapper className= "city-list">
+      <ul>{
+        cities.slice(0,maxEntries).map(c =>
+          <CityListElement
+            city    = {c}
+            key     = {c.osm_id}
+            onClick = {onClick} />
+        )}
+      </ul>
+    </ListWrapper>
+  )
+}
 module.exports = CityList
 
 

@@ -56,7 +56,8 @@ class Sidebar extends Component {
                     { t("search-results.cities") }
                   </GroupHeader>
                   <CityList
-                    cities={ search.cities.slice(0, 5) }
+                    cities={ search.cities }
+                    maxEntries={ 5 }
                     onClick={ city => {
                       dispatch(Actions.setCenter({
                         lat: city.lat,
