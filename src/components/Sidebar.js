@@ -15,7 +15,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
 
-
 class Sidebar extends Component {
 
   entryContent = null;
@@ -53,6 +52,8 @@ class Sidebar extends Component {
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
     const invisibleEntries = search.invisible.filter(e => entries[e.id]).map(e => entries[e.id]);
+
+    const entry = entries[search.current] || null;
 
     var content;
     switch (view.left) {
@@ -114,19 +115,24 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
-        content = (
+        if(!entry) content = ''
+        else content = (
           <div className="content" ref={this.setEntryContentRef}>
             <EntryDetails
-              entry={ entries[search.current] || null }
+              entry={ entry }
               dispatch={ dispatch }
               mapCenter={ map.center }
             />
             <Ratings
-              entry={ entries[search.current] || null}
-              ratings={ (entries[search.current] ? entries[search.current].ratings || [] : []).map(id => {
+              entry={ entry }
+              ratings={ (entry ? entry.ratings || [] : []).map(id => {
                 return ratings[id];
               })}
               onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
+            />
+            <MetaFooter 
+              changed = {entry.created} 
+              version = {entry.version}
             />
           </div>
         );
@@ -244,6 +250,30 @@ class Sidebar extends Component {
     return(content);
   }
 }
+
+
+
+
+
+const MetaFooter = (props) => {
+  const now = Date.now()
+  const edited = new Date(props.changed*1000)
+  const diffDate = Math.round((now-edited)/(1000*60*60*24))
+  const fullDate = edited.toLocaleString()
+  const fullDateString = "last edit " + ((diffDate < 1) ? "today" : diffDate + " days ago" )
+
+  return(
+    <MetaFoot><small><a title={fullDate}>{fullDateString} // rev {props.version}</a></small></MetaFoot>
+  )
+}
+
+const MetaFoot = styled.div`
+  text-align:center;
+  color: #ccc;
+  margin-bottom: -1rem;
+  margin-top: 3rem;
+`
+
 
 Sidebar.propTypes = {
   view:           PropTypes.object.isRequired,
