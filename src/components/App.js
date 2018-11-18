@@ -306,8 +306,10 @@ const LeftPanel = styled.div `
       height: 100vh;
       width: 100%;
       box-sizing: border-box;
-      padding-bottom: 30px;
+      padding-bottom: 1rem;
       position: absolute;
+      display: flex;
+      flex-direction: column;
     }
   }
   &.closed {
