@@ -31,7 +31,6 @@ class Main extends Component {
   escFunction(event){
     if(event.keyCode === 27) { //ESC
       const { view, dispatch}  = this.props
-      if(view.menu) return dispatch(Actions.toggleLandingPage())
       if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
       if(view.left === V.ENTRY) {
         dispatch(Actions.setCurrentEntry(null, null));

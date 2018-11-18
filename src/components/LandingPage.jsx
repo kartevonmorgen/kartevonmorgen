@@ -20,6 +20,47 @@ import styled               from "styled-components";
 
 
 class LandingPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { selection: 0 };
+  }
+
+  _onKeyUp(ev) {
+    ev.preventDefault();
+    switch (ev.key) {
+      case "Escape":
+        this.props.onEscape();
+        break;
+      case "Enter":
+        this.props.onSelection(this.props.cities[this.state.selection]);
+        break;
+      case "ArrowDown":
+        this.moveSelection(1)
+        break;
+      case "ArrowUp":
+        this.moveSelection(-1)
+        break;
+    }
+  }
+
+  _onMouseEnter(index) {
+    this.moveSelection( index - this.state.selection)
+  }
+
+  moveSelection(incr) {
+    console.log(incr)
+    let pos = this.state.selection + incr
+    const cityLength = this.props.cities.length
+    if (pos >= cityLength) pos = 0
+    if (pos < 0 ) pos = 0
+    this.setState({ selection: pos })
+  }
+
+  _onMapClick(ev) {
+    if (ev.target.nodeName.toLowerCase() === "div") this.props.onMapClick();
+  }
+
   render() {
 
     const { content, searchText, searchError, cities, onSelection, onEscape,
@@ -29,18 +70,6 @@ class LandingPage extends Component {
       return this.props.t("landingPage." + key);
     };
 
-    const onKeyUp = ev => {
-      ev.preventDefault();
-      console.log(ev.key);
-      switch (ev.key) {
-        case "Escape":
-          onEscape();
-          break;
-        case "Enter":
-          onSelection(cities[0]);
-      }
-    }
-
     const onPlaceSearch = ev => {
       const target = ev.target;
       const v = target != null ? target.value : void 0;
@@ -48,10 +77,6 @@ class LandingPage extends Component {
         return;
       }
       onChange(v);
-    }
-
-    const _onMapClick = ev => {
-      if (ev.target.nodeName.toLowerCase() === "div") this.props.onMapClick();
     }
 
     let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
@@ -267,7 +292,7 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-        <div onClick={_onMapClick} className ={ "search" + (content ? '' : ' start')}>
+        <div onClick={this._onMapClick} className ={ "search" + (content ? '' : ' start')}>
           <div className = "landing-content">
             <h1>{t("slogan")}</h1>
             <div className="place-search">
@@ -275,7 +300,7 @@ class LandingPage extends Component {
                 <input
                   className   = "pure-u-1"
                   onChange    = {onPlaceSearch}
-                  onKeyUp     = {onKeyUp}
+                  onKeyUp     = { (ev) => {this._onKeyUp(ev) }}
                   value       = {searchText || ''}
                   type        = 'text'
                   placeholder = {t("city-search.placeholder")}
@@ -291,8 +316,15 @@ class LandingPage extends Component {
                         </a>
                       </div>
                       : cities && cities.length > 0
-                        ? <CityList cities={cities} onClick={onSelection} />
-                        : <div className="error">{t("city-search.no-results")}&nbsp;&nbsp;
+                        ? <CityList
+                          maxEntries={5}
+                          landing={true}
+                          cities={cities}
+                          onClick={onSelection}
+                          selection={this.state.selection}
+                          onMouseEnter={ (index) => {this._onMouseEnter(index) }}
+                        />
+                        : <div className="error">{t("city-search.no-results")}<br/>
                           <a onClick={() => onClick('map')} href="#" className="link">
                             {t("city-search.show-map")}
                           </a></div>
@@ -386,7 +418,7 @@ const LandingWrapper = styled.div`
     margin-block-start: 0.1em;
   }
   .place-search {
-    max-width: 500px;
+    max-width: 35rem;
     margin: auto;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -408,13 +440,6 @@ const LandingWrapper = styled.div`
       padding-top: 0.3em;
       background: rgba(0,0,0,0.5);
       border-radius: 0 0 0.3em 0.3em;
-      li:hover {
-        background: #000;
-        border-radius: 0 0 0.3em 0.3em;
-        div.chevron {
-          color: #fff;
-        }
-      }
     }
   }
   .content {
