@@ -8,7 +8,7 @@ import { translate }          from "react-i18next";
 import Actions                from "../Actions";
 
 const LoadingEntryMessage = styled.div`
-  margin: 3em 2em; !important;
+  margin: 3em 2em !important;
 `;
 
 const Navbar = styled.nav`
