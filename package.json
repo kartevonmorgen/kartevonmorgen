@@ -59,7 +59,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "source-sans-pro": "^2.40.0",
-    "styled-components": "^2.4.1",
+    "styled-components": "^4.1.1",
     "superagent": "^3.8.3",
     "superagent-prefix": "0.0.2",
     "typeface-rubik": "0.0.54",
