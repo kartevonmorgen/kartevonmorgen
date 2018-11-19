@@ -65,6 +65,8 @@ class KVMMap extends Component {
 
     var markers = [];
 
+    
+
     const {
       entries,
       center,
@@ -91,6 +93,7 @@ class KVMMap extends Component {
         if(e.ratings.length > 0 && avg_rating && avg_rating > 0){
           let opacity = 0.5;
           if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
+          if( marker ) opacity = 0.3;
           markers.push(
             <Marker
               key       = { e.id }
@@ -107,7 +110,8 @@ class KVMMap extends Component {
 
           let opacity = 0.5;
           if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
-
+          if( marker ) opacity = 0.3;
+          
           markers.push(
             <CircleMarker
               onClick   = { () => { onMarkerClick(e.id) }}
