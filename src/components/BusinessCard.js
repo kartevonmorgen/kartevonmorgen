@@ -44,6 +44,15 @@ class BusinessCard extends Component {
     return (mail.length > 30) ? "E-Mail" : mail
   }
 
+  telLink (){
+    const entry = this.props.entry;
+    if(!entry.telephone) return null
+    const tel = entry.telephone
+    let url = "tel:" + tel.replace(/[^0-9+]/g,'')
+    return <EntryLink href={url}>{tel}</EntryLink>
+
+  }
+
   render () {
     const { entry, hasImage, dispatch, t } = this.props;
     const categoryName = NAMES[entry.categories && entry.categories[0]]
@@ -59,6 +68,7 @@ class BusinessCard extends Component {
       const shortHomepage = this.homepageLink()
       const shortMail = this.mailLink()
       const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
+      const telephoneLink = this.telLink()
 
       return (
         <EntryDetailPage hasImage={hasImage}>
@@ -88,7 +98,7 @@ class BusinessCard extends Component {
             (entry.telephone
               ?
               <div key="tel">
-                <FontAwesomeIconElement icon="phone" />{ entry.telephone }
+                <FontAwesomeIconElement icon="phone" />{ telephoneLink }
               </div>
               : null),
             ((entry.street || entry.zip || entry.city) ?
