@@ -55,8 +55,6 @@ class BusinessCard extends Component {
 
   render () {
     const { entry, hasImage, dispatch, t } = this.props;
-    const categoryName = NAMES[entry.categories && entry.categories[0]]
-
     if (!entry) {
       return(
         <LoadingEntryMessage>
@@ -65,6 +63,7 @@ class BusinessCard extends Component {
       );
     }
     else {
+      const categoryName = NAMES[entry.categories && entry.categories[0]]
       const shortHomepage = this.homepageLink()
       const shortMail = this.mailLink()
       const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)

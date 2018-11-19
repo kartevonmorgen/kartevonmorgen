@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Card     from "./card";
 import WebAPI   from "../../WebAPI";
 import parseUrl from "../../util/parseUrl";
-import "../../components/styling/App.styl";
 import { I18nextProvider } from 'react-i18next';
 import i18n     from "../../i18n";
 
@@ -25,6 +24,7 @@ const render = () => {
 render();
 
 const entryID = parseUrl(window.location.href).params.entry;
+
 WebAPI.getEntries([entryID], (err, res) => {
   if(!err && res.length > 0) {
     store.entry = res[0];
