@@ -42,6 +42,140 @@ const rating_groups = (ratings=[]) => {
   return groups_sorted;
 }
 
+class Ratings extends Component {
+
+  render() {
+    const { entry, ratings, onRate } = this.props;
+    var t = (key) => {
+      return this.props.t("ratings." + key);
+    };
+
+    const groups = rating_groups(ratings);
+
+    const ratingElements = groups.map(g => {
+      const context = g[0].context;
+      const l = g.length;
+      const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
+      const leafHeight = 35
+      const headingColor = (context !== "renewable" ? STYLE.rating_contexts[context] : STYLE.yellowText)
+
+      return (
+        <RatingContextWrapper key={context}>
+          <RatingContextHeading>
+            <span style={{ color: headingColor }} >{t("contextName." + context)}</span>
+          </RatingContextHeading>
+          <LeafWrapper>
+            <svg width={leafHeight} height={leafHeight}>
+              <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
+                <FlowerLeaf
+                  transform = {"rotate(180)"}
+                  color     = {STYLE.rating_contexts[context]}
+                  height    = { leafHeight }
+                  width     = {0.7 * leafHeight} />
+              </g>
+            </svg>
+          </LeafWrapper>
+          <RatingListForContext>
+            {
+              g.map(r => <li key={r.id}>{Rating(r, t)}</li>)
+            }
+          </RatingListForContext>
+        </RatingContextWrapper>)
+    });
+
+    if(entry){
+      return(
+        <RatingsWrapper>
+          <FlowerWrapper>
+            <Flower ratings={ratings} radius={40} />
+          </FlowerWrapper>
+          <HeadingWrapper>
+            <h3>{t("heading")}</h3>
+            <AdditionalRatingButtonWrapper>
+              { entry.ratings && entry.ratings.length > 0
+                ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
+                : ""
+              }
+            </AdditionalRatingButtonWrapper>
+          </HeadingWrapper>
+          { entry.ratings && entry.ratings.length > 0
+            ? <div>
+              { ratingElements }
+            </div>
+            : <FirstRatingButtonWrapper>
+              <p>{t("noRatingsYet")}</p>
+              <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
+            </FirstRatingButtonWrapper>
+          }
+        </RatingsWrapper>
+      );
+    } else {
+      return(null);
+    }
+  }
+}
+
+const Comment = (comment) =>
+  <div className="comment">
+    {comment.text}
+  </div>
+
+const RatingWrapper = styled.div`
+  font-size: 0.9em;
+  overflow: hidden;
+`
+
+const RatingTitle = styled.span`
+  margin-left: 0.3em;
+  font-weight: bold;
+`
+
+const RatingTitleWrapper = styled.div`
+  max-width: 288px;
+`
+
+const SourceWrapper = styled.div`
+  color: #AAA;
+  text-align: right;
+`
+
+const rating_value_key = (value) => {
+  switch(value){
+    case -1: return "minusOne";
+    case 0: return "zero";
+    case 1: return "one";
+    case 2: return "two";
+    default: return "invalidRatingValue";
+  }
+}
+
+const Rating = (rating, t) => {
+
+  const source = rating.source ? rating.source : ''
+  const match = source.match(/(?:(?:https?|ftp):\/\/)?[a-z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF/\-?=%.]+\.[\w/\-?=%#&_.]+[\w?&%/#]+/i)
+
+  const before = match ? source.substring(0,match.index) : ''
+  const after = match ? source.substring( match.index+match[0].length, source.length)  : ''
+  let href = match ? match[0]  : ''
+  if(href.indexOf('http') !== 0)  href = 'http://' + href
+
+  let sourceSpan = () => { return match ? <span> {before} <Link target="_blank" href={href}>Website</Link> {after}</span> : <span>{source}</span>}
+
+  return (
+    <RatingWrapper>
+      <RatingTitleWrapper>
+        <span>{t("valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
+      </RatingTitleWrapper>
+      <RatingCommentList>
+        {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
+      </RatingCommentList>
+      <SourceWrapper>{ sourceSpan() }</SourceWrapper>
+    </RatingWrapper>
+  )
+}
+
+module.exports = translate('translation')(Ratings);
+
 const RatingsWrapper = styled.div`
   margin: 1.8em;
   color: #333;
@@ -124,122 +258,10 @@ const LeafWrapper = styled.div`
   padding: 0 !important;
 `
 
-class Ratings extends Component {
-
-  render() {
-    const { entry, ratings, onRate } = this.props;
-    var t = (key) => {
-      return this.props.t("ratings." + key);
-    };
-
-    const groups = rating_groups(ratings);
-
-    const ratingElements = groups.map(g => {
-      const context = g[0].context;
-      const l = g.length;
-      const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
-      const leafHeight = 35
-      const headingColor = (context !== "renewable" ? STYLE.rating_contexts[context] : STYLE.yellowText)
-
-      return (
-        <RatingContextWrapper key={context}>
-          <RatingContextHeading>
-            <span style={{ color: headingColor }} >{t("contextName." + context)}</span>
-          </RatingContextHeading>
-          <LeafWrapper>
-            <svg width={leafHeight} height={leafHeight}>
-              <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
-                <FlowerLeaf
-                  transform = {"rotate(180)"}
-                  color     = {STYLE.rating_contexts[context]}
-                  height    = { leafHeight }
-                  width     = {0.7 * leafHeight} />
-              </g>
-            </svg>
-          </LeafWrapper>
-          <RatingListForContext>
-            {
-              g.map(r => <li key={r.id}>{Rating(r, t)}</li>)
-            }
-          </RatingListForContext>
-        </RatingContextWrapper>)
-    });
-
-    if(entry){
-      return(
-        <RatingsWrapper>
-          <FlowerWrapper>
-            <Flower ratings={ratings} radius={40} />
-          </FlowerWrapper>
-          <HeadingWrapper>
-            <h3>{t("heading")}</h3>
-            <AdditionalRatingButtonWrapper>
-              { entry.ratings && entry.ratings.length > 0
-                ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
-                : ""
-              }
-            </AdditionalRatingButtonWrapper>
-          </HeadingWrapper>
-          { entry.ratings && entry.ratings.length > 0
-            ? <div>
-                { ratingElements }
-              </div>
-            : <FirstRatingButtonWrapper>
-                <p>{t("noRatingsYet")}</p>
-                <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
-              </FirstRatingButtonWrapper>
-          }
-        </RatingsWrapper>
-      );
-    } else {
-      return(null);
-    }
+const Link = styled.a`
+  color: ${STYLE.darkGray};
+  &:hover {
+    text-decoration: none;
+    color: #000;
   }
-}
-
-const Comment = (comment) =>
-  <div className="comment">
-    {comment.text}
-  </div>
-
-const RatingWrapper = styled.div`
-  font-size: 0.9em;
-  overflow: hidden;
 `
-
-const RatingTitle = styled.span`
-  margin-left: 0.3em;
-  font-weight: bold;
-`
-
-const RatingTitleWrapper = styled.div`
-  max-width: 288px;
-`
-
-const SourceWrapper = styled.div`
-  color: #AAA;
-  text-align: right;
-`
-
-const rating_value_key = (value) => {
-  switch(value){
-    case -1: return "minusOne";
-    case 0: return "zero";
-    case 1: return "one";
-    case 2: return "two";
-    default: return "invalidRatingValue";
-  }
-}
-
-const Rating = (rating, t) =>
-  <RatingWrapper>
-    <RatingTitleWrapper>
-      <span>{t("valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
-    </RatingTitleWrapper>
-    <RatingCommentList>
-      {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
-    </RatingCommentList>
-    <SourceWrapper><span>{(rating.source != "") ? ("(" + rating.source + ")") : ""}</span></SourceWrapper>
-  </RatingWrapper>
-
-module.exports = translate('translation')(Ratings);
