@@ -154,7 +154,6 @@ const KVTooltip = styled(Tooltip)`
   }
   
   > h3{
-    font-family: sans-serif;
     margin: .5rem 0 -.5rem 0;
     padding: 0;
     font-size: .9rem;

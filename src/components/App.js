@@ -23,8 +23,9 @@ import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
 import "./styling/Icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styled,{ keyframes } from "styled-components";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 import STYLE                from "./styling/Variables"
+
 
 class Main extends Component {
   
@@ -70,6 +71,7 @@ class Main extends Component {
     
     return (
       <StyledApp className="app">
+        <GlobalStyle />
         <MainWrapper className="main">
           <NotificationsSystem theme={theme}/>
           { 
@@ -250,10 +252,23 @@ Main.propTypes = {
 
 module.exports = translate('translation')(pure(Main))
 
-
-
-
 /* Moved all styles here. TODO: Move to right components */
+
+
+const GlobalStyle = createGlobalStyle`
+  
+  @media only screen and (max-width: 600px) {
+    body { font-size:80%;}
+  }
+
+  h1, h2, h3, h4, h5, h6, h7 {
+    font-family: ${STYLE.headerFont};
+  }
+  
+  html, button, input, select, textarea {
+    font-family: ${STYLE.bodyFont};
+  }
+`;
 
 
 // Create the keyframes
@@ -611,3 +626,4 @@ const StyledApp = styled.div `
     margin-top: 0.7em;
   }
 `
+
