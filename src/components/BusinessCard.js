@@ -7,7 +7,7 @@ import AddressLine from "./AddressLine";
 import T from "prop-types";
 import Actions from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ROUTEPLANNER } from "../constants/URLs.js"
+import { ROUTEPLANNERS } from "../constants/URLs.js"
 import { NAMES } from "../constants/Categories"
 
 const Tags = (tags=[], dispatch) =>
@@ -29,7 +29,7 @@ const Tags = (tags=[], dispatch) =>
 
 class BusinessCard extends Component {
 
-  homepageLink (){
+  getHomepageLink (){
     const { entry, t } = this.props;
     if(!entry.homepage) return '';
     let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "")
@@ -38,19 +38,36 @@ class BusinessCard extends Component {
     return shortLink
   }
 
-  mailLink (){
+  getMailLink (){
     const mail = this.props.entry.email
     if (!mail) return '';
     return (mail.length > 30) ? "E-Mail" : mail
   }
 
-  telLink (){
+  getTelLink (){
     const entry = this.props.entry;
     if(!entry.telephone) return null
     const tel = entry.telephone
     let url = "tel:" + tel.replace(/[^0-9+]/g,'')
     return <EntryLink href={url}>{tel}</EntryLink>
+  }
 
+  getRoutePlannerLink() {
+    const entry = this.props.entry;
+    let url = '';
+    let provider = '';
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) provider = "apple"
+    else if( navigator.userAgent.toLowerCase().indexOf("android") !== -1 ) provider = "android"
+    else provider = 'default'
+
+    if( provider === "apple" || provider === "default") {
+      url = ROUTEPLANNERS[provider].link.replace("{addr}",entry.street + "+" + entry.zip + "+" + entry.city)
+    }
+    else url = ROUTEPLANNERS[provider].link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
+
+    return(
+      <EntryLink title={ "Hinfinden mit "+ROUTEPLANNERS[provider].name } href={url} target="_blank">Routenplaner</EntryLink>
+    )
   }
 
   render () {
@@ -64,10 +81,6 @@ class BusinessCard extends Component {
     }
     else {
       const categoryName = NAMES[entry.categories && entry.categories[0]]
-      const shortHomepage = this.homepageLink()
-      const shortMail = this.mailLink()
-      const routeUrl = ROUTEPLANNER.link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
-      const telephoneLink = this.telLink()
 
       return (
         <EntryDetailPage hasImage={hasImage}>
@@ -83,24 +96,24 @@ class BusinessCard extends Component {
               <div key="hp">
                 <FontAwesomeIconElement icon="globe-africa" />
                 <EntryLink href={entry.homepage} target="_blank">
-                  { shortHomepage }
+                  { this.getHomepageLink() }
                 </EntryLink>
               </div> : null),
             (entry.email ?
               <div key="mail">
                 <FontAwesomeIconElement icon="envelope" />
                 <EntryLink href={ "mailto:" + entry.email}>
-                  {shortMail}
+                  { this.getMailLink() }
                 </EntryLink>
               </div>
               : null),
             (entry.telephone
               ?
               <div key="tel">
-                <FontAwesomeIconElement icon="phone" />{ telephoneLink }
+                <FontAwesomeIconElement icon="phone" />{ this.getTelLink() }
               </div>
               : null),
-            ((entry.street || entry.zip || entry.city) ?
+            ((entry.street && entry.zip && entry.city) ?
               <div key="addr">
                 <div key="addr" className="address pure-g">
                   <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
@@ -110,7 +123,7 @@ class BusinessCard extends Component {
                 </div>
                 <div key="route">
                   <FontAwesomeIconElement icon="route" />
-                  <EntryLink title={ "Hinfinden mit "+ROUTEPLANNER.name } href={routeUrl} target="_blank">Routenplaner</EntryLink>
+                  { this.getRoutePlannerLink() }
               </div></div>
               : null),
             (entry.tags && entry.tags.filter(t => t !="").length > 0
