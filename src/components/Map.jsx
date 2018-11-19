@@ -260,7 +260,6 @@ const LocateIcon = styled(FontAwesomeIcon)`
 
 const SmallTooltip = styled(Tooltip)`
   > h3 {
-    font-family: sans-serif;
     margin: 0;
     padding: 0;
     font-size: 0.75rem;
