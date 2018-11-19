@@ -87,7 +87,7 @@ class Ratings extends Component {
       return(
         <RatingsWrapper>
           <FlowerWrapper>
-            <Flower ratings={ratings} radius={40} />
+            <Flower ratings={ratings} radius={40} showTooltip={true} />
           </FlowerWrapper>
           <HeadingWrapper>
             <h3>{t("heading")}</h3>
