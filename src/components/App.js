@@ -99,6 +99,7 @@ class Main extends Component {
                     return dispatch(Actions.searchCity());
                   }
                 }}
+                onLocateClick={ () => { dispatch(Actions.toggleLandingPage()); return dispatch(Actions.showOwnPosition()); }}
                 onMapClick={ () => { dispatch(Actions.showSearchResults()); return dispatch(Actions.toggleLandingPage());  }}
                 content={ view.right }
                 searchText={ search.city }

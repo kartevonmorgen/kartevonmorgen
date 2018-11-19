@@ -64,7 +64,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, searchError, cities, onSelection, onEscape,
-      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, onMapClick } = this.props;
+      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, onMapClick, onLocateClick } = this.props;
     const onClick = this.props.onMenuItemClick;
     var t = (key) => {
       return this.props.t("landingPage." + key);
@@ -297,15 +297,19 @@ class LandingPage extends Component {
             <h1>{t("slogan")}</h1>
             <div className="place-search">
               <div className= "pure-g pure-form">
+                <ButtonWrapper className="pure-u-1 pure-u-md-7-24">
+                  <LocateButton onClick={() => onLocateClick()} className="pure-button" href="#"><FontAwesomeIcon icon="location-arrow"/> {t("city-search.locate")}</LocateButton>
+                </ButtonWrapper>
                 <input
-                  className   = "pure-u-1"
+                  className   = "pure-u-1 pure-u-md-17-24"
                   onChange    = {onPlaceSearch}
                   onKeyUp     = { (ev) => {this._onKeyUp(ev) }}
                   value       = {searchText || ''}
                   type        = 'text'
                   placeholder = {t("city-search.placeholder")}
                 />
-                <div className = "pure-u-1">
+                <div className = "pure-u-md-7-24">&nbsp;</div> 
+                <div className = "pure-u-1 pure-u-md-17-24">
                   { searchText && searchText.length > 3
                     ? (searchError
                       ? <div className="error">
@@ -390,6 +394,27 @@ LandingPage.propTypes = {
 
 module.exports = translate('translation')(pure(LandingPage))
 
+
+const ButtonWrapper = styled.div`
+  padding-right: 1rem;
+  text-align: right;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    text-align: center;
+    padding-right: 0;
+    position: relative;
+    top: 7.7rem;
+  }
+`
+
+const LocateButton = styled.a`
+  height: 3.2rem;
+  line-height: 2.3rem;
+  border-radius: 3px;
+  background-color: white;
+  margin-bottom: .5rem;
+`
+
 const LandingWrapper = styled.div`
   position: absolute;
   z-index: 100;
@@ -413,12 +438,13 @@ const LandingWrapper = styled.div`
   }
   input {
     font-size: 1.2em;
+    margin-bottom: .5rem;
   }
   p {
     margin-block-start: 0.1em;
   }
   .place-search {
-    max-width: 35rem;
+    max-width: 45rem;
     margin: auto;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -646,7 +672,7 @@ const LandingWrapper = styled.div`
     text-align: center;
     color: #fff;
     height: 150px;
-    z-index: 1;
+    z-index: 2;
     ul {
       text-align: left;
     }

@@ -55,7 +55,7 @@ const CityList = ({ cities=[], onClick, maxEntries, selection, landing, onMouseE
   }
 
   return (
-    <ListWrapper className= "city-list">
+    <ListWrapper landing={landing} className= "city-list">
       <ul>{
         cities.slice(0,maxEntries).map( (c,index) =>
           <CityListElement
@@ -76,14 +76,18 @@ module.exports = CityList
 
 
 const ListWrapper = styled.div`
-
 > ul {
     list-style: none;
     margin: 0;
     padding: 0;
     max-height: 17rem;
     overflow-y: auto;
+    
   }
+  ${props => props.landing && `
+    margin-top: -0.5rem;
+    position: relative;
+  `}
 `
 
 
