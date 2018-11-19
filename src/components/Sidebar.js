@@ -29,6 +29,7 @@ class Sidebar extends Component {
     if( nextProps.view.left === V.RESULT
         && Object.keys(nextProps.resultEntries).join() === Object.keys(this.props.resultEntries).join()
         && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
+        && Object.keys(nextProps.ratings).join() === Object.keys(this.props.ratings).join()
     ) return false
     return true
   }
