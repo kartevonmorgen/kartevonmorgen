@@ -336,17 +336,21 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-        <div className = "explain">{
-          content == null
-            ? <a href= "#tutorial" className= "circleTutorial">
-              <strong>
-                Tutorial
-                <div style ={{ paddingTop: "10px", fontSize: "12px"}}>
-                  <FontAwesomeIcon icon="chevron-down"/>
-                </div>
-              </strong>
-            </a>
-            : null }
+        <div>
+        { content == null
+          ? <a href= "#tutorial">
+            <TutorialButton>
+            <strong>
+              Tutorial
+              <div style ={{ paddingTop: "10px", fontSize: "12px"}}>
+                <FontAwesomeIcon icon="chevron-down"/>
+              </div>
+            </strong>
+            </TutorialButton>
+          </a>
+          : null }
+        </div>
+        <div className = "explain">
         <div className = "content">{
           content == null
             ? <div>
@@ -389,6 +393,28 @@ LandingPage.propTypes = {
 };
 
 module.exports = translate('translation')(pure(LandingPage))
+
+const TutorialButton = styled.div`
+  position: absolute;
+  bottom: -50px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  width: 100px;
+  height: 73px;
+  border-radius: 50px;
+  background-color: #000;
+  left: 50%;
+  margin-left: -50px;
+  padding-top: 27px;
+  cursor: pointer;
+  z-index: 1;
+  color: #fff;
+
+  :hover {
+    background-color: ${STYLE.anthracite};
+  }
+`;
 
 const LandingWrapper = styled.div`
   position: absolute;
@@ -582,22 +608,6 @@ const LandingWrapper = styled.div`
     }
     .version {
       font-size: 0.7em;
-    }
-    .circleTutorial {
-      display: block;
-      text-decoration: none;
-      position: absolute;
-      width: 100px;
-      border-radius: 50px;
-      background-color: #000;
-      color: #fff;
-      left: 50%;
-      margin-left: -50px;
-      height: 73px;
-      top: -180px;
-      padding-top: 27px;
-      cursor: pointer;
-      z-index: 1;
     }
     .partnerLogo {
       margin: 2em;
