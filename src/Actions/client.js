@@ -51,6 +51,13 @@ const Actions = {
   showLeftPanel       : () => ({ type: T.SHOW_LEFT_PANEL }),
   hideLeftPanel       : () => ({ type: T.HIDE_LEFT_PANEL }),
 
+  hideLeftPanelOnMobile: () =>
+    (dispatch) => {
+      if (document.documentElement.clientWidth < 600) {
+        dispatch(Actions.hideLeftPanel())
+      }
+    },
+
   showAllEntries: () =>
     (dispatch, getState) => {
       dispatch({
