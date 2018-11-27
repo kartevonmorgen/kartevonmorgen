@@ -25,6 +25,7 @@ import "./styling/Icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { keyframes, createGlobalStyle } from "styled-components";
 import STYLE                from "./styling/Variables"
+import Swipeable from 'react-swipeable'
 
 
 class Main extends Component {
@@ -51,6 +52,15 @@ class Main extends Component {
 
   componentWillUnmount(){
     document.removeEventListener("keydown");
+  }
+
+  swipedLeftOnPanel() {
+    this.props.dispatch(Actions.hideLeftPanel())
+  }
+
+  swipedRightOnMap(e, deltaX) {
+    if( e.nativeEvent === undefined || e.nativeEvent.changedTouches === undefined) return true
+    if(e.nativeEvent.changedTouches[0].pageX + deltaX < 26 ) this.props.dispatch(Actions.showLeftPanel())
   }
 
   render(){
@@ -141,52 +151,54 @@ class Main extends Component {
             view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
           }
 
-          <LeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}>
-            <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-              <SearchBar
-                searchText={search.text}
-                categories={search.categories}
-                type="integrated"
-                disabled={view.left === V.EDIT || view.left === V.NEW}
-                toggleCat={ c => {
-                  if (c === C.IDS.EVENT) {
-                    return dispatch(Actions.showFeatureToDonate("events"));
-                  } else {
-                    dispatch(Actions.toggleSearchCategory(c));
+          <Swipeable onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+            <LeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}>
+              <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
+                <SearchBar
+                  searchText={search.text}
+                  categories={search.categories}
+                  type="integrated"
+                  disabled={view.left === V.EDIT || view.left === V.NEW}
+                  toggleCat={ c => {
+                    if (c === C.IDS.EVENT) {
+                      return dispatch(Actions.showFeatureToDonate("events"));
+                    } else {
+                      dispatch(Actions.toggleSearchCategory(c));
+                      return dispatch(Actions.search());
+                    }
+                  }}
+                  onChange={txt => {
+                    if (txt == null) {
+                      txt = "";
+                    }
+                    dispatch(Actions.setSearchText(txt));
                     return dispatch(Actions.search());
-                  }
-                }}
-                onChange={txt => {
-                  if (txt == null) {
-                    txt = "";
-                  }
-                  dispatch(Actions.setSearchText(txt));
-                  return dispatch(Actions.search());
-                }}
-                onEscape={ () => {
-                  return dispatch(Actions.setSearchText(''));
-                }}
-                onEnter={ () => {}}      // currently not used, TODO
-                loading={ server.loadingSearch }
-              />
-            </div>
+                  }}
+                  onEscape={ () => {
+                    return dispatch(Actions.setSearchText(''));
+                  }}
+                  onEnter={ () => {}}      // currently not used, TODO
+                  loading={ server.loadingSearch }
+                />
+              </div>
 
-            <div className="content-wrapper">
-              <Sidebar
-                view={ view }
-                search={ search }
-                map={ map }
-                user={ user }
-                form={ form }
-                entries={entries}
-                resultEntries={ resultEntries }
-                ratings={ ratings }
-                // LeftPanelentries={ server.entries } never used…?
-                dispatch={ dispatch }
-                t={ t }
-              />
-            </div>
-          </LeftPanel>
+              <div className="content-wrapper">
+                <Sidebar
+                  view={ view }
+                  search={ search }
+                  map={ map }
+                  user={ user }
+                  form={ form }
+                  entries={entries}
+                  resultEntries={ resultEntries }
+                  ratings={ ratings }
+                  // LeftPanelentries={ server.entries } never used…?
+                  dispatch={ dispatch }
+                  t={ t }
+                />
+              </div>
+            </LeftPanel>
+          </Swipeable>
 
           <HiddenSidebar>
             <button
@@ -211,7 +223,7 @@ class Main extends Component {
             </div>
           </RightPanel> 
 
-          <div className="center">
+          <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
             <Map
               marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
               highlight={ search.highlight }
@@ -233,7 +245,7 @@ class Main extends Component {
               onLocate={ () => { return dispatch(Actions.showOwnPosition()); }}
               showLocateButton={ true }
             />
-          </div>
+          </Swipeable>
         </MainWrapper>
       </StyledApp>
     );  
