@@ -1,7 +1,6 @@
 import path        from "path"
 import webpack     from "webpack"
 import HTMLPlugin  from 'html-webpack-plugin'
-import nib         from "nib"
 
 let plugins = [];
 
@@ -53,21 +52,6 @@ const config = {
           "style-loader",
           "css-loader"
         ]
-      },
-      {
-        test:   /\.styl$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "stylus-loader",
-            options: {
-              compress: (production ? true : false),
-              use: [nib()]
-            }
-          }
-        ]
-
       },
       {
         test:   /\.jpe?g$|\.gif$|\.png$/,
