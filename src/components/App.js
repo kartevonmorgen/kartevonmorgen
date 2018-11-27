@@ -221,6 +221,7 @@ class Main extends Component {
               entries={ resultEntries}
               ratings={ ratings}
               onClick={ latlng => {
+                dispatch(Actions.hideLeftPanelOnMobile());
                 return dispatch(Actions.setMarker(latlng));
               }}
               onMarkerClick={ id => { 
