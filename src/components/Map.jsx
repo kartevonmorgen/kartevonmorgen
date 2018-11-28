@@ -163,7 +163,7 @@ class KVMMap extends Component {
           className   = "map"
           onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
-          onClick     = { (e) => { onClick(e.latlng) }} >
+          onClick     = { (e) => { onClick(e) }} >
 
           <TileLayer
             url = { URLs.TILE_SERVER.link }
