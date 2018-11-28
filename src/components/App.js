@@ -232,11 +232,18 @@ class Main extends Component {
               category={ form[EDIT.id] ? form[EDIT.id].category ? form[EDIT.id].category.value : null : null}
               entries={ resultEntries}
               ratings={ ratings}
-              onClick={ latlng => {
+              onClick={ (event) => {
+                if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path') return false;
+                
+                //back to overview
+                dispatch(Actions.setCurrentEntry(null, null));
+                dispatch(Actions.showSearchResults());
+                dispatch(Actions.setCenterInUrl(mapCenter));
+
                 dispatch(Actions.hideLeftPanelOnMobile());
-                return dispatch(Actions.setMarker(latlng));
+                return dispatch(Actions.setMarker(event.latlng));
               }}
-              onMarkerClick={ id => { 
+              onMarkerClick={ id => {
                 dispatch(Actions.setCurrentEntry(id, null)); 
                 return dispatch(Actions.showLeftPanel()); 
               }}
