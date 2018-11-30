@@ -422,7 +422,7 @@ const LandingWrapper = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1001;
-  background-color: rgba(0,0,0,0.7);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 90%);
   min-height: 100vh;
   h1, h3 {
     font-family: ${STYLE.headerFont};
@@ -665,8 +665,8 @@ const LandingWrapper = styled.div`
       font-size: 3em;
     }
     .landing-content {
-      position: relative;
-      top: 20%;
+      position: absolute;
+      top: 63%;
       bottom: 0;
       left: 0;
       right: 0;
