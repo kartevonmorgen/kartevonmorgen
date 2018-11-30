@@ -482,6 +482,7 @@ const LandingWrapper = styled.div`
   }
   .banner {
     background-color: #fff;
+    box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
     .content {
       max-width: initial;
       padding-bottom: 20px;
