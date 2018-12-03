@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Actions              from "../Actions";
 import validation           from "../util/validation";
-import normalize            from "../util/normalize";
 import { reduxForm, Field, initialize } from "redux-form";
 import NavButton            from "./NavButton";
 import { IDS, NAMES }       from "../constants/Categories";
@@ -11,9 +10,11 @@ import { EDIT             } from "../constants/Form";
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SelectTags           from './SelectTags';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Form extends Component {
+
 
   render() {
 
@@ -70,13 +71,12 @@ class Form extends Component {
               className="pure-input-1"
               component="input"
               placeholder={t("tags")}
-              normalize={normalize.tags} 
+              component={SelectTags} 
             />
             <FieldElement
               name="tags"
               component={errorMessage} />
           </Fieldset>
-
 
             <Fieldset>
               <legend>
@@ -233,7 +233,8 @@ class Form extends Component {
 Form.propTypes = {
   isEdit : T.string,
   license: T.string,
-  dispatch: T.func
+  dispatch: T.func,
+  tags: T.array
 };
 
 module.exports = reduxForm({
