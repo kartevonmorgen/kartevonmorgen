@@ -427,7 +427,7 @@ const StyledApp = styled.div `
   h1, h2, h3, h4, h5, h6, h7 {
     font-family: ${STYLE.headerFont};
     font-weight: 500;
-    margin-block-end: 0;
+    margin-block-end: 2px;
   }
 
   button {
