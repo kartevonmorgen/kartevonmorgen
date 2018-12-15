@@ -159,7 +159,7 @@ const Rating = (rating, t) => {
   let href = match ? match[0]  : ''
   if(href.indexOf('http') !== 0)  href = 'http://' + href
 
-  let sourceSpan = () => { return match ? <span> {before} <Link target="_blank" href={href}>Website</Link> {after}</span> : <span>{source}</span>}
+  let sourceSpan = () => { return match ? <span> {before} <Link target="_blank" href={href}>{t('sourceWebsite')}</Link> {after}</span> : <span>{source}</span>}
 
   return (
     <RatingWrapper>

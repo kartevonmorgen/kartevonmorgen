@@ -114,6 +114,7 @@
 		"noRatingsYet":"Für diesen Eintrag wurden noch keine Bewertungen abgegeben.",
 		"giveFirstRating":"jetzt bewerten",
 		"newRating":"Bewertung abgeben",
+		"sourceWebsite":"Quelle",
 		"contextName":{
 			"diversity":"Natürlichkeit",
 		    "renewable":"Erneuerbarkeit",
