@@ -65,9 +65,9 @@
 		"reportLink": "Diesen Eintrag Melden",
 		"reportSubject": "Eintrag Melden",
 		"reportBody": "Mit dem Eintrag {link} gibt es folgendes Problem:",
-		"lastEdit": "letzte änderung:",
+		"lastEdit": "Letzte Änderung:",
 		"today": "heute",
-		"daysAgo": "tage her"
+		"daysAgo": "Tage her"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",

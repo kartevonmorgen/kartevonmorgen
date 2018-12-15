@@ -272,7 +272,7 @@ const Footer = (props) => {
   return(
     <MetaFoot>
       <a href={mailToString}><b>{props.t("entryDetails.reportLink")}</b></a>
-      <span><a title={fullDate}>{fullDateString} // rev{props.version}</a></span>
+      <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
     </MetaFoot>
   )
 }
