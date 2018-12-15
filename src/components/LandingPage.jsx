@@ -442,7 +442,7 @@ const LandingWrapper = styled.div`
     .menu-wrapper {
       text-align: right;
       .language-wrapper {
-        margin-right: 1em;
+        margin: 1em;
         font-size: 0.8em;
         color: #777;
         .language-link {
@@ -471,7 +471,6 @@ const LandingWrapper = styled.div`
       font-size: 0.9em;
       display: inline-block;
       position: relative;
-      margin-top: 30px;
       max-width: 655px;
       ul {
         margin: 0;
