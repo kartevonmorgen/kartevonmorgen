@@ -327,7 +327,18 @@ const LeftPanel = styled.div `
     .result {
       box-sizing: border-box;
       padding-bottom: 30px;
-      overflow: auto;
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #999;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #666;
+      }
     }
     .content-above-buttons {
       overflow-y: scroll;
@@ -335,6 +346,18 @@ const LeftPanel = styled.div `
       height: calc(100vh - 42px);
       box-sizing: border-box;
       padding-bottom: 30px;
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #999;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #666;
+      }
     }
     .content {
       overflow-y: scroll;
@@ -346,6 +369,18 @@ const LeftPanel = styled.div `
       position: absolute;
       display: flex;
       flex-direction: column;
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #999;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #666;
+      }
     }
   }
   &.closed {
