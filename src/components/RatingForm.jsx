@@ -32,6 +32,10 @@ const AspectExplanation = styled.div`
   color: ${STYLE.darkGray};
 `
 
+const Form = styled.form`
+  margin: 1.8em;
+`
+
 class RatingForm extends Component {
 
   render() {
@@ -41,7 +45,7 @@ class RatingForm extends Component {
 
     return (
       <div>
-        <form
+        <Form
           className = "new-rating-form"
           action    = 'javascript:void();' >
 
@@ -155,7 +159,7 @@ class RatingForm extends Component {
               <Field name="value" component={errorMessage} />
             </fieldset>
           </div>
-        </form>
+        </Form>
         <nav className="menu pure-g">
           <NavButton
             keyName = "cancel"
