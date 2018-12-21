@@ -36,7 +36,7 @@ To be able to start development you'll need the following tools:
 - [git](https://www.git-scm.com/)
 - [Node.js](https://nodejs.org/) version 6.x
 - [npm](https://www.npmjs.com/package/npm) version 3.x
-- [OpenFairDB](https://github.com/flosse/openfairdb)
+- [OpenFairDB](https://github.com/slowtec/openfairdb)
 
 Now clone this repository:
 
@@ -64,7 +64,7 @@ To build a Nix derivation, run
 
 ### Local development setup
 
-The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/flosse/openfairdb). To do so change `src/constants/URLs.js` to
+The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/slowtec/openfairdb). To do so change `src/constants/URLs.js` to
 
 ``` js
 OFDB_API: {
@@ -82,7 +82,7 @@ tar xzf openfairdb-x86_64-linux-v0.3.1.tar.gz
 ./openfairdb
 ```
 `openfairdb` should now be listening on port 6767.
-To actually get started to also need to add some [content](https://github.com/flosse/openfairdb/issues/112#issuecomment-432724965).
+To actually get started to also need to add some [content](https://github.com/slowtec/openfairdb/issues/112#issuecomment-432724965).
 
 Get the web app running:
 ``` sh
@@ -120,7 +120,7 @@ Updating the `node-packages.nix` works as follows:
 
 ### Backend
 
-KVM uses the [OpenFairDB](https://github.com/flosse/openfairdb) as its backend.
+KVM uses the [OpenFairDB](https://github.com/slowtec/openfairdb) as its backend.
 
 ## License
 
