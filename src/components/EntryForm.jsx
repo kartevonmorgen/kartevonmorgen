@@ -79,9 +79,9 @@ class Form extends Component {
           </Fieldset>
 
             <Fieldset>
-              <legend>
-                <span className="fieldsetTitle">{t("location")}</span>
-              </legend>
+              <FieldsetLegend>
+                <FieldsetTitle>{t("location")}</FieldsetTitle>
+              </FieldsetLegend>
               <div className= "pure-g">
                 <div className= "pure-u-15-24">
                   <FieldElement name="city" className="pure-input-1" component="input" placeholder={t("city")} />
@@ -115,7 +115,7 @@ class Form extends Component {
 
             <Fieldset>
               <OptionalLegend>
-                <span className="fieldsetTitle">{t("contact")}</span>
+                <FieldsetTitle>{t("contact")}</FieldsetTitle>
               </OptionalLegend>
               <div className= "pure-g">
                 <OptionalFieldLabel className= "pure-u-2-24">
@@ -154,7 +154,7 @@ class Form extends Component {
 
             <Fieldset>
               <OptionalLegend>
-                <span className="fieldsetTitle">{t("entryImage")}</span>
+                <FieldsetTitle>{t("entryImage")}</FieldsetTitle>
               </OptionalLegend>
               <OptionalFieldText>{t("imageUrlExplanation")}</OptionalFieldText>
               <div className= "pure-g">
@@ -178,9 +178,9 @@ class Form extends Component {
             </Fieldset>
 
             <Fieldset>
-              <legend>
-                <span className="fieldsetTitle">{t("license")}</span>
-              </legend>
+              <FieldsetLegend>
+                <FieldsetTitle>{t("license")}</FieldsetTitle>
+              </FieldsetLegend>
               <div className= "pure-g license">
                 <label className= "pure-u-2-24">
                   <FontAwesomeIcon icon={['fab', 'creative-commons']} />
@@ -258,11 +258,10 @@ const AddEntryForm = styled.form`
   select {
     height: 2.5em;
   }
-  .fieldsetTitle {
-    font-weight: bold;
-    margin-top: 0.5em;
-    margin-bottom: 0;
-  }
+`
+const FieldsetTitle = styled.span`
+  margin-top: 0.5em;
+  margin-bottom: 0;
 `
 
 const ClickOnMapText = styled.div`
@@ -296,9 +295,14 @@ const OptionalFieldText = styled.div`
   color: #777;
   margin-bottom: 4px;
 `;
+  
+const FieldsetLegend = styled.legend`
+  font-weight: 500 !important;
+`;
 
 const OptionalLegend = styled.legend`
   color: #777 !important;
+  font-weight: 400 !important;
 `;
 
 const errorMessage = ({meta}) =>
