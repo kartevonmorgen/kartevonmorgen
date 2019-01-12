@@ -233,15 +233,17 @@ class Main extends Component {
               entries={ resultEntries}
               ratings={ ratings}
               onClick={ (event) => {
-                if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path') return false;
-                
-                //back to overview
-                dispatch(Actions.setCurrentEntry(null, null));
-                dispatch(Actions.showSearchResults());
-                dispatch(Actions.setCenterInUrl(mapCenter));
+                if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path'){
+                  return false;
+                } else {
+                  //back to overview
+                  dispatch(Actions.setCurrentEntry(null, null));
+                  dispatch(Actions.showSearchResults());
+                  dispatch(Actions.setCenterInUrl(mapCenter));
 
-                dispatch(Actions.hideLeftPanelOnMobile());
-                return dispatch(Actions.setMarker(event.latlng));
+                  dispatch(Actions.hideLeftPanelOnMobile());
+                  return dispatch(Actions.setMarker(event.latlng));
+                }
               }}
               onMarkerClick={ id => {
                 dispatch(Actions.setCurrentEntry(id, null)); 
