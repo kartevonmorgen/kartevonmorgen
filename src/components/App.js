@@ -235,14 +235,15 @@ class Main extends Component {
               onClick={ (event) => {
                 if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path'){
                   return false;
+                } else if(view.left === V.NEW || view.left === V.EDIT){
+                  return dispatch(Actions.setMarker(event.latlng));
                 } else {
                   //back to overview
                   dispatch(Actions.setCurrentEntry(null, null));
                   dispatch(Actions.showSearchResults());
                   dispatch(Actions.setCenterInUrl(mapCenter));
 
-                  dispatch(Actions.hideLeftPanelOnMobile());
-                  return dispatch(Actions.setMarker(event.latlng));
+                  return dispatch(Actions.hideLeftPanelOnMobile());
                 }
               }}
               onMarkerClick={ id => {
