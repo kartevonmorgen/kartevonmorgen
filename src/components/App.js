@@ -283,7 +283,6 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, h7 {
     font-family: ${STYLE.headerFont};
-    font-weight: 500;
   }
   
   html, button, input, select, textarea {
@@ -514,7 +513,24 @@ const StyledApp = styled.div `
   .tutorial {
     margin-bottom: 3em;
     img { width: 100%; }
-  
+  }
+
+  /* TYPO */ 
+  @media only screen and(max-width: 600px) {
+    body {
+      font-size: 80%;
+    }
+  }
+
+  input, select, textarea, button {
+    font-family: ${STYLE.bodyFont};
+  }
+
+  h1, h2, h3, h4, h5, h6, h7 {
+    font-family: ${STYLE.headerFont};
+    font-weight: 500;
+    margin-block-end: 0;
+  }
 
   button {
     font-family: ${STYLE.bodyFont};
