@@ -3,6 +3,7 @@ import Actions from "../Actions"
 import { pure } from "recompose"
 import Flower from "./Flower";
 import NavButton from "./NavButton";
+import EventTimes from "./EventTimes";
 import i18n from "../i18n";
 import { NAMES, IDS } from "../constants/Categories"
 import { translate} from "react-i18next";
@@ -41,7 +42,7 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
             <FlowerWrapper>
               <Flower ratings={ratings} radius={30} showTooltip={false}/>
             </FlowerWrapper>
-          : '' }
+          : <EventTimeLabel start={ entry.start }/> }
           {
             entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
@@ -131,6 +132,17 @@ ResultList.propTypes = {
 }
 
 module.exports = translate("translation")(pure(ResultList))
+
+const EventTimeLabel = (props) => {
+  const { start } = props;
+  return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
+}
+
+const EventTimeWrapper = styled.div`
+  position: absolute;
+  top: 11px;
+  right: 19px;
+`
 
 const EntryTitle = styled.h3`
   font-size: 1.2em;
