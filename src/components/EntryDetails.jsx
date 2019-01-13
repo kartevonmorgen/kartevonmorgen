@@ -62,7 +62,7 @@ class EntryDetails extends Component {
               <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
               : null
           }
-          <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} />
+          <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} isEvent={isEvent}/>
         </div>)
     }
   }

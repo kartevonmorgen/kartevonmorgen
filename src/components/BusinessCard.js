@@ -4,6 +4,7 @@ import STYLE from "./styling/Variables"
 import { translate } from "react-i18next";
 import { pure } from "recompose";
 import AddressLine from "./AddressLine";
+import EventTimes from "./EventTimes";
 import T from "prop-types";
 import Actions from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -71,7 +72,7 @@ class BusinessCard extends Component {
   }
 
   render () {
-    const { entry, hasImage, dispatch, t } = this.props;
+    const { entry, hasImage, dispatch, t, isEvent } = this.props;
     if (!entry) {
       return(
         <LoadingEntryMessage>
@@ -90,6 +91,7 @@ class BusinessCard extends Component {
             </span>
           </EntryCategory>
           <EntryTitle>{entry.title}</EntryTitle>
+          { isEvent ? <EventTimes start={ entry.start } end={ entry.end }/> : "" }
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
             (entry.homepage ?
