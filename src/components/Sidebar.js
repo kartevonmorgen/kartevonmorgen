@@ -55,7 +55,10 @@ class Sidebar extends Component {
       ratings, dispatch, map, form, t } = this.props;
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
-    const invisibleEntries = search.invisible.filter(e => entries[e.id]).map(e => entries[e.id]);
+    const invisibleEntries = search.invisible
+      .filter(e => entries[e.id])
+      .map(e => entries[e.id])
+      .concat(search.eventsWithoutPlace);
 
     const entry = entries[search.current] || null;
 

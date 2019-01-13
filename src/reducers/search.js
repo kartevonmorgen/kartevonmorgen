@@ -7,6 +7,7 @@ const initialState = {
   city: null,
   entryResults: [],
   eventResults: [],
+  eventsWithoutPlace: [],
   error: false,
   current: null,
   categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
@@ -107,10 +108,18 @@ module.exports = (state = initialState, action = {}) => {
       if (!action.error) {
         return {
           ...state,
-          eventResults: action.payload.map(event => ({ // TODO
-            ...event,
-            categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"]
-          })),
+          eventResults: action.payload
+            .filter(event => (event.lat && event.lng))
+            .map(event => ({
+              ...event,
+              categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+            })),
+          eventsWithoutPlace: action.payload
+            .filter(event => (!event.lat || !event.lng))
+            .map(event => ({
+              ...event,
+              categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+            })),
         }
       }
       return state;
