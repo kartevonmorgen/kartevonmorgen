@@ -14,7 +14,6 @@ class EventTimes extends Component {
     const { start, end, showTimes } = this.props;
     const onSameDay = getDateString(start) === getDateString(end);
     const startString = showTimes ? getDatetimeString(start): getDateString(start);
-    console.log(end, end, getDateString(end),getDatetimeString(end),getTimeString(end),)
     const endString = end ?
       (onSameDay ? 
         (showTimes ? getTimeString(end) : null)
