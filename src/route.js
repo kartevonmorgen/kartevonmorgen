@@ -17,6 +17,7 @@ export default (event) => {
 
 const createActionsFromState = (state) => {
   const { server, map, url } = state;
+  const searchState = state.search;
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
@@ -87,16 +88,16 @@ const createActionsFromState = (state) => {
         break;
       case RoutingUsecases.CHANGE_SEARCH_CATEGORIES:
         console.log("route: categories");
-        const allCats = Object.values(IDS);
-        const catsToEnable = categories.split(",");
-        for(let c of allCats){
-          actions.push(Actions.disableSearchCategory(c));
-        }
-        for(let catName of catsToEnable){
-          const catObject = Object.entries(NAMES).find(catObject => catObject[1] === catName);
-          if(catObject){
-            const catID = catObject[0]
+        const allCats_IDS = Object.values(IDS);
+        const enabledCats_IDS = searchState.categories;
+        const catsToEnable_Names = categories.split(",");
+        for(let catID of allCats_IDS){
+          const catName = NAMES[catID];
+          if(catsToEnable_Names.includes(catName) && !enabledCats_IDS.includes(catID)){
             actions.push(Actions.enableSearchCategory(catID));
+          }
+          if(!catsToEnable_Names.includes(catName) && enabledCats_IDS.includes(catID)){
+            actions.push(Actions.disableSearchCategory(catID));
           }
         }
         break;
