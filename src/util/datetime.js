@@ -1,11 +1,11 @@
 import i18n from "react-i18next";
 
-const getDatetimeString = (date) => {
-  return getDateString(date) + ", " + getTimeString(date)
+const getDatetimeString = (unixtime) => {
+  return getDateString(unixtime) + ", " + getTimeString(unixtime)
 }
 
-const getDateString = (date) => {
-  const d = new Date(date * 1000);
+const getDateString = (unixtime) => {
+  const d = new Date(unixtime * 1000);
   const now = new Date();
   const isInThisYear = d.getYear() === now.getYear();
   let s = "";
@@ -16,8 +16,8 @@ const getDateString = (date) => {
   return s;
 }
 
-const getTimeString = (date) => {
-  const d = new Date(date * 1000);
+const getTimeString = (unixtime) => {
+  const d = new Date(unixtime * 1000);
   let s = "";
   s += d.getHours();
   s += ":" + d.getMinutes().toString().padStart(2, "0");
