@@ -68,9 +68,15 @@ module.exports = (state = initialState, action = {}) => {
       if (c2 == null) {
         return state;
       }
+      const disableEvents = action.payload === IDS.EVENT;
+      const eventResults = disableEvents ? [] : state.eventResults;
+      const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
+
       return {
         ...state,
-        categories: state.categories.filter(cat => cat !== c2)
+        categories: state.categories.filter(cat => cat !== c2),
+        eventResults,
+        eventsWithoutPlace,
       }
 
     case T.SET_SEARCH_TEXT:
