@@ -1,3 +1,6 @@
+## v0.1.27 (2019-01-13) Events
+- new(*): show events in the search results, map and EntryDetails (not possible to add events yet)
+
 ## v0.1.26 (2019-01-13)
 - a lot of style improvements: Rubik font, clearer margins, nicer Textfields in EntryForm
 - miscellaneous refactoring
