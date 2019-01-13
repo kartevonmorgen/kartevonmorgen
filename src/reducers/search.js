@@ -50,30 +50,26 @@ module.exports = (state = initialState, action = {}) => {
 
   switch (action.type) {
 
-    case T.TOGGLE_SEARCH_CATEGORY:
-      const c = action.payload;
-      if (c == null) {
+    case T.ENABLE_SEARCH_CATEGORY:
+      const c1 = action.payload;
+      if (c1 == null) {
         return state;
       }
-      //TODO: beautify
-      const cats = state.categories.indexOf(c) >= 0
-        ? (() => {
-          var ref1 = state.categories;
-          var results = [];
-          var x, i, len;
-          for (i = 0, len = ref1.length; i < len; i++) {
-            x = ref1[i];
-            if (x !== c) {
-              results.push(x);
-            }
-          }
-          return results;
-        })()
-      : [c].concat([].slice.call(state.categories));
-
+      const oldCats = state.categories;
+      const newCats = oldCats.includes(c1) ? oldCats : [ ...oldCats, c1 ];
       return {
         ...state,
-        categories: cats
+        categories: newCats
+      }
+
+    case T.DISABLE_SEARCH_CATEGORY:
+      const c2 = action.payload;
+      if (c2 == null) {
+        return state;
+      }
+      return {
+        ...state,
+        categories: state.categories.filter(cat => cat !== c2)
       }
 
     case T.SET_SEARCH_TEXT:

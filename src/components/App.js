@@ -161,7 +161,11 @@ class Main extends Component {
                   type="integrated"
                   disabled={view.left === V.EDIT || view.left === V.NEW}
                   toggleCat={ c => {
-                    dispatch(Actions.toggleSearchCategory(c));
+                    if(search.categories.includes(c)){
+                      dispatch(Actions.disableSearchCategory(c));
+                    } else {
+                      dispatch(Actions.enableSearchCategory(c));
+                    }
                     return dispatch(Actions.search());
                   }}
                   onChange={txt => {

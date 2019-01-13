@@ -20,9 +20,16 @@ const Actions = {
     type: T.FINISH_CITY_SEARCH
   }),
 
-  toggleSearchCategory: (category) => {
+  enableSearchCategory: (category) => {
     return {
-      type: T.TOGGLE_SEARCH_CATEGORY,
+      type: T.ENABLE_SEARCH_CATEGORY,
+      payload: category
+    };
+  },
+
+  disableSearchCategory: (category) => {
+    return {
+      type: T.DISABLE_SEARCH_CATEGORY,
       payload: category
     };
   },
