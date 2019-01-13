@@ -1,3 +1,31 @@
+## v0.1.26 (2019-01-13)
+- a lot of style improvements: Rubik font, clearer margins, nicer Textfields in EntryForm
+- miscellaneous refactoring
+- new(SearchBar): add loading spinner to indicate that it's currently searching
+- new(EntryDetails): show date of last entry change and version number
+- new(Ratings): show URL-like strings in ratings as links
+- new(EntryDetails): add a report-this-entry-by-email-link
+- new(EntryDetails): show a routing-planner-link
+- new(EntryDetails): show phone numbers as links
+- refactor(styling): move completely from stylus to styled-components
+- new(Sidebar): introduce swipe to close sidebar again
+- fix(webpack): remove noParse which produced a bug in production
+- new(EntryForm): autocomplete for tag field, showing existing tags
+- new(EntryDetails): click on tags starts a tag search
+- fix(Ratings): swap color of solidarity and transparency to adjust to the documentation
+- style(Sidebar): make scrollbar look better (simpler)
+- new(Map): use a different tileserver
+- new(Ratings): show tooltips when hovering over flower
+- new(Map): show tooltips when hovering over map markers
+- new(EntryDetails): shorten homepage-links that are too long for the sidebar
+- new(LandingPage): add privacy statement
+- new(EntryDetails): show Positivfaktoren-pin for each rating-category
+- new(Businesscard-Widget): remove entry-image in businesscard-widget
+- new(index.html): add Facebook Open Graph tags to show kvm-logo whenever the site is shared on Facebook
+- new(Favicon): change Favicon (3 pins and better resolution)
+- new(EntryForm): allow URLs without 'http' and 'www' (added in openfairdb), and hide 'https://www' in EntryDetails
+- new(EntryDetails): use 400x300 as suggested image format
+
 ## v0.1.25 (2018-08-27)
 - new(EntryDetails): add optional image to entry pages
 - refactor(*): transfer part of App.js into Sidebar.js
@@ -6,7 +34,6 @@
 - fix(styling): fix appearance of locate-button
 - new(notification): replace redux-flash-notification with reapop as the former is not maintained anymore
 - new(LandingPage): add 'Stadt Mannheim' as partner
-
 
 ## v0.1.24 (2018-03-22)
 - fix(IE-bug): fix bug with IE10 and lower which can't access window.location.origin
