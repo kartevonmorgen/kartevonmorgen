@@ -126,7 +126,7 @@ const Actions = {
         type: T.SET_CURRENT_ENTRY,
         payload: id,
       });
-      if(id && center){
+      if(id && center && center.lat && center.lng){
         dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         dispatch(Actions.setCenter(center));
       }

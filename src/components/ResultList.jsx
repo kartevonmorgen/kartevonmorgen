@@ -72,7 +72,7 @@ class ResultList extends Component {
         ratings      = { (e.ratings || []).map(id => ratings[id])}
         key          = { e.id         }
         highlight    = { highlight.indexOf(e.id) >= 0 }
-        onClick      = { (id, center) => { dispatch(Actions.setCurrentEntry(id, center)) }}
+        onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
         onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
         onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
         t            = { t } />);

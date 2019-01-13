@@ -54,7 +54,9 @@ const createActionsFromState = (state) => {
             entry, {lat: entries[entry].lat, lng: entries[entry].lng}));
         } else {
           actions.push(Actions.setCurrentEntry(entry, null));
-          actions.push(Actions.setCenter(entry));
+          if(entry.lat && entry.lng){ 
+            actions.push(Actions.setCenter(entry));
+          }
         }
         if(!zoom) {
           actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));

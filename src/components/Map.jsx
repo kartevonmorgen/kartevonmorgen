@@ -85,66 +85,69 @@ class KVMMap extends Component {
       entries.forEach(e => {
         let avg_rating = null;
 
-        if(e.ratings && e.ratings.length > 0 && Object.keys(ratings).length > 0){
-          const ratings_for_entry = (e.ratings || []).map(id => ratings[id]);
-          avg_rating = avg_rating_for_entry(ratings_for_entry);
-        }
+        if (e.lat && e.lng) {
 
-        if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0){
-          let opacity = 0.5;
-          if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
-          if( marker ) opacity = 0.3;
-          markers.push(
-            <Marker
-              key       = { e.id }
-              onClick   = { () => { onMarkerClick(e.id) }}
-              position  = {{ lat: e.lat, lng: e.lng }}
-              icon      = { this.getIconById(e.categories[0]) }
-              opacity   = { opacity }
-            >
-              <SmallTooltip direction='bottom' offset={[0, 2]}><h3>{e.title}</h3></SmallTooltip>
-            </Marker>
-          );
-        } else {
-          // to make clicking the circle easier add a larger circle with 0 opacity:
+          if(e.ratings && e.ratings.length > 0 && Object.keys(ratings).length > 0){
+            const ratings_for_entry = (e.ratings || []).map(id => ratings[id]);
+            avg_rating = avg_rating_for_entry(ratings_for_entry);
+          }
 
-          let opacity = 0.5;
-          if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
-          if( marker ) opacity = 0.3;
+          if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0){
+            let opacity = 0.5;
+            if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
+            if( marker ) opacity = 0.3;
+            markers.push(
+              <Marker
+                key       = { e.id }
+                onClick   = { () => { onMarkerClick(e.id) }}
+                position  = {{ lat: e.lat, lng: e.lng }}
+                icon      = { this.getIconById(e.categories[0]) }
+                opacity   = { opacity }
+              >
+                <SmallTooltip direction='bottom' offset={[0, 2]}><h3>{e.title}</h3></SmallTooltip>
+              </Marker>
+            );
+          } else {
+            // to make clicking the circle easier add a larger circle with 0 opacity:
 
-          
-          markers.push(
-            <CircleMarker
-              onClick   = { () => { onMarkerClick(e.id) }}
-              key       = { e.id }
-              center    = {{ lat: e.lat, lng: e.lng }}
-              opacity   = { 1 }
-              radius    = { 9 }
-              color     = { "#fff" }
-              weight    = { 0.7 }
-              fillColor = { this.getCategoryColorById(e.categories[0]) }
-              fillOpacity = { opacity }
-            >
-              <SmallTooltip direction='bottom' offset={[0, 10]}><h3>{e.title}</h3></SmallTooltip>
-            </CircleMarker>
-          );
-        }
+            let opacity = 0.5;
+            if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
+            if( marker ) opacity = 0.3;
 
-        if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+            
+            markers.push(
+              <CircleMarker
+                onClick   = { () => { onMarkerClick(e.id) }}
+                key       = { e.id }
+                center    = {{ lat: e.lat, lng: e.lng }}
+                opacity   = { 1 }
+                radius    = { 9 }
+                color     = { "#fff" }
+                weight    = { 0.7 }
+                fillColor = { this.getCategoryColorById(e.categories[0]) }
+                fillOpacity = { opacity }
+              >
+                <SmallTooltip direction='bottom' offset={[0, 10]}><h3>{e.title}</h3></SmallTooltip>
+              </CircleMarker>
+            );
+          }
 
-          let yOffset = 10
-          if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
+          if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
 
-          markers.push(
-            <CircleMarker
-              onClick   = { () => { onMarkerClick(e.id) }}
-              key       = { e.id + "-highlight"}
-              center    = {{ lat: e.lat, lng: e.lng }}
-              opacity   = { 0 }
-              fillOpacity = { 0 }
-            >
-              <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
-            </CircleMarker>);
+            let yOffset = 10
+            if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
+
+            markers.push(
+              <CircleMarker
+                onClick   = { () => { onMarkerClick(e.id) }}
+                key       = { e.id + "-highlight"}
+                center    = {{ lat: e.lat, lng: e.lng }}
+                opacity   = { 0 }
+                fillOpacity = { 0 }
+              >
+                <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
+              </CircleMarker>);
+          }
         }
       });
     }
