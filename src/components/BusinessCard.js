@@ -91,7 +91,7 @@ class BusinessCard extends Component {
             </span>
           </EntryCategory>
           <EntryTitle>{entry.title}</EntryTitle>
-          { isEvent ? <EventTimes start={ entry.start } end={ entry.end }/> : "" }
+          { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
             (entry.homepage ?

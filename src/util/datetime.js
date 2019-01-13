@@ -5,10 +5,13 @@ const getDatetimeString = (date) => {
 }
 
 const getDateString = (date) => {
+  const now = new Date();
+  const isInThisYear = date.getYear() === now.getYear();
   let s = "";
-  s += date.getDate()
-  s += "." + date.getMonth() + 1;
-  s += "." + (date.getYear() + 1900);
+  s += date.getDate() + ".";
+  s += (date.getMonth() + 1) + ".";
+  if(!isInThisYear) s += (date.getYear() + 1900);
+
   return s;
 }
 
@@ -19,4 +22,4 @@ const getTimeString = (date) => {
   return s;
 }
 
-module.exports = { getDatetimeString, getTimeString };
+module.exports = { getDatetimeString, getTimeString, getDateString };
