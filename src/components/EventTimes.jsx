@@ -12,15 +12,13 @@ class EventTimes extends Component {
 
   render() {
     const { start, end, showTimes } = this.props;
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-    const onSameDay = getDateString(startDate) === getDateString(endDate);
-    const startString = showTimes ? getDatetimeString(startDate): getDateString(startDate);
-    console.log(end, endDate, getDateString(endDate),getDatetimeString(endDate),getTimeString(endDate),)
+    const onSameDay = getDateString(start) === getDateString(end);
+    const startString = showTimes ? getDatetimeString(start): getDateString(start);
+    console.log(end, end, getDateString(end),getDatetimeString(end),getTimeString(end),)
     const endString = end ?
       (onSameDay ? 
-        (showTimes ? getTimeString(endDate) : null)
-        : (showTimes ? getDatetimeString(endDate) : getDateString(endDate))
+        (showTimes ? getTimeString(end) : null)
+        : (showTimes ? getDatetimeString(end) : getDateString(end))
       )
       : null;
     return (
