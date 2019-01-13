@@ -170,6 +170,17 @@ const Actions = {
       }
     },
 
+  getEvent: (id) =>
+    (dispatch) => {
+      WebAPI.getEvent(id, (err, res) => {
+        dispatch({
+          type: T.SEARCH_RESULT_EVENTS,
+          payload: err || [ res ],
+          error: err != null
+        });
+      });
+    },
+
   getRatings: (ids = []) =>
     (dispatch) => {
       WebAPI.getRatings(ids, (err, res) => {

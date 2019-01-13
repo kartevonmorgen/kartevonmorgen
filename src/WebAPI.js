@@ -58,6 +58,15 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
+  getEvent: (id, cb) => {
+    request
+      .get('/events/' + id)
+      .use(prefix)
+      .set('Authorization', 'Bearer test')
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb));
+  },
+
   searchAddressTilehosting: (addr, cb) => {
     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
     if (addr != null && addr != "") {

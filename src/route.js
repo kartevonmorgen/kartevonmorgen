@@ -46,6 +46,7 @@ const createActionsFromState = (state) => {
         console.log("route: entry");
         actions.push(Actions.showMap());
         actions.push(Actions.getEntries([entry]));
+        actions.push(Actions.getEvent([entry]));
         if(entries[entry] != null){
           actions.push(Actions.setCurrentEntry(
             entry, {lat: entries[entry].lat, lng: entries[entry].lng}));
