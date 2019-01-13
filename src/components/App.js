@@ -332,6 +332,7 @@ const LeftPanel = styled.div `
       padding-bottom: 30px;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);
@@ -351,6 +352,7 @@ const LeftPanel = styled.div `
       padding-bottom: 30px;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);
@@ -374,6 +376,7 @@ const LeftPanel = styled.div `
       flex-direction: column;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);
