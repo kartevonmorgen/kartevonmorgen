@@ -40,6 +40,34 @@ module.exports = (state=initialState, action={}) => {
         };
       }
       return state;
+    case T.SEARCH_RESULT_EVENTS:
+      if(action.error) {
+        console.error("Error in server reducer: ", action);
+        return state;
+      }
+      if (payload != null) {
+        if (Array.isArray(payload)) {
+          payload.filter(e => e != null)
+          .forEach(e => { o[e.id] = {
+              ...e,
+              categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+            }; 
+          });
+        } else {
+          o[payload.id] = {
+            ...payload,
+            categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+          }
+        }
+        return {
+          ...state,
+          entries: {
+            ...state.entries,
+            ...o
+          }
+        };
+      }
+      return state;
     case T.RATINGS_RESULT:
       if(action.error) {
         console.error("Error in server reducer: ", action);
@@ -88,7 +116,7 @@ module.exports = (state=initialState, action={}) => {
         loadingSearch: true
       }
 
-    case T.SEARCH_RESULT:
+    case T.SEARCH_RESULT_ENTRIES:
       return {
         ...state,
         loadingSearch: false

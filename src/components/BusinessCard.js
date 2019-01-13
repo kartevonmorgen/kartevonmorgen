@@ -4,6 +4,8 @@ import STYLE from "./styling/Variables"
 import { translate } from "react-i18next";
 import { pure } from "recompose";
 import AddressLine from "./AddressLine";
+import EventTimes from "./EventTimes";
+import EventRegistrationInfo  from "./EventRegistrationInfo";
 import T from "prop-types";
 import Actions from "../Actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -29,31 +31,32 @@ const Tags = (tags=[], dispatch) =>
 
 class BusinessCard extends Component {
 
-  getHomepageLink (){
-    const { entry, t } = this.props;
+  getHomepageLink (entry, t){
     if(!entry.homepage) return '';
-    let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "")
-    if(shortLink.length>30) shortLink = shortLink.split('/')[0] + "/…"
-    if(shortLink.length>30) shortLink = t("entryDetails.homepagePlaceholder")
-    return shortLink
+    let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "");
+    if(shortLink.length>30) shortLink = shortLink.split('/')[0] + "/…";
+    if(shortLink.length>30) shortLink = t("entryDetails.homepagePlaceholder");
+    const label = shortLink;
+    return <EntryLink href={entry.homepage} target="_blank">{ label }</EntryLink>;
   }
 
-  getMailLink (){
-    const mail = this.props.entry.email
-    if (!mail) return '';
-    return (mail.length > 30) ? "E-Mail" : mail
+  getMailLink (entry){
+    const mail = entry.email
+    if (!mail) {
+      return "";
+    }
+    const label = (mail.length > 30) ? "E-Mail" : mail;
+    return <EntryLink href={ "mailto:" + entry.email}>{ label }</EntryLink>;
   }
 
-  getTelLink (){
-    const entry = this.props.entry;
+  getTelLink (entry){
     if(!entry.telephone) return null
     const tel = entry.telephone
     let url = "tel:" + tel.replace(/[^0-9+]/g,'')
     return <EntryLink href={url}>{tel}</EntryLink>
   }
 
-  getRoutePlannerLink() {
-    const entry = this.props.entry;
+  getRoutePlannerLink(entry) {
     let url = '';
     let provider = '';
     if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) provider = "apple"
@@ -71,7 +74,7 @@ class BusinessCard extends Component {
   }
 
   render () {
-    const { entry, hasImage, dispatch, t } = this.props;
+    const { entry, hasImage, dispatch, t, isEvent } = this.props;
     if (!entry) {
       return(
         <LoadingEntryMessage>
@@ -90,27 +93,24 @@ class BusinessCard extends Component {
             </span>
           </EntryCategory>
           <EntryTitle>{entry.title}</EntryTitle>
+          { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
-            (entry.homepage ?
+            ((entry.homepage && entry.registration !== "homepage") ?
               <div key="hp">
                 <FontAwesomeIconElement icon="globe-africa" />
-                <EntryLink href={entry.homepage} target="_blank">
-                  { this.getHomepageLink() }
-                </EntryLink>
+                { this.getHomepageLink(entry, t) }
               </div> : null),
-            (entry.email ?
+            ((entry.email && entry.registration !== "email") ?
               <div key="mail">
                 <FontAwesomeIconElement icon="envelope" />
-                <EntryLink href={ "mailto:" + entry.email}>
-                  { this.getMailLink() }
-                </EntryLink>
+                { this.getMailLink(entry) }
               </div>
               : null),
-            (entry.telephone
+            ((entry.telephone && entry.registration !== "telephone")
               ?
               <div key="tel">
-                <FontAwesomeIconElement icon="phone" />{ this.getTelLink() }
+                <FontAwesomeIconElement icon="phone" />{ this.getTelLink(entry) }
               </div>
               : null),
             ((entry.street && entry.zip && entry.city) ?
@@ -123,13 +123,22 @@ class BusinessCard extends Component {
                 </div>
                 <div key="route">
                   <FontAwesomeIconElement icon="route" />
-                  { this.getRoutePlannerLink() }
+                  { this.getRoutePlannerLink(entry) }
               </div></div>
               : null),
             (entry.tags && entry.tags.filter(t => t !="").length > 0
               ? Tags(entry.tags, dispatch)
               : null)
           ]}</EntryDetailsOtherData>
+          { 
+            (isEvent && entry.registration) ? 
+              <EventRegistrationInfo 
+                event={ entry } 
+                getMailLink={ this.getMailLink }
+                getTelLink={ this.getTelLink }
+                getHomepageLink={ this.getHomepageLink }/>
+              : "" 
+          }
         </EntryDetailPage>)
     }
   }

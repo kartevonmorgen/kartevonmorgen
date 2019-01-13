@@ -67,7 +67,12 @@
 		"reportBody": "Mit dem Eintrag {link} gibt es folgendes Problem:",
 		"lastEdit": "Letzte Änderung:",
 		"today": "heute",
-		"daysAgo": "Tage her"
+		"daysAgo": "Tage her",
+		"eventRegistrationInfo": {
+			"email": "Anmeldung per Email",
+			"telephone": "Anmeldung telefonisch",
+			"homepage": "Anmeldung online"
+		}
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",

@@ -23,16 +23,16 @@ describe("view reducer", () => {
   });
 
   describe("left", () => {
-    it("should change to RESULT view after action SEARCH_RESULT", () => {
+    it("should change to RESULT view after action SEARCH_RESULT_ENTRIES", () => {
       V({}, {
-        type: AT.SEARCH_RESULT
+        type: AT.SEARCH_RESULT_ENTRIES
       }).left.should.equal(PV.RESULT);
     });
-    it("should not be changed after action SEARCH_RESULT if it exists", () => {
+    it("should not be changed after action SEARCH_RESULT_ENTRIES if it exists", () => {
       V({
         left: "foo"
       }, {
-        type: AT.SEARCH_RESULT
+        type: AT.SEARCH_RESULT_ENTRIES
       }).left.should.equal("foo");
     });
   });

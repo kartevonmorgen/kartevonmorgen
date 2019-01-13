@@ -3,6 +3,7 @@ import Actions from "./Actions";
 import parseUrl from "./util/parseUrl";
 import V        from "./constants/PanelView";
 import mapConst from "./constants/Map";
+import { IDS, NAMES } from "./constants/Categories";
 import RoutingUsecases from "./constants/RoutingUsecases";
 
 export default (event) => {
@@ -16,10 +17,11 @@ export default (event) => {
 
 const createActionsFromState = (state) => {
   const { server, map, url } = state;
+  const searchState = state.search;
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
-  const { entry, zoom, center, search, tags, view, left} = params;
+  const { entry, event, zoom, center, search, tags, view, left, categories } = params;
   const user_id = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
@@ -46,12 +48,15 @@ const createActionsFromState = (state) => {
         console.log("route: entry");
         actions.push(Actions.showMap());
         actions.push(Actions.getEntries([entry]));
+        actions.push(Actions.getEvent([entry]));
         if(entries[entry] != null){
           actions.push(Actions.setCurrentEntry(
             entry, {lat: entries[entry].lat, lng: entries[entry].lng}));
         } else {
           actions.push(Actions.setCurrentEntry(entry, null));
-          actions.push(Actions.setCenter(entry));
+          if(entry.lat && entry.lng){ 
+            actions.push(Actions.setCenter(entry));
+          }
         }
         if(!zoom) {
           actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
@@ -82,6 +87,21 @@ const createActionsFromState = (state) => {
       case RoutingUsecases.CONFIRM_EMAIL: 
         console.log("route: confirmEmail");
         actions.push(Actions.confirmEmail(user_id));
+        break;
+      case RoutingUsecases.CHANGE_SEARCH_CATEGORIES:
+        console.log("route: categories");
+        const allCats_IDS = Object.values(IDS);
+        const enabledCats_IDS = searchState.categories;
+        const catsToEnable_Names = categories.split(",");
+        for(let catID of allCats_IDS){
+          const catName = NAMES[catID];
+          if(catsToEnable_Names.includes(catName) && !enabledCats_IDS.includes(catID)){
+            actions.push(Actions.enableSearchCategory(catID));
+          }
+          if(!catsToEnable_Names.includes(catName) && enabledCats_IDS.includes(catID)){
+            actions.push(Actions.disableSearchCategory(catID));
+          }
+        }
         break;
     }
   }

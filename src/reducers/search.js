@@ -5,7 +5,9 @@ import { MAIN_IDS, IDS } from "../constants/Categories";
 const initialState = {
   text: null,
   city: null,
-  result: [],
+  entryResults: [],
+  eventResults: [],
+  eventsWithoutPlace: [],
   error: false,
   current: null,
   categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
@@ -49,30 +51,32 @@ module.exports = (state = initialState, action = {}) => {
 
   switch (action.type) {
 
-    case T.TOGGLE_SEARCH_CATEGORY:
-      const c = action.payload;
-      if (c == null) {
+    case T.ENABLE_SEARCH_CATEGORY:
+      const c1 = action.payload;
+      if (c1 == null) {
         return state;
       }
-      //TODO: beautify
-      const cats = state.categories.indexOf(c) >= 0
-        ? (() => {
-          var ref1 = state.categories;
-          var results = [];
-          var x, i, len;
-          for (i = 0, len = ref1.length; i < len; i++) {
-            x = ref1[i];
-            if (x !== c) {
-              results.push(x);
-            }
-          }
-          return results;
-        })()
-      : [c].concat([].slice.call(state.categories));
+      const oldCats = state.categories;
+      const newCats = oldCats.includes(c1) ? oldCats : [ ...oldCats, c1 ];
+      return {
+        ...state,
+        categories: newCats
+      }
+
+    case T.DISABLE_SEARCH_CATEGORY:
+      const c2 = action.payload;
+      if (c2 == null) {
+        return state;
+      }
+      const disableEvents = action.payload === IDS.EVENT;
+      const eventResults = disableEvents ? [] : state.eventResults;
+      const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
 
       return {
         ...state,
-        categories: cats
+        categories: state.categories.filter(cat => cat !== c2),
+        eventResults,
+        eventsWithoutPlace,
       }
 
     case T.SET_SEARCH_TEXT:
@@ -95,12 +99,33 @@ module.exports = (state = initialState, action = {}) => {
         city: action.payload
       }
 
-    case T.SEARCH_RESULT:
+    case T.SEARCH_RESULT_ENTRIES:
       if (!action.error) {
         return {
           ...state,
-          result: action.payload.visible,
+          entryResults: action.payload.visible,
           invisible: action.payload.invisible
+        }
+      }
+      return state;
+      break;
+
+    case T.SEARCH_RESULT_EVENTS:
+      if (!action.error) {
+        return {
+          ...state,
+          eventResults: action.payload
+            .filter(event => (event.lat && event.lng))
+            .map(event => ({
+              ...event,
+              categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+            })),
+          eventsWithoutPlace: action.payload
+            .filter(event => (!event.lat || !event.lng))
+            .map(event => ({
+              ...event,
+              categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
+            })),
         }
       }
       return state;
@@ -127,11 +152,11 @@ module.exports = (state = initialState, action = {}) => {
 
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
-        var newResult = state.result;
+        var newResult = state.entryResults;
         newResult.push({id: action.payload.id});
         return {
           ...state,
-          result: newResult
+          entryResults: newResult
         }
       }
       break;

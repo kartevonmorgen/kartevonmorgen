@@ -67,7 +67,12 @@
 		"reportBody": "This entry {link} is problematic because:",
 		"lastEdit": "last edit",
 		"today": "today",
-		"daysAgo": "days ago"
+		"daysAgo": "days ago",
+		"eventRegistrationInfo": {
+			"email": "Register by email",
+			"telephone": "Register by phone",
+			"homepage": "Register online"
+		}
 	},
 	"login":{
 		"requiredField":"required field",

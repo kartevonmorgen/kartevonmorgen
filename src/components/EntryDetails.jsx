@@ -19,7 +19,7 @@ const Navbar = styled.nav`
 class EntryDetails extends Component {
 
   render() {
-    const { entry, t, dispatch, mapCenter } = this.props;
+    const { entry, t, dispatch, mapCenter, isEvent } = this.props;
     const hasImage = entry ? (entry.image_url ? true : false) : false;
     if (!entry) {
       return(
@@ -44,23 +44,25 @@ class EntryDetails extends Component {
               }}
               aboveImage={hasImage}
             />
-            <NavButtonWhite
-              keyName = "edit"
-              buttonRight = { true }
-              icon = "pencil-alt"
-              text = ""
-              onClick = {() => {
-                this.props.dispatch(Actions.editCurrentEntry());
-              }}
-              aboveImage={hasImage}
-            />
+            { !isEvent ? 
+              <NavButtonWhite
+                keyName = "edit"
+                buttonRight = { true }
+                icon = "pencil-alt"
+                text = ""
+                onClick = {() => {
+                  this.props.dispatch(Actions.editCurrentEntry());
+                }}
+                aboveImage={hasImage}
+              />
+            : "" }
           </Navbar>
           {
             hasImage ?
               <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
               : null
           }
-          <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} />
+          <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} isEvent={isEvent}/>
         </div>)
     }
   }

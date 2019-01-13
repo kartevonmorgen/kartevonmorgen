@@ -75,7 +75,8 @@ class Main extends Component {
       window.history.pushState(null, null, window.location.pathname + url.hash);
     }
     
-    const resultEntries = search.result.filter(e => entries[e.id]).map(e => entries[e.id]);
+    const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
+      .concat(search.eventResults);
     const mapCenter = map.center;
     const loggedIn = user.username ? true : false;
     
@@ -160,12 +161,12 @@ class Main extends Component {
                   type="integrated"
                   disabled={view.left === V.EDIT || view.left === V.NEW}
                   toggleCat={ c => {
-                    if (c === C.IDS.EVENT) {
-                      return dispatch(Actions.showFeatureToDonate("events"));
+                    if(search.categories.includes(c)){
+                      dispatch(Actions.disableSearchCategory(c));
                     } else {
-                      dispatch(Actions.toggleSearchCategory(c));
-                      return dispatch(Actions.search());
+                      dispatch(Actions.enableSearchCategory(c));
                     }
+                    return dispatch(Actions.search());
                   }}
                   onChange={txt => {
                     if (txt == null) {
@@ -331,6 +332,7 @@ const LeftPanel = styled.div `
       padding-bottom: 30px;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);
@@ -350,6 +352,7 @@ const LeftPanel = styled.div `
       padding-bottom: 30px;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);
@@ -373,6 +376,7 @@ const LeftPanel = styled.div `
       flex-direction: column;
       ::-webkit-scrollbar {
         width: 10px;
+        height: 10px;
       }
       ::-webkit-scrollbar-track {
         background: rgba(0,0,0,0);

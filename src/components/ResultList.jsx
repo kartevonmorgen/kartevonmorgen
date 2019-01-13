@@ -3,8 +3,9 @@ import Actions from "../Actions"
 import { pure } from "recompose"
 import Flower from "./Flower";
 import NavButton from "./NavButton";
+import EventTimes from "./EventTimes";
 import i18n from "../i18n";
-import { NAMES } from "../constants/Categories"
+import { NAMES, IDS } from "../constants/Categories"
 import { translate} from "react-i18next";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +16,7 @@ import styled from "styled-components";
 const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
+  const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
 
   return (
     <ListElement
@@ -36,9 +38,11 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
           <div>
             <Description>{entry.description}</Description>
           </div>
-          <FlowerWrapper>
-            <Flower ratings={ratings} radius={30} showTooltip={false}/>
-          </FlowerWrapper>
+          { !isEvent ?
+            <FlowerWrapper>
+              <Flower ratings={ratings} radius={30} showTooltip={false}/>
+            </FlowerWrapper>
+          : <EventTimeLabel start={ entry.start }/> }
           {
             entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
@@ -68,7 +72,7 @@ class ResultList extends Component {
         ratings      = { (e.ratings || []).map(id => ratings[id])}
         key          = { e.id         }
         highlight    = { highlight.indexOf(e.id) >= 0 }
-        onClick      = { (id, center) => { dispatch(Actions.setCurrentEntry(id, center)) }}
+        onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
         onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
         onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
         t            = { t } />);
@@ -129,6 +133,17 @@ ResultList.propTypes = {
 
 module.exports = translate("translation")(pure(ResultList))
 
+const EventTimeLabel = (props) => {
+  const { start } = props;
+  return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
+}
+
+const EventTimeWrapper = styled.div`
+  position: absolute;
+  top: 11px;
+  right: 19px;
+`
+
 const EntryTitle = styled.h3`
   font-size: 1.2em;
   margin: .2rem .3em .2rem 0;
@@ -145,6 +160,7 @@ const ListElement = styled.li `
   padding-top: 0.7em;
   padding-right: 0.5em;
   padding-bottom: 0.7em;
+  min-height: 90px;
   border-bottom: 1px solid #ddd;
   border-left: 5px solid transparent;
   div {

@@ -20,9 +20,16 @@ const Actions = {
     type: T.FINISH_CITY_SEARCH
   }),
 
-  toggleSearchCategory: (category) => {
+  enableSearchCategory: (category) => {
     return {
-      type: T.TOGGLE_SEARCH_CATEGORY,
+      type: T.ENABLE_SEARCH_CATEGORY,
+      payload: category
+    };
+  },
+
+  disableSearchCategory: (category) => {
+    return {
+      type: T.DISABLE_SEARCH_CATEGORY,
       payload: category
     };
   },
@@ -64,8 +71,8 @@ const Actions = {
         type: T.FETCH_ALL_ENTRIES,
       });
       const allIDs = [];
-      if(Array.isArray(getState().search.result)){
-        allIDs.push(allIDs, getState().search.result.map(e => e.id));
+      if(Array.isArray(getState().search.entryResults)){
+        allIDs.push(allIDs, getState().search.entryResults.map(e => e.id));
       }
       if(Array.isArray(getState().search.invisible)){
         allIDs.push(allIDs, getState().search.invisible.map(e => e.id));
@@ -119,7 +126,7 @@ const Actions = {
         type: T.SET_CURRENT_ENTRY,
         payload: id,
       });
-      if(id && center){
+      if(id && center && center.lat && center.lng){
         dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         dispatch(Actions.setCenter(center));
       }
