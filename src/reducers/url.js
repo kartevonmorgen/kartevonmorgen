@@ -2,6 +2,7 @@ import T from "../constants/ActionTypes";
 import parseUrl from "../util/parseUrl";
 import constructUrl from "../util/constructUrl";
 import RoutingUsecases from "../constants/RoutingUsecases";
+import Categories from "../constants/Categories";
 
 const initialState = {
   hash: "", 
@@ -18,7 +19,7 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left} = params;
+    var { zoom, entry, search, tags, left, categories } = params;
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -48,6 +49,9 @@ module.exports = (state=initialState, action={}) => {
         }
         if (search || tags || search == "" || tags == "") {
           routingUsecases.push(RoutingUsecases.CHANGE_SEARCH);
+        }
+        if (categories) {
+          routingUsecases.push(RoutingUsecases.CHANGE_SEARCH_CATEGORIES);
         }
       }
       if (zoom) {
@@ -80,11 +84,29 @@ module.exports = (state=initialState, action={}) => {
       center = action.payload;
       break;
 
+    case T.ENABLE_SEARCH_CATEGORY:
+      let categoryName = Categories.NAMES[action.payload];
+      if(!categories) {
+        categories = categoryName
+      } else if(!categories.includes(categoryName)){
+        categories = categories + "," + categoryName;
+      }
+      break;
+
+    case T.DISABLE_SEARCH_CATEGORY:
+      if(categories){
+        categoryName = Categories.NAMES[action.payload];
+        const catList = categories.split(",");
+        const newCats = catList.filter(c => c !== categoryName);
+        categories = newCats.join(",");
+      }
+      break;
+
     default: 
       return state;
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left)
+    hash: constructUrl(entry, center, zoom, search, left, categories)
   }
 };

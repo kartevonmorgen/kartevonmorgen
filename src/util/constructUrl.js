@@ -6,7 +6,7 @@ const searchTextToUrlQuery = (text) => {
   return query;
 }
 
-export default (entry, center, zoom, searchText, showLeft) => {
+export default (entry, center, zoom, searchText, showLeft, categories) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
@@ -16,6 +16,9 @@ export default (entry, center, zoom, searchText, showLeft) => {
   }
   if (zoom) {
     params.push("zoom=" + parseFloat(zoom).toFixed(mapConst.NUM_DECIMALS_FOR_ZOOM));
+  }
+  if (categories) {
+    params.push("categories=" + categories);
   }
   // if ((entry && entry != "NONE") {
   if (!(entry && entry != "NONE") && searchText) {

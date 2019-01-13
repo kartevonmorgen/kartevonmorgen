@@ -3,6 +3,7 @@ import Actions from "./Actions";
 import parseUrl from "./util/parseUrl";
 import V        from "./constants/PanelView";
 import mapConst from "./constants/Map";
+import { IDS, NAMES } from "./constants/Categories";
 import RoutingUsecases from "./constants/RoutingUsecases";
 
 export default (event) => {
@@ -19,7 +20,7 @@ const createActionsFromState = (state) => {
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
-  const { entry, event, zoom, center, search, tags, view, left} = params;
+  const { entry, event, zoom, center, search, tags, view, left, categories } = params;
   const user_id = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
@@ -83,6 +84,21 @@ const createActionsFromState = (state) => {
       case RoutingUsecases.CONFIRM_EMAIL: 
         console.log("route: confirmEmail");
         actions.push(Actions.confirmEmail(user_id));
+        break;
+      case RoutingUsecases.CHANGE_SEARCH_CATEGORIES:
+        console.log("route: categories");
+        const allCats = Object.values(IDS);
+        const catsToEnable = categories.split(",");
+        for(let c of allCats){
+          actions.push(Actions.disableSearchCategory(c));
+        }
+        for(let catName of catsToEnable){
+          const catObject = Object.entries(NAMES).find(catObject => catObject[1] === catName);
+          if(catObject){
+            const catID = catObject[0]
+            actions.push(Actions.enableSearchCategory(catID));
+          }
+        }
         break;
     }
   }
