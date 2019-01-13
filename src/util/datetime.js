@@ -24,4 +24,14 @@ const getTimeString = (date) => {
   return s;
 }
 
-module.exports = { getDatetimeString, getTimeString, getDateString };
+const getMidnightUnixtime = (dayUnixtime) => {
+  const dayDateObject = new Date(dayUnixtime * 1000);
+  const midnightUnixtime = (dayDateObject
+    - dayDateObject.getMilliseconds()
+    - dayDateObject.getSeconds() * 1000
+    - dayDateObject.getMinutes() * 1000 * 60
+    - dayDateObject.getHours()   * 1000 * 60 * 60) / 1000;
+  return midnightUnixtime;
+}
+
+module.exports = { getDatetimeString, getTimeString, getDateString, getMidnightUnixtime };

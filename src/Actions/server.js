@@ -10,6 +10,7 @@ import { notificationSettings }   from "../constants/view";
 import LICENSES                   from "../constants/Licenses";
 import { MAIN_IDS, IDS }          from "../constants/Categories";
 import i18n                       from "../i18n";
+import { getMidnightUnixtime }    from "../util/datetime";
 import { notify }                 from "reapop";
 
 const flatten = nestedArray => nestedArray.reduce(
@@ -75,7 +76,7 @@ const Actions = {
           });
 
           if(cats.includes(IDS.EVENT)){
-            WebAPI.searchEvents(search.text, bbox, (err, res) => {
+            WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
               dispatch({
                 type: T.SEARCH_RESULT_EVENTS,
                 payload: err || res,

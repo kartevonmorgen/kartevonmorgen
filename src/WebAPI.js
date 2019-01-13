@@ -40,7 +40,7 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchEvents: (tags, bbox, cb) => {
+  searchEvents: (tags, bbox, start, end, cb) => {
     if (tags == null) {
       tags = [];
     }
@@ -51,9 +51,11 @@ module.exports = {
     request
       .get('/events')
       .use(prefix)
-      .query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
-      .set('Authorization', 'Bearer test')
       .query('bbox=' + bbox.join(','))
+      .query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
+      .query(start ? ('start=' + start) : "")
+      .query(end ? ('end=' + end) : "")
+      .set('Authorization', 'Bearer test')
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
