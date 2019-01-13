@@ -69,15 +69,6 @@ const reducer = formReducer.plugin({
 
       case "@@redux-form/CHANGE":
         const { field } = action.meta;
-        if (field === "category" && action.payload === C.IDS.EVENT) {
-          return {
-            ...state,
-            values: {
-              ...state.values,
-              category: -1
-            }
-          }
-        }
         if (action.payload) {
           if (field === "street" || field === "zip" || field === "city") {
             return {

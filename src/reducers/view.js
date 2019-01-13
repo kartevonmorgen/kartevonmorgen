@@ -154,7 +154,7 @@ module.exports = (state=initialState, action={}) => {
       }
       return state;
 
-    case T.SEARCH_RESULT:
+    case T.SEARCH_RESULT_ENTRIES:
       if (action.error) {
         return {
           ...state,
@@ -272,12 +272,6 @@ module.exports = (state=initialState, action={}) => {
       }
 
     case "@@redux-form/CHANGE":
-      if (action.meta.field === "category" && action.payload === C.IDS.EVENT) {
-        return {
-          ...state,
-          modal: V.DONATE_FOR_EVENTS
-        }
-      }
       if (action.meta.field === "context"){
         return {
           ...state,

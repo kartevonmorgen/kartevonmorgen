@@ -45,8 +45,8 @@ class Form extends Component {
               <FieldElement className="pure-input-1" name="category" component="select">
                 <option value={-1}>- {t("chooseCategory")} -</option>
                 <option value={IDS.INITIATIVE}>{t("category." + NAMES[IDS.INITIATIVE])}</option>
-                {/*<option value={IDS.EVENT}>Event</option>*/}
                 <option value={IDS.COMPANY}>{t("category." + NAMES[IDS.COMPANY])}</option>
+                {/* <option value={IDS.EVENT}>{t("category." + NAMES[IDS.EVENT])}</option> */}
               </FieldElement>
               <FieldElement name="category" component={errorMessage} />
 
@@ -285,6 +285,10 @@ const FieldElement = styled(Field)`
 
 const Fieldset = styled.fieldset`
   margin: 1em 0 1.5em !important;
+  .err {
+    color: red;
+    margin-bottom: 10px;
+  }
 `;
 
 const OptionalFieldLabel = styled.label`

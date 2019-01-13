@@ -2,6 +2,7 @@ import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
 import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
+import CATEGORY_IDS from "./constants/Categories";
 
 const prefix = saPrefix(OFDB_API.link);
 
@@ -15,7 +16,7 @@ const jsonCallback = (cb) => (err, res) => {
 
 module.exports = {
 
-  search: (txt, cats, bbox, cb) => {
+  searchEntries: (txt, cats, bbox, cb) => {
 
     if (txt == null) {
       txt = '';
@@ -34,6 +35,24 @@ module.exports = {
         text: txt.trim()
       })
       .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
+      .query('bbox=' + bbox.join(','))
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb));
+  },
+
+  searchEvents: (tags, bbox, cb) => {
+    if (tags == null) {
+      tags = [];
+    }
+    if (bbox == null) {
+      bbox = [];
+    }
+
+    request
+      .get('/events')
+      .use(prefix)
+      .query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
+      .set('Authorization', 'Bearer test')
       .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));

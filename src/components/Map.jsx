@@ -85,12 +85,12 @@ class KVMMap extends Component {
       entries.forEach(e => {
         let avg_rating = null;
 
-        if(e.ratings.length > 0 && Object.keys(ratings).length > 0){
+        if(e.ratings && e.ratings.length > 0 && Object.keys(ratings).length > 0){
           const ratings_for_entry = (e.ratings || []).map(id => ratings[id]);
           avg_rating = avg_rating_for_entry(ratings_for_entry);
         }
 
-        if(e.ratings.length > 0 && avg_rating && avg_rating > 0){
+        if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0){
           let opacity = 0.5;
           if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
           if( marker ) opacity = 0.3;
@@ -111,6 +111,7 @@ class KVMMap extends Component {
           let opacity = 0.5;
           if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
           if( marker ) opacity = 0.3;
+
           
           markers.push(
             <CircleMarker
@@ -132,7 +133,7 @@ class KVMMap extends Component {
         if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
 
           let yOffset = 10
-          if(e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
+          if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
 
           markers.push(
             <CircleMarker

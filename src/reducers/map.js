@@ -84,13 +84,17 @@ module.exports = (state = initialState, action = {}) => {
         } else {
           o[payload.id] = payload;
         }
-        return{
-          ...state,
-          center: {
-            lat: o[state.waiting_for_center_of].lat, 
-            lng: o[state.waiting_for_center_of].lng
-          },
-          waiting_for_center_of: null
+        if(o[state.waiting_for_center_of]){
+          return{
+            ...state,
+            center: {
+              lat: o[state.waiting_for_center_of].lat,
+              lng: o[state.waiting_for_center_of].lng
+            },
+            waiting_for_center_of: null
+          }
+        } else {
+          return state
         }
       } else{
         return state;

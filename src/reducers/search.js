@@ -5,7 +5,8 @@ import { MAIN_IDS, IDS } from "../constants/Categories";
 const initialState = {
   text: null,
   city: null,
-  result: [],
+  entryResults: [],
+  eventResults: [],
   error: false,
   current: null,
   categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
@@ -95,12 +96,25 @@ module.exports = (state = initialState, action = {}) => {
         city: action.payload
       }
 
-    case T.SEARCH_RESULT:
+    case T.SEARCH_RESULT_ENTRIES:
       if (!action.error) {
         return {
           ...state,
-          result: action.payload.visible,
+          entryResults: action.payload.visible,
           invisible: action.payload.invisible
+        }
+      }
+      return state;
+      break;
+
+    case T.SEARCH_RESULT_EVENTS:
+      if (!action.error) {
+        return {
+          ...state,
+          eventResults: action.payload.map(event => ({ // TODO
+            ...event,
+            categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"]
+          })),
         }
       }
       return state;
@@ -127,11 +141,11 @@ module.exports = (state = initialState, action = {}) => {
 
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
-        var newResult = state.result;
+        var newResult = state.entryResults;
         newResult.push({id: action.payload.id});
         return {
           ...state,
-          result: newResult
+          entryResults: newResult
         }
       }
       break;

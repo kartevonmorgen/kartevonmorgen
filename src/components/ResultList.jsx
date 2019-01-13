@@ -4,7 +4,7 @@ import { pure } from "recompose"
 import Flower from "./Flower";
 import NavButton from "./NavButton";
 import i18n from "../i18n";
-import { NAMES } from "../constants/Categories"
+import { NAMES, IDS } from "../constants/Categories"
 import { translate} from "react-i18next";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,7 @@ import styled from "styled-components";
 const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
+  const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
 
   return (
     <ListElement
@@ -36,9 +37,11 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
           <div>
             <Description>{entry.description}</Description>
           </div>
-          <FlowerWrapper>
-            <Flower ratings={ratings} radius={30} showTooltip={false}/>
-          </FlowerWrapper>
+          { !isEvent ?
+            <FlowerWrapper>
+              <Flower ratings={ratings} radius={30} showTooltip={false}/>
+            </FlowerWrapper>
+          : '' }
           {
             entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
@@ -145,6 +148,7 @@ const ListElement = styled.li `
   padding-top: 0.7em;
   padding-right: 0.5em;
   padding-bottom: 0.7em;
+  min-height: 90px;
   border-bottom: 1px solid #ddd;
   border-left: 5px solid transparent;
   div {

@@ -64,8 +64,8 @@ const Actions = {
         type: T.FETCH_ALL_ENTRIES,
       });
       const allIDs = [];
-      if(Array.isArray(getState().search.result)){
-        allIDs.push(allIDs, getState().search.result.map(e => e.id));
+      if(Array.isArray(getState().search.entryResults)){
+        allIDs.push(allIDs, getState().search.entryResults.map(e => e.id));
       }
       if(Array.isArray(getState().search.invisible)){
         allIDs.push(allIDs, getState().search.invisible.map(e => e.id));

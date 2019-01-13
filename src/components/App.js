@@ -75,7 +75,8 @@ class Main extends Component {
       window.history.pushState(null, null, window.location.pathname + url.hash);
     }
     
-    const resultEntries = search.result.filter(e => entries[e.id]).map(e => entries[e.id]);
+    const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
+      .concat(search.eventResults);
     const mapCenter = map.center;
     const loggedIn = user.username ? true : false;
     
@@ -160,12 +161,8 @@ class Main extends Component {
                   type="integrated"
                   disabled={view.left === V.EDIT || view.left === V.NEW}
                   toggleCat={ c => {
-                    if (c === C.IDS.EVENT) {
-                      return dispatch(Actions.showFeatureToDonate("events"));
-                    } else {
-                      dispatch(Actions.toggleSearchCategory(c));
-                      return dispatch(Actions.search());
-                    }
+                    dispatch(Actions.toggleSearchCategory(c));
+                    return dispatch(Actions.search());
                   }}
                   onChange={txt => {
                     if (txt == null) {

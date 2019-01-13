@@ -16,6 +16,7 @@ import Actions              from "../Actions"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
+import { IDS }              from "../constants/Categories"
 
 class Sidebar extends Component {
 
@@ -118,27 +119,35 @@ class Sidebar extends Component {
 
       case V.ENTRY:
         if(!entry) content = ''
-        else content = (
-          <div className="content" ref={this.setEntryContentRef}>
-            <EntryDetails
-              entry={ entry }
-              dispatch={ dispatch }
-              mapCenter={ map.center }
-            />
-            <Ratings
-              entry={ entry }
-              ratings={ (entry ? entry.ratings || [] : []).map(id => {
-                return ratings[id];
-              })}
-              onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
-            />
-            <MetaFooter 
-              changed = {entry.created} 
-              version = {entry.version}
-              title = {entry.title}
-            />
-          </div>
-        );
+        else {
+          const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
+          content = (
+            <div className="content" ref={this.setEntryContentRef}>
+              <EntryDetails
+                entry={ entry }
+                dispatch={ dispatch }
+                mapCenter={ map.center }
+                isEvent={ isEvent }
+              />
+              { !isEvent ? 
+                <Ratings
+                  entry={ entry } 
+                  ratings={ (entry ? entry.ratings || [] : []).map(id => {
+                    return ratings[id];
+                  })}
+                  onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
+                />
+              : ''}
+              { !isEvent ? 
+                <MetaFooter 
+                    changed = {entry.created} 
+                    version = {entry.version}
+                    title = {entry.title}
+                />
+              : ''}
+            </div>
+          );
+        }
         break;
 
       case V.EDIT:

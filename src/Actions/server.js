@@ -46,21 +46,15 @@ const Actions = {
         const ne = map.bbox._northEast;
         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
-        // show no-category entries (e.g. from OSM) when standard categories are shown:
-        if(cats && cats.includes(MAIN_IDS[0]) && cats.includes(MAIN_IDS[2])) {
-          cats = [];
-        }
-
         if (search.text == null || !search.text.trim().endsWith("#")) {
 
-          WebAPI.search(search.text, cats, bbox, (err, res) => {
+          WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
             dispatch({
-              type: T.SEARCH_RESULT,
+              type: T.SEARCH_RESULT_ENTRIES,
               payload: err || res,
               error: err != null,
               noList: search.text == null
             });
-
             const entries =
               Array.isArray(res != null ? res.visible : void 0)
                 ? Array.isArray(res.invisible)
@@ -71,7 +65,6 @@ const Actions = {
                   : void 0;
 
             const ids = entries ? entries.map(e => e.id) : null;
-
             if (ids && (Array.isArray(ids)) && ids.length > 0) {
               dispatch(Actions.getEntries(ids));
             } else {
@@ -80,6 +73,16 @@ const Actions = {
               });
             }
           });
+
+          if(cats.includes(IDS.EVENT)){
+            WebAPI.searchEvents(search.text, bbox, (err, res) => {
+              dispatch({
+                type: T.SEARCH_RESULT_EVENTS,
+                payload: err || res,
+                error: err != null
+              });
+            });
+          }
 
           if (search.text != null) {
             const address = search.text.replace(/#/g, "");
