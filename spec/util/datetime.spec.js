@@ -32,6 +32,7 @@ describe("datetime util functions", () => {
       });
     });
 
+    
     // this test is ignored because it only works on computers set to UTC timezone...
     // describe("getMidnightUnixtime", () => {
     //   it("should return the unixtime that has been at 00:00 on the day that is passed", () => {
