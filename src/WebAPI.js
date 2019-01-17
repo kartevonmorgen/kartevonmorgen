@@ -55,7 +55,6 @@ module.exports = {
       .query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
       .query(start ? ('start=' + start) : "")
       .query(end ? ('end=' + end) : "")
-      .set('Authorization', 'Bearer test')
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
@@ -64,7 +63,6 @@ module.exports = {
     request
       .get('/events/' + id)
       .use(prefix)
-      .set('Authorization', 'Bearer test')
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
