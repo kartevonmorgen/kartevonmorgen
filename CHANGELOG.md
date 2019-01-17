@@ -1,3 +1,7 @@
+## v0.1.28 (2019-01-17)
+
+- chore(*): decrease bundle file size
+
 ## v0.1.27 (2019-01-13) Events
 - new(*): show events in the search results, map and EntryDetails (not possible to add events yet)
 
