@@ -169,6 +169,7 @@ module.exports = (state=initialState, action={}) => {
       return state;
 
     case T.ENTRIES_RESULT:
+    case T.SEARCH_RESULT_EVENTS:
     case T.NO_SEARCH_RESULTS:
       return {
         ...state,
@@ -204,6 +205,12 @@ module.exports = (state=initialState, action={}) => {
       return {
         ...state,
         left: V.RESULT,
+        waiting_for_search_results: true
+      }
+
+    case T.SET_SEARCH_TIME:
+      return {
+        ...state,
         waiting_for_search_results: true
       }
 

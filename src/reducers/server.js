@@ -61,6 +61,7 @@ module.exports = (state=initialState, action={}) => {
         }
         return {
           ...state,
+          loadingSearch: false,
           entries: {
             ...state.entries,
             ...o
@@ -116,6 +117,8 @@ module.exports = (state=initialState, action={}) => {
         loadingSearch: true
       }
 
+    
+    case T.NO_SEARCH_RESULTS:
     case T.SEARCH_RESULT_ENTRIES:
       return {
         ...state,

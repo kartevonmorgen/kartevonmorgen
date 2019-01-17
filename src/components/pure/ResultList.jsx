@@ -83,7 +83,7 @@ const ResultList = props => {
       </ListElement>
     );
   }
-
+    
   return (
   <Wrapper>
     <div className= "result-list">

@@ -68,15 +68,21 @@ module.exports = (state = initialState, action = {}) => {
       if (c2 == null) {
         return state;
       }
+      const newCategories = state.categories.filter(cat => cat !== c2);
       const disableEvents = action.payload === IDS.EVENT;
       const eventResults = disableEvents ? [] : state.eventResults;
       const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
+      const initiativeAndCompanyDisabled = !newCategories.includes(IDS.INITIATIVE) && !newCategories.includes(IDS.COMPANY);
+      const entryResults = initiativeAndCompanyDisabled ? [] : state.entryResults;
+      const invisible = initiativeAndCompanyDisabled ? [] : state.invisible;
 
       return {
         ...state,
-        categories: state.categories.filter(cat => cat !== c2),
+        categories: newCategories,
         eventResults,
         eventsWithoutPlace,
+        entryResults,
+        invisible
       }
 
     case T.SET_SEARCH_TEXT:
@@ -109,6 +115,13 @@ module.exports = (state = initialState, action = {}) => {
       }
       return state;
       break;
+
+    case T.NO_SEARCH_RESULTS:
+      return {
+        ...state,
+        entryResults: [],
+        invisible: []
+      }
 
     case T.SEARCH_RESULT_EVENTS:
       if (!action.error) {
