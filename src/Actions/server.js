@@ -90,6 +90,15 @@ const Actions = {
                   error: err != null
                 });
               });
+
+              // search events without place:
+              WebAPI.searchEvents(search.text, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
+                dispatch({
+                  type: T.SEARCH_RESULT_EVENTS,
+                  payload: err || res,
+                  error: err != null
+                });
+              });
             }
           }
 
