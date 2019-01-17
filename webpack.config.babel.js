@@ -80,7 +80,13 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js"]
+    extensions: [".jsx", ".js"],
+    alias: {
+      // This is a quick fix:
+      // Without pointing to the minified leaflet file
+      // webpack includes 'leaflet-src.js'
+      leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js")
+    }
   }
 };
 
@@ -93,7 +99,7 @@ let htmlPluginOptions = {
 };
 
 if (production) {
-  
+
   htmlPluginOptions.minify = {
     removeComments        : true,
     collapseWhitespace    : true,
