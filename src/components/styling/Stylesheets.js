@@ -1,5 +1,4 @@
 import "normalize.css/normalize.css"
-import "font-awesome/css/font-awesome.css"
 import "typeface-rubik/index.css"
 
 import "purecss/build/base.css"

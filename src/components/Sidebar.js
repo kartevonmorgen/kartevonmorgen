@@ -237,7 +237,7 @@ class Sidebar extends Component {
         content = (
           <div className={ "content-above-buttons" }>
             <Message
-              iconClass={ "fa fa-exclamation-triangle" }
+              iconClass={ "exclamation-triangle" }
               message={ t("io-error.message") }
             />
           </div>
