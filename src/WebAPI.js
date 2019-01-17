@@ -40,14 +40,13 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchEvents: (tags, bbox, start, end, cb) => {
+  searchEvents: (tags, bbox, start, end, cb) => { 
     let req = request
       .get('/events')
       .use(prefix)
       .set('Accept', 'application/json');
-    
     if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
-    if(tags && tags.length > 0) req.query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
+    if(tags && tags.length > 0) req.query('tags=' + tags) // TODO
     if(start) req.query(start ? ('start=' + start) : "")
     if(end) req.query(end ? ('end=' + end) : "")
 
