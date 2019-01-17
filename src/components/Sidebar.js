@@ -23,9 +23,10 @@ class Sidebar extends Component {
   entryContent = null;
 
   shouldComponentUpdate(nextProps) {
-    if (!nextProps.view.showLeftPanel) return false
-    if (!this.props.view.showLeftPanel && nextProps.view.showLeftPanel) return true
-    if (nextProps.view.left !== this.props.view.left) return true
+    if( !nextProps.view.waiting_for_search_results ) return true
+    if( !nextProps.view.showLeftPanel ) return false
+    if( !this.props.view.showLeftPanel && nextProps.view.showLeftPanel ) return true
+    if( nextProps.view.left !== this.props.view.left ) return true
     if( nextProps.view.left === this.props.view.left === V.ENTRY && nextProps.search.highlight === this.props.search.highlight ) return false
     if( nextProps.view.left === V.RESULT
         && Object.keys(nextProps.resultEntries).join() === Object.keys(this.props.resultEntries).join()
