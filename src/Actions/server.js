@@ -49,40 +49,48 @@ const Actions = {
 
         if (search.text == null || !search.text.trim().endsWith("#")) {
 
-          WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
+          if(!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)){
             dispatch({
-              type: T.SEARCH_RESULT_ENTRIES,
-              payload: err || res,
-              error: err != null,
-              noList: search.text == null
+              type: T.NO_SEARCH_RESULTS
             });
-            const entries =
-              Array.isArray(res != null ? res.visible : void 0)
-                ? Array.isArray(res.invisible)
-                  ? res.visible.concat(res.invisible)
-                  : res.visible
-                : res != null
-                  ? res.invisible
-                  : void 0;
+          } else {
+            if(cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)){
+              WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
+                dispatch({
+                  type: T.SEARCH_RESULT_ENTRIES,
+                  payload: err || res,
+                  error: err != null,
+                  noList: search.text == null
+                });
+                const entries =
+                  Array.isArray(res != null ? res.visible : void 0)
+                    ? Array.isArray(res.invisible)
+                      ? res.visible.concat(res.invisible)
+                      : res.visible
+                    : res != null
+                      ? res.invisible
+                      : void 0;
 
-            const ids = entries ? entries.map(e => e.id) : null;
-            if (ids && (Array.isArray(ids)) && ids.length > 0) {
-              dispatch(Actions.getEntries(ids));
-            } else {
-              dispatch({
-                type: T.NO_SEARCH_RESULTS
+                const ids = entries ? entries.map(e => e.id) : null;
+                if (ids && (Array.isArray(ids)) && ids.length > 0) {
+                  dispatch(Actions.getEntries(ids));
+                } else {
+                  dispatch({
+                    type: T.NO_SEARCH_RESULTS
+                  });
+                }
               });
             }
-          });
 
-          if(cats.includes(IDS.EVENT)){
-            WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
-              dispatch({
-                type: T.SEARCH_RESULT_EVENTS,
-                payload: err || res,
-                error: err != null
+            if(cats.includes(IDS.EVENT)){
+              WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
+                dispatch({
+                  type: T.SEARCH_RESULT_EVENTS,
+                  payload: err || res,
+                  error: err != null
+                });
               });
-            });
+            }
           }
 
           if (search.text != null) {

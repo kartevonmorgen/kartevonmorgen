@@ -65,21 +65,21 @@ class ResultList extends Component {
 
   render() {
     const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
-
+    
     let results = entries.map( e => 
       <ResultListElement
-        entry        = { e            }
-        ratings      = { (e.ratings || []).map(id => ratings[id])}
-        key          = { e.id         }
-        highlight    = { highlight.indexOf(e.id) >= 0 }
-        onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
-        onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-        onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-        t            = { t } />);
-
-    if(moreEntriesAvailable && !waiting){
-      results.push(
-        <ListElement key="show-more-entries">
+      entry        = { e            }
+      ratings      = { (e.ratings || []).map(id => ratings[id])}
+      key          = { e.id         }
+      highlight    = { highlight.indexOf(e.id) >= 0 }
+      onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
+      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+      onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+      t            = { t } />);
+      
+      if(moreEntriesAvailable && !waiting){
+        results.push(
+          <ListElement key="show-more-entries">
           <div>
             <a onClick = { onMoreEntriesClick } href="#">
               {t("resultlist.showMoreEntries")}
@@ -88,7 +88,7 @@ class ResultList extends Component {
         </ListElement>
       );
     }
-
+    
   return (
     <Wrapper>
       <div className= "result-list">
