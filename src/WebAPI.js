@@ -41,22 +41,17 @@ module.exports = {
   },
 
   searchEvents: (tags, bbox, start, end, cb) => {
-    if (tags == null) {
-      tags = [];
-    }
-    if (bbox == null) {
-      bbox = [];
-    }
-
-    request
+    let req = request
       .get('/events')
       .use(prefix)
-      .query('bbox=' + bbox.join(','))
-      .query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
-      .query(start ? ('start=' + start) : "")
-      .query(end ? ('end=' + end) : "")
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .set('Accept', 'application/json');
+    
+    if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
+    if(tags && tags.length > 0) req.query((tags.length > 0) ? ('tags=' + tags.join(',')) : "")
+    if(start) req.query(start ? ('start=' + start) : "")
+    if(end) req.query(end ? ('end=' + end) : "")
+
+    req.end(jsonCallback(cb));
   },
 
   getEvent: (id, cb) => {
