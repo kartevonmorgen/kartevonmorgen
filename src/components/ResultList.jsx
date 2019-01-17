@@ -104,17 +104,6 @@ class ResultList extends Component {
             </p>)
       }
       </div>
-      <nav className="menu pure-g">
-        <NavButton
-          key = "back"
-          classname = "pure-u-1"
-          icon = "plus"
-          text = {t("resultlist.addEntry")}
-          onClick = {() => {
-            dispatch(Actions.showNewEntry());
-          }}
-        />
-      </nav>
     </Wrapper>)
   }
 }
