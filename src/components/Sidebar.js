@@ -23,16 +23,16 @@ class Sidebar extends Component {
   entryContent = null;
 
   shouldComponentUpdate(nextProps) {
-    if( !nextProps.view.waiting_for_search_results ) return true
     if( !nextProps.view.showLeftPanel ) return false
     if( !this.props.view.showLeftPanel && nextProps.view.showLeftPanel ) return true
     if( nextProps.view.left !== this.props.view.left ) return true
     if( nextProps.view.left === this.props.view.left === V.ENTRY && nextProps.search.highlight === this.props.search.highlight ) return false
-    if( nextProps.view.left === V.RESULT
-        && Object.keys(nextProps.resultEntries).join() === Object.keys(this.props.resultEntries).join()
-        && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
-        && Object.keys(nextProps.ratings).join() === Object.keys(this.props.ratings).join()
-    ) return false
+    // if( nextProps.view.left === V.RESULT
+    //     && Object.keys(nextProps.search.entryResults).join() === Object.keys(this.props.search.entryResults).join()
+    //     && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
+    //     && Object.keys(nextProps.search.eventResults).join() === Object.keys(this.props.search.eventResults).join()
+    //     && Object.keys(nextProps.search.eventsWithoutPlace).join() === Object.keys(this.props.search.eventsWithoutPlace).join()
+    // ) return false
     return true
   }
 

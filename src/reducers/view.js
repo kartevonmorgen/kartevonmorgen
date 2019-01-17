@@ -170,6 +170,7 @@ module.exports = (state=initialState, action={}) => {
 
     case T.ENTRIES_RESULT:
     case T.SEARCH_RESULT_EVENTS:
+    case T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE:
     case T.NO_SEARCH_RESULTS:
       return {
         ...state,

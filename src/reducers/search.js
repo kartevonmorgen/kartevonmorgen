@@ -128,13 +128,21 @@ module.exports = (state = initialState, action = {}) => {
         return {
           ...state,
           eventResults: action.payload
-            .filter(event => (event.lat && event.lng))
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
-            })),
+            }))
+        }
+      }
+      return state;
+      break;
+
+      case T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE:
+      if (!action.error) {
+        return {
+          ...state,
           eventsWithoutPlace: action.payload
-            .filter(event => (!event.lat || !event.lng))
+            .filter(event => (!event.lat && !event.lng))
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
