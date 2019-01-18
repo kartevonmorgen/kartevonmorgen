@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Actions              from "../Actions"
 import Flower               from "./Flower";
 import NavButton            from "./pure/NavButton";
-import EventTimes           from "./EventTimes";
+import EventTimes           from "./pure/EventTimes";
 import i18n                 from "../i18n";
 import { NAMES, IDS }       from "../constants/Categories"
 import { translate}         from "react-i18next";

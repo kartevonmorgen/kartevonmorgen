@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import STYLE from "./styling/Variables"
-import { translate } from "react-i18next";
-import AddressLine from "./pure/AddressLine";
-import EventTimes from "./EventTimes";
+import React, { Component }   from "react";
+import styled                 from "styled-components";
+import STYLE                  from "./styling/Variables"
+import { translate }          from "react-i18next";
+import AddressLine            from "./pure/AddressLine";
+import EventTimes             from "./pure/EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
-import T from "prop-types";
-import Actions from "../Actions";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ROUTEPLANNERS } from "../constants/URLs.js"
-import { NAMES } from "../constants/Categories"
+import T                      from "prop-types";
+import Actions                from "../Actions";
+import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome'
+import { ROUTEPLANNERS }      from "../constants/URLs.js"
+import { NAMES }              from "../constants/Categories"
 
 const Tags = (tags=[], dispatch) =>
   <TagsWrapper key="tags">

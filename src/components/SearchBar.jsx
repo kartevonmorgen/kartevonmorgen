@@ -7,32 +7,28 @@ import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 import STYLE                               from "./styling/Variables"
 import { SpinLoader }                      from 'react-loaders-spinners';
 
-class RawCategoryButtons extends React.Component {
+const CategoryButtons = ({ disabled, active, onToggle, t }) => {
 
-  render() {
-    const { disabled, active, onToggle, t } = this.props;
-    const buttons = MAIN_IDS.map((c) => {
-      const act = [].indexOf.call(active || [], c) >= 0;
-      return (
-        <button
-          key       = { c }
-          disabled  = { disabled }
-          onClick   = { () => { onToggle(c) }}
-          className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
-          { t("category." + NAMES[c]) + " " }
-        </button>);
-    });
-    return (<div>{ buttons }</div>);
-  }
+  const buttons = MAIN_IDS.map((c) => {
+    const act = [].indexOf.call(active || [], c) >= 0;
+    return (
+      <button
+        key       = { c }
+        disabled  = { disabled }
+        onClick   = { () => { onToggle(c) }}
+        className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
+        { t("category." + NAMES[c]) + " " }
+      </button>);
+  });
+
+  return (<div>{ buttons }</div>);
 }
 
-RawCategoryButtons.propTypes = {
+CategoryButtons.propTypes = {
   active     : T.array,
   disabled   : T.bool,
   onToggle   : T.func
 };
-
-const CategoryButtons = RawCategoryButtons;
 
 class SearchBar extends React.Component {
 

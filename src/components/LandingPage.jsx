@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo                 from "../img/logo.png";
 import CityList             from "./pure/CityList";
 import Info                 from "./pure/Info";
-import Contact              from "./Contact";
+import Contact              from "./pure/Contact";
 import Imprint              from "./pure/Imprint";
 import PrivacyStatement     from "./pure/PrivacyStatement";
 import Explain              from "./LandingExplain";
