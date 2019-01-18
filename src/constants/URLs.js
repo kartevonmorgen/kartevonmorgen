@@ -45,7 +45,8 @@ module.exports = {
   },
   OFDB_API: {
     // link: window.location.origin + "/api" //use when you run openfairdb locally
-    link: window.location.protocol + "//" + "api.ofdb.io/v0" //use this to use the remote api
+    // link: window.location.protocol + "//" + "api.ofdb.io/v0" //use this to use the remote api
+    link: "https://api.ofdb.io/v0"
   },
   TH_GEOCODER: {
     link: "https://geocoder.tilehosting.com/q/<query>.js?key=<key>"
