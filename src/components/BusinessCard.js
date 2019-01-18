@@ -18,12 +18,13 @@ const Tags = (tags=[], dispatch) =>
     { tags
         .filter(t => t != "")
         .map( (t,index) =>
-          <Tag key={"Tag"+t}><TagLink
-            onClick={ () => {
-              dispatch(Actions.showSearchResults());
-              dispatch(Actions.setSearchText('#'+t));
-              return dispatch(Actions.search());
-            }}
+          <Tag key={"Tag"+t}>
+          <TagLink
+            // onClick={ () => {
+            //   dispatch(Actions.showSearchResults());
+            //   dispatch(Actions.setSearchText('#'+t));
+            //   return dispatch(Actions.search());
+            // }}
           >#{t}</TagLink></Tag>
         )}
     </TagList>
@@ -227,10 +228,10 @@ const TagLink = styled.a `
   margin-bottom: 0.2rem;
   margin-right: 0.4em;
   letter-spacing: 0.06em;
-  cursor: pointer;
+  // cursor: pointer;
 
-  &:hover {
-    color: #fff;
-    background-color: #333;
-  }
+  // &:hover {
+  //   color: #fff;
+  //   background-color: #333;
+  // }
 `
