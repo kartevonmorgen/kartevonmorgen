@@ -35,15 +35,15 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
           <div>
             <EntryTitle className="title">{entry.title}</EntryTitle>
           </div>
-          <div>
-            <Description>{entry.description}</Description>
-          </div>
           { !isEvent ?
+          // <div>
+          //   <Description>{entry.description}</Description>
+          // </div>
             <FlowerWrapper>
               <Flower ratings={ratings} radius={30} showTooltip={false}/>
             </FlowerWrapper>
           : <EventTimeLabel start={ entry.start }/> }
-          {
+          {/* {
             entry.tags ? (entry.tags.length > 0)
               ? <TagsWrapper>
                 <ul >
@@ -52,6 +52,18 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
               </TagsWrapper>
               : null
               : null
+          } */}
+          {
+            entry.city ? <City>
+              { entry.city }
+            </City>
+            : ""
+          }
+          {
+            entry.organizer ? <Organizer>
+              { entry.organizer }
+            </Organizer>
+            : ""
           }
         </div>
       </div>
@@ -122,6 +134,14 @@ ResultList.propTypes = {
 
 module.exports = translate("translation")(pure(ResultList))
 
+const City = styled.div`
+  font-size: 0.9rem;
+`
+
+const Organizer = styled.div`
+  font-size: 0.9rem;
+`
+
 const EventTimeLabel = (props) => {
   const { start } = props;
   return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
@@ -135,7 +155,7 @@ const EventTimeWrapper = styled.div`
 
 const EntryTitle = styled.h3`
   font-size: 1.2em;
-  margin: .2rem .3em .2rem 0;
+  margin: .5rem .3em .2rem 0;
   font-weight: 500;
   position: relative;
   z-index: 3;
@@ -149,7 +169,7 @@ const ListElement = styled.li `
   padding-top: 0.7em;
   padding-right: 0.5em;
   padding-bottom: 0.7em;
-  min-height: 90px;
+  min-height: 85px;
   border-bottom: 1px solid #ddd;
   border-left: 5px solid transparent;
   div {
