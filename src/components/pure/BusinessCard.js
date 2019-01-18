@@ -97,6 +97,11 @@ const BusinessCard = ({ entry, hasImage, dispatch, t, isEvent }) => {
         { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
         <EntryDescription>{entry.description}</EntryDescription>
         <EntryDetailsOtherData>{[
+          ((entry.organizer) ?
+          <div key="organizer">
+            <FontAwesomeIconElement icon="user" />
+            { entry.organizer }
+          </div> : null),
           ((entry.homepage && entry.registration !== "homepage") ?
             <div key="hp">
               <FontAwesomeIconElement icon="globe-africa" />
@@ -152,10 +157,12 @@ module.exports = BusinessCard;
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
   margin-right: 12px;
+  height: 16px !important;
+  width: 16px !important;
 `;
 
 const AddressWrapper = styled.div`
-  margin-left: -4px;
+  margin-left: -8px;
 `;
 
 const EntryDetailPage = styled.div`
