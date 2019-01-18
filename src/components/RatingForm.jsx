@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component }             from "react";
 import { reduxForm, Field, initialize } from "redux-form";
-import { RATING             } from "../constants/Form";
-import validation           from "../util/validation";
-import styled               from "styled-components";
-import { translate }        from "react-i18next";
-import NavButton            from "./NavButton";
-import Actions              from "../Actions";
-import STYLE                from "./styling/Variables";
-
+import { RATING }                       from "../constants/Form";
+import validation                       from "../util/validation";
+import styled                           from "styled-components";
+import { translate }                    from "react-i18next";
+import NavButton                        from "./pure/NavButton";
+import Actions                          from "../Actions";
+import STYLE                            from "./styling/Variables";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched

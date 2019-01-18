@@ -1,6 +1,7 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React  from 'react';
 import styled from "styled-components";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CityListElement = ({ city, onClick }) => {
 
@@ -39,7 +40,6 @@ const CityList = ({ cities=[], onClick }) =>
   </ListWrapper>
 
 module.exports = CityList
-
 
 const ListWrapper = styled.div`
 

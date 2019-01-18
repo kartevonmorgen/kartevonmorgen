@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import pkg      from "../../package.json";
-import team1    from "../img/team_am_tisch.jpg";
-import team2    from "../img/team_in_action.jpg";
-import slider   from "../img/Slider.jpg";
-import URLs     from "../constants/URLs";
-import i18n     from "../i18n";
+import pkg      from "../../../package.json";
+import team1    from "../../img/team_am_tisch.jpg";
+import team2    from "../../img/team_in_action.jpg";
+import slider   from "../../img/Slider.jpg";
+import URLs     from "../../constants/URLs";
+import i18n     from "../../i18n";
+import React    from "react";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const t = (key) => {
-  return i18n.t("info." + key);
-}
+const t = (key) => i18n.t("info." + key)
 
 module.exports = ({serverVersion}) =>
     <div className="info">

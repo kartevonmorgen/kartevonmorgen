@@ -1,14 +1,12 @@
-import Message    from "./Message";
-import Actions    from "../Actions";
-import { DONATE } from "../constants/URLs";
-import V          from "../constants/PanelView";
-import i18n       from "../i18n";
-import React      from "react";
+import Message              from "../Message";
+import Actions              from "../../Actions";
+import { DONATE }           from "../../constants/URLs";
+import V                    from "../../constants/PanelView";
+import i18n                 from "../../i18n";
+import React                from "react";
 import styled,{ keyframes } from "styled-components";
 
-const t = (key) => {
-  return i18n.t("modal." + key);
-}
+const t = (key) => i18n.t("modal." + key)
 
 module.exports = ({view, dispatch}) => {
 

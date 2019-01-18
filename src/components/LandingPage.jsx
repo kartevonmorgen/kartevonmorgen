@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import logo                 from "../img/logo.png";
-import CityList             from "./CityList";
-import Info                 from "./Info";
+import CityList             from "./pure/CityList";
+import Info                 from "./pure/Info";
 import Contact              from "./Contact";
-import Imprint              from "./Imprint";
-import PrivacyStatement     from "./PrivacyStatement";
+import Imprint              from "./pure/Imprint";
+import PrivacyStatement     from "./pure/PrivacyStatement";
 import Explain              from "./LandingExplain";
 import Register             from "./Register";
 import Login                from "./Login";
@@ -14,10 +14,9 @@ import { pure }             from "recompose";
 import { translate }        from "react-i18next";
 import i18n                 from "../i18n";
 import T                    from "prop-types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
-
 
 class LandingPage extends Component {
   render() {

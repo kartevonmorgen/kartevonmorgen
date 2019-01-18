@@ -3,7 +3,7 @@ import styled from "styled-components";
 import STYLE from "./styling/Variables"
 import { translate } from "react-i18next";
 import { pure } from "recompose";
-import AddressLine from "./AddressLine";
+import AddressLine from "./pure/AddressLine";
 import EventTimes from "./EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
 import T from "prop-types";

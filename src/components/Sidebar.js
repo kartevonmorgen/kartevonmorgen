@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import { translate } from "react-i18next";
-import { pure } from "recompose";
+import { translate }        from "react-i18next";
+import { pure }             from "recompose";
 import V                    from "../constants/PanelView"
 import PropTypes            from "prop-types"
 import ResultList           from "./ResultList"
@@ -10,10 +10,10 @@ import EntryDetails         from "./EntryDetails"
 import EntryForm            from "./EntryForm"
 import RatingForm           from "./RatingForm"
 import Message              from "./Message"
-import CityList             from "./CityList"
+import CityList             from "./pure/CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
 import { IDS }              from "../constants/Categories"

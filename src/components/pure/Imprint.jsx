@@ -1,11 +1,10 @@
 import React  from "react"
-import URLs   from "../constants/URLs"
-import i18n   from "../i18n";
+import URLs   from "../../constants/URLs"
+import i18n   from "../../i18n";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const t = (key) => {
-  return i18n.t("imprint." + key);
-}
+const t = (key) => i18n.t("imprint." + key)
 
 const Imprint = () =>
 

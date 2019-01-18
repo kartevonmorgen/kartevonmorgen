@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import T from "prop-types";
-import V from "../constants/PanelView";
-import { pure } from "recompose";
-import { translate } from "react-i18next";
+import T                    from "prop-types";
+import V                    from "../constants/PanelView";
+import { pure }             from "recompose";
+import { translate }        from "react-i18next";
 
 const teamArray = [
   {name: "Thao Tran", color: "yellow", image: require("../img/team/Thao.jpg"), position: ["landingExplain.chapter5.thao"] },

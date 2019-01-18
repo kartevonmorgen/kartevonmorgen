@@ -1,5 +1,5 @@
 import React, { Component }   from "react";
-import Flower             from "./Flower";
+import Flower                 from "./Flower";
 import FlowerLeaf             from "./Flower/FlowerLeaf";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";

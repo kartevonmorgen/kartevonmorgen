@@ -1,16 +1,16 @@
 import React, { Component } from "react"
-import Actions from "../Actions"
-import { pure } from "recompose"
-import Flower from "./Flower";
-import NavButton from "./NavButton";
-import EventTimes from "./EventTimes";
-import i18n from "../i18n";
-import { NAMES, IDS } from "../constants/Categories"
-import { translate} from "react-i18next";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import STYLE from "./styling/Variables"
-import styled from "styled-components";
+import Actions              from "../Actions"
+import { pure }             from "recompose"
+import Flower               from "./Flower";
+import NavButton            from "./pure/NavButton";
+import EventTimes           from "./EventTimes";
+import i18n                 from "../i18n";
+import { NAMES, IDS }       from "../constants/Categories"
+import { translate}         from "react-i18next";
+import PropTypes            from "prop-types";
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+import STYLE                from "./styling/Variables"
+import styled               from "styled-components";
 
 
 const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
@@ -66,7 +66,7 @@ class ResultList extends Component {
   render() {
     const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
 
-    let results = entries.map( e => 
+    let results = entries.map( e =>
       <ResultListElement
         entry        = { e            }
         ratings      = { (e.ratings || []).map(id => ratings[id])}

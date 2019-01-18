@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import Actions              from "../Actions";
 import validation           from "../util/validation";
-import { reduxForm, Field, initialize } from "redux-form";
-import NavButton            from "./NavButton";
+import NavButton            from "./pure/NavButton";
 import { IDS, NAMES }       from "../constants/Categories";
 import URLs                 from "../constants/URLs";
 import LICENSES             from "../constants/Licenses";
-import { EDIT             } from "../constants/Form";
-import { translate        } from "react-i18next";
+import { EDIT }             from "../constants/Form";
+import { translate }        from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
 import SelectTags           from './SelectTags';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+import { reduxForm, Field, initialize } from "redux-form";
 
 class Form extends Component {
 

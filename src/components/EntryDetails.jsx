@@ -2,7 +2,7 @@ import React, { Component }   from "react";
 import BusinessCard           from "./BusinessCard";
 import { pure }               from "recompose";
 import styled                 from "styled-components";
-import NavButtonWhite         from "./NavButtonWhite";
+import NavButtonWhite         from "./pure/NavButtonWhite";
 import EntryImage             from "./EntryImage";
 import { translate }          from "react-i18next";
 import Actions                from "../Actions";

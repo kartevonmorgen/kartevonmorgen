@@ -1,6 +1,6 @@
 import React    from "react"
-import { pure } from "recompose"
 import styled   from "styled-components";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NavigationButtonWrapper = styled.div`
@@ -52,4 +52,4 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) =>
   return(button);
 }
 
-module.exports = pure(NavButton)
+module.exports = NavButton

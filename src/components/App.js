@@ -1,14 +1,15 @@
 // Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
+
 import "./styling/Stylesheets"
+import "./styling/Icons"
 
 import React, { Component } from "react"
 import T                    from "prop-types"
 import V                    from "../constants/PanelView"
 import C                    from "../constants/Categories"
 import Actions              from "../Actions"
-// import CityList             from "./CityList"
-import Info                 from "./Info"
-import Modal                from "./Modal"
+import Info                 from "./pure/Info"
+import Modal                from "./pure/Modal"
 import Map                  from "./Map"
 import Sidebar              from "./Sidebar"
 import SearchBar            from "./SearchBar"
@@ -21,12 +22,11 @@ import mapConst             from "../constants/Map"
 import { translate }        from "react-i18next"
 import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
-import "./styling/Icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styled, { keyframes, createGlobalStyle } from "styled-components";
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
-import Swipeable from 'react-swipeable'
+import Swipeable            from 'react-swipeable'
 
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 
 class Main extends Component {
   

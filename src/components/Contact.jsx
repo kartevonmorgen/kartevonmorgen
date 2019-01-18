@@ -1,9 +1,9 @@
-import React    from "react";
-import { pure } from "recompose";
-import URLs     from "../constants/URLs";
-import pkg      from "../../package.json";
-import {translate} from "react-i18next";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React        from "react";
+import URLs         from "../constants/URLs";
+import pkg          from "../../package.json";
+import {translate}  from "react-i18next";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Contact extends React.Component {
 
@@ -39,4 +39,4 @@ class Contact extends React.Component {
   }
 }
 
-module.exports = translate("translation")(pure(Contact));
+module.exports = translate("translation")(Contact);
