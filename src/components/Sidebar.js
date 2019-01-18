@@ -335,7 +335,7 @@ const GroupHeader = styled.div `
 
 const ResultWrapper = styled.div `
   padding-bottom: 1.5em;
-  height: calc(100vh - 72px);
+  height: 100vh;
   overflow-y: scroll;
   background: #f7f7f7;
 
