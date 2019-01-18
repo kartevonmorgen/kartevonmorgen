@@ -155,7 +155,7 @@ class Main extends Component {
           <Swipeable onSwipedLeft={ () => this.swipedLeftOnPanel() }>
             <LeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}>
               <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-                <SearchBar
+                {/* <SearchBar
                   searchText={search.text}
                   categories={search.categories}
                   type="integrated"
@@ -180,7 +180,7 @@ class Main extends Component {
                   }}
                   onEnter={ () => {}}      // currently not used, TODO
                   loading={ server.loadingSearch }
-                />
+                /> */}
               </div>
 
               <div className="content-wrapper">
@@ -347,7 +347,7 @@ const LeftPanel = styled.div `
     .content-above-buttons {
       overflow-y: scroll;
       overflow: auto;
-      height: calc(100vh - 42px);
+      height: 100vh;
       box-sizing: border-box;
       padding-bottom: 30px;
       ::-webkit-scrollbar {
