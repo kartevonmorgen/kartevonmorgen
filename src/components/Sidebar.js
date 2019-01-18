@@ -31,7 +31,7 @@ class Sidebar extends Component {
     //     && Object.keys(nextProps.search.entryResults).join() === Object.keys(this.props.search.entryResults).join()
     //     && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
     //     && Object.keys(nextProps.search.eventResults).join() === Object.keys(this.props.search.eventResults).join()
-    //     && Object.keys(nextProps.search.eventsWithoutPlace).join() === Object.keys(this.props.search.eventsWithoutPlace).join()
+    //     && Object.keys(nextProps.search.eventsOutsideMapView).join() === Object.keys(this.props.search.eventsOutsideMapView).join()
     // ) return false
     return true
   }
@@ -59,7 +59,7 @@ class Sidebar extends Component {
     const invisibleEntries = search.invisible
       .filter(e => entries[e.id])
       .map(e => entries[e.id])
-      .concat(search.eventsWithoutPlace);
+      .concat(search.eventsOutsideMapView);
 
     const entry = entries[search.current] || null;
 

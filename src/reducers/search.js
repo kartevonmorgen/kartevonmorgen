@@ -7,7 +7,7 @@ const initialState = {
   city: null,
   entryResults: [],
   eventResults: [],
-  eventsWithoutPlace: [],
+  eventsOutsideMapView: [],
   error: false,
   current: null,
   categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
@@ -17,7 +17,8 @@ const initialState = {
   cities: [],
   searchByUrl: true,
   showingAllEntries: false,
-  moreEntriesAvailable: false
+  moreEntriesAvailable: false,
+  currentlySearchingForEventsInBbox: false
 };
 
 const unique = cities =>
@@ -71,7 +72,7 @@ module.exports = (state = initialState, action = {}) => {
       const newCategories = state.categories.filter(cat => cat !== c2);
       const disableEvents = action.payload === IDS.EVENT;
       const eventResults = disableEvents ? [] : state.eventResults;
-      const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
+      const eventsOutsideMapView = disableEvents ? [] : state.eventsOutsideMapView;
       const initiativeAndCompanyDisabled = !newCategories.includes(IDS.INITIATIVE) && !newCategories.includes(IDS.COMPANY);
       const entryResults = initiativeAndCompanyDisabled ? [] : state.entryResults;
       const invisible = initiativeAndCompanyDisabled ? [] : state.invisible;
@@ -80,7 +81,7 @@ module.exports = (state = initialState, action = {}) => {
         ...state,
         categories: newCategories,
         eventResults,
-        eventsWithoutPlace,
+        eventsOutsideMapView,
         entryResults,
         invisible
       }
@@ -123,26 +124,35 @@ module.exports = (state = initialState, action = {}) => {
         invisible: []
       }
 
-    case T.SEARCH_RESULT_EVENTS:
+    case T.START_SEARCH_EVENTS_IN_BBOX:
+      return {
+        ...state,
+        currentlySearchingForEventsInBbox: true
+      }
+
+    case T.SEARCH_RESULT_EVENTS_IN_BBOX:
       if (!action.error) {
         return {
           ...state,
+          currentlySearchingForEventsInBbox: false,
           eventResults: action.payload
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
-            }))
+            })),
+          eventsOutsideMapView: state.eventsOutsideMapView
+            .filter(event => !action.payload.some(e => e.id === event.id))
         }
       }
       return state;
       break;
 
-      case T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE:
+      case T.SEARCH_RESULT_ALL_EVENTS:
       if (!action.error) {
         return {
           ...state,
-          eventsWithoutPlace: action.payload
-            .filter(event => (!event.lat && !event.lng))
+          eventsOutsideMapView: action.payload
+            .filter(event => state.currentlySearchingForEventsInBbox || !state.eventResults.some(e => e.id === event.id))
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO

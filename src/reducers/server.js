@@ -40,8 +40,8 @@ module.exports = (state=initialState, action={}) => {
         };
       }
       return state;
-    case T.SEARCH_RESULT_EVENTS:
-    case T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE:
+    case T.SEARCH_RESULT_EVENTS_IN_BBOX:
+    case T.SEARCH_RESULT_ALL_EVENTS:
       if(action.error) {
         console.error("Error in server reducer: ", action);
         return state;

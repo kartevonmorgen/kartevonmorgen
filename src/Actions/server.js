@@ -84,9 +84,12 @@ const Actions = {
 
             if(cats.includes(IDS.EVENT)){
               const tags = search.text.replace(/#/g, '');
+              dispatch({
+                type: T.START_SEARCH_EVENTS_IN_BBOX
+              });
               WebAPI.searchEvents(tags, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
                 dispatch({
-                  type: T.SEARCH_RESULT_EVENTS,
+                  type: T.SEARCH_RESULT_EVENTS_IN_BBOX,
                   payload: err || res,
                   error: err != null
                 });
@@ -95,7 +98,7 @@ const Actions = {
               // search events without place:
               WebAPI.searchEvents(tags, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
                 dispatch({
-                  type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
+                  type: T.SEARCH_RESULT_ALL_EVENTS,
                   payload: err || res,
                   error: err != null
                 });
@@ -193,7 +196,7 @@ const Actions = {
     (dispatch) => {
       WebAPI.getEvent(id, (err, res) => {
         dispatch({
-          type: T.SEARCH_RESULT_EVENTS,
+          type: T.SEARCH_RESULT_EVENTS_IN_BBOX,
           payload: err || [ res ],
           error: err != null
         });

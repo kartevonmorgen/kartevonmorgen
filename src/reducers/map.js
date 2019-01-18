@@ -76,7 +76,7 @@ module.exports = (state = initialState, action = {}) => {
       }
 
     case T.ENTRIES_RESULT:
-    case T.SEARCH_RESULT_EVENTS:
+    case T.SEARCH_RESULT_EVENTS_IN_BBOX:
       if ((payload != null) && (payload.length > 0) && (state.waiting_for_center_of != null)) {
         var o = {};
         if (Array.isArray(payload)) {
