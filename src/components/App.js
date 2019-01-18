@@ -321,7 +321,6 @@ const LeftPanel = styled.div `
   position: relative;
   z-index: 2;
   order: -1;
-  height: 100vh;
   overflow-y: hidden;
   float: left;
   background-color: #fff;
