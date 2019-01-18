@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import STYLE from "./styling/Variables"
 import { translate } from "react-i18next";
-import { pure } from "recompose";
 import AddressLine from "./pure/AddressLine";
 import EventTimes from "./EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
@@ -148,7 +147,7 @@ BusinessCard.propTypes = {
   entry: T.object
 }
 
-module.exports = translate('translation')(pure(BusinessCard))
+module.exports = translate('translation')(BusinessCard)
 
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`

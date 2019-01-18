@@ -1,8 +1,6 @@
-
 import React, { Component } from "react"
-import { translate } from "react-i18next"
-import { pure } from "recompose"
-import T from "prop-types"
+import { translate }        from "react-i18next"
+import T                    from "prop-types"
 
 class Leaf extends Component {
 

@@ -1,5 +1,4 @@
 import React, { Component }   from "react";
-import { pure }               from "recompose";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";
 import { REGISTRATION_TYPE }  from "../constants/Events";
@@ -33,4 +32,4 @@ const RegistrationInfoDiv = styled.div`
   margin: 1em 0 0 0;
 `;
 
-module.exports = translate('translation')(pure(EventRegistrationInfo))
+module.exports = translate('translation')(EventRegistrationInfo)

@@ -2,7 +2,6 @@ import React, { Component }         from "react"
 import { Map, TileLayer, Marker, CircleMarker, Tooltip }   from "react-leaflet"
 import { icons }                    from "vm-leaflet-icons"
 import URLs                         from "../constants/URLs"
-import { pure }                     from "recompose"
 import { IDS }                      from  "../constants/Categories"
 import STYLE                        from "./styling/Variables"
 import { avg_rating_for_entry }     from "../rating"
@@ -213,9 +212,7 @@ KVMMap.propTypes = {
   showLocateButton : T.bool
 };
 
-module.exports = pure(KVMMap);
-
-
+module.exports = KVMMap;
 
 const Wrapper = styled.div`
 

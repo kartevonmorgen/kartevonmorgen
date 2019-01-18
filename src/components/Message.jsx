@@ -1,5 +1,4 @@
 import React from "react";
-import { pure } from "recompose";
 import T from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import STYLE from "./styling/Variables"
@@ -48,7 +47,7 @@ Message.propTypes = {
   cancelButtonLabel: T.string
 };
 
-module.exports = pure(Message);
+module.exports = Message;
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
   margin: 0 10px;

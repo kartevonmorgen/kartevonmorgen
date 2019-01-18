@@ -1,6 +1,5 @@
 import React, { Component }   from "react";
 import BusinessCard           from "./BusinessCard";
-import { pure }               from "recompose";
 import styled                 from "styled-components";
 import NavButtonWhite         from "./pure/NavButtonWhite";
 import EntryImage             from "./EntryImage";
@@ -68,4 +67,4 @@ class EntryDetails extends Component {
   }
 }
 
-module.exports = translate('translation')(pure(EntryDetails))
+module.exports = translate('translation')(EntryDetails)

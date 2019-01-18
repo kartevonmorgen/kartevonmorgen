@@ -10,7 +10,6 @@ import Register             from "./Register";
 import Login                from "./Login";
 import URLs                 from "../constants/URLs";
 import V                    from "../constants/PanelView";
-import { pure }             from "recompose";
 import { translate }        from "react-i18next";
 import i18n                 from "../i18n";
 import T                    from "prop-types";
@@ -350,7 +349,7 @@ LandingPage.propTypes = {
   onSelection : T.func
 };
 
-module.exports = translate('translation')(pure(LandingPage))
+module.exports = translate('translation')(LandingPage)
 
 const LandingWrapper = styled.div`
   position: absolute;

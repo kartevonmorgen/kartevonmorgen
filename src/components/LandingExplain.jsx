@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import T                    from "prop-types";
 import V                    from "../constants/PanelView";
-import { pure }             from "recompose";
 import { translate }        from "react-i18next";
 
 const teamArray = [
@@ -146,4 +145,4 @@ LandingExplain.propTypes = {
   onClick  : T.func
 }
 
-module.exports = translate('translation')(pure(LandingExplain))
+module.exports = translate('translation')(LandingExplain)

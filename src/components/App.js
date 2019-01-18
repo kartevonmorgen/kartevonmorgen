@@ -16,7 +16,6 @@ import SearchBar            from "./SearchBar"
 import LandingPage          from "./LandingPage"
 import { EDIT, RATING }     from "../constants/Form"
 import URLs                 from "../constants/URLs"
-import { pure }             from "recompose"
 import { initialize }       from "redux-form"
 import mapConst             from "../constants/Map"
 import { translate }        from "react-i18next"
@@ -274,7 +273,7 @@ Main.propTypes = {
   timedActions :  T.object.isRequired
 };
 
-module.exports = translate('translation')(pure(Main))
+module.exports = translate('translation')(Main)
 
 /* Moved all styles here. TODO: Move to right components */
 

@@ -1,12 +1,11 @@
-import { translate }                          from "react-i18next";
-import React                                  from "react";
-import { pure }                               from "recompose";
-import T                                      from "prop-types";
-import { MAIN_IDS, CSS_CLASS_SIZE, NAMES }    from "../constants/Categories";
-import styled, { keyframes }                  from "styled-components";
-import { FontAwesomeIcon }                    from '@fortawesome/react-fontawesome'
-import STYLE                                  from "./styling/Variables"
-import { SpinLoader }                         from 'react-loaders-spinners';
+import { translate }                       from "react-i18next";
+import React                               from "react";
+import T                                   from "prop-types";
+import { MAIN_IDS, CSS_CLASS_SIZE, NAMES } from "../constants/Categories";
+import styled, { keyframes }               from "styled-components";
+import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
+import STYLE                               from "./styling/Variables"
+import { SpinLoader }                      from 'react-loaders-spinners';
 
 class RawCategoryButtons extends React.Component {
 
@@ -33,7 +32,7 @@ RawCategoryButtons.propTypes = {
   onToggle   : T.func
 };
 
-const CategoryButtons = pure(RawCategoryButtons);
+const CategoryButtons = RawCategoryButtons;
 
 class SearchBar extends React.Component {
 
@@ -115,8 +114,7 @@ SearchBar.propTypes = {
   t           : T.func
 }
 
-module.exports = translate('translation')(pure(SearchBar))
-
+module.exports = translate('translation')(SearchBar)
 
 const borderRadius = '0.4em'
 

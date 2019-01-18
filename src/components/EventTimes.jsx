@@ -1,7 +1,7 @@
 import React, { Component }   from "react";
-import { pure }               from "recompose";
 import styled                 from "styled-components";
 import { translate }          from "react-i18next";
+
 import { getDatetimeString, getTimeString, getDateString } from "../util/datetime";
 
 const TimesWrapper = styled.div`
@@ -30,4 +30,4 @@ class EventTimes extends Component {
     }
   }
 
-module.exports = translate('translation')(pure(EventTimes))
+module.exports = translate('translation')(EventTimes)

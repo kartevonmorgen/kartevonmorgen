@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { translate }        from "react-i18next";
-import { pure }             from "recompose";
 import V                    from "../constants/PanelView"
 import PropTypes            from "prop-types"
 import ResultList           from "./ResultList"
@@ -290,7 +289,7 @@ const Footer = (props) => {
   )
 }
 
-const MetaFooter = translate('translation')(pure(Footer))
+const MetaFooter = translate('translation')(Footer)
 
 const MetaFoot = styled.div`
   text-align: left;

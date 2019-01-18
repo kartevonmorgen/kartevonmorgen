@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import Actions              from "../Actions"
-import { pure }             from "recompose"
 import Flower               from "./Flower";
 import NavButton            from "./pure/NavButton";
 import EventTimes           from "./EventTimes";
@@ -11,7 +10,6 @@ import PropTypes            from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
-
 
 const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
@@ -58,8 +56,7 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
     </ListElement>)
 }
 
-const ResultListElement = pure(_ResultListElement)
-
+const ResultListElement = _ResultListElement
 
 class ResultList extends Component {
 
@@ -131,7 +128,7 @@ ResultList.propTypes = {
   onClick:              PropTypes.func
 }
 
-module.exports = translate("translation")(pure(ResultList))
+module.exports = translate("translation")(ResultList)
 
 const EventTimeLabel = (props) => {
   const { start } = props;
