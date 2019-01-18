@@ -21,6 +21,7 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faRoute').definition
   ,require('@fortawesome/free-solid-svg-icons/faSearch').definition
   ,require('@fortawesome/free-solid-svg-icons/faSpinner').definition
+  ,require('@fortawesome/free-solid-svg-icons/faUser').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 

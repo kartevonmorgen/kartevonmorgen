@@ -97,6 +97,11 @@ class BusinessCard extends Component {
           { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
           <EntryDescription>{entry.description}</EntryDescription>
           <EntryDetailsOtherData>{[
+            ((entry.organizer) ?
+            <div key="organizer">
+              <FontAwesomeIconElement icon="user" />
+              { entry.organizer }
+            </div> : null),
             ((entry.homepage && entry.registration !== "homepage") ?
               <div key="hp">
                 <FontAwesomeIconElement icon="globe-africa" />
