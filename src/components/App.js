@@ -214,7 +214,7 @@ class Main extends Component {
             </button>
           </HiddenSidebar>   
           
-          <RightPanel>
+          {/* <RightPanel>
             <div className="menu-toggle">
               <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
                 <span className="pincloud">
@@ -222,7 +222,7 @@ class Main extends Component {
                 </span>
               </button>
             </div>
-          </RightPanel> 
+          </RightPanel>  */}
 
           <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
             <Map
