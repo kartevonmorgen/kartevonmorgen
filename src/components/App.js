@@ -214,15 +214,17 @@ class Main extends Component {
             </button>
           </HiddenSidebar>   
           
-          {/* <RightPanel>
+          <RightPanel>
             <div className="menu-toggle">
-              <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
-                <span className="pincloud">
-                  <MenuFontAwesomeIcon icon={'bars'} />
+              {/* <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} > */}
+              <a href="https://kartevonmorgen.org/" target="_blank">
+                <PoweredByText>powered by</PoweredByText>
+                <span className="kvmLogo">
                 </span>
-              </button>
+              </a>
+              {/* </button> */}
             </div>
-          </RightPanel>  */}
+          </RightPanel> 
 
           <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
             <Map
@@ -301,8 +303,8 @@ const fadein = keyframes`
   to { opacity: 1; }
 `
 
-import pincloud from "../img/pincloud.png";
-
+// import pincloud from "../img/pincloud.png";
+import kvmLogo from "../img/logo.png";
 
 const MainWrapper = styled.div `
   height: 100vh;
@@ -452,7 +454,10 @@ const RightPanel = styled.div `
   background: #fff;
   color: ${STYLE.coal};
 
-  .menu-toggle button {
+  .menu-toggle a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     outline: none;
     position: relative;
     z-index: 1;
@@ -471,19 +476,25 @@ const RightPanel = styled.div `
       color: ${STYLE.coal};
       box-shadow: 0 1px 3px 0.2px #000;
     }
-    .pincloud {
+    .kvmLogo {
       display: inline-block;
-      width: 3.5em;
-      height: 1.2em;
-      background-position: left;
-      background-image: url(${pincloud});
+      width: 6em;
+      height: 3em;
+      margin-right: 12px;
+      background-position: center;
+      background-image: url(${kvmLogo});
       background-repeat: no-repeat;
-      background-size: 50%;
+      background-size: 85%;
     }
     i {
       margin-right: 0.3em;
     }
   }
+`
+
+const PoweredByText = styled.span `
+  font-size: 0.4rem;
+  margin: 3px 0px -5px 0px;
 `
 
 const HiddenSidebar = styled.div `
