@@ -47,8 +47,8 @@ module.exports = {
       .set('Accept', 'application/json');
     if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
     if(tags && tags.length > 0) req.query('tags=' + tags) // TODO
-    if(start) req.query(start ? ('start=' + start) : "")
-    if(end) req.query(end ? ('end=' + end) : "")
+    if(start) req.query(start ? ('start_min=' + start) : "")
+    if(end) req.query(end ? ('start_max=' + end) : "")
 
     req.end(jsonCallback(cb));
   },
