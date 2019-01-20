@@ -372,7 +372,6 @@ const LeftPanel = styled.div `
       width: 100%;
       box-sizing: border-box;
       padding-bottom: 1rem;
-      position: absolute;
       display: flex;
       flex-direction: column;
       ::-webkit-scrollbar {
