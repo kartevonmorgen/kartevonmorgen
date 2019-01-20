@@ -50,7 +50,12 @@ const config = {
         test:   /\.css$/,
         use: [
           "style-loader",
-          "css-loader"
+          {
+            loader: "css-loader",
+            options: {
+              modules: 'global' // required because of reapop-theme-wybo@1.0.2
+            }
+          }
         ]
       },
       {
