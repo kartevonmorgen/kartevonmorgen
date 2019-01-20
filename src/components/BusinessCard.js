@@ -159,10 +159,12 @@ module.exports = translate('translation')(pure(BusinessCard))
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
   margin-right: 12px;
+  height: 16px !important;
+  width: 16px !important;
 `;
 
 const AddressWrapper = styled.div`
-  margin-left: -4px;
+  margin-left: -8px;
 `;
 
 const EntryDetailPage = styled.div`
