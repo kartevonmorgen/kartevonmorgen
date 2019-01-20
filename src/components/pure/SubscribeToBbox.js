@@ -1,9 +1,10 @@
 import React                from "react";
-import Actions              from "../Actions";
-import NavButton            from "./pure/NavButton";
 import styled               from "styled-components";
-import i18n                 from "../i18n";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
+
+import Actions              from "../../Actions";
+import NavButton            from "./NavButton";
+import i18n                 from "../../i18n";
 
 const SubscribeToBboxContent = styled.div`
   margin: 2em 1.8em 1.8em 1.8em;

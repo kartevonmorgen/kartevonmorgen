@@ -1,17 +1,18 @@
-import React, { Component }         from "react"
-import { Map, TileLayer, Marker, CircleMarker, Tooltip }   from "react-leaflet"
-import { icons }                    from "vm-leaflet-icons"
-import URLs                         from "../constants/URLs"
-import { IDS }                      from  "../constants/Categories"
-import STYLE                        from "./styling/Variables"
-import { avg_rating_for_entry }     from "../rating"
-import styled                       from "styled-components";
-import T                            from "prop-types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component }     from "react"
+import { icons }                from "vm-leaflet-icons"
+import URLs                     from "../constants/URLs"
+import { IDS }                  from  "../constants/Categories"
+import STYLE                    from "./styling/Variables"
+import { avg_rating_for_entry } from "../rating"
+import styled                   from "styled-components";
+import T                        from "prop-types";
+import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 
-const { INITIATIVE, EVENT, COMPANY } = IDS;
+import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
+
 import  "leaflet/dist/leaflet.css"
 
+const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 class KVMMap extends Component {
 
@@ -45,7 +46,7 @@ class KVMMap extends Component {
     //workaround due to a bug in react-leaflet:
     const map = this.refs.map;
     if (map) {
-      //map.fireLeafletEvent('load', map) 
+      //map.fireLeafletEvent('load', map)
       map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
     }
@@ -63,8 +64,6 @@ class KVMMap extends Component {
   render() {
 
     var markers = [];
-
-    
 
     const {
       entries,
@@ -113,7 +112,7 @@ class KVMMap extends Component {
             if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
             if( marker ) opacity = 0.3;
 
-            
+
             markers.push(
               <CircleMarker
                 onClick   = { () => { onMarkerClick(e.id) }}

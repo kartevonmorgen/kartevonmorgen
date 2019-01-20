@@ -1,20 +1,21 @@
 import React, { Component } from "react"
 import { translate }        from "react-i18next";
-import V                    from "../constants/PanelView"
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import PropTypes            from "prop-types"
-import ResultList           from "./ResultList"
-import SubscribeToBbox      from "./SubscribeToBbox"
-import Ratings              from "./Ratings"
-import EntryDetails         from "./EntryDetails"
-import EntryForm            from "./EntryForm"
-import RatingForm           from "./RatingForm"
-import Message              from "./Message"
+import styled               from "styled-components";
+
+import V                    from "../constants/PanelView"
+import ResultList           from "./pure/ResultList"
+import SubscribeToBbox      from "./pure/SubscribeToBbox"
+import Ratings              from "./pure/Ratings"
+import EntryDetails         from "./pure/EntryDetails"
+import EntryForm            from "./pure/EntryForm"
+import RatingForm           from "./pure/RatingForm"
+import Message              from "./pure/Message"
 import CityList             from "./pure/CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
-import styled               from "styled-components";
 import { IDS }              from "../constants/Categories"
 
 class Sidebar extends Component {

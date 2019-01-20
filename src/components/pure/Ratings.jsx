@@ -1,9 +1,9 @@
-import React, { Component }   from "react";
-import Flower                 from "./Flower";
-import FlowerLeaf             from "./Flower/FlowerLeaf";
-import styled                 from "styled-components";
-import { translate }          from "react-i18next";
-import STYLE                  from "./styling/Variables";
+import React      from "react";
+import styled     from "styled-components";
+import Flower     from "../Flower";
+import FlowerLeaf from "../Flower/FlowerLeaf";
+import i18n       from "../../i18n";
+import STYLE      from "../styling/Variables";
 
 const context_order = (id) => {
   switch(id) {
@@ -42,82 +42,83 @@ const rating_groups = (ratings=[]) => {
   return groups_sorted;
 }
 
-class Ratings extends Component {
+const t = (key) => i18n.t("ratings." + key)
 
-  render() {
-    const { entry, ratings, onRate } = this.props;
-    var t = (key) => {
-      return this.props.t("ratings." + key);
-    };
+const Ratings = ({ entry, ratings, onRate }) => {
+  const groups = rating_groups(ratings);
 
-    const groups = rating_groups(ratings);
+  const ratingElements = groups.map(g => {
+    const context = g[0].context;
+    const l = g.length;
+    const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
+    const leafHeight = 35;
+    const headingColor =
+      context !== "renewable"
+        ? STYLE.rating_contexts[context] 
+        : STYLE.yellowText;
 
-    const ratingElements = groups.map(g => {
-      const context = g[0].context;
-      const l = g.length;
-      const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
-      const leafHeight = 35
-      const headingColor = (context !== "renewable" ? STYLE.rating_contexts[context] : STYLE.yellowText)
+    return (
+      <RatingContextWrapper key={context}>
+        <RatingContextHeading>
+          <span style={{ color: headingColor }} >
+            { t("contextName." + context) }
+          </span>
+        </RatingContextHeading>
+        <LeafWrapper>
+          <svg width={leafHeight} height={leafHeight}>
+            <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
+              <FlowerLeaf
+                transform = {"rotate(180)"}
+                color     = {STYLE.rating_contexts[context]}
+                height    = { leafHeight }
+                width     = {0.7 * leafHeight} />
+            </g>
+          </svg>
+        </LeafWrapper>
+        <RatingListForContext>
+          { g.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
+        </RatingListForContext>
+      </RatingContextWrapper>)
+  });
 
-      return (
-        <RatingContextWrapper key={context}>
-          <RatingContextHeading>
-            <span style={{ color: headingColor }} >{t("contextName." + context)}</span>
-          </RatingContextHeading>
-          <LeafWrapper>
-            <svg width={leafHeight} height={leafHeight}>
-              <g transform={"translate(" + leafHeight / 2 + "," + leafHeight + ")"}>
-                <FlowerLeaf
-                  transform = {"rotate(180)"}
-                  color     = {STYLE.rating_contexts[context]}
-                  height    = { leafHeight }
-                  width     = {0.7 * leafHeight} />
-              </g>
-            </svg>
-          </LeafWrapper>
-          <RatingListForContext>
-            {
-              g.map(r => <li key={r.id}>{Rating(r, t)}</li>)
+  if(entry){
+    return(
+      <RatingsWrapper>
+        <FlowerWrapper>
+          <Flower ratings={ratings} radius={40} showTooltip={true} />
+        </FlowerWrapper>
+        <HeadingWrapper>
+          <h3>{t("heading")}</h3>
+          <AdditionalRatingButtonWrapper>
+            { entry.ratings && entry.ratings.length > 0
+              ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>
+                  { t("newRating") }
+                </AdditionalRatingButton>
+              : ""
             }
-          </RatingListForContext>
-        </RatingContextWrapper>)
-    });
-
-    if(entry){
-      return(
-        <RatingsWrapper>
-          <FlowerWrapper>
-            <Flower ratings={ratings} radius={40} showTooltip={true} />
-          </FlowerWrapper>
-          <HeadingWrapper>
-            <h3>{t("heading")}</h3>
-            <AdditionalRatingButtonWrapper>
-              { entry.ratings && entry.ratings.length > 0
-                ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>{t("newRating")}</AdditionalRatingButton>
-                : ""
-              }
-            </AdditionalRatingButtonWrapper>
-          </HeadingWrapper>
-          { entry.ratings && entry.ratings.length > 0
-            ? <div>
-              { ratingElements }
-            </div>
-            : <FirstRatingButtonWrapper>
-              <p>{t("noRatingsYet")}</p>
-              <FirstRatingButton onClick={() => { onRate(entry.id) }}>{t("giveFirstRating")}</FirstRatingButton>
-            </FirstRatingButtonWrapper>
-          }
-        </RatingsWrapper>
-      );
-    } else {
-      return(null);
-    }
+          </AdditionalRatingButtonWrapper>
+        </HeadingWrapper>
+        { entry.ratings && entry.ratings.length > 0
+          ? <div>
+            { ratingElements }
+          </div>
+          : <FirstRatingButtonWrapper>
+            <p>{t("noRatingsYet")}</p>
+            <FirstRatingButton onClick={() => { onRate(entry.id) }}>
+              { t("giveFirstRating") }
+            </FirstRatingButton>
+          </FirstRatingButtonWrapper>
+        }
+      </RatingsWrapper>
+    );
+  } else {
+    return(null);
   }
 }
 
 const Comment = (comment) =>
   <div className="comment">
-    {comment.text}
+    { comment.text }
   </div>
 
 const RatingWrapper = styled.div`
@@ -174,7 +175,7 @@ const Rating = (rating, t) => {
   )
 }
 
-module.exports = translate('translation')(Ratings);
+module.exports = Ratings;
 
 const RatingsWrapper = styled.div`
   margin: 1.8em;

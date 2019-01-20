@@ -5,6 +5,13 @@ import "./styling/Icons"
 
 import React, { Component } from "react"
 import T                    from "prop-types"
+import { initialize }       from "redux-form"
+import { translate }        from "react-i18next"
+import NotificationsSystem  from "reapop";
+import theme                from "reapop-theme-wybo";
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+import Swipeable            from 'react-swipeable'
+
 import V                    from "../constants/PanelView"
 import C                    from "../constants/Categories"
 import Actions              from "../Actions"
@@ -13,17 +20,11 @@ import Modal                from "./pure/Modal"
 import Map                  from "./Map"
 import Sidebar              from "./Sidebar"
 import SearchBar            from "./SearchBar"
-import LandingPage          from "./LandingPage"
+import LandingPage          from "./pure/LandingPage"
 import { EDIT, RATING }     from "../constants/Form"
 import URLs                 from "../constants/URLs"
-import { initialize }       from "redux-form"
 import mapConst             from "../constants/Map"
-import { translate }        from "react-i18next"
-import NotificationsSystem  from "reapop";
-import theme                from "reapop-theme-wybo";
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import STYLE                from "./styling/Variables"
-import Swipeable            from 'react-swipeable'
 
 import styled, { keyframes, createGlobalStyle } from "styled-components";
 

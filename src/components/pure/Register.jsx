@@ -1,16 +1,16 @@
-import React, { Component } from "react"
+import React                from "react"
 import { reduxForm, Field } from "redux-form"
-import validation           from "../util/validation"
-import normalize            from "../util/normalize";
-import { REGISTER }         from "../constants/Form";
 import i18n                 from "i18next";
+import validation           from "../../util/validation"
+import normalize            from "../../util/normalize";
+import { REGISTER }         from "../../constants/Form";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
     ? <div className="err">{meta.error}</div>
     : null
 
-const Register = (props) => {
+const Register = props => {
 
   const { error, submitting, handleSubmit, onLogin } = props;
   const t = (key) => {

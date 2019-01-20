@@ -1,7 +1,7 @@
 import React         from "react";
-import EntryDetails  from "../../components/EntryDetails";
-import URLs          from "../../constants/URLs";
 import styled        from "styled-components";
+import EntryDetails  from "../../components/pure/EntryDetails";
+import URLs          from "../../constants/URLs";
 import i18n          from "../../i18n";
 import Map           from "../../components/Map";
 

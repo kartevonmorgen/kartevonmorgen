@@ -1,17 +1,18 @@
-import React, { Component } from "react"
-import Actions              from "../Actions"
-import Flower               from "./Flower";
-import NavButton            from "./pure/NavButton";
-import EventTimes           from "./pure/EventTimes";
-import i18n                 from "../i18n";
-import { NAMES, IDS }       from "../constants/Categories"
+import React                from "react"
 import { translate}         from "react-i18next";
 import PropTypes            from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
 
-const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+import Actions              from "../../Actions"
+import Flower               from "../Flower";
+import NavButton            from "./NavButton";
+import EventTimes           from "./EventTimes";
+import i18n                 from "../../i18n";
+import { NAMES, IDS }       from "../../constants/Categories"
+import STYLE                from "../styling/Variables"
+
+const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
@@ -56,64 +57,60 @@ const _ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, o
     </ListElement>)
 }
 
-const ResultListElement = _ResultListElement
+const ResultList = props => {
 
-class ResultList extends Component {
+  const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
 
-  render() {
-    const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = this.props
+  let results = entries.map( e =>
+    <ResultListElement
+      entry        = { e            }
+      ratings      = { (e.ratings || []).map(id => ratings[id])}
+      key          = { e.id         }
+      highlight    = { highlight.indexOf(e.id) >= 0 }
+      onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
+      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+      onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+      t            = { t } />);
 
-    let results = entries.map( e =>
-      <ResultListElement
-        entry        = { e            }
-        ratings      = { (e.ratings || []).map(id => ratings[id])}
-        key          = { e.id         }
-        highlight    = { highlight.indexOf(e.id) >= 0 }
-        onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
-        onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-        onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-        t            = { t } />);
-
-    if(moreEntriesAvailable && !waiting){
-      results.push(
-        <ListElement key="show-more-entries">
-          <div>
-            <a onClick = { onMoreEntriesClick } href="#">
-              {t("resultlist.showMoreEntries")}
-            </a>
-          </div>
-        </ListElement>
-      );
-    }
+  if(moreEntriesAvailable && !waiting){
+    results.push(
+      <ListElement key="show-more-entries">
+        <div>
+          <a onClick = { onMoreEntriesClick } href="#">
+            {t("resultlist.showMoreEntries")}
+          </a>
+        </div>
+      </ListElement>
+    );
+  }
 
   return (
-    <Wrapper>
-      <div className= "result-list">
-      {
-        (results.length > 0)
-          ? <ul>{results}</ul>
-          : (waiting ?
-          <p className= "loading">
-            <span>{t("resultlist.entriesLoading")}</span>
-          </p>
-          : <p className= "no-results">
-              <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
-            </p>)
-      }
-      </div>
-      <nav className="menu pure-g">
-        <NavButton
-          key = "back"
-          classname = "pure-u-1"
-          icon = "plus"
-          text = {t("resultlist.addEntry")}
-          onClick = {() => {
-            dispatch(Actions.showNewEntry());
-          }}
-        />
-      </nav>
-    </Wrapper>)
-  }
+  <Wrapper>
+    <div className= "result-list">
+    {
+      (results.length > 0)
+        ? <ul>{results}</ul>
+        : (waiting ?
+        <p className= "loading">
+          <span>{t("resultlist.entriesLoading")}</span>
+        </p>
+        : <p className= "no-results">
+            <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
+          </p>)
+    }
+    </div>
+    <nav className="menu pure-g">
+      <NavButton
+        key = "back"
+        classname = "pure-u-1"
+        icon = "plus"
+        text = {t("resultlist.addEntry")}
+        onClick = {() => {
+          dispatch(Actions.showNewEntry());
+        }}
+      />
+    </nav>
+  </Wrapper>)
 }
 
 ResultList.propTypes = {
