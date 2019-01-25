@@ -5,6 +5,8 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faBan').definition
   ,require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition
   ,require('@fortawesome/free-solid-svg-icons/faChevronDown').definition
+  ,require('@fortawesome/free-solid-svg-icons/faChevronRight').definition
+  ,require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition
   ,require('@fortawesome/free-solid-svg-icons/faCaretLeft').definition
   ,require('@fortawesome/free-solid-svg-icons/faCaretRight').definition
   ,require('@fortawesome/free-solid-svg-icons/faCamera').definition
