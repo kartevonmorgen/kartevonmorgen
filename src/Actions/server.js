@@ -105,10 +105,10 @@ const Actions = {
 
           if (search.text != null) {
             const address = search.text.replace(/#/g, "");
-            WebAPI.searchAddressTilehosting(address, (err, res) => {
+            WebAPI.searchAddressNominatim(address, (err, res) => {
               dispatch({
                 type: T.SEARCH_ADDRESS_RESULT,
-                payload: err || res.results,
+                payload: err || res,
                 error: err != null
               });
             });
@@ -138,10 +138,10 @@ const Actions = {
   searchCity: () =>
     (dispatch, getState) => {
       const s = getState().search;
-      WebAPI.searchAddressTilehosting(s.city, (err, res) => {
+      WebAPI.searchAddressNominatim(s.city, (err, res) => {
         dispatch({
           type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res.results,
+          payload: err || res,
           error: err != null
         });
       });

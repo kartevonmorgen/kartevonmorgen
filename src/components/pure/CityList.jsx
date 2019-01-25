@@ -5,19 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CityListElement = ({ city, onClick }) => {
 
-  const { village, state, country, name } = city || {};
-  const cityname = city.city;
-
   return (
     <li onClick={ev => {ev.preventDefault(); onClick(city)}}>
       <div className= "pure-g">
         <div className= "pure-u-23-24">
           <div>
-            <span className= "city">{cityname || name}</span>
-          </div>
-          <div>
-            <span className = "state">{state}</span>
-            <span className = "country">{country}</span>
+            <span className= "city">{ city.display_name }</span>
           </div>
         </div>
         <div className = "pure-u-1-24 chevron">

@@ -121,8 +121,8 @@ class Main extends Component {
                 onSelection={ city => {
                   if (city) {
                     dispatch(Actions.setCenter({
-                      lat: city.lat,
-                      lng: city.lon
+                      lat: Number(city.lat),
+                      lng: Number(city.lon)
                     }));
                     dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
                     dispatch(Actions.toggleLandingPage());

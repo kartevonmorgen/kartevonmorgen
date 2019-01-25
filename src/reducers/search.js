@@ -1,6 +1,7 @@
 import T from "../constants/ActionTypes";
 import parseUrl from "../util/parseUrl";
 import { MAIN_IDS, IDS } from "../constants/Categories";
+import { CITY_SEARCH_RESULTS_MIN_DISTANCE, CITY_SEARCH_RESULTS_MIN_IMPORTANCE } from "../constants/Search";
 
 const initialState = {
   text: null,
@@ -20,32 +21,23 @@ const initialState = {
   moreEntriesAvailable: false
 };
 
-const unique = cities =>
-  cities
-    .map(
-      ({city, name, state, country, lat, lon, osm_id}) =>
-        ({
-          city: (city || name),
-          state,
-          country,
-          lat,
-          lon,
-          osm_id
-        }))
-    .filter((item, pos, self) => 
-      self.findIndex(x => (
-          x.city == item.city
-          && x.state == item.state
-          && x.country == item.country
-        )) == pos)
+const oneForEachPlace = cities =>
+  {
+    const filtered =  cities.filter((city1, index1) => !cities.some((city2, index2) => 
+        Math.abs(city1.lat - city2.lat) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
+        Math.abs(city1.lon - city2.lon) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
+        index2 < index1
+      ))
+    return filtered
+  }
 
 const isCity = x =>
   (
-    (
-      (x["class"] === 'place' && (x.type === 'city' || x.type === 'village')) ||
-      (x["class"] === 'boundary' && x.type === 'administrative')
-    )
+    (x["class"] === 'place' && (x.type === 'city' || x.type === 'village')) ||
+    (x["class"] === 'boundary' && x.type === 'administrative')
   )
+
+const isImportantSearchResult = x => ( x.importance >= CITY_SEARCH_RESULTS_MIN_IMPORTANCE )
 
 module.exports = (state = initialState, action = {}) => {
 
@@ -68,21 +60,15 @@ module.exports = (state = initialState, action = {}) => {
       if (c2 == null) {
         return state;
       }
-      const newCategories = state.categories.filter(cat => cat !== c2);
       const disableEvents = action.payload === IDS.EVENT;
       const eventResults = disableEvents ? [] : state.eventResults;
       const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
-      const initiativeAndCompanyDisabled = !newCategories.includes(IDS.INITIATIVE) && !newCategories.includes(IDS.COMPANY);
-      const entryResults = initiativeAndCompanyDisabled ? [] : state.entryResults;
-      const invisible = initiativeAndCompanyDisabled ? [] : state.invisible;
 
       return {
         ...state,
-        categories: newCategories,
+        categories: state.categories.filter(cat => cat !== c2),
         eventResults,
         eventsWithoutPlace,
-        entryResults,
-        invisible
       }
 
     case T.SET_SEARCH_TEXT:
@@ -116,33 +102,18 @@ module.exports = (state = initialState, action = {}) => {
       return state;
       break;
 
-    case T.NO_SEARCH_RESULTS:
-      return {
-        ...state,
-        entryResults: [],
-        invisible: []
-      }
-
     case T.SEARCH_RESULT_EVENTS:
       if (!action.error) {
         return {
           ...state,
           eventResults: action.payload
+            .filter(event => (event.lat && event.lng))
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
-            }))
-        }
-      }
-      return state;
-      break;
-
-      case T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE:
-      if (!action.error) {
-        return {
-          ...state,
+            })),
           eventsWithoutPlace: action.payload
-            .filter(event => (!event.lat && !event.lng))
+            .filter(event => (!event.lat || !event.lng))
             .map(event => ({
               ...event,
               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
@@ -158,7 +129,7 @@ module.exports = (state = initialState, action = {}) => {
         return {
           ...state,
           addresses: d,
-          cities: unique(d.filter(isCity)),
+          cities: oneForEachPlace(d.filter(isCity).filter(isImportantSearchResult)),
           error: false
         }
       } else {
