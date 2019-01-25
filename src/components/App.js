@@ -20,7 +20,7 @@ import Modal                from "./pure/Modal"
 import Map                  from "./Map"
 import Sidebar              from "./Sidebar"
 import SearchBar            from "./SearchBar"
-import LandingPage          from "./pure/LandingPage"
+import LandingPage          from "./LandingPage"
 import { EDIT, RATING }     from "../constants/Form"
 import URLs                 from "../constants/URLs"
 import mapConst             from "../constants/Map"
@@ -109,7 +109,7 @@ class Main extends Component {
                 }}
                 onChange={ city => {
                   dispatch(Actions.setCitySearchText(city));
-                  if (city && city.length > 3) {
+                  if (city) {
                     return dispatch(Actions.searchCity());
                   }
                 }}
