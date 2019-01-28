@@ -107,14 +107,15 @@ class Main extends Component {
                       return dispatch(Actions.showInfo(id));
                   }
                 }}
-                onChange={ city => {
+                onChange={ (city) => {
                   dispatch(Actions.setCitySearchText(city));
                   if (city) {
-                    return dispatch(Actions.searchCity());
+                    return dispatch(Actions.searchCity())
                   }
                 }}
                 content={ view.right }
                 searchText={ search.city }
+                loadingSearch={ server.loadingSearch }
                 searchError={ search.error }
                 cities={ search.cities }
                 onEscape={ () => { return dispatch(Actions.setCitySearchText('')); }}

@@ -27,19 +27,18 @@ const getLicenseForEntry = currentLicense => {
 
 const Actions = {
 
+  setSearchTime: (time) => ({
+    type: T.SET_SEARCH_TIME,
+    payload: time
+  }),
+
   search: () =>
     (dispatch, getState) => {
 
-      dispatch({
-        type: T.SET_SEARCH_TIME,
-        payload: Date.now()
-      });
+      dispatch(Actions.setSearchTime(Date.now()));
 
       const searchFn = () => {
-        dispatch({
-          type: T.SET_SEARCH_TIME,
-          payload: null
-        });
+        dispatch(Actions.setSearchTime(null));
         console.log("SEARCH\n");
         const { search, map } = getState();
         var cats = search.categories;
@@ -117,7 +116,6 @@ const Actions = {
       };
 
       const triggerSearch = () => {
-
         const { timedActions } = getState();
         const lastTriggered = timedActions.searchLastTriggered;
 
@@ -137,14 +135,34 @@ const Actions = {
 
   searchCity: () =>
     (dispatch, getState) => {
+      dispatch(Actions.setSearchTime(Date.now()));
       const s = getState().search;
-      WebAPI.searchAddressNominatim(s.city, (err, res) => {
-        dispatch({
-          type: T.SEARCH_ADDRESS_RESULT,
-          payload: err || res,
-          error: err != null
+      const searchFn = () => {
+        dispatch(Actions.setSearchTime(null));
+        WebAPI.searchAddressNominatim(s.city, (err, res) => {
+          dispatch({
+            type: T.SEARCH_ADDRESS_RESULT,
+            payload: err || res,
+            error: err != null
+          });
         });
-      });
+      };
+
+      const triggerSearch = () => {
+        const { timedActions } = getState();
+        const lastTriggered = timedActions.searchLastTriggered;
+
+        if (lastTriggered != null) {
+          const duration = Date.now() - lastTriggered;
+          if (duration > appConst.SEARCH_DELAY) {
+            searchFn();
+          } else {
+            setTimeout(triggerSearch, appConst.SEARCH_DELAY);
+          }
+        }
+      };
+
+      setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
     },
 
   getEntries: (ids = []) =>

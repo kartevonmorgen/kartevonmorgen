@@ -220,10 +220,7 @@ const Actions = {
   onMoveend: (coordinates, mapCenter) =>
     (dispatch, getState) => {
 
-      dispatch({
-        type: T.SET_SEARCH_TIME,
-        payload: Date.now()
-      });
+      dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
       if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
         dispatch(Actions.setCenter({
@@ -238,10 +235,7 @@ const Actions = {
 
   onZoomend: (coordinates, zoom) =>
     (dispatch, getState) => {
-      dispatch({
-        type: T.SET_SEARCH_TIME,
-        payload: Date.now()
-      });
+      dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
       if(coordinates.zoom != zoom){
         dispatch(Actions.setZoom(coordinates.zoom));
