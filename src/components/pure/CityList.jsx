@@ -3,53 +3,53 @@ import styled from "styled-components";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CityListElement = ({ city, onClick }) => {
+const CityListElement = ({ city, onClick, isSelected }) => {
 
   return (
-    <li onClick={ev => {ev.preventDefault(); onClick(city)}}>
+    <ResultListItem onClick={ev => { ev.preventDefault(); onClick(city) }}
+      isSelected={isSelected}>
       <ResultRow>
         <div>
-          <span className= "city">{ city.display_name }</span>
+          <span className="city">{city.display_name}</span>
         </div>
         <Arrow>
           <FontAwesomeIcon icon="chevron-right" />
         </Arrow>
       </ResultRow>
-    </li>)
+    </ResultListItem>)
 }
 
-const CityList = ({ cities=[], onClick }) =>
-  <ListWrapper className= "city-list">
-    <ul>{
-      cities.map(c =>
+const CityList = ({ cities = [], onClick, selectedCity = 0 }) =>
+  <ResultList className="city-list">
+    {
+      cities.map((city, index) =>
         <CityListElement
-          city    = {c}
-          key     = {c.osm_id}
-          onClick = {onClick} />
-      )}
-    </ul>
-  </ListWrapper>
+          city={city}
+          key={city.osm_id}
+          onClick={onClick}
+          isSelected={selectedCity === index} />
+    )}
+  </ResultList>
 
 module.exports = CityList
 
 const ResultRow = styled.div`
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Arrow = styled.div`
-    margin: 0 12px;
+  margin: 0 12px;
 `;
 
-const ListWrapper = styled.div`
+const ResultListItem = styled.li`
+  cursor: pointer;
+  padding: 12px 11px 12px 24px;
+  background-color: ${props => props.isSelected ? "#000" : ""};
+`;
 
-ul {
+const ResultList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  li {
-    cursor: pointer;
-    padding: 12px 11px 12px 24px;
-  }
-}
-`
+`;
