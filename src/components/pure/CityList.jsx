@@ -7,16 +7,14 @@ const CityListElement = ({ city, onClick }) => {
 
   return (
     <li onClick={ev => {ev.preventDefault(); onClick(city)}}>
-      <div className= "pure-g">
-        <div className= "pure-u-23-24">
-          <div>
-            <span className= "city">{ city.display_name }</span>
-          </div>
+      <ResultRow>
+        <div>
+          <span className= "city">{ city.display_name }</span>
         </div>
-        <div className = "pure-u-1-24 chevron">
+        <Arrow>
           <FontAwesomeIcon icon="chevron-right" />
-        </div>
-      </div>
+        </Arrow>
+      </ResultRow>
     </li>)
 }
 
@@ -34,6 +32,15 @@ const CityList = ({ cities=[], onClick }) =>
 
 module.exports = CityList
 
+const ResultRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const Arrow = styled.div`
+    margin: 0 12px;
+`;
+
 const ListWrapper = styled.div`
 
 ul {
@@ -42,29 +49,7 @@ ul {
   padding: 0;
   li {
     cursor: pointer;
-    padding: 0.4em;
-    padding-left: 0.7em;
-    padding-right: 0.7em;
-    span {
-      margin-right: 0.5em;
-      &.city {
-        font-weight: bold;
-      }
-      &.county {
-        font-weight: bold;
-      }
-      &.state {
-        opacity: 0.8;
-        font-size: 0.9em;
-      }
-      &.country {
-        font-size: 0.8em;
-        opacity: 0.6;
-      }
-      &.prefix {
-        opacity: 0.6;
-      }
-    }
+    padding: 12px 11px 12px 24px;
   }
 }
 `
