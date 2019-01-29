@@ -153,54 +153,53 @@ class Main extends Component {
             view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
           }
 
-          <Swipeable onSwipedLeft={ () => this.swipedLeftOnPanel() }>
-            <LeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}>
-              <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-                <SearchBar
-                  searchText={search.text}
-                  categories={search.categories}
-                  type="integrated"
-                  disabled={view.left === V.EDIT || view.left === V.NEW}
-                  toggleCat={ c => {
-                    if(search.categories.includes(c)){
-                      dispatch(Actions.disableSearchCategory(c));
-                    } else {
-                      dispatch(Actions.enableSearchCategory(c));
-                    }
-                    return dispatch(Actions.search());
-                  }}
-                  onChange={txt => {
-                    if (txt == null) {
-                      txt = "";
-                    }
-                    dispatch(Actions.setSearchText(txt));
-                    return dispatch(Actions.search());
-                  }}
-                  onEscape={ () => {
-                    return dispatch(Actions.setSearchText(''));
-                  }}
-                  onEnter={ () => {}}      // currently not used, TODO
-                  loading={ server.loadingSearch }
-                />
-              </div>
+          <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
+            onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+            <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
+              <SearchBar
+                searchText={search.text}
+                categories={search.categories}
+                type="integrated"
+                disabled={view.left === V.EDIT || view.left === V.NEW}
+                toggleCat={ c => {
+                  if(search.categories.includes(c)){
+                    dispatch(Actions.disableSearchCategory(c));
+                  } else {
+                    dispatch(Actions.enableSearchCategory(c));
+                  }
+                  return dispatch(Actions.search());
+                }}
+                onChange={txt => {
+                  if (txt == null) {
+                    txt = "";
+                  }
+                  dispatch(Actions.setSearchText(txt));
+                  return dispatch(Actions.search());
+                }}
+                onEscape={ () => {
+                  return dispatch(Actions.setSearchText(''));
+                }}
+                onEnter={ () => {}}      // currently not used, TODO
+                loading={ server.loadingSearch }
+              />
+            </div>
 
-              <div className="content-wrapper">
-                <Sidebar
-                  view={ view }
-                  search={ search }
-                  map={ map }
-                  user={ user }
-                  form={ form }
-                  entries={entries}
-                  resultEntries={ resultEntries }
-                  ratings={ ratings }
-                  // LeftPanelentries={ server.entries } never used…?
-                  dispatch={ dispatch }
-                  t={ t }
-                />
-              </div>
-            </LeftPanel>
-          </Swipeable>
+            <div className="content-wrapper">
+              <Sidebar
+                view={ view }
+                search={ search }
+                map={ map }
+                user={ user }
+                form={ form }
+                entries={entries}
+                resultEntries={ resultEntries }
+                ratings={ ratings }
+                // LeftPanelentries={ server.entries } never used…?
+                dispatch={ dispatch }
+                t={ t }
+              />
+            </div>
+          </SwipeableLeftPanel>
 
           <HiddenSidebar>
             <button
@@ -318,8 +317,9 @@ const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
   width: 0.7em;
 `
 
-const LeftPanel = styled.div `
+const SwipeableLeftPanel = styled(Swipeable)`
   position: relative;
+  height: 100%;
   z-index: 2;
   order: -1;
   overflow-y: hidden;
