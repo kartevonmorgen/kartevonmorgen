@@ -7,11 +7,11 @@ const getDatetimeString = (unixtime) => {
 const getDateString = (unixtime) => {
   const d = new Date(unixtime * 1000);
   const now = new Date();
-  const isInThisYear = d.getYear() === now.getYear();
+  const isInThisYear = d.getUTCFullYear() === now.getUTCFullYear();
   let s = "";
-  s += d.getDate() + ".";
-  s += (d.getMonth() + 1) + ".";
-  if(!isInThisYear) s += (d.getYear() + 1900);
+  s += d.getUTCDate() + ".";
+  s += (d.getUTCMonth() + 1) + ".";
+  if(!isInThisYear) s += d.getUTCFullYear();
 
   return s;
 }
@@ -19,18 +19,18 @@ const getDateString = (unixtime) => {
 const getTimeString = (unixtime) => {
   const d = new Date(unixtime * 1000);
   let s = "";
-  s += d.getHours();
-  s += ":" + d.getMinutes().toString().padStart(2, "0");
+  s += d.getUTCHours();
+  s += ":" + d.getUTCMinutes().toString().padStart(2, "0");
   return s;
 }
 
 const getMidnightUnixtime = (dayUnixtime) => {
   const dayDateObject = new Date(dayUnixtime * 1000);
   const midnightUnixtime = (dayDateObject
-    - dayDateObject.getMilliseconds()
-    - dayDateObject.getSeconds() * 1000
-    - dayDateObject.getMinutes() * 1000 * 60
-    - dayDateObject.getHours()   * 1000 * 60 * 60) / 1000;
+    - dayDateObject.getUTCMilliseconds()
+    - dayDateObject.getUTCSeconds() * 1000
+    - dayDateObject.getUTCMinutes() * 1000 * 60
+    - dayDateObject.getUTCHours()   * 1000 * 60 * 60) / 1000;
   return midnightUnixtime;
 }
 
