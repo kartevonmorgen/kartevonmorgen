@@ -1,3 +1,4 @@
+import "typeface-rubik/index.css"
 import React        from "react";
 import ReactDOM     from "react-dom";
 import WebAPI       from "../../WebAPI";

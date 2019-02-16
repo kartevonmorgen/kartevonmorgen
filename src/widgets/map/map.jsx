@@ -13,6 +13,8 @@ const MoreInfoLink = styled.a`
   left: 0;
   padding: 6px 25px;
   font-size: 0.8em;
+  font-family: "Rubik", sans-serif;
+  border-top-right-radius: 2px;
 `;
 
 module.exports = ({marker, size, center, zoom, category, highlight, 
