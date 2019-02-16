@@ -58,7 +58,7 @@
     "redux-thunk": "^2.3.0",
     "source-sans-pro": "^2.40.0",
     "styled-components": "^4.1.1",
-    "superagent": "^3.8.3",
+    "superagent": "^4.1.0",
     "superagent-prefix": "0.0.2",
     "typeface-rubik": "0.0.54",
     "updeep": "^1.0.0",
