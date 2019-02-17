@@ -1,9 +1,8 @@
 import React                from "react"
-import { translate}         from "react-i18next";
+import { translate }        from "react-i18next";
 import PropTypes            from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
-
 import Actions              from "../../Actions" //TODO: remove dependency
 import Flower               from "../Flower";
 import NavButton            from "./NavButton";
@@ -99,17 +98,6 @@ const ResultList = props => {
           </p>)
     }
     </div>
-    <nav className="menu pure-g">
-      <NavButton
-        key = "back"
-        classname = "pure-u-1"
-        icon = "plus"
-        text = {t("resultlist.addEntry")}
-        onClick = {() => {
-          dispatch(Actions.showNewEntry());
-        }}
-      />
-    </nav>
   </Wrapper>)
 }
 
@@ -277,30 +265,46 @@ const FlowerWrapper = styled.div `
 `
 
 const Wrapper = styled.div `
-.result-list {
-  p {
-    &.no-results {
-      margin: 0;
-      padding: 1em;
-      font-size: 0.9em;
-      span {
-        margin-left: 0.5em;
-      }
+  box-sizing: border-box;
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
     }
-    &.loading {
-      margin: 0;
-      padding: 1em;
-      font-size: 0.9em;
-      span {
-        margin-left: 0.5em;
-      }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #999;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #666;
     }
   }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
+  .result-list {
+    p {
+      &.no-results {
+        margin: 0;
+        padding: 1em;
+        font-size: 0.9em;
+        span {
+          margin-left: 0.5em;
+        }
+      }
+      &.loading {
+        margin: 0;
+        padding: 1em;
+        font-size: 0.9em;
+        span {
+          margin-left: 0.5em;
+        }
+      }
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
   }
-}
 `

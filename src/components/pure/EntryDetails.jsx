@@ -8,13 +8,20 @@ import EntryImage     from "./EntryImage";
 import Actions        from "../../Actions"; // TODO: remove dependency
 
 const LoadingEntryMessage = styled.div`
-  margin: 3em 2em; !important;
+  margin: 3em 2em !important;
 `;
 
 const Navbar = styled.nav`
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 9pt 6pt 8pt 7pt;
 `;
+
+const Entry = styled.div`
+  position: relative;
+`
 
 const EntryDetails = props => {
 
@@ -29,7 +36,7 @@ const EntryDetails = props => {
   }
   else {
     return (
-      <div className="entry">
+      <Entry>
         <Navbar className="menu-top">
           <NavButtonWhite
             keyName = "back"
@@ -62,7 +69,7 @@ const EntryDetails = props => {
             : null
         }
         <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} isEvent={isEvent}/>
-      </div>)
+      </Entry>)
   }
 }
 

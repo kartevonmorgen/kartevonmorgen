@@ -9,7 +9,7 @@ import ResultList           from "./pure/ResultList"
 import SubscribeToBbox      from "./pure/SubscribeToBbox"
 import Ratings              from "./pure/Ratings"
 import EntryDetails         from "./pure/EntryDetails"
-import EntryForm            from "./pure/EntryForm"
+import EntryForm            from "./EntryForm"
 import RatingForm           from "./pure/RatingForm"
 import Message              from "./pure/Message"
 import CityList             from "./pure/CityList"
@@ -17,6 +17,8 @@ import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
 import STYLE                from "./styling/Variables"
 import { IDS }              from "../constants/Categories"
+import NavButton            from "./NavButton";
+import SearchBar            from "./SearchBar"
 
 class Sidebar extends Component {
 
@@ -52,8 +54,9 @@ class Sidebar extends Component {
   }
 
   render(){
-    const { view, search, user, resultEntries, entries,
-      ratings, dispatch, map, form, t } = this.props;
+    const { view, search, user, server, resultEntries, entries,
+      ratings, dispatch, map, form, t, showAddEntryButton,
+      showSearchBar } = this.props;
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
     const invisibleEntries = search.invisible
@@ -263,13 +266,62 @@ class Sidebar extends Component {
         content = <div></div>
     }
 
-    return(content);
+    return(
+      <SidebarComponent>
+        {
+          showSearchBar
+          ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
+            <SearchBar
+                searchText={search.text}
+                categories={search.categories}
+                type="integrated"
+                disabled={view.left === V.EDIT || view.left === V.NEW}
+                toggleCat={ c => {
+                  if(search.categories.includes(c)){
+                    dispatch(Actions.disableSearchCategory(c));
+                  } else {
+                    dispatch(Actions.enableSearchCategory(c));
+                  }
+                  return dispatch(Actions.search());
+                }}
+                onChange={txt => {
+                  if (txt == null) {
+                    txt = "";
+                  }
+                  dispatch(Actions.setSearchText(txt));
+                  return dispatch(Actions.search());
+                }}
+                onEscape={ () => {
+                  return dispatch(Actions.setSearchText(''));
+                }}
+                onEnter={ () => {}}      // currently not used, TODO
+                loading={ server.loadingSearch }
+              />
+          </div>
+          : ""
+        }
+        {
+          content
+        }
+        {
+          (view.left === V.RESULT) && showAddEntryButton
+          ? <AddEntryButton>
+              <NavButton
+                key = "back"
+                classname = "pure-u-1"
+                icon = "plus"
+                text = {t("resultlist.addEntry")}
+                onClick = {() => {
+                  dispatch(Actions.showNewEntry());
+                }}
+              />
+            </AddEntryButton>
+          : ""
+        }
+      </SidebarComponent>
+    );
   }
 }
-
-
-
-
 
 const Footer = (props) => {
   const now = Date.now()
@@ -292,6 +344,12 @@ const Footer = (props) => {
 
 const MetaFooter = translate('translation')(Footer)
 
+const SidebarComponent = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
 const MetaFoot = styled.div`
   text-align: left;
   color: #aaa;
@@ -312,12 +370,12 @@ Sidebar.propTypes = {
   view:           PropTypes.object.isRequired,
   search:         PropTypes.object.isRequired,
   map:            PropTypes.object.isRequired,
-  user:           PropTypes.object.isRequired,
-  form:           PropTypes.object.isRequired,
-  resultEntries:  PropTypes.array.isRequired,
+  user:           PropTypes.object,
+  form:           PropTypes.object,
+  resultEntries:  PropTypes.array,
   entries:        PropTypes.object.isRequired,
-  ratings:        PropTypes.object.isRequired,
-  dispatch:       PropTypes.func.isRequired,
+  ratings:        PropTypes.object,
+  dispatch:       PropTypes.func,
   t:              PropTypes.func.isRequired
 }
 
@@ -332,10 +390,36 @@ const GroupHeader = styled.div `
   color: #666;
 `
 
+const AddEntryButton = styled.nav`
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+  background: ${STYLE.coal};
+  text-align: center;
+  bottom: 0;
+  li {
+    cursor: pointer;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0.3em;
+    font-size: 1.2em;
+    border: none;
+    color: ${STYLE.lightGray};
+    background: transparent;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    &:hover {
+      color: #fff;
+      border-bottom: 4px solid #fff;
+    }
+    i {
+      margin-right: 0.5em;
+    }
+  }
+`;
 
 const ResultWrapper = styled.div `
-  padding-bottom: 1.5em;
-  height: calc(100vh - 107px);
+  flex-grow: 1;
   overflow-y: scroll;
   background: #f7f7f7;
 

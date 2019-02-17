@@ -155,40 +155,11 @@ class Main extends Component {
 
           <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
             onSwipedLeft={ () => this.swipedLeftOnPanel() }>
-            <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-              <SearchBar
-                searchText={search.text}
-                categories={search.categories}
-                type="integrated"
-                disabled={view.left === V.EDIT || view.left === V.NEW}
-                toggleCat={ c => {
-                  if(search.categories.includes(c)){
-                    dispatch(Actions.disableSearchCategory(c));
-                  } else {
-                    dispatch(Actions.enableSearchCategory(c));
-                  }
-                  return dispatch(Actions.search());
-                }}
-                onChange={txt => {
-                  if (txt == null) {
-                    txt = "";
-                  }
-                  dispatch(Actions.setSearchText(txt));
-                  return dispatch(Actions.search());
-                }}
-                onEscape={ () => {
-                  return dispatch(Actions.setSearchText(''));
-                }}
-                onEnter={ () => {}}      // currently not used, TODO
-                loading={ server.loadingSearch }
-              />
-            </div>
-
-            <div className="content-wrapper">
               <Sidebar
                 view={ view }
                 search={ search }
                 map={ map }
+                server={ server }
                 user={ user }
                 form={ form }
                 entries={entries}
@@ -197,8 +168,9 @@ class Main extends Component {
                 // LeftPanelentries={ server.entries } never used…?
                 dispatch={ dispatch }
                 t={ t }
+                showAddEntryButton={ true }
+                showSearchBar={ true }
               />
-            </div>
           </SwipeableLeftPanel>
 
           <HiddenSidebar>
@@ -326,66 +298,43 @@ const SwipeableLeftPanel = styled(Swipeable)`
   float: left;
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(0,0,0,.5);
-  .content-wrapper {
-    .result {
-      box-sizing: border-box;
-      padding-bottom: 30px;
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #999;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #666;
-      }
+  .result {
+    box-sizing: border-box;
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
     }
-    .content-above-buttons {
-      overflow-y: scroll;
-      overflow: auto;
-      height: calc(100vh - 42px);
-      box-sizing: border-box;
-      padding-bottom: 30px;
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #999;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #666;
-      }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0);
     }
-    .content {
-      overflow-y: scroll;
-      overflow: auto;
-      height: 100vh;
-      width: 100%;
-      box-sizing: border-box;
-      padding-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #999;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #666;
-      }
+    ::-webkit-scrollbar-thumb {
+      background: #999;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #666;
+    }
+  }
+  .content {
+    overflow-y: scroll;
+    overflow: auto;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #999;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #666;
     }
   }
   &.closed {
@@ -404,42 +353,6 @@ const SwipeableLeftPanel = styled(Swipeable)`
     }
     .main-categories {
       height: 2.1em;
-    }
-  }
-  nav {
-    &.menu {
-      z-index: 10;
-      padding: 0;
-      margin: 0;
-      background: ${STYLE.coal};
-      text-align: center;
-      position: absolute;
-      bottom: 0;
-      li {
-        cursor: pointer;
-        box-sizing: border-box;
-        font-weight: normal;
-        padding: 0.3em;
-        font-size: 1.2em;
-        border: none;
-        color: ${STYLE.lightGray};
-        background: transparent;
-        border-top: 4px solid transparent;
-        border-bottom: 4px solid transparent;
-        &:hover {
-          color: #fff;
-          border-bottom: 4px solid #fff;
-        }
-        i {
-          margin-right: 0.5em;
-        }
-      }
-    }
-    &.menu-top {
-      top: 0;
-      display: flex;
-      flex-direction: row;
-      padding: 9pt 6pt 8pt 7pt;
     }
   }
 `

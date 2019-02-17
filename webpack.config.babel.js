@@ -12,7 +12,8 @@ const config = {
   entry: {
     app: ['babel-polyfill', path.join(__dirname, "src/index.js")],
     businesscard_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/businesscard/index.js")],
-    map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")]
+    map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")],
+    mapAndEntryList_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/mapAndEntryList/index.js")]
   },
   output: {
     path: path.join(__dirname, 'dist/'),
@@ -142,6 +143,12 @@ plugins.push(new HTMLPlugin({
   ...htmlPluginOptions,
   filename: "map.html",
   chunks: ["map_widget"]
+}));
+
+plugins.push(new HTMLPlugin({
+  ...htmlPluginOptions,
+  filename: "mapAndEntryList.html",
+  chunks: ["mapAndEntryList_widget"]
 }));
 
 config.plugins = plugins;
