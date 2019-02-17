@@ -13,6 +13,7 @@ import EntryDetails         from "./pure/EntryDetails"
 import EntryForm            from "./EntryForm"
 import RatingForm           from "./pure/RatingForm"
 import Message              from "./pure/Message"
+import SidebarFooter        from "./pure/SidebarFooter"
 import CityList             from "./pure/CityList"
 import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
@@ -51,7 +52,7 @@ class Sidebar extends Component {
     if(this.entryContent){
       this.entryContent.scrollTop = 0;
       this.entryContent.scrollLeft = 0;
-    } 
+    }
   }
 
   render(){
@@ -155,18 +156,18 @@ class Sidebar extends Component {
                 onEdit={ onEdit }
                 onBack={ onBack }
               />
-              { !isEvent ? 
+              { !isEvent ?
                 <Ratings
-                  entry={ entry } 
+                  entry={ entry }
                   ratings={ (entry ? entry.ratings || [] : []).map(id => {
                     return ratings[id];
                   })}
                   onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
                 />
               : ''}
-              { !isEvent ? 
-                <MetaFooter 
-                    changed = {entry.created} 
+              { !isEvent ?
+                <SidebarFooter
+                    changed = {entry.created}
                     version = {entry.version}
                     title = {entry.title}
                 />
@@ -346,48 +347,11 @@ class Sidebar extends Component {
   }
 }
 
-const Footer = (props) => {
-  const now = Date.now()
-  const edited = new Date(props.changed*1000)
-  const diffDate = Math.round((now-edited)/(1000*60*60*24))
-  const fullDate = edited.toLocaleString()
-  const fullDateString = props.t("entryDetails.lastEdit") + " " + ((diffDate < 1) ? props.t("entryDetails.today") : diffDate + " " + props.t("entryDetails.daysAgo") )
-
-  const subject = props.t("entryDetails.reportSubject")
-  const body = "%0D%0A"+ props.t("entryDetails.reportBody").replace("{link}", (" «"+props.title + "»%0D%0A (" + encodeURIComponent(window.location.href) + ")%0D%0A ")) + '%0D%0A%0D%0A'
-  const mailToString = `mailto:report@kartevonmorgen.org?subject=${subject}&body=${body}`
-
-  return(
-    <MetaFoot>
-      <a href={mailToString}><b>{props.t("entryDetails.reportLink")}</b></a>
-      <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
-    </MetaFoot>
-  )
-}
-
-const MetaFooter = translate('translation')(Footer)
-
 const SidebarComponent = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
 `
-
-const MetaFoot = styled.div`
-  text-align: left;
-  color: #aaa;
-  line-height: 1.5;
-  font-size: 0.7rem;
-  margin-top: auto;
-  margin-bottom: -1rem;
-  padding: 1rem 1.8em;
-  background-color: #f9f9f9;
-  border-top: 1px solid ${STYLE.lightGray};
-
-  > a:link {color: #000; }
-  >span { float: right; }
-`
-
 
 Sidebar.propTypes = {
   view:           PropTypes.object.isRequired,
