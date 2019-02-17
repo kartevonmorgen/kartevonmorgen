@@ -129,6 +129,23 @@ const Actions = {
       if(id && center && center.lat && center.lng){
         dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         dispatch(Actions.setCenter(center));
+      } else if (id) {
+        dispatch(Actions.setCenter(id));
+      }
+    },
+
+  setCurrentEvent: (id, center) =>
+    (dispatch, getState) => {
+      dispatch(Actions.highlight(id ? [id] : []));
+      dispatch({
+        type: T.SET_CURRENT_EVENT,
+        payload: id,
+      });
+      if(id && center && center.lat && center.lng){
+        dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
+        dispatch(Actions.setCenter(center));
+      } else if (id) {
+        dispatch(Actions.setCenter(id));
       }
     },
 

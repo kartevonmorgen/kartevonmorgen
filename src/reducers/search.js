@@ -40,6 +40,7 @@ const isCity = x =>
 const isImportantSearchResult = x => ( x.importance >= CITY_SEARCH_RESULTS_MIN_IMPORTANCE )
 
 module.exports = (state = initialState, action = {}) => {
+  const p = action.payload;
 
   switch (action.type) {
 
@@ -154,7 +155,20 @@ module.exports = (state = initialState, action = {}) => {
       break;
 
     case T.SET_CURRENT_ENTRY:
-      const p = action.payload;
+      if (p != null) {
+        return {
+          ...state,
+          current: p,
+          highlight: [p]
+        }
+      }
+      return {
+        ...state,
+        current: null
+      }
+      break;
+
+    case T.SET_CURRENT_EVENT:
       if (p != null) {
         return {
           ...state,

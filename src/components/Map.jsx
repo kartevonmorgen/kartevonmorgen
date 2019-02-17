@@ -82,6 +82,7 @@ class KVMMap extends Component {
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
         let avg_rating = null;
+        const isEvent = e.categories.includes(EVENT);
 
         if (e.lat && e.lng) {
 
@@ -97,7 +98,7 @@ class KVMMap extends Component {
             markers.push(
               <Marker
                 key       = { e.id }
-                onClick   = { () => { onMarkerClick(e.id) }}
+                onClick   = { () => { onMarkerClick(e.id, isEvent) }}
                 position  = {{ lat: e.lat, lng: e.lng }}
                 icon      = { this.getIconById(e.categories[0]) }
                 opacity   = { opacity }
@@ -115,7 +116,7 @@ class KVMMap extends Component {
 
             markers.push(
               <CircleMarker
-                onClick   = { () => { onMarkerClick(e.id) }}
+                onClick   = { () => { onMarkerClick(e.id, isEvent) }}
                 key       = { e.id }
                 center    = {{ lat: e.lat, lng: e.lng }}
                 opacity   = { 1 }
@@ -137,7 +138,7 @@ class KVMMap extends Component {
 
             markers.push(
               <CircleMarker
-                onClick   = { () => { onMarkerClick(e.id) }}
+                onClick   = { () => { onMarkerClick(e.id, isEvent) }}
                 key       = { e.id + "-highlight"}
                 center    = {{ lat: e.lat, lng: e.lng }}
                 opacity   = { 0 }

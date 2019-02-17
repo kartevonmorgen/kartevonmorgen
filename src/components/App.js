@@ -219,9 +219,13 @@ class Main extends Component {
                   return dispatch(Actions.hideLeftPanelOnMobile());
                 }
               }}
-              onMarkerClick={ id => {
-                dispatch(Actions.setCurrentEntry(id, null)); 
-                return dispatch(Actions.showLeftPanel()); 
+              onMarkerClick={ (id, isEvent) => {
+                if (isEvent) {
+                  dispatch(Actions.setCurrentEvent(id, null));
+                } else {
+                  dispatch(Actions.setCurrentEntry(id, null));
+                }
+                return dispatch(Actions.showLeftPanel());
               }}
               onMoveend={ coordinates => { return dispatch(Actions.onMoveend(coordinates, map.center)); }}
               onZoomend={ coordinates => { return dispatch(Actions.onZoomend(coordinates, map.zoom)); }}

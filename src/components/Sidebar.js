@@ -132,6 +132,7 @@ class Sidebar extends Component {
 
           const onBack = () => {
             dispatch(Actions.setCurrentEntry(null, null));
+            dispatch(Actions.setCurrentEvent(null, null));
             dispatch(Actions.showSearchResults());
             dispatch(Actions.setCenterInUrl(map.center));
           };

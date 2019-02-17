@@ -19,7 +19,7 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories } = params;
+    var { zoom, entry, event, search, tags, left, categories } = params;
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -43,6 +43,8 @@ module.exports = (state=initialState, action={}) => {
         routingUsecases.push(RoutingUsecases.CONFIRM_EMAIL);
       } else if(entry){ 
         routingUsecases.push(RoutingUsecases.SHOW_ENTRY);
+      } else if(event){
+        routingUsecases.push(RoutingUsecases.SHOW_EVENT);
       } else {
         if (centerStr && centerStr.includes(',') && (centerStr.length >= 3)) {
           routingUsecases.push(RoutingUsecases.CHANGE_CENTER);   
@@ -80,6 +82,10 @@ module.exports = (state=initialState, action={}) => {
       entry = action.payload;
       break;
 
+    case T.SET_CURRENT_EVENT:
+      event = action.payload;
+      break;
+
     case T.SET_CENTER_IN_URL:
       center = action.payload;
       break;
@@ -107,6 +113,6 @@ module.exports = (state=initialState, action={}) => {
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left, categories)
+    hash: constructUrl(entry, event, center, zoom, search, left, categories)
   }
 };

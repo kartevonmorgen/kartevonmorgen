@@ -20,7 +20,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     <ListElement
       key           = { entry.id }
       className     = { css_class }
-      onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
+      onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}, isEvent) }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
       <div className = "pure-g">
@@ -66,7 +66,15 @@ const ResultList = props => {
       ratings      = { (e.ratings || []).map(id => ratings[id])}
       key          = { e.id         }
       highlight    = { highlight.indexOf(e.id) >= 0 }
-      onClick      = { (id, center) => { if(center) dispatch(Actions.setCurrentEntry(id, center)) }}
+      onClick      = { (id, center, isEvent) => {
+        if (center) {
+          if (!isEvent) {
+            dispatch(Actions.setCurrentEntry(id, center))
+          } else {
+            dispatch(Actions.setCurrentEvent(id, center))
+          }
+        }
+      }}
       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
       t            = { t } />);
