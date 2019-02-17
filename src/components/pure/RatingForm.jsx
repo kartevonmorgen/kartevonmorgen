@@ -1,12 +1,11 @@
 import React                            from "react";
-import { reduxForm, Field, initialize } from "redux-form";
+import { reduxForm, Field }             from "redux-form";
 import styled                           from "styled-components";
 import { translate }                    from "react-i18next";
 
 import { RATING }                       from "../../constants/Form";
 import validation                       from "../../util/validation";
 import NavButton                        from "./NavButton";
-import Actions                          from "../../Actions"; // TODO: remove dependency
 import STYLE                            from "../styling/Variables";
 
 const errorMessage = ({meta}) =>
@@ -44,7 +43,9 @@ const RatingForm = props => {
     contextToExplain,
     changeContext,
     selectedContext,
-    t } = props;
+    t,
+    onCancel
+  } = props;
 
   return (
     <div>
@@ -169,10 +170,7 @@ const RatingForm = props => {
         <NavButton
           keyName = "cancel"
           classname = "pure-u-1-2"
-          onClick = {() => {
-            props.dispatch(initialize(RATING.id, {}, RATING.fields));
-            props.dispatch(Actions.cancelRating());
-          }}
+          onClick = { onCancel }
           icon = "ban"
           text = { t("ratingForm.cancel") }
         />

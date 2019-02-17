@@ -3,6 +3,7 @@ import { translate }        from "react-i18next";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import PropTypes            from "prop-types"
 import styled               from "styled-components";
+import { initialize }       from "redux-form";
 
 import V                    from "../constants/PanelView"
 import ResultList           from "./pure/ResultList"
@@ -234,6 +235,10 @@ class Sidebar extends Component {
                   comment: data.comment,
                   source: data.source
                 }));
+              }}
+              onCancel={ () => {
+                dispatch(initialize(RATING.id, {}, RATING.fields));
+                dispatch(Actions.cancelRating());
               }}
               contextToExplain={ explainRatingContext }
               selectedContext={ selectedContext }
