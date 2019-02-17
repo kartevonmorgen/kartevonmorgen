@@ -6,7 +6,7 @@ import { translate }                    from "react-i18next";
 import { RATING }                       from "../../constants/Form";
 import validation                       from "../../util/validation";
 import NavButton                        from "./NavButton";
-import Actions                          from "../../Actions";
+import Actions                          from "../../Actions"; // TODO: remove dependency
 import STYLE                            from "../styling/Variables";
 
 const errorMessage = ({meta}) =>

@@ -5,7 +5,7 @@ import { translate }  from "react-i18next";
 import BusinessCard   from "./BusinessCard";
 import NavButtonWhite from "./NavButtonWhite";
 import EntryImage     from "./EntryImage";
-import Actions        from "../../Actions";
+import Actions        from "../../Actions"; // TODO: remove dependency
 
 const LoadingEntryMessage = styled.div`
   margin: 3em 2em; !important;

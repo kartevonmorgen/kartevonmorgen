@@ -2,7 +2,7 @@ import React                from "react";
 import styled,{ keyframes } from "styled-components";
 
 import Message              from "./Message";
-import Actions              from "../../Actions";
+import Actions              from "../../Actions"; //TODO: remove dependency
 import { DONATE }           from "../../constants/URLs";
 import V                    from "../../constants/PanelView";
 import i18n                 from "../../i18n";

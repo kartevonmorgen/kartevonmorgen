@@ -4,7 +4,7 @@ import T                    from "prop-types";
 import styled               from "styled-components";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 
-import Actions              from "../../Actions";
+import Actions              from "../../Actions"; // TODO: remove dependency
 import validation           from "../../util/validation";
 import NavButton            from "./NavButton";
 import { IDS, NAMES }       from "../../constants/Categories";

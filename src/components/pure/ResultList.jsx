@@ -4,7 +4,7 @@ import PropTypes            from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
 
-import Actions              from "../../Actions"
+import Actions              from "../../Actions" //TODO: remove dependency
 import Flower               from "../Flower";
 import NavButton            from "./NavButton";
 import EventTimes           from "./EventTimes";

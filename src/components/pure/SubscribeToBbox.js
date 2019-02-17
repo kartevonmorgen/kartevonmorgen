@@ -2,7 +2,7 @@ import React                from "react";
 import styled               from "styled-components";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
 
-import Actions              from "../../Actions";
+import Actions              from "../../Actions"; //TODO: remove dependency
 import NavButton            from "./NavButton";
 import i18n                 from "../../i18n";
 

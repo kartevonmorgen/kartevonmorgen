@@ -7,7 +7,7 @@ import STYLE                  from "../styling/Variables"
 import AddressLine            from "./AddressLine";
 import EventTimes             from "./EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
-import Actions                from "../../Actions";
+import Actions                from "../../Actions"; // TODO: remove dependency
 import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 import { NAMES }              from "../../constants/Categories"
 import i18n                   from "../../i18n";
