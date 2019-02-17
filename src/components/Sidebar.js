@@ -17,7 +17,7 @@ import { EDIT, RATING }     from "../constants/Form"
 import Actions              from "../Actions"
 import STYLE                from "./styling/Variables"
 import { IDS }              from "../constants/Categories"
-import NavButton            from "./NavButton";
+import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 
 class Sidebar extends Component {

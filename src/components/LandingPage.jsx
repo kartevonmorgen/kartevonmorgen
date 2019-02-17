@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import logo                 from "../img/logo.png";
-import CityList             from "./CityList";
-import Info                 from "./Info";
-import Contact              from "./Contact";
-import Imprint              from "./Imprint";
-import PrivacyStatement     from "./PrivacyStatement";
-import Explain              from "./LandingExplain";
-import Register             from "./Register";
-import Login                from "./Login";
-import URLs                 from "../constants/URLs";
-import V                    from "../constants/PanelView";
 import { translate }        from "react-i18next";
-import i18n                 from "../i18n";
 import T                    from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import STYLE                from "./styling/Variables"
 import styled               from "styled-components";
+
+import logo                 from "../img/logo.png";
+import CityList             from "./pure/CityList";
+import Info                 from "./pure/Info";
+import Contact              from "./pure/Contact";
+import Imprint              from "./pure/Imprint";
+import PrivacyStatement     from "./pure/PrivacyStatement";
+import Explain              from "./pure/LandingExplain";
+import Register             from "./pure/Register";
+import Login                from "./pure/Login";
+import URLs                 from "../constants/URLs";
+import V                    from "../constants/PanelView";
+import i18n                 from "../i18n";
+import STYLE                from "./styling/Variables"
 
 class LandingPage extends Component {
   state = {
