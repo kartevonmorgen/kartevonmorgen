@@ -5,7 +5,6 @@ import { translate }  from "react-i18next";
 import BusinessCard   from "./BusinessCard";
 import NavButtonWhite from "./NavButtonWhite";
 import EntryImage     from "./EntryImage";
-import Actions        from "../../Actions"; // TODO: remove dependency
 
 const LoadingEntryMessage = styled.div`
   margin: 3em 2em !important;
@@ -25,7 +24,7 @@ const Entry = styled.div`
 
 const EntryDetails = props => {
 
-  const { entry, t, dispatch, mapCenter, isEvent } = props;
+  const { entry, t, isEvent, onBack, onEdit, onTag } = props;
   const hasImage = entry ? (entry.image_url ? true : false) : false;
   if (!entry) {
     return(
@@ -43,11 +42,7 @@ const EntryDetails = props => {
             buttonRight = { false }
             icon = "chevron-left"
             text = {t("entryDetails.back")}
-            onClick = {() => {
-              props.dispatch(Actions.setCurrentEntry(null, null));
-              props.dispatch(Actions.showSearchResults());
-              props.dispatch(Actions.setCenterInUrl(mapCenter));
-            }}
+            onClick = {onBack}
             aboveImage={hasImage}
           />
           { !isEvent ? 
@@ -56,19 +51,25 @@ const EntryDetails = props => {
               buttonRight = { true }
               icon = "pencil-alt"
               text = ""
-              onClick = {() => {
-                props.dispatch(Actions.editCurrentEntry());
-              }}
+              onClick = {onEdit}
               aboveImage={hasImage}
             />
           : "" }
         </Navbar>
         {
           hasImage ?
-            <EntryImage image_url={entry.image_url} image_link_url={entry.image_link_url} />
+            <EntryImage
+              image_url={entry.image_url}
+              image_link_url={entry.image_link_url}
+            />
             : null
         }
-        <BusinessCard entry={entry} hasImage={hasImage} dispatch={dispatch} isEvent={isEvent}/>
+        <BusinessCard
+          entry={entry}
+          hasImage={hasImage}
+          isEvent={isEvent}
+          onTag={onTag}
+        />
       </Entry>)
   }
 }

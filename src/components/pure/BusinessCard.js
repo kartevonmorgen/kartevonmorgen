@@ -7,24 +7,19 @@ import STYLE                  from "../styling/Variables"
 import AddressLine            from "./AddressLine";
 import EventTimes             from "./EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
-import Actions                from "../../Actions"; // TODO: remove dependency
 import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 import { NAMES }              from "../../constants/Categories"
 import i18n                   from "../../i18n";
 
-const Tags = (tags=[], dispatch) =>
+const Tags = (tags=[], onClick) =>
   <TagsWrapper key="tags">
     <TagList>
     { tags
         .filter(t => t != "")
         .map( (t,index) =>
-          <Tag key={"Tag"+t}><TagLink
-            onClick={ () => {
-              dispatch(Actions.showSearchResults());
-              dispatch(Actions.setSearchText('#'+t));
-              return dispatch(Actions.search());
-            }}
-          >#{t}</TagLink></Tag>
+          <Tag key={"Tag"+t}>
+            <TagLink onClick={ () => onClick(t) }>#{t}</TagLink>
+          </Tag>
         )}
     </TagList>
   </TagsWrapper>
@@ -75,7 +70,7 @@ const getRoutePlannerLink = (entry) => {
   )
 };
 
-const BusinessCard = ({ entry, hasImage, dispatch, t, isEvent }) => {
+const BusinessCard = ({ entry, hasImage, t, isEvent, onTag }) => {
   if (!entry) {
     return(
       <LoadingEntryMessage>
@@ -85,7 +80,6 @@ const BusinessCard = ({ entry, hasImage, dispatch, t, isEvent }) => {
   }
   else {
     const categoryName = NAMES[entry.categories && entry.categories[0]]
-
     return (
       <EntryDetailPage hasImage={hasImage}>
         <EntryCategory category={categoryName}>
@@ -133,7 +127,7 @@ const BusinessCard = ({ entry, hasImage, dispatch, t, isEvent }) => {
             </div></div>
             : null),
           (entry.tags && entry.tags.filter(t => t !="").length > 0
-            ? Tags(entry.tags, dispatch)
+            ? Tags(entry.tags, onTag)
             : null)
         ]}</EntryDetailsOtherData>
         {

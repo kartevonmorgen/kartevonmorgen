@@ -127,14 +127,32 @@ class Sidebar extends Component {
       case V.ENTRY:
         if(!entry) content = ''
         else {
+
+          const onBack = () => {
+            dispatch(Actions.setCurrentEntry(null, null));
+            dispatch(Actions.showSearchResults());
+            dispatch(Actions.setCenterInUrl(map.center));
+          };
+
+          const onEdit = () => {
+            dispatch(Actions.editCurrentEntry());
+          };
+
+          const onTag= (t) => {
+            dispatch(Actions.showSearchResults());
+            dispatch(Actions.setSearchText('#'+t));
+            dispatch(Actions.search());
+          };
+
           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
           content = (
             <div className="content" ref={this.setEntryContentRef}>
               <EntryDetails
                 entry={ entry }
-                dispatch={ dispatch }
-                mapCenter={ map.center }
                 isEvent={ isEvent }
+                onTag={ onTag }
+                onEdit={ onEdit }
+                onBack={ onBack }
               />
               { !isEvent ? 
                 <Ratings
