@@ -178,6 +178,7 @@ const Rating = (rating, t) => {
 module.exports = Ratings;
 
 const RatingsWrapper = styled.div`
+  flex-grow: 1;
   margin: 1.8em;
   color: #333;
 `

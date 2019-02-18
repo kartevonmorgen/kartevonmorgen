@@ -7,6 +7,7 @@ import { RATING }                       from "../../constants/Form";
 import validation                       from "../../util/validation";
 import NavButton                        from "./NavButton";
 import STYLE                            from "../styling/Variables";
+import ScrollableDiv                    from "./ScrollableDiv";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -48,7 +49,7 @@ const RatingForm = props => {
   } = props;
 
   return (
-    <div>
+    <ScrollableDiv>
       <Form
         className = "new-rating-form"
         action    = 'javascript:void();' >
@@ -184,7 +185,7 @@ const RatingForm = props => {
           text = { t("ratingForm.save") }
         />
       </nav>
-    </div>)
+    </ScrollableDiv>)
 }
 
 module.exports = reduxForm({

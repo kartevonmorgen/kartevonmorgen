@@ -377,7 +377,6 @@ const LandingWrapper = styled.div`
   height: 100%;
   z-index: 1001;
   background-color: rgba(0,0,0,0.7);
-  min-height: 100vh;
   h1, h3 {
     font-family: ${STYLE.headerFont};
     font-weight: 500;

@@ -22,25 +22,30 @@ const Footer = props => {
   const mailToString = `mailto:report@kartevonmorgen.org?subject=${subject}&body=${body}`
 
   return(
-    <MetaFoot>
-      <a href={mailToString}><b>{t("entryDetails.reportLink")}</b></a>
-      <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
-    </MetaFoot>
+    <FooterWrapper>
+      <MetaFoot>
+        <a href={mailToString}><b>{t("entryDetails.reportLink")}</b></a>
+        <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
+      </MetaFoot>
+    </FooterWrapper>
   )
 }
 
 const MetaFooter = translate('translation')(Footer)
 
-const MetaFoot = styled.div`
-  text-align: left;
-  color: #aaa;
-  line-height: 1.5;
-  font-size: 0.7rem;
-  margin-top: auto;
-  margin-bottom: -1rem;
-  padding: 1rem 1.8em;
+const FooterWrapper = styled.div`
   background-color: #f9f9f9;
   border-top: 1px solid ${STYLE.lightGray};
+`
+
+const MetaFoot = styled.div`
+  color: #aaa;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 0.7rem;
+  /* margin-top: auto;
+  margin-bottom: -1rem; */
+  margin: 1rem 1.8em;
 
   > a:link {color: #000; }
   >span { float: right; }

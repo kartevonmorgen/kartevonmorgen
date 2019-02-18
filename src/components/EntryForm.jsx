@@ -16,9 +16,9 @@ import LICENSES             from "../constants/Licenses";
 import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
 import STYLE                from "./styling/Variables";
+import ScrollableDiv        from "./pure/ScrollableDiv";
 
 class Form extends Component {
-
 
   render() {
 
@@ -256,24 +256,6 @@ module.exports = reduxForm({
       return new Promise((resolve, reject) => resolve());
   }
 })(translate('translation')(Form))
-
-const ScrollableDiv = styled.div`
-  flex-grow: 1;
-  overflow-y: scroll;
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #999;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #666;
-  }
-`
 
 const Nav = styled.nav`
   z-index: 10;

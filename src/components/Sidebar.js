@@ -21,6 +21,7 @@ import STYLE                from "./styling/Variables"
 import { IDS }              from "../constants/Categories"
 import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
+import ScrollableDiv        from "./pure/ScrollableDiv";
 
 class Sidebar extends Component {
 
@@ -38,21 +39,6 @@ class Sidebar extends Component {
     //     && Object.keys(nextProps.search.eventsWithoutPlace).join() === Object.keys(this.props.search.eventsWithoutPlace).join()
     // ) return false
     return true
-  }
-
-  componentDidUpdate(prevProps){
-    if( this.props.view.left === V.ENTRY && prevProps.search.highlight !== this.props.search.highlight) this.scrollToTop()
-  }
-
-  setEntryContentRef = (elem) => {
-    this.entryContent = elem;
-  };
-
-  scrollToTop = () =>{
-    if(this.entryContent){
-      this.entryContent.scrollTop = 0;
-      this.entryContent.scrollLeft = 0;
-    }
   }
 
   render(){
@@ -150,7 +136,7 @@ class Sidebar extends Component {
 
           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
           content = (
-            <div className="content" ref={this.setEntryContentRef}>
+            <ScrollableEntryDetailsWrapper>
               <EntryDetails
                 entry={ entry }
                 isEvent={ isEvent }
@@ -174,7 +160,7 @@ class Sidebar extends Component {
                     title = {entry.title}
                 />
               : ''}
-            </div>
+            </ScrollableEntryDetailsWrapper>
           );
         }
         break;
@@ -182,35 +168,33 @@ class Sidebar extends Component {
       case V.EDIT:
       case V.NEW:
         content = (
-          <div className="content-above-buttons">
-            <EntryForm
-              isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null}
-              license={ entries[search.current] ? entries[search.current].license : null}
-              dispatch={ dispatch }
-              onSubmit={ data => {
-                return dispatch(Actions.saveEntry(
-                  {
-                    id: form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null,
-                    title: data.title,
-                    description: data.description,
-                    tags: data.tags ? data.tags.split(',') : null,
-                    homepage: data.homepage,
-                    telephone: data.telephone,
-                    lat: Number(data.lat),
-                    lng: Number(data.lng),
-                    street: data.street,
-                    city: data.city,
-                    email: data.email,
-                    zip: data.zip,
-                    version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
-                    categories: [data.category],
-                    image_url: data.image_url,
-                    image_link_url: data.image_link_url
-                  }
-                ));
-              }}
-            />
-          </div>
+          <EntryForm
+            isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null}
+            license={ entries[search.current] ? entries[search.current].license : null}
+            dispatch={ dispatch }
+            onSubmit={ data => {
+              return dispatch(Actions.saveEntry(
+                {
+                  id: form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null,
+                  title: data.title,
+                  description: data.description,
+                  tags: data.tags ? data.tags.split(',') : null,
+                  homepage: data.homepage,
+                  telephone: data.telephone,
+                  lat: Number(data.lat),
+                  lng: Number(data.lng),
+                  street: data.street,
+                  city: data.city,
+                  email: data.email,
+                  zip: data.zip,
+                  version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
+                  categories: [data.category],
+                  image_url: data.image_url,
+                  image_link_url: data.image_link_url
+                }
+              ));
+            }}
+          />
         );
         break;
 
@@ -218,73 +202,65 @@ class Sidebar extends Component {
         const kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
         var ref;
         content = (
-          <div className="content-above-buttons">
-            <RatingForm
-              ref={ 'rating' }
-              entryid={ kvm_flag_id }
-              entryTitle={
-                form[RATING.id]
-                  ? entries[form[RATING.id].kvm_flag_id]
-                    ? entries[form[RATING.id].kvm_flag_id].title
-                    : null
+          <RatingForm
+            ref={ 'rating' }
+            entryid={ kvm_flag_id }
+            entryTitle={
+              form[RATING.id]
+                ? entries[form[RATING.id].kvm_flag_id]
+                  ? entries[form[RATING.id].kvm_flag_id].title
                   : null
-              }
-              onSubmit={ data => {
-                return dispatch(Actions.createRating({
-                  entry: form[RATING.id] ? form[RATING.id].kvm_flag_id : null,
-                  title: data.title,
-                  context: data.context,
-                  value: data.value,
-                  comment: data.comment,
-                  source: data.source
-                }));
-              }}
-              onCancel={ () => {
-                dispatch(initialize(RATING.id, {}, RATING.fields));
-                dispatch(Actions.cancelRating());
-              }}
-              contextToExplain={ explainRatingContext }
-              selectedContext={ selectedContext }
-              changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
-            />
-          </div>
+                : null
+            }
+            onSubmit={ data => {
+              return dispatch(Actions.createRating({
+                entry: form[RATING.id] ? form[RATING.id].kvm_flag_id : null,
+                title: data.title,
+                context: data.context,
+                value: data.value,
+                comment: data.comment,
+                source: data.source
+              }));
+            }}
+            onCancel={ () => {
+              dispatch(initialize(RATING.id, {}, RATING.fields));
+              dispatch(Actions.cancelRating());
+            }}
+            contextToExplain={ explainRatingContext }
+            selectedContext={ selectedContext }
+            changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
+          />
         );
         break;
 
       case V.WAIT:
         content = (
-          <div className={ "content-above-buttons" }>
-            <Message
-              iconClass={ "spinner" }
-              message={ t("loading-message") }
-              onCancel={ () => { return dispatch(Actions.cancelWait()); }}
-            />
-          </div>
+          <Message
+            iconClass={ "spinner" }
+            message={ t("loading-message") }
+            onCancel={ () => { return dispatch(Actions.cancelWait()); }}
+          />
         );
         break;
 
       case V.IO_ERROR:
         content = (
-          <div className={ "content-above-buttons" }>
-            <Message
-              iconClass={ "exclamation-triangle" }
-              message={ t("io-error.message") }
-            />
-          </div>
+          <Message
+            iconClass={ "exclamation-triangle" }
+            message={ t("io-error.message") }
+          />
         );
         break;
 
       case V.SUBSCRIBE_TO_BBOX:
         content = (
-          <div className={ "content-above-buttons" }>
-            <SubscribeToBbox
-              subscriptionExists={ user.subscriptionExists }
-              dispatch={ dispatch }
-              bbox={ map.bbox }
-              username={ user.username }
-              mapCenter={ map.center }
-            />
-          </div>
+          <SubscribeToBbox
+            subscriptionExists={ user.subscriptionExists }
+            dispatch={ dispatch }
+            bbox={ map.bbox }
+            username={ user.username }
+            mapCenter={ map.center }
+          />
         );
         break;
 
@@ -349,10 +325,16 @@ class Sidebar extends Component {
   }
 }
 
-const SidebarComponent = styled.div`
-  height: 100vh;
+const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
+  height: 100%;
   display: flex;
   flex-direction: column;
+`
+
+const SidebarComponent = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `
 
 Sidebar.propTypes = {
@@ -407,9 +389,7 @@ const AddEntryButton = styled.nav`
   }
 `;
 
-const ResultWrapper = styled.div `
-  flex-grow: 1;
-  overflow-y: scroll;
+const ResultWrapper = styled(ScrollableDiv)`
   background: #f7f7f7;
 
    /* city list only for sidebar, not landing page TODO: where to put this? */

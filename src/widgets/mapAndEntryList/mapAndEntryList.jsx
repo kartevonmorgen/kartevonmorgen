@@ -126,7 +126,6 @@ const SwipeableLeftPanel = styled(Swipeable)`
   .content {
     overflow-y: scroll;
     overflow: auto;
-    height: 100vh;
     width: 100%;
     box-sizing: border-box;
     padding-bottom: 1rem;
