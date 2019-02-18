@@ -1,8 +1,9 @@
 import React                from "react"
 import { reduxForm, Field } from "redux-form"
+import styled               from "styled-components"
 import validation           from "../../util/validation"
 import { LOGIN            } from "../../constants/Form"
-import i18n                 from "../../i18n";
+import i18n                 from "../../i18n"
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -20,10 +21,10 @@ const Login = (props) => {
   if(error){
     switch(error.message){
       case "Unauthorized":
-        error_message = i18n.t("invalidPasswordOrUsername");
+        error_message = t("invalidPasswordOrUsername");
         break;
       case "Forbidden":
-        error_message = i18n.t("emailUnconfirmed");
+        error_message = t("emailUnconfirmed");
         break;
       default:
         error_message = error.message;
@@ -39,52 +40,67 @@ const Login = (props) => {
     <h3>Login</h3>
     { error &&
       <div className= "err">
-        {i18n.t("loginFailed") + ": " + error_message}
+        {t("loginFailed") + ": " + error_message}
       </div>
     }
     <div>
-      <fieldset>
-        <Field
+      <Fieldset>
+        <StyledField
           name="username"
           className="pure-input-1"
           type="text"
           component="input"
           required={true}
-          placeholder={i18n.t("username")}
+          placeholder={t("username")}
         />
-        <Field
+        <StyledField
           name="username"
           component={errorMessage}
         />
-        <Field
+        <StyledField
           name="password"
           className="pure-input-1"
           type="password"
           component="input"
           required={true}
-          placeholder={i18n.t("password")}
+          placeholder={t("password")}
         />
-        <Field
+        <StyledField
           name="password"
           component={errorMessage}
         />
-        <button
+        <SubmitButton
           type="submit"
           className="pure-button pure-button-primary"
           disabled={submitting}>
-          {i18n.t("loginButton")}
-        </button>
-      </fieldset>
+          {t("loginButton")}
+        </SubmitButton>
+      </Fieldset>
       <p>
-        {i18n.t("registerText")}
+        {t("registerText")}
         <a
           onClick={ onRegister }
-          href="#">{ i18n.t("registerLink") }
+          href="#">{ t("registerLink") }
         </a>
       </p>
     </div>
   </form>)
 }
+
+const Fieldset = styled.fieldset`
+  margin: 20px auto !important;
+  max-width: 300px !important;
+`
+
+const StyledField = styled(Field)`
+  margin: 20px 0 !important;
+`
+
+const SubmitButton = styled.button`
+  margin-top: 15px !important;
+  margin-bottom: 40px !important;
+  padding: 12px 30px !important;
+`
 
 module.exports = reduxForm({
   form     : LOGIN.id,

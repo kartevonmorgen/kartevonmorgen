@@ -188,6 +188,7 @@ class LandingPage extends Component {
             onRegister = {() => {
               onClick(V.REGISTER)
             }}
+            t = { t }
           />
         </div>;
         break;

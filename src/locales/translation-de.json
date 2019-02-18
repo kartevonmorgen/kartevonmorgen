@@ -86,7 +86,7 @@
 		"minNumCharactersPassword":"von mind. 3 Zeichen",
 		"username":"Benutzername",
 		"password":"Passwort",
-		"loginButton":"Log In",
+		"loginButton":"Login",
 		"registerText":"Du hast noch keinen Account? Dann kannst du dich",
 		"registerLink":"hier kostenlos registrieren."
 	},

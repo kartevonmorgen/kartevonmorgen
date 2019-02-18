@@ -4,6 +4,7 @@ import i18n                 from "i18next";
 import validation           from "../../util/validation"
 import normalize            from "../../util/normalize";
 import { REGISTER }         from "../../constants/Form";
+import styled               from "styled-components";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -30,8 +31,8 @@ const Register = props => {
       </div>
     }
     <div className= "pure-form">
-      <fieldset>
-        <Field
+      <Fieldset>
+        <StyledField
           name="username"
           className="pure-input-1"
           type="text"
@@ -39,21 +40,36 @@ const Register = props => {
           required={true}
           placeholder={t("username")}
           normalize={normalize.username} />
-        <Field name="username" component={errorMessage} />
-        <Field name="email" className="pure-input-1" type="email" component="input" required={true} placeholder={t("email")} />
-        <Field name="email" component={errorMessage} />
-        <Field name="password" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password1")} />
-        <Field name="password" component={errorMessage} />
-        <Field name="password2" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password2")} />
-        <Field name="password2" component={errorMessage} />
-        <button type="submit" className="pure-button pure-button-primary" disabled={submitting}>{t("submitButton")}</button>
-      </fieldset>
+        <StyledField name="username" component={errorMessage} />
+        <StyledField name="email" className="pure-input-1" type="email" component="input" required={true} placeholder={t("email")} />
+        <StyledField name="email" component={errorMessage} />
+        <StyledField name="password" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password1")} />
+        <StyledField name="password" component={errorMessage} />
+        <StyledField name="password2" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password2")} />
+        <StyledField name="password2" component={errorMessage} />
+        <SubmitButton type="submit" className="pure-button pure-button-primary" disabled={submitting}>{t("submitButton")}</SubmitButton>
+      </Fieldset>
       <p>
         {t("loginText")} <a onClick={onLogin} href="#">{t("loginLink")}</a>.
       </p>
     </div>
   </form>)
 }
+
+const Fieldset = styled.fieldset`
+  margin: 20px auto !important;
+  max-width: 300px !important;
+`
+
+const StyledField = styled(Field)`
+  margin: 20px 0 !important;
+`
+
+const SubmitButton = styled.button`
+  margin-top: 15px !important;
+  margin-bottom: 40px !important;
+  padding: 12px 30px !important;
+`
 
 module.exports = reduxForm({
   form      : REGISTER.id,
