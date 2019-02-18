@@ -217,7 +217,7 @@ const RatingList = styled.ul`
 
 const RatingListForContext = styled.ul`
   margin-left: 0.5em;
-  margin-top: 0;
+  margin-top: 0.6em;
   padding-left: 0;
   list-style: none;
 `
