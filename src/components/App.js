@@ -64,6 +64,12 @@ class Main extends Component {
     if(e.nativeEvent.changedTouches[0].pageX + deltaX < 26 ) this.props.dispatch(Actions.showLeftPanel())
   }
 
+  onTagClick = (t) => {
+    this.props.dispatch(Actions.showSearchResults());
+    this.props.dispatch(Actions.setSearchText('#'+t));
+    this.props.dispatch(Actions.search());
+  };
+
   render(){
     const { dispatch, search, view, server, map, form, url, user, timedActions, t } = this.props;
     const { addresses } = search;
@@ -169,6 +175,7 @@ class Main extends Component {
               t={ t }
               showAddEntryButton={ true }
               showSearchBar={ true }
+              onTagClick={ this.onTagClick }
             />
         </SwipeableLeftPanel>
 

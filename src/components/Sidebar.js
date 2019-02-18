@@ -44,7 +44,7 @@ class Sidebar extends Component {
   render(){
     const { view, search, user, server, resultEntries, entries,
       ratings, dispatch, map, form, t, showAddEntryButton,
-      showSearchBar } = this.props;
+      showSearchBar, onTagClick } = this.props;
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
     const invisibleEntries = search.invisible
@@ -128,19 +128,13 @@ class Sidebar extends Component {
             dispatch(Actions.editCurrentEntry());
           };
 
-          const onTag= (t) => {
-            dispatch(Actions.showSearchResults());
-            dispatch(Actions.setSearchText('#'+t));
-            dispatch(Actions.search());
-          };
-
           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
           content = (
             <ScrollableEntryDetailsWrapper>
               <EntryDetails
                 entry={ entry }
                 isEvent={ isEvent }
-                onTag={ onTag }
+                onTag={ onTagClick }
                 onEdit={ onEdit }
                 onBack={ onBack }
               />
