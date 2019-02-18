@@ -29,7 +29,6 @@ module.exports = (state=initialState, action={}) => {
     } : null;
   }
 
-
   let routingUsecases = [];
 
   switch(action.type){
@@ -71,7 +70,10 @@ module.exports = (state=initialState, action={}) => {
       break;
 
     case T.SET_MAP_CENTER:
-      center = action.payload;
+      center = center = {
+        lat: parseFloat(action.payload.lat),
+        lng: parseFloat(action.payload.lng)
+      };
       break;
 
     case T.SET_ZOOM:
@@ -87,7 +89,10 @@ module.exports = (state=initialState, action={}) => {
       break;
 
     case T.SET_CENTER_IN_URL:
-      center = action.payload;
+      center = {
+        lat: parseFloat(action.payload.lat),
+        lng: parseFloat(action.payload.lng)
+      };
       break;
 
     case T.ENABLE_SEARCH_CATEGORY:

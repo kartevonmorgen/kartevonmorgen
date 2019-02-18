@@ -303,7 +303,7 @@ class LandingPage extends Component {
                         </a>
                       </div>
                       : cities && cities.length > 0
-                        ? <CityList cities={cities} onClick={onSelection} selectedCity={this.state.selectedCity} />
+                        ? <CityList cities={cities} onClick={onSelection} selectedCity={this.state.selectedCity} selectedColor="#000"/>
                         : <div className="error">{t("city-search.no-results")}&nbsp;&nbsp;
                           <a onClick={() => onClick('map')} href="#" className="link">
                             {t("city-search.show-map")}

@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CityListElement = ({ city, onClick, isSelected }) => {
+const CityListElement = ({ city, onClick, isSelected, selectedColor }) => {
 
   return (
     <ResultListItem onClick={ev => { ev.preventDefault(); onClick(city) }}
-      isSelected={isSelected}>
+      isSelected={isSelected}
+      selectedColor={selectedColor}>
       <ResultRow>
         <div>
           <span className="city">{city.display_name}</span>
@@ -19,7 +20,7 @@ const CityListElement = ({ city, onClick, isSelected }) => {
     </ResultListItem>)
 }
 
-const CityList = ({ cities = [], onClick, selectedCity = 0 }) =>
+const CityList = ({ cities = [], onClick, selectedCity = 0, selectedColor }) =>
   <ResultList className="city-list">
     {
       cities.map((city, index) =>
@@ -27,7 +28,8 @@ const CityList = ({ cities = [], onClick, selectedCity = 0 }) =>
           city={city}
           key={city.osm_id}
           onClick={onClick}
-          isSelected={selectedCity === index} />
+          isSelected={selectedCity === index}
+          selectedColor={selectedColor} />
     )}
   </ResultList>
 
@@ -45,7 +47,7 @@ const Arrow = styled.div`
 const ResultListItem = styled.li`
   cursor: pointer;
   padding: 12px 11px 12px 24px;
-  background-color: ${props => props.isSelected ? "#000" : ""};
+  background-color: ${props => props.isSelected ? props.selectedColor : ""};
 `;
 
 const ResultList = styled.ul`

@@ -71,7 +71,10 @@ module.exports = (state = initialState, action = {}) => {
       } else {
         return {
           ...state,
-          center: action.payload
+          center: {
+            lat: parseFloat(payload.lat),
+            lng: parseFloat(payload.lng)
+          }
         };
       }
 

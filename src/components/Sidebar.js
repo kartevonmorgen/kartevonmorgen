@@ -97,6 +97,7 @@ class Sidebar extends Component {
                       }));
                       return dispatch(Actions.setSearchText(''));
                     }}
+                    selectedColor="rgba(0,0,0,0)"
                   />
                 </div>
                 : ""
