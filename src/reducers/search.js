@@ -168,20 +168,6 @@ module.exports = (state = initialState, action = {}) => {
       }
       break;
 
-    case T.SET_CURRENT_EVENT:
-      if (p != null) {
-        return {
-          ...state,
-          current: p,
-          highlight: [p]
-        }
-      }
-      return {
-        ...state,
-        current: null
-      }
-      break;
-
     case T.HIGHLIGHT_ENTRIES:
       return {
         ...state,

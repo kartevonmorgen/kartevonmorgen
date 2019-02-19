@@ -6,12 +6,10 @@ const searchTextToUrlQuery = (text) => {
   return query;
 }
 
-export default (entry, event, center, zoom, searchText, showLeft, categories) => {
+export default (entry, center, zoom, searchText, showLeft, categories) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
-  } else if (event && event != "NONE") {
-    params.push("event=" + event);
   } else if (center) {
     params.push("center=" + center.lat.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES)
       + "," +  center.lng.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES));

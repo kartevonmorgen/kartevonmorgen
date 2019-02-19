@@ -183,13 +183,6 @@ module.exports = (state=initialState, action={}) => {
         left: action.payload != null ? V.ENTRY : V.RESULT,
         menu: false
       }
-    
-    case T.SET_CURRENT_EVENT:
-      return {
-        ...state,
-        left: action.payload != null ? V.ENTRY : V.RESULT,
-        menu: false
-      }
 
     case T.SHOW_MAP:
       return {

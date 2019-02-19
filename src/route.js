@@ -48,6 +48,7 @@ const createActionsFromState = (state) => {
         console.log("route: entry");
         actions.push(Actions.showMap());
         actions.push(Actions.getEntries([entry]));
+        actions.push(Actions.getEvent(entry));
         if(entries[entry] != null){
           actions.push(Actions.setCurrentEntry(
             entry, {lat: entries[entry].lat, lng: entries[entry].lng}));
@@ -56,21 +57,6 @@ const createActionsFromState = (state) => {
           if(entry.lat && entry.lng){ 
             actions.push(Actions.setCenter(entry));
           }
-        }
-        if(!zoom) {
-          actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
-        }
-        break;
-          
-      case RoutingUsecases.SHOW_EVENT:
-        console.log("route: event");
-        actions.push(Actions.showMap());
-        actions.push(Actions.getEvent(event));
-        if(entries[event] != null){
-          actions.push(Actions.setCurrentEvent(
-            event, {lat: entries[event].lat, lng: entries[event].lng}));
-        } else {
-          actions.push(Actions.setCurrentEvent(event, null));
         }
         if(!zoom) {
           actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
