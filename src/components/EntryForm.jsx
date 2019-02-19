@@ -282,7 +282,6 @@ const ClickOnMapText = styled.div`
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   select, input, textarea, .pure-input-1 {
     margin: 0.25rem 0;
   }
