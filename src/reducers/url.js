@@ -49,9 +49,9 @@ module.exports = (state=initialState, action={}) => {
         if (search || tags || search == "" || tags == "") {
           routingUsecases.push(RoutingUsecases.CHANGE_SEARCH);
         }
-        if (categories) {
-          routingUsecases.push(RoutingUsecases.CHANGE_SEARCH_CATEGORIES);
-        }
+      }
+      if (categories) {
+        routingUsecases.push(RoutingUsecases.CHANGE_SEARCH_CATEGORIES);
       }
       if (zoom) {
         routingUsecases.push(RoutingUsecases.CHANGE_ZOOM);
