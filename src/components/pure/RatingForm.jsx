@@ -8,6 +8,7 @@ import validation                       from "../../util/validation";
 import NavButton                        from "./NavButton";
 import STYLE                            from "../styling/Variables";
 import ScrollableDiv                    from "./ScrollableDiv";
+import NavButtonWrapper                 from "./NavButtonWrapper";
 
 const errorMessage = ({meta}) =>
   meta.error && meta.touched
@@ -167,7 +168,7 @@ const RatingForm = props => {
           </fieldset>
         </div>
       </Form>
-      <nav className="menu pure-g">
+      <NavButtonWrapper className="menu pure-g">
         <NavButton
           keyName = "cancel"
           classname = "pure-u-1-2"
@@ -184,7 +185,7 @@ const RatingForm = props => {
           icon = "save"
           text = { t("ratingForm.save") }
         />
-      </nav>
+      </NavButtonWrapper>
     </ScrollableDiv>)
 }
 

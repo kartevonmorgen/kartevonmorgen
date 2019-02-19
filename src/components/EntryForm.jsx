@@ -15,8 +15,8 @@ import URLs                 from "../constants/URLs";
 import LICENSES             from "../constants/Licenses";
 import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
-import STYLE                from "./styling/Variables";
 import ScrollableDiv        from "./pure/ScrollableDiv";
+import NavButtonWrapper     from "./pure/NavButtonWrapper";
 
 class Form extends Component {
 
@@ -210,7 +210,7 @@ class Form extends Component {
             </div>
           </AddEntryForm>
         </ScrollableDiv>
-        <Nav className="menu pure-g">
+        <StyledNavButtonWrapper className="menu pure-g">
           <NavButton
             keyName = "cancel"
             classname = "pure-u-1-2"
@@ -230,7 +230,7 @@ class Form extends Component {
             icon = "save"
             text = { t("save") }
           />
-        </Nav>
+        </StyledNavButtonWrapper>
       </FormWrapper>)
   }
 }
@@ -257,10 +257,7 @@ module.exports = reduxForm({
   }
 })(translate('translation')(Form))
 
-const Nav = styled.nav`
-  z-index: 10;
-  background: ${STYLE.coal};
-  text-align: center;
+const StyledNavButtonWrapper = styled(NavButtonWrapper)`
   height: 70px;
 `
 

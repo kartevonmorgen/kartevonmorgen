@@ -5,9 +5,17 @@ import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
 import Actions              from "../../Actions"; //TODO: remove dependency
 import NavButton            from "./NavButton";
 import i18n                 from "../../i18n";
+import NavButtonWrapper     from "../pure/NavButtonWrapper";
 
 const SubscribeToBboxContent = styled.div`
   margin: 2em 1.8em 1.8em 1.8em;
+  flex-grow: 1;
+`;
+
+const SubscribeToBboxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const t = (key) => {
@@ -17,13 +25,13 @@ const t = (key) => {
 const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCenter}) => {
   if(subscriptionExists){
     return (
-      <div> 
+      <SubscribeToBboxWrapper> 
         <SubscribeToBboxContent>
           <h3>{t("changeSubscription.heading")}</h3>
           <p>{t("changeSubscription.text1")}</p>
           <p>{t("changeSubscription.text2")}</p>
         </SubscribeToBboxContent>
-        <nav className="menu pure-g">
+        <NavButtonWrapper className="menu pure-g">
           <NavButton
             keyName = "back"
             classname = "pure-u-1-2"
@@ -51,17 +59,17 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             icon = "trash"
             text = { t("unsubscribe") }
           />
-        </nav>
-      </div>)
+        </NavButtonWrapper>
+      </SubscribeToBboxWrapper>)
   } else {
     return ( 
-      <div>
+      <SubscribeToBboxWrapper>
         <SubscribeToBboxContent>
           <h3>{t("newSubscription.heading")}</h3>
           <p>{t("newSubscription.text1")}</p>
           <p>{t("newSubscription.text2")}</p>
         </SubscribeToBboxContent>
-        <nav className="menu pure-g">
+        <NavButtonWrapper className="menu pure-g">
           <NavButton
             keyName = "back"
             classname = "pure-u-1-2"
@@ -81,8 +89,8 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             icon = "envelope"
             text = { t("subscribe") }
           />
-        </nav>
-      </div>)
+        </NavButtonWrapper>
+      </SubscribeToBboxWrapper>)
   }
 }
 
