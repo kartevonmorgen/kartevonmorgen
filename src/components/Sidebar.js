@@ -114,8 +114,9 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
-        if(!entry) content = ''
-        else {
+        if (!entry) { 
+          content = (<Message iconClass={ "spinner" } message={ t("loading-message") } />)
+        } else {
 
           const onBack = () => {
             dispatch(Actions.setCurrentEntry(null, null));
