@@ -134,6 +134,15 @@ const Actions = {
       }
     },
 
+  editCurrentEntry: () =>
+    (dispatch, getState) => {
+      const currentEntry = getState().server.entries[getState().search.current]
+      dispatch({
+        type: T.EDIT_CURRENT_ENTRY,
+        payload: currentEntry
+      });
+    },
+
   updateStateFromURL: (hash) => {
     return {
       type: T.UPDATE_STATE_FROM_URL,

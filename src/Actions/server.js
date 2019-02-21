@@ -356,40 +356,6 @@ const Actions = {
       });
     },
 
-  editCurrentEntry: () =>
-    (dispatch, getState) => {
-      dispatch({
-        type: T.SHOW_IO_WAIT
-      });
-      WebAPI.getEntries([getState().search.current], (err, res) => {
-        if (!err) {
-          dispatch({
-            type: T.ENTRIES_RESULT,
-            payload: res
-          });
-          const currentEntry = getState().server.entries[getState().search.current]
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: currentEntry
-          });
-          if(!currentEntry.street || !currentEntry.zip || !currentEntry.city){
-            const latlng = {
-              lat: currentEntry.lat,
-              lng: currentEntry.lng
-            }
-            console.log("\n\nSET ADDRESS FROM MARKER\n\n", latlng);
-            dispatch(Actions.setMarker(latlng));
-          }
-        } else {
-          dispatch({
-            type: T.EDIT_CURRENT_ENTRY,
-            payload: err,
-            error: true
-          });
-        }
-      });
-    },
-
   createRating: (rating) =>
     (dispatch, getState) => {
       const r = {
