@@ -38,7 +38,7 @@ class Main extends Component {
       if(view.left === V.ENTRY) {
         dispatch(Actions.setCurrentEntry(null, null));
         dispatch(Actions.showSearchResults());
-        return dispatch(Actions.setCenterInUrl(this.props.map.mapCenter));
+        return dispatch(Actions.setCenterInUrl(this.props.map.center));
       }
       if(view.left === V.RESULT){
         dispatch(Actions.setSearchText(''))
@@ -75,6 +75,8 @@ class Main extends Component {
     const { addresses } = search;
     const { entries, ratings } = server;
     const { explainRatingContext, selectedContext } = view;
+
+    console.log("ENABLED CATEGORIES:", search.categories)
 
     if (url.hash !== window.location.hash) {
       console.log("URL CHANGE FROM APP: " + window.location.hash + " --> " + url.hash);

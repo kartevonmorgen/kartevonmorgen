@@ -57,7 +57,7 @@ module.exports = translate('translation')((props) => {
             //back to overview
             dispatch(Actions.setCurrentEntry(null, null));
             dispatch(Actions.showSearchResults());
-            dispatch(Actions.setCenterInUrl(mapCenter));
+            dispatch(Actions.setCenterInUrl(map.center));
 
             return dispatch(Actions.hideLeftPanelOnMobile());
           }
