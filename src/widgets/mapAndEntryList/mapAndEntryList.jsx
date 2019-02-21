@@ -70,8 +70,13 @@ module.exports = translate('translation')((props) => {
         onLocate={ () => { return dispatch(Actions.showOwnPosition()); }}
         showLocateButton={ true }
       />
-      {/* TODO: */}
-      {/* <MoreInfoLink target="_blank" href={URLs.APP.link + (view.highlight ? ("/#/?entry=" + view.highlight) : "")}>{i18n.t("mapWidget.showLargeMap")}</MoreInfoLink> */}
+      <KVMLinkWrapper>
+        <KVMLink target="_blank" href={URLs.APP.link + (view.highlight ? ("/#/?entry=" + view.highlight) : "")}>
+          <KVMLinkBox>
+            {i18n.t("mapAndEntryListWidget.kvmLink")}
+          </KVMLinkBox>
+        </KVMLink>
+      </KVMLinkWrapper>
     </div>
   );
 })
@@ -158,12 +163,32 @@ const SwipeableLeftPanel = styled(Swipeable)`
   }
 `
 
-const MoreInfoLink = styled.a`
+const KVMLinkWrapper = styled.div`
   position: absolute;
-  z-index: 1;
   bottom: 0;
-  background: white;
-  left: 0;
-  padding: 6px 25px;
-  font-size: 0.8em;
-`;
+  right: 200px;
+  width: calc(100% - 580px);
+  height: 25px;
+`
+
+const KVMLink = styled.a`
+  font-size: 13px;
+  color: rgb(20,20,20);
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+`
+
+const KVMLinkBox = styled.div`
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 20px;
+  padding: 5px 5px 0 5px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  :hover {
+    background-color: white;
+    box-shadow: 0.5px 0.5px 3px rgba(0,0,0,.5);
+  }
+`

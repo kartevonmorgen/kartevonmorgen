@@ -445,6 +445,9 @@
 	"mapWidget":{
 		"showLargeMap":"Große Karte öffnen..."
 	},
+	"mapAndEntryListWidget":{
+		"kvmLink": "Karte von morgen - Alles Gute auf einer Karte"
+	},
 	"modal":{
 		"locate":{
 			"inProgress":"Dein aktueller Standort wird gesucht...",
