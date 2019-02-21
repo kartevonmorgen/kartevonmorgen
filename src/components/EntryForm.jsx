@@ -258,7 +258,7 @@ module.exports = reduxForm({
 })(translate('translation')(Form))
 
 const StyledNavButtonWrapper = styled(NavButtonWrapper)`
-  height: 70px;
+  height: 68px;
 `
 
 const AddEntryForm = styled.form`
