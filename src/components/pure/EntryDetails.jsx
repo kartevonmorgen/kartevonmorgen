@@ -24,7 +24,7 @@ const Entry = styled.div`
 
 const EntryDetails = props => {
 
-  const { entry, t, isEvent, onBack, onEdit, onTag } = props;
+  const { entry, t, isEvent, onBack, onEdit, onTag, tagsClickable } = props;
   const hasImage = entry ? (entry.image_url ? true : false) : false;
   if (!entry) {
     return(
@@ -69,6 +69,7 @@ const EntryDetails = props => {
           hasImage={hasImage}
           isEvent={isEvent}
           onTag={onTag}
+          tagsClickable={tagsClickable}
         />
       </Entry>)
   }

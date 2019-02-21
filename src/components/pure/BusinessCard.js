@@ -11,14 +11,14 @@ import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 import { NAMES }              from "../../constants/Categories"
 import i18n                   from "../../i18n";
 
-const Tags = (tags=[], onClick) =>
+const Tags = (tags=[], onClick, clickable) =>
   <TagsWrapper key="tags">
     <TagList>
     { tags
         .filter(t => t != "")
         .map( (t,index) =>
           <Tag key={"Tag"+t}>
-            <TagLink onClick={ () => onClick(t) }>#{t}</TagLink>
+            <TagLink onClick={ () => onClick(t) } clickable={clickable}>#{t}</TagLink>
           </Tag>
         )}
     </TagList>
@@ -70,7 +70,9 @@ const getRoutePlannerLink = (entry) => {
   )
 };
 
-const BusinessCard = ({ entry, hasImage, t, isEvent, onTag }) => {
+const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => {
+  console.log("clickable", tagsClickable)
+  
   if (!entry) {
     return(
       <LoadingEntryMessage>
@@ -127,7 +129,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag }) => {
             </div></div>
             : null),
           (entry.tags && entry.tags.filter(t => t !="").length > 0
-            ? Tags(entry.tags, onTag)
+            ? Tags(entry.tags, onTag, tagsClickable)
             : null)
         ]}</EntryDetailsOtherData>
         {
@@ -227,10 +229,10 @@ const TagLink = styled.a `
   margin-bottom: 0.2rem;
   margin-right: 0.4em;
   letter-spacing: 0.06em;
-  cursor: pointer;
+  cursor: ${props => props.clickable ? 'pointer' : 'auto'};
 
   &:hover {
-    color: #fff;
-    background-color: #333;
+    color: ${props => props.clickable ? '#fff' : ''};
+    background-color: ${props => props.clickable ? '#333' : ''};
   }
 `

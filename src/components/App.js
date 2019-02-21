@@ -176,6 +176,7 @@ class Main extends Component {
               showAddEntryButton={ true }
               showSearchBar={ true }
               onTagClick={ this.onTagClick }
+              tagsClickable={ true }
             />
         </SwipeableLeftPanel>
 

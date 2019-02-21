@@ -37,6 +37,7 @@ module.exports = translate('translation')((props) => {
           showAddEntryButton={ false }
           showSearchBar={ false }
           onTagClick={ () => {} }
+          tagsClickable={ false }
         />
       </SwipeableLeftPanel>
       <Map

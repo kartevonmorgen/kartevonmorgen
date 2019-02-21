@@ -44,7 +44,7 @@ class Sidebar extends Component {
   render(){
     const { view, search, user, server, resultEntries, entries,
       ratings, dispatch, map, form, t, showAddEntryButton,
-      showSearchBar, onTagClick } = this.props;
+      showSearchBar, onTagClick, tagsClickable } = this.props;
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
     const invisibleEntries = search.invisible
@@ -135,6 +135,7 @@ class Sidebar extends Component {
                 entry={ entry }
                 isEvent={ isEvent }
                 onTag={ onTagClick }
+                tagsClickable={ tagsClickable }
                 onEdit={ onEdit }
                 onBack={ onBack }
               />
