@@ -1,3 +1,5 @@
+import "../../components/styling/Stylesheets"
+
 import React         from "react";
 import URLs          from "../../constants/URLs";
 import i18n          from "../../i18n";
@@ -12,7 +14,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 module.exports = translate('translation')((props) => {
   
-  const { map, server, search, view, t, dispatch } = props;
+  const { map, server, form, search, view, t, dispatch } = props;
   const { entries, ratings } = server;
   const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
     .concat(search.eventResults);
@@ -28,7 +30,7 @@ module.exports = translate('translation')((props) => {
           map={ map }
           user={ null }
           server={ server }
-          form={ null }
+          form={ form }
           entries={ entries }
           resultEntries={ resultEntries }
           ratings={ ratings }
@@ -106,6 +108,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const SwipeableLeftPanel = styled(Swipeable)`
+  input, textarea, select {
+    box-shadow: none !important;
+    border-radius: 3px !important;
+  }
+
   position: absolute;
   height: 100%;
   z-index: 2;
