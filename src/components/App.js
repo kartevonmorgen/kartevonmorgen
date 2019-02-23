@@ -5,7 +5,6 @@ import "./styling/Icons"
 
 import React, { Component } from "react"
 import T                    from "prop-types"
-import { initialize }       from "redux-form"
 import { translate }        from "react-i18next"
 import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
@@ -13,17 +12,12 @@ import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import Swipeable            from 'react-swipeable'
 
 import V                    from "../constants/PanelView"
-import C                    from "../constants/Categories"
 import Actions              from "../Actions"
-import Info                 from "./pure/Info"
 import Modal                from "./pure/Modal"
 import Map                  from "./Map"
 import Sidebar              from "./Sidebar"
-import SearchBar            from "./SearchBar"
 import LandingPage          from "./LandingPage"
-import { EDIT, RATING }     from "../constants/Form"
-import URLs                 from "../constants/URLs"
-import mapConst             from "../constants/Map"
+import { EDIT }             from "../constants/Form"
 import STYLE                from "./styling/Variables"
 
 import styled, { keyframes, createGlobalStyle } from "styled-components";
@@ -31,21 +25,13 @@ import styled, { keyframes, createGlobalStyle } from "styled-components";
 class Main extends Component {
   
   render(){
-    const { dispatch, search, view, server, map, form, url, user, timedActions, t } = this.props;
-    const { addresses } = search;
+    const { dispatch, search, view, server, map, form, url, user, t } = this.props;
     const { entries, ratings } = server;
-    const { explainRatingContext, selectedContext } = view;
 
-    console.log("ENABLED CATEGORIES:", search.categories)
-
-    if (url.hash !== window.location.hash) {
-      console.log("URL CHANGE FROM APP: " + window.location.hash + " --> " + url.hash);
-      window.history.pushState(null, null, window.location.pathname + url.hash);
-    }
+    this.changeUrlAccordingToState(url);
     
     const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
       .concat(search.eventResults);
-    const mapCenter = map.center;
     const loggedIn = user.username ? true : false;
     
     return (
@@ -169,7 +155,7 @@ class Main extends Component {
           <Map
             marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
             highlight={ search.highlight }
-            center={ mapCenter}
+            center={ map.center}
             zoom={ map.zoom}
             category={ form[EDIT.id] ? form[EDIT.id].category ? form[EDIT.id].category.value : null : null}
             entries={ resultEntries}
@@ -183,7 +169,7 @@ class Main extends Component {
                 //back to overview
                 dispatch(Actions.setCurrentEntry(null, null));
                 dispatch(Actions.showSearchResults());
-                dispatch(Actions.setCenterInUrl(mapCenter));
+                dispatch(Actions.setCenterInUrl(map.center));
 
                 return dispatch(Actions.hideLeftPanelOnMobile());
               }
@@ -201,7 +187,14 @@ class Main extends Component {
       </StyledApp>
     );  
   }
-  
+
+  changeUrlAccordingToState(urlState){
+    if (urlState.hash !== window.location.hash) {
+      console.log("URL CHANGE FROM APP: " + window.location.hash + " --> " + urlState.hash);
+      window.history.pushState(null, null, window.location.pathname + urlState.hash);
+    }
+  }
+
   escFunction(event){
     if(event.keyCode === 27) { //ESC
       const { view, dispatch}  = this.props
@@ -258,8 +251,6 @@ Main.propTypes = {
 module.exports = translate('translation')(Main)
 
 /* Moved all styles here. TODO: Move to right components */
-
-
 const GlobalStyle = createGlobalStyle`
   
   @media only screen and (max-width: 600px) {
@@ -274,7 +265,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${STYLE.bodyFont};
   }
 `;
-
 
 // Create the keyframes
 const fadein = keyframes`
