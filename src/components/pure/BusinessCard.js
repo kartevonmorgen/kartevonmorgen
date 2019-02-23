@@ -71,8 +71,6 @@ const getRoutePlannerLink = (entry) => {
 };
 
 const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => {
-  console.log("clickable", tagsClickable)
-  
   if (!entry) {
     return(
       <LoadingEntryMessage>
