@@ -199,6 +199,7 @@ class Main extends Component {
       }));
       dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
       dispatch(Actions.toggleLandingPage());
+      dispatch(Actions.showSearchResults());
       dispatch(Actions.setSearchText(''));
       return dispatch(Actions.finishCitySearch());
     }
