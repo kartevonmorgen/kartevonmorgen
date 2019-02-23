@@ -17,7 +17,7 @@ const Tags = (tags=[], onClick, clickable) =>
     { tags
         .filter(t => t != "")
         .map( (t,index) =>
-          <Tag key={"Tag"+t}>
+          <Tag key={index}>
             <TagLink onClick={ () => onClick(t) } clickable={clickable}>#{t}</TagLink>
           </Tag>
         )}
