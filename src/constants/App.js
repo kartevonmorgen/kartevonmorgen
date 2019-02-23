@@ -2,7 +2,7 @@ import LICENSES from "./Licenses"
 
 module.exports = {
   APP_STAGES: {
-    LOCAL: 'local',
+    LOCAL: 'development',
     NIGHTLY: 'nightly',
     PRODUCTION: 'production'
   },

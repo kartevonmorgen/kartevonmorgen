@@ -5,21 +5,20 @@ if (!window.location.origin) {
   window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 }
 
-let OFDB_API_LINK;
 const API_VERSION = 'v0';
-switch (__STAGE__){
-  case APP_STAGES.LOCAL:
-    OFDB_API_LINK = "https://nightly.ofdb.io/" + API_VERSION;
-    break;
+const OFDB_API_LINK = (() => {
+  switch (__STAGE__){
+    case APP_STAGES.LOCAL:
+      return "https://nightly.ofdb.io/";
 
-  case APP_STAGES.NIGHTLY:
-    OFDB_API_LINK = "https://nightly.ofdb.io/" + API_VERSION;
-    break;
-  
-  case APP_STAGES.PRODUCTION:
-    OFDB_API_LINK = "https://api.ofdb.io/" + API_VERSION;
-    break;
-}
+    case APP_STAGES.NIGHTLY:
+      return "https://nightly.ofdb.io/";
+    
+    default:
+      // production
+      return "https://api.ofdb.io/";
+  }
+})() + API_VERSION;
 
 module.exports = {
   CC_LICENSE: {

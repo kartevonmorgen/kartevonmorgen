@@ -98,10 +98,10 @@ let htmlPluginOptions = {
   title    : "Karte von morgen",
   favicon  : "./src/img/favicon.ico",
   inject   : 'body',
-  pack_for_nightly : (process.env.STAGE === APP_STAGES.NIGHTLY)
+  pack_for_nightly : (process.env.NODE_ENV === APP_STAGES.NIGHTLY)
 };
 
-switch (process.env.STAGE) {
+switch (process.env.NODE_ENV) {
   case APP_STAGES.LOCAL:
     plugins.push(new webpack.DefinePlugin({
       __DEVTOOLS__  : false,
