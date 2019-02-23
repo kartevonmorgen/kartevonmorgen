@@ -127,7 +127,8 @@ switch (process.env.NODE_ENV) {
     }));
     break;
 
-  case APP_STAGES.PRODUCTION:
+  default:
+    // production
     htmlPluginOptions.minify = {
       removeComments        : true,
       collapseWhitespace    : true,
@@ -142,7 +143,6 @@ switch (process.env.NODE_ENV) {
       __DEVTOOLS__  : false,
       __STAGE__     : JSON.stringify(APP_STAGES.PRODUCTION)
     }));
-    break;
 }
 
 plugins.push(new HTMLPlugin({
