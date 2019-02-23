@@ -5,7 +5,7 @@ import WebAPI       from "../../WebAPI";
 import parseUrl     from "../../util/parseUrl";
 import MapComponent from "./map";
 import mapConst     from "../../constants/Map";
-import serverConst  from "../../constants/Server";
+import { NUM_ENTRIES_TO_FETCH } from "../../constants/Server";
 import Categories   from "../../constants/Categories";
 
 const rootElement = document.querySelector('#app');
@@ -51,7 +51,7 @@ const search = () => {
     WebAPI.searchEntries(s, cats, bbox, (err, res) => {
       if ((Array.isArray(res.visible)) && res.visible.length > 0) {
         const ids = res.visible.map(e => e.id)
-          .slice(0, serverConst.NUM_ENTRIES_TO_FETCH);
+          .slice(0, NUM_ENTRIES_TO_FETCH);
         WebAPI.getEntries(ids, (entriesErr, entriesRes) => {
           if(!entriesErr && entriesRes.length > 0) {
             state.entries = entriesRes;

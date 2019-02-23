@@ -1,5 +1,5 @@
 import T                          from "../constants/ActionTypes";
-import ServerConstants            from "../constants/Server";
+import { NUM_ENTRIES_TO_FETCH }   from "../constants/Search";
 import WebAPI                     from "../WebAPI";
 import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
 import { NEW_ENTRY_LICENSE }      from "../constants/App";
@@ -173,9 +173,9 @@ const Actions = {
       } = getState().search;
       dispatch({
         type: T.SET_MORE_ENTRIES_AVAILABLE,
-        payload: !fetchedAllEntries && (ids.length > ServerConstants.NUM_ENTRIES_TO_FETCH)
+        payload: !fetchedAllEntries && (ids.length > NUM_ENTRIES_TO_FETCH)
       });
-      ids = ids.slice(0, ServerConstants.NUM_ENTRIES_TO_FETCH);
+      ids = ids.slice(0, NUM_ENTRIES_TO_FETCH);
 
       const entries = getState().server.entries;
       const fetch_ids_entries = ids.filter((x) => entries[x] == null);
