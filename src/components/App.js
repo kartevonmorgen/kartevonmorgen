@@ -21,6 +21,7 @@ import LandingPage          from "./LandingPage"
 import { EDIT }             from "../constants/Form"
 import STYLE                from "./styling/Variables"
 import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
+import mapConst             from "../constants/Map"
 
 class Main extends Component {
   
