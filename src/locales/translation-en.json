@@ -8,7 +8,6 @@
 		"chooseCategory":"Select category",
 		"location":"Location",
 		"clickMap":"(click on the map)",
-		"contact":"Contact",
 		"iHaveRead":"I have read and accept the Terms of the ",
 		"creativeCommonsLicense":"Creative-Commons License CC0",
 		"openDatabaseLicense":"OpenDatabase License",
@@ -406,8 +405,7 @@
 		"showMoreEntries":"Show more entries...",
 		"entriesLoading":"Entries are loaded...",
 		"noEntriesFound":"No entries found.",
-		"addEntry":"add a new entry",
-		"entriesLoading":"loading entries..."
+		"addEntry":"add a new entry"
 	},
 	"growler":{
 		"INFO FOR TRANSLATORS":"Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
