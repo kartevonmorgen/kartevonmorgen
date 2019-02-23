@@ -399,7 +399,7 @@ const Wrapper = styled.div `
         }
       }
       &.loading {
-        margin: 0;
+        margin: 20px 0 0 0;
         padding: 1em;
         font-size: 0.9em;
         span {
