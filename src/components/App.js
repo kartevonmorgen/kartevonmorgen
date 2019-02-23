@@ -30,46 +30,6 @@ import styled, { keyframes, createGlobalStyle } from "styled-components";
 
 class Main extends Component {
   
-  escFunction(event){
-    if(event.keyCode === 27) { //ESC
-      const { view, dispatch}  = this.props
-      if(view.menu) return dispatch(Actions.toggleLandingPage())
-      if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
-      if(view.left === V.ENTRY) {
-        dispatch(Actions.setCurrentEntry(null, null));
-        dispatch(Actions.showSearchResults());
-        return dispatch(Actions.setCenterInUrl(this.props.map.center));
-      }
-      if(view.left === V.RESULT){
-        dispatch(Actions.setSearchText(''))
-        return dispatch(Actions.search())
-      } 
-    }
-  }
-
-  componentDidMount(){
-    document.addEventListener("keydown", (e) => this.escFunction(e), false);
-  }
-
-  componentWillUnmount(){
-    document.removeEventListener("keydown");
-  }
-
-  swipedLeftOnPanel() {
-    this.props.dispatch(Actions.hideLeftPanel())
-  }
-
-  swipedRightOnMap(e, deltaX) {
-    if( e.nativeEvent === undefined || e.nativeEvent.changedTouches === undefined) return true
-    if(e.nativeEvent.changedTouches[0].pageX + deltaX < 26 ) this.props.dispatch(Actions.showLeftPanel())
-  }
-
-  onTagClick = (t) => {
-    this.props.dispatch(Actions.showSearchResults());
-    this.props.dispatch(Actions.setSearchText('#'+t));
-    this.props.dispatch(Actions.search());
-  };
-
   render(){
     const { dispatch, search, view, server, map, form, url, user, timedActions, t } = this.props;
     const { addresses } = search;
@@ -241,6 +201,47 @@ class Main extends Component {
       </StyledApp>
     );  
   }
+  
+  escFunction(event){
+    if(event.keyCode === 27) { //ESC
+      const { view, dispatch}  = this.props
+      if(view.menu) return dispatch(Actions.toggleLandingPage())
+      if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
+      if(view.left === V.ENTRY) {
+        dispatch(Actions.setCurrentEntry(null, null));
+        dispatch(Actions.showSearchResults());
+        return dispatch(Actions.setCenterInUrl(this.props.map.center));
+      }
+      if(view.left === V.RESULT){
+        dispatch(Actions.setSearchText(''))
+        return dispatch(Actions.search())
+      } 
+    }
+  }
+
+  componentDidMount(){
+    document.addEventListener("keydown", (e) => this.escFunction(e), false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown");
+  }
+
+  swipedLeftOnPanel() {
+    this.props.dispatch(Actions.hideLeftPanel())
+  }
+
+  swipedRightOnMap(e, deltaX) {
+    if( e.nativeEvent === undefined || e.nativeEvent.changedTouches === undefined) return true
+    if(e.nativeEvent.changedTouches[0].pageX + deltaX < 26 ) this.props.dispatch(Actions.showLeftPanel())
+  }
+
+  onTagClick = (t) => {
+    this.props.dispatch(Actions.showSearchResults());
+    this.props.dispatch(Actions.setSearchText('#'+t));
+    this.props.dispatch(Actions.search());
+  };
+
 }
 
 Main.propTypes = {
