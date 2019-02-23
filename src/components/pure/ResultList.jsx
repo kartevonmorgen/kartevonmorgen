@@ -34,7 +34,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
             <div>
               <EntryTitle id={entry.id} className="title">{entry.title}</EntryTitle>
             </div>
-            <Description maxHeight={entry.descriptionMaxHeight}>{description}</Description>
+            { getBody(entry) }
           </TitleCategoryAndDescription>
           { !isEvent ?
             <FlowerWrapper>
@@ -43,17 +43,30 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
           : <EventTimeLabel start={ entry.start }/> }
         </TitleCategoryDescriptionsAndFlower>
         {
-          entry.tags ? (entry.tags.length > 0)
+          entry.tags && !isEvent && (entry.tags.length > 0)
             ? <TagsWrapper>
               <ul >
                 { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
               </ul>
             </TagsWrapper>
             : null
-            : null
         }
       </OuterWrapper>
     </ListElement>)
+}
+
+const getBody = (entry) => {
+  const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+  if (isEvent) {
+    return (
+      <EventBody maxHeight={entry.descriptionMaxHeight}>
+        <div>{entry.city}</div>
+        <div>{entry.organizer}</div>
+      </EventBody>
+    );
+  } else {
+    return (<Description maxHeight={entry.descriptionMaxHeight}>{entry.description}</Description>);
+  }
 }
 
 const ResultList = props => {
@@ -112,42 +125,63 @@ const addDescriptionMaxHeightToEntries = (entries) => {
   // we render the title to a hidden div and count the lines that the title takes
   // (we can't simply look at the number of characters since the font is not mono spaced)
   let entriesNew = [];
-  let div = document.getElementById('hidden-div');
-  div.innerHTML = "";
-  let numLinesUntilCurrent = div.offsetHeight / 22;
+  let divEntries = document.getElementById('hidden-div1');
+  let divEvents = document.getElementById('hidden-div1');
+  divEntries.innerHTML = "";
+  divEvents.innerHTML = "";
+  let numLinesUntilCurrent_Entries = divEntries.offsetHeight / 22;
+  let numLinesUntilCurrent_Events = divEvents.offsetHeight / 22;
   for (let i=0; i<entries.length; i++) {
     let entry = entries[i];
-    
-    numLinesUntilCurrent = div.offsetHeight / 22;
+    const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+    numLinesUntilCurrent_Entries = divEntries.offsetHeight / 22;
+    numLinesUntilCurrent_Events = divEvents.offsetHeight / 22;
 
     let h3 = document.createElement("h3");
     h3.style = 'margin:0; font-size:1.2em; font-weight:500; font-family: "Rubik",sans-serif;'
     h3.appendChild(document.createTextNode(entry.title));
-    div.style = 'width: 256.06px;'
-    if (div) {
-      div.appendChild(h3)
-      const totalNumLines = div.offsetHeight / 22; // line-height of title is 22px;
-      const linesOfTitle = totalNumLines - numLinesUntilCurrent;
-      numLinesUntilCurrent += linesOfTitle;
-      switch (linesOfTitle) {
-        case 1:
-          entry.descriptionMaxHeight = 42; // line-height of description is 14px, so height of div should be multiples of 14
-          entry.maxCharacters = 140;
-          break;
+    divEntries.style = 'width: 256.06px;'
+    divEvents.style = 'width: 289.13px;'
+    if (isEvent) {
+      if (divEvents) {
+        divEvents.appendChild(h3)
+        const totalNumLines = divEvents.offsetHeight / 22; // line-height of title is 22px;
+        const linesOfTitle = totalNumLines - numLinesUntilCurrent_Events;
+        numLinesUntilCurrent_Events += linesOfTitle; 
+        if (linesOfTitle <= 3) {
+            entry.descriptionMaxHeight = 46; // line-height of description is 14px, so height of div should be multiples of 14
+        } else {
+            entry.descriptionMaxHeight = 0;
+        }
+      }
+      entriesNew.push(entry);
+    } else {
+      if (divEntries) {
+        divEntries.appendChild(h3)
+        const totalNumLines = divEntries.offsetHeight / 22;
+        const linesOfTitle = totalNumLines - numLinesUntilCurrent_Entries;
+        numLinesUntilCurrent_Entries += linesOfTitle; 
+        switch (linesOfTitle) {
+          case 1:
+            entry.descriptionMaxHeight = 42;
+            entry.maxCharacters = 140;
+            break;
 
-        case 2:
-          entry.descriptionMaxHeight = 28;
-          entry.maxCharacters = 100;
-          break;
+          case 2:
+            entry.descriptionMaxHeight = 28;
+            entry.maxCharacters = 100;
+            break;
 
-        default:
-          entry.descriptionMaxHeight = 0;
-          entry.maxCharacters = 0;
+          default:
+            entry.descriptionMaxHeight = 0;
+            entry.maxCharacters = 0;
+        }
+      entriesNew.push(entry);
       }
     }
-    entriesNew.push(entry);
   }
-  div.setAttribute('style', 'display: none;');
+  divEntries.setAttribute('style', 'display: none;');
+  divEvents.setAttribute('style', 'display: none;');
   return entriesNew;
 }
 
@@ -176,19 +210,6 @@ ResultList.propTypes = {
 
 module.exports = translate("translation")(ResultList)
 
-const FakeTitleToFindOutHeight = styled.h3`
-  
-  width: 256.06px;
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  z-index: 2000; 
-  background: tomato;
-  font-size: 1.2em;
-  font-weight: 500;
-  font-family: "Rubik", sans-serif;
-`
-
 const OuterWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -214,7 +235,7 @@ const EventTimeLabel = (props) => {
 }
 
 const EventTimeWrapper = styled.div`
-  margin: 10px 7px 10px 10px;
+  margin: 12px 7px 10px 10px;
 `
 
 const EntryTitle = styled.h3`
@@ -310,6 +331,18 @@ const ListElement = styled.li `
     &.event div.chevron {
       color: $event;
     }
+  }
+`
+
+const EventBody = styled.div`
+  font-size: 0.8em;
+  margin-top: -2px;
+  max-height: ${props => props.maxHeight}px;
+  overflow: hidden;
+  hyphens: auto;
+  color: #555;
+  > div {
+    margin: 1px 0;
   }
 `
 
