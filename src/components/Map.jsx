@@ -90,7 +90,8 @@ class KVMMap extends Component {
             avg_rating = avg_rating_for_entry(ratings_for_entry);
           }
 
-          if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0){
+          if((e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) 
+            || e.categories[0] === EVENT){
             let opacity = 0.5;
             if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
             if( marker ) opacity = 0.3;
