@@ -176,7 +176,7 @@ const KVMLinkWrapper = styled.div`
   bottom: 0;
   right: 200px;
   width: calc(100% - 580px);
-  height: 25px;
+  height: 28px;
 `
 
 const KVMLink = styled.a`
@@ -187,16 +187,17 @@ const KVMLink = styled.a`
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  text-decoration: none;
 `
 
 const KVMLinkBox = styled.div`
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   height: 20px;
-  padding: 5px 5px 0 5px;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+  padding: 8px 5px 0 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,.5);
   :hover {
-    background-color: white;
-    box-shadow: 0.5px 0.5px 3px rgba(0,0,0,.5);
+    background-color: #efefef;
   }
 `
