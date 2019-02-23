@@ -10,6 +10,7 @@ import NotificationsSystem  from "reapop";
 import theme                from "reapop-theme-wybo";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import Swipeable            from 'react-swipeable'
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 
 import V                    from "../constants/PanelView"
 import Actions              from "../Actions"
@@ -19,8 +20,7 @@ import Sidebar              from "./Sidebar"
 import LandingPage          from "./LandingPage"
 import { EDIT }             from "../constants/Form"
 import STYLE                from "./styling/Variables"
-
-import styled, { keyframes, createGlobalStyle } from "styled-components";
+import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 
 class Main extends Component {
   
@@ -29,9 +29,7 @@ class Main extends Component {
     const { entries, ratings } = server;
 
     this.changeUrlAccordingToState(url);
-    
-    const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
-      .concat(search.eventResults);
+    const visibleEntries = this.filterVisibleEntries(entries, search);
     const loggedIn = user.username ? true : false;
     
     return (
@@ -116,7 +114,7 @@ class Main extends Component {
               user={ user }
               form={ form }
               entries={entries}
-              resultEntries={ resultEntries }
+              resultEntries={ visibleEntries }
               ratings={ ratings }
               // LeftPanelentries={ server.entries } never used…?
               dispatch={ dispatch }
@@ -158,7 +156,7 @@ class Main extends Component {
             center={ map.center}
             zoom={ map.zoom}
             category={ form[EDIT.id] ? form[EDIT.id].category ? form[EDIT.id].category.value : null : null}
-            entries={ resultEntries}
+            entries={ visibleEntries}
             ratings={ ratings}
             onClick={ (event) => {
               if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path'){
@@ -186,6 +184,20 @@ class Main extends Component {
         </Swipeable>
       </StyledApp>
     );  
+  }
+
+  filterVisibleEntries(entries, search){
+    return search.entryResults.filter(e => entries[e.id])
+      .map(e => entries[e.id])
+      .filter(this.categoryIsEnabled(search.categories))
+      .concat(search.eventResults)
+      .slice(0, NUM_ENTRIES_TO_SHOW);
+  }
+
+  categoryIsEnabled(enabledCategories){
+    return (entry) => {
+      return entry.categories.some(cat => enabledCategories.includes(cat));
+    }
   }
 
   changeUrlAccordingToState(urlState){

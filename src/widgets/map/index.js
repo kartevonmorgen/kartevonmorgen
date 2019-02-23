@@ -5,7 +5,7 @@ import WebAPI       from "../../WebAPI";
 import parseUrl     from "../../util/parseUrl";
 import MapComponent from "./map";
 import mapConst     from "../../constants/Map";
-import { NUM_ENTRIES_TO_FETCH } from "../../constants/Server";
+import { NUM_ENTRIES_TO_FETCH } from "../../constants/Search";
 import Categories   from "../../constants/Categories";
 
 const rootElement = document.querySelector('#app');
