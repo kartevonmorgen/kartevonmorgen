@@ -1,6 +1,24 @@
+import { APP_STAGES } from "./App"
+
 // for Internet Explorer:
 if (!window.location.origin) {
   window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+}
+
+let OFDB_API_LINK;
+const API_VERSION = 'v0';
+switch (__STAGE__){
+  case APP_STAGES.LOCAL:
+    OFDB_API_LINK = "https://nightly.ofdb.io/" + API_VERSION;
+    break;
+
+  case APP_STAGES.NIGHTLY:
+    OFDB_API_LINK = "https://nightly.ofdb.io/" + API_VERSION;
+    break;
+  
+  case APP_STAGES.PRODUCTION:
+    OFDB_API_LINK = "https://api.ofdb.io/" + API_VERSION;
+    break;
 }
 
 module.exports = {
@@ -44,9 +62,7 @@ module.exports = {
     link: "https://wikimediafoundation.org/wiki/Maps_Terms_of_Use"
   },
   OFDB_API: {
-    // link: window.location.origin + "/api" //use when you run openfairdb locally
-    // link: window.location.protocol + "//" + "api.ofdb.io/v0" //use this to use the remote api
-    link: "https://api.ofdb.io/v0"
+    link: OFDB_API_LINK
   },
   TH_GEOCODER: {
     link: "https://geocoder.tilehosting.com/q/<query>.js?key=<key>"

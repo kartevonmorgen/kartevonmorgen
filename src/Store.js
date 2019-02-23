@@ -5,8 +5,9 @@ import logger   from "redux-logger";
 let middlewares = [thunk];
 
 import { createStore, applyMiddleware } from "redux";
+import { APP_STAGES } from "./constants/App";
 
-if (__DEVELOPMENT__) {
+if (__STAGE__ === APP_STAGES.LOCAL) {
   middlewares.push(logger);
 }
 

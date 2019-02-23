@@ -7,10 +7,9 @@
     "pretest": "npm run lint",
     "test": "karma start",
     "watch-test": "karma start --auto-watch --no-single-run",
-    "pack": "NODE_ENV=production webpack -p --progress",
-    "pack-prototype": "NODE_ENV=production KVM_PROTOTYPE=true webpack --progress",
-    "build": "webpack --progress  --mode=production",
-    "start": "webpack-dev-server --progress --host 0.0.0.0 --hot --https"
+    "pack": "STAGE=production webpack -p --progress",
+    "pack-nightly": "STAGE=nightly webpack --progress",
+    "start": "STAGE=local webpack-dev-server --progress --host 0.0.0.0 --hot --https"
   },
   "repository": {
     "type": "git",

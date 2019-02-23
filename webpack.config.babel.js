@@ -1,11 +1,9 @@
 import path        from "path"
 import webpack     from "webpack"
 import HTMLPlugin  from 'html-webpack-plugin'
+import { APP_STAGES } from "./src/constants/App"
 
 let plugins = [];
-
-const production = process.env.NODE_ENV
-const is_prototype = process.env.KVM_PROTOTYPE === "true"
 
 const config = {
   mode: "development",
@@ -100,31 +98,51 @@ let htmlPluginOptions = {
   title    : "Karte von morgen",
   favicon  : "./src/img/favicon.ico",
   inject   : 'body',
-  prototype: is_prototype
+  pack_for_nightly : (process.env.STAGE === APP_STAGES.NIGHTLY)
 };
 
-if (production) {
+switch (process.env.STAGE) {
+  case APP_STAGES.LOCAL:
+    plugins.push(new webpack.DefinePlugin({
+      __DEVTOOLS__  : false,
+      __STAGE__     : JSON.stringify(APP_STAGES.LOCAL)
+    }));
+   plugins.push(new webpack.HotModuleReplacementPlugin());
+   break;
 
-  htmlPluginOptions.minify = {
-    removeComments        : true,
-    collapseWhitespace    : true,
-    conservativeCollapse  : false,
-    minifyJS              : true,
-    minifyCSS             : true,
-  };
+  case APP_STAGES.NIGHTLY:
+    htmlPluginOptions.minify = {
+      removeComments        : true,
+      collapseWhitespace    : true,
+      conservativeCollapse  : false,
+      minifyJS              : true,
+      minifyCSS             : true,
+    };
 
-  // Enable React optimizations.
-  plugins.push(new webpack.DefinePlugin({
-    'process.env.NODE_ENV'  : JSON.stringify('production'),
-    __DEVTOOLS__            : false,
-    __DEVELOPMENT__         : false
-   }));
-} else {
-  plugins.push(new webpack.DefinePlugin({
-    __DEVTOOLS__            : false,
-    __DEVELOPMENT__         : true
-  }));
-  plugins.push(new webpack.HotModuleReplacementPlugin());
+    // Enable React optimizations.
+    plugins.push(new webpack.DefinePlugin({
+      'process.env.STAGE'     : JSON.stringify('nightly'),
+      __DEVTOOLS__  : false,
+      __STAGE__     : JSON.stringify(APP_STAGES.NIGHTLY)
+    }));
+    break;
+
+  case APP_STAGES.PRODUCTION:
+    htmlPluginOptions.minify = {
+      removeComments        : true,
+      collapseWhitespace    : true,
+      conservativeCollapse  : false,
+      minifyJS              : true,
+      minifyCSS             : true,
+    };
+
+    // Enable React optimizations.
+    plugins.push(new webpack.DefinePlugin({
+      'process.env.STAGE'     : JSON.stringify('production'),
+      __DEVTOOLS__  : false,
+      __STAGE__     : JSON.stringify(APP_STAGES.PRODUCTION)
+    }));
+    break;
 }
 
 plugins.push(new HTMLPlugin({
