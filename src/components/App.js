@@ -71,18 +71,7 @@ class Main extends Component {
               searchError={ search.error }
               cities={ search.cities }
               onEscape={ () => { return dispatch(Actions.setCitySearchText('')); }}
-              onSelection={ city => {
-                if (city) {
-                  dispatch(Actions.setCenter({
-                    lat: Number(city.lat),
-                    lng: Number(city.lon)
-                  }));
-                  dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
-                  dispatch(Actions.toggleLandingPage());
-                  dispatch(Actions.setSearchText(''));
-                  return dispatch(Actions.finishCitySearch());
-                }
-              }}
+              onSelection={ this.onLandingPageCitySelection.bind(this) }
               onLogin={ data => {
                 var password, username;
                 username = data.username, password = data.password;
@@ -198,6 +187,20 @@ class Main extends Component {
   categoryIsEnabled(enabledCategories){
     return (entry) => {
       return entry.categories.some(cat => enabledCategories.includes(cat));
+    }
+  }
+
+  onLandingPageCitySelection(city){
+    const { dispatch } = this.props;
+    if (city) {
+      dispatch(Actions.setCenter({
+        lat: Number(city.lat),
+        lng: Number(city.lon)
+      }));
+      dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
+      dispatch(Actions.toggleLandingPage());
+      dispatch(Actions.setSearchText(''));
+      return dispatch(Actions.finishCitySearch());
     }
   }
 
