@@ -16,8 +16,9 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+  const title = getTruncatedTitle(entry.title, 60); // maximally two lines
+  const description = getTruncatedDescription(entry.description, 110); // maximally two lines
 
-  entry.description = getTruncatedDescription(entry);
   return (
     <ListElement
       key           = { entry.id }
@@ -32,9 +33,9 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
             <div>
-              <EntryTitle id={entry.id} className="title">{entry.title}</EntryTitle>
+              <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
             </div>
-            { getBody(entry) }
+            { getBody(isEvent, description, entry.city, entry.organizer) }
           </TitleCategoryAndDescription>
           { !isEvent ?
             <FlowerWrapper>
@@ -55,17 +56,16 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     </ListElement>)
 }
 
-const getBody = (entry) => {
-  const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+const getBody = (isEvent, description, city, organizer) => {
   if (isEvent) {
     return (
-      <EventBody maxHeight={entry.descriptionMaxHeight}>
-        <div>{entry.city}</div>
-        <div>{entry.organizer}</div>
+      <EventBody>
+        <div>{city}</div>
+        <div>{organizer}</div>
       </EventBody>
     );
   } else {
-    return (<Description maxHeight={entry.descriptionMaxHeight}>{entry.description}</Description>);
+    return (<Description>{description}</Description>);
   }
 }
 
@@ -73,9 +73,7 @@ const ResultList = props => {
 
   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
 
-  const entriesNew = addDescriptionMaxHeightToEntries(entries);
-
-  let results = entriesNew.map( e =>
+  let results = entries.map( e =>
     <ResultListElement
       entry        = { e            }
       ratings      = { (e.ratings || []).map(id => ratings[id])}
@@ -120,78 +118,24 @@ const ResultList = props => {
   </Wrapper>)
 }
 
-const addDescriptionMaxHeightToEntries = (entries) => {
-  // In order to find out how much vertical space is left for the description
-  // we render the title to a hidden div and count the lines that the title takes
-  // (we can't simply look at the number of characters since the font is not mono spaced)
-  let entriesNew = [];
-  let divEntries = document.getElementById('hidden-div1');
-  let divEvents = document.getElementById('hidden-div1');
-  divEntries.innerHTML = "";
-  divEvents.innerHTML = "";
-  let numLinesUntilCurrent_Entries = divEntries.offsetHeight / 22;
-  let numLinesUntilCurrent_Events = divEvents.offsetHeight / 22;
-  for (let i=0; i<entries.length; i++) {
-    let entry = entries[i];
-    const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
-    numLinesUntilCurrent_Entries = divEntries.offsetHeight / 22;
-    numLinesUntilCurrent_Events = divEvents.offsetHeight / 22;
-
-    let h3 = document.createElement("h3");
-    h3.style = 'margin:0; font-size:1.2em; font-weight:500; font-family: "Rubik",sans-serif;'
-    h3.appendChild(document.createTextNode(entry.title));
-    divEntries.style = 'width: 256.06px;'
-    divEvents.style = 'width: 289.13px;'
-    if (isEvent) {
-      if (divEvents) {
-        divEvents.appendChild(h3)
-        const totalNumLines = divEvents.offsetHeight / 22; // line-height of title is 22px;
-        const linesOfTitle = totalNumLines - numLinesUntilCurrent_Events;
-        numLinesUntilCurrent_Events += linesOfTitle; 
-        if (linesOfTitle <= 3) {
-            entry.descriptionMaxHeight = 46; // line-height of description is 14px, so height of div should be multiples of 14
-        } else {
-            entry.descriptionMaxHeight = 0;
-        }
-      }
-      entriesNew.push(entry);
+const getTruncatedTitle = (title, maxCharacters) => {
+  if (title) {
+    if (title.length > maxCharacters + 5) {
+      return title.substring(0, maxCharacters) + "...";
     } else {
-      if (divEntries) {
-        divEntries.appendChild(h3)
-        const totalNumLines = divEntries.offsetHeight / 22;
-        const linesOfTitle = totalNumLines - numLinesUntilCurrent_Entries;
-        numLinesUntilCurrent_Entries += linesOfTitle; 
-        switch (linesOfTitle) {
-          case 1:
-            entry.descriptionMaxHeight = 42;
-            entry.maxCharacters = 140;
-            break;
-
-          case 2:
-            entry.descriptionMaxHeight = 28;
-            entry.maxCharacters = 100;
-            break;
-
-          default:
-            entry.descriptionMaxHeight = 0;
-            entry.maxCharacters = 0;
-        }
-      entriesNew.push(entry);
-      }
+      return title;
     }
+  } else {
+    return "";
   }
-  divEntries.setAttribute('style', 'display: none;');
-  divEvents.setAttribute('style', 'display: none;');
-  return entriesNew;
 }
 
-const getTruncatedDescription = (entry) => {
-  let description = entry.description;
-  if(description && description.length > entry.maxCharacters - 10) {
-    description = description.substring(0,entry.maxCharacters - 29 + description.substring(entry.maxCharacters - 30).indexOf(". ")) + '...';
+const getTruncatedDescription = (description, maxCharacters) => {
+  if(description && description.length > maxCharacters - 10) {
+    description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(". ")) + '...';
   }
-  if(description && description.length > entry.maxCharacters) {
-    description = description.substring(0,entry.maxCharacters - 29 + description.substring(entry.maxCharacters - 30).indexOf(" ") - 1) + '...';
+  if(description && description.length >  maxCharacters) {
+    description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(" ") - 1) + '...';
   }
   return description;
 }
@@ -239,7 +183,7 @@ const EventTimeWrapper = styled.div`
 `
 
 const EntryTitle = styled.h3`
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin: .2rem .3em .2rem 0;
   font-weight: 500;
   position: relative;
@@ -255,7 +199,7 @@ const ListElement = styled.li `
   padding-left: 0.7em;
   padding-top: 0.7em;
   padding-right: 0.5em;
-  padding-bottom: 0.7em;
+  padding-bottom: 0.4em;
   border-bottom: 1px solid #ddd;
   border-left: 5px solid transparent;
   div {
@@ -336,8 +280,8 @@ const ListElement = styled.li `
 
 const EventBody = styled.div`
   font-size: 0.8em;
-  margin-top: -2px;
-  max-height: ${props => props.maxHeight}px;
+  margin-top: 2px;
+  max-height: ${14 * 3}px;
   overflow: hidden;
   hyphens: auto;
   color: #555;
@@ -347,7 +291,8 @@ const EventBody = styled.div`
 `
 
 const Description = styled.div`
-  max-height: ${props => props.maxHeight}px;
+  margin-top: 2px;
+  max-height: ${14 * 3}px;
   overflow: hidden;
   hyphens: auto;
   position: relative;
@@ -359,7 +304,7 @@ const Description = styled.div`
 const TagsWrapper = styled.div`
   height: 21px;
   overflow-y: hidden;
-  margin-top: 2px;
+  margin-top: 5px;
   float: left;
   ul {
     list-style: none;
@@ -369,6 +314,7 @@ const TagsWrapper = styled.div`
 `
 
 const Tag = styled.div `
+  line-height: 14px;
   font-size: 0.75em;
   display: inline-block;
   background: #eaeaea;
@@ -379,6 +325,8 @@ const Tag = styled.div `
   margin-bottom: 0.2em;
   border: 0;
   letter-spacing: 0.06em;
+  height: 12px;
+  overflow: hidden;
 `
 
 const FlowerWrapper = styled.div `
