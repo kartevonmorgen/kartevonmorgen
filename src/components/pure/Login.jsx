@@ -77,7 +77,7 @@ const Login = (props) => {
         </SubmitButton>
       </Fieldset>
       <p>
-        {t("registerText")}
+        {t("registerText") + " "}
         <a
           onClick={ onRegister }
           href="#">{ t("registerLink") }
