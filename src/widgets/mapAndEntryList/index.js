@@ -14,6 +14,12 @@ import store            from "../../Store";
 import "../../components/styling/Icons";
 import Actions          from "../../Actions";
 import route            from "../../route";
+import { APP_STAGES }   from "../../constants/App";
+
+console.log("APP STAGE:", __STAGE__);
+if (__STAGE__ === APP_STAGES.LOCAL) {
+  window.React = React;
+}
 
 const rootElement = document.querySelector('#app');
 window.onpopstate = route;
