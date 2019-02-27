@@ -1,6 +1,7 @@
 import "../../components/styling/Stylesheets"
 
 import React         from "react";
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import URLs          from "../../constants/URLs";
 import i18n          from "../../i18n";
 import Map           from "../../components/Map";
@@ -20,28 +21,42 @@ module.exports = translate('translation')((props) => {
     .concat(search.eventResults);
 
   return (
-    <div>
+    <WidgetWrapper>
       <GlobalStyle />
-      <SwipeableLeftPanel className={"left " + (view.showLeftPanel ? 'opened' : 'closed')}
-        onSwipedLeft={ () => this.swipedLeftOnPanel() }>
-        <Sidebar
-          view={ view }
-          search={ search }
-          map={ map }
-          user={ null }
-          server={ server }
-          form={ form }
-          entries={ entries }
-          resultEntries={ resultEntries }
-          ratings={ ratings }
-          dispatch={ dispatch } // TODO
-          t={ t }
-          showAddEntryButton={ false }
-          showSearchBar={ false }
-          onTagClick={ () => {} }
-          tagsClickable={ false }
-        />
-      </SwipeableLeftPanel>
+      <LeftPanelAndHideSidebarButton>
+        <SwipeableLeftPanel className={"left " + (view.showLeftPanel ? 'opened' : 'closed')}
+          onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+          <Sidebar
+            view={ view }
+            search={ search }
+            map={ map }
+            user={ null }
+            server={ server }
+            form={ form }
+            entries={ entries }
+            resultEntries={ resultEntries }
+            ratings={ ratings }
+            dispatch={ dispatch } // TODO
+            t={ t }
+            showAddEntryButton={ false }
+            showSearchBar={ false }
+            onTagClick={ () => {} }
+            tagsClickable={ false }
+          />
+        </SwipeableLeftPanel>
+        <HideSidebarButtonWrapper>
+          <button
+            onClick={ () => {
+              if (view.showLeftPanel) {
+                return dispatch(Actions.hideLeftPanel());
+              } else {
+                return dispatch(Actions.showLeftPanel());
+              }
+            }}>
+            <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
+          </button>
+        </HideSidebarButtonWrapper>
+      </LeftPanelAndHideSidebarButton>
       <Map
         marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
         highlight={ search.highlight }
@@ -80,7 +95,7 @@ module.exports = translate('translation')((props) => {
           </KVMLinkBox>
         </KVMLink>
       </KVMLinkWrapper>
-    </div>
+    </WidgetWrapper>
   );
 })
 
@@ -107,13 +122,61 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const WidgetWrapper = styled.div`
+  /* 
+  make the app fit the screen/iframe exactly (important for overflow:scroll, 
+  but can't use height:100vh since that would break iframes smaller than 100vh):
+  */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`
+
+const LeftPanelAndHideSidebarButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+`
+
+const HideSidebarButtonWrapper = styled.div `
+  position: relative;
+  z-index: 2;
+  height: 0;
+  >button {
+    position: relative;
+    padding: 10px 3px 10px 7px;
+    top: 72px;
+    font-size: 13pt;
+    color: ${STYLE.darkGray};
+    background: #fff;
+    border: none;
+    border-left: 1px solid ${STYLE.lightGray};
+    border-radius: 0 0.2em 0.2em 0;
+    box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
+    &:hover {
+      color: ${STYLE.coal};
+      box-shadow: px 2px 2px 0.3px #000;
+    }
+    i {
+      margin-right: 0.3em;
+    }
+  }
+`
+
+const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
+  margin-right: 0.3em;
+  width: 0.7em;
+`
+
 const SwipeableLeftPanel = styled(Swipeable)`
   input, textarea, select {
     box-shadow: none !important;
     border-radius: 3px !important;
   }
 
-  position: absolute;
+  position: relative;
   height: 100%;
   z-index: 2;
   order: -1;

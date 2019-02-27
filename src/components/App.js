@@ -94,8 +94,9 @@ class Main extends Component {
           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
         }
 
-        <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
-          onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+        <LeftPanelAndHideSidebarButton>
+          <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
+            onSwipedLeft={ () => this.swipedLeftOnPanel() }>
             <Sidebar
               view={ view }
               search={ search }
@@ -114,21 +115,20 @@ class Main extends Component {
               onTagClick={ this.onTagClick }
               tagsClickable={ true }
             />
-        </SwipeableLeftPanel>
-
-        <HiddenSidebar>
-          <button
-            onClick={ () => {
-              if (view.showLeftPanel) {
-                return dispatch(Actions.hideLeftPanel());
-              } else {
-                return dispatch(Actions.showLeftPanel());
-              }
-            }}>
-            <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
-          </button>
-        </HiddenSidebar>   
-        
+          </SwipeableLeftPanel>
+          <HideSidebarButtonWrapper>
+            <button
+              onClick={ () => {
+                if (view.showLeftPanel) {
+                  return dispatch(Actions.hideLeftPanel());
+                } else {
+                  return dispatch(Actions.showLeftPanel());
+                }
+              }}>
+              <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
+            </button>
+          </HideSidebarButtonWrapper>   
+        </LeftPanelAndHideSidebarButton>
         <RightPanel>
           <div className="menu-toggle">
             <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
@@ -377,7 +377,13 @@ const RightPanel = styled.div `
   }
 `
 
-const HiddenSidebar = styled.div `
+const LeftPanelAndHideSidebarButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+`
+
+const HideSidebarButtonWrapper = styled.div `
   position: relative;
   z-index: 2;
   height: 0;
@@ -405,8 +411,16 @@ const HiddenSidebar = styled.div `
 const StyledApp = styled.div `
 
   background: #fff;
-  min-height: 100vh;
-  height: 100vh;
+
+  /* 
+  make the app fit the screen/iframe exactly (important for overflow:scroll, 
+  but can't use height:100vh since that would break iframes smaller than 100vh):
+  */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   .tutorial {
     margin-bottom: 3em;
