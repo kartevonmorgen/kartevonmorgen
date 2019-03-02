@@ -11,6 +11,7 @@ import STYLE         from "../../components/styling/Variables";
 import V             from "../../constants/PanelView";
 import { translate } from "react-i18next"
 import Actions       from "../../Actions";
+import logo          from "../../img/logo_without_slogan.png";
 import styled, { createGlobalStyle } from "styled-components";
 
 module.exports = translate('translation')((props) => {
@@ -88,13 +89,11 @@ module.exports = translate('translation')((props) => {
         onLocate={ () => { return dispatch(Actions.showOwnPosition()); }}
         showLocateButton={ true }
       />
-      <KVMLinkWrapper>
-        <KVMLink target="_blank" href={URLs.APP.link + (view.highlight ? ("/#/?entry=" + view.highlight) : "")}>
-          <KVMLinkBox>
-            {i18n.t("mapAndEntryListWidget.kvmLink")}
-          </KVMLinkBox>
-        </KVMLink>
-      </KVMLinkWrapper>
+      <KVMLink target="_blank" href={URLs.APP.link + (view.highlight ? ("/#/?entry=" + view.highlight) : "")}>
+        <KVMLinkBox>
+          <Logo src={logo} />
+        </KVMLinkBox>
+      </KVMLink>
     </WidgetWrapper>
   );
 })
@@ -234,33 +233,28 @@ const SwipeableLeftPanel = styled(Swipeable)`
   }
 `
 
-const KVMLinkWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 200px;
-  width: calc(100% - 580px);
-  height: 28px;
-`
 
 const KVMLink = styled.a`
   font-size: 13px;
   color: rgb(20,20,20);
   display: block;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
 `
 
 const KVMLinkBox = styled.div`
-  background-color: rgba(255, 255, 255, 1);
-  height: 20px;
-  padding: 8px 5px 0 5px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  background-color: white;
+  border-bottom-left-radius: 3px;
   box-shadow: 1px 1px 5px rgba(0,0,0,.5);
   :hover {
     background-color: #efefef;
   }
+`
+
+const Logo = styled.img`
+  padding: 9px 11px 5px 12px;
+  height: 30px;
 `
