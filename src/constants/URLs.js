@@ -16,7 +16,7 @@ const OFDB_API_LINK = (() => {
     
     default:
       // production
-      return "https://api.ofdb.io/";
+      return "https://kartevonmorgen.org/api/";
   }
 })() + API_VERSION;
 

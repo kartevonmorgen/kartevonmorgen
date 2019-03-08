@@ -1,3 +1,11 @@
+## v0.1.30 (2019-03-08)
+
+- new(api): use new production API url
+
+## v0.1.29 (2019-03-02)
+
+- TODO!
+
 ## v0.1.28 (2019-01-17)
 
 - chore(*): decrease bundle file size
