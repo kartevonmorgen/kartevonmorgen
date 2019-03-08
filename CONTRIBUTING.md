@@ -89,8 +89,8 @@ And don't miss the great
 Then you should be prepared to have a look at the [redux](https://github.com/rackt/redux)
 framework.
 I recommend to read at least the
-[introduction](http://rackt.github.io/redux/docs/introduction/index.html) and
-the [basics](http://rackt.github.io/redux/docs/basics/index.html) sections as a
+[introduction](https://redux.js.org/introduction/getting-started) and
+the [basics](https://redux.js.org/basics/basic-tutorial) sections as a
 first overview.
 There is also a [Step by Step Guide To Building React Redux Apps](https://medium.com/@rajaraodv/step-by-step-guide-to-building-react-redux-apps-using-mocks-48ca0f47f9a).
 
