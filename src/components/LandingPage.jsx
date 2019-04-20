@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { translate }        from "react-i18next";
 import T                    from "prop-types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
 
 import logo                 from "../img/logo.png";
@@ -17,6 +17,7 @@ import URLs                 from "../constants/URLs";
 import V                    from "../constants/PanelView";
 import i18n                 from "../i18n";
 import STYLE                from "./styling/Variables"
+import pincloud             from "../img/pincloud.png";
 
 class LandingPage extends Component {
   state = {
@@ -125,7 +126,7 @@ class LandingPage extends Component {
             {t("donate.paragraph3.text2")}
           </p>
           <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
-            width="800" height="550" frameborder="0">
+            width="800" height="550" frameBorder="0">
           </iframe>
           <p>
             {t("donate.paragraph3.text3")}
@@ -600,7 +601,7 @@ const LandingWrapper = styled.div`
         margin-left: -100px;
         margin-top: -35px;
         background-color: #fff;
-        background-image: url("../../img/pincloud.png");
+        background-image: url(${pincloud});
         background-repeat: no-repeat;
         background-position: center center;
         left: 50%;
