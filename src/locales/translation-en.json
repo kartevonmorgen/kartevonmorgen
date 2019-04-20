@@ -71,7 +71,8 @@
 			"email": "Register by email",
 			"telephone": "Register by phone",
 			"homepage": "Register online"
-		}
+		},
+    "route": "Route"
 	},
 	"login":{
 		"requiredField":"required field",

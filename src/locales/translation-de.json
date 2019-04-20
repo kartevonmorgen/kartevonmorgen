@@ -71,7 +71,8 @@
 			"email": "Anmeldung per Email",
 			"telephone": "Anmeldung telefonisch",
 			"homepage": "Anmeldung online"
-		}
+		},
+    "route": "Route"
 	},
 	"login":{
 		"requiredField":"Pflichtangabe",
