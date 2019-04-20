@@ -239,34 +239,37 @@ class LandingPage extends Component {
             <div className="menu-wrapper pure-u-1 pure-u-md-2-3">
               <div className = "language-wrapper">
                 <a onClick={() => {i18n.changeLanguage('de');}} href="#"
-                  className={"language-link" + ((i18n.language == "de") ? " selected" : " unselected")}>de</a>
+                  className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}>de</a>
                 {" "}
                 <a onClick={() => {i18n.changeLanguage('en');}} href="#"
-                  className={"language-link" + ((i18n.language == "en") ? " selected" : " unselected")}>en</a>
+                  className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}>en</a>
+                {" "}
+                <a onClick={() => {i18n.changeLanguage('es');}} href="#"
+                  className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}>es</a>
               </div>
               <div className="menu pure-menu pure-menu-horizontal">
-                <ul className="pure-g">
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                <ul className="pure-g menu-items-wrapper">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick={() => onClick('map')} href="#" className="pure-menu-link">
                       {t("menu.map")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick= {() => onClick(V.INFO)} href="#" className="pure-menu-link">
                       {t("menu.infos")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick = {() => onClick(V.CONTACT)} href="#" className="pure-menu-link">
                       {t("menu.contact")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
                       {t("menu.donate")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     { loggedIn ?
                       <a onClick = {() => onClick(V.LOGOUT)} href="#" className="pure-menu-link">
                         {t("menu.logout")}
@@ -460,14 +463,14 @@ const LandingWrapper = styled.div`
     .menu-wrapper {
       text-align: right;
       .language-wrapper {
-        margin: 1em;
+        margin: -4px 20px 24px 0;
         font-size: 0.8em;
         color: #777;
         .language-link {
           margin: 3pt;
           text-decoration: none;
           &.selected {
-            color: #777;
+            color: #95be0b;
             pointer-events: none;
           }
           &.unselected {
@@ -491,7 +494,7 @@ const LandingWrapper = styled.div`
       position: relative;
       max-width: 655px;
       ul {
-        margin: 0;
+        margin: 0 30px 0 0;
       }
       li {
         &:hover {
