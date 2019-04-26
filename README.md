@@ -122,6 +122,20 @@ Updating the `node-packages.nix` works as follows:
 
 KVM uses the [OpenFairDB](https://github.com/slowtec/openfairdb) as its backend.
 
+## Goodmap
+<3 Goodmap Consortium
+
+### Core
+* Navigate to `goodmap-core` folder
+* Add changes
+* Recompile by using `yarn build`
+
+### Webapp
+* Navigate to `goodmap-webapp` folder
+* Install via `yarn install`
+* Add changes
+* Run by using `yarn start`
+
 ## License
 
 Copyright (c) 2015 - 2018 Markus Kohlhase <mail@markus-kohlhase.de>
