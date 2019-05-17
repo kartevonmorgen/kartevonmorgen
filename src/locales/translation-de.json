@@ -97,7 +97,7 @@
 		"password1":"Passwort",
 		"password2":"Passwort wiederholen",
 		"submitButton":"Registrieren",
-		"loginText":"Du hast schon einen Account? Dann kannst du dich",
+		"loginText":"Hinweis: Der Nutzername darf keine Punkte und keine Umlaute enthalten! Das Passwort muss mindestes 8 Zeichen haben, aber auch keine Umlaute, oder Sonderzeichen. Pro Account (Nutzername) kann nur eine Region abonniert werden. Pro Mailadresse können aber mehrere Accounts mit unterschiedlichen Nutzernamen erstellt werden.    --> Du hast schon einen Account? Dann kannst du dich",
 		"loginLink":"hier einloggen",
 		"requiredField":"Pflichtangabe",
 		"invalidValues":"Ungültige Daten",
