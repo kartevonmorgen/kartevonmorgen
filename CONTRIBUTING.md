@@ -84,6 +84,7 @@ Nevertheless here are some more libs used and you should/could know about:
 
 
 ### Commit-Message Style
+```
 webapp / new / EntryForm: change email-validation
 ^         ^     ^
 |         |     |
@@ -103,3 +104,4 @@ core,webapp
         test: adding or changing tests    |
         chore: any non-coding tasks,      /
                e.g. npm updates...
+```
