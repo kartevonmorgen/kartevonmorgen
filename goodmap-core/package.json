@@ -6,11 +6,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc -w",
+    "test": "jest"
   },
   "author": "Goodmap Consortium",
   "license": "AGPL-3.0",
   "devDependencies": {
+    "@types/jest": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^1.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
@@ -18,14 +20,11 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
-    "typescript": "^2.5.3"
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
   },
-  "declaration": true,
-  "outDir": "dist",
-  "strict": true,
-  "esModuleInterop": true,
-  "exclude": [
-    "node_modules",
-    "dist"
+  "files": [
+    "dist/"
   ]
 }
