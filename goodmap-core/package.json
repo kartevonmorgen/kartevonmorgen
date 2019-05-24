@@ -4,13 +4,28 @@
   "private": true,
   "description": "This is the Goodmap core library that provides abstraction for the openfairDB API requests.",
   "main": "dist/index.js",
-  "types" : "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "author": "Goodmap Consortium",
   "license": "AGPL-3.0",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-typescript": "^4.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
     "typescript": "^2.5.3"
-  }
+  },
+  "declaration": true,
+  "outDir": "dist",
+  "strict": true,
+  "esModuleInterop": true,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
