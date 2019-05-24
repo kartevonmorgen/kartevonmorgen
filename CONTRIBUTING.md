@@ -81,3 +81,25 @@ Nevertheless here are some more libs used and you should/could know about:
 - [superagent](https://github.com/visionmedia/superagent)
 - [purecss](http://purecss.io/)
 - [font-awesome](http://fontawesome.io/)
+
+
+### Commit-Message Style
+webapp / new / EntryForm: change email-validation
+^         ^     ^
+|         |     |
+|         |     |
+webapp    |     write any message here (in present tense)
+core      |
+core,webapp
+* (whole project, e.g. README-file)
+          |
+          |
+          |
+        new: any change                  <-- functionality changes
+        fix: bugfix                       \
+        refactor: only rewriting          |
+        style: just changing appearance   | no changes in functionality
+        i18n: just changing i18n-texts    |
+        test: adding or changing tests    |
+        chore: any non-coding tasks,      /
+               e.g. npm updates...
