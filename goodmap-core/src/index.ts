@@ -3,7 +3,7 @@ import GoodmapCore from './GoodmapCore';
 export const {
   createEntry,
   getEntriesByIds,
-  getEntryIdsForBbox,
+  getCompactEntriesForBbox,
   getUser,
   loginUser,
   logoutUser,

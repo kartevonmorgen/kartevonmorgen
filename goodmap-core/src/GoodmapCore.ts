@@ -6,6 +6,17 @@ import Http from './services/Http';
 
 export default class GoodmapCore {
   /**
+   * Get compact entries separated by visibility for bbox
+   * @param bbox
+   */
+  public static getCompactEntriesForBbox(
+    bbox: Array<number[]>,
+  ): AxiosPromise<ISearchResult> {
+    const bboxParams = `${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}`;
+    return Http.get(`/search?bbox=${bboxParams}`);
+  }
+
+  /**
    * Create entry
    * @param entry
    */
@@ -20,17 +31,6 @@ export default class GoodmapCore {
   public static getEntriesByIds(ids: string[]): AxiosPromise<IEntry[]> {
     const idsParams = ids.join(',');
     return Http.get(`/entries/${idsParams}`);
-  }
-
-  /**
-   * Get entry ids separated by visibility for bbox
-   * @param bbox
-   */
-  public static getEntryIdsForBbox(
-    bbox: Array<number[]>,
-  ): AxiosPromise<ISearchResult> {
-    const bboxParams = `${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}`;
-    return Http.get(`/search?bbox=${bboxParams}`);
   }
 
   /**
