@@ -1,4 +1,6 @@
-const sampleCompactEntry = {
+import { IEntry } from '../../src/interfaces';
+
+const sampleCompactEntry: IEntry = {
   id: 'cd1ac0d81679479fb85acdf59ce69a01',
   lat: 48.178974179634345,
   lng: 11.48422332084003,
