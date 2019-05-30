@@ -1,5 +1,5 @@
 import axios, { AxiosPromise } from 'axios';
-import { API_URL, API_VERSION } from '../constants/api';
+import { API_URL, API_VERSION } from '../constants';
 import { IEntry, IUserCredentials } from '../interfaces';
 
 export default class Http {
