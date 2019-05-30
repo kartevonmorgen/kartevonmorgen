@@ -1,7 +1,5 @@
 import { AxiosPromise } from 'axios';
-import IEntry from './interfaces/IEntry';
-import ISearchResult from './interfaces/ISearchResult';
-import IUserProfile from './interfaces/IUserProfile';
+import { IEntry, ISearchResult, IUserProfile } from './interfaces';
 import Http from './services/Http';
 
 export default class GoodmapCore {

@@ -1,4 +1,4 @@
-import IEntry from '../../src/interfaces/IEntry';
+import { IEntry } from '../../src/interfaces';
 
 const sampleEntry: IEntry = {
   categories: ['77b3c33a92554bcf8e8c2c86cedd6f6f'],
