@@ -16,7 +16,7 @@ export default interface IEntry {
   description: string,
   email?: string,
   homepage?: string,
-  id?: string,
+  id: string,
   image_link_url?: string | null,
   image_url?: string,
   lat: number,
