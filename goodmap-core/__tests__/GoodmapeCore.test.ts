@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { getEntriesByIds, getCompactEntriesForBbox } from '../dist';
 import GoodmapCore from '../src/GoodmapCore';
-import { IEntry } from '../src/interfaces';
+import { ISearchResult } from '../src/interfaces';
 import Http from '../src/services/Http';
 
 import sampleCompactEntry from './data/sampleCompactEntry';
@@ -35,10 +35,7 @@ describe('static goodmap core', () => {
     const bboxParams = `${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}`;
     const method = 'get';
     const url = `/search?bbox=${bboxParams}`;
-    const data: {
-      invisible: IEntry[],
-      visible: IEntry[],
-    } = {
+    const data: ISearchResult = {
       invisible: [],
       visible: [sampleCompactEntry],
     };
