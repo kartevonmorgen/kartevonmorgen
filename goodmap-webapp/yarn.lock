@@ -1265,6 +1265,11 @@
   dependencies:
     "@types/jest-diff" "*"
 
+"@types/mobx-devtools-mst@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@types/mobx-devtools-mst/-/mobx-devtools-mst-0.9.0.tgz#eef2fa04d74914bc1bb1857475f46490ebd23d7a"
+  integrity sha512-17xwXau7im+1Ci5uad1M4fhNh/x7kNXUrQ8+9bJsSw2y1Vu97ftAxKD+60eQ641nHkWKW+7CxaDtXoyDKKaeTg==
+
 "@types/node@*", "@types/node@12.0.7":
   version "12.0.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.7.tgz#4f2563bad652b2acb1722d7e7aae2b0ff62d192c"
@@ -6306,6 +6311,23 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+mobx-devtools-mst@^0.9.21:
+  version "0.9.21"
+  resolved "https://registry.yarnpkg.com/mobx-devtools-mst/-/mobx-devtools-mst-0.9.21.tgz#430c52131d82b7ef24281baaae64e552908afa91"
+  integrity sha512-eyGtucp9zXunzRjYZjXsaQ18/riOy8bdW2a14YIQ96ZPhLXXnR0zivIUyJ35ZC3o5Nd+kpUzqrm/8jCf8zjLyQ==
+
+mobx-react-lite@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-1.4.0.tgz#193beb5fdddf17ae61542f65ff951d84db402351"
+  integrity sha512-5xCuus+QITQpzKOjAOIQ/YxNhOl/En+PlNJF+5QU4Qxn9gnNMJBbweAdEW3HnuVQbfqDYEUnkGs5hmkIIStehg==
+
+mobx-react@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-6.0.3.tgz#8a6492ada0bc89988150cc60e718c99be3bbb8dd"
+  integrity sha512-HmbciuddQFxyKnfI9UYBVykLjwiw0045ln175KPQkRxJ/LwERNLUrpX1wj4y5KQZngPEZ9bRkTBUpTwpTwCIZw==
+  dependencies:
+    mobx-react-lite "1.4.0"
 
 mobx-state-tree@^3.14.0:
   version "3.14.0"
