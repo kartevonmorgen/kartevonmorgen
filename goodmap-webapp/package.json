@@ -6,17 +6,23 @@
   "author": "Goodmap Consortium",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@types/jest": "24.0.11",
-    "@types/node": "11.13.5",
-    "@types/react": "16.8.13",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.7",
+    "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "mobx": "^5.9.4",
     "mobx-state-tree": "^3.14.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8",
-    "styled-components": "^4.2.0",
-    "typescript": "3.4.4"
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "eslint-config-airbnb-typescript": "^4.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,17 +33,16 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.0.0",
-    "eslint-config-airbnb-typescript": "^4.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
