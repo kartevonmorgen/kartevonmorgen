@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-
 import { getEntriesByIds, getCompactEntriesForBbox } from 'goodmap-core';
-
 import './App.css';
+import { inject, observer } from 'mobx-react';
+import { Instance } from 'mobx-state-tree';
+import AppStore from '../stores/AppStore';
 
-class App extends Component {
+interface Props {
+  store?: Instance<typeof AppStore>;
+}
+
+@inject('store')
+@observer
+class App extends Component<Props> {
   async componentDidMount() {
     // Test GoodmapCore
     const searchResults = await getCompactEntriesForBbox([
@@ -15,12 +22,24 @@ class App extends Component {
     console.log(ids);
     const entries = await getEntriesByIds(ids);
     console.log(entries);
+
+    // Test MST
+    const { store } = this.props;
+    const { applyEntries } = store!.EntryStore;
+    applyEntries(entries.data);
   }
 
   render() {
+    const { store } = this.props;
+    const { entries } = store!.EntryStore;
+
     return (
       <div className="App">
-        <header className="App-header">GoodMap App</header>
+        <header className="App-header">
+          GoodMap App
+          {' '}
+          {entries.length}
+        </header>
       </div>
     );
   }
