@@ -9,11 +9,11 @@ const API_VERSION = 'v0';
 const OFDB_API_LINK = (() => {
   switch (__STAGE__){
     case APP_STAGES.LOCAL:
-      return "https://nightly.ofdb.io/";
+      return "/api/";
 
     case APP_STAGES.NIGHTLY:
       return "https://nightly.ofdb.io/";
-    
+
     default:
       // production
       return "https://kartevonmorgen.org/api/";
