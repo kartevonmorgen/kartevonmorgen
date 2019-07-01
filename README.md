@@ -92,7 +92,7 @@ that are referenced from the frontend by their ids.
 
 For this purpose start your favourite SQLite3 management tool, open the *openfairdb.db* file
 and execute the SQL statements in
-[openfairdb/init_categories_de.sql](openfairdb/init_categories_de.sql). You can also accomplish
+[res/init_openfairdb_categories_de.sql](res/init_openfairdb_categories_de.sql). You can also accomplish
 this task with the SQLite CLI tool:
 
     ```sh
