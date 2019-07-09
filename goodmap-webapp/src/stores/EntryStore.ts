@@ -11,7 +11,6 @@ const EntryStore = types
       self.entries.push(entry);
     };
 
-    // TODO: convert IEntry to EntryModel??
     const applyEntries = (entries: IEntry[]) => {
       applySnapshot(self.entries, entries);
     };
