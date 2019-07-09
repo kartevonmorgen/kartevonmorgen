@@ -1,4 +1,5 @@
 import { SnapshotOrInstance, types, applySnapshot } from 'mobx-state-tree';
+import { IEntry } from 'goodmap-core';
 import EntryModel from '../models/EntryModel';
 
 const EntryStore = types
@@ -11,7 +12,7 @@ const EntryStore = types
     };
 
     // TODO: convert IEntry to EntryModel??
-    const applyEntries = (entries: any[]) => {
+    const applyEntries = (entries: IEntry[]) => {
       applySnapshot(self.entries, entries);
     };
 
