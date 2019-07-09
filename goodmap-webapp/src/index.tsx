@@ -2,24 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import makeInspectable from 'mobx-devtools-mst';
-import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+
 import AppStore from './stores/AppStore';
-import ViewStore from './stores/ViewStore';
-import EntryStore from './stores/EntryStore';
+import AreasJSON from './data/areas.json';
+import NeedsJSON from './data/needs.json';
+
+import App from './components/App';
 
 // create AppStore with default snapshot
 const store = AppStore.create({
-  ViewStore: ViewStore.create({
-    page: 'home',
-  }),
-  EntryStore: EntryStore.create(),
+  ViewStore: {},
+  AreaStore: {
+    areas: AreasJSON,
+  },
+  NeedStore: {
+    needs: NeedsJSON,
+  },
+  EntryStore: {},
 });
 
 // connect mobx-devtools-mst
 if (process.env.NODE_ENV === 'development') {
-  console.log('dev')
+  // eslint-disable-next-line no-console
+  console.log('ENV: DEV');
   makeInspectable(store);
 }
 
