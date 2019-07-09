@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "title": "Berlin",
+    "needs": [0, 1, 2, 3]
+  },
+  {
+    "id": 1,
+    "title": "München",
+    "needs": [1, 2]
+  }
+]
