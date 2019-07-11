@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree';
 import NeedModel from './NeedModel';
 
-const AreaModel = types.model('AreaModel', {
+const RegionModel = types.model('RegionModel', {
   id: types.identifierNumber,
-  title: types.string,
+  title: types.frozen(types.string),
   needs: types.array(types.reference(NeedModel)),
 });
 
-export default AreaModel;
+export default RegionModel;

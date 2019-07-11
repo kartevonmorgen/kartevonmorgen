@@ -1,26 +1,33 @@
-import { types } from 'mobx-state-tree';
-import MapPositionModel from '../models/MapPositionModel';
-import AreaModel from '../models/AreaModel';
+import {
+  types, SnapshotOrInstance, cast,
+} from 'mobx-state-tree';
+import RegionModel from '../models/RegionModel';
+import SearchModel from '../models/SearchModel';
+import SearchParamsModel from '../models/SearchParamsModel';
 
 const ViewStore = types
   .model('ViewStore', {
-    selectedArea: types.maybe(types.reference(AreaModel)),
-    mapPosition: types.maybe(MapPositionModel),
+    selectedRegion: types.maybe(types.reference(RegionModel)),
+    search: types.optional(SearchModel, {}),
+    searchParams: types.optional(SearchParamsModel, {
+      bbox: [[48.041824159411995, 11.474876403808596], [48.25005488691924, 11.691169738769533]],
+    }),
   })
   .actions(self => {
-    /* eslint-disable no-param-reassign */
+    const setRegion = (regionId: SnapshotOrInstance<typeof self.selectedRegion>) => {
+      self.selectedRegion = cast(regionId);
+    };
 
-    // TODO: better solution for any?
-    const setArea = (areaId: any) => {
-      self.selectedArea = areaId;
-      self.mapPosition = {
-        lat: 0,
-        lng: 0,
-      };
+    const resetSearch = () => {
+      self.search.clearInputValue();
+      self.search.clearSuggestionValue();
+
+      self.searchParams.clearTags();
     };
 
     return {
-      setArea,
+      setRegion,
+      resetSearch,
     };
   });
 

@@ -8,20 +8,20 @@ interface Props {
   store?: Instance<typeof AppStore>;
 }
 
-const SelectArea = ({ store }: Props) => {
-  const { areas } = store!.AreaStore;
-  const { setArea } = store!.ViewStore;
+const SelectRegion = ({ store }: Props) => {
+  const { regions } = store!.RegionStore;
+  const { setRegion } = store!.ViewStore;
 
-  const handleClick = (areaId: number) => {
-    setArea(areaId);
+  const handleClick = (regionId: number) => {
+    setRegion(regionId);
   };
 
   return (
     <Container>
-      {areas.map(item => (
+      {regions.map(item => (
         <button
           type="button"
-          key={`area-${item.id}`}
+          key={`region-${item.id}`}
           onClick={() => handleClick(item.id)}
         >
           {item.title}
@@ -33,4 +33,4 @@ const SelectArea = ({ store }: Props) => {
 
 const Container = styled.div``;
 
-export default inject('store')(observer(SelectArea));
+export default inject('store')(observer(SelectRegion));

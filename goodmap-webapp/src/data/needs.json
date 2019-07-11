@@ -1,18 +1,22 @@
 [
   {
     "id": 0,
-    "title": "Klamotten kaufen"
+    "title": "Klamotten kaufen",
+    "tags": ["klamotten"]
   },
   {
     "id": 1,
-    "title": "Abendessen gehen"
+    "title": "Abendessen gehen",
+    "tags": ["abendessen", "abendessengehen"]
   },
   {
     "id": 2,
-    "title": "Dinge transportieren"
+    "title": "Dinge transportieren",
+    "tags": ["dingetransportieren"]
   },
   {
     "id": 3,
-    "title": "Lebensmittel besorgen"
+    "title": "Lebensmittel besorgen",
+    "tags": ["lebensmittel"]
   }
 ]

@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree';
-import EntryTypesModel from './EntryTypesModel';
+// import EntryTypesModel from './EntryTypesModel';
 
 const EntryModel = types.model('EntryModel', {
   //
@@ -8,7 +8,7 @@ const EntryModel = types.model('EntryModel', {
   // version: types.number,
   // license: types.maybeNull(types.string),
   // general
-  title: types.string,
+  title: types.frozen(types.string),
   // description: types.string,
   // image_link_url: types.maybeNull(types.string),
   // image_url: types.maybeNull(types.string),
@@ -28,7 +28,7 @@ const EntryModel = types.model('EntryModel', {
   // ratings: types.array(types.string),
   // tags: types.array(types.string),
   // types
-  entryTypes: types.maybe(EntryTypesModel),
+  // entryTypes: types.maybe(EntryTypesModel),
 });
 
 export default EntryModel;

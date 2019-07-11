@@ -5,22 +5,10 @@ import makeInspectable from 'mobx-devtools-mst';
 import * as serviceWorker from './serviceWorker';
 
 import AppStore from './stores/AppStore';
-import AreasJSON from './data/areas.json';
-import NeedsJSON from './data/needs.json';
-
 import App from './components/App';
 
 // create AppStore with default snapshot
-const store = AppStore.create({
-  ViewStore: {},
-  AreaStore: {
-    areas: AreasJSON,
-  },
-  NeedStore: {
-    needs: NeedsJSON,
-  },
-  EntryStore: {},
-});
+const store = AppStore.create({});
 
 // connect mobx-devtools-mst
 if (process.env.NODE_ENV === 'development') {

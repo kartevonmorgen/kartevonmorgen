@@ -1,24 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { inject, observer } from 'mobx-react';
-import { Instance } from 'mobx-state-tree';
-import AppStore from '../../stores/AppStore';
+import Search from './Search';
+import Needs from './Needs';
+import Entries from './Entries';
 
-interface Props {
-  store?: Instance<typeof AppStore>;
-}
-
-const Map = ({ store }: Props) => {
-  const { selectedArea } = store!.ViewStore;
-
-  return (
-    <Container>
-      <h1>hallo i bims map</h1>
-      {selectedArea && selectedArea.needs.map(item => (<p key={`need-${item.id}`}>{item.title}</p>))}
-    </Container>
-  );
-};
+const Map = () => (
+  <Container>
+    <Search />
+    <h1>hallo i bims map</h1>
+    <Needs />
+    <Entries />
+  </Container>
+);
 
 const Container = styled.div``;
 
-export default inject('store')(observer(Map));
+export default Map;
