@@ -6,12 +6,16 @@ export default class GoodmapCore {
   /**
    * Get compact entries separated by visibility for bbox
    * @param bbox
+   * @param tags
    */
   public static getCompactEntriesForBbox(
-    bbox: Array<number[]>,
+    bbox: number[][],
+    tags?: string[],
   ): AxiosPromise<ISearchResult> {
-    const bboxParams = `${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}`;
-    return Http.get(`/search?bbox=${bboxParams}`);
+    const params: string[] = [];
+    params.push(`bbox=${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}`);
+    if (tags) params.push(`tags=${tags.join(',')}`);
+    return Http.get(`/search?${params.join('&')}`);
   }
 
   /**
