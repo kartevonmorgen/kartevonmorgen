@@ -1,3 +1,7 @@
+## v0.1.32 (2019-07-12)
+
+- new(Login): add password-reset-link
+
 ## v0.1.31 (2019-07-12)
 
 - new(\*): add spanish version
