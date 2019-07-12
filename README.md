@@ -54,17 +54,11 @@ To build the web application run:
     npm run pack
 
 The result can be found in `dist/`.
-To build a Nix derivation, run
-
-    nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}'
-
-*Note*: Sometimes the build fails because of a bad binary cache, so just disable it:
-
-    nix-build -E '(import <nixpkgs>{}).callPackage ./kartevonmorgen.nix {}' --option use-binary-caches false
 
 ### Local development setup
 
-The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/slowtec/openfairdb). To do so change `src/constants/URLs.js` to
+The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/slowtec/openfairdb).
+To do so change `src/constants/URLs.js` to
 
 ``` js
 OFDB_API: {
@@ -102,25 +96,23 @@ To run the tests type
 
     npm t
 
-### Nix
-
-If you're using [Nix](http://nixos.org/nix/) or [NixOS](http://nixos.org/) you
-can get your complete development environment by just typing
-
-    nix-shell dev-env.nix
-
-Updating the `node-packages.nix` works as follows:
-
-    cd path/to/your/kartevonmorgen/
-    git clone https://github.com/NixOS/npm2nix
-    nix-shell -p nodejs
-    node npm2nix/lib/npm2nix.js package.json node-packages.nix
-
-...and don't forget to update 'kartevonmorgen.nix' ;-)
-
 ### Backend
 
 KVM uses the [OpenFairDB](https://github.com/slowtec/openfairdb) as its backend.
+
+## Goodmap
+<3 Goodmap Consortium
+
+### Core
+* Navigate to `goodmap-core` folder
+* Add changes
+* Recompile by using `yarn build`
+
+### Webapp
+* Navigate to `goodmap-webapp` folder
+* Install via `yarn install`
+* Add changes
+* Run by using `yarn start`
 
 ## License
 
