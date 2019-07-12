@@ -88,7 +88,9 @@
     "password": "Contraseña",
     "loginButton": "de acceso",
     "registerText": "¿Aún no tienes una cuenta? Entonces puedes",
-    "registerLink": "regístrese aquí gratis."
+    "registerLink": "regístrese aquí gratis.",
+    "passwordResetText":"¿Olvidaste tu contraseña?",
+		"passwordResetLink":"Restablecer"
   },
   "register": {
     "heading": "matricular",

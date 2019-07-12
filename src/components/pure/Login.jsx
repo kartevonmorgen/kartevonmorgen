@@ -83,6 +83,12 @@ const Login = (props) => {
           href="#">{ t("registerLink") }
         </a>
       </p>
+       <p>
+          {t("passwordResetText") + " "}
+          <a href="https://openfairdb.org/reset-password" target="__blank">
+            {t("passwordResetLink")}
+          </a>
+        </p>
     </div>
   </form>)
 }
