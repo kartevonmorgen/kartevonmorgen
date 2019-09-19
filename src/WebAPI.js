@@ -36,6 +36,7 @@ module.exports = {
       })
       .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
       .query('bbox=' + bbox.join(','))
+      .query('limit=250') // TODO: Replace with constant or parameter
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },
