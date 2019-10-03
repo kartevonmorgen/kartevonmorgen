@@ -1,7 +1,3 @@
-/**
- * Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
- */
-
 require('es6-promise').polyfill(); // required for redux-form
 
 import React    from "react";

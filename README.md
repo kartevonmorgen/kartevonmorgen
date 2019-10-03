@@ -165,6 +165,4 @@ KVM uses the [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) as its b
 
 ## License
 
-Copyright (c) 2015 - 2018 Markus Kohlhase <mail@markus-kohlhase.de>
-
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).
