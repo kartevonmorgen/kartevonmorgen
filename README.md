@@ -1,17 +1,30 @@
-# Goodmap
+# Karte von morgen
 
-Goodmap is a map platform for changemaker projects. Currently, two projects are using goodmap:
-- Transition München: Beta-Version: [https://map.transition-muc.de/](https://map.transition-muc.de/)
-- Karte von morgen: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
+![Screenshot](https://raw.githubusercontent.com/flosse/kartevonmorgen/master/screenshot.jpg)
 
-Both projects are using the [https://github.com/goodmap/goodmap-webapp](goodmap-webapp) (React). And goodmap-webapp is using [https://github.com/goodmap/goodmap-core](https://github.com/goodmap/goodmap-core) (pure TypeScript, framework-agnostic).
+## Mapping for Good
+
+von morgen supports kindness, sustainability and joint action.
+Everything that brings a little happiness to our world.
+We believe that living in a de‐stressed, environmental‐friendly and
+trust‐worthy society, is already in progress.
+We want to support people in finding ways to embrace those values.
+
+The Map von morgen is a website and app, that allows users to share their
+favorite places in the world. Places that are forward‐thinking and inspiring.
+The goal is to collect projects, companies and events that make a world of
+tomorrow, already experienceable today.
+
+Demo: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
+
+## Development
 
 [![Build Status](https://secure.travis-ci.org/flosse/kartevonmorgen.svg?branch=master)](http://travis-ci.org/flosse/kartevonmorgen)
 [![Dependency Status](https://gemnasium.com/flosse/kartevonmorgen.svg)](https://gemnasium.com/flosse/kartevonmorgen)
 [![Dependency Status](https://dependencyci.com/github/flosse/kartevonmorgen/badge)](https://dependencyci.com/github/flosse/kartevonmorgen)
 [![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat)](https://github.com/flosse/kartevonmorgen/blob/master/LICENSE)
 
-Are you're interested in contributing?
+Are you're interested in contributing to KVM?
 The following is a description of a quickstart.
 If you're looking for a more comprehensive introduction,
 have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -28,14 +41,14 @@ To be able to start development you'll need the following tools:
 Now clone this repository:
 
     ```sh
-    git clone https://github.com/goodmap/goodmap
+    git clone https://github.com/kartevonmorgen/kartevonmorgen
     ```
 
 Go to the root of it and install all the dependencies:
 
     ```sh
-    cd goodmap
-    yarn
+    cd kartevonmorgen/
+    npm install
     ```
 
 ### Build
@@ -43,7 +56,7 @@ Go to the root of it and install all the dependencies:
 To build the web application run:
 
     ```sh
-    yarn start
+    npm run pack
     ```
 
 The result can be found in `dist/`.
@@ -125,16 +138,11 @@ for you and the browser reloads automatically.
 
 ### Tests
 
+All the tests can be found in the `spec/` folder.
 To run the tests type
 
     ```sh
-    yarn test
-    ```
-
-or
-
-    ```sh
-    yarn watch-test
+    npm t
     ```
 
 ### Backend
