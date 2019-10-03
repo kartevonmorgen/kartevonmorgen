@@ -1,6 +1,6 @@
 # Karte von morgen
 
-![Screenshot](https://raw.githubusercontent.com/flosse/kartevonmorgen/master/screenshot.jpg)
+![Screenshot](https://raw.githubusercontent.com/kartevonmorgen/kartevonmorgen/master/screenshot.jpg)
 
 ## Mapping for Good
 
@@ -19,10 +19,10 @@ Demo: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
 
 ## Development
 
-[![Build Status](https://secure.travis-ci.org/flosse/kartevonmorgen.svg?branch=master)](http://travis-ci.org/flosse/kartevonmorgen)
-[![Dependency Status](https://gemnasium.com/flosse/kartevonmorgen.svg)](https://gemnasium.com/flosse/kartevonmorgen)
-[![Dependency Status](https://dependencyci.com/github/flosse/kartevonmorgen/badge)](https://dependencyci.com/github/flosse/kartevonmorgen)
-[![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat)](https://github.com/flosse/kartevonmorgen/blob/master/LICENSE)
+[![Build Status](https://secure.travis-ci.org/kartevonmorgen/kartevonmorgen.svg?branch=master)](http://travis-ci.org/kartevonmorgen/kartevonmorgen)
+[![Dependency Status](https://gemnasium.com/kartevonmorgen/kartevonmorgen.svg)](https://gemnasium.com/kartevonmorgen/kartevonmorgen)
+[![Dependency Status](https://dependencyci.com/github/kartevonmorgen/kartevonmorgen/badge)](https://dependencyci.com/github/kartevonmorgen/kartevonmorgen)
+[![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat)](https://github.com/kartevonmorgen/kartevonmorgen/blob/master/LICENSE)
 
 Are you're interested in contributing to KVM?
 The following is a description of a quickstart.
@@ -36,7 +36,7 @@ To be able to start development you'll need the following tools:
 - [git](https://www.git-scm.com/)
 - [Node.js](https://nodejs.org/) version 6.x
 - [npm](https://www.npmjs.com/package/npm) version 3.x
-- [OpenFairDB](https://github.com/slowtec/openfairdb)
+- [OpenFairDB](https://github.com/kartevonmorgen/openfairdb)
 
 Now clone this repository:
 
@@ -68,7 +68,7 @@ own instance locally.
 
 #### Remote OpenFairDB server
 
-The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/slowtec/openfairdb).
+The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/kartevonmorgen/openfairdb).
 To do so change `src/constants/URLs.js` to
 
     ``` js
@@ -83,14 +83,14 @@ starting a local server instance as described next!
 
 #### Local OpenFairDB server
 
-The alternative is to run [OpenFairDB](https://github.com/slowtec/openfairdb) server locally.
+The alternative is to run [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) server locally.
 A static executable for all recent versions is available on the
-[OpenFairDB *Releases*](https://github.com/slowtec/openfairdb/releases) page.
+[OpenFairDB *Releases*](https://github.com/kartevonmorgen/openfairdb/releases) page.
 
 Download, unpack and run (on Linux):
 
     ```sh
-    wget https://github.com/slowtec/openfairdb/releases/download/v0.5.5/openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
+    wget https://github.com/kartevonmorgen/openfairdb/releases/download/v0.5.5/openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
     tar xJf openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
     RUST_LOG=info ROCKET_PORT=6767 ./openfairdb
     ```
@@ -147,7 +147,7 @@ To run the tests type
 
 ### Backend
 
-KVM uses the [OpenFairDB](https://github.com/slowtec/openfairdb) as its backend.
+KVM uses the [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) as its backend.
 
 ## Goodmap
 <3 Goodmap Consortium
