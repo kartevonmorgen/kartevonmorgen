@@ -1,5 +1,3 @@
-// Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
-
 import "./styling/Stylesheets"
 import "./styling/Icons"
 
