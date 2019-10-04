@@ -1,0 +1,462 @@
+{
+  "entryForm": {
+    "category": {
+      "initiative": "Iniciativa (Involucrarse, inspiración y cambio)",
+      "event": "Evento",
+      "company": "Empresa (Tiendas, servicios y necesidades)"
+    },
+    "chooseCategory": "Seleccione una categoría",
+    "location": "Sitio",
+    "clickMap": "(haga clic en el mapa)",
+    "iHaveRead": "He leído los",
+    "creativeCommonsLicense": "términos de la Licencia Creative Commons CC0",
+    "openDatabaseLicense": "Términos de la licencia de OpenDatabase",
+    "licenseAccepted": "He leído las condiciones y las acepto",
+    "license": "Licencia",
+    "title": "Título",
+    "description": "Descripción",
+    "tags": "Palabras clave",
+    "newTag": "Nuevo:",
+    "noTagSuggestion": "Escriba sus sugerencias.",
+    "tagsLoading": "Las sugerencias están cargadas....",
+    "homepage": "página de inicio",
+    "phone": "Teléfono",
+    "street": "Calle y número de la casa",
+    "city": "Ciudad",
+    "zip": "Código postal",
+    "email": "Correo electrónico",
+    "clickOnMap": "o haga clic en el mapa....",
+    "contact": "Contacto (opcional)",
+    "entryImage": "Imagen de portada (opcional)",
+    "imageUrlExplanation": "Recomendado: formato apaisado, mín. 400x300 píxeles, máx. 300KB",
+    "imageUrl": "URL de la imagen",
+    "imageLink": "Enlace (si hace clic en la imagen, opcional)",
+    "cancel": "romperse",
+    "save": "acumular",
+    "editEntryHeading": "Editar entrada",
+    "newEntryHeading": "Entrada nueva",
+    "savingError": "No se ha podido grabar la entrada.",
+    "valueError": "Por favor, compruebe sus entradas.",
+    "requiredField": "revelación obligatoria",
+    "titleTooLong": "Título demasiado largo",
+    "titleTooShort": "Título demasiado corto",
+    "maxNumCharactersTitle": "máx. 50 caracteres",
+    "minNumCharactersTitle": "min. 3 caracteres",
+    "invalidValues": "Datos no válidos",
+    "descriptionTooLong": "Descripción demasiado larga",
+    "descriptionTooShort": "Demasiado poco texto",
+    "maxNumCharactersDescription": "máx. 250 caracteres",
+    "minNumCharactersDescription": "min. 10 caracteres",
+    "invalidLatitude": "Latitud inválida",
+    "invalidLongitude": "Longitud inválida",
+    "invalidCategory": "Categoría no válida",
+    "invalidTags": "Palabras clave no válidas",
+    "minNumCharactersTags": "Longitud mínima de las palabras clave: 3 caracteres",
+    "acceptLicense": "Se requiere la aprobación de la licencia",
+    "invalidLicenseAgreement": "Consentimiento no válido",
+    "invalidURL": "URL no válida",
+    "httpMissing": "\"http://\" o \"https://\" falta)"
+  },
+  "entryDetails": {
+    "loadingEntry": "La entrada está cargada...",
+    "back": "reverso",
+    "homepagePlaceholder": "Página de inicio",
+    "reportLink": "Informar de esta entrada",
+    "reportSubject": "Informar de esta entrada",
+    "reportBody": "Con la entrada {enlace} hay el siguiente problema:",
+    "lastEdit": "Último cambio:",
+    "today": "hoy",
+    "daysAgo": "días",
+    "eventRegistrationInfo": {
+      "email": "Registro por correo electrónico",
+      "telephone": "Inscripción por teléfono",
+      "homepage": "Inscripción en línea"
+    },
+    "route": "Ruta"
+  },
+  "login": {
+    "requiredField": "revelación obligatoria",
+    "loginFailed": "El inicio de sesión falló",
+    "invalidValues": "Datos no válidos",
+    "invalidUsername": "Nombre de usuario inválido",
+    "invalidPassword": "Contraseña inválida",
+    "invalidPasswordOrUsername": "Contraseña o nombre de usuario incorrectos.",
+    "emailUnconfirmed": "Dirección de correo electrónico aún no confirmada. Por favor, mire en su buzón de correo, posiblemente también en su carpeta de spam..",
+    "minNumCharactersUsername": "min. 3 caracteres",
+    "minNumCharactersPassword": " min. 3 caracteres",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "loginButton": "de acceso",
+    "registerText": "¿Aún no tienes una cuenta? Entonces puedes",
+    "registerLink": "regístrese aquí gratis.",
+    "passwordResetText":"¿Olvidaste tu contraseña?",
+		"passwordResetLink":"Restablecer"
+  },
+  "register": {
+    "heading": "matricular",
+    "genericError": "El registro falló. El nombre de usuario o la dirección de correo electrónico ya están registrados.",
+    "username": "Nombre de usario",
+    "email": "Correo electrónico",
+    "password1": "Contraseña",
+    "password2": "Repetir contraseña",
+    "submitButton": "matricular",
+    "loginText": "¿Ya tienes una cuenta? Entonces puedes",
+    "loginLink": "ingrese aquí",
+    "requiredField": "revelación obligatoria",
+    "invalidValues": "Datos no válidos",
+    "invalidUsername": "Nombre de usuario inválido",
+    "invalidPassword": "Contraseña inválida",
+    "minNumCharactersUsername": "min. 3 caracteres",
+    "minNumCharactersPassword": "min. 3 caracteres",
+    "invalidEmail": "Dirección de correo electrónico no válida",
+    "repeatPassword": "Por favor, introduzca la contraseña aquí de nuevo para verificarlo.",
+    "passwordsDontAgree": "Las contraseñas no coinciden"
+  },
+  "ratings": {
+    "requiredField": "revelación obligatoria",
+    "rating": "valoración",
+    "rating-heading": "valoración",
+    "ratings": "valoración",
+    "heading": "valoración",
+    "noRatingsYet": "Todavía no se han publicado reseñas para esta entrada.",
+    "giveFirstRating": "tasa ahora",
+    "newRating": "Enviar calificación",
+    "sourceWebsite": "fuente",
+    "contextName": {
+      "diversity": "diversidad",
+      "renewable": "renovabilidad",
+      "fairness": "equidad",
+      "humanity": "humanidad",
+      "transparency": "transparencia",
+      "solidarity": "solidaridad"
+    },
+    "contextExplanation": {
+      "diversity": "Diversidad ecológica, orgánica, pocos aditivos, etc.",
+      "renewable": "Protección del medio ambiente, rutas de transporte cortas, uso eficiente/bajo de materias primas y energía, economía circular, etc.",
+      "fairness": "Condiciones de trabajo seguras, inclusivas, justas y adecuadas en toda la cadena de valor.",
+      "humanity": "¿Todos los participantes tienen espacio para sus propias ideas, desarrollo y diversidad cultural? ¿Existen derechos de cogestión y procesos democráticos?",
+      "transparency": "¿Son las cadenas de producción, financiamiento y venta al por menor públicamente trazables? ",
+      "solidarity": "Métodos de trabajo cooperativo, financiación e inversiones sostenibles y éticas, accesibles para todos los presupuestos, …"
+    },
+    "valueName": {
+      "minusOne": "de ayer",
+      "zero": "de hoy",
+      "one": "de mañana",
+      "two": "de amplias miras"
+    },
+    "valueNameExplanation": {
+      "minusOne": "alguna crítica",
+      "zero": "no particularmente sostenible",
+      "one": "innovadora",
+      "two": "¡No se me ocurre una forma mejor!!"
+    }
+  },
+  "ratingForm": {
+    "newRatingFor": "Neue Bewertung für",
+    "introText": "Los factores positivos determinan la visibilidad de una entrada en el mapa de mañana. Cuanto mayor sea la proporción de aspectos positivos de una organización, mayor será el pin en los resultados de búsqueda.",
+    "moreInfoLink": "más información",
+    "savingError": "La clasificación no se ha podido guardar",
+    "valuesError": "Por favor, compruebe sus datos.",
+    "chooseContext": "Elija un aspecto de la sostenibilidad para su evaluación",
+    "title": "epígrafe",
+    "comment": "Comentario/Explicación",
+    "reference": "Fuente (por ejemplo, un enlace o \"Estoy trabajando allí\", etc.)",
+    "ratingHeading": "evaluación",
+    "cancel": "romperse",
+    "save": "valorar",
+    "requiredField": "revelación obligatoria",
+    "titleTooLong": "Título demasiado largo",
+    "titleTooShort": "Título demasiado corto",
+    "maxNumCharactersTitle": "máx. 40 caracteres",
+    "minNumCharactersTitle": "min. 3 caracteres",
+    "invalidRatingContext": "Contexto de valoración no válido",
+    "invalidRating": "Valoración no válida",
+    "commentTooLong": "comentario demasiado largo",
+    "commentTooShort": "Demasiado poco texto",
+    "maxNumCharactersComment": " máx. 500 caracteres",
+    "minNumCharactersComment": "von Mínimo 10 caracteres"
+  },
+  "subscribeToBbox": {
+    "changeSubscription": {
+      "heading": "Su suscripción",
+      "text1": "Se ha suscrito a un sector cartográfico y se le notificarán por correo electrónico las nuevas entradas y los cambios en este sector.",
+      "text2": "Si desea cambiar el sector cartográfico suscrito, navegue hasta el sector cartográfico que le interese y haga clic en \"cambiar \"."
+    },
+    "newSubscription": {
+      "heading": "Suscribirse a la sección de mapas",
+      "text1": "Navegue hasta la sección del mapa que le interesa y haga clic en \"suscribirse\". A continuación, se le informará por correo electrónico sobre las nuevas entradas y los cambios en las entradas de esta región.",
+      "text2": "Usted puede darse de baja o cambiar su suscripción aquí en cualquier momento."
+    },
+    "cancel": "romerse",
+    "edit": "modificar",
+    "unsubscribe": "anular la suscripción",
+    "back": "romperse",
+    "subscribe": "suscribirse"
+  },
+  "search-results": {
+    "cities": "ciudades",
+    "results-out-of-bbox": "Otros resultados fuera del área visible del mapa:"
+  },
+  "loading-message": "Cargar datos desde el servidor....",
+  "io-error": {
+    "message": "Servidor no disponible. Por favor, compruebe su conexión a Internet o inténtelo de nuevo más tarde.",
+    "close": "cerrar"
+  },
+  "landingPage": {
+    "menu": {
+      "map": "Mapa",
+      "infos": "Sobre nosotros",
+      "contact": "Contáctenos",
+      "donate": "Donaciones",
+      "login": "De acceso",
+      "logout": "Cierre de sesión"
+    },
+    "slogan": "Descubra el buen vivir",
+    "city-search": {
+      "placeholder": "¿Qué lugar le gustaría descubrir?",
+      "error": "Error en la búsqueda de la ciudad.",
+      "no-results": "No pude encontrar una ciudad con ese nombre.",
+      "show-map": "Mostrar mapa...."
+    },
+    "subscribeToBbox": {
+      "message": "Ha iniciado sesión. Si quieres puedes",
+      "new-link": "manténgase al día sobre los cambios en su ciudad",
+      "edit-link": "cambiar o cancelar el sector cartográfico al que está suscrito"
+    },
+    "donate": {
+      "heading": "Haz algo bueno para mañana.",
+      "paragraph1": "El mapa del mañana debe estar siempre a disposición de nuestra comunidad de forma gratuita. Es por eso que lo estamos desarrollando como Open Source. El desarrollo técnico y el mantenimiento son posibles gracias a las donaciones solidarias de los usuarios* y de las iniciativas y empresas que se han cartografiado. Recomendamos una contribución mensual de 15 a 25 euros para las empresas y hasta 3 euros para las iniciativas y los usuarios* para garantizar el crecimiento orgánico y la independencia.",
+      "betterplace-link": "Done ahora para \"de mañana - descubra el buen vivir\" en nuestro socio betterplace.org",
+      "paragraph2": {
+        "heading": "cuenta de donaciones:",
+        "bank-details1": "Ideen hoch drei e.V. ",
+        "bank-details2": "IBAN: DE05 4306 0967 4031 0759 00",
+        "bank-details3": "BIC: GENODEM1GLS en el Banco GLS",
+        "bank-details4": "Uso previsto: Mapa del mañana",
+        "text": "La plataforma de mañana también se financiará mediante subvenciones de diversos programas y concursos de ideas. Nosotros, el equipo del mañana, seguimos trabajando de forma honorífica, pero queremos profesionalizar el desarrollo y el apoyo a largo plazo y pagar salarios justos."
+      },
+      "paragraph3": {
+        "heading": "Las regiones piloto del mañana",
+        "text1": "Nos vemos a nosotros mismos como una iniciativa visionaria y diversa que quiere hacer visible el cambio positivo en nuestra sociedad. Para garantizar esto de la mejor manera posible, estamos desarrollando las regiones piloto del mañana, que serán moderadas localmente por un*n piloto regional*. ¿Conoce muy bien su entorno y le gustaría formar parte de una región piloto del mañana? Entonces siéntase libre de contactarnos por correo o con esto",
+        "form-link": "formulario",
+        "text2": ". Juntos haremos que el mundo del mañana sea visible hoy.",
+        "text3": "En nuestra página de donaciones de Betterplace encontrará un resumen actualizado de todas las funciones que se desarrollarán para el mapa del mañana:",
+        "text4": "Pero incluso los pequeños errores, optimizaciones y actualizaciones necesitan recursos.",
+        "text5": "Por lo tanto, estamos contentos con cada pequeña y gran contribución.",
+        "text6": "Muchísimas gracias.",
+        "text7": "el equipo del mañana"
+      }
+    },
+    "user": {
+      "register-success": {
+        "text1": "Se ha registrado correctamente. Por favor, confirme su dirección de correo electrónico, entonces usted puede ",
+        "text2": "te conectas. Para ello acabamos de enviar un correo electrónico a ",
+        "text3": " enviado"
+      },
+      "confirming-email-address": {
+        "text": "Su dirección de correo electrónico está siendo confirmada."
+      },
+      "confirm-email-error": {
+        "message": "Oops! Se ha producido un error al confirmar su dirección de correo electrónico. Por favor, inténtalo de nuevo con un nuevo nombre de usuario.",
+        "link": "registrarse"
+      },
+      "email-confirmed": {
+        "text1": "Su dirección de correo electrónico ha sido confirmada.",
+        "text2": "puedes entrar ahí ahora.",
+        "link": "registrarse"
+      },
+      "logged-out": "Estás desconectado."
+    },
+    "join": {
+      "heading": " Forme parte de nuestro equipo",
+      "paragraph1": "Somos un equipo de toda Alemania y siempre estamos buscando nuevos miembros! Puede encontrar nuestros anuncios actuales aquí:",
+      "paragraph2": "Buscamos pilotos regionales y temáticos: como contacto local, usted se asegurará de la calidad de las entradas del mapa, organizará actividades y talleres y mostrará su ciudad desde su mejor lado!",
+      "paragraph3": "¿Tiene alguna pregunta o interés? Esperamos tener noticias suyas:"
+    },
+    "footer": {
+      "heading": "Mostramos a la gente que quiere hacer el bien, donde hay bien.",
+      "contact": "Contacto: ",
+      "social-media": "Medios de comunicación social: ",
+      "open-source": "Código Abierto: ",
+      "imprint": "Aviso Legal",
+      "privacyStatement": "Declaración de Privacidad"
+    }
+  },
+  "landingExplain": {
+    "chapter1": {
+      "heading": "El mundo está lleno de exploradores. Y lleno de lugares que esperan ser descubiertos.",
+      "paragraph1": {
+        "heading": "Descubra los lugares de su mejor lado.",
+        "text": "Nuestro mapa le muestra las iniciativas orientadas al futuro, las empresas y pronto también los eventos directamente en su área."
+      },
+      "paragraph2": {
+        "heading": "Únete a nosotros!",
+        "text": "¿Está particularmente interesado en una iniciativa? Con nosotros encontrará toda la información que necesita para ponerse en contacto y visitarnos."
+      },
+      "paragraph3": {
+        "heading": "Crea el mundo del mañana.",
+        "text": "Junto con usted queremos hacer visible y vivible el cambio positivo de nuestra sociedad."
+      }
+    },
+    "chapter2": {
+      "heading": "¿Cómo funciona el mapa del mañana?"
+    },
+    "chapter3": {
+      "heading": "La visión del mañana",
+      "text": {
+        "1": "de mañana promueve la creatividad, el respeto al medio ambiente y la acción conjunta en el colorido campo del cambio social.",
+        "2": "de mañana tiene la visión de un mundo intacto, en el que las personas viven juntas una vida autodeterminada, feliz y consciente del medio ambiente. El objetivo: un futuro humano."
+      }
+    },
+    "chapter4": {
+      "heading": "¿Te gustaría participar?",
+      "text": {
+        "1": "Apoya nuestro proyecto",
+        "2": "Buscamos pilotos regionales y temáticos",
+        "3": "Forme parte de nuestro equipo"
+      },
+      "learnMore": "saber más"
+    },
+    "chapter5": {
+      "heading": "El equipo del mañana",
+      "new-members": "Estamos deseando que lleguen nuevos miembros al equipo!",
+      "graphic-design": "Diseño Gráfico",
+      "software-development": "Desarrollo de programas",
+      "business-finance": "Elaboración del proyecto",
+      "pr-marketing": "Relaciones Públicas y Marketing",
+      "communication-marketing": "Comunicación y Marketing",
+      "thao": "Contenidos y Comunicación",
+      "project-development": "Elaboración del proyecto",
+      "chair": "Junta directiva Ideen³ e.V.",
+      "lisa1": "Cientista político",
+      "lisa2": "Estrategia y Efecto",
+      "marten": "Atención plena y psicología del cambio",
+      "florian": "Consultoría de Desarrollo de Software",
+      "louisa": "Trabajo Social",
+      "anja": "Diseñador",
+      "xueqian": "Consultor de gestión",
+      "linus": "Sociología Global"
+    },
+    "chapter6": {
+      "heading": "Un proyecto de"
+    },
+    "chapter7": {
+      "heading": "Nuestros Socios",
+      "boell-foundation": "El proyecto fue apoyado en la fase piloto por la Fundación Heinrich Böll."
+    }
+  },
+  "donate": {
+    "heading": "Haz algo bueno para mañana.",
+    "text": {
+      "1": "La plataforma de mañana será financiada a través de subvenciones de diversos programas y concursos, así como de donaciones. Nosotros, el equipo de mañana, somos voluntarios.",
+      "2": "Nos gustaría utilizar las donaciones para el desarrollo de la plataforma. Se han planificado varias características.",
+      "3": "Haga clic aquí para ver nuestra campaña de crowdfunding: ",
+      "4": "Estamos contentos por cada pequeña y gran contribución y esperamos estar disponibles en su ciudad pronto."
+    },
+    "ending": "Gracias, el equipo de mañana"
+  },
+  "join": {
+    "heading": {
+      "1": "Forme parte de nuestro equipo",
+      "2": "Conviértase en un piloto regional o temático"
+    },
+    "text": {
+      "1": "Somos un equipo de toda Alemania y siempre estamos buscando nuevos miembros! Puede encontrar nuestros anuncios actuales aquí:",
+      "2": "Buscamos pilotos regionales y temáticos: como persona de contacto directo in situ, usted se asegurará de la calidad de las entradas en los mapas, organizará eventos y talleres y mostrará su ciudad de la mejor manera posible.",
+      "3": "¿Tiene alguna pregunta o interés? Esperamos tener noticias suyas:"
+    }
+  },
+  "info": {
+    "heading1": "El Proyecto",
+    "facebook": "Noticias y actualizaciones sobre",
+    "betterplace": "Informes sobre la marcha de los trabajos",
+    "betterplace-link": "nuestro blog en Betterplace",
+    "text1": {
+      "1": "Nuestro mapa interactivo le muestra los lugares de su entorno en los que ya puede trabajar hoy para un mundo de mañana.",
+      "2": "¿Tienes una iniciativa para la que buscas compañeros de armas?",
+      "3": "¿Conoce una empresa que opere de manera sostenible?",
+      "4": "En nuestra página web puede llamar la atención de los demás - y así defender un lugar diseñado por personas que están personalmente cerca de su corazón..",
+      "5": "Buscamos ideas, iniciativas y empresas diversas que puedan contrarrestar los actuales trastornos sociales, ecológicos y económicos. Nos gustaría conectarlos en red y darles una presencia conjunta en línea y así aumentar su conciencia.",
+      "6": "Según el principio Wiki, todos los usuarios, iniciativas y empresas pueden registrarse a sí mismos y a otros en el mapa y así llegar a sus semejantes. Pero mañana habrá algo más que una plataforma en línea: los pilotos regionales garantizarán la calidad de las entradas del mapa en el sitio y, además de una función editorial, tendrán la tarea de reforzar el intercambio regional entre ciudadanos*, iniciativas y empresas a través de eventos y campañas educativas",
+      "7": "de mañana se pregunta sobre los valores en los que se basa nuestra sociedad y que la mueven. Mostramos a la gente que hace el bien, donde hay bien."
+    },
+    "heading2": "Antecedentes y visiones",
+    "text2": {
+      "goalLink": "¿Qué quiere el mapa de mañana?",
+      "ratingsLink": "¿Cuáles son los factores positivos?",
+      "regionalpilotLink": "¿Qué son los proyectos piloto regionales o temáticos?",
+      "embedMapLink": "¿Cómo puedo insertar el mapa en mi página de inicio?",
+      "joinLink": "¿Cómo puedo unirme o apoyar el mapa del mañana?"
+    },
+    "heading3": "Nos encanta el Código Abierto!",
+    "text3": "Queremos dar un buen ejemplo y, por lo tanto, desarrollar el software de forma transparente y abierta. El código fuente del proyecto conjunto se encuentra en :",
+    "heading4": "Talleres y actividades de mañana",
+    "text4": "Junto con nuestro socio, la asociación sin ánimo de lucro Ideen³ e.V. y el \"Ideenwerkstatt Bildungsagenten\", ofrecemos talleres sobre diversos temas para apoyar la transformación socio-ecológica.",
+    "clientVersion": "Versión de este cliente:",
+    "serverVersion": "Versión del servidor:"
+  },
+  "category": {
+    "initiative": "Iniciativa",
+    "event": "Evento",
+    "company": "empresa"
+  },
+  "searchbar": {
+    "placeholder": "¿Qué es lo que buscas?"
+  },
+  "resultlist": {
+    "showMoreEntries": "mostrar más entradas....",
+    "entriesLoading": "Se cargan las entradas....",
+    "noEntriesFound": "No se han encontrado entradas.",
+    "addEntry": "Añadir entrada"
+  },
+  "growler": {
+    "INFO FOR TRANSLATORS": "Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
+    "genericError": "Oops! Se ha producido un error....",
+    "subscriptionChanged": "La suscripción ha sido modificada.",
+    "subscriptionAdded": "Se ha suscrito la sección de mapas.",
+    "unsubscribingSuccessfull": "Se canceló la suscripción",
+    "entrySaved": "Se ha grabado la entrada.",
+    "ratingSaved": "La evaluación fue guardada."
+  },
+  "contact": {
+    "heading": "Contacto",
+    "text1": "El equipo del mañana, representado por",
+    "showOnKVM": "Lugar en el mapa"
+  },
+  "imprint": {
+    "contact": "Contacto",
+    "imprint": "Impressum",
+    "heading1": "Entidad jurídica en el sentido de la condición de entidad publica",
+    "representedByChair": "Representada por el Consejo de Administración",
+    "kvmTeamRepresentedBy": "El equipo del mañana, representado por",
+    "heading2": "Concepto",
+    "heading3": "Responsable del contenido según § 55 párrafo 2 RStV",
+    "heading4": "Diseño",
+    "heading5": "Ilustraciones",
+    "heading6": "Implementación y programación"
+  },
+  "privacy": {
+    "title": "Declaración de Privacidad",
+    "text": "<p>We are very delighted that you have shown interest in our enterprise. Data protection is of a particularly high priority for the management of the Ideen³ e.V.. The use of the Internet pages of the Ideen³ e.V. is possible without any indication of personal data; however, if a data subject wants to use special enterprise services via our website, processing of personal data could become necessary. If the processing of personal data is necessary and there is no statutory basis for such processing, we generally obtain consent from the data subject.</p>\n\n<p>The processing of personal data, such as the name, address, e-mail address, or telephone number of a data subject shall always be in line with the General Data Protection Regulation (GDPR), and in accordance with the country-specific data protection regulations applicable to the Ideen³ e.V.. By means of this data protection declaration, our enterprise would like to inform the general public of the nature, scope, and purpose of the personal data we collect, use and process. Furthermore, data subjects are informed, by means of this data protection declaration, of the rights to which they are entitled.</p>\n\n<p>As the controller, the Ideen³ e.V. has implemented numerous technical and organizational measures to ensure the most complete protection of personal data processed through this website. However, Internet-based data transmissions may in principle have security gaps, so absolute protection may not be guaranteed. For this reason, every data subject is free to transfer personal data to us via alternative means, e.g. by telephone. </p>\n\n<h4>1. Definitions</h4>\n<p>The data protection declaration of the Ideen³ e.V. is based on the terms used by the European legislator for the adoption of the General Data Protection Regulation (GDPR). Our data protection declaration should be legible and understandable for the general public, as well as our customers and business partners. To ensure this, we would like to first explain the terminology used.</p>\n\n<p>In this data protection declaration, we use, inter alia, the following terms:</p>\n\n<ul style='list-style: none'>\n<li><h4>a)    Personal data</h4>\n<p>Personal data means any information relating to an identified or identifiable natural person (“data subject”). An identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person.</p>\n</li>\n<li><h4>b) Data subject</h4>\n<p>Data subject is any identified or identifiable natural person, whose personal data is processed by the controller responsible for the processing.</p>\n</li>\n<li><h4>c)    Processing</h4>\n<p>Processing is any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction. </p>\n</li>\n<li><h4>d)    Restriction of processing</h4>\n<p>Restriction of processing is the marking of stored personal data with the aim of limiting their processing in the future. </p>\n</li>\n<li><h4>e)    Profiling</h4>\n<p>Profiling means any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person's performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements. </p>\n</li>\n<li><h4>f)     Pseudonymisation</h4>\n<p>Pseudonymisation is the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person. </p>\n</li>\n<li><h4>g)    Controller or controller responsible for the processing</h4>\n<p>Controller or controller responsible for the processing is the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data; where the purposes and means of such processing are determined by Union or Member State law, the controller or the specific criteria for its nomination may be provided for by Union or Member State law. </p>\n</li>\n<li><h4>h)    Processor</h4>\n<p>Processor is a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller. </p>\n</li>\n<li><h4>i)      Recipient</h4>\n<p>Recipient is a natural or legal person, public authority, agency or another body, to which the personal data are disclosed, whether a third party or not. However, public authorities which may receive personal data in the framework of a particular inquiry in accordance with Union or Member State law shall not be regarded as recipients; the processing of those data by those public authorities shall be in compliance with the applicable data protection rules according to the purposes of the processing. </p>\n</li>\n<li><h4>j)      Third party</h4>\n<p>Third party is a natural or legal person, public authority, agency or body other than the data subject, controller, processor and persons who, under the direct authority of the controller or processor, are authorised to process personal data.</p>\n</li>\n<li><h4>k)    Consent</h4>\n<p>Consent of the data subject is any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her. </p>\n</li>\n</ul>\n\n<h4>2. Name and Address of the controller</h4>\n<p>Controller for the purposes of the General Data Protection Regulation (GDPR), other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:\n\n</p>\n\n<p>Ideen³ e.V.</p>\n<p>Görreshof 180</p>\n<p>53347 Alfter</p>\n<p>Deutschland</p>\n<p>Phone: 01573-444 8245</p>\n<p>Email: info@ideenhochdrei.org</p>\n<p>Website: https://www.kartevonmorgen.org</p>\n\n<h4>3. Cookies</h4>\n<p>The Internet pages of the Ideen³ e.V. use cookies. Cookies are text files that are stored in a computer system via an Internet browser.</p>\n\n<p>Many Internet sites and servers use cookies. Many cookies contain a so-called cookie ID. A cookie ID is a unique identifier of the cookie. It consists of a character string through which Internet pages and servers can be assigned to the specific Internet browser in which the cookie was stored. This allows visited Internet sites and servers to differentiate the individual browser of the dats subject from other Internet browsers that contain other cookies. A specific Internet browser can be recognized and identified using the unique cookie ID.</p>\n\n<p>Through the use of cookies, the Ideen³ e.V. can provide the users of this website with more user-friendly services that would not be possible without the cookie setting.</p>\n\n<p>By means of a cookie, the information and offers on our website can be optimized with the user in mind. Cookies allow us, as previously mentioned, to recognize our website users. The purpose of this recognition is to make it easier for users to utilize our website. The website user that uses cookies, e.g. does not have to enter access data each time the website is accessed, because this is taken over by the website, and the cookie is thus stored on the user's computer system. Another example is the cookie of a shopping cart in an online shop. The online store remembers the articles that a customer has placed in the virtual shopping cart via a cookie.</p>\n\n<p>The data subject may, at any time, prevent the setting of cookies through our website by means of a corresponding setting of the Internet browser used, and may thus permanently deny the setting of cookies. Furthermore, already set cookies may be deleted at any time via an Internet browser or other software programs. This is possible in all popular Internet browsers. If the data subject deactivates the setting of cookies in the Internet browser used, not all functions of our website may be entirely usable.</p>\n\n<h4>4. Collection of general data and information</h4>\n<p>The website of the Ideen³ e.V. collects a series of general data and information when a data subject or automated system calls up the website. This general data and information are stored in the server log files. Collected may be (1) the browser types and versions used, (2) the operating system used by the accessing system, (3) the website from which an accessing system reaches our website (so-called referrers), (4) the sub-websites, (5) the date and time of access to the Internet site, (6) an Internet protocol address (IP address), (7) the Internet service provider of the accessing system, and (8) any other similar data and information that may be used in the event of attacks on our information technology systems.</p>\n\n<p>When using these general data and information, the Ideen³ e.V. does not draw any conclusions about the data subject. Rather, this information is needed to (1) deliver the content of our website correctly, (2) optimize the content of our website as well as its advertisement, (3) ensure the long-term viability of our information technology systems and website technology, and (4) provide law enforcement authorities with the information necessary for criminal prosecution in case of a cyber-attack. Therefore, the Ideen³ e.V. analyzes anonymously collected data and information statistically, with the aim of increasing the data protection and data security of our enterprise, and to ensure an optimal level of protection for the personal data we process. The anonymous data of the server log files are stored separately from all personal data provided by a data subject.</p>\n\n<h4>5. Registration on our website</h4>\n<p>The data subject has the possibility to register on the website of the controller with the indication of personal data. Which personal data are transmitted to the controller is determined by the respective input mask used for the registration. The personal data entered by the data subject are collected and stored exclusively for internal use by the controller, and for his own purposes. The controller may request transfer to one or more processors (e.g. a parcel service) that also uses personal data for an internal purpose which is attributable to the controller.</p>\n\n<p>By registering on the website of the controller, the IP address—assigned by the Internet service provider (ISP) and used by the data subject—date, and time of the registration are also stored. The storage of this data takes place against the background that this is the only way to prevent the misuse of our services, and, if necessary, to make it possible to investigate committed offenses. Insofar, the storage of this data is necessary to secure the controller. This data is not passed on to third parties unless there is a statutory obligation to pass on the data, or if the transfer serves the aim of criminal prosecution.\n\n</p>\n\n<p>The registration of the data subject, with the voluntary indication of personal data, is intended to enable the controller to offer the data subject contents or services that may only be offered to registered users due to the nature of the matter in question. Registered persons are free to change the personal data specified during the registration at any time, or to have them completely deleted from the data stock of the controller.</p>\n\n<p>The data controller shall, at any time, provide information upon request to each data subject as to what personal data are stored about the data subject. In addition, the data controller shall correct or erase personal data at the request or indication of the data subject, insofar as there are no statutory storage obligations. The entirety of the controller’s employees are available to the data subject in this respect as contact persons.</p>\n\n<h4>6. Subscription to our newsletters</h4>\n<p>On the website of the Ideen³ e.V., users are given the opportunity to subscribe to our enterprise's newsletter. The input mask used for this purpose determines what personal data are transmitted, as well as when the newsletter is ordered from the controller.</p>\n\n<p>The Ideen³ e.V. informs its customers and business partners regularly by means of a newsletter about enterprise offers. The enterprise's newsletter may only be received by the data subject if (1) the data subject has a valid e-mail address and (2) the data subject registers for the newsletter shipping. A confirmation e-mail will be sent to the e-mail address registered by a data subject for the first time for newsletter shipping, for legal reasons, in the double opt-in procedure. This confirmation e-mail is used to prove whether the owner of the e-mail address as the data subject is authorized to receive the newsletter.\n\n</p>\n\n<p>During the registration for the newsletter, we also store the IP address of the computer system assigned by the Internet service provider (ISP) and used by the data subject at the time of the registration, as well as the date and time of the registration. The collection of this data is necessary in order to understand the (possible) misuse of the e-mail address of a data subject at a later date, and it therefore serves the aim of the legal protection of the controller.</p>\n\n<p>The personal data collected as part of a registration for the newsletter will only be used to send our newsletter. In addition, subscribers to the newsletter may be informed by e-mail, as long as this is necessary for the operation of the newsletter service or a registration in question, as this could be the case in the event of modifications to the newsletter offer, or in the event of a change in technical circumstances. There will be no transfer of personal data collected by the newsletter service to third parties. The subscription to our newsletter may be terminated by the data subject at any time. The consent to the storage of personal data, which the data subject has given for shipping the newsletter, may be revoked at any time. For the purpose of revocation of consent, a corresponding link is found in each newsletter. It is also possible to unsubscribe from the newsletter at any time directly on the website of the controller, or to communicate this to the controller in a different way.</p>\n\n<h4>7. Newsletter-Tracking</h4>\n<p>The newsletter of the Ideen³ e.V. contains so-called tracking pixels. A tracking pixel is a miniature graphic embedded in such e-mails, which are sent in HTML format to enable log file recording and analysis. This allows a statistical analysis of the success or failure of online marketing campaigns. Based on the embedded tracking pixel, the Ideen³ e.V. may see if and when an e-mail was opened by a data subject, and which links in the e-mail were called up by data subjects.</p>\n\n<p>Such personal data collected in the tracking pixels contained in the newsletters are stored and analyzed by the controller in order to optimize the shipping of the newsletter, as well as to adapt the content of future newsletters even better to the interests of the data subject. These personal data will not be passed on to third parties. Data subjects are at any time entitled to revoke the respective separate declaration of consent issued by means of the double-opt-in procedure. After a revocation, these personal data will be deleted by the controller. The Ideen³ e.V. automatically regards a withdrawal from the receipt of the newsletter as a revocation.</p>\n\n<h4>8. Contact possibility via the website </h4>\n<p>The website of the Ideen³ e.V. contains information that enables a quick electronic contact to our enterprise, as well as direct communication with us, which also includes a general address of the so-called electronic mail (e-mail address). If a data subject contacts the controller by e-mail or via a contact form, the personal data transmitted by the data subject are automatically stored. Such personal data transmitted on a voluntary basis by a data subject to the data controller are stored for the purpose of processing or contacting the data subject. There is no transfer of this personal data to third parties.</p>\n\n<h4>9. Comments function in the blog on the website</h4>\n<p>The Ideen³ e.V. offers users the possibility to leave individual comments on individual blog contributions on a blog, which is on the website of the controller. A blog is a web-based, publicly-accessible portal, through which one or more people called bloggers or web-bloggers may post articles or write down thoughts in so-called blogposts. Blogposts may usually be commented by third parties.</p>\n\n<p>If a data subject leaves a comment on the blog published on this website, the comments made by the data subject are also stored and published, as well as information on the date of the commentary and on the user's (pseudonym) chosen by the data subject. In addition, the IP address assigned by the Internet service provider (ISP) to the data subject is also logged. This storage of the IP address takes place for security reasons, and in case the data subject violates the rights of third parties, or posts illegal content through a given comment. The storage of these personal data is, therefore, in the own interest of the data controller, so that he can exculpate in the event of an infringement. This collected personal data will not be passed to third parties, unless such a transfer is required by law or serves the aim of the defense of the data controller.</p>\n\n<h4>10. Subscription to comments in the blog on the website</h4>\n<p>\nThe comments made in the blog of the Ideen³ e.V. may be subscribed to by third parties. In particular, there is the possibility that a commenter subscribes to the comments following his comments on a particular blog post.\n</p>\n\n<p>If a data subject decides to subscribe to the option, the controller will send an automatic confirmation e-mail to check the double opt-in procedure as to whether the owner of the specified e-mail address decided in favor of this option. The option to subscribe to comments may be terminated at any time.</p>\n\n<h4>11. Routine erasure and blocking of personal data</h4>\n<p>The data controller shall process and store the personal data of the data subject only for the period necessary to achieve the purpose of storage, or as far as this is granted by the European legislator or other legislators in laws or regulations to which the controller is subject to.</p>\n\n<p>If the storage purpose is not applicable, or if a storage period prescribed by the European legislator or another competent legislator expires, the personal data are routinely blocked or erased in accordance with legal requirements.</p>\n\n<h4>12. Rights of the data subject</h4>\n<ul style='list-style: none;'>\n<li><h4>a) Right of confirmation</h4>\n<p>Each data subject shall have the right granted by the European legislator to obtain from the controller the confirmation as to whether or not personal data concerning him or her are being processed. If a data subject wishes to avail himself of this right of confirmation, he or she may, at any time, contact any employee of the controller.</p>\n</li>\n<li><h4>b) Right of access</h4>\n<p>Each data subject shall have the right granted by the European legislator to obtain from the controller free information about his or her personal data stored at any time and a copy of this information. Furthermore, the European directives and regulations grant the data subject access to the following information:</p>\n\n<ul style='list-style: none;'>\n<li>the purposes of the processing;</li>\n<li>the categories of personal data concerned;</li>\n<li>the recipients or categories of recipients to whom the personal data have been or will be disclosed, in particular recipients in third countries or international organisations;</li>\n<li>where possible, the envisaged period for which the personal data will be stored, or, if not possible, the criteria used to determine that period;</li>\n<li>the existence of the right to request from the controller rectification or erasure of personal data, or restriction of processing of personal data concerning the data subject, or to object to such processing;</li>\n<li>the existence of the right to lodge a complaint with a supervisory authority;</li>\n<li>where the personal data are not collected from the data subject, any available information as to their source;</li>\n<li>the existence of automated decision-making, including profiling, referred to in Article 22(1) and (4) of the GDPR and, at least in those cases, meaningful information about the logic involved, as well as the significance and envisaged consequences of such processing for the data subject.</li>\n\n</ul>\n<p>Furthermore, the data subject shall have a right to obtain information as to whether personal data are transferred to a third country or to an international organisation. Where this is the case, the data subject shall have the right to be informed of the appropriate safeguards relating to the transfer.</p>\n\n<p>If a data subject wishes to avail himself of this right of access, he or she may, at any time, contact any employee of the controller.</p>\n</li>\n<li><h4>c) Right to rectification </h4>\n<p>Each data subject shall have the right granted by the European legislator to obtain from the controller without undue delay the rectification of inaccurate personal data concerning him or her. Taking into account the purposes of the processing, the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement.</p>\n\n<p>If a data subject wishes to exercise this right to rectification, he or she may, at any time, contact any employee of the controller.</p></li>\n<li>\n<h4>d) Right to erasure (Right to be forgotten) </h4>\n<p>Each data subject shall have the right granted by the European legislator to obtain from the controller the erasure of personal data concerning him or her without undue delay, and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies, as long as the processing is not necessary: </p>\n\n<ul style='list-style: none;'>\n<li>The personal data are no longer necessary in relation to the purposes for which they were collected or otherwise processed.</li>\n<li>The data subject withdraws consent to which the processing is based according to point (a) of Article 6(1) of the GDPR, or point (a) of Article 9(2) of the GDPR, and where there is no other legal ground for the processing.</li>\n<li>The data subject objects to the processing pursuant to Article 21(1) of the GDPR and there are no overriding legitimate grounds for the processing, or the data subject objects to the processing pursuant to Article 21(2) of the GDPR. </li>\n<li>The personal data have been unlawfully processed.</li>\n<li>The personal data must be erased for compliance with a legal obligation in Union or Member State law to which the controller is subject.</li>\n<li>The personal data have been collected in relation to the offer of information society services referred to in Article 8(1) of the GDPR.</li>\n\n</ul>\n<p>If one of the aforementioned reasons applies, and a data subject wishes to request the erasure of personal data stored by the Ideen³ e.V., he or she may, at any time, contact any employee of the controller. An employee of Ideen³ e.V. shall promptly ensure that the erasure request is complied with immediately.</p>\n\n<p>Where the controller has made personal data public and is obliged pursuant to Article 17(1) to erase the personal data, the controller, taking account of available technology and the cost of implementation, shall take reasonable steps, including technical measures, to inform other controllers processing the personal data that the data subject has requested erasure by such controllers of any links to, or copy or replication of, those personal data, as far as processing is not required. An employees of the Ideen³ e.V. will arrange the necessary measures in individual cases.</p>\n</li>\n<li><h4>e) Right of restriction of processing</h4>\n<p>Each data subject shall have the right granted by the European legislator to obtain from the controller restriction of processing where one of the following applies:</p>\n\n<ul style='list-style: none;'>\n<li>The accuracy of the personal data is contested by the data subject, for a period enabling the controller to verify the accuracy of the personal data. </li>\n<li>The processing is unlawful and the data subject opposes the erasure of the personal data and requests instead the restriction of their use instead.</li>\n<li>The controller no longer needs the personal data for the purposes of the processing, but they are required by the data subject for the establishment, exercise or defence of legal claims.</li>\n<li>The data subject has objected to processing pursuant to Article 21(1) of the GDPR pending the verification whether the legitimate grounds of the controller override those of the data subject.</li>\n\n</ul>\n<p>If one of the aforementioned conditions is met, and a data subject wishes to request the restriction of the processing of personal data stored by the Ideen³ e.V., he or she may at any time contact any employee of the controller. The employee of the Ideen³ e.V. will arrange the restriction of the processing. </p>\n</li>\n<li><h4>f) Right to data portability</h4>\n<p>Each data subject shall have the right granted by the European legislator, to receive the personal data concerning him or her, which was provided to a controller, in a structured, commonly used and machine-readable format. He or she shall have the right to transmit those data to another controller without hindrance from the controller to which the personal data have been provided, as long as the processing is based on consent pursuant to point (a) of Article 6(1) of the GDPR or point (a) of Article 9(2) of the GDPR, or on a contract pursuant to point (b) of Article 6(1) of the GDPR, and the processing is carried out by automated means, as long as the processing is not necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in the controller.</p>\n\n<p>Furthermore, in exercising his or her right to data portability pursuant to Article 20(1) of the GDPR, the data subject shall have the right to have personal data transmitted directly from one controller to another, where technically feasible and when doing so does not adversely affect the rights and freedoms of others.</p>\n\n<p>In order to assert the right to data portability, the data subject may at any time contact any employee of the Ideen³ e.V..</p>\n\n</li>\n<li>\n<h4>g) Right to object</h4>\n<p>Each data subject shall have the right granted by the European legislator to object, on grounds relating to his or her particular situation, at any time, to processing of personal data concerning him or her, which is based on point (e) or (f) of Article 6(1) of the GDPR. This also applies to profiling based on these provisions.</p>\n\n<p>The Ideen³ e.V. shall no longer process the personal data in the event of the objection, unless we can demonstrate compelling legitimate grounds for the processing which override the interests, rights and freedoms of the data subject, or for the establishment, exercise or defence of legal claims.</p>\n\n<p>If the Ideen³ e.V. processes personal data for direct marketing purposes, the data subject shall have the right to object at any time to processing of personal data concerning him or her for such marketing. This applies to profiling to the extent that it is related to such direct marketing. If the data subject objects to the Ideen³ e.V. to the processing for direct marketing purposes, the Ideen³ e.V. will no longer process the personal data for these purposes.</p>\n\n<p>In addition, the data subject has the right, on grounds relating to his or her particular situation, to object to processing of personal data concerning him or her by the Ideen³ e.V. for scientific or historical research purposes, or for statistical purposes pursuant to Article 89(1) of the GDPR, unless the processing is necessary for the performance of a task carried out for reasons of public interest.</p>\n\n<p>In order to exercise the right to object, the data subject may contact any employee of the Ideen³ e.V.. In addition, the data subject is free in the context of the use of information society services, and notwithstanding Directive 2002/58/EC, to use his or her right to object by automated means using technical specifications.</p>\n</li>\n<li><h4>h) Automated individual decision-making, including profiling</h4>\n<p>Each data subject shall have the right granted by the European legislator not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning him or her, or similarly significantly affects him or her, as long as the decision (1) is not is necessary for entering into, or the performance of, a contract between the data subject and a data controller, or (2) is not authorised by Union or Member State law to which the controller is subject and which also lays down suitable measures to safeguard the data subject's rights and freedoms and legitimate interests, or (3) is not based on the data subject's explicit consent.</p>\n\n<p>If the decision (1) is necessary for entering into, or the performance of, a contract between the data subject and a data controller, or (2) it is based on the data subject's explicit consent, the Ideen³ e.V. shall implement suitable measures to safeguard the data subject's rights and freedoms and legitimate interests, at least the right to obtain human intervention on the part of the controller, to express his or her point of view and contest the decision.</p>\n\n<p>If the data subject wishes to exercise the rights concerning automated individual decision-making, he or she may, at any time, contact any employee of the Ideen³ e.V..</p>\n\n</li>\n<li><h4>i) Right to withdraw data protection consent </h4>\n<p>Each data subject shall have the right granted by the European legislator to withdraw his or her consent to processing of his or her personal data at any time. </p>\n\n<p>If the data subject wishes to exercise the right to withdraw the consent, he or she may, at any time, contact any employee of the Ideen³ e.V..</p>\n\n</li>\n</ul>\n<h4>13. Data protection for applications and the application procedures</h4>\n<p>The data controller shall collect and process the personal data of applicants for the purpose of the processing of the application procedure. The processing may also be carried out electronically. This is the case, in particular, if an applicant submits corresponding application documents by e-mail or by means of a web form on the website to the controller. If the data controller concludes an employment contract with an applicant, the submitted data will be stored for the purpose of processing the employment relationship in compliance with legal requirements. If no employment contract is concluded with the applicant by the controller, the application documents shall be automatically erased two months after notification of the refusal decision, provided that no other legitimate interests of the controller are opposed to the erasure. Other legitimate interest in this relation is, e.g. a burden of proof in a procedure under the General Equal Treatment Act (AGG).</p>\n\n<h4>14. Data protection provisions about the application and use of Matomo</h4>\n<p>On this website, the controller has integrated the Matomo component. Matomo is an open-source software tool for web analysis. Web analysis is the collection, gathering and evaluation of data on the behavior of visitors from Internet sites. A web analysis tool collects, inter alia, data on the website from which a data subject came to a website (so-called referrer), which pages of the website were accessed or how often and for which period of time a sub-page was viewed. A web analysis is mainly used for the optimization of a website and the cost-benefit analysis of Internet advertising.</p>\n\n<p>The software is operated on the server of the controller, the data protection-sensitive log files are stored exclusively on this server.</p>\n\n<p>The purpose of the Matomo component is the analysis of the visitor flows on our website. The controller uses the obtained data and information, inter alia, to evaluate the use of this website in order to compile online reports, which show the activities on our Internet pages.</p>\n\n<p>Matomo sets a cookie on the information technology system of the data subject. The definition of cookies is explained above. With the setting of the cookie, an analysis of the use of our website is enabled. With each call-up to one of the individual pages of this website, the Internet browser on the information technology system of the data subject is automatically through the Matomo component prompted to submit data for the purpose of online analysis to our server. During the course of this technical procedure, we obtain knowledge about personal information, such as the IP address of the data subject, which serves to understand the origin of visitors and clicks.</p>\n\n<p>The cookie is used to store personal information, such as the access time, the location from which access was made, and the frequency of visits to our website. With each visit of our Internet pages, these personal data, including the IP address of the Internet access used by the data subject, are transferred to our server. These personal data will be stored by us. We do not forward this personal data to third parties.</p>\n\n<p>The data subject may, as stated above, prevent the setting of cookies through our website at any time by means of a corresponding adjustment of the web browser used and thus permanently deny the setting of cookies. Such an adjustment to the used Internet browser would also prevent Matomo from setting a cookie on the information technology system of the data subject. In addition, cookies already in use by Matomo may be deleted at any time via a web browser or other software programs.</p>\n\n<p>In addition, the data subject has the possibility of objecting to a collection of data relating to a use of this Internet site that are generated by Matomo as well as the processing of these data by Matomo and the chance to preclude any such. For this, the data subject must set a 'Do Not Track' option in the browser.</p>\n\n<p>With each setting of the opt-out cookie, however, there is the possibility that the websites of the controller are no longer fully usable for the data subject.</p>\n\n<p>Further information and the applicable data protection provisions of Matomo may be retrieved under https://matomo.org/privacy/.</p>\n\n<h4>15. Legal basis for the processing </h4>\n<p>Art. 6(1) lit. a GDPR serves as the legal basis for processing operations for which we obtain consent for a specific processing purpose. If the processing of personal data is necessary for the performance of a contract to which the data subject is party, as is the case, for example, when processing operations are necessary for the supply of goods or to provide any other service, the processing is based on Article 6(1) lit. b GDPR. The same applies to such processing operations which are necessary for carrying out pre-contractual measures, for example in the case of inquiries concerning our products or services. Is our company subject to a legal obligation by which processing of personal data is required, such as for the fulfillment of tax obligations, the processing is based on Art. 6(1) lit. c GDPR.\nIn rare cases, the processing of personal data may be necessary to protect the vital interests of the data subject or of another natural person. This would be the case, for example, if a visitor were injured in our company and his name, age, health insurance data or other vital information would have to be passed on to a doctor, hospital or other third party. Then the processing would be based on Art. 6(1) lit. d GDPR.\nFinally, processing operations could be based on Article 6(1) lit. f GDPR. This legal basis is used for processing operations which are not covered by any of the abovementioned legal grounds, if processing is necessary for the purposes of the legitimate interests pursued by our company or by a third party, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data. Such processing operations are particularly permissible because they have been specifically mentioned by the European legislator. He considered that a legitimate interest could be assumed if the data subject is a client of the controller (Recital 47 Sentence 2 GDPR).\n</p>\n\n<h4>16. The legitimate interests pursued by the controller or by a third party</h4>\n<p>Where the processing of personal data is based on Article 6(1) lit. f GDPR our legitimate interest is to carry out our business in favor of the well-being of all our employees and the shareholders.</p>\n\n<h4>17. Period for which the personal data will be stored</h4>\n<p>The criteria used to determine the period of storage of personal data is the respective statutory retention period. After expiration of that period, the corresponding data is routinely deleted, as long as it is no longer necessary for the fulfillment of the contract or the initiation of a contract.</p>\n\n<h4>18. Provision of personal data as statutory or contractual requirement; Requirement necessary to enter into a contract; Obligation of the data subject to provide the personal data; possible consequences of failure to provide such data </h4>\n<p>We clarify that the provision of personal data is partly required by law (e.g. tax regulations) or can also result from contractual provisions (e.g. information on the contractual partner).\n\nSometimes it may be necessary to conclude a contract that the data subject provides us with personal data, which must subsequently be processed by us. The data subject is, for example, obliged to provide us with personal data when our company signs a contract with him or her. The non-provision of the personal data would have the consequence that the contract with the data subject could not be concluded.\n\nBefore personal data is provided by the data subject, the data subject must contact any employee. The employee clarifies to the data subject whether the provision of the personal data is required by law or contract or is necessary for the conclusion of the contract, whether there is an obligation to provide the personal data and the consequences of non-provision of the personal data.\n</p>\n\n<h4>19. Existence of automated decision-making</h4>\n<p>As a responsible company, we do not use automatic decision-making or profiling.</p>\n\n<p>This Privacy Policy has been generated by the Privacy Policy Generator of the <a href='https://dg-datenschutz.de/services/external-data-protection-officer/?lang=en'>External Data Protection Officers</a> that was developed in cooperation with the <a href='https://www.wbs-law.de/eng/practice-areas/media-law/'>Media Law Lawyers</a> from WBS-LAW.\n</p>\n\n"
+  },
+  "businesscardWidget": {
+    "showOnMap": "Mostrar en el mapa...."
+  },
+  "mapWidget": {
+    "showLargeMap": "Abrir mapa grande...."
+  },
+  "modal": {
+    "locate": {
+      "inProgress": "Se busca su ubicación actual....",
+      "cancel": "romperse",
+      "failed": "No se puede determinar la ubicación. La localización está deshabilitada en la configuración del navegador o del sistema, o el GPS no tiene recepción.",
+      "close": "terminar",
+      "tryAgain": "intentarlo de nuevo"
+    },
+    "events": {
+      "text": "Si se trata de una conferencia, conferencia o festival - el mapa de mañana pronto incluirá eventos. También estamos planeando un calendario de eventos que mostrará y exportará los resultados. Ayuda a que esta función esté disponible pronto y participa en la campaña de recaudación de fondos en betterplace.org!",
+      "close": "terminar",
+      "donate": "donar"
+    }
+  }
+}

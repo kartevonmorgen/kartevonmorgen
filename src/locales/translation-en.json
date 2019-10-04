@@ -15,7 +15,7 @@
 		"license":"License",
 		"title":"Title",
 		"description":"Description",
-		"tags":"Tags (separate by comma)",
+		"tags":"Tags",
 		"newTag":"New:",
 		"noTagSuggestion":"Type for sugestions.",
 		"tagsLoading":"Loading suggestions…",
@@ -71,7 +71,8 @@
 			"email": "Register by email",
 			"telephone": "Register by phone",
 			"homepage": "Register online"
-		}
+		},
+    "route": "Route"
 	},
 	"login":{
 		"requiredField":"required field",
@@ -87,7 +88,9 @@
 		"password":"password",
 		"loginButton":"Log In",
 		"registerText":"You don't have an account yet?",
-		"registerLink":"Sign up now (it's free)"
+		"registerLink":"Sign up now (it's free)",
+		"passwordResetText":"Forgot your password?",
+		"passwordResetLink":"Reset"
 	},
 	"register":{
 		"heading":"Sign up",
@@ -242,7 +245,6 @@
 				"text5": "We are happy about every small and big contribution.",
 				"text6": "Thank you very much!",
 				"text7": "the von morgen Team"
-
 			}
 		},
 		"user" : {

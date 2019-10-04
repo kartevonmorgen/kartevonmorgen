@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { translate }        from "react-i18next";
 import T                    from "prop-types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
 
 import logo                 from "../img/logo.png";
@@ -17,6 +17,7 @@ import URLs                 from "../constants/URLs";
 import V                    from "../constants/PanelView";
 import i18n                 from "../i18n";
 import STYLE                from "./styling/Variables"
+import pincloud             from "../img/pincloud.png";
 
 class LandingPage extends Component {
   state = {
@@ -125,7 +126,7 @@ class LandingPage extends Component {
             {t("donate.paragraph3.text2")}
           </p>
           <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
-            width="800" height="550" frameborder="0">
+            width="800" height="550" frameBorder="0">
           </iframe>
           <p>
             {t("donate.paragraph3.text3")}
@@ -238,34 +239,37 @@ class LandingPage extends Component {
             <div className="menu-wrapper pure-u-1 pure-u-md-2-3">
               <div className = "language-wrapper">
                 <a onClick={() => {i18n.changeLanguage('de');}} href="#"
-                  className={"language-link" + ((i18n.language == "de") ? " selected" : " unselected")}>de</a>
+                  className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}>de</a>
                 {" "}
                 <a onClick={() => {i18n.changeLanguage('en');}} href="#"
-                  className={"language-link" + ((i18n.language == "en") ? " selected" : " unselected")}>en</a>
+                  className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}>en</a>
+                {" "}
+                <a onClick={() => {i18n.changeLanguage('es');}} href="#"
+                  className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}>es</a>
               </div>
               <div className="menu pure-menu pure-menu-horizontal">
-                <ul className="pure-g">
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                <ul className="pure-g menu-items-wrapper">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick={() => onClick('map')} href="#" className="pure-menu-link">
                       {t("menu.map")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick= {() => onClick(V.INFO)} href="#" className="pure-menu-link">
                       {t("menu.infos")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick = {() => onClick(V.CONTACT)} href="#" className="pure-menu-link">
                       {t("menu.contact")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
                       {t("menu.donate")}
                     </a>
                   </li>
-                  <li className="pure-u-1-3 pure-u-md-1-6 menu-item">
+                  <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
                     { loggedIn ?
                       <a onClick = {() => onClick(V.LOGOUT)} href="#" className="pure-menu-link">
                         {t("menu.logout")}
@@ -459,14 +463,14 @@ const LandingWrapper = styled.div`
     .menu-wrapper {
       text-align: right;
       .language-wrapper {
-        margin: 1em;
+        margin: -4px 20px 24px 0;
         font-size: 0.8em;
         color: #777;
         .language-link {
           margin: 3pt;
           text-decoration: none;
           &.selected {
-            color: #777;
+            color: #95be0b;
             pointer-events: none;
           }
           &.unselected {
@@ -490,7 +494,7 @@ const LandingWrapper = styled.div`
       position: relative;
       max-width: 655px;
       ul {
-        margin: 0;
+        margin: 0 30px 0 0;
       }
       li {
         &:hover {
@@ -600,7 +604,7 @@ const LandingWrapper = styled.div`
         margin-left: -100px;
         margin-top: -35px;
         background-color: #fff;
-        background-image: url("../../img/pincloud.png");
+        background-image: url(${pincloud});
         background-repeat: no-repeat;
         background-position: center center;
         left: 50%;

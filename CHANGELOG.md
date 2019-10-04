@@ -1,3 +1,11 @@
+## v0.1.32 (2019-07-12)
+
+- new(Login): add password-reset-link
+
+## v0.1.31 (2019-07-12)
+
+- new(\*): add spanish version
+
 ## v0.1.30 (2019-03-08)
 
 - new(api): use new production API url
@@ -8,12 +16,14 @@
 
 ## v0.1.28 (2019-01-17)
 
-- chore(*): decrease bundle file size
+- chore(\*): decrease bundle file size
 
 ## v0.1.27 (2019-01-13) Events
-- new(*): show events in the search results, map and EntryDetails (not possible to add events yet)
+
+- new(\*): show events in the search results, map and EntryDetails (not possible to add events yet)
 
 ## v0.1.26 (2019-01-13)
+
 - a lot of style improvements: Rubik font, clearer margins, nicer Textfields in EntryForm
 - miscellaneous refactoring
 - new(SearchBar): add loading spinner to indicate that it's currently searching
@@ -42,15 +52,17 @@
 - new(EntryDetails): use 400x300 as suggested image format
 
 ## v0.1.25 (2018-08-27)
+
 - new(EntryDetails): add optional image to entry pages
-- refactor(*): transfer part of App.js into Sidebar.js
-- refactor(*): turn App.coffee into JavaScript
+- refactor(\*): transfer part of App.js into Sidebar.js
+- refactor(\*): turn App.coffee into JavaScript
 - new(i18n): make English the default fallback language (if browser language is not German)
 - fix(styling): fix appearance of locate-button
 - new(notification): replace redux-flash-notification with reapop as the former is not maintained anymore
 - new(LandingPage): add 'Stadt Mannheim' as partner
 
 ## v0.1.24 (2018-03-22)
+
 - fix(IE-bug): fix bug with IE10 and lower which can't access window.location.origin
 - fix(ConfirmEmail): send u_id to confirm-email API call
 - fix(i18n): fix some i18n-keys
@@ -59,10 +71,11 @@
 - new(EntryForm): replace whitespace by comma when entering tags (instead of hyphen)
 - new(Map): shade out unselected pins
 - new(ResultList): only show up to 5 city results in order to make search results below more visible
-- fix(*): fix bugs in SubscribeToBbox, EntryDetails, ResultList some of which have to do with values that could be null
+- fix(\*): fix bugs in SubscribeToBbox, EntryDetails, ResultList some of which have to do with values that could be null
 - fix(Login): don't use user_id anywhere, only username (adapt to OFDB API change)
 
 ## v0.1.23 (2018-02-21)
+
 - fix(rating): correct rating labels
 - fix(widgets): fix bugs in widgets introduced by i18n v0.1.22
 - fix(modal): fix bug that prevented modal to show
@@ -71,10 +84,11 @@
 - new(LandingPage): add Linus to Team
 
 ## v0.1.22 (2018-02-14)
+
 - i18n: internationalize the app and provide translations for german and english
 - OSM: prepare for openfairdb with entries from OpenStreetMap:
-    - changed search API to include location of each entry in the results
-    - show entries that don't have a category yet (don't filter these out on default, only when clicking on filters)
+  - changed search API to include location of each entry in the results
+  - show entries that don't have a category yet (don't filter these out on default, only when clicking on filters)
 - new(map): replace pins of entries with rating <= 0 by circles (necessary as we get lots of entries by OSM)
 - new(map): show pins while adding or editing an entry
 - new(map): move locate button on the map, away from the searchbar
@@ -85,19 +99,23 @@
 - fix(IE): use use babel-polyfill to fix IE11 bug
 
 ## v0.1.21 (2017-12-08)
+
 - edit(LandingPage): change team and partners in landing page
 - new(prototype): show 'prototype'-banner when packing with 'npm run pack-prototype'
 - new(EntryForm): show either CC0 or ODBL license (OSM)
 - new(EntryForm): when saving entry use ODBL license for OSM entries and CC0 otherwise (OSM)
 
 ## v0.1.20 (2017-12-05)
+
 - fix(citySearch): fix citySearch as the osmnames API changed, use tilehosting API with API key
 - new(citySearch): show error when citySearch results in an error, show when citySearch doesn't return any results
 
 ## v0.1.19 (2017-11-16)
+
 - fix(styling): fix height of sidebar (bug was introduced by e96e902)
 
 ## v0.1.18
+
 - fix(Accounts): fix bug confirmEmail routing
 - fix(Ratings): put Positivfaktoren in correct order
 - fix(Actions): remove dependency of server actions to client actions
@@ -106,12 +124,13 @@
 - new(EntryForm): mark contacts-field and zip code as optional to make adding entries simpler
 
 ## v0.1.17
+
 - new(mobile): make the app responsive
 - refactor(routing): refactor routing to prevent loops; move logic to react to url changes to url reducer and other reducers via UPDATE_STATE_FROM_URL action
 - refactor(Actions): split actions into client and server actions
 - fix(zoom): fix a bug with zooming that came from the routing chaos
 - new(zoom): make continuous zoom work (especially on mobile devices important for pinch zoom)
-- new(*): open external links in new tab (especially relevant for widgets)
+- new(\*): open external links in new tab (especially relevant for widgets)
 - new(businesscard-widget): add businesscard-widget that only shows EntryDetails
 - new(map-widget): add map-widget that only shows the map
 - refactor(styling): make EntryDetails, Ratings, Flower and Map styled-components (inline style instead of css) so they are modular, reusable components
@@ -123,12 +142,13 @@
 - fix(login): fix encoding of confirmation email (sometimes it showed as an empty email)
 - fix(zoom): don't close form when editing entry and then zooming
 - new(ratings): change order of fields in rating form, change "visionär" to "von übermorgen"
-- new(*): put the cancel button always to the left and saving etc always to the right
+- new(\*): put the cancel button always to the left and saving etc always to the right
 - new(entryForm): increase max. title length to 50 chars
 - fix(LandingPage): make enter key work in city search bar
 - new(EntryDetails): set zoom to a certain level when showing an entry
 
 ## v0.1.16 (2017-07-28)
+
 - new(rating): show explanation for rating contexts when hovering over them
 - new(rating): replace drop downs by radio buttons
 - new(subscribeToBbox): add possibility for logged in user to subscribe to changes in an area of the map -> send notification emails
@@ -145,14 +165,14 @@
 - fix(search): ignore search when ending with '#', wait for hashtag first
 - fix(entryForm): make finding address work again
 - fix(entryForm): remove 'events' category for now because it produces an error 'react is undefined'
-- chore(*): support es2017
+- chore(\*): support es2017
 
 ## v0.1.15 (2017-06-14)
 
 - new(routing): routing by center, zoom and entry
 - new(routing): change URL when interacting with the website; make all updates to center, zoom and entry via the URL
 - new(city-search): use Overpass API instead of Nominatim API for searching cities
-- chore(*): update to webpack 2
+- chore(\*): update to webpack 2
 
 ## v0.1.14 (2017-06-01)
 
@@ -168,7 +188,7 @@
 
 - new(SearchBar): add hint for tag searching
 - refactor(imprint): migrate to ES6
-- fix(*): add missing Flower component
+- fix(\*): add missing Flower component
 - fix(rating): change "Vielfältigkeit" to "Natürlichkeit"
 - fix(rating): send rating value as integer
 
@@ -183,7 +203,7 @@
 - new(entry): show ratings
 - refactor(map): migrate to ES6
 - refactor(map): migrate to leaflet 1.0
-- refactor(*): get rid of `updeep`
+- refactor(\*): get rid of `updeep`
 
 ## v0.1.9 (2017-03-24)
 
@@ -203,7 +223,7 @@
 
 ## v0.1.6 (2017-03-11)
 
-- refactor(*): start migrating CoffeeScript to ES6 (#143)
+- refactor(\*): start migrating CoffeeScript to ES6 (#143)
 - refactor(entryForm): upgrade redux-form 4.x -> 6.x (#188)
 
 ## v0.1.5 (2016-07-11)

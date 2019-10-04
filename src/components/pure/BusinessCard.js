@@ -65,7 +65,7 @@ const getRoutePlannerLink = (entry) => {
     <EntryLink
       title={ "Hinfinden mit "+ROUTEPLANNERS[provider].name }
       href={url} target="_blank">
-      Routenplaner
+      {i18n.t("entryDetails.route")}
     </EntryLink>
   )
 };
