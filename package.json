@@ -44,7 +44,7 @@
     "react-leaflet": "^2.2.0",
     "react-loaders-spinners": "^0.4.0",
     "react-redux": "^6.0.0",
-    "react-select": "^2.1.1",
+    "react-select": "^2.4.0",
     "react-swipeable": "^4.3.0",
     "react-tooltip": "^3.9.0",
     "react-virtualized-select": "^3.1.3",
