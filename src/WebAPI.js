@@ -40,7 +40,7 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchEvents: (tags, bbox, start, end, cb) => { 
+  searchEvents: (tags, bbox, start, end, cb) => {
     let req = request
       .get('/events')
       .use(prefix)
@@ -224,16 +224,14 @@ module.exports = {
   },
 
   register: ({
-    username,
+    email,
     password,
-    email
   }, cb) => {
     request
       .post('/users')
       .use(prefix)
       .set('Accept', 'application/json')
       .send({
-        username,
         email,
         password
       })
@@ -241,7 +239,7 @@ module.exports = {
   },
 
   login: ({
-    username,
+    email,
     password
   }, cb) => {
     request
@@ -250,15 +248,15 @@ module.exports = {
       .use(prefix)
       .withCredentials()
       .send({
-        username,
+        email,
         password
       })
       .end(cb);
   },
 
-  getUser: (username, cb) => {
+  getUser: (email, cb) => {
     request
-      .get('/users/' + username)
+      .get('/users/' + email)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
@@ -274,20 +272,20 @@ module.exports = {
       .end(cb);
   },
 
-  confirmEmail: (u_id, cb) => {
+  confirmEmail: (token, cb) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
       .use(prefix)
       .send({
-        u_id
+        token
       })
       .end(cb);
   },
 
-  deleteAccount: (username, cb) => {
+  deleteAccount: (email, cb) => {
     request
-      .delete('/users/' + username)
+      .delete('/users/' + email)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()

@@ -166,13 +166,13 @@ const loginForm = (data) => {
     errors._error = t("invalidValues");
     return errors;
   }
-  if (data.username == null) {
-    errors.username = t("requiredField");
+  if (data.email == null) {
+    errors.email = t("requiredField");
   } else {
     let l;
-    if (!((l = data.username.length) >= 3)) {
-      if (errors.username == null) {
-        errors.username = t("invalidUsername") + ": " + l + " " + t("minNumCharactersUsername");
+    if (!((l = data.email.length) >= 3)) {
+      if (errors.email == null) {
+        errors.email = t("invalidEmail");
       }
     }
   }
@@ -199,16 +199,6 @@ const registerForm = (data) => {
   if (data == null) {
     errors._error = t("invalidValues");
     return errors;
-  }
-  if (data.username == null) {
-    errors.username = t("requiredField");
-  } else {
-    let l;
-    if (!((l = data.username.length) >= 3)) {
-      if (errors.username == null) {
-        errors.username = t("invalidUsername") + ": " + l + " " + t("minNumCharactersUsername");
-      }
-    }
   }
   if (data.email == null) {
     errors.email = t("requiredField");

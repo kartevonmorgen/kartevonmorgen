@@ -354,7 +354,7 @@ class LandingPage extends Component {
             <a className="smallLink" href="#" onClick={() => onClick(V.PRIVACY_STATEMENT)}>{t("footer.privacyStatement")}</a>
           </p>
           <p>
-            {user.username != null ? <a onClick={onDeleteAccount} href="#">
+            {user.email != null ? <a onClick={onDeleteAccount} href="#">
               Account löschen
             </a> : ""}
           </p>

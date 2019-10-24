@@ -1,4 +1,4 @@
 export default interface IUserCredentials {
-  username: string,
+  email: string,
   password: string,
 }

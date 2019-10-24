@@ -33,19 +33,19 @@ export default class GoodmapCore {
 
   /**
    * Get user profile
-   * @param username
+   * @param email
    */
-  public static getUser(username: string): AxiosPromise<IUserProfile> {
-    return Http.get(`/users/${username}`);
+  public static getUser(email: string): AxiosPromise<IUserProfile> {
+    return Http.get(`/users/${email}`);
   }
 
   /**
    * Login user
-   * @param username
+   * @param email
    * @param password
    */
-  public static loginUser(username: string, password: string): AxiosPromise<null> {
-    return Http.post('/login', { username, password });
+  public static loginUser(email: string, password: string): AxiosPromise<null> {
+    return Http.post('/login', { email, password });
   }
 
   /**

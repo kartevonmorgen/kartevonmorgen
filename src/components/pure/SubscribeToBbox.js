@@ -22,10 +22,10 @@ const t = (key) => {
   return i18n.t("subscribeToBbox." + key);
 }
 
-const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCenter}) => {
+const subscribeToBbox = ({subscriptionExists, dispatch, bbox, email, mapCenter}) => {
   if(subscriptionExists){
     return (
-      <SubscribeToBboxWrapper> 
+      <SubscribeToBboxWrapper>
         <SubscribeToBboxContent>
           <h3>{t("changeSubscription.heading")}</h3>
           <p>{t("changeSubscription.text1")}</p>
@@ -54,7 +54,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
             keyName = "delete"
             classname = "pure-u-1-1"
             onClick = { () => {
-              dispatch(Actions.unsubscribeFromBboxes(username));
+              dispatch(Actions.unsubscribeFromBboxes(email));
             }}
             icon = "trash"
             text = { t("unsubscribe") }
@@ -62,7 +62,7 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, username, mapCente
         </NavButtonWrapper>
       </SubscribeToBboxWrapper>)
   } else {
-    return ( 
+    return (
       <SubscribeToBboxWrapper>
         <SubscribeToBboxContent>
           <h3>{t("newSubscription.heading")}</h3>

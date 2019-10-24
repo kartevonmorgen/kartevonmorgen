@@ -21,7 +21,7 @@ const Login = (props) => {
   if(error){
     switch(error.message){
       case "Unauthorized":
-        error_message = t("invalidPasswordOrUsername");
+        error_message = t("invalidPasswordOrEmail");
         break;
       case "Forbidden":
         error_message = t("emailUnconfirmed");
@@ -46,15 +46,15 @@ const Login = (props) => {
     <div>
       <Fieldset>
         <StyledField
-          name="username"
+          name="email"
           className="pure-input-1"
           type="text"
           component="input"
           required={true}
-          placeholder={t("username")}
+          placeholder={t("email")}
         />
         <StyledField
-          name="username"
+          name="email"
           component={errorMessage}
         />
         <StyledField

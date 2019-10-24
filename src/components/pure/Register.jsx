@@ -33,15 +33,12 @@ const Register = props => {
     <div className= "pure-form">
       <Fieldset>
         <StyledField
-          name="username"
+          name="email"
           className="pure-input-1"
-          type="text"
+          type="email"
           component="input"
           required={true}
-          placeholder={t("username")}
-          normalize={normalize.username} />
-        <StyledField name="username" component={errorMessage} />
-        <StyledField name="email" className="pure-input-1" type="email" component="input" required={true} placeholder={t("email")} />
+          placeholder={t("email")} />
         <StyledField name="email" component={errorMessage} />
         <StyledField name="password" className="pure-input-1" type="password" component="input" required={true} placeholder={t("password1")} />
         <StyledField name="password" component={errorMessage} />

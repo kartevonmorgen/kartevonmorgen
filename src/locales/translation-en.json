@@ -78,13 +78,12 @@
 		"requiredField":"required field",
 		"loginFailed":"Logging in failed",
 		"invalidValues":"Invalid values",
-		"invalidUsername":"Invalid username",
+		"invalidEmail":"Invalid email-address",
 		"invalidPassword":"Invalid password",
-		"invalidPasswordOrUsername":"Wrong username or password.",
+		"invalidPasswordOrEmail":"Wrong e-mail or password.",
 		"emailUnconfirmed":"Your email-address is not yet confirmed. Please check your inbox, as well as spam-folder, if necessary.",
-		"minNumCharactersUsername":"characters, minimum: 3",
 		"minNumCharactersPassword":"characters, minimum: 3",
-		"username":"username",
+		"email":"email-address",
 		"password":"password",
 		"loginButton":"Log In",
 		"registerText":"You don't have an account yet?",
@@ -94,8 +93,7 @@
 	},
 	"register":{
 		"heading":"Sign up",
-		"genericError":"Error while signing up. This username or email-address seems to already be in use.",
-		"username":"username",
+		"genericError":"Error while signing up. This email-address seems to already be in use.",
 		"email":"email-address",
 		"password1":"password",
 		"password2":"repeat password",
@@ -104,11 +102,9 @@
 		"loginLink":"log in here",
 		"requiredField":"required field",
 		"invalidValues":"Invalid values",
-		"invalidUsername":"Invalid username",
-		"invalidPassword":"Invalid password",
-		"minNumCharactersUsername":"characters, minimum: 3",
-		"minNumCharactersPassword":"characters, minimum: 3",
 		"invalidEmail":"Invalid email-address",
+		"invalidPassword":"Invalid password",
+		"minNumCharactersPassword":"characters, minimum: 3",
 		"repeatPassword":"Please repeat the password here",
 		"passwordsDontAgree":"You entered two different passwords"
 	},
@@ -257,7 +253,7 @@
 				"text" : "Your email-address is being confirmed."
 			},
 			"confirm-email-error" : {
-				"message" : "Ops! There was an error confirming your email address. Please try again with a new username to",
+				"message" : "Ops! There was an error confirming your email address. Please try again with a new email address to",
 				"link" : "sign up."
 			},
 			"email-confirmed" : {
