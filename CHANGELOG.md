@@ -1,3 +1,11 @@
+## v0.1.34 (2019-10-28)
+
+- refactor(\*): Remove username and replace with email
+
+## v0.1.33 (2019-10-08)
+
+- fix(\*): update react-select package to fix AutoComplete on mobile
+
 ## v0.1.32 (2019-07-12)
 
 - new(Login): add password-reset-link

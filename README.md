@@ -34,7 +34,7 @@ To be able to start development you'll need the following tools:
 - [git](https://www.git-scm.com/)
 - [Node.js](https://nodejs.org/) version 8.x
 - [npm](https://www.npmjs.com/package/npm) version 6.x
-- [OpenFairDB](https://github.com/kartevonmorgen/openfairdb)
+- [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) version 0.7.x
 
 Now clone this repository:
 
