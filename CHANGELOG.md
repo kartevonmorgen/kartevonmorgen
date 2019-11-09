@@ -1,3 +1,7 @@
+## v0.1.35 (2019-11-09)
+
+- fix(\*): serverconnection breaks, if you zoom out too far (#544)
+
 ## v0.1.34 (2019-10-28)
 
 - refactor(\*): Remove username and replace with email
