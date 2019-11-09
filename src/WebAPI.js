@@ -14,6 +14,15 @@ const jsonCallback = (cb) => (err, res) => {
   }
 };
 
+function normalizeCoordinate(bbox, idx) {
+    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
+        bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
+    }
+    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
+        bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
+    }
+}
+
 module.exports = {
 
   searchEntries: (txt, cats, bbox, cb) => {
@@ -27,7 +36,8 @@ module.exports = {
     if (bbox == null) {
       bbox = [];
     }
-
+    normalizeCoordinate(bbox, 1);
+    normalizeCoordinate(bbox, 3);
     request
       .get('/search')
       .use(prefix)
@@ -41,6 +51,11 @@ module.exports = {
   },
 
   searchEvents: (tags, bbox, start, end, cb) => {
+    if (bbox == null) {
+      bbox = [];
+    }
+    normalizeCoordinate(bbox, 1);
+    normalizeCoordinate(bbox, 3);
     let req = request
       .get('/events')
       .use(prefix)
