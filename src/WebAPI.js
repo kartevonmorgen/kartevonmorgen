@@ -14,6 +14,15 @@ const jsonCallback = (cb) => (err, res) => {
   }
 };
 
+function normalizeCoordinate(bbox, idx) {
+    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
+        bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
+    }
+    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
+        bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
+    }
+}
+
 module.exports = {
 
   searchEntries: (txt, cats, bbox, cb) => {
@@ -27,7 +36,8 @@ module.exports = {
     if (bbox == null) {
       bbox = [];
     }
-
+    normalizeCoordinate(bbox, 1);
+    normalizeCoordinate(bbox, 3);
     request
       .get('/search')
       .use(prefix)
@@ -40,7 +50,12 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchEvents: (tags, bbox, start, end, cb) => { 
+  searchEvents: (tags, bbox, start, end, cb) => {
+    if (bbox == null) {
+      bbox = [];
+    }
+    normalizeCoordinate(bbox, 1);
+    normalizeCoordinate(bbox, 3);
     let req = request
       .get('/events')
       .use(prefix)
@@ -224,16 +239,14 @@ module.exports = {
   },
 
   register: ({
-    username,
+    email,
     password,
-    email
   }, cb) => {
     request
       .post('/users')
       .use(prefix)
       .set('Accept', 'application/json')
       .send({
-        username,
         email,
         password
       })
@@ -241,7 +254,7 @@ module.exports = {
   },
 
   login: ({
-    username,
+    email,
     password
   }, cb) => {
     request
@@ -250,15 +263,15 @@ module.exports = {
       .use(prefix)
       .withCredentials()
       .send({
-        username,
+        email,
         password
       })
       .end(cb);
   },
 
-  getUser: (username, cb) => {
+  getUser: (email, cb) => {
     request
-      .get('/users/' + username)
+      .get('/users/' + email)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
@@ -274,20 +287,20 @@ module.exports = {
       .end(cb);
   },
 
-  confirmEmail: (u_id, cb) => {
+  confirmEmail: (token, cb) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
       .use(prefix)
       .send({
-        u_id
+        token
       })
       .end(cb);
   },
 
-  deleteAccount: (username, cb) => {
+  deleteAccount: (email, cb) => {
     request
-      .delete('/users/' + username)
+      .delete('/users/' + email)
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()

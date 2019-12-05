@@ -2,7 +2,6 @@ import T from "../constants/ActionTypes";
 import cookies from "../util/cookies";
 
 const initialState = {
-  username: null,
   email: null,
   subscriptionExists: false
 };
@@ -19,7 +18,6 @@ module.exports = (state=initialState, action={}) => {
     case T.LOGIN_RESULT:
       return {
         ...state,
-        username: action.error ? null : payload.body.username,
         email: action.error ? null : payload.body.email
       }
 
@@ -27,7 +25,6 @@ module.exports = (state=initialState, action={}) => {
       cookies.deleteAllCookies();
       return {
         ...state,
-        username: null,
         email: null,
         subscriptionExists: false
       }

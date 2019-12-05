@@ -284,7 +284,7 @@ const Actions = {
       })
     },
 
-  unsubscribeFromBboxes: (username) =>
+  unsubscribeFromBboxes: (email) =>
     (dispatch, getState) => {
       WebAPI.unsubscribeFromBboxes((err, res) => {
         if (err) {
@@ -433,13 +433,13 @@ const Actions = {
       }
     },
 
-  login: (username, password) =>
+  login: (email, password) =>
     (dispatch, getState) => {
       dispatch({
         type: T.LOGIN_SUBMITTING
       });
       WebAPI.login({
-        username,
+        email,
         password
       }, (err, res) => {
         if (err) {
@@ -447,7 +447,7 @@ const Actions = {
             _error: err
           }));
         } else {
-          WebAPI.getUser(username, (err, res) => {
+          WebAPI.getUser(email, (err, res) => {
             dispatch({
               type: T.LOGIN_RESULT,
               payload: err || res,
@@ -466,15 +466,14 @@ const Actions = {
       });
     },
 
-  register: (username, password, email) =>
+  register: (email, password) =>
     (dispatch, getState) => {
       dispatch({
         type: T.REGISTER_SUBMITTING
       });
       WebAPI.register({
-        username,
+        email,
         password,
-        email
       }, (err, res) => {
         if (err) {
           dispatch(stopSubmit(REGISTER.id, {
@@ -509,7 +508,7 @@ const Actions = {
 
   deleteAccount: () =>
     (dispatch, getState) => {
-      WebAPI.deleteAccount(getState().user.username, (err, res) => {
+      WebAPI.deleteAccount(getState().user.email, (err, res) => {
         if (!err) {
           dispatch({
             type: T.LOGOUT

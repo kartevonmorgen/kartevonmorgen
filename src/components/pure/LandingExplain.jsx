@@ -20,9 +20,9 @@ const teamArray = [
   {
     name: "David Ziegler",
     color: "berry",
-    homepage: "https://slowtec.de/team.html#",
+    homepage: "https://www.facebook.com/david.ziegler.33671",
     image: require("../../img/team/David.jpg"),
-    position: ["slowtec GmbH","landingExplain.chapter5.software-development"]
+    position: ["landingExplain.chapter5.software-development"]
   },
   {
     name: "Lisa Stehr",

@@ -1,5 +1,3 @@
-// Copyright (c) 2015 - 2017 Markus Kohlhase <mail@markus-kohlhase.de>
-
 import "./styling/Stylesheets"
 import "./styling/Icons"
 
@@ -24,21 +22,21 @@ import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
 
 class Main extends Component {
-  
+
   render(){
     const { dispatch, search, view, server, map, form, url, user, t } = this.props;
     const { entries, ratings } = server;
 
     this.changeUrlAccordingToState(url);
     const visibleEntries = this.filterVisibleEntries(entries, search);
-    const loggedIn = user.username ? true : false;
-    
+    const loggedIn = user.email ? true : false;
+
     return (
       <StyledApp className="app">
         <GlobalStyle />
         <NotificationsSystem theme={theme}/>
-        { 
-          view.menu ? 
+        {
+          view.menu ?
             <LandingPage
               onMenuItemClick={ id => {
                 switch (id) {
@@ -73,14 +71,14 @@ class Main extends Component {
               onEscape={ () => { return dispatch(Actions.setCitySearchText('')); }}
               onSelection={ this.onLandingPageCitySelection.bind(this) }
               onLogin={ data => {
-                var password, username;
-                username = data.username, password = data.password;
-                return dispatch(Actions.login(username, password));
+                var password, email;
+                email = data.email, password = data.password;
+                return dispatch(Actions.login(email, password));
               }}
               onRegister={ data => {
-                var email, password, username;
-                username = data.username, password = data.password, email = data.email;
-                return dispatch(Actions.register(username, password, email));
+                var email, password;
+                email = data.email, password = data.password;
+                return dispatch(Actions.register(email, password));
               }}
               loggedIn={ loggedIn}
               user={ user}
@@ -90,7 +88,7 @@ class Main extends Component {
             />
             : ""
         }
-        { 
+        {
           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
         }
 
@@ -127,7 +125,7 @@ class Main extends Component {
               }}>
               <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
             </button>
-          </HideSidebarButtonWrapper>   
+          </HideSidebarButtonWrapper>
         </LeftPanelAndHideSidebarButton>
         <RightPanel>
           <div className="menu-toggle">
@@ -137,7 +135,7 @@ class Main extends Component {
               </span>
             </button>
           </div>
-        </RightPanel> 
+        </RightPanel>
 
         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
           <Map
@@ -173,7 +171,7 @@ class Main extends Component {
           />
         </Swipeable>
       </StyledApp>
-    );  
+    );
   }
 
   filterVisibleEntries(entries, search){
@@ -225,7 +223,7 @@ class Main extends Component {
       if(view.left === V.RESULT){
         dispatch(Actions.setSearchText(''))
         return dispatch(Actions.search())
-      } 
+      }
     }
   }
 
@@ -269,7 +267,7 @@ module.exports = translate('translation')(Main)
 
 /* Moved all styles here. TODO: Move to right components */
 const GlobalStyle = createGlobalStyle`
-  
+
   @media only screen and (max-width: 600px) {
     body { font-size:80%;}
   }
@@ -277,7 +275,7 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6, h7 {
     font-family: ${STYLE.headerFont};
   }
-  
+
   html, button, input, select, textarea {
     font-family: ${STYLE.bodyFont};
   }
@@ -412,8 +410,8 @@ const StyledApp = styled.div `
 
   background: #fff;
 
-  /* 
-  make the app fit the screen/iframe exactly (important for overflow:scroll, 
+  /*
+  make the app fit the screen/iframe exactly (important for overflow:scroll,
   but can't use height:100vh since that would break iframes smaller than 100vh):
   */
   position: absolute;
@@ -427,7 +425,7 @@ const StyledApp = styled.div `
     img { width: 100%; }
   }
 
-  /* TYPO */ 
+  /* TYPO */
   @media only screen and(max-width: 600px) {
     body {
       font-size: 80%;

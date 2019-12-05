@@ -1,17 +1,28 @@
-# Goodmap
+# Karte von morgen
 
-Goodmap is a map platform for changemaker projects. Currently, two projects are using goodmap:
-- Transition München: Beta-Version: [https://map.transition-muc.de/](https://map.transition-muc.de/)
-- Karte von morgen: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
+![Screenshot](https://raw.githubusercontent.com/kartevonmorgen/kartevonmorgen/master/screenshot.jpg)
 
-Both projects are using the [https://github.com/goodmap/goodmap-webapp](goodmap-webapp) (React). And goodmap-webapp is using [https://github.com/goodmap/goodmap-core](https://github.com/goodmap/goodmap-core) (pure TypeScript, framework-agnostic).
+## Mapping for Good
 
-[![Build Status](https://secure.travis-ci.org/flosse/kartevonmorgen.svg?branch=master)](http://travis-ci.org/flosse/kartevonmorgen)
-[![Dependency Status](https://gemnasium.com/flosse/kartevonmorgen.svg)](https://gemnasium.com/flosse/kartevonmorgen)
-[![Dependency Status](https://dependencyci.com/github/flosse/kartevonmorgen/badge)](https://dependencyci.com/github/flosse/kartevonmorgen)
-[![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat)](https://github.com/flosse/kartevonmorgen/blob/master/LICENSE)
+von morgen supports kindness, sustainability and joint action.
+Everything that brings a little happiness to our world.
+We believe that living in a de‐stressed, environmental‐friendly and
+trust‐worthy society, is already in progress.
+We want to support people in finding ways to embrace those values.
 
-Are you're interested in contributing?
+The Map von morgen is a website and app, that allows users to share their
+favorite places in the world. Places that are forward‐thinking and inspiring.
+The goal is to collect projects, companies and events that make a world of
+tomorrow, already experienceable today.
+
+Website: [https://kartevonmorgen.org/](https://kartevonmorgen.org/)
+
+## Development
+
+[![Build Status](https://secure.travis-ci.org/kartevonmorgen/kartevonmorgen.svg?branch=master)](http://travis-ci.org/kartevonmorgen/kartevonmorgen)
+[![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat)](https://github.com/kartevonmorgen/kartevonmorgen/blob/master/LICENSE)
+
+Are you're interested in contributing to KVM?
 The following is a description of a quickstart.
 If you're looking for a more comprehensive introduction,
 have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -21,21 +32,21 @@ have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 To be able to start development you'll need the following tools:
 
 - [git](https://www.git-scm.com/)
-- [Node.js](https://nodejs.org/) version 6.x
-- [npm](https://www.npmjs.com/package/npm) version 3.x
-- [OpenFairDB](https://github.com/slowtec/openfairdb)
+- [Node.js](https://nodejs.org/) version 8.x
+- [npm](https://www.npmjs.com/package/npm) version 6.x
+- [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) version 0.7.x
 
 Now clone this repository:
 
 ```sh
-git clone https://github.com/goodmap/goodmap
+git clone https://github.com/kartevonmorgen/kartevonmorgen
 ```
 
 Go to the root of it and install all the dependencies:
 
 ```sh
-cd goodmap
-yarn
+cd kartevonmorgen/
+npm install
 ```
 
 ### Build
@@ -43,7 +54,7 @@ yarn
 To build the web application run:
 
 ```sh
-yarn start
+npm run pack
 ```
 
 The result can be found in `dist/`.
@@ -55,7 +66,7 @@ own instance locally.
 
 #### Remote OpenFairDB server
 
-The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/slowtec/openfairdb).
+The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/kartevonmorgen/openfairdb).
 To do so change `src/constants/URLs.js` to
 
 ``` js
@@ -70,14 +81,14 @@ starting a local server instance as described next!
 
 #### Local OpenFairDB server
 
-The alternative is to run [OpenFairDB](https://github.com/slowtec/openfairdb) server locally.
+The alternative is to run [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) server locally.
 A static executable for all recent versions is available on the
-[OpenFairDB *Releases*](https://github.com/slowtec/openfairdb/releases) page.
+[OpenFairDB *Releases*](https://github.com/kartevonmorgen/openfairdb/releases) page.
 
 Download, unpack and run (on Linux):
 
 ```sh
-wget https://github.com/slowtec/openfairdb/releases/download/v0.5.5/openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
+wget https://github.com/kartevonmorgen/openfairdb/releases/download/v0.5.5/openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
 tar xJf openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
 RUST_LOG=info ROCKET_PORT=6767 ./openfairdb
 ```
@@ -125,38 +136,17 @@ for you and the browser reloads automatically.
 
 ### Tests
 
+All the tests can be found in the `spec/` folder.
 To run the tests type
 
 ```sh
-yarn test
-```
-
-or
-
-```sh
-yarn watch-test
+npm t
 ```
 
 ### Backend
 
-KVM uses the [OpenFairDB](https://github.com/slowtec/openfairdb) as its backend.
-
-## Goodmap
-<3 Goodmap Consortium
-
-### Core
-* Navigate to `goodmap-core` folder
-* Add changes
-* Recompile by using `yarn build`
-
-### Webapp
-* Navigate to `goodmap-webapp` folder
-* Install via `yarn install`
-* Add changes
-* Run by using `yarn start`
+KVM uses the [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) as its backend.
 
 ## License
-
-Copyright (c) 2015 - 2018 Markus Kohlhase <mail@markus-kohlhase.de>
 
 This project is licensed under the [AGPLv3 license](http://www.gnu.org/licenses/agpl-3.0.txt).

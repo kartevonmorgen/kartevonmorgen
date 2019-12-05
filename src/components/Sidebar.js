@@ -114,7 +114,7 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
-        if (!entry) { 
+        if (!entry) {
           content = (<Message iconClass={ "spinner" } message={ t("loading-message") } />)
         } else {
 
@@ -253,7 +253,7 @@ class Sidebar extends Component {
             subscriptionExists={ user.subscriptionExists }
             dispatch={ dispatch }
             bbox={ map.bbox }
-            username={ user.username }
+            email={ user.email }
             mapCenter={ map.center }
           />
         );

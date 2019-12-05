@@ -30,7 +30,7 @@ module.exports = {
   LOGIN: {
     id: "login",
     fields: [
-      "username",
+      "email",
       "password"
     ]
   },
@@ -38,7 +38,6 @@ module.exports = {
   REGISTER: {
     id: "register",
     fields: [
-      "username",
       "email",
       "password"
     ]

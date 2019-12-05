@@ -164,6 +164,7 @@ class KVMMap extends Component {
           zoomSnap    = { 1.0 }
           zoomControl = { false }
           className   = "map"
+          worldCopyJump = { true }
           onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
           onClick     = { (e) => { onClick(e) }} >
