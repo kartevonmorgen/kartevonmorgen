@@ -1,45 +1,33 @@
-// TODO: module.exports = {
-// TODO:   EDIT: {
-// TODO:     id: "edit",
-// TODO:     fields: [
-// TODO:       "title",
-// TODO:       "description",
-// TODO:       "homepage",
-// TODO:       "telephone",
-// TODO:       "city",
-// TODO:       "zip",
-// TODO:       "email",
-// TODO:       "street",
-// TODO:       "lat",
-// TODO:       "lng",
-// TODO:       "category",
-// TODO:       "license",
-// TODO:       "tags"
-// TODO:     ]
-// TODO:   },
-// TODO:
-// TODO:   RATING: {
-// TODO:     id: "rating",
-// TODO:     fields: [
-// TODO:       "context",
-// TODO:       "value",
-// TODO:       "comment"
-// TODO:     ]
-// TODO:   },
-// TODO:
-// TODO:   LOGIN: {
-// TODO:     id: "login",
-// TODO:     fields: [
-// TODO:       "email",
-// TODO:       "password"
-// TODO:     ]
-// TODO:   },
-// TODO:
-// TODO:   REGISTER: {
-// TODO:     id: "register",
-// TODO:     fields: [
-// TODO:       "email",
-// TODO:       "password"
-// TODO:     ]
-// TODO:   }
-// TODO: };
+pub mod EDIT {
+    pub const id: &str = "edit";
+    pub const fields: [&str; 13] = [
+        "title",
+        "description",
+        "homepage",
+        "telephone",
+        "city",
+        "zip",
+        "email",
+        "street",
+        "lat",
+        "lng",
+        "category",
+        "license",
+        "tags",
+    ];
+}
+
+pub mod RATING {
+    pub const id: &str = "rating";
+    pub const fields: [&str; 3] = ["context", "value", "comment"];
+}
+
+pub mod LOGIN {
+    pub const id: &str = "login";
+    pub const fields: [&str; 2] = ["email", "password"];
+}
+
+pub mod REGISTER {
+    pub const id: &str = "register";
+    pub const fields: [&str; 2] = ["email", "password"];
+}

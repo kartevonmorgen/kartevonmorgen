@@ -1,7 +1,6 @@
-// TODO: const REGISTRATION_TYPE = {
-// TODO:   EMAIL: "email",
-// TODO:   TELEPHONE: "telephone",
-// TODO:   HOMEPAGE: "homepage",
-// TODO: };
-// TODO:
-// TODO: module.exports = { REGISTRATION_TYPE };
+// TODO: crate enum
+pub mod REGISTRATION_TYPE {
+    pub const EMAIL: &str = "email";
+    pub const TELEPHONE: &str = "telephone";
+    pub const HOMEPAGE: &str = "homepage";
+}
