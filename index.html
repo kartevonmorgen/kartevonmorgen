@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Karte von morgen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  </head>
+  <body>
+    <div id='app'></div>
+    <script type="module">
+      import init from '/pkg/kartevonmorgen.js';
+      init('/pkg/kartevonmorgen_bg.wasm').catch(console.error);
+    </script>
+  </body>
+</html>
