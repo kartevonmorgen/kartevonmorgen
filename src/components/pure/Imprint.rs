@@ -1,287 +1,287 @@
-import React  from "react"
-import URLs   from "../../constants/URLs"
-import i18n   from "../../i18n";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-const t = (key) => i18n.t("imprint." + key)
-
-const Imprint = () =>
-
-  <div className="info">
-    <h3>{t("contact")}</h3>
-    <p>
-      <FontAwesomeIcon icon="globe-africa" /> <a target="_blank" href = { URLs.PROTOTYPE.link } >{ URLs.PROTOTYPE.name }</a>
-      <br />
-      <FontAwesomeIcon icon={['fab', 'facebook']} /> <a target="_blank" href = { URLs.FACEBOOK.link } >{ URLs.FACEBOOK.name }</a>
-      <br />
-      <FontAwesomeIcon icon="envelope" /> <a target="_blank" href = { URLs.MAIL.link } >{ URLs.MAIL.name }</a>
-      <br />
-      <FontAwesomeIcon icon={['fab', 'github']} /> <a target="_blank" href = { URLs.REPOSITORY.link } >{ URLs.REPOSITORY.name }</a>
-    </p>
-    <h3>{t("imprint")}</h3>
-      <h4>{t("heading1")}</h4>
-        Ideen³ e.V. // Räume für Entwicklung
-        <br />
-        {t("representedByChair")} Helmut Wolman
-        <br />
-        Görreshof 180, 53347 Alfter
-        <br />
-        <a target="_blank" href = "http://ideenhochdrei.org">Ideenhochdrei.org</a>
-        <br />
-        <a href = "mailto:info@ideenhochdrei.org">
-          info@ideenhochdrei.org
-        </a>
-
-      <h4 className="imprint-heading">{t("heading2")}</h4>
-        {t("kvmTeamRepresentedBy")}
-        <br />
-        Helmut Wolman
-        <br />
-        Turley-Platz 9
-        <br />
-        68167 Mannheim
-        <br />
-        <a href = "mailto:helmut.wolman@kartevonmorgen.org">
-          helmut.wolman@kartevonmorgen.org
-        </a>
-
-      <h4 className="imprint-heading">{t("heading3")}</h4>
-        {t("kvmTeamRepresentedBy")}
-        <br />
-        T. Thao Tran
-        <br />
-        <a href = "mailto:thao.tran@kartevonmorgen.org">
-          thao.tran@kartevonmorgen.org
-        </a>
-
-      <h4 className="imprint-heading">{t("heading4")}</h4>
-        Anja Dannemann
-        <br />
-        <a href= "mailto:anja.dannemann@kartevonmorgen.org">
-          anja.dannemann@kartevonmorgen.org
-        </a>
-
-      <h4 className="imprint-heading">{t("heading5")}</h4>
-        Lisa Tegtmeier
-        <br />
-        <a target="_blank" href = "http://www.lisategtmeier.de">
-         www.lisategtmeier.de
-        </a>
-
-      <h4 className="imprint-heading">{t("heading6")}</h4>
-        <a target="_blank" href="https://slowtec.de/">slowtec GmbH</a>
-        <br />
-        Friedrichsberg 55
-        <br />
-        70567 Stuttgart
-        <br />
-        <a href = "mailto:markus@kartevonmorgen.org">
-          markus@kartevonmorgen.org
-        </a>
-
-    <h4>Haftungsausschluss</h4>
-    <p>
-      Sämtliche über die Website veröffentlichten Produkt- und
-      Firmeninformationen oder sonstige Informationen werden von den Betreibern
-      der Karte von morgen nach bestem Wissen zur Verfügung gestellt.
-      All diese Informationen begründen jedoch soweit gesetzlich zulässig, weder
-      eine Garantie, Zusage oder Haftung seitens der Betreiber der Karte von
-      morgen, noch entbinden sie den Nutzer von der Durchführung eigener
-      Untersuchungen, Tests und dem Einholen weiterer Informationen.
-      Wir übernehmen keinerlei Gewähr für die Aktualität, Richtigkeit und
-      Vollständigkeit der bereitgestellten Informationen auf unserer Website.
-      Haftungsansprüche gegen uns, welche sich auf Schäden materieller oder
-      ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der
-      dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und
-      unvollständiger Informationen verursacht wurden, sind grundsätzlich
-      ausgeschlossen, sofern unsererseits kein nachweislich vorsätzliches oder
-      grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend
-      und unverbindlich. Wir behalten uns ausdrücklich vor, Teile der Seiten
-      oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern,
-      zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder
-      endgültig einzustellen.
-    </p>
-    <h4>Verweise und Links</h4>
-    <p>
-      Bei direkten oder indirekten Verweisen auf fremde Webseiten (“Hyperlinks”),
-      die außerhalb unseres Verantwortungsbereiches liegen, würde eine
-      Haftungsverpflichtung ausschließlich in dem Fall in Kraft treten, in dem
-      wir von den Inhalten Kenntnis haben und es uns technisch möglich und
-      zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
-      Wir erklären hiermit ausdrücklich, dass zum Zeitpunkt der Linksetzung
-      keine illegalen Inhalte auf den zu verlinkenden Seiten erkennbar waren.
-      Auf die aktuelle und zukünftige Gestaltung, die Inhalte oder die
-      Urheberschaft der verlinkten/verknüpften Seiten haben wir keinerlei
-      Einfluss.
-      Deshalb distanzieren wir uns hiermit ausdrücklich von allen Inhalten aller
-      verlinkten/verknüpften Seiten, die nach der Linksetzung verändert wurden.
-      Diese Feststellung gilt für alle innerhalb des eigenen Internetangebotes
-      gesetzten Links und Verweise sowie für Fremdeinträge in von uns
-      eingerichteten Gästebüchern, Diskussionsforen, Linkverzeichnissen,
-      Mailinglisten und in allen anderen Formen von Datenbanken, auf deren
-      Inhalt externe Schreibzugriffe möglich sind. Für illegale, fehlerhafte
-      oder unvollständige Inhalte und insbesondere für Schäden, die aus der
-      Nutzung oder Nichtnutzung solcherart dargebotener Informationen entstehen,
-      haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht
-      derjenige, der über Links auf die jeweilige Veröffentlichung lediglich
-      verweist.
-      Sollten unsere Verweise zu gesetzwidrigen, jugendgefährdenden oder aus
-      anderen Gründen abzulehnenden Darstellungen führen, bitten wir um
-      entsprechende Benachrichtigung.
-    </p>
-
-    <h4>Urheber- und Kennzeichenrecht</h4>
-    <p>
-      Wir sind bestrebt, in allen Publikationen die Urheberrechte der
-      verwendeten Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu
-      beachten, von uns selbst erstellte Bilder, Grafiken, Tondokumente,
-      Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken,
-      Tondokumente, Videosequenzen und Texte zurückzugreifen.
-      Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte
-      geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den
-      Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten
-      der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen
-      Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch
-      Rechte Dritter geschützt sind! Das Copyright für veröffentlichte,
-      von uns selbst erstellte Objekte bleibt allein uns vorbehalten.
-      Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente,
-      Videosequenzen und Texte in anderen elektronischen oder gedruckten
-      Publikationen ist ohne unsere ausdrückliche Zustimmung nicht gestattet.
-    </p>
-
-    <h4>Hinweis für Abmahnversuche</h4>
-    <p>
-      Keine Abmahnung ohne vorherigen Kontakt! Sollte der Inhalt oder die
-      Aufmachung dieser Seiten fremde Rechte Dritter oder gesetzliche
-      Bestimmungen verletzen, so bitten wir um eine entsprechende Nachricht ohne
-      Kostennote.
-      Die Beseitigung einer möglicherweise von diesen Seiten ausgehenden
-      Schutzrechts-Verletzung durch Schutzrecht-Inhaber/innen selbst darf nicht
-      ohne unsere Zustimmung stattfinden. Wir garantieren, dass die zu Recht
-      beanstandeten Passagen unverzüglich entfernt werden, ohne dass von Ihrer
-      Seite die Einschaltung eines Rechtsbeistandes erforderlich ist.
-      Dennoch von Ihnen ohne vorherige Kontaktaufnahme ausgelöste Kosten werden
-      wir vollumfänglich zurückweisen und gegebenenfalls Gegenklage wegen
-      Verletzung vorgenannter Bestimmungen einreichen. Wir bitten hierfür um Ihr
-      Verständnis. 
-    </p>
-    <h4>Datenschutz</h4>
-    <p>
-      Disclaimer: Diese Zusammenfassung ist nicht Bestandteil der
-      Datenschutzrichtlinie und ist kein rechtsgültiges Dokument.
-      Sie stellt lediglich eine praktische Hilfe zum Verständnis des Volltextes
-      der Datenschutzrichtlinie dar.
-      Betrachte sie als ein benutzerfreundlicher Zugang zu unserer
-      Datenschutzrichtlinie.
-    </p>
-    <p>
-      Da wir der Ansicht sind, dass du nicht verpflichtet sein solltest,
-      personenbezogene Daten bereitzustellen, um am freien Wissensaustausch
-      teilzunehmen, kannst du alle Einträge der Karte von morgen ohne Einrichtung
-      eines Benutzerkontos lesen, bearbeiten und nutzen;
-    </p>
-    <p>
-      Da wir verstehen wollen, wie die Seite der Karte von morgen genutzt wird,
-      damit wir sie besser an deine Bedürfnisse anpassen können, erfassen wir
-      einige Daten, wenn du:
-      <ul>
-        <li>
-          öffentliche Beiträge tätigst;
-        </li>
-        <li>
-          ein Benutzerkonto einrichtest oder deine Benutzerseite aktualisierst;
-        </li>
-        <li>
-          die Seite der Karte von morgen nutzt;
-        </li>
-        <li>
-          uns E-Mails sendest oder an einer Umfrage teilnimmst oder Feedback
-          gibst.
-        </li>
-      </ul>
-    </p>
-    <p>
-      Wir verpflichten uns:
-      <ul>
-        <li>
-          in dieser Datenschutzrichtlinie zu beschreiben, wie deine Daten
-          verwendet oder weitergegeben werden können;
-        </li>
-        <li>
-          angemessene Maßnahmen zu ergreifen, um deine Daten sicher
-          aufzubewahren;
-        </li>
-        <li>
-          deine Daten niemals zu verkaufen oder sie zu Marketingzwecken an
-          Dritte weiterzugeben;
-        </li>
-        <li>
-          deine Daten nur unter einigen wenigen Umständen weiterzugeben, zum
-          Beispiel, um die Seite der Karte von morgen zu verbessern,
-          gesetzlichen Bestimmungen zu genügen oder um dich und andere zu
-          schützen;
-        </li>
-        <li>
-          deine Daten nur für den kürzestmöglichen Zeitraum zu speichern, der zu
-          Zwecken der Wartung, des Verständnisses und der Verbesserung der Karte
-          von morgen sowie zur Einhaltung unserer gesetzlichen Pflichten
-          erforderlich ist.
-        </li>
-      </ul>
-    </p>
-    <p>
-      Bitte beachte:
-      <ul>
-        <li>
-          Inhalte, die du der Karte von morgen hinzufügst oder Änderungen, die du
-          vornimmst, sind öffentlich und dauerhaft verfügbar.
-        </li>
-        <li>
-          Wenn du Inhalte hinzufügst oder Änderungen an den Eintragungen der Karte
-          von morgen vornimmst, ohne dich anzumelden, werden die entsprechenden
-          Inhalte bzw. Änderungen öffentlich und dauerhaft der zur Änderungszeit
-          benutzten IP-Adresse – und nicht einem Benutzernamen – zugeordnet.
-        </li>
-        <li>
-          Unsere aus freiwilligen Bearbeitenden und Beitragenden bestehende
-          Benutzergemeinschaft ist ein sich selbst überwachendes Organ.
-          Bestimmte Benutzer der Karte von morgen mit administrativen Rechten,
-          die von der Community ausgewählt werden, nutzen Werkzeuge, die ihnen
-          beschränkten Zugang zu nichtöffentlichen Informationen über kürzlich
-          getätigte Beiträge gewähren, damit sie die Karte von morgen schützen
-          und Richtlinien durchsetzen können.
-        </li>
-      </ul>
-    </p>
-    <p>
-      Zum Schutz der Karte von morgen und anderer Benutzer darfst du die Karte
-      von morgen Webseiten nicht benutzen, wenn du dieser Datenschutzrichtlinie
-      nicht zustimmst.
-    </p>
-    <p>
-      Datenschutzrichtlinie
-      <br/>
-      Sofern innerhalb des Internetangebotes die Möglichkeit zur Eingabe
-      persönlicher oder geschäftlicher Daten (Emailadressen, Namen, Anschriften)
-      besteht, so erfolgt die Preisgabe dieser Daten seitens des Nutzers auf
-      ausdrücklich freiwilliger Basis.
-      Die Inanspruchnahme und Bezahlung aller angebotenen Dienste ist – soweit
-      technisch möglich und zumutbar – auch ohne Angabe solcher Daten bzw. unter
-      Angabe anonymisierter Daten oder eines Pseudonyms gestattet. Die Nutzung
-      der im Rahmen des Impressums oder vergleichbarer Angaben veröffentlichten
-      Kontaktdaten wie Postanschriften, Telefon- und Faxnummern sowie
-      Emailadressen durch Dritte zur Übersendung von nicht ausdrücklich
-      angeforderten Informationen ist nicht gestattet. Rechtliche Schritte gegen
-      die Versender von sogenannten Spam-Mails bei Verstößen gegen dieses Verbot
-      sind ausdrücklich vorbehalten.
-    </p>
-    <p>
-      Quellen u.a.:
-      <br />
-      Haftungsausschluss von Haftungsausschluss-Vorlage.de und
-      Datenschutzgesetz.de
-    </p>
-  </div>
-
-module.exports = Imprint
+// TODO: import React  from "react"
+// TODO: import URLs   from "../../constants/URLs"
+// TODO: import i18n   from "../../i18n";
+// TODO: 
+// TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// TODO: 
+// TODO: const t = (key) => i18n.t("imprint." + key)
+// TODO: 
+// TODO: const Imprint = () =>
+// TODO: 
+// TODO:   <div className="info">
+// TODO:     <h3>{t("contact")}</h3>
+// TODO:     <p>
+// TODO:       <FontAwesomeIcon icon="globe-africa" /> <a target="_blank" href = { URLs.PROTOTYPE.link } >{ URLs.PROTOTYPE.name }</a>
+// TODO:       <br />
+// TODO:       <FontAwesomeIcon icon={['fab', 'facebook']} /> <a target="_blank" href = { URLs.FACEBOOK.link } >{ URLs.FACEBOOK.name }</a>
+// TODO:       <br />
+// TODO:       <FontAwesomeIcon icon="envelope" /> <a target="_blank" href = { URLs.MAIL.link } >{ URLs.MAIL.name }</a>
+// TODO:       <br />
+// TODO:       <FontAwesomeIcon icon={['fab', 'github']} /> <a target="_blank" href = { URLs.REPOSITORY.link } >{ URLs.REPOSITORY.name }</a>
+// TODO:     </p>
+// TODO:     <h3>{t("imprint")}</h3>
+// TODO:       <h4>{t("heading1")}</h4>
+// TODO:         Ideen³ e.V. // Räume für Entwicklung
+// TODO:         <br />
+// TODO:         {t("representedByChair")} Helmut Wolman
+// TODO:         <br />
+// TODO:         Görreshof 180, 53347 Alfter
+// TODO:         <br />
+// TODO:         <a target="_blank" href = "http://ideenhochdrei.org">Ideenhochdrei.org</a>
+// TODO:         <br />
+// TODO:         <a href = "mailto:info@ideenhochdrei.org">
+// TODO:           info@ideenhochdrei.org
+// TODO:         </a>
+// TODO: 
+// TODO:       <h4 className="imprint-heading">{t("heading2")}</h4>
+// TODO:         {t("kvmTeamRepresentedBy")}
+// TODO:         <br />
+// TODO:         Helmut Wolman
+// TODO:         <br />
+// TODO:         Turley-Platz 9
+// TODO:         <br />
+// TODO:         68167 Mannheim
+// TODO:         <br />
+// TODO:         <a href = "mailto:helmut.wolman@kartevonmorgen.org">
+// TODO:           helmut.wolman@kartevonmorgen.org
+// TODO:         </a>
+// TODO: 
+// TODO:       <h4 className="imprint-heading">{t("heading3")}</h4>
+// TODO:         {t("kvmTeamRepresentedBy")}
+// TODO:         <br />
+// TODO:         T. Thao Tran
+// TODO:         <br />
+// TODO:         <a href = "mailto:thao.tran@kartevonmorgen.org">
+// TODO:           thao.tran@kartevonmorgen.org
+// TODO:         </a>
+// TODO: 
+// TODO:       <h4 className="imprint-heading">{t("heading4")}</h4>
+// TODO:         Anja Dannemann
+// TODO:         <br />
+// TODO:         <a href= "mailto:anja.dannemann@kartevonmorgen.org">
+// TODO:           anja.dannemann@kartevonmorgen.org
+// TODO:         </a>
+// TODO: 
+// TODO:       <h4 className="imprint-heading">{t("heading5")}</h4>
+// TODO:         Lisa Tegtmeier
+// TODO:         <br />
+// TODO:         <a target="_blank" href = "http://www.lisategtmeier.de">
+// TODO:          www.lisategtmeier.de
+// TODO:         </a>
+// TODO: 
+// TODO:       <h4 className="imprint-heading">{t("heading6")}</h4>
+// TODO:         <a target="_blank" href="https://slowtec.de/">slowtec GmbH</a>
+// TODO:         <br />
+// TODO:         Friedrichsberg 55
+// TODO:         <br />
+// TODO:         70567 Stuttgart
+// TODO:         <br />
+// TODO:         <a href = "mailto:markus@kartevonmorgen.org">
+// TODO:           markus@kartevonmorgen.org
+// TODO:         </a>
+// TODO: 
+// TODO:     <h4>Haftungsausschluss</h4>
+// TODO:     <p>
+// TODO:       Sämtliche über die Website veröffentlichten Produkt- und
+// TODO:       Firmeninformationen oder sonstige Informationen werden von den Betreibern
+// TODO:       der Karte von morgen nach bestem Wissen zur Verfügung gestellt.
+// TODO:       All diese Informationen begründen jedoch soweit gesetzlich zulässig, weder
+// TODO:       eine Garantie, Zusage oder Haftung seitens der Betreiber der Karte von
+// TODO:       morgen, noch entbinden sie den Nutzer von der Durchführung eigener
+// TODO:       Untersuchungen, Tests und dem Einholen weiterer Informationen.
+// TODO:       Wir übernehmen keinerlei Gewähr für die Aktualität, Richtigkeit und
+// TODO:       Vollständigkeit der bereitgestellten Informationen auf unserer Website.
+// TODO:       Haftungsansprüche gegen uns, welche sich auf Schäden materieller oder
+// TODO:       ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der
+// TODO:       dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und
+// TODO:       unvollständiger Informationen verursacht wurden, sind grundsätzlich
+// TODO:       ausgeschlossen, sofern unsererseits kein nachweislich vorsätzliches oder
+// TODO:       grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend
+// TODO:       und unverbindlich. Wir behalten uns ausdrücklich vor, Teile der Seiten
+// TODO:       oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern,
+// TODO:       zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder
+// TODO:       endgültig einzustellen.
+// TODO:     </p>
+// TODO:     <h4>Verweise und Links</h4>
+// TODO:     <p>
+// TODO:       Bei direkten oder indirekten Verweisen auf fremde Webseiten (“Hyperlinks”),
+// TODO:       die außerhalb unseres Verantwortungsbereiches liegen, würde eine
+// TODO:       Haftungsverpflichtung ausschließlich in dem Fall in Kraft treten, in dem
+// TODO:       wir von den Inhalten Kenntnis haben und es uns technisch möglich und
+// TODO:       zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
+// TODO:       Wir erklären hiermit ausdrücklich, dass zum Zeitpunkt der Linksetzung
+// TODO:       keine illegalen Inhalte auf den zu verlinkenden Seiten erkennbar waren.
+// TODO:       Auf die aktuelle und zukünftige Gestaltung, die Inhalte oder die
+// TODO:       Urheberschaft der verlinkten/verknüpften Seiten haben wir keinerlei
+// TODO:       Einfluss.
+// TODO:       Deshalb distanzieren wir uns hiermit ausdrücklich von allen Inhalten aller
+// TODO:       verlinkten/verknüpften Seiten, die nach der Linksetzung verändert wurden.
+// TODO:       Diese Feststellung gilt für alle innerhalb des eigenen Internetangebotes
+// TODO:       gesetzten Links und Verweise sowie für Fremdeinträge in von uns
+// TODO:       eingerichteten Gästebüchern, Diskussionsforen, Linkverzeichnissen,
+// TODO:       Mailinglisten und in allen anderen Formen von Datenbanken, auf deren
+// TODO:       Inhalt externe Schreibzugriffe möglich sind. Für illegale, fehlerhafte
+// TODO:       oder unvollständige Inhalte und insbesondere für Schäden, die aus der
+// TODO:       Nutzung oder Nichtnutzung solcherart dargebotener Informationen entstehen,
+// TODO:       haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht
+// TODO:       derjenige, der über Links auf die jeweilige Veröffentlichung lediglich
+// TODO:       verweist.
+// TODO:       Sollten unsere Verweise zu gesetzwidrigen, jugendgefährdenden oder aus
+// TODO:       anderen Gründen abzulehnenden Darstellungen führen, bitten wir um
+// TODO:       entsprechende Benachrichtigung.
+// TODO:     </p>
+// TODO: 
+// TODO:     <h4>Urheber- und Kennzeichenrecht</h4>
+// TODO:     <p>
+// TODO:       Wir sind bestrebt, in allen Publikationen die Urheberrechte der
+// TODO:       verwendeten Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu
+// TODO:       beachten, von uns selbst erstellte Bilder, Grafiken, Tondokumente,
+// TODO:       Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken,
+// TODO:       Tondokumente, Videosequenzen und Texte zurückzugreifen.
+// TODO:       Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte
+// TODO:       geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den
+// TODO:       Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten
+// TODO:       der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen
+// TODO:       Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch
+// TODO:       Rechte Dritter geschützt sind! Das Copyright für veröffentlichte,
+// TODO:       von uns selbst erstellte Objekte bleibt allein uns vorbehalten.
+// TODO:       Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente,
+// TODO:       Videosequenzen und Texte in anderen elektronischen oder gedruckten
+// TODO:       Publikationen ist ohne unsere ausdrückliche Zustimmung nicht gestattet.
+// TODO:     </p>
+// TODO: 
+// TODO:     <h4>Hinweis für Abmahnversuche</h4>
+// TODO:     <p>
+// TODO:       Keine Abmahnung ohne vorherigen Kontakt! Sollte der Inhalt oder die
+// TODO:       Aufmachung dieser Seiten fremde Rechte Dritter oder gesetzliche
+// TODO:       Bestimmungen verletzen, so bitten wir um eine entsprechende Nachricht ohne
+// TODO:       Kostennote.
+// TODO:       Die Beseitigung einer möglicherweise von diesen Seiten ausgehenden
+// TODO:       Schutzrechts-Verletzung durch Schutzrecht-Inhaber/innen selbst darf nicht
+// TODO:       ohne unsere Zustimmung stattfinden. Wir garantieren, dass die zu Recht
+// TODO:       beanstandeten Passagen unverzüglich entfernt werden, ohne dass von Ihrer
+// TODO:       Seite die Einschaltung eines Rechtsbeistandes erforderlich ist.
+// TODO:       Dennoch von Ihnen ohne vorherige Kontaktaufnahme ausgelöste Kosten werden
+// TODO:       wir vollumfänglich zurückweisen und gegebenenfalls Gegenklage wegen
+// TODO:       Verletzung vorgenannter Bestimmungen einreichen. Wir bitten hierfür um Ihr
+// TODO:       Verständnis. 
+// TODO:     </p>
+// TODO:     <h4>Datenschutz</h4>
+// TODO:     <p>
+// TODO:       Disclaimer: Diese Zusammenfassung ist nicht Bestandteil der
+// TODO:       Datenschutzrichtlinie und ist kein rechtsgültiges Dokument.
+// TODO:       Sie stellt lediglich eine praktische Hilfe zum Verständnis des Volltextes
+// TODO:       der Datenschutzrichtlinie dar.
+// TODO:       Betrachte sie als ein benutzerfreundlicher Zugang zu unserer
+// TODO:       Datenschutzrichtlinie.
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Da wir der Ansicht sind, dass du nicht verpflichtet sein solltest,
+// TODO:       personenbezogene Daten bereitzustellen, um am freien Wissensaustausch
+// TODO:       teilzunehmen, kannst du alle Einträge der Karte von morgen ohne Einrichtung
+// TODO:       eines Benutzerkontos lesen, bearbeiten und nutzen;
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Da wir verstehen wollen, wie die Seite der Karte von morgen genutzt wird,
+// TODO:       damit wir sie besser an deine Bedürfnisse anpassen können, erfassen wir
+// TODO:       einige Daten, wenn du:
+// TODO:       <ul>
+// TODO:         <li>
+// TODO:           öffentliche Beiträge tätigst;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           ein Benutzerkonto einrichtest oder deine Benutzerseite aktualisierst;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           die Seite der Karte von morgen nutzt;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           uns E-Mails sendest oder an einer Umfrage teilnimmst oder Feedback
+// TODO:           gibst.
+// TODO:         </li>
+// TODO:       </ul>
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Wir verpflichten uns:
+// TODO:       <ul>
+// TODO:         <li>
+// TODO:           in dieser Datenschutzrichtlinie zu beschreiben, wie deine Daten
+// TODO:           verwendet oder weitergegeben werden können;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           angemessene Maßnahmen zu ergreifen, um deine Daten sicher
+// TODO:           aufzubewahren;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           deine Daten niemals zu verkaufen oder sie zu Marketingzwecken an
+// TODO:           Dritte weiterzugeben;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           deine Daten nur unter einigen wenigen Umständen weiterzugeben, zum
+// TODO:           Beispiel, um die Seite der Karte von morgen zu verbessern,
+// TODO:           gesetzlichen Bestimmungen zu genügen oder um dich und andere zu
+// TODO:           schützen;
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           deine Daten nur für den kürzestmöglichen Zeitraum zu speichern, der zu
+// TODO:           Zwecken der Wartung, des Verständnisses und der Verbesserung der Karte
+// TODO:           von morgen sowie zur Einhaltung unserer gesetzlichen Pflichten
+// TODO:           erforderlich ist.
+// TODO:         </li>
+// TODO:       </ul>
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Bitte beachte:
+// TODO:       <ul>
+// TODO:         <li>
+// TODO:           Inhalte, die du der Karte von morgen hinzufügst oder Änderungen, die du
+// TODO:           vornimmst, sind öffentlich und dauerhaft verfügbar.
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           Wenn du Inhalte hinzufügst oder Änderungen an den Eintragungen der Karte
+// TODO:           von morgen vornimmst, ohne dich anzumelden, werden die entsprechenden
+// TODO:           Inhalte bzw. Änderungen öffentlich und dauerhaft der zur Änderungszeit
+// TODO:           benutzten IP-Adresse – und nicht einem Benutzernamen – zugeordnet.
+// TODO:         </li>
+// TODO:         <li>
+// TODO:           Unsere aus freiwilligen Bearbeitenden und Beitragenden bestehende
+// TODO:           Benutzergemeinschaft ist ein sich selbst überwachendes Organ.
+// TODO:           Bestimmte Benutzer der Karte von morgen mit administrativen Rechten,
+// TODO:           die von der Community ausgewählt werden, nutzen Werkzeuge, die ihnen
+// TODO:           beschränkten Zugang zu nichtöffentlichen Informationen über kürzlich
+// TODO:           getätigte Beiträge gewähren, damit sie die Karte von morgen schützen
+// TODO:           und Richtlinien durchsetzen können.
+// TODO:         </li>
+// TODO:       </ul>
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Zum Schutz der Karte von morgen und anderer Benutzer darfst du die Karte
+// TODO:       von morgen Webseiten nicht benutzen, wenn du dieser Datenschutzrichtlinie
+// TODO:       nicht zustimmst.
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Datenschutzrichtlinie
+// TODO:       <br/>
+// TODO:       Sofern innerhalb des Internetangebotes die Möglichkeit zur Eingabe
+// TODO:       persönlicher oder geschäftlicher Daten (Emailadressen, Namen, Anschriften)
+// TODO:       besteht, so erfolgt die Preisgabe dieser Daten seitens des Nutzers auf
+// TODO:       ausdrücklich freiwilliger Basis.
+// TODO:       Die Inanspruchnahme und Bezahlung aller angebotenen Dienste ist – soweit
+// TODO:       technisch möglich und zumutbar – auch ohne Angabe solcher Daten bzw. unter
+// TODO:       Angabe anonymisierter Daten oder eines Pseudonyms gestattet. Die Nutzung
+// TODO:       der im Rahmen des Impressums oder vergleichbarer Angaben veröffentlichten
+// TODO:       Kontaktdaten wie Postanschriften, Telefon- und Faxnummern sowie
+// TODO:       Emailadressen durch Dritte zur Übersendung von nicht ausdrücklich
+// TODO:       angeforderten Informationen ist nicht gestattet. Rechtliche Schritte gegen
+// TODO:       die Versender von sogenannten Spam-Mails bei Verstößen gegen dieses Verbot
+// TODO:       sind ausdrücklich vorbehalten.
+// TODO:     </p>
+// TODO:     <p>
+// TODO:       Quellen u.a.:
+// TODO:       <br />
+// TODO:       Haftungsausschluss von Haftungsausschluss-Vorlage.de und
+// TODO:       Datenschutzgesetz.de
+// TODO:     </p>
+// TODO:   </div>
+// TODO: 
+// TODO: module.exports = Imprint

@@ -1,10 +1,10 @@
-import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-
-storiesOf('Button', module)
-  .add('with a text', () => (
-      <button onClick={action('clicked')}>My First Button</button>
-        ))
-    .add('with no text', () => (
-        <button></button>
-          ));
+// TODO: import React from 'react';
+// TODO: import { storiesOf, action } from '@kadira/storybook';
+// TODO: 
+// TODO: storiesOf('Button', module)
+// TODO:   .add('with a text', () => (
+// TODO:       <button onClick={action('clicked')}>My First Button</button>
+// TODO:         ))
+// TODO:     .add('with no text', () => (
+// TODO:         <button></button>
+// TODO:           ));

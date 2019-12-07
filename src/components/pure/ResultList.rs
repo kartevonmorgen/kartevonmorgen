@@ -1,365 +1,365 @@
-import React                from "react"
-import ReactDOM             from "react-dom"
-import { translate }        from "react-i18next";
-import PropTypes            from "prop-types";
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import styled               from "styled-components";
-import Actions              from "../../Actions" //TODO: remove dependency
-import Flower               from "../Flower";
-import NavButton            from "./NavButton";
-import EventTimes           from "./EventTimes";
-import i18n                 from "../../i18n";
-import { NAMES, IDS }       from "../../constants/Categories"
-import STYLE                from "../styling/Variables"
-
-const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
-  var css_class = highlight ? 'highlight-entry ' : '';
-  css_class = css_class + NAMES[entry.categories && entry.categories[0]];
-  const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
-  const title = getTruncatedTitle(entry.title, 60); // maximally two lines
-  const description = getTruncatedDescription(entry.description, 110); // maximally two lines
-
-  return (
-    <ListElement
-      key           = { entry.id }
-      className     = { css_class }
-      onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
-      onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
-      onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
-      <OuterWrapper>
-        <TitleCategoryDescriptionsAndFlower>
-          <TitleCategoryAndDescription>
-            <span className="category">
-              { t("category." + NAMES[entry.categories && entry.categories[0]]) }
-            </span>
-            <div>
-              <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
-            </div>
-            { getBody(isEvent, description, entry.city, entry.organizer) }
-          </TitleCategoryAndDescription>
-          { !isEvent ?
-            <FlowerWrapper>
-              <Flower ratings={ratings} radius={30} showTooltip={false}/>
-            </FlowerWrapper>
-          : <EventTimeLabel start={ entry.start }/> }
-        </TitleCategoryDescriptionsAndFlower>
-        {
-          entry.tags && !isEvent && (entry.tags.length > 0)
-            ? <TagsWrapper>
-              <ul >
-                { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
-              </ul>
-            </TagsWrapper>
-            : null
-        }
-      </OuterWrapper>
-    </ListElement>)
-}
-
-const getBody = (isEvent, description, city, organizer) => {
-  if (isEvent) {
-    return (
-      <EventBody>
-        <div>{city}</div>
-        <div>{organizer}</div>
-      </EventBody>
-    );
-  } else {
-    return (<Description>{description}</Description>);
-  }
-}
-
-const ResultList = props => {
-
-  const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
-
-  let results = entries.map( e =>
-    <ResultListElement
-      entry        = { e            }
-      ratings      = { (e.ratings || []).map(id => ratings[id])}
-      key          = { e.id         }
-      highlight    = { highlight.indexOf(e.id) >= 0 }
-      onClick      = { (id, center) => {
-        if (center) {
-          dispatch(Actions.setCurrentEntry(id, center))
-        }
-      }}
-      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-      onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-      t            = { t } />);
-
-  if(moreEntriesAvailable && !waiting){
-    results.push(
-      <ListElement key="show-more-entries">
-        <div>
-          <a onClick = { onMoreEntriesClick } href="#">
-            {t("resultlist.showMoreEntries")}
-          </a>
-        </div>
-      </ListElement>
-    );
-  }
-    
-  return (
-  <Wrapper>
-    <div className= "result-list">
-    {
-      (results.length > 0)
-        ? <ul>{results}</ul>
-        : (waiting ?
-        <p className= "loading">
-          <span>{t("resultlist.entriesLoading")}</span>
-        </p>
-        : <p className= "no-results">
-            <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
-          </p>)
-    }
-    </div>
-  </Wrapper>)
-}
-
-const getTruncatedTitle = (title, maxCharacters) => {
-  if (title) {
-    if (title.length > maxCharacters + 5) {
-      return title.substring(0, maxCharacters) + "...";
-    } else {
-      return title;
-    }
-  } else {
-    return "";
-  }
-}
-
-const getTruncatedDescription = (description, maxCharacters) => {
-  if(description && description.length > maxCharacters - 10) {
-    description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(". ")) + '...';
-  }
-  if(description && description.length >  maxCharacters) {
-    description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(" ") - 1) + '...';
-  }
-  return description;
-}
-
-ResultList.propTypes = {
-  dispatch:             PropTypes.func.isRequired,
-  waiting:              PropTypes.bool.isRequired,
-  entries:              PropTypes.array.isRequired,
-  ratings:              PropTypes.object.isRequired,
-  highlight:            PropTypes.array.isRequired,
-  moreEntriesAvailable: PropTypes.bool.isRequired,
-  onMoreEntriesClick:   PropTypes.func.isRequired,
-  t:                    PropTypes.func.isRequired,
-  onClick:              PropTypes.func
-}
-
-module.exports = translate("translation")(ResultList)
-
-const OuterWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
-
-const TitleCategoryDescriptionsAndFlower = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  overflow-y: hidden;
-`
-
-const TitleCategoryAndDescription = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-`
-
-const EventTimeLabel = (props) => {
-  const { start } = props;
-  return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
-}
-
-const EventTimeWrapper = styled.div`
-  margin: 12px 7px 10px 10px;
-`
-
-const EntryTitle = styled.h3`
-  font-size: 1.1em;
-  margin: .2rem .3em .2rem 0;
-  font-weight: 500;
-  position: relative;
-  z-index: 3;
-`;
-
-const ListElement = styled.li `
-  position: relative;
-  height: 115px;
-  overflow-y: hidden;
-  cursor: pointer;
-  margin: 0;
-  padding-left: 0.7em;
-  padding-top: 0.7em;
-  padding-right: 0.5em;
-  padding-bottom: 0.4em;
-  border-bottom: 1px solid #ddd;
-  border-left: 5px solid transparent;
-  div {
-    &.category {
-      height: 1.2em;
-    }
-  }
-  &.current-entry {
-    background: #fff;
-  }
-  &:hover {
-    background: #fff;
-  }
-  &.event {
-    &.current-entry {
-      border-left: 5px solid ${STYLE.event};
-    }
-    &:hover {
-      border-left: 5px solid ${STYLE.event};
-    }
-    span.category {
-      color: ${STYLE.event};
-    }
-  }
-  &.company {
-    &.current-entry {
-      border-left: 5px solid ${STYLE.company};
-    }
-    &:hover {
-      border-left: 5px solid ${STYLE.company};
-    }
-    span.category {
-      color: ${STYLE.company};
-    }
-  }
-  &.initiative {
-    &.current-entry {
-      border-left: 5px solid ${STYLE.initiative};
-    }
-    &:hover {
-      border-left: 5px solid ${STYLE.initiative};
-    }
-    span.category {
-      color: ${STYLE.initiative};
-    }
-  }
-  span {
-    &.category {
-      font-size: 0.8em;
-      color: #aaa;
-      text-transform: uppercase;
-    }
-    &.title {
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-    &.subtitle {
-      font-size: 0.8em;
-      color: #555;
-    }
-  }
-  .highlight-entry {
-    div.chevron {
-      color: $darkGray;
-    }
-    &.initiative div.chevron {
-      color: $initiative;
-    }
-    &.company div.chevron {
-      color: $company;
-    }
-    &.event div.chevron {
-      color: $event;
-    }
-  }
-`
-
-const EventBody = styled.div`
-  font-size: 0.8em;
-  margin-top: 2px;
-  max-height: ${14 * 3}px;
-  overflow: hidden;
-  hyphens: auto;
-  color: #555;
-  > div {
-    margin: 1px 0;
-  }
-`
-
-const Description = styled.div`
-  margin-top: 2px;
-  max-height: ${14 * 3}px;
-  overflow: hidden;
-  hyphens: auto;
-  position: relative;
-  z-index: 3;
-  font-size: 0.8em;
-  color: #555;
-`;
-
-const TagsWrapper = styled.div`
-  height: 21px;
-  overflow-y: hidden;
-  margin-top: 5px;
-  float: left;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-`
-
-const Tag = styled.div `
-  line-height: 14px;
-  font-size: 0.75em;
-  display: inline-block;
-  background: #eaeaea;
-  color: #333;
-  border-radius: 0.3em;
-  padding: 0.2em 0.4em;
-  margin-right: 0.4em;
-  margin-bottom: 0.2em;
-  border: 0;
-  letter-spacing: 0.06em;
-  height: 12px;
-  overflow: hidden;
-`
-
-const FlowerWrapper = styled.div `
-  margin: 22px 10px 0 10px;
-`
-
-const Wrapper = styled.div `
-  box-sizing: border-box;
-
-  .result-list {
-    p {
-      &.no-results {
-        margin: 0;
-        padding: 1em;
-        font-size: 0.9em;
-        span {
-          margin-left: 0.5em;
-        }
-      }
-      &.loading {
-        margin: 20px 0 0 0;
-        padding: 1em;
-        font-size: 0.9em;
-        span {
-          margin-left: 0.5em;
-        }
-      }
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-    }
-  }
-`
+// TODO: import React                from "react"
+// TODO: import ReactDOM             from "react-dom"
+// TODO: import { translate }        from "react-i18next";
+// TODO: import PropTypes            from "prop-types";
+// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+// TODO: import styled               from "styled-components";
+// TODO: import Actions              from "../../Actions" //TODO: remove dependency
+// TODO: import Flower               from "../Flower";
+// TODO: import NavButton            from "./NavButton";
+// TODO: import EventTimes           from "./EventTimes";
+// TODO: import i18n                 from "../../i18n";
+// TODO: import { NAMES, IDS }       from "../../constants/Categories"
+// TODO: import STYLE                from "../styling/Variables"
+// TODO: 
+// TODO: const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+// TODO:   var css_class = highlight ? 'highlight-entry ' : '';
+// TODO:   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
+// TODO:   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+// TODO:   const title = getTruncatedTitle(entry.title, 60); // maximally two lines
+// TODO:   const description = getTruncatedDescription(entry.description, 110); // maximally two lines
+// TODO: 
+// TODO:   return (
+// TODO:     <ListElement
+// TODO:       key           = { entry.id }
+// TODO:       className     = { css_class }
+// TODO:       onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
+// TODO:       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
+// TODO:       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
+// TODO:       <OuterWrapper>
+// TODO:         <TitleCategoryDescriptionsAndFlower>
+// TODO:           <TitleCategoryAndDescription>
+// TODO:             <span className="category">
+// TODO:               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
+// TODO:             </span>
+// TODO:             <div>
+// TODO:               <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
+// TODO:             </div>
+// TODO:             { getBody(isEvent, description, entry.city, entry.organizer) }
+// TODO:           </TitleCategoryAndDescription>
+// TODO:           { !isEvent ?
+// TODO:             <FlowerWrapper>
+// TODO:               <Flower ratings={ratings} radius={30} showTooltip={false}/>
+// TODO:             </FlowerWrapper>
+// TODO:           : <EventTimeLabel start={ entry.start }/> }
+// TODO:         </TitleCategoryDescriptionsAndFlower>
+// TODO:         {
+// TODO:           entry.tags && !isEvent && (entry.tags.length > 0)
+// TODO:             ? <TagsWrapper>
+// TODO:               <ul >
+// TODO:                 { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
+// TODO:               </ul>
+// TODO:             </TagsWrapper>
+// TODO:             : null
+// TODO:         }
+// TODO:       </OuterWrapper>
+// TODO:     </ListElement>)
+// TODO: }
+// TODO: 
+// TODO: const getBody = (isEvent, description, city, organizer) => {
+// TODO:   if (isEvent) {
+// TODO:     return (
+// TODO:       <EventBody>
+// TODO:         <div>{city}</div>
+// TODO:         <div>{organizer}</div>
+// TODO:       </EventBody>
+// TODO:     );
+// TODO:   } else {
+// TODO:     return (<Description>{description}</Description>);
+// TODO:   }
+// TODO: }
+// TODO: 
+// TODO: const ResultList = props => {
+// TODO: 
+// TODO:   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
+// TODO: 
+// TODO:   let results = entries.map( e =>
+// TODO:     <ResultListElement
+// TODO:       entry        = { e            }
+// TODO:       ratings      = { (e.ratings || []).map(id => ratings[id])}
+// TODO:       key          = { e.id         }
+// TODO:       highlight    = { highlight.indexOf(e.id) >= 0 }
+// TODO:       onClick      = { (id, center) => {
+// TODO:         if (center) {
+// TODO:           dispatch(Actions.setCurrentEntry(id, center))
+// TODO:         }
+// TODO:       }}
+// TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+// TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+// TODO:       t            = { t } />);
+// TODO: 
+// TODO:   if(moreEntriesAvailable && !waiting){
+// TODO:     results.push(
+// TODO:       <ListElement key="show-more-entries">
+// TODO:         <div>
+// TODO:           <a onClick = { onMoreEntriesClick } href="#">
+// TODO:             {t("resultlist.showMoreEntries")}
+// TODO:           </a>
+// TODO:         </div>
+// TODO:       </ListElement>
+// TODO:     );
+// TODO:   }
+// TODO:     
+// TODO:   return (
+// TODO:   <Wrapper>
+// TODO:     <div className= "result-list">
+// TODO:     {
+// TODO:       (results.length > 0)
+// TODO:         ? <ul>{results}</ul>
+// TODO:         : (waiting ?
+// TODO:         <p className= "loading">
+// TODO:           <span>{t("resultlist.entriesLoading")}</span>
+// TODO:         </p>
+// TODO:         : <p className= "no-results">
+// TODO:             <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
+// TODO:           </p>)
+// TODO:     }
+// TODO:     </div>
+// TODO:   </Wrapper>)
+// TODO: }
+// TODO: 
+// TODO: const getTruncatedTitle = (title, maxCharacters) => {
+// TODO:   if (title) {
+// TODO:     if (title.length > maxCharacters + 5) {
+// TODO:       return title.substring(0, maxCharacters) + "...";
+// TODO:     } else {
+// TODO:       return title;
+// TODO:     }
+// TODO:   } else {
+// TODO:     return "";
+// TODO:   }
+// TODO: }
+// TODO: 
+// TODO: const getTruncatedDescription = (description, maxCharacters) => {
+// TODO:   if(description && description.length > maxCharacters - 10) {
+// TODO:     description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(". ")) + '...';
+// TODO:   }
+// TODO:   if(description && description.length >  maxCharacters) {
+// TODO:     description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(" ") - 1) + '...';
+// TODO:   }
+// TODO:   return description;
+// TODO: }
+// TODO: 
+// TODO: ResultList.propTypes = {
+// TODO:   dispatch:             PropTypes.func.isRequired,
+// TODO:   waiting:              PropTypes.bool.isRequired,
+// TODO:   entries:              PropTypes.array.isRequired,
+// TODO:   ratings:              PropTypes.object.isRequired,
+// TODO:   highlight:            PropTypes.array.isRequired,
+// TODO:   moreEntriesAvailable: PropTypes.bool.isRequired,
+// TODO:   onMoreEntriesClick:   PropTypes.func.isRequired,
+// TODO:   t:                    PropTypes.func.isRequired,
+// TODO:   onClick:              PropTypes.func
+// TODO: }
+// TODO: 
+// TODO: module.exports = translate("translation")(ResultList)
+// TODO: 
+// TODO: const OuterWrapper = styled.div`
+// TODO:   display: flex;
+// TODO:   flex-direction: column;
+// TODO:   height: 100%;
+// TODO: `
+// TODO: 
+// TODO: const TitleCategoryDescriptionsAndFlower = styled.div`
+// TODO:   flex-grow: 1;
+// TODO:   display: flex;
+// TODO:   flex-direction: row;
+// TODO:   overflow-y: hidden;
+// TODO: `
+// TODO: 
+// TODO: const TitleCategoryAndDescription = styled.div`
+// TODO:   flex-grow: 1;
+// TODO:   display: flex;
+// TODO:   flex-direction: column;
+// TODO: `
+// TODO: 
+// TODO: const EventTimeLabel = (props) => {
+// TODO:   const { start } = props;
+// TODO:   return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
+// TODO: }
+// TODO: 
+// TODO: const EventTimeWrapper = styled.div`
+// TODO:   margin: 12px 7px 10px 10px;
+// TODO: `
+// TODO: 
+// TODO: const EntryTitle = styled.h3`
+// TODO:   font-size: 1.1em;
+// TODO:   margin: .2rem .3em .2rem 0;
+// TODO:   font-weight: 500;
+// TODO:   position: relative;
+// TODO:   z-index: 3;
+// TODO: `;
+// TODO: 
+// TODO: const ListElement = styled.li `
+// TODO:   position: relative;
+// TODO:   height: 115px;
+// TODO:   overflow-y: hidden;
+// TODO:   cursor: pointer;
+// TODO:   margin: 0;
+// TODO:   padding-left: 0.7em;
+// TODO:   padding-top: 0.7em;
+// TODO:   padding-right: 0.5em;
+// TODO:   padding-bottom: 0.4em;
+// TODO:   border-bottom: 1px solid #ddd;
+// TODO:   border-left: 5px solid transparent;
+// TODO:   div {
+// TODO:     &.category {
+// TODO:       height: 1.2em;
+// TODO:     }
+// TODO:   }
+// TODO:   &.current-entry {
+// TODO:     background: #fff;
+// TODO:   }
+// TODO:   &:hover {
+// TODO:     background: #fff;
+// TODO:   }
+// TODO:   &.event {
+// TODO:     &.current-entry {
+// TODO:       border-left: 5px solid ${STYLE.event};
+// TODO:     }
+// TODO:     &:hover {
+// TODO:       border-left: 5px solid ${STYLE.event};
+// TODO:     }
+// TODO:     span.category {
+// TODO:       color: ${STYLE.event};
+// TODO:     }
+// TODO:   }
+// TODO:   &.company {
+// TODO:     &.current-entry {
+// TODO:       border-left: 5px solid ${STYLE.company};
+// TODO:     }
+// TODO:     &:hover {
+// TODO:       border-left: 5px solid ${STYLE.company};
+// TODO:     }
+// TODO:     span.category {
+// TODO:       color: ${STYLE.company};
+// TODO:     }
+// TODO:   }
+// TODO:   &.initiative {
+// TODO:     &.current-entry {
+// TODO:       border-left: 5px solid ${STYLE.initiative};
+// TODO:     }
+// TODO:     &:hover {
+// TODO:       border-left: 5px solid ${STYLE.initiative};
+// TODO:     }
+// TODO:     span.category {
+// TODO:       color: ${STYLE.initiative};
+// TODO:     }
+// TODO:   }
+// TODO:   span {
+// TODO:     &.category {
+// TODO:       font-size: 0.8em;
+// TODO:       color: #aaa;
+// TODO:       text-transform: uppercase;
+// TODO:     }
+// TODO:     &.title {
+// TODO:       font-weight: bold;
+// TODO:       font-size: 1.2em;
+// TODO:       margin-right: 0.3em;
+// TODO:     }
+// TODO:     &.subtitle {
+// TODO:       font-size: 0.8em;
+// TODO:       color: #555;
+// TODO:     }
+// TODO:   }
+// TODO:   .highlight-entry {
+// TODO:     div.chevron {
+// TODO:       color: $darkGray;
+// TODO:     }
+// TODO:     &.initiative div.chevron {
+// TODO:       color: $initiative;
+// TODO:     }
+// TODO:     &.company div.chevron {
+// TODO:       color: $company;
+// TODO:     }
+// TODO:     &.event div.chevron {
+// TODO:       color: $event;
+// TODO:     }
+// TODO:   }
+// TODO: `
+// TODO: 
+// TODO: const EventBody = styled.div`
+// TODO:   font-size: 0.8em;
+// TODO:   margin-top: 2px;
+// TODO:   max-height: ${14 * 3}px;
+// TODO:   overflow: hidden;
+// TODO:   hyphens: auto;
+// TODO:   color: #555;
+// TODO:   > div {
+// TODO:     margin: 1px 0;
+// TODO:   }
+// TODO: `
+// TODO: 
+// TODO: const Description = styled.div`
+// TODO:   margin-top: 2px;
+// TODO:   max-height: ${14 * 3}px;
+// TODO:   overflow: hidden;
+// TODO:   hyphens: auto;
+// TODO:   position: relative;
+// TODO:   z-index: 3;
+// TODO:   font-size: 0.8em;
+// TODO:   color: #555;
+// TODO: `;
+// TODO: 
+// TODO: const TagsWrapper = styled.div`
+// TODO:   height: 21px;
+// TODO:   overflow-y: hidden;
+// TODO:   margin-top: 5px;
+// TODO:   float: left;
+// TODO:   ul {
+// TODO:     list-style: none;
+// TODO:     padding: 0;
+// TODO:     margin: 0;
+// TODO:   }
+// TODO: `
+// TODO: 
+// TODO: const Tag = styled.div `
+// TODO:   line-height: 14px;
+// TODO:   font-size: 0.75em;
+// TODO:   display: inline-block;
+// TODO:   background: #eaeaea;
+// TODO:   color: #333;
+// TODO:   border-radius: 0.3em;
+// TODO:   padding: 0.2em 0.4em;
+// TODO:   margin-right: 0.4em;
+// TODO:   margin-bottom: 0.2em;
+// TODO:   border: 0;
+// TODO:   letter-spacing: 0.06em;
+// TODO:   height: 12px;
+// TODO:   overflow: hidden;
+// TODO: `
+// TODO: 
+// TODO: const FlowerWrapper = styled.div `
+// TODO:   margin: 22px 10px 0 10px;
+// TODO: `
+// TODO: 
+// TODO: const Wrapper = styled.div `
+// TODO:   box-sizing: border-box;
+// TODO: 
+// TODO:   .result-list {
+// TODO:     p {
+// TODO:       &.no-results {
+// TODO:         margin: 0;
+// TODO:         padding: 1em;
+// TODO:         font-size: 0.9em;
+// TODO:         span {
+// TODO:           margin-left: 0.5em;
+// TODO:         }
+// TODO:       }
+// TODO:       &.loading {
+// TODO:         margin: 20px 0 0 0;
+// TODO:         padding: 1em;
+// TODO:         font-size: 0.9em;
+// TODO:         span {
+// TODO:           margin-left: 0.5em;
+// TODO:         }
+// TODO:       }
+// TODO:     }
+// TODO:     ul {
+// TODO:       list-style: none;
+// TODO:       margin: 0;
+// TODO:       padding: 0;
+// TODO: 
+// TODO:     }
+// TODO:   }
+// TODO: `
