@@ -1,21 +1,21 @@
 // TODO: export default (original) => {
-// TODO: 
+// TODO:
 // TODO:   const url = getHashUrl(original);
-// TODO: 
+// TODO:
 // TODO:   let [path, params] = url.split('?');
-// TODO: 
+// TODO:
 // TODO:   if (path.length >= 2) {
 // TODO:     path = path.replace(/\/$/, '');
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (params) {
 // TODO:     params = parseSearchParams(params);
 // TODO:   } else {
 // TODO:     params = {}
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   const actual = path + joinSearchParams(params);
-// TODO: 
+// TODO:
 // TODO:   return {
 // TODO:     path,
 // TODO:     params,
@@ -23,27 +23,27 @@
 // TODO:     actual
 // TODO:   };
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const getHashUrl = (original) => {
 // TODO:   let url = original.split('#');
-// TODO: 
+// TODO:
 // TODO:   if (url.length >= 2) {
 // TODO:     url = url[1];
 // TODO:   } else {
 // TODO:     url = '/';
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (url === '') {
 // TODO:     url = '/';
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (url[0] !== '/') {
 // TODO:     url = '/' + url;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   return url;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const parseSearchParams = (searchString) => {
 // TODO:   let pairSplit;
 // TODO:   return (searchString || '').replace(/^\?/, '').split('&').reduce((p, pair) => {
@@ -54,15 +54,15 @@
 // TODO:     return p;
 // TODO:   }, {});
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const joinSearchParams = (searchParams) => {
 // TODO:   const searchString = Object
 // TODO:       .keys(searchParams)
 // TODO:       .reduce((p, paramKey) => p += `&${paramKey}=${searchParams[paramKey]}`, '?');
-// TODO: 
+// TODO:
 // TODO:   if (searchString.length <= 1) {
 // TODO:     return '';
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   return searchString.replace('?&', '?');
 // TODO: }

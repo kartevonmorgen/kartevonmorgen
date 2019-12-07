@@ -1,13 +1,13 @@
 // TODO: import i18n from "../i18n";
-// TODO: 
+// TODO:
 // TODO: const entryForm = (data) => {
 // TODO:   let errors, h, l, ref, u;
 // TODO:   errors = {};
-// TODO: 
+// TODO:
 // TODO:   const t = (key) => {
 // TODO:     return i18n.t("entryForm." + key);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (data == null) {
 // TODO:     errors._error = t("invalidValues");
 // TODO:     return errors;
@@ -97,15 +97,15 @@
 // TODO:   }
 // TODO:   return errors;
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const ratingForm = (data) => {
 // TODO:   let l;
 // TODO:   let errors = {};
-// TODO: 
+// TODO:
 // TODO:   const t = (key) => {
 // TODO:     return i18n.t("ratingForm." + key);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (data == null) {
 // TODO:     errors._error = t("invalidValues");
 // TODO:     return errors;
@@ -154,14 +154,14 @@
 // TODO:   }
 // TODO:   return errors;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const loginForm = (data) => {
 // TODO:   let errors = {};
-// TODO: 
+// TODO:
 // TODO:   const t = (key) => {
 // TODO:     return i18n.t("login." + key);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (data == null) {
 // TODO:     errors._error = t("invalidValues");
 // TODO:     return errors;
@@ -188,14 +188,14 @@
 // TODO:   }
 // TODO:   return errors;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const registerForm = (data) => {
 // TODO:   let errors = {};
-// TODO: 
+// TODO:
 // TODO:   const t = (key) => {
 // TODO:     return i18n.t("register." + key);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   if (data == null) {
 // TODO:     errors._error = t("invalidValues");
 // TODO:     return errors;
@@ -228,5 +228,5 @@
 // TODO:   }
 // TODO:   return errors;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = { entryForm, ratingForm, loginForm, registerForm };

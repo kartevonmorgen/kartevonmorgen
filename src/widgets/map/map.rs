@@ -4,7 +4,7 @@
 // TODO: import URLs          from "../../constants/URLs";
 // TODO: import i18n          from "../../i18n";
 // TODO: import Map           from "../../components/Map";
-// TODO: 
+// TODO:
 // TODO: const MoreInfoLink = styled.a`
 // TODO:   position: absolute;
 // TODO:   z-index: 1;
@@ -16,8 +16,8 @@
 // TODO:   font-family: "Rubik", sans-serif;
 // TODO:   border-top-right-radius: 2px;
 // TODO: `;
-// TODO: 
-// TODO: module.exports = ({marker, size, center, zoom, category, highlight, 
+// TODO:
+// TODO: module.exports = ({marker, size, center, zoom, category, highlight,
 // TODO:   entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
 // TODO:   <div>
 // TODO:     <Map

@@ -8,7 +8,7 @@
 // TODO: import timedActions        from "./timedActions";
 // TODO: import { reducer as notificationsReducer } from 'reapop';
 // TODO: import { combineReducers } from "redux";
-// TODO: 
+// TODO:
 // TODO: module.exports = combineReducers({
 // TODO:   notifications: notificationsReducer(),
 // TODO:   form,

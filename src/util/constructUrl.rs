@@ -1,11 +1,11 @@
 // TODO: import mapConst   from "../constants/Map"
-// TODO: 
+// TODO:
 // TODO: const searchTextToUrlQuery = (text) => {
-// TODO:   let query = "search=" 
+// TODO:   let query = "search="
 // TODO:     + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
 // TODO:   return query;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: export default (entry, center, zoom, searchText, showLeft, categories) => {
 // TODO:   let params = [];
 // TODO:   if (entry && entry != "NONE") {
@@ -27,6 +27,6 @@
 // TODO:   if (showLeft != null) {
 // TODO:     params.push("left=" + (showLeft ? "show" : "hide"));
 // TODO:   }
-// TODO:   
+// TODO:
 // TODO:   return "#/?" + params.join("&");
 // TODO: }

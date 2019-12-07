@@ -3,9 +3,9 @@
 // TODO: import { TILEHOSTING_API_KEY } from "./constants/App";
 // TODO: import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
 // TODO: import CATEGORY_IDS from "./constants/Categories";
-// TODO: 
+// TODO:
 // TODO: const prefix = saPrefix(OFDB_API.link);
-// TODO: 
+// TODO:
 // TODO: const jsonCallback = (cb) => (err, res) => {
 // TODO:   if (err) {
 // TODO:     cb(err);
@@ -13,7 +13,7 @@
 // TODO:     cb(null, res.body);
 // TODO:   }
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: function normalizeCoordinate(bbox, idx) {
 // TODO:     if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
 // TODO:         bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
@@ -22,11 +22,11 @@
 // TODO:         bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
 // TODO:     }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = {
-// TODO: 
+// TODO:
 // TODO:   searchEntries: (txt, cats, bbox, cb) => {
-// TODO: 
+// TODO:
 // TODO:     if (txt == null) {
 // TODO:       txt = '';
 // TODO:     }
@@ -49,7 +49,7 @@
 // TODO:       .set('Accept', 'application/json')
 // TODO:       .end(jsonCallback(cb));
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   searchEvents: (tags, bbox, start, end, cb) => {
 // TODO:     if (bbox == null) {
 // TODO:       bbox = [];
@@ -64,10 +64,10 @@
 // TODO:     if(tags && tags.length > 0) req.query('tags=' + tags) // TODO
 // TODO:     if(start) req.query(start ? ('start_min=' + start) : "")
 // TODO:     if(end) req.query(end ? ('start_max=' + end) : "")
-// TODO: 
+// TODO:
 // TODO:     req.end(jsonCallback(cb));
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getEvent: (id, cb) => {
 // TODO:     request
 // TODO:       .get('/events/' + id)
@@ -75,7 +75,7 @@
 // TODO:       .set('Accept', 'application/json')
 // TODO:       .end(jsonCallback(cb));
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   searchAddressTilehosting: (addr, cb) => {
 // TODO:     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
 // TODO:     if (addr != null && addr != "") {
@@ -85,7 +85,7 @@
 // TODO:         .end(jsonCallback(cb));
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   searchAddressNominatim: (addr, cb) => {
 // TODO:     if (addr == null) {
 // TODO:       addr = '';
@@ -105,16 +105,16 @@
 // TODO:       .set('Accept', 'application/json')
 // TODO:       .end(jsonCallback(cb));
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   searchGeolocation: (latlng, cb) => {
-// TODO: 
+// TODO:
 // TODO:     if (latlng == null) {
 // TODO:       latlng = {
 // TODO:         lat: 0.0,
 // TODO:         lng: 0.0
 // TODO:       };
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     request
 // TODO:       .get('/reverse')
 // TODO:       .use(saPrefix(NOMINATIM.link))
@@ -136,13 +136,13 @@
 // TODO:       .set('Accept', 'application/json')
 // TODO:       .end(jsonCallback(cb));
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getEntries: (ids = [], cb) => {
-// TODO: 
+// TODO:
 // TODO:     if (!Array.isArray(ids)) {
 // TODO:       ids = [ids];
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     if (ids.length < 1) {
 // TODO:       cb(new Error("no IDs were passed"));
 // TODO:     } else {
@@ -152,13 +152,13 @@
 // TODO:         .end(jsonCallback(cb));
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getRatings: (ids = [], cb) => {
-// TODO: 
+// TODO:
 // TODO:     if (!Array.isArray(ids)) {
 // TODO:       ids = [ids];
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     if (ids.length < 1) {
 // TODO:       cb(new Error("no IDs were passed"));
 // TODO:     } else {
@@ -168,7 +168,7 @@
 // TODO:         .end(jsonCallback(cb));
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   saveNewEntry: (e, cb) => {
 // TODO:     request
 // TODO:       .post('/entries/')
@@ -183,7 +183,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   saveEntry: (e, cb) => {
 // TODO:     request
 // TODO:       .put('/entries/' + e.id)
@@ -198,7 +198,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   createRating: (r, cb) => {
 // TODO:     request
 // TODO:       .post('/ratings/')
@@ -213,7 +213,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getAllCategories: (cb) => {
 // TODO:     request
 // TODO:       .get('/categories/')
@@ -221,7 +221,7 @@
 // TODO:       .set('Accept', 'application/json')
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getServerInfo: (cb) => {
 // TODO:     request
 // TODO:       .get('/server/version')
@@ -237,7 +237,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   register: ({
 // TODO:     email,
 // TODO:     password,
@@ -252,7 +252,7 @@
 // TODO:       })
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   login: ({
 // TODO:     email,
 // TODO:     password
@@ -268,7 +268,7 @@
 // TODO:       })
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getUser: (email, cb) => {
 // TODO:     request
 // TODO:       .get('/users/' + email)
@@ -277,7 +277,7 @@
 // TODO:       .withCredentials()
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   logout: (cb) => {
 // TODO:     request
 // TODO:       .post('/logout')
@@ -286,7 +286,7 @@
 // TODO:       .withCredentials()
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   confirmEmail: (token, cb) => {
 // TODO:     request
 // TODO:       .post('/confirm-email-address')
@@ -297,7 +297,7 @@
 // TODO:       })
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   deleteAccount: (email, cb) => {
 // TODO:     request
 // TODO:       .delete('/users/' + email)
@@ -306,7 +306,7 @@
 // TODO:       .withCredentials()
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   subscribeToBbox: (bbox, cb) => {
 // TODO:     let coordinates = [bbox._southWest, bbox._northEast];
 // TODO:     request
@@ -322,7 +322,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   getBboxSubscriptions: (cb) => {
 // TODO:     request
 // TODO:       .get('/bbox-subscriptions')
@@ -330,7 +330,7 @@
 // TODO:       .use(prefix)
 // TODO:       .end(cb);
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   unsubscribeFromBboxes: (cb) => {
 // TODO:     request
 // TODO:       .delete('/unsubscribe-all-bboxes')

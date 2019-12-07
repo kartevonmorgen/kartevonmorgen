@@ -1,7 +1,7 @@
 // TODO: import T from "../constants/ActionTypes";
 // TODO: import mapConst from "../constants/Map";
 // TODO: import parseUrl from "../util/parseUrl";
-// TODO: 
+// TODO:
 // TODO: const initialState = {
 // TODO:   zoom: mapConst.DEFAULT_ZOOM,
 // TODO:   center: mapConst.DEFAULT_CENTER,
@@ -11,12 +11,12 @@
 // TODO:   ownPositionCancelled: false,
 // TODO:   waiting_for_center_of: null
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = (state = initialState, action = {}) => {
-// TODO: 
+// TODO:
 // TODO:   var newState, point;
 // TODO:   const { payload } = action;
-// TODO: 
+// TODO:
 // TODO:   switch (action.type) {
 // TODO:     case T.UPDATE_STATE_FROM_URL:
 // TODO:       const { center, zoom } = parseUrl(payload).params;
@@ -24,7 +24,7 @@
 // TODO:         lat: parseFloat(center.split(',')[0]),
 // TODO:         lng: parseFloat(center.split(',')[1])
 // TODO:       } : null;
-// TODO: 
+// TODO:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         center: mapCenter || state.center || mapConst.DEFAULT_CENTER,
@@ -67,7 +67,7 @@
 // TODO:           ...state,
 // TODO:           waiting_for_center_of: action.payload
 // TODO:         };
-// TODO: 
+// TODO:
 // TODO:       } else {
 // TODO:         return {
 // TODO:           ...state,
@@ -77,7 +77,7 @@
 // TODO:           }
 // TODO:         };
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.ENTRIES_RESULT:
 // TODO:     case T.SEARCH_RESULT_EVENTS:
 // TODO:       if ((payload != null) && (payload.length > 0) && (state.waiting_for_center_of != null)) {
@@ -113,7 +113,7 @@
 // TODO:         ...state,
 // TODO:         bbox: action.payload
 // TODO:       };
-// TODO: 
+// TODO:
 // TODO:     case T.ENTRY_RESULT:
 // TODO:       if (action.error) {
 // TODO:         return state;
@@ -129,7 +129,7 @@
 // TODO:         };
 // TODO:       }
 // TODO:       return state;
-// TODO: 
+// TODO:
 // TODO:     case T.NEW_ENTRY_RESULT:
 // TODO:       if (!action.error) {
 // TODO:         return {
@@ -169,7 +169,7 @@
 // TODO:         return state;
 // TODO:       }
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     default:
 // TODO:       return state;
 // TODO:   }

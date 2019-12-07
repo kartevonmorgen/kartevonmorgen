@@ -1,5 +1,5 @@
 // TODO: import { library } from '@fortawesome/fontawesome-svg-core'
-// TODO: 
+// TODO:
 // TODO: library.add(
 // TODO:    require('@fortawesome/free-solid-svg-icons/faBars').definition
 // TODO:   ,require('@fortawesome/free-solid-svg-icons/faBan').definition
@@ -25,13 +25,13 @@
 // TODO:   ,require('@fortawesome/free-solid-svg-icons/faSpinner').definition
 // TODO:   ,require('@fortawesome/free-solid-svg-icons/faSave').definition
 // TODO:   ,require('@fortawesome/free-solid-svg-icons/faUser').definition
-// TODO: 
+// TODO:
 // TODO:   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
-// TODO: 
+// TODO:
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faFacebook').definition
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faCreativeCommons').definition
-// TODO: 
+// TODO:
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faFacebook').definition
 // TODO:   ,require('@fortawesome/free-brands-svg-icons/faCreativeCommons').definition

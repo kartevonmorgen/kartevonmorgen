@@ -3,5 +3,5 @@
 // TODO:   TELEPHONE: "telephone",
 // TODO:   HOMEPAGE: "homepage",
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = { REGISTRATION_TYPE };

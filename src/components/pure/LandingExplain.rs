@@ -2,7 +2,7 @@
 // TODO: import T                    from "prop-types";
 // TODO: import { translate }        from "react-i18next";
 // TODO: import V                    from "../../constants/PanelView";
-// TODO: 
+// TODO:
 // TODO: const teamArray = [
 // TODO:   {
 // TODO:     name: "Thao Tran",
@@ -86,13 +86,13 @@
 // TODO:     position: ["landingExplain.chapter5.new-members"]
 // TODO:   }
 // TODO: ]
-// TODO: 
+// TODO:
 // TODO: const getTeamMembers = t =>
 // TODO:   teamArray
 // TODO:     .map( member => {
 // TODO:       const link = !!member.homepage && member.image
 // TODO:       const key = member.name ? member.name : member.position
-// TODO: 
+// TODO:
 // TODO:       return(
 // TODO:         <div key={key} className="teamMember">
 // TODO:           <div className={ "circle "+member.color }>
@@ -108,11 +108,11 @@
 // TODO:         </div>
 // TODO:       )
 // TODO:     })
-// TODO: 
+// TODO:
 // TODO: const LandingExplain = props => {
-// TODO: 
+// TODO:
 // TODO:   const { onClick, t } = props;
-// TODO: 
+// TODO:
 // TODO:   return(
 // TODO:     <div>
 // TODO:       <h2>{t("landingExplain.chapter1.heading")}</h2>
@@ -135,7 +135,7 @@
 // TODO:         <p>{t("landingExplain.chapter1.paragraph3.text")}</p>
 // TODO:       </div>
 // TODO:       <div style={{clear:"both"}} />
-// TODO: 
+// TODO:
 // TODO:       <a id="tutorial" />
 // TODO:       <hr />
 // TODO:       <h2>{t("landingExplain.chapter2.heading")}</h2>
@@ -155,7 +155,7 @@
 // TODO:       </div>
 // TODO:       <br />
 // TODO:       <br />
-// TODO: 
+// TODO:
 // TODO:       <h2>{t("landingExplain.chapter4.heading")}</h2>
 // TODO:       <div style={{float: "left", paddingTop: "1px"}} >
 // TODO:         <h4>{t("landingExplain.chapter4.text.1")}</h4>
@@ -171,13 +171,13 @@
 // TODO:       </div>
 // TODO:       <hr />
 // TODO:       <h2>{t("landingExplain.chapter5.heading")}</h2>
-// TODO: 
+// TODO:
 // TODO:       <div className="team">
 // TODO:         {getTeamMembers(t)}
 // TODO:       </div>
-// TODO: 
+// TODO:
 // TODO:       <hr />
-// TODO: 
+// TODO:
 // TODO:       <h2>{t("landingExplain.chapter6.heading")}</h2>
 // TODO:       <a href="http://www.ideenhochdrei.org/de/">
 // TODO:         <img className="partnerLogo" src={require("../../img/ideen.png")} />
@@ -185,9 +185,9 @@
 // TODO:       <a href="http://slowtec.de">
 // TODO:         <img className="partnerLogo" src={require("../../img/slowtec.png")} />
 // TODO:       </a>
-// TODO: 
+// TODO:
 // TODO:       <hr />
-// TODO: 
+// TODO:
 // TODO:       <h2>{t("landingExplain.chapter7.heading")}</h2>
 // TODO:       <div>
 // TODO:         <a href="https://www.mannheim.de/">
@@ -201,14 +201,14 @@
 // TODO:         </a>
 // TODO:       </div>
 // TODO:       <p>{t("landingExplain.chapter7.boell-foundation")}</p>
-// TODO: 
+// TODO:
 // TODO:     </div>
 // TODO:   )
-// TODO: 
+// TODO:
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: LandingExplain.propTypes = {
 // TODO:   onClick  : T.func
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(LandingExplain)

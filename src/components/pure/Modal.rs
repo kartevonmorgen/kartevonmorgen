@@ -1,18 +1,18 @@
 // TODO: import React                from "react";
 // TODO: import styled,{ keyframes } from "styled-components";
-// TODO: 
+// TODO:
 // TODO: import Message              from "./Message";
 // TODO: import Actions              from "../../Actions"; //TODO: remove dependency
 // TODO: import { DONATE }           from "../../constants/URLs";
 // TODO: import V                    from "../../constants/PanelView";
 // TODO: import i18n                 from "../../i18n";
-// TODO: 
+// TODO:
 // TODO: const t = (key) => i18n.t("modal." + key)
-// TODO: 
+// TODO:
 // TODO: module.exports = ({view, dispatch}) => {
-// TODO: 
+// TODO:
 // TODO:   switch (view.modal) {
-// TODO: 
+// TODO:
 // TODO:     case V.LOCATE:
 // TODO:       return (
 // TODO:         <Modal className= 'modal'>
@@ -24,7 +24,7 @@
 // TODO:             />
 // TODO:         </Modal>
 // TODO:       );
-// TODO: 
+// TODO:
 // TODO:     case V.LOCATE_DISABLED:
 // TODO:       return (
 // TODO:         <Modal className = 'modal'>
@@ -39,13 +39,13 @@
 // TODO:             />
 // TODO:         </Modal>
 // TODO:       );
-// TODO: 
+// TODO:
 // TODO:     case V.DONATE_FOR_EVENTS:
 // TODO:       return (
 // TODO:         <Modal className = 'modal'>
 // TODO:           <Message
 // TODO:             iconClass = "info-circle"
-// TODO:             message = { "   " + t("events.text") } 
+// TODO:             message = { "   " + t("events.text") }
 // TODO:             cancelButtonLabel = {t("events.close")}
 // TODO:             onCancel = { () => dispatch(Actions.showFeatureToDonate(null)) }
 // TODO:             actionButtonLabel = {t("events.donate")}
@@ -58,13 +58,13 @@
 // TODO:       return <div></div>;
 // TODO:   }
 // TODO: }
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO: const fadein = keyframes`
 // TODO:   from { opacity: 0; }
 // TODO:   to { opacity: 1; }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Modal = styled.div `
 // TODO:   position: absolute;
 // TODO:   z-index: 100;

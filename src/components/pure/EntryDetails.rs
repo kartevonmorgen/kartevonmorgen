@@ -1,15 +1,15 @@
 // TODO: import React          from "react";
 // TODO: import styled         from "styled-components";
 // TODO: import { translate }  from "react-i18next";
-// TODO: 
+// TODO:
 // TODO: import BusinessCard   from "./BusinessCard";
 // TODO: import NavButtonWhite from "./NavButtonWhite";
 // TODO: import EntryImage     from "./EntryImage";
-// TODO: 
+// TODO:
 // TODO: const LoadingEntryMessage = styled.div`
 // TODO:   margin: 3em 2em !important;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Navbar = styled.nav`
 // TODO:   position: relative;
 // TODO:   z-index: 1;
@@ -17,14 +17,14 @@
 // TODO:   flex-direction: row;
 // TODO:   padding: 9pt 6pt 8pt 7pt;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Entry = styled.div`
 // TODO:   position: relative;
 // TODO:   margin-bottom: 20px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const EntryDetails = props => {
-// TODO: 
+// TODO:
 // TODO:   const { entry, t, isEvent, onBack, onEdit, onTag, tagsClickable } = props;
 // TODO:   const hasImage = entry ? (entry.image_url ? true : false) : false;
 // TODO:   if (!entry) {
@@ -46,7 +46,7 @@
 // TODO:             onClick = {onBack}
 // TODO:             aboveImage={hasImage}
 // TODO:           />
-// TODO:           { !isEvent ? 
+// TODO:           { !isEvent ?
 // TODO:             <NavButtonWhite
 // TODO:               keyName = "edit"
 // TODO:               buttonRight = { true }
@@ -75,5 +75,5 @@
 // TODO:       </Entry>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(EntryDetails)

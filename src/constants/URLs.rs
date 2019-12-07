@@ -1,25 +1,25 @@
 // TODO: import { APP_STAGES } from "./App"
-// TODO: 
+// TODO:
 // TODO: // for Internet Explorer:
 // TODO: if (!window.location.origin) {
 // TODO:   window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const API_VERSION = 'v0';
 // TODO: const OFDB_API_LINK = (() => {
 // TODO:   switch (__STAGE__){
 // TODO:     case APP_STAGES.LOCAL:
 // TODO:       return "/api/";
-// TODO: 
+// TODO:
 // TODO:     case APP_STAGES.NIGHTLY:
 // TODO:       return "https://nightly.ofdb.io/";
-// TODO: 
+// TODO:
 // TODO:     default:
 // TODO:       // production
 // TODO:       return "https://kartevonmorgen.org/api/";
 // TODO:   }
 // TODO: })() + API_VERSION;
-// TODO: 
+// TODO:
 // TODO: module.exports = {
 // TODO:   CC_LICENSE: {
 // TODO:     name: "creativecommons.org/publicdomain/zero/1.0/deed.de",

@@ -17,7 +17,7 @@
 // TODO:       "tags"
 // TODO:     ]
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   RATING: {
 // TODO:     id: "rating",
 // TODO:     fields: [
@@ -26,7 +26,7 @@
 // TODO:       "comment"
 // TODO:     ]
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   LOGIN: {
 // TODO:     id: "login",
 // TODO:     fields: [
@@ -34,7 +34,7 @@
 // TODO:       "password"
 // TODO:     ]
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   REGISTER: {
 // TODO:     id: "register",
 // TODO:     fields: [

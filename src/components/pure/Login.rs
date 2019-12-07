@@ -4,19 +4,19 @@
 // TODO: import validation           from "../../util/validation"
 // TODO: import { LOGIN            } from "../../constants/Form"
 // TODO: import i18n                 from "../../i18n"
-// TODO: 
+// TODO:
 // TODO: const errorMessage = ({meta}) =>
 // TODO:   meta.error && meta.touched
 // TODO:     ? <div className="err">{meta.error}</div>
 // TODO:     : null
-// TODO: 
+// TODO:
 // TODO: const Login = (props) => {
-// TODO: 
+// TODO:
 // TODO:   const { error, submitting, handleSubmit, onRegister } = props;
 // TODO:   const t = (key) => {
 // TODO:     return i18n.t("login." + key);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   let error_message = "";
 // TODO:   if(error){
 // TODO:     switch(error.message){
@@ -30,13 +30,13 @@
 // TODO:         error_message = error.message;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   return (
 // TODO:   <form
 // TODO:     className = "login pure-form pure-form-stacked"
 // TODO:     action    = 'javascript:void(0);'
 // TODO:     onSubmit  = { handleSubmit } >
-// TODO: 
+// TODO:
 // TODO:     <h3>Login</h3>
 // TODO:     { error &&
 // TODO:       <div className= "err">
@@ -92,22 +92,22 @@
 // TODO:     </div>
 // TODO:   </form>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const Fieldset = styled.fieldset`
 // TODO:   margin: 20px auto !important;
 // TODO:   max-width: 300px !important;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const StyledField = styled(Field)`
 // TODO:   margin: 20px 0 !important;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const SubmitButton = styled.button`
 // TODO:   margin-top: 15px !important;
 // TODO:   margin-bottom: 40px !important;
 // TODO:   padding: 12px 30px !important;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: module.exports = reduxForm({
 // TODO:   form     : LOGIN.id,
 // TODO:   validate : validation.loginForm

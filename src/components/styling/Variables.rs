@@ -11,7 +11,7 @@
 // TODO: const lightGray  = "rgb(221,  221,  221)";
 // TODO: const teal       = "rgb(0,    152,  137)";
 // TODO: const yellowText = "rgb(214,  201,  0  )";
-// TODO: 
+// TODO:
 // TODO: const rating_contexts = {
 // TODO:   "diversity": green,      // GREEN
 // TODO:   "renewable": yellow,      // YELLOW
@@ -21,11 +21,11 @@
 // TODO:   "solidarity": blue,     // BLUE
 // TODO:   "default": lightGray
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const bodyFont= `"Rubik", sans-serif`;
 // TODO: const headerFont= `"Rubik", sans-serif`;
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO: module.exports = {
 // TODO:   grayBlue,
 // TODO:   blue,
@@ -38,14 +38,14 @@
 // TODO:   lightGray,
 // TODO:   darkGray,
 // TODO:   yellowText,
-// TODO: 
+// TODO:
 // TODO:   company:    teal,
 // TODO:   initiative: green,
 // TODO:   event:      pink,
 // TODO:   otherCategory: lightGray,
-// TODO: 
+// TODO:
 // TODO:   rating_contexts,
-// TODO: 
+// TODO:
 // TODO:   bodyFont,
 // TODO:   headerFont
 // TODO: };

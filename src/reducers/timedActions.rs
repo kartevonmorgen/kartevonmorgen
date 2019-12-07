@@ -1,13 +1,13 @@
 // TODO: import T from "../constants/ActionTypes";
-// TODO: 
+// TODO:
 // TODO: const initialState = {
 // TODO:   searchLastTriggered: null
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = (state=initialState, action={}) => {
-// TODO: 
+// TODO:
 // TODO:   const { payload } = action;
-// TODO: 
+// TODO:
 // TODO:   switch (action.type) {
 // TODO:     case T.SET_SEARCH_TIME:
 // TODO:       return {

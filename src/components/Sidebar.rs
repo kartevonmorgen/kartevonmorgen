@@ -4,7 +4,7 @@
 // TODO: import PropTypes            from "prop-types"
 // TODO: import styled               from "styled-components";
 // TODO: import { initialize }       from "redux-form";
-// TODO: 
+// TODO:
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import ResultList           from "./pure/ResultList"
 // TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
@@ -22,11 +22,11 @@
 // TODO: import NavButton            from "./pure/NavButton";
 // TODO: import SearchBar            from "./SearchBar"
 // TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
-// TODO: 
+// TODO:
 // TODO: class Sidebar extends Component {
-// TODO: 
+// TODO:
 // TODO:   entryContent = null;
-// TODO: 
+// TODO:
 // TODO:   shouldComponentUpdate(nextProps) {
 // TODO:     if( !nextProps.view.showLeftPanel ) return false
 // TODO:     if( !this.props.view.showLeftPanel && nextProps.view.showLeftPanel ) return true
@@ -40,7 +40,7 @@
 // TODO:     // ) return false
 // TODO:     return true
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   render(){
 // TODO:     const { view, search, user, server, resultEntries, entries,
 // TODO:       ratings, dispatch, map, form, t, showAddEntryButton,
@@ -51,9 +51,9 @@
 // TODO:       .filter(e => entries[e.id])
 // TODO:       .map(e => entries[e.id])
 // TODO:       .concat(search.eventsWithoutPlace);
-// TODO: 
+// TODO:
 // TODO:     const entry = entries[search.current] || null;
-// TODO: 
+// TODO:
 // TODO:     var content;
 // TODO:     switch (view.left) {
 // TODO:       case V.RESULT:
@@ -112,22 +112,22 @@
 // TODO:           </ResultWrapper>
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.ENTRY:
 // TODO:         if (!entry) {
 // TODO:           content = (<Message iconClass={ "spinner" } message={ t("loading-message") } />)
 // TODO:         } else {
-// TODO: 
+// TODO:
 // TODO:           const onBack = () => {
 // TODO:             dispatch(Actions.setCurrentEntry(null, null));
 // TODO:             dispatch(Actions.showSearchResults());
 // TODO:             dispatch(Actions.setCenterInUrl(map.center));
 // TODO:           };
-// TODO: 
+// TODO:
 // TODO:           const onEdit = () => {
 // TODO:             dispatch(Actions.editCurrentEntry());
 // TODO:           };
-// TODO: 
+// TODO:
 // TODO:           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 // TODO:           content = (
 // TODO:             <ScrollableEntryDetailsWrapper>
@@ -159,7 +159,7 @@
 // TODO:           );
 // TODO:         }
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.EDIT:
 // TODO:       case V.NEW:
 // TODO:         content = (
@@ -192,7 +192,7 @@
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.NEW_RATING:
 // TODO:         const kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
 // TODO:         var ref;
@@ -227,7 +227,7 @@
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.WAIT:
 // TODO:         content = (
 // TODO:           <Message
@@ -237,7 +237,7 @@
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.IO_ERROR:
 // TODO:         content = (
 // TODO:           <Message
@@ -246,7 +246,7 @@
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       case V.SUBSCRIBE_TO_BBOX:
 // TODO:         content = (
 // TODO:           <SubscribeToBbox
@@ -258,11 +258,11 @@
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO: 
+// TODO:
 // TODO:       default:
 // TODO:         content = <div></div>
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     return(
 // TODO:       <SidebarComponent>
 // TODO:         {
@@ -319,19 +319,19 @@
 // TODO:     );
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
 // TODO:   height: 100%;
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const SidebarComponent = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO:   height: 100%;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: Sidebar.propTypes = {
 // TODO:   view:           PropTypes.object.isRequired,
 // TODO:   search:         PropTypes.object.isRequired,
@@ -344,10 +344,10 @@
 // TODO:   dispatch:       PropTypes.func,
 // TODO:   t:              PropTypes.func.isRequired
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: export default Sidebar
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO: const GroupHeader = styled.div `
 // TODO:   border-top: 3px solid ${STYLE.lightGray};
 // TODO:   padding: 0.5em 1em 0.5em 1em;
@@ -355,7 +355,7 @@
 // TODO:   background: #eaeaea;
 // TODO:   color: #666;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const AddEntryButton = styled.nav`
 // TODO:   z-index: 10;
 // TODO:   padding: 0;
@@ -383,10 +383,10 @@
 // TODO:     }
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const ResultWrapper = styled(ScrollableDiv)`
 // TODO:   background: #f7f7f7;
-// TODO: 
+// TODO:
 // TODO:    /* city list only for sidebar, not landing page TODO: where to put this? */
 // TODO:   .city-list ul {
 // TODO:     background: #f7f7f7;

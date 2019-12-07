@@ -1,5 +1,5 @@
 // TODO: import LICENSES from "./Licenses"
-// TODO: 
+// TODO:
 // TODO: module.exports = {
 // TODO:   APP_STAGES: {
 // TODO:     LOCAL: 'development',

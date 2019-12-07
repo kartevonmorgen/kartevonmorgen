@@ -1,6 +1,6 @@
 // TODO: import "./styling/Stylesheets"
 // TODO: import "./styling/Icons"
-// TODO: 
+// TODO:
 // TODO: import React, { Component } from "react"
 // TODO: import T                    from "prop-types"
 // TODO: import { translate }        from "react-i18next"
@@ -9,7 +9,7 @@
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 // TODO: import Swipeable            from 'react-swipeable'
 // TODO: import styled, { keyframes, createGlobalStyle } from "styled-components";
-// TODO: 
+// TODO:
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import Actions              from "../Actions"
 // TODO: import Modal                from "./pure/Modal"
@@ -20,17 +20,17 @@
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 // TODO: import mapConst             from "../constants/Map"
-// TODO: 
+// TODO:
 // TODO: class Main extends Component {
-// TODO: 
+// TODO:
 // TODO:   render(){
 // TODO:     const { dispatch, search, view, server, map, form, url, user, t } = this.props;
 // TODO:     const { entries, ratings } = server;
-// TODO: 
+// TODO:
 // TODO:     this.changeUrlAccordingToState(url);
 // TODO:     const visibleEntries = this.filterVisibleEntries(entries, search);
 // TODO:     const loggedIn = user.email ? true : false;
-// TODO: 
+// TODO:
 // TODO:     return (
 // TODO:       <StyledApp className="app">
 // TODO:         <GlobalStyle />
@@ -91,7 +91,7 @@
 // TODO:         {
 // TODO:           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
 // TODO:         }
-// TODO: 
+// TODO:
 // TODO:         <LeftPanelAndHideSidebarButton>
 // TODO:           <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
 // TODO:             onSwipedLeft={ () => this.swipedLeftOnPanel() }>
@@ -136,7 +136,7 @@
 // TODO:             </button>
 // TODO:           </div>
 // TODO:         </RightPanel>
-// TODO: 
+// TODO:
 // TODO:         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
 // TODO:           <Map
 // TODO:             marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
@@ -156,7 +156,7 @@
 // TODO:                 dispatch(Actions.setCurrentEntry(null, null));
 // TODO:                 dispatch(Actions.showSearchResults());
 // TODO:                 dispatch(Actions.setCenterInUrl(map.center));
-// TODO: 
+// TODO:
 // TODO:                 return dispatch(Actions.hideLeftPanelOnMobile());
 // TODO:               }
 // TODO:             }}
@@ -173,7 +173,7 @@
 // TODO:       </StyledApp>
 // TODO:     );
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   filterVisibleEntries(entries, search){
 // TODO:     return search.entryResults.filter(e => entries[e.id])
 // TODO:       .map(e => entries[e.id])
@@ -181,13 +181,13 @@
 // TODO:       .concat(search.eventResults)
 // TODO:       .slice(0, NUM_ENTRIES_TO_SHOW);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   categoryIsEnabled(enabledCategories){
 // TODO:     return (entry) => {
 // TODO:       return entry.categories.some(cat => enabledCategories.includes(cat));
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   onLandingPageCitySelection(city){
 // TODO:     const { dispatch } = this.props;
 // TODO:     if (city) {
@@ -202,14 +202,14 @@
 // TODO:       return dispatch(Actions.finishCitySearch());
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   changeUrlAccordingToState(urlState){
 // TODO:     if (urlState.hash !== window.location.hash) {
 // TODO:       console.log("URL CHANGE FROM APP: " + window.location.hash + " --> " + urlState.hash);
 // TODO:       window.history.pushState(null, null, window.location.pathname + urlState.hash);
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   escFunction(event){
 // TODO:     if(event.keyCode === 27) { //ESC
 // TODO:       const { view, dispatch}  = this.props
@@ -226,32 +226,32 @@
 // TODO:       }
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   componentDidMount(){
 // TODO:     document.addEventListener("keydown", (e) => this.escFunction(e), false);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   componentWillUnmount(){
 // TODO:     document.removeEventListener("keydown");
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   swipedLeftOnPanel() {
 // TODO:     this.props.dispatch(Actions.hideLeftPanel())
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   swipedRightOnMap(e, deltaX) {
 // TODO:     if( e.nativeEvent === undefined || e.nativeEvent.changedTouches === undefined) return true
 // TODO:     if(e.nativeEvent.changedTouches[0].pageX + deltaX < 26 ) this.props.dispatch(Actions.showLeftPanel())
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   onTagClick = (t) => {
 // TODO:     this.props.dispatch(Actions.showSearchResults());
 // TODO:     this.props.dispatch(Actions.setSearchText('#'+t));
 // TODO:     this.props.dispatch(Actions.search());
 // TODO:   };
-// TODO: 
+// TODO:
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: Main.propTypes = {
 // TODO:   view :          T.object.isRequired,
 // TODO:   server :        T.object.isRequired,
@@ -262,42 +262,42 @@
 // TODO:   user :          T.object.isRequired,
 // TODO:   timedActions :  T.object.isRequired
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(Main)
-// TODO: 
+// TODO:
 // TODO: /* Moved all styles here. TODO: Move to right components */
 // TODO: const GlobalStyle = createGlobalStyle`
-// TODO: 
+// TODO:
 // TODO:   @media only screen and (max-width: 600px) {
 // TODO:     body { font-size:80%;}
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   h1, h2, h3, h4, h5, h6, h7 {
 // TODO:     font-family: ${STYLE.headerFont};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   html, button, input, select, textarea {
 // TODO:     font-family: ${STYLE.bodyFont};
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: // Create the keyframes
 // TODO: const fadein = keyframes`
 // TODO:   from { opacity: 0; }
 // TODO:   to { opacity: 1; }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: import pincloud from "../img/pincloud.png";
-// TODO: 
+// TODO:
 // TODO: const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
 // TODO:   padding-right: .45rem;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
 // TODO:   margin-right: 0.3em;
 // TODO:   width: 0.7em;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const SwipeableLeftPanel = styled(Swipeable)`
 // TODO:   position: relative;
 // TODO:   height: 100%;
@@ -333,14 +333,14 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const RightPanel = styled.div `
 // TODO:   position: absolute;
 // TODO:   top: 15px;
 // TODO:   right: 0;
 // TODO:   background: #fff;
 // TODO:   color: ${STYLE.coal};
-// TODO: 
+// TODO:
 // TODO:   .menu-toggle button {
 // TODO:     outline: none;
 // TODO:     position: relative;
@@ -374,13 +374,13 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const LeftPanelAndHideSidebarButton = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: row;
 // TODO:   height: 100%;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const HideSidebarButtonWrapper = styled.div `
 // TODO:   position: relative;
 // TODO:   z-index: 2;
@@ -405,11 +405,11 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const StyledApp = styled.div `
-// TODO: 
+// TODO:
 // TODO:   background: #fff;
-// TODO: 
+// TODO:
 // TODO:   /*
 // TODO:   make the app fit the screen/iframe exactly (important for overflow:scroll,
 // TODO:   but can't use height:100vh since that would break iframes smaller than 100vh):
@@ -419,44 +419,44 @@
 // TODO:   bottom: 0;
 // TODO:   left: 0;
 // TODO:   right: 0;
-// TODO: 
+// TODO:
 // TODO:   .tutorial {
 // TODO:     margin-bottom: 3em;
 // TODO:     img { width: 100%; }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   /* TYPO */
 // TODO:   @media only screen and(max-width: 600px) {
 // TODO:     body {
 // TODO:       font-size: 80%;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   input, select, textarea, button {
 // TODO:     font-family: ${STYLE.bodyFont};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   h1, h2, h3, h4, h5, h6, h7 {
 // TODO:     font-family: ${STYLE.headerFont};
 // TODO:     font-weight: 500;
 // TODO:     margin-block-end: 2px;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   button {
 // TODO:     font-family: ${STYLE.bodyFont};
 // TODO:     &.pure-button i {
 // TODO:       margin-right: 0.5em;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .fa {
 // TODO:     font-family: "FontAwesome" !important;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .pure-g [class *= "pure-u"] {
 // TODO:     font-family: ${STYLE.bodyFont};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   /* ============================== */
 // TODO:   /* SCROLLBAR */
 // TODO:   ::-webkit-scrollbar {
@@ -467,16 +467,16 @@
 // TODO:     border-radius: 0;
 // TODO:     background-color: #ccc;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .pure-menu-list {
 // TODO:     margin: 0 50px;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .pure-menu-link:hover {
 // TODO:     color: #000;
 // TODO:   }
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:   label span.desc {
 // TODO:     color: ${STYLE.darkGray};
 // TODO:     font-size: 0.8em;
@@ -487,9 +487,9 @@
 // TODO:     font-size: 0.8em;
 // TODO:     margin-left: 0.5em;
 // TODO:   }
-// TODO: 
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
+// TODO:
 // TODO:   /* ======= FORM */
 // TODO:   form {
 // TODO:     div.err {
@@ -507,7 +507,7 @@
 // TODO:     }
 // TODO:   }
 // TODO:   /* ======= */
-// TODO: 
+// TODO:
 // TODO:   /* ======= BANNER */
 // TODO:   .banner {
 // TODO:     position: relative;
@@ -521,7 +521,7 @@
 // TODO:     }
 // TODO:   }
 // TODO:   /* ======= */
-// TODO: 
+// TODO:
 // TODO:   /* ======= CHEVRON */
 // TODO:   div.chevron {
 // TODO:     position: relative;
@@ -535,10 +535,10 @@
 // TODO:     }
 // TODO:   }
 // TODO:   /* ======= */
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:   /* ======= MISC */
-// TODO: 
+// TODO:
 // TODO:   .close-button {
 // TODO:     text-align: center;
 // TODO:     margin: 0;
@@ -554,7 +554,7 @@
 // TODO:   }
 // TODO:   .new-rating-form {
 // TODO:     margin: 2em 1.8em 1.8em 1.8em;
-// TODO: 
+// TODO:
 // TODO:     .radio-button {
 // TODO:       margin: 0.2em 0.3em 0.2em 0;
 // TODO:     }
@@ -591,4 +591,4 @@
 // TODO:     margin-top: 0.7em;
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:

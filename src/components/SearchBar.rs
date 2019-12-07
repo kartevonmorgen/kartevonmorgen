@@ -6,9 +6,9 @@
 // TODO: import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 // TODO: import STYLE                               from "./styling/Variables"
 // TODO: import { SpinLoader }                      from 'react-loaders-spinners';
-// TODO: 
+// TODO:
 // TODO: const CategoryButtons = ({ disabled, active, onToggle, t }) => {
-// TODO: 
+// TODO:
 // TODO:   const buttons = MAIN_IDS.map((c) => {
 // TODO:     const act = [].indexOf.call(active || [], c) >= 0;
 // TODO:     return (
@@ -20,18 +20,18 @@
 // TODO:         { t("category." + NAMES[c]) + " " }
 // TODO:       </button>);
 // TODO:   });
-// TODO: 
+// TODO:
 // TODO:   return (<div>{ buttons }</div>);
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: CategoryButtons.propTypes = {
 // TODO:   active     : T.array,
 // TODO:   disabled   : T.bool,
 // TODO:   onToggle   : T.func
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: class SearchBar extends React.Component {
-// TODO: 
+// TODO:
 // TODO:   onChange = (ev) => {
 // TODO:     var ref, v;
 // TODO:     if ((v = (ref = ev.target) != null ? ref.value : void 0) == null) {
@@ -39,11 +39,11 @@
 // TODO:     }
 // TODO:     this.props.onChange(v);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   onFocus = (ev) => {
 // TODO:     ev.target.select();
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   onKeyUp = (ev) => {
 // TODO:     ev.preventDefault();
 // TODO:     switch (ev.key) {
@@ -54,12 +54,12 @@
 // TODO:         this.props.onEnter();
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   render() {
-// TODO: 
+// TODO:
 // TODO:     const { categories, disabled, toggleCat, searchText, t, loading } = this.props;
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:     return (
 // TODO:       <Bar
 // TODO:         className = "SearchBar pure-g" integrated={this.props.type==="integrated"} standalone= {this.props.type==="standalone"} >
@@ -71,7 +71,7 @@
 // TODO:             t         = { t }
 // TODO:           />
 // TODO:         </MainCategories>
-// TODO: 
+// TODO:
 // TODO:         <div className = "pure-u-1">
 // TODO:           <div onClick = { this.props.onLenseClick } className = "search-icon">
 // TODO:             { loading ?
@@ -84,7 +84,7 @@
 // TODO:               : <MagnifyingGlassIcon icon="search" />
 // TODO:             }
 // TODO:           </div>
-// TODO: 
+// TODO:
 // TODO:           <SearchInput
 // TODO:             onChange    = { this.onChange }
 // TODO:             disabled    = { disabled }
@@ -97,7 +97,7 @@
 // TODO:       </Bar>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: SearchBar.propTypes = {
 // TODO:   type        : T.oneOf(["standalone","integrated",""]),
 // TODO:   searchText  : T.string,
@@ -109,38 +109,38 @@
 // TODO:   onEscape    : T.func,
 // TODO:   t           : T.func
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(SearchBar)
-// TODO: 
+// TODO:
 // TODO: const borderRadius = '0.4em'
-// TODO: 
+// TODO:
 // TODO: const MagnifyingGlassIcon = styled(FontAwesomeIcon)`
 // TODO:   margin: 0.1em 0 0 0.1em;
 // TODO:   animation-duration: 150ms;
 // TODO:   animation-name: turn;
-// TODO: 
+// TODO:
 // TODO:   @keyframes turn {
 // TODO:     from {
 // TODO:       transform: rotate(330deg);
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     to {
 // TODO:       transform: rotate(360deg);
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const MainCategories = styled.div `
-// TODO: 
+// TODO:
 // TODO:   font-size: 0.8em;
 // TODO:   color: ${STYLE.darkGray};
-// TODO: 
+// TODO:
 // TODO:   button {
 // TODO:     padding: 0.5em;
 // TODO:     text-transform: uppercase;
 // TODO:     background-color: #f7f7f7;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   button > i.toggle {
 // TODO:     text-align: left;
 // TODO:     display: block;
@@ -149,7 +149,7 @@
 // TODO:     border: 1px solid #fff;
 // TODO:     border-radius: 0.5em;
 // TODO:     float: right;
-// TODO: 
+// TODO:
 // TODO:     > i {
 // TODO:       display: inline-block;
 // TODO:       height: 0.9em;
@@ -161,11 +161,11 @@
 // TODO:       margin: -1px;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   button.active > i.toggle {
 // TODO:     text-align: right !important;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   ${props => props.standalone && `
 // TODO:     button:first-child {
 // TODO:       border-radius: ${borderRadius} 0 0 0;
@@ -174,25 +174,25 @@
 // TODO:       border-radius: 0 ${borderRadius} 0 0;
 // TODO:     }
 // TODO:   `}
-// TODO: 
+// TODO:
 // TODO:   .active{
 // TODO:     color: #fff;
 // TODO:     box-shadow: inset 0.2px 0.2px 2px 1px rgba(0, 0, 0, 0.4);
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .initiative.active{
 // TODO:     background: ${STYLE.initiative};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .event.active {
 // TODO:     background: ${STYLE.event};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .company.active {
 // TODO:     background: ${STYLE.company};
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const SearchInput = styled.input `
 // TODO:   ::placeholder{
 // TODO:     color: #aaa;
@@ -204,42 +204,42 @@
 // TODO:   font-weight: 300;
 // TODO:   padding-left: 3.1em !important;
 // TODO: `;
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO: const Bar = styled.div `
-// TODO: 
+// TODO:
 // TODO:   ${props => props.integrated && `
 // TODO:     border-bottom: 1px solid ${STYLE.lightGray};
 // TODO:   `}
-// TODO: 
+// TODO:
 // TODO:   ${props => props.standalone && `
 // TODO:     box-shadow: 2px 2px 8px 4px rgba(0,0,0,0.6);
 // TODO:     border-radius: ${borderRadius};
-// TODO: 
+// TODO:
 // TODO:     input{
 // TODO:       border-radius: 0 0 ${borderRadius} ${borderRadius};
 // TODO:     }
 // TODO:   `}
-// TODO: 
+// TODO:
 // TODO:   width:         100%;
 // TODO:   box-sizing:    border-box;
 // TODO:   background:    #fff;
-// TODO: 
+// TODO:
 // TODO:   input, button{
 // TODO:     box-sizing:  border-box;
 // TODO:     border:      none;
 // TODO:     outline: none;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   input, span.search-icon {
 // TODO:     font-size: 1.2em;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   input {
 // TODO:     padding: 0.4em;
 // TODO:     padding-left:  2em;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .search-icon{
 // TODO:     position: absolute;
 // TODO:     margin: 0.5em 0 0 0.9em;

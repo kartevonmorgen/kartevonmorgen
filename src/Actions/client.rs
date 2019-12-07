@@ -3,40 +3,40 @@
 // TODO: import mapConst                   from "../constants/Map";
 // TODO: import appConst                   from "../constants/App";
 // TODO: import serverActions              from "./server";
-// TODO: 
+// TODO:
 // TODO: const Actions = {
-// TODO: 
+// TODO:
 // TODO:   setSearchText: (txt) => ({
 // TODO:     type: T.SET_SEARCH_TEXT,
 // TODO:     payload: txt
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   setCitySearchText: (txt) => ({
 // TODO:     type: T.SET_CITY_SEARCH_TEXT,
 // TODO:     payload: txt
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   finishCitySearch: () => ({
 // TODO:     type: T.FINISH_CITY_SEARCH
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   enableSearchCategory: (category) => {
 // TODO:     return {
 // TODO:       type: T.ENABLE_SEARCH_CATEGORY,
 // TODO:       payload: category
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   disableSearchCategory: (category) => {
 // TODO:     return {
 // TODO:       type: T.DISABLE_SEARCH_CATEGORY,
 // TODO:       payload: category
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   toggleMenu          : () => ({ type: T.TOGGLE_MENU }),
 // TODO:   showMenu            : () => ({ type: T.SHOW_MENU }),
-// TODO: 
+// TODO:
 // TODO:   showNewEntry: () =>
 // TODO:     (dispatch) => {
 // TODO:       dispatch(Actions.setSearchText(''));
@@ -44,9 +44,9 @@
 // TODO:       dispatch({
 // TODO:         type: T.SHOW_NEW_ENTRY
 // TODO:       });
-// TODO:       
+// TODO:
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   showSearchResults   : () => ({ type: T.SHOW_SEARCH_RESULTS }),
 // TODO:   toggleLandingPage   : () => ({ type: T.TOGGLE_MENU }),
 // TODO:   showImprint         : () => ({ type: T.SHOW_IMPRINT }),
@@ -57,14 +57,14 @@
 // TODO:   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO }),
 // TODO:   showLeftPanel       : () => ({ type: T.SHOW_LEFT_PANEL }),
 // TODO:   hideLeftPanel       : () => ({ type: T.HIDE_LEFT_PANEL }),
-// TODO: 
+// TODO:
 // TODO:   hideLeftPanelOnMobile: () =>
 // TODO:     (dispatch) => {
 // TODO:       if (document.documentElement.clientWidth < 600) {
 // TODO:         dispatch(Actions.hideLeftPanel())
 // TODO:       }
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   showAllEntries: () =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch({
@@ -79,46 +79,46 @@
 // TODO:       }
 // TODO:       dispatch(serverActions.Actions.getEntries(allIDs));
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   showNewRating: (id) => ({
 // TODO:     type: T.SHOW_NEW_RATING,
 // TODO:     payload: id
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   showInfo: (key) => ({
 // TODO:     type: T.SHOW_INFO,
 // TODO:     payload: key
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   showSubscribeToBbox: () => ({
 // TODO:     type: T.SHOW_SUBSCRIBE_TO_BBOX
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   logout: () => ({
 // TODO:     type: T.LOGOUT
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   setCenter: (centerOrEntryId) => {
 // TODO:     return {
 // TODO:       type: T.SET_MAP_CENTER,
 // TODO:       payload: centerOrEntryId
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   setZoom: (zoom) => {
 // TODO:     return {
 // TODO:       type: T.SET_ZOOM,
 // TODO:       payload: parseFloat(zoom)
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   setBbox: (bbox) => {
 // TODO:     return {
 // TODO:       type: T.SET_BBOX,
 // TODO:       payload: bbox
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   setCurrentEntry: (id, center) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch(Actions.highlight(id ? [id] : []));
@@ -133,7 +133,7 @@
 // TODO:         dispatch(Actions.setCenter(id));
 // TODO:       }
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   editCurrentEntry: () =>
 // TODO:     (dispatch, getState) => {
 // TODO:       const currentEntry = getState().server.entries[getState().search.current]
@@ -142,21 +142,21 @@
 // TODO:         payload: currentEntry
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   updateStateFromURL: (hash) => {
 // TODO:     return {
 // TODO:       type: T.UPDATE_STATE_FROM_URL,
 // TODO:       payload: hash
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   setCenterInUrl: (center) => {
 // TODO:     return {
 // TODO:       type: T.SET_CENTER_IN_URL,
 // TODO:       payload: center
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   highlight: (id) => {
 // TODO:     if (id == null) {
 // TODO:       id = [];
@@ -169,7 +169,7 @@
 // TODO:       payload: id
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   showOwnPosition: () =>
 // TODO:     (dispatch) => {
 // TODO:       dispatch({
@@ -182,7 +182,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   showOwnPosition15minutes: () =>
 // TODO:     (dispatch) => {
 // TODO:       dispatch({
@@ -195,44 +195,44 @@
 // TODO:         });
 // TODO:       }), 900000);
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   cancelOwnPosition: () => {
 // TODO:     return {
 // TODO:       type: T.CANCEL_OWN_POSITION
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   showFeatureToDonate: (feat) => {
 // TODO:     return {
 // TODO:       type: T.SHOW_FEATURE_TO_DONATE,
 // TODO:       payload: feat
 // TODO:     };
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   showMap: () => {
 // TODO:     return {
 // TODO:       type: T.SHOW_MAP
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   showResultList: () => {
 // TODO:     return {
 // TODO:       type: T.SHOW_SEARCH_RESULTS
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   explainRatingContext: (context) => {
 // TODO:     return {
 // TODO:       type: T.EXPLAIN_RATING_CONTEXT,
 // TODO:       payload: context
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   onMoveend: (coordinates, mapCenter) =>
 // TODO:     (dispatch, getState) => {
-// TODO: 
+// TODO:
 // TODO:       dispatch(serverActions.Actions.setSearchTime(Date.now()));
-// TODO: 
+// TODO:
 // TODO:       if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
 // TODO:         dispatch(Actions.setCenter({
 // TODO:           lat: coordinates.center.lat,
@@ -241,17 +241,17 @@
 // TODO:       }
 // TODO:       dispatch(Actions.setBbox(coordinates.bbox));
 // TODO:       dispatch(serverActions.Actions.search());
-// TODO: 
+// TODO:
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   onZoomend: (coordinates, zoom) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch(serverActions.Actions.setSearchTime(Date.now()));
-// TODO: 
+// TODO:
 // TODO:       if(coordinates.zoom != zoom){
 // TODO:         dispatch(Actions.setZoom(coordinates.zoom));
 // TODO:       }
 // TODO:     }
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = Actions;
