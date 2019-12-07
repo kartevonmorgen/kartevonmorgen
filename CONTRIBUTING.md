@@ -3,7 +3,7 @@
 ## Found a bug?
 
 Please let us know about any bugs you find via the github issue editor. Click
-[here](https://github.com/flosse/kartevonmorgen/issues/new) and report what you experienced and what you would have expected to happen.
+[here](https://github.com/kartevonmorgen/kartevonmorgen/issues/new) and report what you experienced and what you would have expected to happen.
 
 ## Pull Request
 
@@ -19,14 +19,16 @@ started and help us with developing on KVM (Karte von morgen).
 ### Setup your system
 
 You can use any operating system but for this guide we use the
-commands for linux (e.g. [Kubuntu 16.04 LTS](http://kubuntu.org/getkubuntu/)).
+commands for linux (e.g. [Ubuntu 18.04 LTS](https://ubuntu.com/download/desktop)).
 For another operating system it should be easy to find out the
 equivalent commands by googling.
 
-Install [Node](https://nodejs.org/)
-and [npm](https://www.npmjs.com/) that we'll need to build the app:
+Install [Rust](https://rust-lang.org/)
+and [wasm-pack](https://rustwasm.github.io/wasm-pack/) that we'll need to build the app:
 
-    sudo apt-get install nodejs nodejs-legacy npm
+    sudo apt-get install build-essentials
+    curl https://sh.rustup.rs -sSf | sh
+    cargo install wasm-pack
 
 To manage the source code and to keep track of changes,
 [git](http://git-scm.com/) will help you:
@@ -40,45 +42,39 @@ Great, that's it! Your are done!
 If you've never done that it's a good idea to first play
 around with the following web development basics before
 continuing:
+
+- Rust
 - JavaScript
 - HTML
 - CSS
 
 **Note**:
 If you want you can install [zeal](https://zealdocs.org/), which
-is an offline browser for JavaScript-, HTML-, CSS-, React-Documentation
+is an offline browser for JavaScript-, HTML-, CSS-, Rust-Documentation
 and many many more:
 
     $ sudo add-apt-repository ppa:zeal-developers/ppa
     $ sudo apt-get update
     $ sudo apt-get install zeal
 
-### React & Redux
-As a framework KVM uses [React](https://facebook.github.io/react/)
-with [redux](https://github.com/rackt/redux).
+### Seed
 
-Here is a great [talk](https://facebook.github.io/flux/) and
-[comic](https://medium.com/code-cartoons/a-cartoon-guide-to-flux-6157355ab207) which 
-explains why Redux is a good idea (they are about Flux but all of this
-is also valid for Redux which is the next stage after Flux).
+As a framework KVM uses [Seed](https://seed-rs.org).
 
-Then you should be prepared to have a look at the 
-framework. I recommend to read at least the
-[introduction](https://redux.js.org/introduction/getting-started) and
-the [basics](https://redux.js.org/basics/basic-tutorial) sections as a
-first overview.
-Now, let's put React and Redux together, for example with this ["Step by Step Guide To Building React Redux Apps"](https://medium.com/@rajaraodv/step-by-step-guide-to-building-react-redux-apps-using-mocks-48ca0f47f9a).
+If you never build a seed app, we recommend to read some of it's documentation
 
-The framework that connects React and Redux in the end is [react-redux](https://github.com/gaearon/react-redux).
+- https://seed-rs.org/guide/quickstart
+- https://erwabook.com/
 
-Congratulations, you're now a pro that can help others to hack the awesome KVM platform!
+and build a little basic app fist.
+
+If you're familar with Rust and Seed you can now to help others to hack the awesome KVM platform!
 
 That's it. Everything else is a matter of detail.
 Nevertheless here are some more libs used and you should/could know about:
 
-- [styled-components](https://www.styled-components.com)
-- [leaflet](http://leafletjs.com/) & [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
-- [superagent](https://github.com/visionmedia/superagent)
+- [leaflet](http://leafletjs.com/)
+- [serde](https://serde.rs/)
 - [purecss](http://purecss.io/)
 - [font-awesome](http://fontawesome.io/)
 
