@@ -8,6 +8,7 @@ mod Store;
 mod WebAPI;
 mod components;
 mod constants;
+mod entities;
 mod i18n;
 mod index;
 mod rating;

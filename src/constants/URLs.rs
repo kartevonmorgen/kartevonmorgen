@@ -4,7 +4,7 @@ pub fn OFDB_API_LINK(stage: &App::APP_STAGES) -> String {
     let url = match stage {
         App::APP_STAGES::LOCAL => "/api/",
         App::APP_STAGES::NIGHTLY => "https://nightly.ofdb.io/",
-        App::APP_STAGES::PRODUCTION => "https://nightly.ofdb.io/",
+        App::APP_STAGES::PRODUCTION => "https://api.ofdb.io/",
     };
     format!("{}{}", url, API_VERSION)
 }
