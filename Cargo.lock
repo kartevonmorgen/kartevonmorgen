@@ -120,7 +120,7 @@ dependencies = [
 
 [[package]]
 name = "kartevonmorgen"
-version = "0.0.0"
+version = "0.2.0-dev"
 dependencies = [
  "seed 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "wasm-bindgen 0.2.55 (registry+https://github.com/rust-lang/crates.io-index)",
