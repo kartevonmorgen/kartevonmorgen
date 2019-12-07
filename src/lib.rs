@@ -16,19 +16,8 @@ mod route;
 mod util;
 mod widgets;
 
-#[derive(Default)]
-struct Mdl {
-    // TODO
-}
-
-#[derive(Clone)]
-enum Msg {
-    // TODO
-}
-
-fn update(_: Msg, _: &mut Mdl, _: &mut impl Orders<Msg>) {
-    // TODO
-}
+pub use reducers::Mdl;
+pub use Actions::Msg;
 
 fn view(_: &Mdl) -> impl View<Msg> {
     div![h1!["Hello Rust"],]
@@ -36,5 +25,5 @@ fn view(_: &Mdl) -> impl View<Msg> {
 
 #[wasm_bindgen(start)]
 pub fn render() {
-    seed::App::builder(update, view).build_and_start();
+    seed::App::builder(reducers::update, view).build_and_start();
 }
