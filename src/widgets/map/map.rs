@@ -1,40 +1,40 @@
-import React         from "react";
-import styled        from "styled-components";
-import EntryDetails  from "../../components/pure/EntryDetails";
-import URLs          from "../../constants/URLs";
-import i18n          from "../../i18n";
-import Map           from "../../components/Map";
-
-const MoreInfoLink = styled.a`
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  background: white;
-  left: 0;
-  padding: 6px 25px;
-  font-size: 0.8em;
-  font-family: "Rubik", sans-serif;
-  border-top-right-radius: 2px;
-`;
-
-module.exports = ({marker, size, center, zoom, category, highlight, 
-  entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
-  <div>
-    <Map
-      marker = {marker}
-      size = {size}
-      center = {center}
-      zoom = {zoom}
-      category = {category}
-      highlight = {highlight}
-      entries = {entries}
-      onClick = {onClick}
-      onMarkerClick = {onMarkerClick}
-      onMoveend = {onMoveend}
-      onZoomend = {onZoomend}
-      loggedIn = {loggedIn}
-      showLocateButton = {false}
-      ratings = {ratings}
-      />
-    <MoreInfoLink target="_blank" href={URLs.APP.link + (highlight ? ("/#/?entry=" + highlight) : "")}>{i18n.t("mapWidget.showLargeMap")}</MoreInfoLink>
-  </div>
+// TODO: import React         from "react";
+// TODO: import styled        from "styled-components";
+// TODO: import EntryDetails  from "../../components/pure/EntryDetails";
+// TODO: import URLs          from "../../constants/URLs";
+// TODO: import i18n          from "../../i18n";
+// TODO: import Map           from "../../components/Map";
+// TODO: 
+// TODO: const MoreInfoLink = styled.a`
+// TODO:   position: absolute;
+// TODO:   z-index: 1;
+// TODO:   bottom: 0;
+// TODO:   background: white;
+// TODO:   left: 0;
+// TODO:   padding: 6px 25px;
+// TODO:   font-size: 0.8em;
+// TODO:   font-family: "Rubik", sans-serif;
+// TODO:   border-top-right-radius: 2px;
+// TODO: `;
+// TODO: 
+// TODO: module.exports = ({marker, size, center, zoom, category, highlight, 
+// TODO:   entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
+// TODO:   <div>
+// TODO:     <Map
+// TODO:       marker = {marker}
+// TODO:       size = {size}
+// TODO:       center = {center}
+// TODO:       zoom = {zoom}
+// TODO:       category = {category}
+// TODO:       highlight = {highlight}
+// TODO:       entries = {entries}
+// TODO:       onClick = {onClick}
+// TODO:       onMarkerClick = {onMarkerClick}
+// TODO:       onMoveend = {onMoveend}
+// TODO:       onZoomend = {onZoomend}
+// TODO:       loggedIn = {loggedIn}
+// TODO:       showLocateButton = {false}
+// TODO:       ratings = {ratings}
+// TODO:       />
+// TODO:     <MoreInfoLink target="_blank" href={URLs.APP.link + (highlight ? ("/#/?entry=" + highlight) : "")}>{i18n.t("mapWidget.showLargeMap")}</MoreInfoLink>
+// TODO:   </div>

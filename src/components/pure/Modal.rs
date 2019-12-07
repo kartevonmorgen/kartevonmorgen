@@ -1,80 +1,80 @@
-import React                from "react";
-import styled,{ keyframes } from "styled-components";
-
-import Message              from "./Message";
-import Actions              from "../../Actions"; //TODO: remove dependency
-import { DONATE }           from "../../constants/URLs";
-import V                    from "../../constants/PanelView";
-import i18n                 from "../../i18n";
-
-const t = (key) => i18n.t("modal." + key)
-
-module.exports = ({view, dispatch}) => {
-
-  switch (view.modal) {
-
-    case V.LOCATE:
-      return (
-        <Modal className= 'modal'>
-          <Message
-            iconClass = "spinner"
-            message = {"  " + t("locate.inProgress")}
-            cancelButtonLabel = {t("locate.cancel")}
-            onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
-            />
-        </Modal>
-      );
-
-    case V.LOCATE_DISABLED:
-      return (
-        <Modal className = 'modal'>
-          <Message
-            iconClass = "exclamation-triangle"
-            message = { "  " + t("locate.failed") }
-            cancelButtonLabel = {t("locate.close")}
-            onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
-            actionButtonLabel = {t("locate.tryAgain")}
-            actionButtonIcon = "sync-alt"
-            onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
-            />
-        </Modal>
-      );
-
-    case V.DONATE_FOR_EVENTS:
-      return (
-        <Modal className = 'modal'>
-          <Message
-            iconClass = "info-circle"
-            message = { "   " + t("events.text") } 
-            cancelButtonLabel = {t("events.close")}
-            onCancel = { () => dispatch(Actions.showFeatureToDonate(null)) }
-            actionButtonLabel = {t("events.donate")}
-            actionButtonIcon = "external-link"
-            onAction = { () => window.open(DONATE.link, '_blank').focus() }
-            />
-        </Modal>
-      );
-    default:
-      return <div></div>;
-  }
-}
-
-
-const fadein = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`
-
-const Modal = styled.div `
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.3);
-  animation: fadein 500ms;
-`
+// TODO: import React                from "react";
+// TODO: import styled,{ keyframes } from "styled-components";
+// TODO: 
+// TODO: import Message              from "./Message";
+// TODO: import Actions              from "../../Actions"; //TODO: remove dependency
+// TODO: import { DONATE }           from "../../constants/URLs";
+// TODO: import V                    from "../../constants/PanelView";
+// TODO: import i18n                 from "../../i18n";
+// TODO: 
+// TODO: const t = (key) => i18n.t("modal." + key)
+// TODO: 
+// TODO: module.exports = ({view, dispatch}) => {
+// TODO: 
+// TODO:   switch (view.modal) {
+// TODO: 
+// TODO:     case V.LOCATE:
+// TODO:       return (
+// TODO:         <Modal className= 'modal'>
+// TODO:           <Message
+// TODO:             iconClass = "spinner"
+// TODO:             message = {"  " + t("locate.inProgress")}
+// TODO:             cancelButtonLabel = {t("locate.cancel")}
+// TODO:             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
+// TODO:             />
+// TODO:         </Modal>
+// TODO:       );
+// TODO: 
+// TODO:     case V.LOCATE_DISABLED:
+// TODO:       return (
+// TODO:         <Modal className = 'modal'>
+// TODO:           <Message
+// TODO:             iconClass = "exclamation-triangle"
+// TODO:             message = { "  " + t("locate.failed") }
+// TODO:             cancelButtonLabel = {t("locate.close")}
+// TODO:             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
+// TODO:             actionButtonLabel = {t("locate.tryAgain")}
+// TODO:             actionButtonIcon = "sync-alt"
+// TODO:             onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
+// TODO:             />
+// TODO:         </Modal>
+// TODO:       );
+// TODO: 
+// TODO:     case V.DONATE_FOR_EVENTS:
+// TODO:       return (
+// TODO:         <Modal className = 'modal'>
+// TODO:           <Message
+// TODO:             iconClass = "info-circle"
+// TODO:             message = { "   " + t("events.text") } 
+// TODO:             cancelButtonLabel = {t("events.close")}
+// TODO:             onCancel = { () => dispatch(Actions.showFeatureToDonate(null)) }
+// TODO:             actionButtonLabel = {t("events.donate")}
+// TODO:             actionButtonIcon = "external-link"
+// TODO:             onAction = { () => window.open(DONATE.link, '_blank').focus() }
+// TODO:             />
+// TODO:         </Modal>
+// TODO:       );
+// TODO:     default:
+// TODO:       return <div></div>;
+// TODO:   }
+// TODO: }
+// TODO: 
+// TODO: 
+// TODO: const fadein = keyframes`
+// TODO:   from { opacity: 0; }
+// TODO:   to { opacity: 1; }
+// TODO: `
+// TODO: 
+// TODO: const Modal = styled.div `
+// TODO:   position: absolute;
+// TODO:   z-index: 100;
+// TODO:   width: 100%;
+// TODO:   height: 100%;
+// TODO:   z-index: 1000;
+// TODO:   top: 0;
+// TODO:   right: 0;
+// TODO:   left: 0;
+// TODO:   bottom: 0;
+// TODO:   background-color: rgba(0,0,0,0.3);
+// TODO:   animation: fadein 500ms;
+// TODO: `

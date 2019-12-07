@@ -1,34 +1,34 @@
-require("babel-core/register");
-var webpackConfig = require("./webpack.config.babel.js");
-
-webpackConfig.entry = null;
-
-module.exports = (config) => {
-
-  config.set({
-
-    basePath: './',
-
-    frameworks: ['mocha', 'chai'],
-
-    files: [ './spec/**/*.spec.js' ],
-
-    preprocessors: {
-      '**/*.spec.js': ['webpack']
-    },
-
-    reporters: ['mocha'],
-
-    colors: true,
-
-    logLevel: config.LOG_INFO,
-
-    autoWatch: false,
-
-    browsers: ['ChromeHeadless'],
-
-    singleRun: true,
-
-    webpack: webpackConfig
-  })
-}
+// TODO: require("babel-core/register");
+// TODO: var webpackConfig = require("./webpack.config.babel.js");
+// TODO: 
+// TODO: webpackConfig.entry = null;
+// TODO: 
+// TODO: module.exports = (config) => {
+// TODO: 
+// TODO:   config.set({
+// TODO: 
+// TODO:     basePath: './',
+// TODO: 
+// TODO:     frameworks: ['mocha', 'chai'],
+// TODO: 
+// TODO:     files: [ './spec/**/*.spec.js' ],
+// TODO: 
+// TODO:     preprocessors: {
+// TODO:       '**/*.spec.js': ['webpack']
+// TODO:     },
+// TODO: 
+// TODO:     reporters: ['mocha'],
+// TODO: 
+// TODO:     colors: true,
+// TODO: 
+// TODO:     logLevel: config.LOG_INFO,
+// TODO: 
+// TODO:     autoWatch: false,
+// TODO: 
+// TODO:     browsers: ['ChromeHeadless'],
+// TODO: 
+// TODO:     singleRun: true,
+// TODO: 
+// TODO:     webpack: webpackConfig
+// TODO:   })
+// TODO: }

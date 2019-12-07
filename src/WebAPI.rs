@@ -1,341 +1,341 @@
-import request from "superagent/lib/client";
-import saPrefix from "superagent-prefix";
-import { TILEHOSTING_API_KEY } from "./constants/App";
-import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
-import CATEGORY_IDS from "./constants/Categories";
-
-const prefix = saPrefix(OFDB_API.link);
-
-const jsonCallback = (cb) => (err, res) => {
-  if (err) {
-    cb(err);
-  } else {
-    cb(null, res.body);
-  }
-};
-
-function normalizeCoordinate(bbox, idx) {
-    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
-        bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
-    }
-    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
-        bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
-    }
-}
-
-module.exports = {
-
-  searchEntries: (txt, cats, bbox, cb) => {
-
-    if (txt == null) {
-      txt = '';
-    }
-    if (cats == null) {
-      cats = [];
-    }
-    if (bbox == null) {
-      bbox = [];
-    }
-    normalizeCoordinate(bbox, 1);
-    normalizeCoordinate(bbox, 3);
-    request
-      .get('/search')
-      .use(prefix)
-      .query({
-        text: txt.trim()
-      })
-      .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
-      .query('bbox=' + bbox.join(','))
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
-  },
-
-  searchEvents: (tags, bbox, start, end, cb) => {
-    if (bbox == null) {
-      bbox = [];
-    }
-    normalizeCoordinate(bbox, 1);
-    normalizeCoordinate(bbox, 3);
-    let req = request
-      .get('/events')
-      .use(prefix)
-      .set('Accept', 'application/json');
-    if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
-    if(tags && tags.length > 0) req.query('tags=' + tags) // TODO
-    if(start) req.query(start ? ('start_min=' + start) : "")
-    if(end) req.query(end ? ('start_max=' + end) : "")
-
-    req.end(jsonCallback(cb));
-  },
-
-  getEvent: (id, cb) => {
-    request
-      .get('/events/' + id)
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
-  },
-
-  searchAddressTilehosting: (addr, cb) => {
-    let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
-    if (addr != null && addr != "") {
-      request
-        .get(query)
-        .set('Accept', 'application/json')
-        .end(jsonCallback(cb));
-    }
-  },
-
-  searchAddressNominatim: (addr, cb) => {
-    if (addr == null) {
-      addr = '';
-    }
-    request
-      .get('/search')
-      .use(saPrefix(NOMINATIM.link))
-      .query({
-        q: addr
-      })
-      .query({
-        format: 'json'
-      })
-      .query({
-        addressdetails: 1
-      })
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
-  },
-
-  searchGeolocation: (latlng, cb) => {
-
-    if (latlng == null) {
-      latlng = {
-        lat: 0.0,
-        lng: 0.0
-      };
-    }
-
-    request
-      .get('/reverse')
-      .use(saPrefix(NOMINATIM.link))
-      .query({
-        lat: latlng.lat
-      })
-      .query({
-        lon: latlng.lng
-      })
-      .query({
-        zoom: 18
-      })
-      .query({
-        format: 'json'
-      })
-      .query({
-        addressdetails: 1
-      })
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
-  },
-
-  getEntries: (ids = [], cb) => {
-
-    if (!Array.isArray(ids)) {
-      ids = [ids];
-    }
-
-    if (ids.length < 1) {
-      cb(new Error("no IDs were passed"));
-    } else {
-      request
-        .get('/entries/' + ids.join(','))
-        .use(prefix).set('Accept', 'application/json')
-        .end(jsonCallback(cb));
-    }
-  },
-
-  getRatings: (ids = [], cb) => {
-
-    if (!Array.isArray(ids)) {
-      ids = [ids];
-    }
-
-    if (ids.length < 1) {
-      cb(new Error("no IDs were passed"));
-    } else {
-      request
-        .get('/ratings/' + ids.join(','))
-        .use(prefix).set('Accept', 'application/json')
-        .end(jsonCallback(cb));
-    }
-  },
-
-  saveNewEntry: (e, cb) => {
-    request
-      .post('/entries/')
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .send(e)
-      .end((err, res) => {
-        if (err) {
-          cb(err);
-        } else {
-          cb(null, res.text.replace( /"/g ,""));
-        }
-      });
-  },
-
-  saveEntry: (e, cb) => {
-    request
-      .put('/entries/' + e.id)
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .send(e)
-      .end((err, res) => {
-        if (err) {
-          cb(err);
-        } else {
-          cb(null, res.text);
-        }
-      });
-  },
-
-  createRating: (r, cb) => {
-    request
-      .post('/ratings/')
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .send(r)
-      .end((err, res) => {
-        if (err) {
-          cb(err);
-        } else {
-          cb(null, res.text);
-        }
-      });
-  },
-
-  getAllCategories: (cb) => {
-    request
-      .get('/categories/')
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .end(cb);
-  },
-
-  getServerInfo: (cb) => {
-    request
-      .get('/server/version')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .end((err, res) => {
-        if (err) {
-          cb(err);
-        } else {
-          cb(null, {
-            version: res.text
-          });
-        }
-      });
-  },
-
-  register: ({
-    email,
-    password,
-  }, cb) => {
-    request
-      .post('/users')
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .send({
-        email,
-        password
-      })
-      .end(cb);
-  },
-
-  login: ({
-    email,
-    password
-  }, cb) => {
-    request
-      .post('/login')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .withCredentials()
-      .send({
-        email,
-        password
-      })
-      .end(cb);
-  },
-
-  getUser: (email, cb) => {
-    request
-      .get('/users/' + email)
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .withCredentials()
-      .end(cb);
-  },
-
-  logout: (cb) => {
-    request
-      .post('/logout')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .withCredentials()
-      .end(cb);
-  },
-
-  confirmEmail: (token, cb) => {
-    request
-      .post('/confirm-email-address')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .send({
-        token
-      })
-      .end(cb);
-  },
-
-  deleteAccount: (email, cb) => {
-    request
-      .delete('/users/' + email)
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .withCredentials()
-      .end(cb);
-  },
-
-  subscribeToBbox: (bbox, cb) => {
-    let coordinates = [bbox._southWest, bbox._northEast];
-    request
-      .post('/subscribe-to-bbox')
-      .use(prefix)
-      .set('Accept', 'application/json')
-      .send(coordinates)
-      .end((err, res) => {
-        if (err) {
-          cb(err);
-        } else {
-          cb(null, res.text);
-        }
-      });
-  },
-
-  getBboxSubscriptions: (cb) => {
-    request
-      .get('/bbox-subscriptions')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .end(cb);
-  },
-
-  unsubscribeFromBboxes: (cb) => {
-    request
-      .delete('/unsubscribe-all-bboxes')
-      .set('Accept', 'application/json')
-      .use(prefix)
-      .end(cb);
-  }
-};
+// TODO: import request from "superagent/lib/client";
+// TODO: import saPrefix from "superagent-prefix";
+// TODO: import { TILEHOSTING_API_KEY } from "./constants/App";
+// TODO: import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
+// TODO: import CATEGORY_IDS from "./constants/Categories";
+// TODO: 
+// TODO: const prefix = saPrefix(OFDB_API.link);
+// TODO: 
+// TODO: const jsonCallback = (cb) => (err, res) => {
+// TODO:   if (err) {
+// TODO:     cb(err);
+// TODO:   } else {
+// TODO:     cb(null, res.body);
+// TODO:   }
+// TODO: };
+// TODO: 
+// TODO: function normalizeCoordinate(bbox, idx) {
+// TODO:     if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
+// TODO:         bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
+// TODO:     }
+// TODO:     if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
+// TODO:         bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
+// TODO:     }
+// TODO: }
+// TODO: 
+// TODO: module.exports = {
+// TODO: 
+// TODO:   searchEntries: (txt, cats, bbox, cb) => {
+// TODO: 
+// TODO:     if (txt == null) {
+// TODO:       txt = '';
+// TODO:     }
+// TODO:     if (cats == null) {
+// TODO:       cats = [];
+// TODO:     }
+// TODO:     if (bbox == null) {
+// TODO:       bbox = [];
+// TODO:     }
+// TODO:     normalizeCoordinate(bbox, 1);
+// TODO:     normalizeCoordinate(bbox, 3);
+// TODO:     request
+// TODO:       .get('/search')
+// TODO:       .use(prefix)
+// TODO:       .query({
+// TODO:         text: txt.trim()
+// TODO:       })
+// TODO:       .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
+// TODO:       .query('bbox=' + bbox.join(','))
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .end(jsonCallback(cb));
+// TODO:   },
+// TODO: 
+// TODO:   searchEvents: (tags, bbox, start, end, cb) => {
+// TODO:     if (bbox == null) {
+// TODO:       bbox = [];
+// TODO:     }
+// TODO:     normalizeCoordinate(bbox, 1);
+// TODO:     normalizeCoordinate(bbox, 3);
+// TODO:     let req = request
+// TODO:       .get('/events')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json');
+// TODO:     if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
+// TODO:     if(tags && tags.length > 0) req.query('tags=' + tags) // TODO
+// TODO:     if(start) req.query(start ? ('start_min=' + start) : "")
+// TODO:     if(end) req.query(end ? ('start_max=' + end) : "")
+// TODO: 
+// TODO:     req.end(jsonCallback(cb));
+// TODO:   },
+// TODO: 
+// TODO:   getEvent: (id, cb) => {
+// TODO:     request
+// TODO:       .get('/events/' + id)
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .end(jsonCallback(cb));
+// TODO:   },
+// TODO: 
+// TODO:   searchAddressTilehosting: (addr, cb) => {
+// TODO:     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
+// TODO:     if (addr != null && addr != "") {
+// TODO:       request
+// TODO:         .get(query)
+// TODO:         .set('Accept', 'application/json')
+// TODO:         .end(jsonCallback(cb));
+// TODO:     }
+// TODO:   },
+// TODO: 
+// TODO:   searchAddressNominatim: (addr, cb) => {
+// TODO:     if (addr == null) {
+// TODO:       addr = '';
+// TODO:     }
+// TODO:     request
+// TODO:       .get('/search')
+// TODO:       .use(saPrefix(NOMINATIM.link))
+// TODO:       .query({
+// TODO:         q: addr
+// TODO:       })
+// TODO:       .query({
+// TODO:         format: 'json'
+// TODO:       })
+// TODO:       .query({
+// TODO:         addressdetails: 1
+// TODO:       })
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .end(jsonCallback(cb));
+// TODO:   },
+// TODO: 
+// TODO:   searchGeolocation: (latlng, cb) => {
+// TODO: 
+// TODO:     if (latlng == null) {
+// TODO:       latlng = {
+// TODO:         lat: 0.0,
+// TODO:         lng: 0.0
+// TODO:       };
+// TODO:     }
+// TODO: 
+// TODO:     request
+// TODO:       .get('/reverse')
+// TODO:       .use(saPrefix(NOMINATIM.link))
+// TODO:       .query({
+// TODO:         lat: latlng.lat
+// TODO:       })
+// TODO:       .query({
+// TODO:         lon: latlng.lng
+// TODO:       })
+// TODO:       .query({
+// TODO:         zoom: 18
+// TODO:       })
+// TODO:       .query({
+// TODO:         format: 'json'
+// TODO:       })
+// TODO:       .query({
+// TODO:         addressdetails: 1
+// TODO:       })
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .end(jsonCallback(cb));
+// TODO:   },
+// TODO: 
+// TODO:   getEntries: (ids = [], cb) => {
+// TODO: 
+// TODO:     if (!Array.isArray(ids)) {
+// TODO:       ids = [ids];
+// TODO:     }
+// TODO: 
+// TODO:     if (ids.length < 1) {
+// TODO:       cb(new Error("no IDs were passed"));
+// TODO:     } else {
+// TODO:       request
+// TODO:         .get('/entries/' + ids.join(','))
+// TODO:         .use(prefix).set('Accept', 'application/json')
+// TODO:         .end(jsonCallback(cb));
+// TODO:     }
+// TODO:   },
+// TODO: 
+// TODO:   getRatings: (ids = [], cb) => {
+// TODO: 
+// TODO:     if (!Array.isArray(ids)) {
+// TODO:       ids = [ids];
+// TODO:     }
+// TODO: 
+// TODO:     if (ids.length < 1) {
+// TODO:       cb(new Error("no IDs were passed"));
+// TODO:     } else {
+// TODO:       request
+// TODO:         .get('/ratings/' + ids.join(','))
+// TODO:         .use(prefix).set('Accept', 'application/json')
+// TODO:         .end(jsonCallback(cb));
+// TODO:     }
+// TODO:   },
+// TODO: 
+// TODO:   saveNewEntry: (e, cb) => {
+// TODO:     request
+// TODO:       .post('/entries/')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .send(e)
+// TODO:       .end((err, res) => {
+// TODO:         if (err) {
+// TODO:           cb(err);
+// TODO:         } else {
+// TODO:           cb(null, res.text.replace( /"/g ,""));
+// TODO:         }
+// TODO:       });
+// TODO:   },
+// TODO: 
+// TODO:   saveEntry: (e, cb) => {
+// TODO:     request
+// TODO:       .put('/entries/' + e.id)
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .send(e)
+// TODO:       .end((err, res) => {
+// TODO:         if (err) {
+// TODO:           cb(err);
+// TODO:         } else {
+// TODO:           cb(null, res.text);
+// TODO:         }
+// TODO:       });
+// TODO:   },
+// TODO: 
+// TODO:   createRating: (r, cb) => {
+// TODO:     request
+// TODO:       .post('/ratings/')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .send(r)
+// TODO:       .end((err, res) => {
+// TODO:         if (err) {
+// TODO:           cb(err);
+// TODO:         } else {
+// TODO:           cb(null, res.text);
+// TODO:         }
+// TODO:       });
+// TODO:   },
+// TODO: 
+// TODO:   getAllCategories: (cb) => {
+// TODO:     request
+// TODO:       .get('/categories/')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   getServerInfo: (cb) => {
+// TODO:     request
+// TODO:       .get('/server/version')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .end((err, res) => {
+// TODO:         if (err) {
+// TODO:           cb(err);
+// TODO:         } else {
+// TODO:           cb(null, {
+// TODO:             version: res.text
+// TODO:           });
+// TODO:         }
+// TODO:       });
+// TODO:   },
+// TODO: 
+// TODO:   register: ({
+// TODO:     email,
+// TODO:     password,
+// TODO:   }, cb) => {
+// TODO:     request
+// TODO:       .post('/users')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .send({
+// TODO:         email,
+// TODO:         password
+// TODO:       })
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   login: ({
+// TODO:     email,
+// TODO:     password
+// TODO:   }, cb) => {
+// TODO:     request
+// TODO:       .post('/login')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .withCredentials()
+// TODO:       .send({
+// TODO:         email,
+// TODO:         password
+// TODO:       })
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   getUser: (email, cb) => {
+// TODO:     request
+// TODO:       .get('/users/' + email)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .withCredentials()
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   logout: (cb) => {
+// TODO:     request
+// TODO:       .post('/logout')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .withCredentials()
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   confirmEmail: (token, cb) => {
+// TODO:     request
+// TODO:       .post('/confirm-email-address')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .send({
+// TODO:         token
+// TODO:       })
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   deleteAccount: (email, cb) => {
+// TODO:     request
+// TODO:       .delete('/users/' + email)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .withCredentials()
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   subscribeToBbox: (bbox, cb) => {
+// TODO:     let coordinates = [bbox._southWest, bbox._northEast];
+// TODO:     request
+// TODO:       .post('/subscribe-to-bbox')
+// TODO:       .use(prefix)
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .send(coordinates)
+// TODO:       .end((err, res) => {
+// TODO:         if (err) {
+// TODO:           cb(err);
+// TODO:         } else {
+// TODO:           cb(null, res.text);
+// TODO:         }
+// TODO:       });
+// TODO:   },
+// TODO: 
+// TODO:   getBboxSubscriptions: (cb) => {
+// TODO:     request
+// TODO:       .get('/bbox-subscriptions')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .end(cb);
+// TODO:   },
+// TODO: 
+// TODO:   unsubscribeFromBboxes: (cb) => {
+// TODO:     request
+// TODO:       .delete('/unsubscribe-all-bboxes')
+// TODO:       .set('Accept', 'application/json')
+// TODO:       .use(prefix)
+// TODO:       .end(cb);
+// TODO:   }
+// TODO: };
