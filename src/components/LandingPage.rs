@@ -3,7 +3,7 @@
 // TODO: import T                    from "prop-types";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 // TODO: import styled               from "styled-components";
-// TODO: 
+// TODO:
 // TODO: import logo                 from "../img/logo.png";
 // TODO: import CityList             from "./pure/CityList";
 // TODO: import Info                 from "./pure/Info";
@@ -18,28 +18,28 @@
 // TODO: import i18n                 from "../i18n";
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import pincloud             from "../img/pincloud.png";
-// TODO: 
+// TODO:
 // TODO: class LandingPage extends Component {
 // TODO:   state = {
 // TODO:     selectedCity : 0,
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   render() {
-// TODO: 
+// TODO:
 // TODO:     const { content, searchText, searchError, cities, onSelection, onEscape,
 // TODO:       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, loadingSearch } = this.props;
 // TODO:     const onClick = this.props.onMenuItemClick;
 // TODO:     var t = (key) => {
 // TODO:       return this.props.t("landingPage." + key);
 // TODO:     };
-// TODO: 
+// TODO:
 // TODO:     const onChangeSelectedCity = (direction) => {
 // TODO:       const newSelection = (this.state.selectedCity + direction) > 0 ? (this.state.selectedCity + direction) : 0;
 // TODO:       if(cities.length - 1 >= newSelection){
 // TODO:         this.setState({ selectedCity: newSelection })
 // TODO:       }
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     const onKeyUp = ev => {
 // TODO:       ev.preventDefault();
 // TODO:       switch (ev.key) {
@@ -57,7 +57,7 @@
 // TODO:           break;
 // TODO:       }
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     const onPlaceSearch = ev => {
 // TODO:       const target = ev.target;
 // TODO:       const v = target != null ? target.value : void 0;
@@ -66,16 +66,16 @@
 // TODO:       }
 // TODO:       onChange(v);
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
 // TODO:       : t("subscribeToBbox.new-link");
-// TODO: 
+// TODO:
 // TODO:     let loginInfo = <div className="login-info">
 // TODO:       <p>{t("subscribeToBbox.message")}<br/>
 // TODO:         <a onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)} href="#">{subscriptionLink}</a>.
 // TODO:       </p>
 // TODO:     </div>;
-// TODO: 
+// TODO:
 // TODO:     let contentComp = null;
 // TODO:     switch (content) {
 // TODO:       case V.TEAM:
@@ -115,11 +115,11 @@
 // TODO:             {t("donate.paragraph2.bank-details2")}<br/>
 // TODO:             {t("donate.paragraph2.bank-details3")}<br/>
 // TODO:             {t("donate.paragraph2.bank-details4")}<br/><br/>
-// TODO: 
+// TODO:
 // TODO:             {t("donate.paragraph2.text")}
 // TODO:           </p>
 // TODO:           <h1>{t("donate.paragraph3.heading")}</h1>
-// TODO: 
+// TODO:
 // TODO:           <p>
 // TODO:             {t("donate.paragraph3.text1")}
 // TODO:             {" "}<a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">{t("donate.paragraph3.form-link")}</a>)
@@ -224,7 +224,7 @@
 // TODO:         break;
 // TODO:       default:
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     return (
 // TODO:       <LandingWrapper className="landing">
 // TODO:         <div className = "banner">
@@ -304,7 +304,7 @@
 // TODO:                         <span className="errorText">{t("city-search.error")}</span>&nbsp;&nbsp;
 // TODO:                         <a onClick={() => onClick('map')} href="#" className="link">
 // TODO:                           {t("city-search.show-map")}
-// TODO: 
+// TODO:
 // TODO:                         </a>
 // TODO:                       </div>
 // TODO:                       : cities && cities.length > 0
@@ -362,7 +362,7 @@
 // TODO:       </LandingWrapper>);
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: LandingPage.propTypes = {
 // TODO:   content     : T.string,
 // TODO:   searchText  : T.string,
@@ -372,9 +372,9 @@
 // TODO:   onEscape    : T.func,
 // TODO:   onSelection : T.func
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(LandingPage)
-// TODO: 
+// TODO:
 // TODO: const LandingWrapper = styled.div`
 // TODO:   position: absolute;
 // TODO:   z-index: 100;
@@ -418,7 +418,7 @@
 // TODO:         color: #08f;
 // TODO:       }
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     /* only of city list on landing page, probably use props */
 // TODO:     .city-list {
 // TODO:       padding-top: 0.3em;

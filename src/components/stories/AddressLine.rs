@@ -1,7 +1,7 @@
 // TODO: // import React from 'react'
 // TODO: // import { storiesOf, action } from '@kadira/storybook'
 // TODO: // var AddressLine = require('../AddressLine.coffee');
-// TODO: 
+// TODO:
 // TODO: // storiesOf('AddressLine', module)
 // TODO: //   .add('Full address', () => (
 // TODO: //     <AddressLine

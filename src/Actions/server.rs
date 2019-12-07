@@ -12,11 +12,11 @@
 // TODO: import i18n                       from "../i18n";
 // TODO: import { getMidnightUnixtime }    from "../util/datetime";
 // TODO: import { notify }                 from "reapop";
-// TODO: 
+// TODO:
 // TODO: const flatten = nestedArray => nestedArray.reduce(
 // TODO:   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 // TODO: );
-// TODO: 
+// TODO:
 // TODO: const getLicenseForEntry = currentLicense => {
 // TODO:   if (currentLicense && currentLicense == LICENSES.ODBL) {
 // TODO:     return currentLicense;
@@ -24,19 +24,19 @@
 // TODO:     return NEW_ENTRY_LICENSE;
 // TODO:   }
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const Actions = {
-// TODO: 
+// TODO:
 // TODO:   setSearchTime: (time) => ({
 // TODO:     type: T.SET_SEARCH_TIME,
 // TODO:     payload: time
 // TODO:   }),
-// TODO: 
+// TODO:
 // TODO:   search: () =>
 // TODO:     (dispatch, getState) => {
-// TODO: 
+// TODO:
 // TODO:       dispatch(Actions.setSearchTime(Date.now()));
-// TODO: 
+// TODO:
 // TODO:       const searchFn = () => {
 // TODO:         dispatch(Actions.setSearchTime(null));
 // TODO:         console.log("SEARCH\n");
@@ -45,9 +45,9 @@
 // TODO:         const sw = map.bbox._southWest;
 // TODO:         const ne = map.bbox._northEast;
 // TODO:         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
-// TODO: 
+// TODO:
 // TODO:         if (search.text == null || !search.text.trim().endsWith("#")) {
-// TODO: 
+// TODO:
 // TODO:           if(!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)){
 // TODO:             dispatch({
 // TODO:               type: T.NO_SEARCH_RESULTS
@@ -69,7 +69,7 @@
 // TODO:                     : res != null
 // TODO:                       ? res.invisible
 // TODO:                       : void 0;
-// TODO: 
+// TODO:
 // TODO:                 const ids = entries ? entries.map(e => e.id) : null;
 // TODO:                 if (ids && (Array.isArray(ids)) && ids.length > 0) {
 // TODO:                   dispatch(Actions.getEntries(ids));
@@ -80,7 +80,7 @@
 // TODO:                 }
 // TODO:               });
 // TODO:             }
-// TODO: 
+// TODO:
 // TODO:             if(cats.includes(IDS.EVENT)){
 // TODO:               const tags = search.text.replace(/#/g, '');
 // TODO:               WebAPI.searchEvents(tags, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
@@ -90,7 +90,7 @@
 // TODO:                   error: err != null
 // TODO:                 });
 // TODO:               });
-// TODO: 
+// TODO:
 // TODO:               // search events without place:
 // TODO:               WebAPI.searchEvents(tags, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
 // TODO:                 dispatch({
@@ -101,7 +101,7 @@
 // TODO:               });
 // TODO:             }
 // TODO:           }
-// TODO: 
+// TODO:
 // TODO:           if (search.text != null) {
 // TODO:             const address = search.text.replace(/#/g, "");
 // TODO:             WebAPI.searchAddressNominatim(address, (err, res) => {
@@ -114,11 +114,11 @@
 // TODO:           }
 // TODO:         }
 // TODO:       };
-// TODO: 
+// TODO:
 // TODO:       const triggerSearch = () => {
 // TODO:         const { timedActions } = getState();
 // TODO:         const lastTriggered = timedActions.searchLastTriggered;
-// TODO: 
+// TODO:
 // TODO:         if (lastTriggered != null) {
 // TODO:           const duration = Date.now() - lastTriggered;
 // TODO:           if (duration > appConst.SEARCH_DELAY) {
@@ -128,11 +128,11 @@
 // TODO:           }
 // TODO:         }
 // TODO:       };
-// TODO: 
+// TODO:
 // TODO:       setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
-// TODO: 
+// TODO:
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   searchCity: () =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch(Actions.setSearchTime(Date.now()));
@@ -147,11 +147,11 @@
 // TODO:           });
 // TODO:         });
 // TODO:       };
-// TODO: 
+// TODO:
 // TODO:       const triggerSearch = () => {
 // TODO:         const { timedActions } = getState();
 // TODO:         const lastTriggered = timedActions.searchLastTriggered;
-// TODO: 
+// TODO:
 // TODO:         if (lastTriggered != null) {
 // TODO:           const duration = Date.now() - lastTriggered;
 // TODO:           if (duration > appConst.SEARCH_DELAY) {
@@ -161,10 +161,10 @@
 // TODO:           }
 // TODO:         }
 // TODO:       };
-// TODO: 
+// TODO:
 // TODO:       setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   getEntries: (ids = []) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       let {
@@ -176,7 +176,7 @@
 // TODO:         payload: !fetchedAllEntries && (ids.length > NUM_ENTRIES_TO_FETCH)
 // TODO:       });
 // TODO:       ids = ids.slice(0, NUM_ENTRIES_TO_FETCH);
-// TODO: 
+// TODO:
 // TODO:       const entries = getState().server.entries;
 // TODO:       const fetch_ids_entries = ids.filter((x) => entries[x] == null);
 // TODO:       if (fetch_ids_entries.length > 0) {
@@ -206,7 +206,7 @@
 // TODO:         })
 // TODO:       }
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   getEvent: (id) =>
 // TODO:     (dispatch) => {
 // TODO:       WebAPI.getEvent(id, (err, res) => {
@@ -217,7 +217,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   getRatings: (ids = []) =>
 // TODO:     (dispatch) => {
 // TODO:       WebAPI.getRatings(ids, (err, res) => {
@@ -228,7 +228,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   getAllCategories: () =>
 // TODO:     (dispatch) => {
 // TODO:       WebAPI.getAllCategories((err, res) => {
@@ -239,7 +239,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   getServerInfo: () =>
 // TODO:     (dispatch) => {
 // TODO:       WebAPI.getServerInfo((err, res) => {
@@ -250,7 +250,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   subscribeToBbox: (bbox, changeExistingBbox) =>
 // TODO:     (dispatch) => {
 // TODO:       WebAPI.subscribeToBbox(bbox, (err, res) => {
@@ -259,8 +259,8 @@
 // TODO:             type: T.SUBSCRIBE_TO_BBOX_RESULT,
 // TODO:             payload: err
 // TODO:           });
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:           dispatch(notify({
 // TODO:             ...notificationSettings,
 // TODO:             message: i18n.t("growler.genericError"),
@@ -283,7 +283,7 @@
 // TODO:         }
 // TODO:       })
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   unsubscribeFromBboxes: (email) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       WebAPI.unsubscribeFromBboxes((err, res) => {
@@ -306,13 +306,13 @@
 // TODO:         }
 // TODO:       })
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   saveEntry: (e) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       const entryExists = (e != null ? e.id : void 0);
 // TODO:       const saveFunc = entryExists ? WebAPI.saveEntry : WebAPI.saveNewEntry;
 // TODO:       e.license = getLicenseForEntry(e.license);
-// TODO: 
+// TODO:
 // TODO:       saveFunc(e, (err, res) => {
 // TODO:         if (err) {
 // TODO:           dispatch(stopSubmit(EDIT.id, {
@@ -333,12 +333,12 @@
 // TODO:                 message: i18n.t("growler.entrySaved"),
 // TODO:                 status: "success"
 // TODO:               }));
-// TODO: 
+// TODO:
 // TODO:               dispatch({
 // TODO:                 type: T.SET_CURRENT_ENTRY,
 // TODO:                 payload: id,
 // TODO:               });
-// TODO: 
+// TODO:
 // TODO:               if(!entryExists){
 // TODO:                 dispatch({
 // TODO:                   type: T.NEW_ENTRY_RESULT,
@@ -355,7 +355,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   createRating: (rating) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       const r = {
@@ -391,7 +391,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   setMarker: (latlng) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch({
@@ -407,7 +407,7 @@
 // TODO:         });
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   geocodeAndSetMarker: (address) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       if (!getState().form.edit.kvm_flag_markerWasEnteredManually) {
@@ -432,7 +432,7 @@
 // TODO:         });
 // TODO:       }
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   login: (email, password) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch({
@@ -465,7 +465,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   register: (email, password) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       dispatch({
@@ -488,7 +488,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   confirmEmail: (user_id) =>
 // TODO:     (dispatch, getState) => {
 // TODO:       WebAPI.confirmEmail(user_id, (err, res) => {
@@ -505,7 +505,7 @@
 // TODO:         }
 // TODO:       })
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   deleteAccount: () =>
 // TODO:     (dispatch, getState) => {
 // TODO:       WebAPI.deleteAccount(getState().user.email, (err, res) => {
@@ -516,7 +516,7 @@
 // TODO:         }
 // TODO:       });
 // TODO:     },
-// TODO: 
+// TODO:
 // TODO:   highlight: (id) => {
 // TODO:     if (id == null) {
 // TODO:       id = [];
@@ -530,7 +530,7 @@
 // TODO:     };
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = {
 // TODO:   Actions: Actions,
 // TODO:   getLicenseForEntry: getLicenseForEntry

@@ -7,15 +7,15 @@
 // TODO: import styled                   from "styled-components";
 // TODO: import T                        from "prop-types";
 // TODO: import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
-// TODO: 
+// TODO:
 // TODO: import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
-// TODO: 
+// TODO:
 // TODO: import  "leaflet/dist/leaflet.css"
-// TODO: 
+// TODO:
 // TODO: const { INITIATIVE, EVENT, COMPANY } = IDS;
-// TODO: 
+// TODO:
 // TODO: class KVMMap extends Component {
-// TODO: 
+// TODO:
 // TODO:   getIconById(id) {
 // TODO:     switch (id) {
 // TODO:       case INITIATIVE:
@@ -28,7 +28,7 @@
 // TODO:         return icons.unknown;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   getCategoryColorById(id){
 // TODO:     switch (id) {
 // TODO:       case INITIATIVE:
@@ -41,7 +41,7 @@
 // TODO:         return STYLE.otherCategory;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   componentDidMount(){
 // TODO:     //workaround due to a bug in react-leaflet:
 // TODO:     const map = this.refs.map;
@@ -51,7 +51,7 @@
 // TODO:       this.props.onMoveend(this.getMapCoordinates())
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   getMapCoordinates(){
 // TODO:     const m = this.refs.map.leafletElement
 // TODO:     return {
@@ -60,11 +60,11 @@
 // TODO:       zoom  : m.getZoom()
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   render() {
-// TODO: 
+// TODO:
 // TODO:     var markers = [];
-// TODO: 
+// TODO:
 // TODO:     const {
 // TODO:       entries,
 // TODO:       center,
@@ -78,19 +78,19 @@
 // TODO:       showLocateButton,
 // TODO:       highlight
 // TODO:     } = this.props;
-// TODO: 
+// TODO:
 // TODO:     if (entries && entries.length > 0 ) {
 // TODO:       entries.forEach(e => {
 // TODO:         let avg_rating = null;
-// TODO: 
+// TODO:
 // TODO:         if (e.lat && e.lng) {
-// TODO: 
+// TODO:
 // TODO:           if(e.ratings && e.ratings.length > 0 && Object.keys(ratings).length > 0){
 // TODO:             const ratings_for_entry = (e.ratings || []).map(id => ratings[id]);
 // TODO:             avg_rating = avg_rating_for_entry(ratings_for_entry);
 // TODO:           }
-// TODO: 
-// TODO:           if((e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) 
+// TODO:
+// TODO:           if((e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0)
 // TODO:             || e.categories[0] === EVENT){
 // TODO:             let opacity = 0.5;
 // TODO:             if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
@@ -108,12 +108,12 @@
 // TODO:             );
 // TODO:           } else {
 // TODO:             // to make clicking the circle easier add a larger circle with 0 opacity:
-// TODO: 
+// TODO:
 // TODO:             let opacity = 0.5;
 // TODO:             if(highlight.indexOf(e.id) == 0 || highlight.length == 0) opacity = 1;
 // TODO:             if( marker ) opacity = 0.3;
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:             markers.push(
 // TODO:               <CircleMarker
 // TODO:                 onClick   = { () => { onMarkerClick(e.id) }}
@@ -130,12 +130,12 @@
 // TODO:               </CircleMarker>
 // TODO:             );
 // TODO:           }
-// TODO: 
+// TODO:
 // TODO:           if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
-// TODO: 
+// TODO:
 // TODO:             let yOffset = 10
 // TODO:             if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
-// TODO: 
+// TODO:
 // TODO:             markers.push(
 // TODO:               <CircleMarker
 // TODO:                 onClick   = { () => { onMarkerClick(e.id) }}
@@ -150,11 +150,11 @@
 // TODO:         }
 // TODO:       });
 // TODO:     }
-// TODO: 
+// TODO:
 // TODO:     let attribution = ""
 // TODO:     URLs.TILE_SERVER_ATTR.name ? attribution = '<a class="osm attr" href=' + URLs.TILE_SERVER_ATTR.link + '>' + URLs.TILE_SERVER_ATTR.name + '</a> | '  : null
 // TODO:     attribution += '&copy; <a class="osm attr" href=' + URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>'
-// TODO: 
+// TODO:
 // TODO:     return (
 // TODO:       <Wrapper>
 // TODO:         <Map
@@ -168,7 +168,7 @@
 // TODO:           onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
 // TODO:           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
 // TODO:           onClick     = { (e) => { onClick(e) }} >
-// TODO: 
+// TODO:
 // TODO:           <TileLayer
 // TODO:             url = { URLs.TILE_SERVER.link }
 // TODO:             attribution = { attribution }
@@ -197,7 +197,7 @@
 // TODO:       </Wrapper>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: KVMMap.propTypes = {
 // TODO:   entries       : T.array,
 // TODO:   ratings       : T.object,
@@ -212,11 +212,11 @@
 // TODO:   onLocate      : T.func,
 // TODO:   showLocateButton : T.bool
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = KVMMap;
-// TODO: 
+// TODO:
 // TODO: const Wrapper = styled.div`
-// TODO: 
+// TODO:
 // TODO:   div.map {
 // TODO:     height: 100%;
 // TODO:     width: 100%;
@@ -231,13 +231,13 @@
 // TODO:     color: ${ STYLE.darkGray }
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const LocateButtonContainer = styled.div`
 // TODO:   bottom: 95px;
 // TODO:   position: absolute;
 // TODO:   z-index: 0;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const LocateButtonInnerContainer = styled.div`
 // TODO:   box-shadow: none !important;
 // TODO:   width: 30px;
@@ -245,7 +245,7 @@
 // TODO:   border: 2px solid rgba(0,0,0,0.2);
 // TODO:   background-clip: padding-box;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const LocateButton = styled.a `
 // TODO:   cursor: pointer;
 // TODO:   font-size: 14px;
@@ -254,12 +254,12 @@
 // TODO:   height: 30px !important;
 // TODO:   line-height: 30px !important;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const LocateIcon = styled(FontAwesomeIcon)`
 // TODO:   width: 12px;
 // TODO:   height: 12px;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const SmallTooltip = styled(Tooltip)`
 // TODO:   > h3 {
 // TODO:     margin: 0;

@@ -1,18 +1,18 @@
 // TODO: import T from "../constants/ActionTypes";
-// TODO: 
+// TODO:
 // TODO: const initialState = {
 // TODO:   version: null,
 // TODO:   entries: {},
 // TODO:   ratings: {},
 // TODO:   loadingSearch: false
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = (state=initialState, action={}) => {
-// TODO: 
+// TODO:
 // TODO:   const { payload } = action;
-// TODO: 
+// TODO:
 // TODO:   let o = {};
-// TODO: 
+// TODO:
 // TODO:   switch (action.type) {
 // TODO:     case T.SERVER_INFO_RESULT:
 // TODO:       return {
@@ -53,7 +53,7 @@
 // TODO:           .forEach(e => { o[e.id] = {
 // TODO:               ...e,
 // TODO:               categories: ["c2dc278a2d6a4b9b8a50cb606fc017ed"] // TODO
-// TODO:             }; 
+// TODO:             };
 // TODO:           });
 // TODO:         } else {
 // TODO:           o[payload.id] = {
@@ -92,7 +92,7 @@
 // TODO:         };
 // TODO:       }
 // TODO:       return state;
-// TODO: 
+// TODO:
 // TODO:     case T.NEW_ENTRY_RESULT:
 // TODO:       o[payload.id] = payload;
 // TODO:       return {
@@ -102,7 +102,7 @@
 // TODO:           ...o
 // TODO:         }
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SAVED_ENTRY_RESULT:
 // TODO:       o[payload.id] = payload;
 // TODO:       return {
@@ -112,21 +112,21 @@
 // TODO:           ...o
 // TODO:         }
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SET_SEARCH_TIME:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         loadingSearch: true
 // TODO:       }
-// TODO: 
-// TODO:     
+// TODO:
+// TODO:
 // TODO:     case T.NO_SEARCH_RESULTS:
 // TODO:     case T.SEARCH_ADDRESS_RESULT:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         loadingSearch: false
 // TODO:       }
-// TODO:       
+// TODO:
 // TODO:     default:
 // TODO:       return state;
 // TODO:   }

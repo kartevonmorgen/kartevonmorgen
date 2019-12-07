@@ -6,7 +6,7 @@
 // TODO: import { reduxForm,
 // TODO:          Field,
 // TODO:          initialize }       from "redux-form";
-// TODO: 
+// TODO:
 // TODO: import Actions              from "../Actions";
 // TODO: import validation           from "../util/validation";
 // TODO: import NavButton            from "./pure/NavButton";
@@ -17,22 +17,22 @@
 // TODO: import SelectTags           from './SelectTags';
 // TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
 // TODO: import NavButtonWrapper     from "./pure/NavButtonWrapper";
-// TODO: 
+// TODO:
 // TODO: class Form extends Component {
-// TODO: 
+// TODO:
 // TODO:   render() {
-// TODO: 
+// TODO:
 // TODO:     const { isEdit, license, dispatch, handleSubmit } = this.props;
 // TODO:     var t = (key) => {
 // TODO:       return this.props.t("entryForm." + key);
 // TODO:     };
-// TODO: 
+// TODO:
 // TODO:     return (
 // TODO:     <FormWrapper>
 // TODO:       <ScrollableDiv>
 // TODO:         <AddEntryForm
 // TODO:           action    = 'javascript:void();' >
-// TODO: 
+// TODO:
 // TODO:             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
 // TODO:             { this.props.error &&
 // TODO:               <div className= "err">
@@ -53,7 +53,7 @@
 // TODO:                   {/* <option value={IDS.EVENT}>{t("category." + NAMES[IDS.EVENT])}</option> */}
 // TODO:                 </FieldElement>
 // TODO:                 <FieldElement name="category" component={errorMessage} />
-// TODO: 
+// TODO:
 // TODO:                 <FieldElement
 // TODO:                   name="title"
 // TODO:                   required={true}
@@ -61,27 +61,27 @@
 // TODO:                   type="text"
 // TODO:                   component="input"
 // TODO:                   placeholder={t("title")} />
-// TODO: 
+// TODO:
 // TODO:                 <FieldElement
 // TODO:                   name="title"
 // TODO:                   component={errorMessage} />
-// TODO: 
+// TODO:
 // TODO:                 <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
 // TODO:                 <FieldElement name="description" component={errorMessage} />
-// TODO: 
+// TODO:
 // TODO:               <FieldElement
 // TODO:                 name="tags"
 // TODO:                 required={true}
 // TODO:                 className="pure-input-1"
 // TODO:                 component="input"
 // TODO:                 placeholder={t("tags")}
-// TODO:                 component={SelectTags} 
+// TODO:                 component={SelectTags}
 // TODO:               />
 // TODO:               <FieldElement
 // TODO:                 name="tags"
 // TODO:                 component={errorMessage} />
 // TODO:             </Fieldset>
-// TODO: 
+// TODO:
 // TODO:               <Fieldset>
 // TODO:                 <FieldsetLegend>
 // TODO:                   <FieldsetTitle>{t("location")}</FieldsetTitle>
@@ -116,7 +116,7 @@
 // TODO:                   </div>
 // TODO:                 </div>
 // TODO:               </Fieldset>
-// TODO: 
+// TODO:
 // TODO:               <Fieldset>
 // TODO:                 <OptionalLegend>
 // TODO:                   <FieldsetTitle>{t("contact")}</FieldsetTitle>
@@ -134,7 +134,7 @@
 // TODO:                     <FieldElement name="homepage" component={errorMessage} />
 // TODO:                   </div>
 // TODO:                 </div>
-// TODO: 
+// TODO:
 // TODO:                 <div className= "pure-g">
 // TODO:                   <OptionalFieldLabel className= "pure-u-2-24">
 // TODO:                     <FontAwesomeIcon icon="envelope" />
@@ -144,7 +144,7 @@
 // TODO:                     <FieldElement name="email" component={errorMessage} />
 // TODO:                   </div>
 // TODO:                 </div>
-// TODO: 
+// TODO:
 // TODO:                 <div className= "pure-g">
 // TODO:                   <OptionalFieldLabel className= "pure-u-2-24">
 // TODO:                     <FontAwesomeIcon icon="phone" />
@@ -155,7 +155,7 @@
 // TODO:                   </div>
 // TODO:                 </div>
 // TODO:               </Fieldset>
-// TODO: 
+// TODO:
 // TODO:               <Fieldset>
 // TODO:                 <OptionalLegend>
 // TODO:                   <FieldsetTitle>{t("entryImage")}</FieldsetTitle>
@@ -180,7 +180,7 @@
 // TODO:                   </div>
 // TODO:                 </div>
 // TODO:               </Fieldset>
-// TODO: 
+// TODO:
 // TODO:               <Fieldset>
 // TODO:                 <FieldsetLegend>
 // TODO:                   <FieldsetTitle>{t("license")}</FieldsetTitle>
@@ -206,7 +206,7 @@
 // TODO:                   </div>
 // TODO:                 </div>
 // TODO:               </Fieldset>
-// TODO: 
+// TODO:
 // TODO:             </div>
 // TODO:           </AddEntryForm>
 // TODO:         </ScrollableDiv>
@@ -234,14 +234,14 @@
 // TODO:       </FormWrapper>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: Form.propTypes = {
 // TODO:   isEdit : T.string,
 // TODO:   license: T.string,
 // TODO:   dispatch: T.func,
 // TODO:   tags: T.array
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = reduxForm({
 // TODO:   form            : EDIT.id,
 // TODO:   validate        : validation.entryForm,
@@ -256,11 +256,11 @@
 // TODO:       return new Promise((resolve, reject) => resolve());
 // TODO:   }
 // TODO: })(translate('translation')(Form))
-// TODO: 
+// TODO:
 // TODO: const StyledNavButtonWrapper = styled(NavButtonWrapper)`
 // TODO:   height: 68px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const AddEntryForm = styled.form`
 // TODO:   margin: 2em 1.6em 0;
 // TODO:   select {
@@ -271,11 +271,11 @@
 // TODO:   margin-top: 0.5em;
 // TODO:   margin-bottom: 0;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const ClickOnMapText = styled.div`
 // TODO:   margin: 0.5em 0;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const FormWrapper = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
@@ -283,17 +283,17 @@
 // TODO:   select, input, textarea, .pure-input-1 {
 // TODO:     margin: 0.25rem 0;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   textarea.pure-input-1 {
 // TODO:     min-height: 6rem;
 // TODO:     margin-bottom: 1rem;
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const FieldElement = styled(Field)`
-// TODO: 
+// TODO:
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Fieldset = styled.fieldset`
 // TODO:   margin: 1em 0 1.5em !important;
 // TODO:   .err {
@@ -301,25 +301,25 @@
 // TODO:     margin-bottom: 10px;
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const OptionalFieldLabel = styled.label`
 // TODO:   color: #777;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const OptionalFieldText = styled.div`
 // TODO:   color: #777;
 // TODO:   margin-bottom: 4px;
 // TODO: `;
-// TODO:   
+// TODO:
 // TODO: const FieldsetLegend = styled.legend`
 // TODO:   font-weight: 500 !important;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const OptionalLegend = styled.legend`
 // TODO:   color: #777 !important;
 // TODO:   font-weight: 400 !important;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const errorMessage = ({meta}) =>
 // TODO:   meta.error && meta.touched
 // TODO:     ? <div className="err">{meta.error}</div>

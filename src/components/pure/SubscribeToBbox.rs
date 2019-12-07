@@ -1,27 +1,27 @@
 // TODO: import React                from "react";
 // TODO: import styled               from "styled-components";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
-// TODO: 
+// TODO:
 // TODO: import Actions              from "../../Actions"; //TODO: remove dependency
 // TODO: import NavButton            from "./NavButton";
 // TODO: import i18n                 from "../../i18n";
 // TODO: import NavButtonWrapper     from "../pure/NavButtonWrapper";
-// TODO: 
+// TODO:
 // TODO: const SubscribeToBboxContent = styled.div`
 // TODO:   margin: 2em 1.8em 1.8em 1.8em;
 // TODO:   flex-grow: 1;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const SubscribeToBboxWrapper = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO:   height: 100%;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const t = (key) => {
 // TODO:   return i18n.t("subscribeToBbox." + key);
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const subscribeToBbox = ({subscriptionExists, dispatch, bbox, email, mapCenter}) => {
 // TODO:   if(subscriptionExists){
 // TODO:     return (
@@ -93,5 +93,5 @@
 // TODO:       </SubscribeToBboxWrapper>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = subscribeToBbox

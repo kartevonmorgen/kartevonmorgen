@@ -2,9 +2,9 @@
 // TODO: import T      from "prop-types";
 // TODO: import styled from "styled-components";
 // TODO: import STYLE  from "../styling/Variables"
-// TODO: 
+// TODO:
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// TODO: 
+// TODO:
 // TODO: const Message = ({
 // TODO:   actionButtonLabel,
 // TODO:   cancelButtonLabel,
@@ -13,11 +13,11 @@
 // TODO:   onCancel,
 // TODO:   iconClass,
 // TODO:   message }) => {
-// TODO: 
+// TODO:
 // TODO:   let actionButton = null;
 // TODO:   let cancelButton = null;
 // TODO:   var l;
-// TODO: 
+// TODO:
 // TODO:   if (l = actionButtonLabel) {
 // TODO:     actionButton =
 // TODO:       <button
@@ -48,20 +48,20 @@
 // TODO:     </Dialog>
 // TODO:   );
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: Message.propTypes = {
 // TODO:   onCancel: T.func,
 // TODO:   onAction: T.func,
 // TODO:   actionButtonLabel: T.string,
 // TODO:   cancelButtonLabel: T.string
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: module.exports = Message;
-// TODO: 
+// TODO:
 // TODO: const FontAwesomeIconElement = styled(FontAwesomeIcon)`
 // TODO:   margin: 0 10px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Dialog = styled.div `
 // TODO:   margin: 3em 2em;
 // TODO:   background-color: #fff;

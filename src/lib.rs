@@ -2,6 +2,20 @@
 extern crate seed;
 use seed::prelude::*;
 
+mod Actions;
+mod GeoLocation;
+mod Store;
+mod WebAPI;
+mod components;
+mod constants;
+mod i18n;
+mod index;
+mod rating;
+mod reducers;
+mod route;
+mod util;
+mod widgets;
+
 #[derive(Default)]
 struct Mdl {
     // TODO

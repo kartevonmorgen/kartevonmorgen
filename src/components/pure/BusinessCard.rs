@@ -2,7 +2,7 @@
 // TODO: import styled                 from "styled-components";
 // TODO: import T                      from "prop-types";
 // TODO: import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome'
-// TODO: 
+// TODO:
 // TODO: import STYLE                  from "../styling/Variables"
 // TODO: import AddressLine            from "./AddressLine";
 // TODO: import EventTimes             from "./EventTimes";
@@ -10,7 +10,7 @@
 // TODO: import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 // TODO: import { NAMES }              from "../../constants/Categories"
 // TODO: import i18n                   from "../../i18n";
-// TODO: 
+// TODO:
 // TODO: const Tags = (tags=[], onClick, clickable) =>
 // TODO:   <TagsWrapper key="tags">
 // TODO:     <TagList>
@@ -23,7 +23,7 @@
 // TODO:         )}
 // TODO:     </TagList>
 // TODO:   </TagsWrapper>
-// TODO: 
+// TODO:
 // TODO: const getHomepageLink = (entry, t) => {
 // TODO:   if(!entry.homepage) return '';
 // TODO:   let shortLink = entry.homepage.replace( /^http(s)*:\/\/(www\.)*|\/$/gi , "");
@@ -32,7 +32,7 @@
 // TODO:   const label = shortLink;
 // TODO:   return <EntryLink href={entry.homepage} target="_blank">{ label }</EntryLink>;
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const getMailLink = (entry) => {
 // TODO:   const mail = entry.email
 // TODO:   if (!mail) {
@@ -41,26 +41,26 @@
 // TODO:   const label = (mail.length > 30) ? "E-Mail" : mail;
 // TODO:   return <EntryLink href={ "mailto:" + entry.email}>{ label }</EntryLink>;
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const getTelLink = (entry) => {
 // TODO:   if(!entry.telephone) return null
 // TODO:   const tel = entry.telephone
 // TODO:   let url = "tel:" + tel.replace(/[^0-9+]/g,'')
 // TODO:   return <EntryLink href={url}>{tel}</EntryLink>
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const getRoutePlannerLink = (entry) => {
 // TODO:   let url = '';
 // TODO:   let provider = '';
 // TODO:   if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) provider = "apple"
 // TODO:   else if( navigator.userAgent.toLowerCase().indexOf("android") !== -1 ) provider = "android"
 // TODO:   else provider = 'default'
-// TODO: 
+// TODO:
 // TODO:   if( provider === "apple" || provider === "default") {
 // TODO:     url = ROUTEPLANNERS[provider].link.replace("{addr}",entry.street + "+" + entry.zip + "+" + entry.city)
 // TODO:   }
 // TODO:   else url = ROUTEPLANNERS[provider].link.replace('{lat}',entry.lat).replace('{lng}',entry.lng)
-// TODO: 
+// TODO:
 // TODO:   return(
 // TODO:     <EntryLink
 // TODO:       title={ "Hinfinden mit "+ROUTEPLANNERS[provider].name }
@@ -69,7 +69,7 @@
 // TODO:     </EntryLink>
 // TODO:   )
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => {
 // TODO:   if (!entry) {
 // TODO:     return(
@@ -142,23 +142,23 @@
 // TODO:       </EntryDetailPage>)
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: BusinessCard.propTypes = {
 // TODO:   entry: T.object
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = BusinessCard;
-// TODO: 
+// TODO:
 // TODO: const FontAwesomeIconElement = styled(FontAwesomeIcon)`
 // TODO:   margin-right: 12px;
 // TODO:   height: 16px !important;
 // TODO:   width: 16px !important;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const AddressWrapper = styled.div`
 // TODO:   margin-left: -8px;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const EntryDetailPage = styled.div`
 // TODO:   z-index: 2;
 // TODO:   position: relative;
@@ -166,11 +166,11 @@
 // TODO:   background-color: #fff;
 // TODO:   margin: ${props => props.hasImage ? "270px" : "0px"} 1.8em 0 1.8em;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const LoadingEntryMessage = styled.div`
 // TODO:   padding: 1.5em;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const EntryLink = styled.a`
 // TODO:   color: ${STYLE.darkGray};
 // TODO:   text-decoration: none;
@@ -179,43 +179,43 @@
 // TODO:     color: #000;
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const EntryTitle = styled.h3`
 // TODO:   color:       ${STYLE.anthracite};
 // TODO:   font-size: 1.3rem;
 // TODO:   margin-bottom: -6px;
 // TODO:   margin-top: .4rem;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const EntryCategory = styled.div`
 // TODO:   font-size: 0.8em;
 // TODO:   color: ${props => STYLE[props.category]};
 // TODO:   text-transform: uppercase;
 // TODO:   margin-top: .9rem;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const EntryDescription = styled.p`
 // TODO:   color: ${STYLE.darkGray};
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const EntryDetailsOtherData = styled.div`
 // TODO:   font-family: ${STYLE.headerFont};
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const TagsWrapper = styled.div `
 // TODO:   margin-top: 1.5em;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const TagList = styled.ul `
 // TODO:   list-style: none;
 // TODO:   padding: 0;
 // TODO:   margin: 0;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Tag = styled.li `
 // TODO:   display: inline;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const TagLink = styled.a `
 // TODO:   color: #333;
 // TODO:   text-decoration: none;
@@ -228,7 +228,7 @@
 // TODO:   margin-right: 0.4em;
 // TODO:   letter-spacing: 0.06em;
 // TODO:   cursor: ${props => props.clickable ? 'pointer' : 'auto'};
-// TODO: 
+// TODO:
 // TODO:   &:hover {
 // TODO:     color: ${props => props.clickable ? '#fff' : ''};
 // TODO:     background-color: ${props => props.clickable ? '#333' : ''};

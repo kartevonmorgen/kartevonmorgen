@@ -2,7 +2,7 @@
 // TODO: import styled                 from "styled-components";
 // TODO: import { translate }          from "react-i18next";
 // TODO: import { REGISTRATION_TYPE }  from "../../constants/Events";
-// TODO: 
+// TODO:
 // TODO: const EventRegistrationInfo = props => {
 // TODO:   const { event, t, getMailLink, getTelLink, getHomepageLink } = props;
 // TODO:   const { registration, email, phone, homepage } = event;
@@ -18,16 +18,16 @@
 // TODO:       registrationLink = getHomepageLink(event, t)
 // TODO:       break;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   return (<RegistrationInfoDiv>{
 // TODO:     t("entryDetails.eventRegistrationInfo." + event.registration)
 // TODO:     + ": "}
 // TODO:     { registrationLink }
 // TODO:   </RegistrationInfoDiv>);
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const RegistrationInfoDiv = styled.div`
 // TODO:   margin: 1em 0 0 0;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')(EventRegistrationInfo)

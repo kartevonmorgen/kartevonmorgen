@@ -1,10 +1,10 @@
 // TODO: import React  from 'react';
 // TODO: import styled from "styled-components";
-// TODO: 
+// TODO:
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// TODO: 
+// TODO:
 // TODO: const CityListElement = ({ city, onClick, isSelected, selectedColor }) => {
-// TODO: 
+// TODO:
 // TODO:   return (
 // TODO:     <ResultListItem onClick={ev => { ev.preventDefault(); onClick(city) }}
 // TODO:       isSelected={isSelected}
@@ -19,7 +19,7 @@
 // TODO:       </ResultRow>
 // TODO:     </ResultListItem>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const CityList = ({ cities = [], onClick, selectedCity = 0, selectedColor }) =>
 // TODO:   <ResultList className="city-list">
 // TODO:     {
@@ -32,24 +32,24 @@
 // TODO:           selectedColor={selectedColor} />
 // TODO:     )}
 // TODO:   </ResultList>
-// TODO: 
+// TODO:
 // TODO: module.exports = CityList
-// TODO: 
+// TODO:
 // TODO: const ResultRow = styled.div`
 // TODO:   display: flex;
 // TODO:   justify-content: space-between;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Arrow = styled.div`
 // TODO:   margin: 0 12px;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const ResultListItem = styled.li`
 // TODO:   cursor: pointer;
 // TODO:   padding: 12px 11px 12px 24px;
 // TODO:   background-color: ${props => props.isSelected ? props.selectedColor : ""};
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const ResultList = styled.ul`
 // TODO:   list-style: none;
 // TODO:   margin: 0;

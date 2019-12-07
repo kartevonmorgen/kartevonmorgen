@@ -2,13 +2,13 @@
 // TODO: import URLs   from "../../constants/URLs";
 // TODO: import pkg    from "../../../package.json";
 // TODO: import i18n   from "../../i18n";
-// TODO: 
+// TODO:
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// TODO: 
+// TODO:
 // TODO: const t = (key) => i18n.t("contact." + key)
-// TODO: 
+// TODO:
 // TODO: const Contact = () =>
-// TODO: 
+// TODO:
 // TODO:   <div>
 // TODO:     <h2>{t("heading")}</h2>
 // TODO:     <p>
@@ -16,11 +16,11 @@
 // TODO:       Helmut Wolman  <br />
 // TODO:       Turley-Platz 9  <br />
 // TODO:       68167 Mannheim  <br />
-// TODO: 
+// TODO:
 // TODO:       <a href = 'https://www.kartevonmorgen.org/#/?entry=0b89e6d0945740b3a77f240d9cdab0e9&zoom=15.00'>{t("showOnKVM")}</a>
 // TODO:     </p>
 // TODO:     <p>
-// TODO: 
+// TODO:
 // TODO:       <FontAwesomeIcon icon={['fab', 'facebook']} />
 // TODO:       {" "}<a target="_blank" href = { URLs.FACEBOOK.link }>{ URLs.FACEBOOK.name }</a>
 // TODO:       <br />
@@ -32,5 +32,5 @@
 // TODO:     </p>
 // TODO:   <hr />
 // TODO:   </div>
-// TODO: 
+// TODO:
 // TODO: module.exports = Contact;

@@ -1,13 +1,13 @@
 // TODO: import React  from "react"
 // TODO: import URLs   from "../../constants/URLs"
 // TODO: import i18n   from "../../i18n";
-// TODO: 
+// TODO:
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// TODO: 
+// TODO:
 // TODO: const t = (key) => i18n.t("imprint." + key)
-// TODO: 
+// TODO:
 // TODO: const Imprint = () =>
-// TODO: 
+// TODO:
 // TODO:   <div className="info">
 // TODO:     <h3>{t("contact")}</h3>
 // TODO:     <p>
@@ -32,7 +32,7 @@
 // TODO:         <a href = "mailto:info@ideenhochdrei.org">
 // TODO:           info@ideenhochdrei.org
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:       <h4 className="imprint-heading">{t("heading2")}</h4>
 // TODO:         {t("kvmTeamRepresentedBy")}
 // TODO:         <br />
@@ -45,7 +45,7 @@
 // TODO:         <a href = "mailto:helmut.wolman@kartevonmorgen.org">
 // TODO:           helmut.wolman@kartevonmorgen.org
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:       <h4 className="imprint-heading">{t("heading3")}</h4>
 // TODO:         {t("kvmTeamRepresentedBy")}
 // TODO:         <br />
@@ -54,21 +54,21 @@
 // TODO:         <a href = "mailto:thao.tran@kartevonmorgen.org">
 // TODO:           thao.tran@kartevonmorgen.org
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:       <h4 className="imprint-heading">{t("heading4")}</h4>
 // TODO:         Anja Dannemann
 // TODO:         <br />
 // TODO:         <a href= "mailto:anja.dannemann@kartevonmorgen.org">
 // TODO:           anja.dannemann@kartevonmorgen.org
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:       <h4 className="imprint-heading">{t("heading5")}</h4>
 // TODO:         Lisa Tegtmeier
 // TODO:         <br />
 // TODO:         <a target="_blank" href = "http://www.lisategtmeier.de">
 // TODO:          www.lisategtmeier.de
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:       <h4 className="imprint-heading">{t("heading6")}</h4>
 // TODO:         <a target="_blank" href="https://slowtec.de/">slowtec GmbH</a>
 // TODO:         <br />
@@ -79,7 +79,7 @@
 // TODO:         <a href = "mailto:markus@kartevonmorgen.org">
 // TODO:           markus@kartevonmorgen.org
 // TODO:         </a>
-// TODO: 
+// TODO:
 // TODO:     <h4>Haftungsausschluss</h4>
 // TODO:     <p>
 // TODO:       Sämtliche über die Website veröffentlichten Produkt- und
@@ -130,7 +130,7 @@
 // TODO:       anderen Gründen abzulehnenden Darstellungen führen, bitten wir um
 // TODO:       entsprechende Benachrichtigung.
 // TODO:     </p>
-// TODO: 
+// TODO:
 // TODO:     <h4>Urheber- und Kennzeichenrecht</h4>
 // TODO:     <p>
 // TODO:       Wir sind bestrebt, in allen Publikationen die Urheberrechte der
@@ -149,7 +149,7 @@
 // TODO:       Videosequenzen und Texte in anderen elektronischen oder gedruckten
 // TODO:       Publikationen ist ohne unsere ausdrückliche Zustimmung nicht gestattet.
 // TODO:     </p>
-// TODO: 
+// TODO:
 // TODO:     <h4>Hinweis für Abmahnversuche</h4>
 // TODO:     <p>
 // TODO:       Keine Abmahnung ohne vorherigen Kontakt! Sollte der Inhalt oder die
@@ -164,7 +164,7 @@
 // TODO:       Dennoch von Ihnen ohne vorherige Kontaktaufnahme ausgelöste Kosten werden
 // TODO:       wir vollumfänglich zurückweisen und gegebenenfalls Gegenklage wegen
 // TODO:       Verletzung vorgenannter Bestimmungen einreichen. Wir bitten hierfür um Ihr
-// TODO:       Verständnis. 
+// TODO:       Verständnis.
 // TODO:     </p>
 // TODO:     <h4>Datenschutz</h4>
 // TODO:     <p>
@@ -283,5 +283,5 @@
 // TODO:       Datenschutzgesetz.de
 // TODO:     </p>
 // TODO:   </div>
-// TODO: 
+// TODO:
 // TODO: module.exports = Imprint

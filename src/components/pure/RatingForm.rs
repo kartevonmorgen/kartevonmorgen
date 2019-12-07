@@ -2,57 +2,57 @@
 // TODO: import { reduxForm, Field }             from "redux-form";
 // TODO: import styled                           from "styled-components";
 // TODO: import { translate }                    from "react-i18next";
-// TODO: 
+// TODO:
 // TODO: import { RATING }                       from "../../constants/Form";
 // TODO: import validation                       from "../../util/validation";
 // TODO: import NavButton                        from "./NavButton";
 // TODO: import STYLE                            from "../styling/Variables";
 // TODO: import ScrollableDiv                    from "./ScrollableDiv";
 // TODO: import NavButtonWrapper                 from "./NavButtonWrapper";
-// TODO: 
+// TODO:
 // TODO: const errorMessage = ({meta}) =>
 // TODO:   meta.error && meta.touched
 // TODO:     ? <div className="err">{meta.error}</div>
 // TODO:     : null
-// TODO: 
+// TODO:
 // TODO: const IntroText = styled.div`
 // TODO:   margin-bottom: 10px;
 // TODO:   color: ${STYLE.darkGray};
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Aspect = styled.div`
 // TODO:   margin: 10px 0;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const AspectLabel = styled.label`
 // TODO:   font-weight: bold;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const AspectExplanation = styled.div`
 // TODO:   margin-top: 5px;
 // TODO:   color: ${STYLE.darkGray};
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Form = styled.form`
 // TODO:   margin: 1.8em;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const RatingFormWrapper = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO:   height: 100%;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const StyledScrollableDiv = styled(ScrollableDiv)`
 // TODO:   flex-grow: 1;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const StyledNavButtonWrapper = styled(NavButtonWrapper)`
 // TODO:   height: 68px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const RatingForm = props => {
-// TODO: 
+// TODO:
 // TODO:   const {
 // TODO:     entryId,
 // TODO:     entryTitle,
@@ -62,14 +62,14 @@
 // TODO:     t,
 // TODO:     onCancel
 // TODO:   } = props;
-// TODO: 
+// TODO:
 // TODO:   return (
 // TODO:     <RatingFormWrapper>
 // TODO:       <StyledScrollableDiv>
 // TODO:         <Form
 // TODO:           className = "new-rating-form"
 // TODO:           action    = 'javascript:void();' >
-// TODO: 
+// TODO:
 // TODO:           <h3>{ t("ratingForm.newRatingFor") + " " + entryTitle}</h3>
 // TODO:           <IntroText>
 // TODO:             { t("ratingForm.introText") + " "}
@@ -204,7 +204,7 @@
 // TODO:       </StyledNavButtonWrapper>
 // TODO:     </RatingFormWrapper>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = reduxForm({
 // TODO:   validate  : validation.ratingForm,
 // TODO:   form      : "rating"

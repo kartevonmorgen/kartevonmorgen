@@ -11,14 +11,14 @@
 // TODO: import i18n                 from "../../i18n";
 // TODO: import { NAMES, IDS }       from "../../constants/Categories"
 // TODO: import STYLE                from "../styling/Variables"
-// TODO: 
+// TODO:
 // TODO: const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
 // TODO:   var css_class = highlight ? 'highlight-entry ' : '';
 // TODO:   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
 // TODO:   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
 // TODO:   const title = getTruncatedTitle(entry.title, 60); // maximally two lines
 // TODO:   const description = getTruncatedDescription(entry.description, 110); // maximally two lines
-// TODO: 
+// TODO:
 // TODO:   return (
 // TODO:     <ListElement
 // TODO:       key           = { entry.id }
@@ -55,7 +55,7 @@
 // TODO:       </OuterWrapper>
 // TODO:     </ListElement>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const getBody = (isEvent, description, city, organizer) => {
 // TODO:   if (isEvent) {
 // TODO:     return (
@@ -68,11 +68,11 @@
 // TODO:     return (<Description>{description}</Description>);
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const ResultList = props => {
-// TODO: 
+// TODO:
 // TODO:   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
-// TODO: 
+// TODO:
 // TODO:   let results = entries.map( e =>
 // TODO:     <ResultListElement
 // TODO:       entry        = { e            }
@@ -87,7 +87,7 @@
 // TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
 // TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
 // TODO:       t            = { t } />);
-// TODO: 
+// TODO:
 // TODO:   if(moreEntriesAvailable && !waiting){
 // TODO:     results.push(
 // TODO:       <ListElement key="show-more-entries">
@@ -99,7 +99,7 @@
 // TODO:       </ListElement>
 // TODO:     );
 // TODO:   }
-// TODO:     
+// TODO:
 // TODO:   return (
 // TODO:   <Wrapper>
 // TODO:     <div className= "result-list">
@@ -117,7 +117,7 @@
 // TODO:     </div>
 // TODO:   </Wrapper>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const getTruncatedTitle = (title, maxCharacters) => {
 // TODO:   if (title) {
 // TODO:     if (title.length > maxCharacters + 5) {
@@ -129,7 +129,7 @@
 // TODO:     return "";
 // TODO:   }
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const getTruncatedDescription = (description, maxCharacters) => {
 // TODO:   if(description && description.length > maxCharacters - 10) {
 // TODO:     description = description.substring(0, maxCharacters - 29 + description.substring(maxCharacters - 30).indexOf(". ")) + '...';
@@ -139,7 +139,7 @@
 // TODO:   }
 // TODO:   return description;
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: ResultList.propTypes = {
 // TODO:   dispatch:             PropTypes.func.isRequired,
 // TODO:   waiting:              PropTypes.bool.isRequired,
@@ -151,37 +151,37 @@
 // TODO:   t:                    PropTypes.func.isRequired,
 // TODO:   onClick:              PropTypes.func
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: module.exports = translate("translation")(ResultList)
-// TODO: 
+// TODO:
 // TODO: const OuterWrapper = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO:   height: 100%;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const TitleCategoryDescriptionsAndFlower = styled.div`
 // TODO:   flex-grow: 1;
 // TODO:   display: flex;
 // TODO:   flex-direction: row;
 // TODO:   overflow-y: hidden;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const TitleCategoryAndDescription = styled.div`
 // TODO:   flex-grow: 1;
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const EventTimeLabel = (props) => {
 // TODO:   const { start } = props;
 // TODO:   return (<EventTimeWrapper><EventTimes start={ start } showTimes={ false }/></EventTimeWrapper>)
 // TODO: }
-// TODO: 
+// TODO:
 // TODO: const EventTimeWrapper = styled.div`
 // TODO:   margin: 12px 7px 10px 10px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const EntryTitle = styled.h3`
 // TODO:   font-size: 1.1em;
 // TODO:   margin: .2rem .3em .2rem 0;
@@ -189,7 +189,7 @@
 // TODO:   position: relative;
 // TODO:   z-index: 3;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const ListElement = styled.li `
 // TODO:   position: relative;
 // TODO:   height: 115px;
@@ -277,7 +277,7 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const EventBody = styled.div`
 // TODO:   font-size: 0.8em;
 // TODO:   margin-top: 2px;
@@ -289,7 +289,7 @@
 // TODO:     margin: 1px 0;
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Description = styled.div`
 // TODO:   margin-top: 2px;
 // TODO:   max-height: ${14 * 3}px;
@@ -300,7 +300,7 @@
 // TODO:   font-size: 0.8em;
 // TODO:   color: #555;
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const TagsWrapper = styled.div`
 // TODO:   height: 21px;
 // TODO:   overflow-y: hidden;
@@ -312,7 +312,7 @@
 // TODO:     margin: 0;
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Tag = styled.div `
 // TODO:   line-height: 14px;
 // TODO:   font-size: 0.75em;
@@ -328,14 +328,14 @@
 // TODO:   height: 12px;
 // TODO:   overflow: hidden;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const FlowerWrapper = styled.div `
 // TODO:   margin: 22px 10px 0 10px;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Wrapper = styled.div `
 // TODO:   box-sizing: border-box;
-// TODO: 
+// TODO:
 // TODO:   .result-list {
 // TODO:     p {
 // TODO:       &.no-results {
@@ -359,7 +359,7 @@
 // TODO:       list-style: none;
 // TODO:       margin: 0;
 // TODO:       padding: 0;
-// TODO: 
+// TODO:
 // TODO:     }
 // TODO:   }
 // TODO: `

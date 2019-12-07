@@ -2,7 +2,7 @@
 // TODO: import styled   from "styled-components";
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // TODO: import STYLE    from "../styling/Variables";
-// TODO: 
+// TODO:
 // TODO: const NavigationButton = styled.li`
 // TODO:   color: #00f;
 // TODO:   cursor: pointer;
@@ -23,11 +23,11 @@
 // TODO:     margin-right: 0.5em;
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const Icon = styled(FontAwesomeIcon)`
 // TODO:   margin-right: 10px !important;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const NavButton = ({ keyName, classname, icon, text, onClick }) =>
 // TODO:   <NavigationButton
 // TODO:     key = { keyName }
@@ -35,5 +35,5 @@
 // TODO:     onClick = { onClick }>
 // TODO:     <Icon icon={ icon } />{ text }
 // TODO:   </NavigationButton>
-// TODO: 
+// TODO:
 // TODO: module.exports = NavButton

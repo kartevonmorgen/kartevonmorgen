@@ -2,7 +2,7 @@
 // TODO: import parseUrl from "../util/parseUrl";
 // TODO: import { MAIN_IDS, IDS } from "../constants/Categories";
 // TODO: import { CITY_SEARCH_RESULTS_MIN_DISTANCE, CITY_SEARCH_RESULTS_MIN_IMPORTANCE } from "../constants/Search";
-// TODO: 
+// TODO:
 // TODO: const initialState = {
 // TODO:   text: null,
 // TODO:   city: null,
@@ -20,30 +20,30 @@
 // TODO:   showingAllEntries: false,
 // TODO:   moreEntriesAvailable: false
 // TODO: };
-// TODO: 
+// TODO:
 // TODO: const oneForEachPlace = cities =>
 // TODO:   {
-// TODO:     const filtered =  cities.filter((city1, index1) => !cities.some((city2, index2) => 
+// TODO:     const filtered =  cities.filter((city1, index1) => !cities.some((city2, index2) =>
 // TODO:         Math.abs(city1.lat - city2.lat) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
 // TODO:         Math.abs(city1.lon - city2.lon) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
 // TODO:         index2 < index1
 // TODO:       ))
 // TODO:     return filtered
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO: const isCity = x =>
 // TODO:   (
 // TODO:     (x["class"] === 'place' && (x.type === 'city' || x.type === 'village')) ||
 // TODO:     (x["class"] === 'boundary' && x.type === 'administrative')
 // TODO:   )
-// TODO: 
+// TODO:
 // TODO: const isImportantSearchResult = x => ( x.importance >= CITY_SEARCH_RESULTS_MIN_IMPORTANCE )
-// TODO: 
+// TODO:
 // TODO: module.exports = (state = initialState, action = {}) => {
 // TODO:   const p = action.payload;
-// TODO: 
+// TODO:
 // TODO:   switch (action.type) {
-// TODO: 
+// TODO:
 // TODO:     case T.ENABLE_SEARCH_CATEGORY:
 // TODO:       const c1 = action.payload;
 // TODO:       if (c1 == null) {
@@ -55,7 +55,7 @@
 // TODO:         ...state,
 // TODO:         categories: newCats
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.DISABLE_SEARCH_CATEGORY:
 // TODO:       const c2 = action.payload;
 // TODO:       if (c2 == null) {
@@ -64,34 +64,34 @@
 // TODO:       const disableEvents = action.payload === IDS.EVENT;
 // TODO:       const eventResults = disableEvents ? [] : state.eventResults;
 // TODO:       const eventsWithoutPlace = disableEvents ? [] : state.eventsWithoutPlace;
-// TODO: 
+// TODO:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         categories: state.categories.filter(cat => cat !== c2),
 // TODO:         eventResults,
 // TODO:         eventsWithoutPlace,
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SET_SEARCH_TEXT:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         text: action.payload
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.UPDATE_STATE_FROM_URL:
 // TODO:       const searchText = parseUrl(action.payload).params.search;
-// TODO: 
+// TODO:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         text: searchText || ""
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SET_CITY_SEARCH_TEXT:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         city: action.payload
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SEARCH_RESULT_ENTRIES:
 // TODO:       if (!action.error) {
 // TODO:         return {
@@ -102,7 +102,7 @@
 // TODO:       }
 // TODO:       return state;
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     case T.SEARCH_RESULT_EVENTS:
 // TODO:       if (!action.error) {
 // TODO:         return {
@@ -123,7 +123,7 @@
 // TODO:       }
 // TODO:       return state;
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     case T.SEARCH_ADDRESS_RESULT:
 // TODO:       if (!action.error) {
 // TODO:         const d = action.payload || [];
@@ -142,7 +142,7 @@
 // TODO:         }
 // TODO:       }
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     case T.NEW_ENTRY_RESULT:
 // TODO:       if (!action.error) {
 // TODO:         var newResult = state.entryResults;
@@ -153,7 +153,7 @@
 // TODO:         }
 // TODO:       }
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     case T.SET_CURRENT_ENTRY:
 // TODO:       if (p != null) {
 // TODO:         return {
@@ -167,33 +167,33 @@
 // TODO:         current: null
 // TODO:       }
 // TODO:       break;
-// TODO: 
+// TODO:
 // TODO:     case T.HIGHLIGHT_ENTRIES:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         highlight: action.payload
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.SET_MORE_ENTRIES_AVAILABLE:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         moreEntriesAvailable: action.payload,
 // TODO:         showingAllEntries: !action.payload
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.FETCH_ALL_ENTRIES:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         showingAllEntries: true
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     case T.FINISH_CITY_SEARCH:
 // TODO:       return {
 // TODO:         ...state,
 // TODO:         cities: [],
 // TODO:         city: ""
 // TODO:       }
-// TODO: 
+// TODO:
 // TODO:     default:
 // TODO:       return state;
 // TODO:   }

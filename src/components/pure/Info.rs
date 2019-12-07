@@ -5,11 +5,11 @@
 // TODO: import URLs     from "../../constants/URLs";
 // TODO: import i18n     from "../../i18n";
 // TODO: import React    from "react";
-// TODO: 
+// TODO:
 // TODO: import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// TODO: 
+// TODO:
 // TODO: const t = (key) => i18n.t("info." + key)
-// TODO: 
+// TODO:
 // TODO: module.exports = ({serverVersion}) =>
 // TODO:     <div className="info">
 // TODO:         <h2>{t("heading1")}</h2>
@@ -18,7 +18,7 @@
 // TODO:             {t("betterplace")} <a target="_blank" href='https://www.betterplace.org/de/projects/36213/newsroom'>{t("betterplace-link")}</a>
 // TODO:         </p>
 // TODO:         <br />
-// TODO: 
+// TODO:
 // TODO:         <p>
 // TODO:           {t("text1.1")}
 // TODO:         </p>
@@ -45,7 +45,7 @@
 // TODO:         <FontAwesomeIcon icon="envelope" />&nbsp;
 // TODO:         {" "}<a target="_blank" href = {URLs.MAIL.link}>{ URLs.MAIL.name }</a>
 // TODO:         <br />
-// TODO: 
+// TODO:
 // TODO:         </p>
 // TODO:         <br />
 // TODO:         <br />
@@ -57,15 +57,15 @@
 // TODO:           <FontAwesomeIcon icon={['fab', 'github']} />
 // TODO:           {" "}<a target="_blank" href = {URLs.REPOSITORY.link}>{ URLs.REPOSITORY.name }</a>
 // TODO:         </p>
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO:         <img className="landing-img" src={team2} /><br /><br />
 // TODO:         <h3>{t("heading4")}</h3>
 // TODO:             <p>
 // TODO:                 {t("text4")}<br />
 // TODO:                 <a target="_blank" href="http://bildungsagenten.org">www.bildungsagenten.org</a>
 // TODO:             </p>
-// TODO: 
+// TODO:
 // TODO:         <img className="landing-img" src={slider} />
 // TODO:         <p className="version">{
 // TODO:             t("clientVersion") + " " + pkg.version

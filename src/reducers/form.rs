@@ -1,14 +1,14 @@
 // TODO: import T            from "../constants/ActionTypes";
 // TODO: import C            from "../constants/Categories";
-// TODO: 
+// TODO:
 // TODO: import { reducer as formReducer } from "redux-form";
-// TODO: 
+// TODO:
 // TODO: const reducer = formReducer.plugin({
-// TODO: 
+// TODO:
 // TODO:   edit: (state={}, action={}) => {
-// TODO: 
+// TODO:
 // TODO:     switch (action.type) {
-// TODO: 
+// TODO:
 // TODO:       case T.SHOW_NEW_ENTRY:
 // TODO:         return {
 // TODO:           ...state,
@@ -17,7 +17,7 @@
 // TODO:           kvm_flag_markerWasEnteredManually: false,
 // TODO:           kvm_flag_addressWasEnteredManually: false,
 // TODO:         };
-// TODO: 
+// TODO:
 // TODO:       case T.EDIT_CURRENT_ENTRY:
 // TODO:         return {
 // TODO:           ...state,
@@ -66,7 +66,7 @@
 // TODO:           }
 // TODO:         }
 // TODO:         return state;
-// TODO: 
+// TODO:
 // TODO:       case "@@redux-form/CHANGE":
 // TODO:         const { field } = action.meta;
 // TODO:         if (action.payload) {
@@ -82,11 +82,11 @@
 // TODO:         return state;
 // TODO:     }
 // TODO:   },
-// TODO: 
+// TODO:
 // TODO:   rating: (state={}, action={}) => {
-// TODO: 
+// TODO:
 // TODO:     const { payload } = action;
-// TODO: 
+// TODO:
 // TODO:     switch (action.type) {
 // TODO:     case T.SHOW_NEW_RATING:
 // TODO:       return {
@@ -97,7 +97,7 @@
 // TODO:       return state;
 // TODO:     }
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO: });
-// TODO: 
+// TODO:
 // TODO: module.exports = reducer

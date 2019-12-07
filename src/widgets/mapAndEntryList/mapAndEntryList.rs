@@ -1,5 +1,5 @@
 // TODO: import "../../components/styling/Stylesheets"
-// TODO: 
+// TODO:
 // TODO: import React         from "react";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 // TODO: import URLs          from "../../constants/URLs";
@@ -13,14 +13,14 @@
 // TODO: import Actions       from "../../Actions";
 // TODO: import logo          from "../../img/logo_without_slogan.png";
 // TODO: import styled, { createGlobalStyle } from "styled-components";
-// TODO: 
+// TODO:
 // TODO: module.exports = translate('translation')((props) => {
-// TODO:   
+// TODO:
 // TODO:   const { map, server, form, search, view, t, dispatch } = props;
 // TODO:   const { entries, ratings } = server;
 // TODO:   const resultEntries = search.entryResults.filter(e => entries[e.id]).map(e => entries[e.id])
 // TODO:     .concat(search.eventResults);
-// TODO: 
+// TODO:
 // TODO:   return (
 // TODO:     <WidgetWrapper>
 // TODO:       <GlobalStyle />
@@ -76,13 +76,13 @@
 // TODO:             dispatch(Actions.setCurrentEntry(null, null));
 // TODO:             dispatch(Actions.showSearchResults());
 // TODO:             dispatch(Actions.setCenterInUrl(map.center));
-// TODO: 
+// TODO:
 // TODO:             return dispatch(Actions.hideLeftPanelOnMobile());
 // TODO:           }
 // TODO:         }}
 // TODO:         onMarkerClick={ id => {
-// TODO:           dispatch(Actions.setCurrentEntry(id, null)); 
-// TODO:           return dispatch(Actions.showLeftPanel()); 
+// TODO:           dispatch(Actions.setCurrentEntry(id, null));
+// TODO:           return dispatch(Actions.showLeftPanel());
 // TODO:         }}
 // TODO:         onMoveend={ coordinates => { return dispatch(Actions.onMoveend(coordinates, map.center)); }}
 // TODO:         onZoomend={ coordinates => { return dispatch(Actions.onZoomend(coordinates, map.zoom)); }}
@@ -97,33 +97,33 @@
 // TODO:     </WidgetWrapper>
 // TODO:   );
 // TODO: })
-// TODO: 
+// TODO:
 // TODO: const GlobalStyle = createGlobalStyle`
-// TODO:   
+// TODO:
 // TODO:   @media only screen and (max-width: 600px) {
 // TODO:     body { font-size:80%;}
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   h1, h2, h3, h4, h5, h6, h7 {
 // TODO:     font-family: ${STYLE.headerFont};
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   h3 {
 // TODO:     font-weight: 500;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   .pure-g [class *= "pure-u"] {
 // TODO:     font-family: ${STYLE.bodyFont};
 // TODO:   }
-// TODO:   
+// TODO:
 // TODO:   html, button, input, select, textarea {
 // TODO:     font-family: ${STYLE.bodyFont} !important;
 // TODO:   }
 // TODO: `;
-// TODO: 
+// TODO:
 // TODO: const WidgetWrapper = styled.div`
-// TODO:   /* 
-// TODO:   make the app fit the screen/iframe exactly (important for overflow:scroll, 
+// TODO:   /*
+// TODO:   make the app fit the screen/iframe exactly (important for overflow:scroll,
 // TODO:   but can't use height:100vh since that would break iframes smaller than 100vh):
 // TODO:   */
 // TODO:   position: absolute;
@@ -132,13 +132,13 @@
 // TODO:   left: 0;
 // TODO:   right: 0;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const LeftPanelAndHideSidebarButton = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: row;
 // TODO:   height: 100%;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const HideSidebarButtonWrapper = styled.div `
 // TODO:   position: relative;
 // TODO:   z-index: 2;
@@ -163,18 +163,18 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
 // TODO:   margin-right: 0.3em;
 // TODO:   width: 0.7em;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const SwipeableLeftPanel = styled(Swipeable)`
 // TODO:   input, textarea, select {
 // TODO:     box-shadow: none !important;
 // TODO:     border-radius: 3px !important;
 // TODO:   }
-// TODO: 
+// TODO:
 // TODO:   position: relative;
 // TODO:   height: 100%;
 // TODO:   z-index: 2;
@@ -232,8 +232,8 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO: 
-// TODO: 
+// TODO:
+// TODO:
 // TODO: const KVMLink = styled.a`
 // TODO:   font-size: 13px;
 // TODO:   color: rgb(20,20,20);
@@ -244,7 +244,7 @@
 // TODO:   top: 0;
 // TODO:   right: 0;
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const KVMLinkBox = styled.div`
 // TODO:   background-color: white;
 // TODO:   border-bottom-left-radius: 3px;
@@ -253,7 +253,7 @@
 // TODO:     background-color: #efefef;
 // TODO:   }
 // TODO: `
-// TODO: 
+// TODO:
 // TODO: const Logo = styled.img`
 // TODO:   padding: 9px 11px 5px 12px;
 // TODO:   height: 30px;
