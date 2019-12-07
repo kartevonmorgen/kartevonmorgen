@@ -1,4 +1,3 @@
-pub mod ActionTypes;
 pub mod App;
 pub mod Categories;
 pub mod Events;

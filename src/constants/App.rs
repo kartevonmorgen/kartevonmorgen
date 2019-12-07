@@ -1,12 +1,10 @@
-// TODO: import LICENSES from "./Licenses"
-// TODO:
-// TODO: module.exports = {
-// TODO:   APP_STAGES: {
-// TODO:     LOCAL: 'development',
-// TODO:     NIGHTLY: 'nightly',
-// TODO:     PRODUCTION: 'production'
-// TODO:   },
-// TODO:   NEW_ENTRY_LICENSE: LICENSES.CC0,
-// TODO:   TILEHOSTING_API_KEY: "HOG1gcOUF2mFfwTfD5zS",
-// TODO:   SEARCH_DELAY: 500
-// TODO: }
+use super::Licenses as LICENSES;
+
+pub enum APP_STAGES {
+    LOCAL,
+    NIGHTLY,
+    PRODUCTION,
+}
+pub const TILEHOSTING_API_KEY: &str = "HOG1gcOUF2mFfwTfD5zS";
+pub const SEARCH_DELAY: usize = 500;
+pub const NEW_ENTRY_LICENSE: &str = LICENSES::CC0;
