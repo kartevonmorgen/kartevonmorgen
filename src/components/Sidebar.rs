@@ -1,10 +1,10 @@
-// TODO: import React, { Component } from "react"
+use crate::{Mdl, Msg};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import PropTypes            from "prop-types"
-// TODO: import styled               from "styled-components";
 // TODO: import { initialize }       from "redux-form";
-// TODO:
+
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import ResultList           from "./pure/ResultList"
 // TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
@@ -22,7 +22,129 @@
 // TODO: import NavButton            from "./pure/NavButton";
 // TODO: import SearchBar            from "./SearchBar"
 // TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
-// TODO:
+// TODO: import Swipeable            from 'react-swipeable'
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+    div![id! {"sidebar"}]
+    // TODO: <LeftPanelAndHideSidebarButton>
+    // TODO:   <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
+    // TODO:     onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+    // TODO:     <Sidebar
+    // TODO:       view={ view }
+    // TODO:       search={ search }
+    // TODO:       map={ map }
+    // TODO:       server={ server }
+    // TODO:       user={ user }
+    // TODO:       form={ form }
+    // TODO:       entries={entries}
+    // TODO:       resultEntries={ visibleEntries }
+    // TODO:       ratings={ ratings }
+    // TODO:       // LeftPanelentries={ server.entries } never used…?
+    // TODO:       dispatch={ dispatch }
+    // TODO:       t={ t }
+    // TODO:       showAddEntryButton={ true }
+    // TODO:       showSearchBar={ true }
+    // TODO:       onTagClick={ this.onTagClick }
+    // TODO:       tagsClickable={ true }
+    // TODO:     />
+    // TODO:   </SwipeableLeftPanel>
+    // TODO:   <HideSidebarButtonWrapper>
+    // TODO:     <button
+    // TODO:       onClick={ () => {
+    // TODO:         if (view.showLeftPanel) {
+    // TODO:           return dispatch(Actions.hideLeftPanel());
+    // TODO:         } else {
+    // TODO:           return dispatch(Actions.showLeftPanel());
+    // TODO:         }
+    // TODO:       }}>
+    // TODO:       <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
+    // TODO:     </button>
+    // TODO:   </HideSidebarButtonWrapper>
+    // TODO: </LeftPanelAndHideSidebarButton>
+    // TODO: <RightPanel>
+    // TODO:   <div className="menu-toggle">
+    // TODO:     <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
+    // TODO:       <span className="pincloud">
+    // TODO:         <MenuFontAwesomeIcon icon={'bars'} />
+    // TODO:       </span>
+    // TODO:     </button>
+    // TODO:   </div>
+    // TODO: </RightPanel>
+    // TODO:
+}
+
+// TODO: const LeftPanelAndHideSidebarButton = styled.div`
+// TODO:   display: flex;
+// TODO:   flex-direction: row;
+// TODO:   height: 100%;
+// TODO: `
+
+// TODO: const HideSidebarButtonWrapper = styled.div `
+// TODO:   position: relative;
+// TODO:   z-index: 2;
+// TODO:   height: 0;
+// TODO:   >button {
+// TODO:     position: relative;
+// TODO:     padding: 10px 3px 10px 7px;
+// TODO:     top: 72px;
+// TODO:     font-size: 13pt;
+// TODO:     color: ${STYLE.darkGray};
+// TODO:     background: #fff;
+// TODO:     border: none;
+// TODO:     border-left: 1px solid ${STYLE.lightGray};
+// TODO:     border-radius: 0 0.2em 0.2em 0;
+// TODO:     box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
+// TODO:     &:hover {
+// TODO:       color: ${STYLE.coal};
+// TODO:       box-shadow: px 2px 2px 0.3px #000;
+// TODO:     }
+// TODO:     i {
+// TODO:       margin-right: 0.3em;
+// TODO:     }
+// TODO:   }
+// TODO: `
+
+// TODO: const SwipeableLeftPanel = styled(Swipeable)`
+// TODO:   position: relative;
+// TODO:   height: 100%;
+// TODO:   z-index: 2;
+// TODO:   order: -1;
+// TODO:   overflow-y: hidden;
+// TODO:   float: left;
+// TODO:   background-color: #fff;
+// TODO:   box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+// TODO:   .content {
+// TODO:     width: 100%;
+// TODO:     box-sizing: border-box;
+// TODO:     padding-bottom: 1rem;
+// TODO:     display: flex;
+// TODO:     flex-direction: column;
+// TODO:   }
+// TODO:   &.closed {
+// TODO:     width: 0;
+// TODO:   }
+// TODO:   &.opened {
+// TODO:     max-width: 380px;
+// TODO:     width: 90%;
+// TODO:     .menu {
+// TODO:       width: 100%;
+// TODO:     }
+// TODO:   }
+// TODO:   .search {
+// TODO:     &.closed {
+// TODO:       display: none;
+// TODO:     }
+// TODO:     .main-categories {
+// TODO:       height: 2.1em;
+// TODO:     }
+// TODO:   }
+// TODO: `
+
+// TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
+// TODO:   margin-right: 0.3em;
+// TODO:   width: 0.7em;
+// TODO: `
+
 // TODO: class Sidebar extends Component {
 // TODO:
 // TODO:   entryContent = null;
@@ -265,38 +387,6 @@
 // TODO:
 // TODO:     return(
 // TODO:       <SidebarComponent>
-// TODO:         {
-// TODO:           showSearchBar
-// TODO:           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-// TODO:             <SearchBar
-// TODO:                 searchText={search.text}
-// TODO:                 categories={search.categories}
-// TODO:                 type="integrated"
-// TODO:                 disabled={view.left === V.EDIT || view.left === V.NEW}
-// TODO:                 toggleCat={ c => {
-// TODO:                   if(search.categories.includes(c)){
-// TODO:                     dispatch(Actions.disableSearchCategory(c));
-// TODO:                   } else {
-// TODO:                     dispatch(Actions.enableSearchCategory(c));
-// TODO:                   }
-// TODO:                   return dispatch(Actions.search());
-// TODO:                 }}
-// TODO:                 onChange={txt => {
-// TODO:                   if (txt == null) {
-// TODO:                     txt = "";
-// TODO:                   }
-// TODO:                   dispatch(Actions.setSearchText(txt));
-// TODO:                   return dispatch(Actions.search());
-// TODO:                 }}
-// TODO:                 onEscape={ () => {
-// TODO:                   return dispatch(Actions.setSearchText(''));
-// TODO:                 }}
-// TODO:                 onEnter={ () => {}}      // currently not used, TODO
-// TODO:                 loading={ server.loadingSearch }
-// TODO:               />
-// TODO:           </div>
-// TODO:           : ""
-// TODO:         }
 // TODO:         {
 // TODO:           content
 // TODO:         }

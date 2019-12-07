@@ -1,0 +1,252 @@
+html, body {
+	margin: 0;
+  font-family: Rubik, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  body { font-size: 80%; }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/*
+make the app fit the screen/iframe exactly (important for overflow:scroll,
+but can't use height:100vh since that would break iframes smaller than 100vh):
+*/
+
+#app, #main {
+	width: 100vw;
+	height: 100vh;
+	min-height: 300px;
+	min-width: 300px;
+	display: grid;
+	position: fixed;
+	background: #eee;
+	grid-template-columns: minmax(auto, 380px) auto;
+	grid-template-rows: 54px auto minmax(90px, 35%);
+}
+
+#header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+#map {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+#results {
+  grid-row-start: 3;
+  grid-row-end: -1;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+#sidebar {
+  display: none;
+  grid-row-start: 1;
+  grid-row-end: -1;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+@media(min-width: 600px) {
+  #map {
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-start: 2;
+    grid-column-end: -1;
+  }
+  #results {
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-end: 2;
+  }
+  #sidebar {
+    grid-column-end: 2;
+  }
+}
+
+@media(min-width: 960px) {
+  #header {
+    grid-column-end: 2;
+    grid-row-start: 1;
+  }
+  #map {
+    grid-row-start: 1;
+  }
+  #sidebar {
+    grid-column-end: 2;
+  }
+}
+
+/* ============ OLD STYLES =================*/
+/*
+// TODO:   .tutorial {
+// TODO:     margin-bottom: 3em;
+// TODO:     img { width: 100%; }
+// TODO:   }
+// TODO:
+// TODO:   h1, h2, h3, h4, h5, h6, h7 {
+// TODO:     font-weight: 500;
+// TODO:     margin-block-end: 2px;
+// TODO:   }
+// TODO:
+// TODO:   button {
+// TODO:     font-family: ${STYLE.bodyFont};
+// TODO:     &.pure-button i {
+// TODO:       margin-right: 0.5em;
+// TODO:     }
+// TODO:   }
+// TODO:
+// TODO:   .fa {
+// TODO:     font-family: "FontAwesome" !important;
+// TODO:   }
+// TODO:
+// TODO:   .pure-g [class *= "pure-u"] {
+// TODO:     font-family: ${STYLE.bodyFont};
+// TODO:   }
+*/
+
+/* SCROLLBAR 
+// TODO:   ::-webkit-scrollbar {
+// TODO:     background-color: #eee;
+// TODO:   }
+// TODO:   ::-webkit-scrollbar-thumb {
+// TODO:     border-radius: 0;
+// TODO:     background-color: #ccc;
+// TODO:   }
+// TODO:
+// TODO:   .pure-menu-list {
+// TODO:     margin: 0 50px;
+// TODO:   }
+// TODO:
+// TODO:   .pure-menu-link:hover {
+// TODO:     color: #000;
+// TODO:   }
+// TODO:
+// TODO:   label span.desc {
+// TODO:     color: ${STYLE.darkGray};
+// TODO:     font-size: 0.8em;
+// TODO:     margin-left: 0.5em;
+// TODO:   }
+// TODO:   legend span.desc {
+// TODO:     color: ${STYLE.darkGray};
+// TODO:     font-size: 0.8em;
+// TODO:     margin-left: 0.5em;
+// TODO:   }
+// TODO:
+*/
+
+/* ======= FORM 
+// TODO:   form {
+// TODO:     div.err {
+// TODO:       color: #f44;
+// TODO:       font-size: 0.9em;
+// TODO:     }
+// TODO:     input[type="text"].err {
+// TODO:       border-color: #f44;
+// TODO:     }
+// TODO:     textarea.err {
+// TODO:       border-color: #f44;
+// TODO:     }
+// TODO:     select.err {
+// TODO:       border-color: #f44;
+// TODO:     }
+// TODO:   }
+======= */
+
+/* ======= BANNER 
+// TODO:   .banner {
+// TODO:     position: relative;
+// TODO:     z-index: 10;
+// TODO:     color: #eee;
+// TODO:     text-align: center;
+// TODO:     padding-top: 1em;
+// TODO:     padding-bottom: 1em;
+// TODO:     .banner-link {
+// TODO:       color: #000;
+// TODO:     }
+// TODO:   }
+======= */
+
+/* ======= CHEVRON/
+// TODO:   div.chevron {
+// TODO:     position: relative;
+// TODO:     color: ${STYLE.lightGray};
+// TODO:     i {
+// TODO:       position: absolute;
+// TODO:       display: inline-table;
+// TODO:       top: 0;
+// TODO:       bottom: 0;
+// TODO:       margin: auto;
+// TODO:     }
+// TODO:   }
+======= */
+
+/* ======= MISC/
+// TODO:   .close-button {
+// TODO:     text-align: center;
+// TODO:     margin: 0;
+// TODO:     padding: 1em;
+// TODO:     button {
+// TODO:       margin: 0 5px;
+// TODO:     }
+// TODO:   }
+// TODO:   .message {
+// TODO:     white-space: pre-wrap;
+// TODO:     margin: 0;
+// TODO:     padding: 1em;
+// TODO:   }
+// TODO:   .new-rating-form {
+// TODO:     margin: 2em 1.8em 1.8em 1.8em;
+// TODO:
+// TODO:     .radio-button {
+// TODO:       margin: 0.2em 0.3em 0.2em 0;
+// TODO:     }
+// TODO:     .form-heading {
+// TODO:       font-weight: bold;
+// TODO:       margin-top: 0.5em;
+// TODO:       margin-bottom: 0;
+// TODO:     }
+// TODO:     .rating-context-explanation {
+// TODO:       margin-top: 0.5em;
+// TODO:       margin-bottom: 0.5em;
+// TODO:       font-style: italic;
+// TODO:     }
+// TODO:     .title {
+// TODO:       margin-bottom: 0.5em;
+// TODO:     }
+// TODO:   }
+// TODO:   .optional::placeholder {
+// TODO:     color: #777;
+// TODO:   }
+// TODO:   input, textarea, select {
+// TODO:     box-shadow: none !important;
+// TODO:     border-radius: 3px !important;
+// TODO:   }
+// TODO:   .info {
+// TODO:     .landing-img {
+// TODO:       width: 70%;
+// TODO:     }
+// TODO:     h3 {
+// TODO:       margin-top: 50px;
+// TODO:     }
+// TODO:   }
+// TODO:   .license input {
+// TODO:     margin-top: 0.7em;
+// TODO:   }
+// TODO: `
+*/

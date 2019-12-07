@@ -1,6 +1,6 @@
 use crate::{
     constants::Categories::{IDS, MAIN_IDS},
-    Msg,
+    Actions, Msg,
 };
 use seed::prelude::*;
 
@@ -79,6 +79,7 @@ pub fn isImportantSearchResult(/* x */) -> bool {
 }
 
 pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
+    use Actions::client::Msg as C;
     match action {
         // TODO:
         // TODO:   switch (action.type) {
@@ -110,13 +111,14 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:         eventResults,
         // TODO:         eventsWithoutPlace,
         // TODO:       }
-        // TODO:
-        // TODO:     case T.SET_SEARCH_TEXT:
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         text: action.payload
-        // TODO:       }
-        // TODO:
+        Msg::Client(C::setSearchText(txt)) => {
+            if txt.is_empty() {
+                state.text = None;
+            } else {
+                state.text = Some(txt.clone());
+            }
+        }
+
         // TODO:     case T.UPDATE_STATE_FROM_URL:
         // TODO:       const searchText = parseUrl(action.payload).params.search;
         // TODO:

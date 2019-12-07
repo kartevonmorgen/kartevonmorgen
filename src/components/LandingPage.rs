@@ -1,9 +1,9 @@
-// TODO: import React, { Component } from "react";
+use crate::{reducers, Mdl, Msg};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next";
-// TODO: import T                    from "prop-types";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import styled               from "styled-components";
-// TODO:
+
 // TODO: import logo                 from "../img/logo.png";
 // TODO: import CityList             from "./pure/CityList";
 // TODO: import Info                 from "./pure/Info";
@@ -18,7 +18,59 @@
 // TODO: import i18n                 from "../i18n";
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import pincloud             from "../img/pincloud.png";
-// TODO:
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+    div![ // TODO: <LandingPage
+    // TODO:   onMenuItemClick={ id => {
+    // TODO:     switch (id) {
+    // TODO:       case 'map':
+    // TODO:         return dispatch(Actions.toggleLandingPage());
+    // TODO:       case 'new':
+    // TODO:         dispatch(Actions.toggleLandingPage());
+    // TODO:         return dispatch(Actions.showNewEntry());
+    // TODO:       case 'landing':
+    // TODO:         dispatch(Actions.showInfo(null));
+    // TODO:         return dispatch(Actions.toggleLandingPage());
+    // TODO:       case V.LOGOUT:
+    // TODO:         dispatch(Actions.logout());
+    // TODO:         return dispatch(Actions.showInfo(V.LOGOUT));
+    // TODO:       case V.SUBSCRIBE_TO_BBOX:
+    // TODO:         return dispatch(Actions.showSubscribeToBbox());
+    // TODO:       default:
+    // TODO:         return dispatch(Actions.showInfo(id));
+    // TODO:     }
+    // TODO:   }}
+    // TODO:   onChange={ (city) => {
+    // TODO:     dispatch(Actions.setCitySearchText(city));
+    // TODO:     if (city) {
+    // TODO:       return dispatch(Actions.searchCity())
+    // TODO:     }
+    // TODO:   }}
+    // TODO:   content={ view.right }
+    // TODO:   searchText={ search.city }
+    // TODO:   loadingSearch={ server.loadingSearch }
+    // TODO:   searchError={ search.error }
+    // TODO:   cities={ search.cities }
+    // TODO:   onEscape={ () => { return dispatch(Actions.setCitySearchText('')); }}
+    // TODO:   onSelection={ this.onLandingPageCitySelection.bind(this) }
+    // TODO:   onLogin={ data => {
+    // TODO:     var password, email;
+    // TODO:     email = data.email, password = data.password;
+    // TODO:     return dispatch(Actions.login(email, password));
+    // TODO:   }}
+    // TODO:   onRegister={ data => {
+    // TODO:     var email, password;
+    // TODO:     email = data.email, password = data.password;
+    // TODO:     return dispatch(Actions.register(email, password));
+    // TODO:   }}
+    // TODO:   loggedIn={ loggedIn}
+    // TODO:   user={ user}
+    // TODO:   onDeleteAccount={ () => {
+    // TODO:     return dispatch(Actions.deleteAccount());
+    // TODO:   }}
+    ]
+}
+
 // TODO: class LandingPage extends Component {
 // TODO:   state = {
 // TODO:     selectedCity : 0,

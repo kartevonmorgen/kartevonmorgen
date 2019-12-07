@@ -1,14 +1,18 @@
-// TODO: import React                from "react";
-// TODO: import styled,{ keyframes } from "styled-components";
-// TODO:
-// TODO: import Message              from "./Message";
+use crate::{components::pure::Message, Mdl, Msg};
+use seed::prelude::*;
+
 // TODO: import Actions              from "../../Actions"; //TODO: remove dependency
 // TODO: import { DONATE }           from "../../constants/URLs";
 // TODO: import V                    from "../../constants/PanelView";
 // TODO: import i18n                 from "../../i18n";
-// TODO:
+
 // TODO: const t = (key) => i18n.t("modal." + key)
-// TODO:
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+    // TODO:   view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
+    empty!()
+}
+
 // TODO: module.exports = ({view, dispatch}) => {
 // TODO:
 // TODO:   switch (view.modal) {
