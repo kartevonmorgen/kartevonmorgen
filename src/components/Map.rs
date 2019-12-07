@@ -6,55 +6,59 @@ use seed::prelude::*;
 // TODO: import { IDS }                  from  "../constants/Categories"
 // TODO: import STYLE                    from "./styling/Variables"
 // TODO: import { avg_rating_for_entry } from "../rating"
-// TODO: import styled                   from "styled-components";
-// TODO: import T                        from "prop-types";
-// TODO: import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
-// TODO:
-// TODO: import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
-// TODO:
-// TODO: import  "leaflet/dist/leaflet.css"
-// TODO:
+
 // TODO: const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 pub fn view(mdl: &Mdl) -> Node<Msg> {
     div![
-        id! {"map"} // TODO: <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
-                    // TODO:   <Map
-                    // TODO:     marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
-                    // TODO:     highlight={ search.highlight }
-                    // TODO:     center={ map.center}
-                    // TODO:     zoom={ map.zoom}
-                    // TODO:     category={ form[EDIT.id] ? form[EDIT.id].category ? form[EDIT.id].category.value : null : null}
-                    // TODO:     entries={ visibleEntries}
-                    // TODO:     ratings={ ratings}
-                    // TODO:     onClick={ (event) => {
-                    // TODO:       if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path'){
-                    // TODO:         return false;
-                    // TODO:       } else if(view.left === V.NEW || view.left === V.EDIT){
-                    // TODO:         return dispatch(Actions.setMarker(event.latlng));
-                    // TODO:       } else {
-                    // TODO:         //back to overview
-                    // TODO:         dispatch(Actions.setCurrentEntry(null, null));
-                    // TODO:         dispatch(Actions.showSearchResults());
-                    // TODO:         dispatch(Actions.setCenterInUrl(map.center));
-                    // TODO:
-                    // TODO:         return dispatch(Actions.hideLeftPanelOnMobile());
-                    // TODO:       }
-                    // TODO:     }}
-                    // TODO:     onMarkerClick={ (id) => {
-                    // TODO:       dispatch(Actions.setCurrentEntry(id, null));
-                    // TODO:       return dispatch(Actions.showLeftPanel());
-                    // TODO:     }}
-                    // TODO:     onMoveend={ coordinates => { return dispatch(Actions.onMoveend(coordinates, map.center)); }}
-                    // TODO:     onZoomend={ coordinates => { return dispatch(Actions.onZoomend(coordinates, map.zoom)); }}
-                    // TODO:     onLocate={ () => { return dispatch(Actions.showOwnPosition()); }}
-                    // TODO:     showLocateButton={ true }
-                    // TODO:   />
-                    // TODO: </Swipeable>
+        id! {"map"},
+        style! {
+               St::Position => "relative";
+        },
+        div![
+            id! { "map-container" },
+            style! {
+                St::ZIndex => 0;
+                St::Width => percent(100);
+                St::Height => percent(100);
+            },
+        ],
+        // TODO: <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
+        // TODO:   <Map
+        // TODO:     marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
+        // TODO:     highlight={ search.highlight }
+        // TODO:     center={ map.center}
+        // TODO:     zoom={ map.zoom}
+        // TODO:     category={ form[EDIT.id] ? form[EDIT.id].category ? form[EDIT.id].category.value : null : null}
+        // TODO:     entries={ visibleEntries}
+        // TODO:     ratings={ ratings}
+        // TODO:     onClick={ (event) => {
+        // TODO:       if(event.originalEvent.srcElement.tagName.toLowerCase() === 'path'){
+        // TODO:         return false;
+        // TODO:       } else if(view.left === V.NEW || view.left === V.EDIT){
+        // TODO:         return dispatch(Actions.setMarker(event.latlng));
+        // TODO:       } else {
+        // TODO:         //back to overview
+        // TODO:         dispatch(Actions.setCurrentEntry(null, null));
+        // TODO:         dispatch(Actions.showSearchResults());
+        // TODO:         dispatch(Actions.setCenterInUrl(map.center));
+        // TODO:
+        // TODO:         return dispatch(Actions.hideLeftPanelOnMobile());
+        // TODO:       }
+        // TODO:     }}
+        // TODO:     onMarkerClick={ (id) => {
+        // TODO:       dispatch(Actions.setCurrentEntry(id, null));
+        // TODO:       return dispatch(Actions.showLeftPanel());
+        // TODO:     }}
+        // TODO:     onMoveend={ coordinates => { return dispatch(Actions.onMoveend(coordinates, map.center)); }}
+        // TODO:     onZoomend={ coordinates => { return dispatch(Actions.onZoomend(coordinates, map.zoom)); }}
+        // TODO:     onLocate={ () => { return dispatch(Actions.showOwnPosition()); }}
+        // TODO:     showLocateButton={ true }
+        // TODO:   />
+        // TODO: </Swipeable>
     ]
 }
 
-// TODO:
 // TODO: class KVMMap extends Component {
 // TODO:
 // TODO:   getIconById(id) {
@@ -238,23 +242,6 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:       </Wrapper>)
 // TODO:   }
 // TODO: }
-// TODO:
-// TODO: KVMMap.propTypes = {
-// TODO:   entries       : T.array,
-// TODO:   ratings       : T.object,
-// TODO:   highlight     : T.array,
-// TODO:   center        : T.object,
-// TODO:   zoom          : T.number,
-// TODO:   marker        : T.object,
-// TODO:   onClick       : T.func,
-// TODO:   onMoveend     : T.func,
-// TODO:   onZoomend     : T.func,
-// TODO:   onMarkerClick : T.func,
-// TODO:   onLocate      : T.func,
-// TODO:   showLocateButton : T.bool
-// TODO: };
-// TODO:
-// TODO: module.exports = KVMMap;
 // TODO:
 // TODO: const Wrapper = styled.div`
 // TODO:
