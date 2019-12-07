@@ -1,123 +1,159 @@
-// TODO: import React                from "react"
-// TODO: import ReactDOM             from "react-dom"
+use crate::{components::pure::CityList, entities::*, Mdl, Msg};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next";
-// TODO: import PropTypes            from "prop-types";
-// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import styled               from "styled-components";
-// TODO: import Actions              from "../../Actions" //TODO: remove dependency
 // TODO: import Flower               from "../Flower";
 // TODO: import NavButton            from "./NavButton";
 // TODO: import EventTimes           from "./EventTimes";
 // TODO: import i18n                 from "../../i18n";
 // TODO: import { NAMES, IDS }       from "../../constants/Categories"
 // TODO: import STYLE                from "../styling/Variables"
-// TODO:
-// TODO: const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
-// TODO:   var css_class = highlight ? 'highlight-entry ' : '';
-// TODO:   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
-// TODO:   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
-// TODO:   const title = getTruncatedTitle(entry.title, 60); // maximally two lines
-// TODO:   const description = getTruncatedDescription(entry.description, 110); // maximally two lines
-// TODO:
-// TODO:   return (
-// TODO:     <ListElement
-// TODO:       key           = { entry.id }
-// TODO:       className     = { css_class }
-// TODO:       onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
-// TODO:       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
-// TODO:       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
-// TODO:       <OuterWrapper>
-// TODO:         <TitleCategoryDescriptionsAndFlower>
-// TODO:           <TitleCategoryAndDescription>
-// TODO:             <span className="category">
-// TODO:               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
-// TODO:             </span>
-// TODO:             <div>
-// TODO:               <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
-// TODO:             </div>
-// TODO:             { getBody(isEvent, description, entry.city, entry.organizer) }
-// TODO:           </TitleCategoryAndDescription>
-// TODO:           { !isEvent ?
-// TODO:             <FlowerWrapper>
-// TODO:               <Flower ratings={ratings} radius={30} showTooltip={false}/>
-// TODO:             </FlowerWrapper>
-// TODO:           : <EventTimeLabel start={ entry.start }/> }
-// TODO:         </TitleCategoryDescriptionsAndFlower>
-// TODO:         {
-// TODO:           entry.tags && !isEvent && (entry.tags.length > 0)
-// TODO:             ? <TagsWrapper>
-// TODO:               <ul >
-// TODO:                 { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
-// TODO:               </ul>
-// TODO:             </TagsWrapper>
-// TODO:             : null
-// TODO:         }
-// TODO:       </OuterWrapper>
-// TODO:     </ListElement>)
-// TODO: }
-// TODO:
-// TODO: const getBody = (isEvent, description, city, organizer) => {
-// TODO:   if (isEvent) {
-// TODO:     return (
-// TODO:       <EventBody>
-// TODO:         <div>{city}</div>
-// TODO:         <div>{organizer}</div>
-// TODO:       </EventBody>
-// TODO:     );
-// TODO:   } else {
-// TODO:     return (<Description>{description}</Description>);
-// TODO:   }
-// TODO: }
-// TODO:
-// TODO: const ResultList = props => {
-// TODO:
-// TODO:   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
-// TODO:
-// TODO:   let results = entries.map( e =>
-// TODO:     <ResultListElement
-// TODO:       entry        = { e            }
-// TODO:       ratings      = { (e.ratings || []).map(id => ratings[id])}
-// TODO:       key          = { e.id         }
-// TODO:       highlight    = { highlight.indexOf(e.id) >= 0 }
-// TODO:       onClick      = { (id, center) => {
-// TODO:         if (center) {
-// TODO:           dispatch(Actions.setCurrentEntry(id, center))
-// TODO:         }
-// TODO:       }}
-// TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-// TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-// TODO:       t            = { t } />);
-// TODO:
-// TODO:   if(moreEntriesAvailable && !waiting){
-// TODO:     results.push(
-// TODO:       <ListElement key="show-more-entries">
-// TODO:         <div>
-// TODO:           <a onClick = { onMoreEntriesClick } href="#">
-// TODO:             {t("resultlist.showMoreEntries")}
-// TODO:           </a>
-// TODO:         </div>
-// TODO:       </ListElement>
-// TODO:     );
-// TODO:   }
-// TODO:
-// TODO:   return (
-// TODO:   <Wrapper>
-// TODO:     <div className= "result-list">
-// TODO:     {
-// TODO:       (results.length > 0)
-// TODO:         ? <ul>{results}</ul>
-// TODO:         : (waiting ?
-// TODO:         <p className= "loading">
-// TODO:           <span>{t("resultlist.entriesLoading")}</span>
-// TODO:         </p>
-// TODO:         : <p className= "no-results">
-// TODO:             <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
-// TODO:           </p>)
-// TODO:     }
-// TODO:     </div>
-// TODO:   </Wrapper>)
-// TODO: }
-// TODO:
+// TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+    let group_header_style = style! {
+    // TODO:   border-top: 3px solid ${STYLE.lightGray};
+    // TODO:   padding: 0.5em 1em 0.5em 1em;
+    // TODO:   margin: 0;
+    // TODO:   background: #eaeaea;
+    // TODO:   color: #666;
+    };
+
+    div![
+        id! {"results"},
+        // TODO:
+        // TODO: const ResultWrapper = styled(ScrollableDiv)`
+        style! {
+        // TODO: background: #f7f7f7;
+        // TODO:
+        // TODO:  /* city list only for sidebar, not landing page TODO: where to put this? */
+        // TODO: .city-list ul {
+        // TODO:   background: #f7f7f7;
+        // TODO:   li {
+        // TODO:     padding: 0.2em;
+        // TODO:     padding-left: 0.7em;
+        // TODO:     padding-right: 0.7em;
+        // TODO:     line-height: 0.9;
+        // TODO:     border-left: 5px solid transparent;
+        // TODO:     &:hover {
+        // TODO:       background: #fff;
+        // TODO:       border-left: 5px solid ${STYLE.darkGray};
+        // TODO:       div.chevron {
+        // TODO:         color: ${STYLE.darkGray};
+        // TODO:       }
+        // TODO:     }
+        // TODO:     span {
+        // TODO:       &.state {
+        // TODO:         color: #555;
+        // TODO:       }
+        // TODO:       &.country {
+        // TODO:         color: #888;
+        // TODO:       }
+        // TODO:       &.prefix {
+        // TODO:         color: #888;
+        // TODO:       }
+        // TODO:     }
+        // TODO:   }
+        },
+        result_list(&mdl),
+        if !mdl.search.cities.is_empty() {
+            div![
+                div![
+                    &group_header_style,
+                    // TODO: { t("search-results.cities") }
+                ],
+                CityList::view(&mdl)
+            ]
+        } else {
+            empty!()
+        },
+        if !mdl.search.invisible.is_empty() {
+            div![
+                div![
+                    &group_header_style,
+                    // TODO:  { t("search-results.results-out-of-bbox") }
+                ],
+                // TODO: <ResultList
+                // TODO:   entries={ invisibleEntries }
+                // TODO:   ratings={ ratings }
+                // TODO:   highlight={ search.highlight }
+                // TODO:   onClick={ (id,center) => { return dispatch(Actions.setCurrentEntry(id, center)); }}
+                // TODO:   onMouseEnter={ id => { return dispatch(Actions.highlight(id)); }}
+                // TODO:   onMouseLeave={ id => { return dispatch(Actions.highlight()); }}
+                // TODO:   dispatch={ dispatch }
+                // TODO:   waiting={ waiting_for_search_results }
+                // TODO:   moreEntriesAvailable={ search.moreEntriesAvailable }
+                // TODO:   onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
+                // TODO: />
+            ]
+        } else {
+            empty!()
+        }
+    ]
+}
+
+pub fn result_list(mdl: &Mdl) -> Node<Msg> {
+    // TODO:   const { entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick} = props
+    // TODO:   entries={ resultEntries }
+    // TODO:   ratings={ ratings }
+    // TODO:   onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
+    // TODO:   dispatch={dispatch}
+
+    // TODO:   highlight={ search.highlight}
+    let moreEntriesAvailable = mdl.search.moreEntriesAvailable;
+
+    let results = mdl
+        .search
+        .entryResults
+        .iter()
+        .map(|e| ResultListElement(e))
+        .collect::<Vec<_>>();
+    // TODO:   let results = entries.map( e =>
+    // TODO:     <ResultListElement
+    // TODO:       entry        = { e            }
+    // TODO:       ratings      = { (e.ratings || []).map(id => ratings[id])}
+    // TODO:       key          = { e.id         }
+    // TODO:       highlight    = { highlight.indexOf(e.id) >= 0 }
+    // TODO:       onClick      = { (id, center) => {
+    // TODO:         if (center) {
+    // TODO:           dispatch(Actions.setCurrentEntry(id, center))
+    // TODO:         }
+    // TODO:       }}
+    // TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+    // TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+    // TODO:       t            = { t } />);
+    // TODO:
+    // TODO:   if(moreEntriesAvailable && !waiting){
+    // TODO:     results.push(
+    // TODO:       <ListElement key="show-more-entries">
+    // TODO:         <div>
+    // TODO:           <a onClick = { onMoreEntriesClick } href="#">
+    // TODO:             {t("resultlist.showMoreEntries")}
+    // TODO:           </a>
+    // TODO:         </div>
+    // TODO:       </ListElement>
+    // TODO:     );
+    // TODO:   }
+
+    div![
+        // TODO: <Wrapper>
+        if !results.is_empty() {
+            ul![results]
+        } else {
+            p![if mdl.view.waiting_for_search_results {
+                span![
+                // TODO: <span>{t("resultlist.entriesLoading")}</span>
+                    ]
+            } else {
+                // TODO: <FontAwesomeIcon icon={['far', 'frown']} />
+                span![
+                    // TODO: t("resultlist.noEntriesFound")}
+                ]
+            }]
+        }
+    ]
+}
+
 // TODO: const getTruncatedTitle = (title, maxCharacters) => {
 // TODO:   if (title) {
 // TODO:     if (title.length > maxCharacters + 5) {
@@ -139,21 +175,66 @@
 // TODO:   }
 // TODO:   return description;
 // TODO: }
-// TODO:
-// TODO: ResultList.propTypes = {
-// TODO:   dispatch:             PropTypes.func.isRequired,
-// TODO:   waiting:              PropTypes.bool.isRequired,
-// TODO:   entries:              PropTypes.array.isRequired,
-// TODO:   ratings:              PropTypes.object.isRequired,
-// TODO:   highlight:            PropTypes.array.isRequired,
-// TODO:   moreEntriesAvailable: PropTypes.bool.isRequired,
-// TODO:   onMoreEntriesClick:   PropTypes.func.isRequired,
-// TODO:   t:                    PropTypes.func.isRequired,
-// TODO:   onClick:              PropTypes.func
+
+fn ResultListElement(e: &EntrySearchResult) -> Node<Msg> {
+    // TODO: const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+    // TODO:   var css_class = highlight ? 'highlight-entry ' : '';
+    // TODO:   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
+    // TODO:   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
+    // TODO:   const title = getTruncatedTitle(entry.title, 60); // maximally two lines
+    // TODO:   const description = getTruncatedDescription(entry.description, 110); // maximally two lines
+    // TODO:
+    li![
+        // TODO: <ListElement
+        // TODO:   key           = { entry.id }
+        // TODO:   className     = { css_class }
+        // TODO:   onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
+        // TODO:   onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
+        // TODO:   onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
+        // TODO:   <OuterWrapper>
+        // TODO:     <TitleCategoryDescriptionsAndFlower>
+        // TODO:       <TitleCategoryAndDescription>
+        // TODO:         <span className="category">
+        // TODO:           { t("category." + NAMES[entry.categories && entry.categories[0]]) }
+        // TODO:         </span>
+        // TODO:         <div>
+        // TODO:           <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
+        e.title // TODO:         </div>
+                // TODO:         { getBody(isEvent, description, entry.city, entry.organizer) }
+                // TODO:       </TitleCategoryAndDescription>
+                // TODO:       { !isEvent ?
+                // TODO:         <FlowerWrapper>
+                // TODO:           <Flower ratings={ratings} radius={30} showTooltip={false}/>
+                // TODO:         </FlowerWrapper>
+                // TODO:       : <EventTimeLabel start={ entry.start }/> }
+                // TODO:     </TitleCategoryDescriptionsAndFlower>
+                // TODO:     {
+                // TODO:       entry.tags && !isEvent && (entry.tags.length > 0)
+                // TODO:         ? <TagsWrapper>
+                // TODO:           <ul >
+                // TODO:             { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
+                // TODO:           </ul>
+                // TODO:         </TagsWrapper>
+                // TODO:         : null
+                // TODO:     }
+                // TODO:   </OuterWrapper>
+                // TODO: </ListElement>)
+    ]
+}
+
+// TODO: const getBody = (isEvent, description, city, organizer) => {
+// TODO:   if (isEvent) {
+// TODO:     return (
+// TODO:       <EventBody>
+// TODO:         <div>{city}</div>
+// TODO:         <div>{organizer}</div>
+// TODO:       </EventBody>
+// TODO:     );
+// TODO:   } else {
+// TODO:     return (<Description>{description}</Description>);
+// TODO:   }
 // TODO: }
-// TODO:
-// TODO: module.exports = translate("translation")(ResultList)
-// TODO:
+
 // TODO: const OuterWrapper = styled.div`
 // TODO:   display: flex;
 // TODO:   flex-direction: column;

@@ -1,5 +1,8 @@
 use crate::{
-    components::{pure::Modal, LandingPage, Map, SearchBar, Sidebar},
+    components::{
+        pure::{Modal, ResultList},
+        LandingPage, Map, SearchBar, Sidebar,
+    },
     reducers, Mdl, Msg,
 };
 use seed::prelude::*;
@@ -44,7 +47,7 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
             id! {"main"},
             SearchBar::view(&mdl),
             Map::view(&mdl),
-            div![id! {"results"}],
+            ResultList::view(&mdl),
             Sidebar::view(&mdl)
         ],
         LandingPage::view(&mdl),

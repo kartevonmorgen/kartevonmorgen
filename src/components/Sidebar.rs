@@ -6,7 +6,6 @@ use seed::prelude::*;
 // TODO: import { initialize }       from "redux-form";
 
 // TODO: import V                    from "../constants/PanelView"
-// TODO: import ResultList           from "./pure/ResultList"
 // TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
 // TODO: import Ratings              from "./pure/Ratings"
 // TODO: import EntryDetails         from "./pure/EntryDetails"
@@ -14,14 +13,12 @@ use seed::prelude::*;
 // TODO: import RatingForm           from "./pure/RatingForm"
 // TODO: import Message              from "./pure/Message"
 // TODO: import SidebarFooter        from "./pure/SidebarFooter"
-// TODO: import CityList             from "./pure/CityList"
 // TODO: import { EDIT, RATING }     from "../constants/Form"
 // TODO: import Actions              from "../Actions"
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import { IDS }              from "../constants/Categories"
 // TODO: import NavButton            from "./pure/NavButton";
 // TODO: import SearchBar            from "./SearchBar"
-// TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
 // TODO: import Swipeable            from 'react-swipeable'
 
 pub fn view(mdl: &Mdl) -> Node<Msg> {
@@ -180,58 +177,6 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:     switch (view.left) {
 // TODO:       case V.RESULT:
 // TODO:         content = (
-// TODO:           <ResultWrapper className="result">
-// TODO:             <ResultList
-// TODO:               waiting={ waiting_for_search_results }
-// TODO:               entries={ resultEntries }
-// TODO:               ratings={ ratings }
-// TODO:               highlight={ search.highlight}
-// TODO:               moreEntriesAvailable={ search.moreEntriesAvailable }
-// TODO:               onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
-// TODO:               dispatch={dispatch}
-// TODO:             />
-// TODO:             {
-// TODO:               (search.cities.length > 0) ?
-// TODO:                 <div>
-// TODO:                   <GroupHeader>
-// TODO:                     { t("search-results.cities") }
-// TODO:                   </GroupHeader>
-// TODO:                   <CityList
-// TODO:                     cities={ search.cities.slice(0, 5) }
-// TODO:                     onClick={ city => {
-// TODO:                       dispatch(Actions.setCenter({
-// TODO:                         lat: city.lat,
-// TODO:                         lng: city.lon
-// TODO:                       }));
-// TODO:                       return dispatch(Actions.setSearchText(''));
-// TODO:                     }}
-// TODO:                     selectedColor="rgba(0,0,0,0)"
-// TODO:                   />
-// TODO:                 </div>
-// TODO:                 : ""
-// TODO:             }
-// TODO:             {
-// TODO:               (invisibleEntries && invisibleEntries.length) ?
-// TODO:                 <div>
-// TODO:                   <GroupHeader>
-// TODO:                     { t("search-results.results-out-of-bbox") }
-// TODO:                   </GroupHeader>
-// TODO:                   <ResultList
-// TODO:                     entries={ invisibleEntries }
-// TODO:                     ratings={ ratings }
-// TODO:                     highlight={ search.highlight }
-// TODO:                     onClick={ (id,center) => { return dispatch(Actions.setCurrentEntry(id, center)); }}
-// TODO:                     onMouseEnter={ id => { return dispatch(Actions.highlight(id)); }}
-// TODO:                     onMouseLeave={ id => { return dispatch(Actions.highlight()); }}
-// TODO:                     dispatch={ dispatch }
-// TODO:                     waiting={ waiting_for_search_results }
-// TODO:                     moreEntriesAvailable={ search.moreEntriesAvailable }
-// TODO:                     onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
-// TODO:                   />
-// TODO:                 </div>
-// TODO:                 : ""
-// TODO:             }
-// TODO:           </ResultWrapper>
 // TODO:         );
 // TODO:         break;
 // TODO:
@@ -422,30 +367,6 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:   height: 100%;
 // TODO: `
 // TODO:
-// TODO: Sidebar.propTypes = {
-// TODO:   view:           PropTypes.object.isRequired,
-// TODO:   search:         PropTypes.object.isRequired,
-// TODO:   map:            PropTypes.object.isRequired,
-// TODO:   user:           PropTypes.object,
-// TODO:   form:           PropTypes.object,
-// TODO:   resultEntries:  PropTypes.array,
-// TODO:   entries:        PropTypes.object.isRequired,
-// TODO:   ratings:        PropTypes.object,
-// TODO:   dispatch:       PropTypes.func,
-// TODO:   t:              PropTypes.func.isRequired
-// TODO: }
-// TODO:
-// TODO: export default Sidebar
-// TODO:
-// TODO:
-// TODO: const GroupHeader = styled.div `
-// TODO:   border-top: 3px solid ${STYLE.lightGray};
-// TODO:   padding: 0.5em 1em 0.5em 1em;
-// TODO:   margin: 0;
-// TODO:   background: #eaeaea;
-// TODO:   color: #666;
-// TODO: `
-// TODO:
 // TODO: const AddEntryButton = styled.nav`
 // TODO:   z-index: 10;
 // TODO:   padding: 0;
@@ -473,37 +394,3 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:     }
 // TODO:   }
 // TODO: `;
-// TODO:
-// TODO: const ResultWrapper = styled(ScrollableDiv)`
-// TODO:   background: #f7f7f7;
-// TODO:
-// TODO:    /* city list only for sidebar, not landing page TODO: where to put this? */
-// TODO:   .city-list ul {
-// TODO:     background: #f7f7f7;
-// TODO:     li {
-// TODO:       padding: 0.2em;
-// TODO:       padding-left: 0.7em;
-// TODO:       padding-right: 0.7em;
-// TODO:       line-height: 0.9;
-// TODO:       border-left: 5px solid transparent;
-// TODO:       &:hover {
-// TODO:         background: #fff;
-// TODO:         border-left: 5px solid ${STYLE.darkGray};
-// TODO:         div.chevron {
-// TODO:           color: ${STYLE.darkGray};
-// TODO:         }
-// TODO:       }
-// TODO:       span {
-// TODO:         &.state {
-// TODO:           color: #555;
-// TODO:         }
-// TODO:         &.country {
-// TODO:           color: #888;
-// TODO:         }
-// TODO:         &.prefix {
-// TODO:           color: #888;
-// TODO:         }
-// TODO:       }
-// TODO:     }
-// TODO:   }
-// TODO: `
