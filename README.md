@@ -2,7 +2,7 @@
 
 ![Screenshot](https://raw.githubusercontent.com/kartevonmorgen/kartevonmorgen/master/screenshot.jpg)
 
-## Mapping for Good
+## About
 
 von morgen supports kindness, sustainability and joint action.
 Everything that brings a little happiness to our world.
@@ -32,8 +32,8 @@ have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
 To be able to start development you'll need the following tools:
 
 - [git](https://www.git-scm.com/)
-- [Node.js](https://nodejs.org/) version 8.x
-- [npm](https://www.npmjs.com/package/npm) version 6.x
+- [Rust](https://rust-lang.org/) version 1.39.0
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/) version 0.8.x
 - [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) version 0.7.x
 
 Now clone this repository:
@@ -42,22 +42,14 @@ Now clone this repository:
 git clone https://github.com/kartevonmorgen/kartevonmorgen
 ```
 
-Go to the root of it and install all the dependencies:
+Go to the root of it and build the app:
 
 ```sh
 cd kartevonmorgen/
-npm install
+wasm-pack build --target web
 ```
 
-### Build
-
-To build the web application run:
-
-```sh
-npm run pack
-```
-
-The result can be found in `dist/`.
+The result can be found in `pkg/`.
 
 ### Development
 
@@ -65,6 +57,8 @@ You may either use a remote instance of the OpenFairDB server or start your
 own instance locally.
 
 #### Remote OpenFairDB server
+
+*TODO*: update this section.
 
 The easiest way to get a local setup running is by using the remote API of [OpenFairDB](https://github.com/kartevonmorgen/openfairdb).
 To do so change `src/constants/URLs.js` to
@@ -88,8 +82,8 @@ A static executable for all recent versions is available on the
 Download, unpack and run (on Linux):
 
 ```sh
-wget https://github.com/kartevonmorgen/openfairdb/releases/download/v0.5.5/openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
-tar xJf openfairdb_v0.5.5.x86_64-unknown-linux-musl.tar.xz
+wget https://github.com/kartevonmorgen/openfairdb/releases/download/v0.7.2/openfairdb_v0.7.2.x86_64-unknown-linux-musl.tar.xz
+tar xJf openfairdb_v0.7.2.x86_64-unknown-linux-musl.tar.xz
 RUST_LOG=info ROCKET_PORT=6767 ./openfairdb
 ```
 
@@ -125,22 +119,20 @@ Get the web app running:
 
 ```sh
 cd /path/to/kartevonmorgen/
-npm start
+wasm-pack build --target web
+microserver
 ```
 
-The web app is now listening on port 8080. Open it in your browser `https://localhost:8080`.
+The web app is now listening on port 9090. Open it in your browser `https://localhost:9090`.
 Ignore the security warning that is caused by a self-signed certificate in the local proxy.
-
-On every file change in `src/`, the app will be build
-for you and the browser reloads automatically.
 
 ### Tests
 
-All the tests can be found in the `spec/` folder.
+All the tests can be found in the modules and the `spec/` folder.
 To run the tests type
 
 ```sh
-npm t
+cargo t
 ```
 
 ### Backend

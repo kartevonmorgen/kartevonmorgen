@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Karte von morgen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta property="og:title" content="Karte von morgen">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.kartevonmorgen.org/kvm_logo.jpg">
+    <meta property="og:url" content="https://www.kartevonmorgen.org">
+    <link href="https://unpkg.com/normalize.css@8.0.1/normalize.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
+  </head>
+  <body>
+    <noscript>
+     Diese Seite benötigt JavaScript.
+     Bitte aktiviere die JavaScript Unterstützung in deinem Browser.<br /><br />
+     This page requires JavaScript. Please activate JavaScript in your browser.
+    </noscript>
+    <div id='app'></div>
+    <script type="module">
+      import init from '/pkg/kartevonmorgen.js';
+
+      var markers = null;
+
+      window.init_map = function() {
+        map = L
+          .map('map-container', { zoomControl: false })
+          .setView([51.0, 11.0],6);
+        L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
+          attribution: '<a href="https://www.openstreetmap.org">OpenStreetMap</a>',
+          maxZoom: 18,
+        }).addTo(map);
+        L.control.zoom({ position: 'topright' }).addTo(map);
+        markers = L.layerGroup();
+        markers.addTo(map);
+      };
+
+      init('/pkg/kartevonmorgen_bg.wasm').catch(console.error);
+    </script>
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin="">
+    </script>
+  </body>
+</html>

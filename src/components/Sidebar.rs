@@ -1,0 +1,396 @@
+use crate::{Mdl, Msg};
+use seed::prelude::*;
+
+// TODO: import { translate }        from "react-i18next";
+// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
+// TODO: import { initialize }       from "redux-form";
+
+// TODO: import V                    from "../constants/PanelView"
+// TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
+// TODO: import Ratings              from "./pure/Ratings"
+// TODO: import EntryDetails         from "./pure/EntryDetails"
+// TODO: import EntryForm            from "./EntryForm"
+// TODO: import RatingForm           from "./pure/RatingForm"
+// TODO: import Message              from "./pure/Message"
+// TODO: import SidebarFooter        from "./pure/SidebarFooter"
+// TODO: import { EDIT, RATING }     from "../constants/Form"
+// TODO: import Actions              from "../Actions"
+// TODO: import STYLE                from "./styling/Variables"
+// TODO: import { IDS }              from "../constants/Categories"
+// TODO: import NavButton            from "./pure/NavButton";
+// TODO: import SearchBar            from "./SearchBar"
+// TODO: import Swipeable            from 'react-swipeable'
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+    div![id! {"sidebar"}]
+    // TODO: <LeftPanelAndHideSidebarButton>
+    // TODO:   <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
+    // TODO:     onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+    // TODO:     <Sidebar
+    // TODO:       view={ view }
+    // TODO:       search={ search }
+    // TODO:       map={ map }
+    // TODO:       server={ server }
+    // TODO:       user={ user }
+    // TODO:       form={ form }
+    // TODO:       entries={entries}
+    // TODO:       resultEntries={ visibleEntries }
+    // TODO:       ratings={ ratings }
+    // TODO:       // LeftPanelentries={ server.entries } never used…?
+    // TODO:       dispatch={ dispatch }
+    // TODO:       t={ t }
+    // TODO:       showAddEntryButton={ true }
+    // TODO:       showSearchBar={ true }
+    // TODO:       onTagClick={ this.onTagClick }
+    // TODO:       tagsClickable={ true }
+    // TODO:     />
+    // TODO:   </SwipeableLeftPanel>
+    // TODO:   <HideSidebarButtonWrapper>
+    // TODO:     <button
+    // TODO:       onClick={ () => {
+    // TODO:         if (view.showLeftPanel) {
+    // TODO:           return dispatch(Actions.hideLeftPanel());
+    // TODO:         } else {
+    // TODO:           return dispatch(Actions.showLeftPanel());
+    // TODO:         }
+    // TODO:       }}>
+    // TODO:       <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
+    // TODO:     </button>
+    // TODO:   </HideSidebarButtonWrapper>
+    // TODO: </LeftPanelAndHideSidebarButton>
+    // TODO: <RightPanel>
+    // TODO:   <div className="menu-toggle">
+    // TODO:     <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
+    // TODO:       <span className="pincloud">
+    // TODO:         <MenuFontAwesomeIcon icon={'bars'} />
+    // TODO:       </span>
+    // TODO:     </button>
+    // TODO:   </div>
+    // TODO: </RightPanel>
+    // TODO:
+}
+
+// TODO: const LeftPanelAndHideSidebarButton = styled.div`
+// TODO:   display: flex;
+// TODO:   flex-direction: row;
+// TODO:   height: 100%;
+// TODO: `
+
+// TODO: const HideSidebarButtonWrapper = styled.div `
+// TODO:   position: relative;
+// TODO:   z-index: 2;
+// TODO:   height: 0;
+// TODO:   >button {
+// TODO:     position: relative;
+// TODO:     padding: 10px 3px 10px 7px;
+// TODO:     top: 72px;
+// TODO:     font-size: 13pt;
+// TODO:     color: ${STYLE.darkGray};
+// TODO:     background: #fff;
+// TODO:     border: none;
+// TODO:     border-left: 1px solid ${STYLE.lightGray};
+// TODO:     border-radius: 0 0.2em 0.2em 0;
+// TODO:     box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
+// TODO:     &:hover {
+// TODO:       color: ${STYLE.coal};
+// TODO:       box-shadow: px 2px 2px 0.3px #000;
+// TODO:     }
+// TODO:     i {
+// TODO:       margin-right: 0.3em;
+// TODO:     }
+// TODO:   }
+// TODO: `
+
+// TODO: const SwipeableLeftPanel = styled(Swipeable)`
+// TODO:   position: relative;
+// TODO:   height: 100%;
+// TODO:   z-index: 2;
+// TODO:   order: -1;
+// TODO:   overflow-y: hidden;
+// TODO:   float: left;
+// TODO:   background-color: #fff;
+// TODO:   box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+// TODO:   .content {
+// TODO:     width: 100%;
+// TODO:     box-sizing: border-box;
+// TODO:     padding-bottom: 1rem;
+// TODO:     display: flex;
+// TODO:     flex-direction: column;
+// TODO:   }
+// TODO:   &.closed {
+// TODO:     width: 0;
+// TODO:   }
+// TODO:   &.opened {
+// TODO:     max-width: 380px;
+// TODO:     width: 90%;
+// TODO:     .menu {
+// TODO:       width: 100%;
+// TODO:     }
+// TODO:   }
+// TODO:   .search {
+// TODO:     &.closed {
+// TODO:       display: none;
+// TODO:     }
+// TODO:     .main-categories {
+// TODO:       height: 2.1em;
+// TODO:     }
+// TODO:   }
+// TODO: `
+
+// TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
+// TODO:   margin-right: 0.3em;
+// TODO:   width: 0.7em;
+// TODO: `
+
+// TODO: class Sidebar extends Component {
+// TODO:
+// TODO:   entryContent = null;
+// TODO:
+// TODO:   shouldComponentUpdate(nextProps) {
+// TODO:     if( !nextProps.view.showLeftPanel ) return false
+// TODO:     if( !this.props.view.showLeftPanel && nextProps.view.showLeftPanel ) return true
+// TODO:     if( nextProps.view.left !== this.props.view.left ) return true
+// TODO:     if( nextProps.view.left === this.props.view.left === V.ENTRY && nextProps.search.highlight === this.props.search.highlight ) return false
+// TODO:     // if( nextProps.view.left === V.RESULT
+// TODO:     //     && Object.keys(nextProps.search.entryResults).join() === Object.keys(this.props.search.entryResults).join()
+// TODO:     //     && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
+// TODO:     //     && Object.keys(nextProps.search.eventResults).join() === Object.keys(this.props.search.eventResults).join()
+// TODO:     //     && Object.keys(nextProps.search.eventsWithoutPlace).join() === Object.keys(this.props.search.eventsWithoutPlace).join()
+// TODO:     // ) return false
+// TODO:     return true
+// TODO:   }
+// TODO:
+// TODO:   render(){
+// TODO:     const { view, search, user, server, resultEntries, entries,
+// TODO:       ratings, dispatch, map, form, t, showAddEntryButton,
+// TODO:       showSearchBar, onTagClick, tagsClickable } = this.props;
+// TODO:     const { waiting_for_search_results } = view;
+// TODO:     const { explainRatingContext, selectedContext } = view;
+// TODO:     const invisibleEntries = search.invisible
+// TODO:       .filter(e => entries[e.id])
+// TODO:       .map(e => entries[e.id])
+// TODO:       .concat(search.eventsWithoutPlace);
+// TODO:
+// TODO:     const entry = entries[search.current] || null;
+// TODO:
+// TODO:     var content;
+// TODO:     switch (view.left) {
+// TODO:       case V.RESULT:
+// TODO:         content = (
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       case V.ENTRY:
+// TODO:         if (!entry) {
+// TODO:           content = (<Message iconClass={ "spinner" } message={ t("loading-message") } />)
+// TODO:         } else {
+// TODO:
+// TODO:           const onBack = () => {
+// TODO:             dispatch(Actions.setCurrentEntry(null, null));
+// TODO:             dispatch(Actions.showSearchResults());
+// TODO:             dispatch(Actions.setCenterInUrl(map.center));
+// TODO:           };
+// TODO:
+// TODO:           const onEdit = () => {
+// TODO:             dispatch(Actions.editCurrentEntry());
+// TODO:           };
+// TODO:
+// TODO:           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
+// TODO:           content = (
+// TODO:             <ScrollableEntryDetailsWrapper>
+// TODO:               <EntryDetails
+// TODO:                 entry={ entry }
+// TODO:                 isEvent={ isEvent }
+// TODO:                 onTag={ onTagClick }
+// TODO:                 tagsClickable={ tagsClickable }
+// TODO:                 onEdit={ onEdit }
+// TODO:                 onBack={ onBack }
+// TODO:               />
+// TODO:               { !isEvent ?
+// TODO:                 <Ratings
+// TODO:                   entry={ entry }
+// TODO:                   ratings={ (entry ? entry.ratings || [] : []).map(id => {
+// TODO:                     return ratings[id];
+// TODO:                   })}
+// TODO:                   onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
+// TODO:                 />
+// TODO:               : ''}
+// TODO:               { !isEvent ?
+// TODO:                 <SidebarFooter
+// TODO:                     changed = {entry.created}
+// TODO:                     version = {entry.version}
+// TODO:                     title = {entry.title}
+// TODO:                 />
+// TODO:               : ''}
+// TODO:             </ScrollableEntryDetailsWrapper>
+// TODO:           );
+// TODO:         }
+// TODO:         break;
+// TODO:
+// TODO:       case V.EDIT:
+// TODO:       case V.NEW:
+// TODO:         content = (
+// TODO:           <EntryForm
+// TODO:             isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null}
+// TODO:             license={ entries[search.current] ? entries[search.current].license : null}
+// TODO:             dispatch={ dispatch }
+// TODO:             onSubmit={ data => {
+// TODO:               return dispatch(Actions.saveEntry(
+// TODO:                 {
+// TODO:                   id: form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null,
+// TODO:                   title: data.title,
+// TODO:                   description: data.description,
+// TODO:                   tags: data.tags ? data.tags.split(',') : null,
+// TODO:                   homepage: data.homepage,
+// TODO:                   telephone: data.telephone,
+// TODO:                   lat: Number(data.lat),
+// TODO:                   lng: Number(data.lng),
+// TODO:                   street: data.street,
+// TODO:                   city: data.city,
+// TODO:                   email: data.email,
+// TODO:                   zip: data.zip,
+// TODO:                   version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
+// TODO:                   categories: [data.category],
+// TODO:                   image_url: data.image_url,
+// TODO:                   image_link_url: data.image_link_url
+// TODO:                 }
+// TODO:               ));
+// TODO:             }}
+// TODO:           />
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       case V.NEW_RATING:
+// TODO:         const kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
+// TODO:         var ref;
+// TODO:         content = (
+// TODO:           <RatingForm
+// TODO:             ref={ 'rating' }
+// TODO:             entryid={ kvm_flag_id }
+// TODO:             entryTitle={
+// TODO:               form[RATING.id]
+// TODO:                 ? entries[form[RATING.id].kvm_flag_id]
+// TODO:                   ? entries[form[RATING.id].kvm_flag_id].title
+// TODO:                   : null
+// TODO:                 : null
+// TODO:             }
+// TODO:             onSubmit={ data => {
+// TODO:               return dispatch(Actions.createRating({
+// TODO:                 entry: form[RATING.id] ? form[RATING.id].kvm_flag_id : null,
+// TODO:                 title: data.title,
+// TODO:                 context: data.context,
+// TODO:                 value: data.value,
+// TODO:                 comment: data.comment,
+// TODO:                 source: data.source
+// TODO:               }));
+// TODO:             }}
+// TODO:             onCancel={ () => {
+// TODO:               dispatch(initialize(RATING.id, {}, RATING.fields));
+// TODO:               dispatch(Actions.cancelRating());
+// TODO:             }}
+// TODO:             contextToExplain={ explainRatingContext }
+// TODO:             selectedContext={ selectedContext }
+// TODO:             changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
+// TODO:           />
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       case V.WAIT:
+// TODO:         content = (
+// TODO:           <Message
+// TODO:             iconClass={ "spinner" }
+// TODO:             message={ t("loading-message") }
+// TODO:             onCancel={ () => { return dispatch(Actions.cancelWait()); }}
+// TODO:           />
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       case V.IO_ERROR:
+// TODO:         content = (
+// TODO:           <Message
+// TODO:             iconClass={ "exclamation-triangle" }
+// TODO:             message={ t("io-error.message") }
+// TODO:           />
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       case V.SUBSCRIBE_TO_BBOX:
+// TODO:         content = (
+// TODO:           <SubscribeToBbox
+// TODO:             subscriptionExists={ user.subscriptionExists }
+// TODO:             dispatch={ dispatch }
+// TODO:             bbox={ map.bbox }
+// TODO:             email={ user.email }
+// TODO:             mapCenter={ map.center }
+// TODO:           />
+// TODO:         );
+// TODO:         break;
+// TODO:
+// TODO:       default:
+// TODO:         content = <div></div>
+// TODO:     }
+// TODO:
+// TODO:     return(
+// TODO:       <SidebarComponent>
+// TODO:         {
+// TODO:           content
+// TODO:         }
+// TODO:         {
+// TODO:           (view.left === V.RESULT) && showAddEntryButton
+// TODO:           ? <AddEntryButton>
+// TODO:               <NavButton
+// TODO:                 key = "back"
+// TODO:                 classname = "pure-u-1"
+// TODO:                 icon = "plus"
+// TODO:                 text = {t("resultlist.addEntry")}
+// TODO:                 onClick = {() => {
+// TODO:                   dispatch(Actions.showNewEntry());
+// TODO:                 }}
+// TODO:               />
+// TODO:             </AddEntryButton>
+// TODO:           : ""
+// TODO:         }
+// TODO:       </SidebarComponent>
+// TODO:     );
+// TODO:   }
+// TODO: }
+// TODO:
+// TODO: const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
+// TODO:   height: 100%;
+// TODO:   display: flex;
+// TODO:   flex-direction: column;
+// TODO: `
+// TODO:
+// TODO: const SidebarComponent = styled.div`
+// TODO:   display: flex;
+// TODO:   flex-direction: column;
+// TODO:   height: 100%;
+// TODO: `
+// TODO:
+// TODO: const AddEntryButton = styled.nav`
+// TODO:   z-index: 10;
+// TODO:   padding: 0;
+// TODO:   margin: 0;
+// TODO:   background: ${STYLE.coal};
+// TODO:   text-align: center;
+// TODO:   bottom: 0;
+// TODO:   li {
+// TODO:     cursor: pointer;
+// TODO:     box-sizing: border-box;
+// TODO:     font-weight: normal;
+// TODO:     padding: 0.3em;
+// TODO:     font-size: 1.2em;
+// TODO:     border: none;
+// TODO:     color: ${STYLE.lightGray};
+// TODO:     background: transparent;
+// TODO:     border-top: 4px solid transparent;
+// TODO:     border-bottom: 4px solid transparent;
+// TODO:     &:hover {
+// TODO:       color: #fff;
+// TODO:       border-bottom: 4px solid #fff;
+// TODO:     }
+// TODO:     i {
+// TODO:       margin-right: 0.5em;
+// TODO:     }
+// TODO:   }
+// TODO: `;

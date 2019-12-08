@@ -1,0 +1,11 @@
+#[derive(Debug)]
+pub enum RoutingUsecase {
+    NO_ROUTING,
+    SHOW_ENTRY,
+    CHANGE_CENTER,
+    CHANGE_ZOOM,
+    CHANGE_SEARCH,
+    CONFIRM_EMAIL,
+    CHANGE_SIDEBAR_VISIBILITY,
+    CHANGE_SEARCH_CATEGORIES,
+}
