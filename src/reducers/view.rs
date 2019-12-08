@@ -1,4 +1,4 @@
-use crate::{constants::PanelView::PanelView as V, Msg};
+use crate::{constants::PanelView::PanelView as V, Actions, Msg, WebAPI};
 use seed::prelude::*;
 use std::collections::HashMap;
 
@@ -17,6 +17,8 @@ pub struct Mdl {
     pub explainRatingContext: Option<UnknownJsType>,
     pub selectedContext: Option<UnknownJsType>,
     pub showLeftPanel: bool,
+    pub locales: HashMap<String, serde_json::Map<String, serde_json::Value>>,
+    pub current_locale: Option<String>,
 }
 
 impl Default for Mdl {
@@ -30,6 +32,8 @@ impl Default for Mdl {
             explainRatingContext: None,
             selectedContext: None,
             showLeftPanel: true,
+            locales: HashMap::new(),
+            current_locale: None,
         }
     }
 }
@@ -313,6 +317,18 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:     default:
         // TODO:       return state;
         // TODO:   }
+        Msg::Client(Actions::client::Msg::FetchLocale(lng)) => {
+            orders.perform_cmd(WebAPI::fetch_locale(lng));
+        }
+        Msg::Server(Actions::server::Msg::LocaleResult(lang, Ok(d))) => {
+            state.locales.insert(lang.clone(), d.clone());
+        }
+        Msg::Client(Actions::client::Msg::SetLocale(lng)) => {
+            if state.locales.get(lng).is_none() {
+                orders.perform_cmd(WebAPI::fetch_locale(lng));
+            }
+            state.current_locale = Some(lng.clone());
+        }
         _ => {
             // do nothing
         }

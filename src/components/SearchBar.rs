@@ -1,7 +1,6 @@
-use crate::{Actions, Mdl, Msg};
+use crate::{i18n::t, Actions, Mdl, Msg};
 use seed::prelude::*;
 
-// TODO: import { translate }                       from "react-i18next";
 // TODO: import { MAIN_IDS, CSS_CLASS_SIZE, NAMES } from "../constants/Categories";
 // TODO: import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 // TODO: import STYLE                               from "./styling/Variables"
@@ -149,7 +148,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                 // TODO: disabled    = { disabled }
                 // TODO: onFocus     = { this.onFocus }
                 // TODO: className   = "pure-u-1"
-                // TODO: placeholder = { t("searchbar.placeholder") } />
+                At::Placeholder => t(&mdl, "searchbar.placeholder");
             },
             if let Some(t) = &mdl.search.text {
                 attrs! { At::Value => t; }

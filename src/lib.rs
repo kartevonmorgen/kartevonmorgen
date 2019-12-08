@@ -22,8 +22,11 @@ pub use Actions::Msg;
 
 #[wasm_bindgen(start)]
 pub fn render() {
-    seed::App::builder(reducers::update, components::App::view).build_and_start();
-    init_map()
+    let app = seed::App::builder(reducers::update, components::App::view).build_and_start();
+    app.update(Msg::Client(Actions::client::Msg::FetchLocale("en".into())));
+    init_map();
+    //TODO: check browser language
+    app.update(Msg::Client(Actions::client::Msg::SetLocale("de".into())));
 }
 
 #[wasm_bindgen]

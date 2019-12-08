@@ -346,6 +346,12 @@ pub fn searchEntries(
 // TODO:   }
 // TODO: };
 
+pub fn fetch_locale(lang: &str) -> impl Future<Item = Msg, Error = Msg> {
+    let url = format!("/locales/translation-{}.json", lang);
+    let lang = lang.to_string();
+    Request::new(url).fetch_json_data(|d| Msg::Server(Actions::server::Msg::LocaleResult(lang, d)))
+}
+
 const fn bbox_to_slice(bbox: &BBox) -> [f64; 4] {
     [
         bbox.south_west.lat,

@@ -418,6 +418,7 @@ pub enum Msg {
     // TODO:   }
     // TODO: }
     SEARCH_RESULT_ENTRIES(Result<SearchResponse>),
+    LocaleResult(String, Result<serde_json::Map<String, serde_json::Value>>),
 }
 
 pub fn flatten<T>(/* nestedArray */) -> Vec<T> {

@@ -149,4 +149,6 @@ pub enum Msg {
     // TODO:     dispatch(Actions.setZoom(coordinates.zoom));
     // TODO:   }
     // TODO: }
+    FetchLocale(String),
+    SetLocale(String),
 }
