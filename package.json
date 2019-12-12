@@ -30,7 +30,7 @@
     "@fortawesome/react-fontawesome": "^0.1.8",
     "acorn": "^6.4.0",
     "babel-polyfill": "^6.26.0",
-    "es6-promise": "^3.1.2",
+    "es6-promise": "^4.2.8",
     "i18next": "^10.6.0",
     "i18next-browser-languagedetector": "^2.2.3",
     "leaflet": "^1.6.0",
