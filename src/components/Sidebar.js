@@ -159,6 +159,7 @@ class Sidebar extends Component {
                     return ratings[id];
                   })}
                   onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
+                  onComment={ context => { return dispatch(Actions.showNewComment(context)); }}
                 />
               : ''}
               { !isEvent ?

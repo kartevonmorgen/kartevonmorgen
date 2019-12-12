@@ -44,7 +44,7 @@ const Actions = {
       dispatch({
         type: T.SHOW_NEW_ENTRY
       });
-      
+
     },
 
   showSearchResults   : () => ({ type: T.SHOW_SEARCH_RESULTS }),
@@ -83,6 +83,11 @@ const Actions = {
   showNewRating: (id) => ({
     type: T.SHOW_NEW_RATING,
     payload: id
+  }),
+
+  showNewComment: (context) => ({
+    type: T.SHOW_NEW_COMMENT,
+    payload: context
   }),
 
   showInfo: (key) => ({

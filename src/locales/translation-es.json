@@ -88,8 +88,8 @@
     "loginButton": "de acceso",
     "registerText": "¿Aún no tienes una cuenta? Entonces puedes",
     "registerLink": "regístrese aquí gratis.",
-    "passwordResetText":"¿Olvidaste tu contraseña?",
-		"passwordResetLink":"Restablecer"
+    "passwordResetText": "¿Olvidaste tu contraseña?",
+    "passwordResetLink": "Restablecer"
   },
   "register": {
     "heading": "matricular",
@@ -117,6 +117,7 @@
     "noRatingsYet": "Todavía no se han publicado reseñas para esta entrada.",
     "giveFirstRating": "tasa ahora",
     "newRating": "Enviar calificación",
+    "newComment": "Comentar",
     "sourceWebsite": "fuente",
     "contextName": {
       "diversity": "diversidad",

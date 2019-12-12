@@ -44,7 +44,7 @@ const rating_groups = (ratings=[]) => {
 
 const t = (key) => i18n.t("ratings." + key)
 
-const Ratings = ({ entry, ratings, onRate }) => {
+const Ratings = ({ entry, ratings, onRate, onComment }) => {
   const groups = rating_groups(ratings);
 
   const ratingElements = groups.map(g => {
@@ -54,7 +54,7 @@ const Ratings = ({ entry, ratings, onRate }) => {
     const leafHeight = 35;
     const headingColor =
       context !== "renewable"
-        ? STYLE.rating_contexts[context] 
+        ? STYLE.rating_contexts[context]
         : STYLE.yellowText;
 
     return (
@@ -77,6 +77,13 @@ const Ratings = ({ entry, ratings, onRate }) => {
         </LeafWrapper>
         <RatingListForContext>
           { g.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
+
+          <AdditionalCommentButtonWrapper>
+            <AdditionalCommentButton onClick={() => { onComment(context) }}>
+              { t("newComment") }
+            </AdditionalCommentButton>
+          </AdditionalCommentButtonWrapper>
+
         </RatingListForContext>
       </RatingContextWrapper>)
   });
@@ -138,6 +145,17 @@ const RatingTitleWrapper = styled.div`
 const SourceWrapper = styled.div`
   color: #AAA;
   text-align: right;
+`
+
+const AdditionalCommentButtonWrapper = styled.div`
+  text-align: center;
+  height: 20px;
+  margin: 0.42em 0;
+  font-size: 0.8em;
+`
+
+const AdditionalCommentButton = styled.button`
+  float: none;
 `
 
 const rating_value_key = (value) => {
@@ -219,6 +237,7 @@ const RatingList = styled.ul`
 const RatingListForContext = styled.ul`
   margin-left: 0.5em;
   margin-top: 0.6em;
+  margin-bottom: 0;
   padding-left: 0;
   list-style: none;
 `
