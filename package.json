@@ -97,7 +97,7 @@
     "react-hot-loader": "^4.12.18",
     "redbox-react": "^1.6.0",
     "stack-source-map": "^1.0.5",
-    "style-loader": "^0.18.2",
+    "style-loader": "^1.0.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
