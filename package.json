@@ -32,7 +32,7 @@
     "babel-polyfill": "^6.26.0",
     "es6-promise": "^4.2.8",
     "i18next": "^10.6.0",
-    "i18next-browser-languagedetector": "^2.2.3",
+    "i18next-browser-languagedetector": "^4.0.1",
     "leaflet": "^1.6.0",
     "museo": "^0.1.0",
     "normalize.css": "^8.0.1",
