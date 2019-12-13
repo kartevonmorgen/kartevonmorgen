@@ -93,7 +93,7 @@
     "karma-webpack": "^4.0.2",
     "lodash": "^4.17.15",
     "mocha": "^5.2.0",
-    "null-loader": "^0.1.1",
+    "null-loader": "^3.0.0",
     "react-hot-loader": "^4.12.18",
     "redbox-react": "^1.6.0",
     "stack-source-map": "^1.0.5",
