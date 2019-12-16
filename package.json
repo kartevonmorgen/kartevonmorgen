@@ -45,7 +45,7 @@
     "react-loaders-spinners": "^0.4.0",
     "react-redux": "^6.0.1",
     "react-select": "^2.4.4",
-    "react-swipeable": "^4.3.0",
+    "react-swipeable": "^5.5.0",
     "react-tooltip": "^3.11.1",
     "react-virtualized-select": "^3.1.3",
     "react-vm-flower": "^0.2.1",
