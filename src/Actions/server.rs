@@ -1,3 +1,6 @@
+use crate::entities::*;
+use seed::fetch::FailReason;
+
 // TODO: import { NUM_ENTRIES_TO_FETCH }   from "../constants/Search";
 // TODO: import WebAPI                     from "../WebAPI";
 // TODO: import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
@@ -25,109 +28,14 @@ type ChangeExistingBbox = String;
 type BBox = String;
 type Time = String;
 
+type Result<T> = std::result::Result<T, FailReason<T>>;
+
 #[derive(Debug, Clone)]
 pub enum Msg {
     setSearchTime(Time), // TODO: T.SET_SEARCH_TIME,
 
     // TODO: ### ASYNC MESSAGES ###
     search,
-    // TODO:     (dispatch, getState) => {
-    // TODO:
-    // TODO:       dispatch(Actions.setSearchTime(Date.now()));
-    // TODO:
-    // TODO:       const searchFn = () => {
-    // TODO:         dispatch(Actions.setSearchTime(null));
-    // TODO:         console.log("SEARCH\n");
-    // TODO:         const { search, map } = getState();
-    // TODO:         var cats = search.categories;
-    // TODO:         const sw = map.bbox._southWest;
-    // TODO:         const ne = map.bbox._northEast;
-    // TODO:         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
-    // TODO:
-    // TODO:         if (search.text == null || !search.text.trim().endsWith("#")) {
-    // TODO:
-    // TODO:           if(!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)){
-    // TODO:             dispatch({
-    // TODO:               type: T.NO_SEARCH_RESULTS
-    // TODO:             });
-    // TODO:           } else {
-    // TODO:             if(cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)){
-    // TODO:               WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
-    // TODO:                 dispatch({
-    // TODO:                   type: T.SEARCH_RESULT_ENTRIES,
-    // TODO:                   payload: err || res,
-    // TODO:                   error: err != null,
-    // TODO:                   noList: search.text == null
-    // TODO:                 });
-    // TODO:                 const entries =
-    // TODO:                   Array.isArray(res != null ? res.visible : void 0)
-    // TODO:                     ? Array.isArray(res.invisible)
-    // TODO:                       ? res.visible.concat(res.invisible)
-    // TODO:                       : res.visible
-    // TODO:                     : res != null
-    // TODO:                       ? res.invisible
-    // TODO:                       : void 0;
-    // TODO:
-    // TODO:                 const ids = entries ? entries.map(e => e.id) : null;
-    // TODO:                 if (ids && (Array.isArray(ids)) && ids.length > 0) {
-    // TODO:                   dispatch(Actions.getEntries(ids));
-    // TODO:                 } else {
-    // TODO:                   dispatch({
-    // TODO:                     type: T.NO_SEARCH_RESULTS
-    // TODO:                   });
-    // TODO:                 }
-    // TODO:               });
-    // TODO:             }
-    // TODO:
-    // TODO:             if(cats.includes(IDS.EVENT)){
-    // TODO:               const tags = search.text.replace(/#/g, '');
-    // TODO:               WebAPI.searchEvents(tags, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
-    // TODO:                 dispatch({
-    // TODO:                   type: T.SEARCH_RESULT_EVENTS,
-    // TODO:                   payload: err || res,
-    // TODO:                   error: err != null
-    // TODO:                 });
-    // TODO:               });
-    // TODO:
-    // TODO:               // search events without place:
-    // TODO:               WebAPI.searchEvents(tags, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
-    // TODO:                 dispatch({
-    // TODO:                   type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
-    // TODO:                   payload: err || res,
-    // TODO:                   error: err != null
-    // TODO:                 });
-    // TODO:               });
-    // TODO:             }
-    // TODO:           }
-    // TODO:
-    // TODO:           if (search.text != null) {
-    // TODO:             const address = search.text.replace(/#/g, "");
-    // TODO:             WebAPI.searchAddressNominatim(address, (err, res) => {
-    // TODO:               dispatch({
-    // TODO:                 type: T.SEARCH_ADDRESS_RESULT,
-    // TODO:                 payload: err || res,
-    // TODO:                 error: err != null
-    // TODO:               });
-    // TODO:             });
-    // TODO:           }
-    // TODO:         }
-    // TODO:       };
-    // TODO:
-    // TODO:       const triggerSearch = () => {
-    // TODO:         const { timedActions } = getState();
-    // TODO:         const lastTriggered = timedActions.searchLastTriggered;
-    // TODO:
-    // TODO:         if (lastTriggered != null) {
-    // TODO:           const duration = Date.now() - lastTriggered;
-    // TODO:           if (duration > appConst.SEARCH_DELAY) {
-    // TODO:             searchFn();
-    // TODO:           } else {
-    // TODO:             setTimeout(triggerSearch, appConst.SEARCH_DELAY);
-    // TODO:           }
-    // TODO:         }
-    // TODO:       };
-    // TODO:
-    // TODO:       setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
     searchCity,
     // TODO:     (dispatch, getState) => {
     // TODO:       dispatch(Actions.setSearchTime(Date.now()));
@@ -509,6 +417,7 @@ pub enum Msg {
     // TODO:     };
     // TODO:   }
     // TODO: }
+    SEARCH_RESULT_ENTRIES(Result<SearchResponse>),
 }
 
 pub fn flatten<T>(/* nestedArray */) -> Vec<T> {

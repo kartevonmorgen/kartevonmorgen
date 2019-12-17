@@ -1,19 +1,20 @@
-// TODO: import request from "superagent/lib/client";
-// TODO: import saPrefix from "superagent-prefix";
-// TODO: import { TILEHOSTING_API_KEY } from "./constants/App";
-// TODO: import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
-// TODO: import CATEGORY_IDS from "./constants/Categories";
-// TODO:
-// TODO: const prefix = saPrefix(OFDB_API.link);
-// TODO:
-// TODO: const jsonCallback = (cb) => (err, res) => {
-// TODO:   if (err) {
-// TODO:     cb(err);
-// TODO:   } else {
-// TODO:     cb(null, res.body);
-// TODO:   }
-// TODO: };
-// TODO:
+use crate::{
+    constants::{
+        App::{self, TILEHOSTING_API_KEY},
+        Categories::IDS,
+        Map::DEFAULT_BBOX,
+        URLs::{NOMINATIM, OFDB_API, TH_GEOCODER},
+    },
+    entities::*,
+    Actions, Msg,
+};
+use futures::Future;
+use seed::fetch::Request;
+
+fn prefix() -> String {
+    OFDB_API(&App::APP_STAGES::PRODUCTION)
+}
+
 // TODO: function normalizeCoordinate(bbox, idx) {
 // TODO:     if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
 // TODO:         bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
@@ -22,34 +23,39 @@
 // TODO:         bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
 // TODO:     }
 // TODO: }
-// TODO:
-// TODO: module.exports = {
-// TODO:
-// TODO:   searchEntries: (txt, cats, bbox, cb) => {
-// TODO:
-// TODO:     if (txt == null) {
-// TODO:       txt = '';
-// TODO:     }
-// TODO:     if (cats == null) {
-// TODO:       cats = [];
-// TODO:     }
-// TODO:     if (bbox == null) {
-// TODO:       bbox = [];
-// TODO:     }
-// TODO:     normalizeCoordinate(bbox, 1);
-// TODO:     normalizeCoordinate(bbox, 3);
-// TODO:     request
-// TODO:       .get('/search')
-// TODO:       .use(prefix)
-// TODO:       .query({
-// TODO:         text: txt.trim()
-// TODO:       })
-// TODO:       .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
-// TODO:       .query('bbox=' + bbox.join(','))
-// TODO:       .set('Accept', 'application/json')
-// TODO:       .end(jsonCallback(cb));
-// TODO:   },
-// TODO:
+
+pub fn searchEntries(
+    txt: &Option<String>,
+    cats: &[IDS],
+    bbox: Option<&BBox>,
+) -> impl Future<Item = Msg, Error = Msg> {
+    // TODO: normalizeCoordinate(bbox, 1);
+    // TODO: normalizeCoordinate(bbox, 3);
+
+    let bbox: String = bbox_to_slice(bbox.unwrap_or(&default_bbox()))
+        .into_iter()
+        .map(|x| x.to_string())
+        .collect::<Vec<_>>()
+        .join(",");
+
+    // TODO: .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
+    let cats: String = cats
+        .into_iter()
+        .map(|x| x.as_str())
+        .collect::<Vec<_>>()
+        .join(",");
+
+    let url = format!(
+        "{}/search?text={}&categories={}&bbox={}",
+        prefix(),
+        txt.as_ref().unwrap_or(&"".to_string()).trim(),
+        cats,
+        bbox
+    );
+    Request::new(url)
+        .fetch_json_data(|d| Msg::Server(Actions::server::Msg::SEARCH_RESULT_ENTRIES(d)))
+}
+
 // TODO:   searchEvents: (tags, bbox, start, end, cb) => {
 // TODO:     if (bbox == null) {
 // TODO:       bbox = [];
@@ -339,3 +345,26 @@
 // TODO:       .end(cb);
 // TODO:   }
 // TODO: };
+
+const fn bbox_to_slice(bbox: &BBox) -> [f64; 4] {
+    [
+        bbox.south_west.lat,
+        bbox.south_west.lng,
+        bbox.north_east.lat,
+        bbox.north_east.lng,
+    ]
+}
+
+const fn default_bbox() -> BBox {
+    use DEFAULT_BBOX::*;
+    BBox {
+        north_east: Coordinate {
+            lat: _northEast::lat,
+            lng: _northEast::lng,
+        },
+        south_west: Coordinate {
+            lat: _southWest::lat,
+            lng: _southWest::lng,
+        },
+    }
+}

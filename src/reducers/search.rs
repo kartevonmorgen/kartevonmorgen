@@ -1,6 +1,7 @@
 use crate::{
     constants::Categories::{IDS, MAIN_IDS},
-    Msg,
+    entities::*,
+    Actions, Msg, WebAPI,
 };
 use seed::prelude::*;
 
@@ -14,14 +15,14 @@ type City = UnknownJsType;
 pub struct Mdl {
     pub text: Option<String>,
     pub city: Option<City>,
-    pub entryResults: Vec<UnknownJsType>,
+    pub entryResults: Vec<PlaceSearchResult>,
     pub eventResults: Vec<UnknownJsType>,
     pub eventsWithoutPlace: Vec<UnknownJsType>,
     pub error: bool,
     pub current: Option<UnknownJsType>,
     pub categories: Vec<IDS>,
     pub highlight: Vec<String>,
-    pub invisible: Vec<String>,
+    pub invisible: Vec<PlaceSearchResult>,
     pub addresses: Vec<UnknownJsType>,
     pub cities: Vec<UnknownJsType>,
     pub searchByUrl: bool,
@@ -79,6 +80,8 @@ pub fn isImportantSearchResult(/* x */) -> bool {
 }
 
 pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
+    use Actions::client::Msg as C;
+    use Actions::server::Msg as S;
     match action {
         // TODO:
         // TODO:   switch (action.type) {
@@ -110,13 +113,116 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:         eventResults,
         // TODO:         eventsWithoutPlace,
         // TODO:       }
-        // TODO:
-        // TODO:     case T.SET_SEARCH_TEXT:
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         text: action.payload
-        // TODO:       }
-        // TODO:
+        Msg::Client(C::setSearchText(txt)) => {
+            if txt.is_empty() {
+                state.text = None;
+            } else {
+                state.text = Some(txt.clone());
+            }
+            orders.send_msg(Msg::Server(Actions::server::Msg::search));
+        }
+
+        Msg::Server(S::search) => {
+            let cats = vec![];
+            let bbox = None;
+            orders.perform_cmd(WebAPI::searchEntries(&state.text, &cats, bbox));
+            // TODO:  dispatch(Actions.setSearchTime(Date.now()));
+            // TODO:
+            // TODO:  const searchFn = () => {
+            // TODO:    dispatch(Actions.setSearchTime(null));
+            // TODO:    console.log("SEARCH\n");
+            // TODO:    const { search, map } = getState();
+            // TODO:    var cats = search.categories;
+            // TODO:    const sw = map.bbox._southWest;
+            // TODO:    const ne = map.bbox._northEast;
+            // TODO:    const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
+            // TODO:
+            // TODO:    if (search.text == null || !search.text.trim().endsWith("#")) {
+            // TODO:
+            // TODO:      if(!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)){
+            // TODO:        dispatch({
+            // TODO:          type: T.NO_SEARCH_RESULTS
+            // TODO:        });
+            // TODO:      } else {
+            // TODO:        if(cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)){
+            // TODO:          WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
+            // TODO:            dispatch({
+            // TODO:              type: T.SEARCH_RESULT_ENTRIES,
+            // TODO:              payload: err || res,
+            // TODO:              error: err != null,
+            // TODO:              noList: search.text == null
+            // TODO:            });
+            // TODO:            const entries =
+            // TODO:              Array.isArray(res != null ? res.visible : void 0)
+            // TODO:                ? Array.isArray(res.invisible)
+            // TODO:                  ? res.visible.concat(res.invisible)
+            // TODO:                  : res.visible
+            // TODO:                : res != null
+            // TODO:                  ? res.invisible
+            // TODO:                  : void 0;
+            // TODO:
+            // TODO:            const ids = entries ? entries.map(e => e.id) : null;
+            // TODO:            if (ids && (Array.isArray(ids)) && ids.length > 0) {
+            // TODO:              dispatch(Actions.getEntries(ids));
+            // TODO:            } else {
+            // TODO:              dispatch({
+            // TODO:                type: T.NO_SEARCH_RESULTS
+            // TODO:              });
+            // TODO:            }
+            // TODO:          });
+            // TODO:        }
+            // TODO:
+            // TODO:        if(cats.includes(IDS.EVENT)){
+            // TODO:          const tags = search.text.replace(/#/g, '');
+            // TODO:          WebAPI.searchEvents(tags, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
+            // TODO:            dispatch({
+            // TODO:              type: T.SEARCH_RESULT_EVENTS,
+            // TODO:              payload: err || res,
+            // TODO:              error: err != null
+            // TODO:            });
+            // TODO:          });
+            // TODO:
+            // TODO:          // search events without place:
+            // TODO:          WebAPI.searchEvents(tags, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
+            // TODO:            dispatch({
+            // TODO:              type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
+            // TODO:              payload: err || res,
+            // TODO:              error: err != null
+            // TODO:            });
+            // TODO:          });
+            // TODO:        }
+            // TODO:      }
+            // TODO:
+            // TODO:      if (search.text != null) {
+            // TODO:        const address = search.text.replace(/#/g, "");
+            // TODO:        WebAPI.searchAddressNominatim(address, (err, res) => {
+            // TODO:          dispatch({
+            // TODO:            type: T.SEARCH_ADDRESS_RESULT,
+            // TODO:            payload: err || res,
+            // TODO:            error: err != null
+            // TODO:          });
+            // TODO:        });
+            // TODO:      }
+            // TODO:    }
+            // TODO:  };
+            // TODO:
+            // TODO:  const triggerSearch = () => {
+            // TODO:    const { timedActions } = getState();
+            // TODO:    const lastTriggered = timedActions.searchLastTriggered;
+            // TODO:
+            // TODO:    if (lastTriggered != null) {
+            // TODO:      const duration = Date.now() - lastTriggered;
+            // TODO:      if (duration > appConst.SEARCH_DELAY) {
+            // TODO:        searchFn();
+            // TODO:      } else {
+            // TODO:        setTimeout(triggerSearch, appConst.SEARCH_DELAY);
+            // TODO:      }
+            // TODO:    }
+            // TODO:  };
+            // TODO:
+            // TODO:  setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
+        }
+
         // TODO:     case T.UPDATE_STATE_FROM_URL:
         // TODO:       const searchText = parseUrl(action.payload).params.search;
         // TODO:
@@ -130,18 +236,11 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:         ...state,
         // TODO:         city: action.payload
         // TODO:       }
-        // TODO:
-        // TODO:     case T.SEARCH_RESULT_ENTRIES:
-        // TODO:       if (!action.error) {
-        // TODO:         return {
-        // TODO:           ...state,
-        // TODO:           entryResults: action.payload.visible,
-        // TODO:           invisible: action.payload.invisible
-        // TODO:         }
-        // TODO:       }
-        // TODO:       return state;
-        // TODO:       break;
-        // TODO:
+        Msg::Server(Actions::server::Msg::SEARCH_RESULT_ENTRIES(Ok(payload))) => {
+            state.entryResults = payload.visible.clone();
+            state.invisible = payload.invisible.clone();
+        }
+
         // TODO:     case T.SEARCH_RESULT_EVENTS:
         // TODO:       if (!action.error) {
         // TODO:         return {

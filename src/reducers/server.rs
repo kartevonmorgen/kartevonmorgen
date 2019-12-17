@@ -1,4 +1,4 @@
-use crate::Msg;
+use crate::{Actions, Msg};
 use seed::prelude::*;
 use std::collections::HashMap;
 
@@ -140,6 +140,8 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:     default:
         // TODO:       return state;
         // TODO:   }
+        Msg::Server(Actions::server::Msg::SEARCH_RESULT_ENTRIES(res)) => {}
+
         _ => {
             // do nothing
         }
