@@ -22,6 +22,9 @@ wasm-bindgen = "0.2"
 [patch.crates-io.ofdb-boundary]
 git = "https://github.com/kartevonmorgen/openfairdb"
 
+[build-dependencies]
+sass-rs = "0.2"
+
 ### JS DEPENDENCIES ###
 
 # TODO: "acorn": "^6.0.4",

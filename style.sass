@@ -1,0 +1,444 @@
+$grayBlue   : rgb(100,  122,  133)
+$blue       : rgb(  0,  153,  173)
+$green      : rgb(151,  191,   13)
+$yellow     : rgb(255,  221,    0)
+$pink       : rgb(229,   98,  146)
+$berry      : rgb(170,   56,  108)
+$coal       : rgb( 26,   26,   26)
+$anthracite : rgb( 45,   45,   45)
+$darkGray   : rgb(102,  102,  102)
+$gray       : rgb(136,  136,  136)
+$lightGray  : rgb(221,  221,  221)
+$teal       : rgb(  0,  152,  137)
+$yellowText : rgb(214,  201,    0)
+
+html, body
+	margin: 0
+  font-family: Rubik, sans-serif
+
+#app
+  // make the app fit the screen/iframe exactly (important for overflow:scroll,
+  // but can't use height:100vh since that would break iframes smaller than 100vh):
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.tutorial
+  margin-bottom: 3em
+  img
+    width: 100%
+
+@media only screen and (max-width: 600px)
+  body
+    font-size: 80%;
+
+h1, h2, h3, h4, h5, h6, h7
+  font-weight: 500;
+  margin-block-end: 2px;
+
+button.pure-button i
+  margin-right: 0.5em;
+
+
+.pure-g [class *= "pure-u"]
+  font-family: Rubik, sans-serif;
+
+::-webkit-scrollbar
+  background-color: #eee;
+
+::-webkit-scrollbar-thumb
+  // Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0;
+  background-color: #ccc;
+
+.pure-menu-list
+  margin: 0 50px;
+
+.pure-menu-link:hover
+  color: #000;
+
+label, legend
+  span.desc
+    color: #666;
+    font-size: 0.8em;
+    margin-left: 0.5em;
+
+// ======= FORM
+
+form
+  div.err
+    color: #f44;
+    font-size: 0.9em;
+
+
+  input[type="text"].err
+    border-color: #f44;
+
+
+  textarea.err
+    border-color: #f44;
+
+  select.err
+    border-color: #f44;
+
+// ======= BANNER
+.banner
+  position: relative;
+  z-index: 10;
+  color: #eee;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  .banner-link
+    color: #000;
+
+// ======= CHEVRON
+div.chevron
+  position: relative;
+  color: #ddd;
+
+  i
+    position: absolute;
+    display: inline-table;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+// ======= MISC
+
+.close-button
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+
+.close-button button
+  margin: 0 5px;
+
+.message
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 1em;
+
+.new-rating-form
+  margin: 2em 1.8em 1.8em 1.8em;
+
+.new-rating-form .radio-button
+  margin: 0.2em 0.3em 0.2em 0;
+
+.new-rating-form .form-heading
+  font-weight: bold;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+
+.new-rating-form .rating-context-explanation
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-style: italic;
+
+.new-rating-form .title
+  margin-bottom: 0.5em;
+
+.optional::placeholder
+  color: #777;
+
+input, textarea, select
+  box-shadow: none !important;
+  border-radius: 3px !important;
+
+.info .landing-img
+  width: 70%;
+
+.info h3
+  margin-top: 50px;
+
+.license input
+  margin-top: 0.7em;
+
+div.landing
+   position: absolute;
+   z-index: 100;
+   width: 100%;
+   height: 100%;
+   z-index: 1001;
+   background-color: rgba(0,0,0,0.7);
+
+   h1, h3
+     font-weight: 500;
+
+   h3
+     font-size: 1.5em;
+     margin: 0.3em 0;
+
+   h2
+     font-size: 2em;
+     margin-top: 1.5em;
+     font-weight: 500;
+
+   input
+     font-size: 1.2em;
+
+   p
+     margin-block-start: 0.1em;
+
+   .place-search
+     max-width: 500px;
+     margin: auto;
+     margin-top: 2em;
+     margin-bottom: 2em;
+
+     .error
+       margin: auto;
+       padding: 1.1em;
+       background: rgba(0,0,0,0.5);
+       border-radius: 0 0 0.3em 0.3em;
+
+       .errorText
+         color: #f44;
+
+       .link
+         color: #08f;
+
+
+     // only of city list on landing page, probably use props
+     .city-list
+       padding-top: 0.3em;
+       background: rgba(0,0,0,0.5);
+       border-radius: 0 0 0.3em 0.3em;
+
+       li:hover
+         background: #000;
+         border-radius: 0 0 0.3em 0.3em;
+
+         div.chevron
+           color: #fff;
+
+   .content
+     max-width: 900px;
+     margin: auto;
+     z-index: 0;
+
+     .login-info
+       margin-bottom: 10em;
+
+     .imprint-heading
+       margin-top: 2em;
+       margin-bottom: 0.5em;
+
+   .banner
+     background-color: #fff;
+
+     .content
+       max-width: initial;
+       padding-bottom: 20px;
+
+       div.logo
+         padding-top: 1em;
+         margin-left: 50px;
+
+       img.logo
+         max-width: 137.633px;
+         max-height: 57px;
+         width: 100%;
+
+     .menu-wrapper
+       text-align: right;
+       .language-wrapper
+         margin: -4px 20px 24px 0;
+         font-size: 0.8em;
+         color: #777;
+         .language-link
+           margin: 3pt;
+           text-decoration: none;
+           &.selected
+             color: #95be0b;
+             pointer-events: none;
+           &.unselected
+             color: #555;
+             &:hover
+               color: #000;
+     .menu-wrapper-inner
+       bottom: 0;
+       width: 100%;
+       height: 20px;
+       margin-bottom: 10px;
+
+     .menu
+       font-size: 0.9em;
+       display: inline-block;
+       position: relative;
+       max-width: 655px;
+       ul
+         margin: 0 30px 0 0;
+
+       li
+         &:hover
+           text-decoration: underline;
+
+         &:active
+           text-decoration: underline;
+
+         a
+           background: transparent;
+
+       .menu-item
+         text-align: center;
+
+   .explain
+     background-color: #fff;
+     text-align: center;
+     padding: 50px 1em;
+     position: relative;
+
+     ul
+       text-align: left;
+       max-width: 600px;
+       text-align: left;
+       margin: auto;
+
+     h1
+       margin-top: 0;
+
+     p
+       font-size: 1.2em;
+
+     a
+       color: $darkGray;
+
+     .teamMember
+       vertical-align: top;
+       display: inline-block;
+       width: 200px;
+       margin-top: 30px;
+       .team-member-name
+         font-weight: bold;
+
+       .circle
+         display: inline-block;
+         width: 100px;
+         height: 100px;
+         border-radius: 50px;
+         margin: 10px;
+         overflow: hidden;
+         img
+           width: 100%;
+
+         &.pink
+           background-color: $pink;
+
+         &.yellow
+           background-color: $yellow;
+
+         &.berry
+           background-color: $berry;
+
+         &.green
+           background-color: $green;
+
+         &.blue
+           background-color: $blue;
+
+         &.grayBlue
+           background-color: $grayBlue;
+
+     .version
+       font-size: 0.7em;
+
+     .circleTutorial
+       display: block;
+       text-decoration: none;
+       position: absolute;
+       width: 100px;
+       border-radius: 50px;
+       background-color: #000;
+       color: #fff;
+       left: 50%;
+       margin-left: -50px;
+       height: 73px;
+       top: -180px;
+       padding-top: 27px;
+       cursor: pointer;
+       z-index: 1;
+
+     .partnerLogo
+       margin: 2em;
+       border: none;
+       width: 25%;
+       vertical-align: middle;
+
+     hr
+       margin: 100px 40px;
+       &:before
+         content: ' ';
+         display: block;
+         position: absolute;
+         margin-left: -100px;
+         margin-top: -35px;
+         background-color: #fff;
+         // TODO: background-image: url(${pincloud});
+         background-repeat: no-repeat;
+         background-position: center center;
+         left: 50%;
+         width: 200px;
+         height: 70px;
+
+   .footer
+     background-color: $darkGray;
+     color: #fff;
+     text-align: center;
+     padding: 20px 20px 50px 20px;
+     line-height: 1.5em;
+
+     h3
+       font-size: 1.5em;
+
+     a
+       color: #fff;
+
+     .smallLink
+       margin: 0 7px;
+
+   .search
+     text-align: center;
+     padding: 50px 1em;
+     position: relative;
+     text-align: center;
+     color: #fff;
+     height: 150px;
+     z-index: 1;
+
+     ul
+       text-align: left;
+
+     h1
+       margin-top: 0;
+       font-size: 3em;
+
+     .landing-content
+       position: relative;
+       top: 20%;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       width: calc(100vw - 50px);
+       height: 50%;
+       margin: 0 10px;
+       display: inline-block;
+
+     h2
+       font-weight: normal;
+       font-size: 1.4em;
+
+     input
+       color: $coal;
+
+     button
+       color: $coal;
+
+     &.start
+       height: calc(100% - 100px);
+
+       .content
+         height: 30%;

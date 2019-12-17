@@ -3,6 +3,7 @@ node_modules/
 *.swp
 dist/
 .vscode/
+style.css
 
 /target
 **/*.rs.bk
