@@ -35,10 +35,6 @@ button.pure-button i {
   margin-right: 0.5em;
 }
 
-.fa {
-  font-family: "FontAwesome" !important;
-}
-
 .pure-g [class *= "pure-u"] {
   font-family: Rubik, sans-serif;
 }
@@ -178,4 +174,307 @@ input, textarea, select {
 
 .license input {
   margin-top: 0.7em;
+}
+
+div.landing {
+
+/**
+// TODO:   position: absolute;
+// TODO:   z-index: 100;
+// TODO:   width: 100%;
+// TODO:   height: 100%;
+// TODO:   z-index: 1001;
+// TODO:   background-color: rgba(0,0,0,0.7);
+// TODO:   h1, h3 {
+// TODO:     font-family: ${STYLE.headerFont};
+// TODO:     font-weight: 500;
+// TODO:   }
+// TODO:   h3 {
+// TODO:     font-size: 1.5em;
+// TODO:     margin: 0.3em 0;
+// TODO:   }
+// TODO:   h2 {
+// TODO:     font-size: 2em;
+// TODO:     margin-top: 1.5em;
+// TODO:     font-weight: 500;
+// TODO:   }
+// TODO:   input {
+// TODO:     font-size: 1.2em;
+// TODO:   }
+// TODO:   p {
+// TODO:     margin-block-start: 0.1em;
+// TODO:   }
+// TODO:   .place-search {
+// TODO:     max-width: 500px;
+// TODO:     margin: auto;
+// TODO:     margin-top: 2em;
+// TODO:     margin-bottom: 2em;
+// TODO:     .error {
+// TODO:       margin: auto;
+// TODO:       padding: 1.1em;
+// TODO:       background: rgba(0,0,0,0.5);
+// TODO:       border-radius: 0 0 0.3em 0.3em;
+// TODO:       .errorText {
+// TODO:         color: #f44;
+// TODO:       }
+// TODO:       .link {
+// TODO:         color: #08f;
+// TODO:       }
+// TODO:     }
+// TODO:
+// TODO:     # only of city list on landing page, probably use props
+// TODO:     .city-list {
+// TODO:       padding-top: 0.3em;
+// TODO:       background: rgba(0,0,0,0.5);
+// TODO:       border-radius: 0 0 0.3em 0.3em;
+// TODO:       li:hover {
+// TODO:         background: #000;
+// TODO:         border-radius: 0 0 0.3em 0.3em;
+// TODO:         div.chevron {
+// TODO:           color: #fff;
+// TODO:         }
+// TODO:       }
+// TODO:     }
+// TODO:   }
+// TODO:   .content {
+// TODO:     max-width: 900px;
+// TODO:     margin: auto;
+// TODO:     z-index: 0;
+// TODO:     .login-info {
+// TODO:       margin-bottom: 10em;
+// TODO:     }
+// TODO:     .imprint-heading {
+// TODO:       margin-top: 2em;
+// TODO:       margin-bottom: 0.5em;
+// TODO:     }
+// TODO:   }
+// TODO:   .banner {
+// TODO:     background-color: #fff;
+// TODO:     .content {
+// TODO:       max-width: initial;
+// TODO:       padding-bottom: 20px;
+// TODO:       div.logo {
+// TODO:         padding-top: 1em;
+// TODO:         margin-left: 50px;
+// TODO:       }
+// TODO:       img.logo {
+// TODO:         max-width: 137.633px;
+// TODO:         max-height: 57px;
+// TODO:         width: 100%;
+// TODO:       }
+// TODO:     }
+// TODO:     .menu-wrapper {
+// TODO:       text-align: right;
+// TODO:       .language-wrapper {
+// TODO:         margin: -4px 20px 24px 0;
+// TODO:         font-size: 0.8em;
+// TODO:         color: #777;
+// TODO:         .language-link {
+// TODO:           margin: 3pt;
+// TODO:           text-decoration: none;
+// TODO:           &.selected {
+// TODO:             color: #95be0b;
+// TODO:             pointer-events: none;
+// TODO:           }
+// TODO:           &.unselected {
+// TODO:             color: #555;
+// TODO:             &:hover {
+// TODO:               color: #000;
+// TODO:             }
+// TODO:           }
+// TODO:         }
+// TODO:       }
+// TODO:     }
+// TODO:     .menu-wrapper-inner {
+// TODO:       bottom: 0;
+// TODO:       width: 100%;
+// TODO:       height: 20px;
+// TODO:       margin-bottom: 10px;
+// TODO:     }
+// TODO:     .menu {
+// TODO:       font-size: 0.9em;
+// TODO:       display: inline-block;
+// TODO:       position: relative;
+// TODO:       max-width: 655px;
+// TODO:       ul {
+// TODO:         margin: 0 30px 0 0;
+// TODO:       }
+// TODO:       li {
+// TODO:         &:hover {
+// TODO:           text-decoration: underline;
+// TODO:         }
+// TODO:         &:active {
+// TODO:           text-decoration: underline;
+// TODO:         }
+// TODO:         a {
+// TODO:           background: transparent;
+// TODO:         }
+// TODO:       }
+// TODO:       .menu-item {
+// TODO:         text-align: center;
+// TODO:       }
+// TODO:     }
+// TODO:   }
+// TODO:   .explain {
+// TODO:     background-color: #fff;
+// TODO:     text-align: center;
+// TODO:     padding: 50px 1em;
+// TODO:     position: relative;
+// TODO:     ul {
+// TODO:       text-align: left;
+// TODO:       max-width: 600px;
+// TODO:       text-align: left;
+// TODO:       margin: auto;
+// TODO:     }
+// TODO:     h1 {
+// TODO:       margin-top: 0;
+// TODO:     }
+// TODO:     p {
+// TODO:       font-size: 1.2em;
+// TODO:     }
+// TODO:     a {
+// TODO:       color: ${STYLE.darkGray};
+// TODO:     }
+// TODO:     .teamMember {
+// TODO:       vertical-align: top;
+// TODO:       display: inline-block;
+// TODO:       width: 200px;
+// TODO:       margin-top: 30px;
+// TODO:       .team-member-name {
+// TODO:         font-weight: bold;
+// TODO:       }
+// TODO:       .circle {
+// TODO:         display: inline-block;
+// TODO:         width: 100px;
+// TODO:         height: 100px;
+// TODO:         border-radius: 50px;
+// TODO:         margin: 10px;
+// TODO:         overflow: hidden;
+// TODO:         img {
+// TODO:           width: 100%;
+// TODO:         }
+// TODO:         &.pink {
+// TODO:           background-color: ${STYLE.pink};
+// TODO:         }
+// TODO:         &.yellow {
+// TODO:           background-color: ${STYLE.yellow};
+// TODO:         }
+// TODO:         &.berry {
+// TODO:           background-color: ${STYLE.berry};
+// TODO:         }
+// TODO:         &.green {
+// TODO:           background-color: ${STYLE.green};
+// TODO:         }
+// TODO:         &.blue {
+// TODO:           background-color: ${STYLE.blue};
+// TODO:         }
+// TODO:         &.grayBlue {
+// TODO:           background-color: ${STYLE.grayBlue};
+// TODO:         }
+// TODO:       }
+// TODO:     }
+// TODO:     .version {
+// TODO:       font-size: 0.7em;
+// TODO:     }
+// TODO:     .circleTutorial {
+// TODO:       display: block;
+// TODO:       text-decoration: none;
+// TODO:       position: absolute;
+// TODO:       width: 100px;
+// TODO:       border-radius: 50px;
+// TODO:       background-color: #000;
+// TODO:       color: #fff;
+// TODO:       left: 50%;
+// TODO:       margin-left: -50px;
+// TODO:       height: 73px;
+// TODO:       top: -180px;
+// TODO:       padding-top: 27px;
+// TODO:       cursor: pointer;
+// TODO:       z-index: 1;
+// TODO:     }
+// TODO:     .partnerLogo {
+// TODO:       margin: 2em;
+// TODO:       border: none;
+// TODO:       width: 25%;
+// TODO:       vertical-align: middle;
+// TODO:     }
+// TODO:     hr {
+// TODO:       margin: 100px 40px;
+// TODO:       &:before {
+// TODO:         content: ' ';
+// TODO:         display: block;
+// TODO:         position: absolute;
+// TODO:         margin-left: -100px;
+// TODO:         margin-top: -35px;
+// TODO:         background-color: #fff;
+// TODO:         background-image: url(${pincloud});
+// TODO:         background-repeat: no-repeat;
+// TODO:         background-position: center center;
+// TODO:         left: 50%;
+// TODO:         width: 200px;
+// TODO:         height: 70px;
+// TODO:       }
+// TODO:     }
+// TODO:   }
+// TODO:   .footer {
+// TODO:     background-color: ${STYLE.darkGray};
+// TODO:     color: #fff;
+// TODO:     text-align: center;
+// TODO:     padding: 20px 20px 50px 20px;
+// TODO:     line-height: 1.5em;
+// TODO:     h3 {
+// TODO:       font-size: 1.5em;
+// TODO:     }
+// TODO:     a {
+// TODO:       color: #fff;
+// TODO:     }
+// TODO:     .smallLink {
+// TODO:       margin: 0 7px;
+// TODO:     }
+// TODO:   }
+// TODO:   .search {
+// TODO:     text-align: center;
+// TODO:     padding: 50px 1em;
+// TODO:     position: relative;
+// TODO:     text-align: center;
+// TODO:     color: #fff;
+// TODO:     height: 150px;
+// TODO:     z-index: 1;
+// TODO:     ul {
+// TODO:       text-align: left;
+// TODO:     }
+// TODO:     h1 {
+// TODO:       margin-top: 0;
+// TODO:       font-size: 3em;
+// TODO:     }
+// TODO:     .landing-content {
+// TODO:       position: relative;
+// TODO:       top: 20%;
+// TODO:       bottom: 0;
+// TODO:       left: 0;
+// TODO:       right: 0;
+// TODO:       width: calc(100vw - 50px);
+// TODO:       height: 50%;
+// TODO:       margin: 0 10px;
+// TODO:       display: inline-block;
+// TODO:     }
+// TODO:     h2 {
+// TODO:       font-weight: normal;
+// TODO:       font-size: 1.4em;
+// TODO:     }
+// TODO:     input {
+// TODO:       color: ${STYLE.coal};
+// TODO:     }
+// TODO:     button {
+// TODO:       color: ${STYLE.coal};
+// TODO:     }
+// TODO:     &.start {
+// TODO:       height: calc(100% - 100px);
+// TODO:       .content {
+// TODO:         height: 30%;
+// TODO:       }
+// TODO:     }
+// TODO:   }
+*/
+
 }

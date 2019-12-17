@@ -20,11 +20,7 @@ mod widgets;
 pub use reducers::Mdl;
 pub use Actions::Msg;
 
-fn view(_: &Mdl) -> impl View<Msg> {
-    div![h1!["Hello Rust"],]
-}
-
 #[wasm_bindgen(start)]
 pub fn render() {
-    seed::App::builder(reducers::update, view).build_and_start();
+    seed::App::builder(reducers::update, components::App::view).build_and_start();
 }

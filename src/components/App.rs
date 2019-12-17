@@ -1,42 +1,35 @@
-// TODO: import "./styling/Stylesheets"
-// TODO: import "./styling/Icons"
-// TODO:
-// TODO: import React, { Component } from "react"
-// TODO: import T                    from "prop-types"
+use crate::{Mdl,Msg, components::{Sidebar,LandingPage}};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next"
 // TODO: import NotificationsSystem  from "reapop";
 // TODO: import theme                from "reapop-theme-wybo";
-// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 // TODO: import Swipeable            from 'react-swipeable'
-// TODO: import styled, { keyframes, createGlobalStyle } from "styled-components";
-// TODO:
+
 // TODO: import V                    from "../constants/PanelView"
-// TODO: import Actions              from "../Actions"
 // TODO: import Modal                from "./pure/Modal"
 // TODO: import Map                  from "./Map"
-// TODO: import Sidebar              from "./Sidebar"
 // TODO: import LandingPage          from "./LandingPage"
 // TODO: import { EDIT }             from "../constants/Form"
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 // TODO: import mapConst             from "../constants/Map"
-// TODO:
-// TODO: class Main extends Component {
-// TODO:
-// TODO:   render(){
+
+pub fn view(mdl: &Mdl) -> impl View<Msg> {
+
 // TODO:     const { dispatch, search, view, server, map, form, url, user, t } = this.props;
 // TODO:     const { entries, ratings } = server;
-// TODO:
+
 // TODO:     this.changeUrlAccordingToState(url);
 // TODO:     const visibleEntries = this.filterVisibleEntries(entries, search);
 // TODO:     const loggedIn = user.email ? true : false;
-// TODO:
-// TODO:     return (
-// TODO:       <div className="app">
+
+               div![ class!["app"],
+
 // TODO:         <NotificationsSystem theme={theme}/>
 // TODO:         {
 // TODO:           view.menu ?
-// TODO:             <LandingPage
+                      LandingPage::view(&mdl),
 // TODO:               onMenuItemClick={ id => {
 // TODO:                 switch (id) {
 // TODO:                   case 'map':
@@ -90,11 +83,16 @@
 // TODO:         {
 // TODO:           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
 // TODO:         }
-// TODO:
-// TODO:         <LeftPanelAndHideSidebarButton>
+                 div![
+                    style!{
+                        St::Display => "flex";
+                        St::FlexDirection => "row";
+                        St::Height => percent(100);
+                    },
+
 // TODO:           <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
 // TODO:             onSwipedLeft={ () => this.swipedLeftOnPanel() }>
-// TODO:             <Sidebar
+                      Sidebar::view(&mdl),
 // TODO:               view={ view }
 // TODO:               search={ search }
 // TODO:               map={ map }
@@ -125,7 +123,8 @@
 // TODO:               <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
 // TODO:             </button>
 // TODO:           </HideSidebarButtonWrapper>
-// TODO:         </LeftPanelAndHideSidebarButton>
+                 ]
+
 // TODO:         <RightPanel>
 // TODO:           <div className="menu-toggle">
 // TODO:             <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
@@ -169,10 +168,10 @@
 // TODO:             showLocateButton={ true }
 // TODO:           />
 // TODO:         </Swipeable>
-// TODO:       </div>
-// TODO:     );
-// TODO:   }
-// TODO:
+               ]
+}
+
+
 // TODO:   filterVisibleEntries(entries, search){
 // TODO:     return search.entryResults.filter(e => entries[e.id])
 // TODO:       .map(e => entries[e.id])
@@ -356,12 +355,6 @@
 // TODO:       margin-right: 0.3em;
 // TODO:     }
 // TODO:   }
-// TODO: `
-// TODO:
-// TODO: const LeftPanelAndHideSidebarButton = styled.div`
-// TODO:   display: flex;
-// TODO:   flex-direction: row;
-// TODO:   height: 100%;
 // TODO: `
 // TODO:
 // TODO: const HideSidebarButtonWrapper = styled.div `

@@ -1,10 +1,10 @@
-// TODO: import React, { Component } from "react"
+use crate::{Mdl,Msg};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next";
 // TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import PropTypes            from "prop-types"
-// TODO: import styled               from "styled-components";
 // TODO: import { initialize }       from "redux-form";
-// TODO:
+
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import ResultList           from "./pure/ResultList"
 // TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
@@ -22,9 +22,9 @@
 // TODO: import NavButton            from "./pure/NavButton";
 // TODO: import SearchBar            from "./SearchBar"
 // TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
-// TODO:
-// TODO: class Sidebar extends Component {
-// TODO:
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+
 // TODO:   entryContent = null;
 // TODO:
 // TODO:   shouldComponentUpdate(nextProps) {
@@ -54,8 +54,8 @@
 // TODO:
 // TODO:     const entry = entries[search.current] || null;
 // TODO:
-// TODO:     var content;
-// TODO:     switch (view.left) {
+             let content =
+             match mdl.view.left {
 // TODO:       case V.RESULT:
 // TODO:         content = (
 // TODO:           <ResultWrapper className="result">
@@ -259,12 +259,19 @@
 // TODO:         );
 // TODO:         break;
 // TODO:
-// TODO:       default:
-// TODO:         content = <div></div>
-// TODO:     }
-// TODO:
+                _=> {
+                    div![]
+                }
+             };
+
 // TODO:     return(
-// TODO:       <SidebarComponent>
+               div![
+                 style!{
+                    St::Display => "flex";
+                    St::FlexDirection => "column";
+                    St::Height => percent(100);
+                 },
+
 // TODO:         {
 // TODO:           showSearchBar
 // TODO:           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
@@ -298,7 +305,7 @@
 // TODO:           : ""
 // TODO:         }
 // TODO:         {
-// TODO:           content
+                   content
 // TODO:         }
 // TODO:         {
 // TODO:           (view.left === V.RESULT) && showAddEntryButton
@@ -315,21 +322,13 @@
 // TODO:             </AddEntryButton>
 // TODO:           : ""
 // TODO:         }
-// TODO:       </SidebarComponent>
-// TODO:     );
-// TODO:   }
-// TODO: }
-// TODO:
+               ]
+}
+
 // TODO: const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
 // TODO:   height: 100%;
 // TODO:   display: flex;
 // TODO:   flex-direction: column;
-// TODO: `
-// TODO:
-// TODO: const SidebarComponent = styled.div`
-// TODO:   display: flex;
-// TODO:   flex-direction: column;
-// TODO:   height: 100%;
 // TODO: `
 // TODO:
 // TODO: Sidebar.propTypes = {

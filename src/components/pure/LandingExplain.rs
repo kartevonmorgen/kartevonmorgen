@@ -1,5 +1,6 @@
-// TODO: import React, { Component } from "react";
-// TODO: import T                    from "prop-types";
+use crate::{Mdl,Msg};
+use seed::prelude::*;
+
 // TODO: import { translate }        from "react-i18next";
 // TODO: import V                    from "../../constants/PanelView";
 // TODO:
@@ -108,15 +109,15 @@
 // TODO:         </div>
 // TODO:       )
 // TODO:     })
-// TODO:
-// TODO: const LandingExplain = props => {
-// TODO:
-// TODO:   const { onClick, t } = props;
-// TODO:
-// TODO:   return(
-// TODO:     <div>
-// TODO:       <h2>{t("landingExplain.chapter1.heading")}</h2>
-// TODO:       <div />
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+
+             div![
+               h2![
+                    // TODO: t("landingExplain.chapter1.heading")
+                    "The world is full of explorers, and full of things to be explored."
+               ],
+               div![],
 // TODO:       <img className="pure-img" style={{float: "left"}} src={require("../../img/lp_illu1.jpg")}/>
 // TODO:       <div style={{marginTop: "200px"}}>
 // TODO:         <h3>{t("landingExplain.chapter1.paragraph1.heading")}</h3>
@@ -202,13 +203,5 @@
 // TODO:       </div>
 // TODO:       <p>{t("landingExplain.chapter7.boell-foundation")}</p>
 // TODO:
-// TODO:     </div>
-// TODO:   )
-// TODO:
-// TODO: }
-// TODO:
-// TODO: LandingExplain.propTypes = {
-// TODO:   onClick  : T.func
-// TODO: }
-// TODO:
-// TODO: module.exports = translate('translation')(LandingExplain)
+             ]
+}
