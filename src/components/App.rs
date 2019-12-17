@@ -32,8 +32,7 @@
 // TODO:     const loggedIn = user.email ? true : false;
 // TODO:
 // TODO:     return (
-// TODO:       <StyledApp className="app">
-// TODO:         <GlobalStyle />
+// TODO:       <div className="app">
 // TODO:         <NotificationsSystem theme={theme}/>
 // TODO:         {
 // TODO:           view.menu ?
@@ -170,7 +169,7 @@
 // TODO:             showLocateButton={ true }
 // TODO:           />
 // TODO:         </Swipeable>
-// TODO:       </StyledApp>
+// TODO:       </div>
 // TODO:     );
 // TODO:   }
 // TODO:
@@ -264,22 +263,6 @@
 // TODO: };
 // TODO:
 // TODO: module.exports = translate('translation')(Main)
-// TODO:
-// TODO: /* Moved all styles here. TODO: Move to right components */
-// TODO: const GlobalStyle = createGlobalStyle`
-// TODO:
-// TODO:   @media only screen and (max-width: 600px) {
-// TODO:     body { font-size:80%;}
-// TODO:   }
-// TODO:
-// TODO:   h1, h2, h3, h4, h5, h6, h7 {
-// TODO:     font-family: ${STYLE.headerFont};
-// TODO:   }
-// TODO:
-// TODO:   html, button, input, select, textarea {
-// TODO:     font-family: ${STYLE.bodyFont};
-// TODO:   }
-// TODO: `;
 // TODO:
 // TODO: // Create the keyframes
 // TODO: const fadein = keyframes`
@@ -405,190 +388,3 @@
 // TODO:     }
 // TODO:   }
 // TODO: `
-// TODO:
-// TODO: const StyledApp = styled.div `
-// TODO:
-// TODO:   background: #fff;
-// TODO:
-// TODO:   /*
-// TODO:   make the app fit the screen/iframe exactly (important for overflow:scroll,
-// TODO:   but can't use height:100vh since that would break iframes smaller than 100vh):
-// TODO:   */
-// TODO:   position: absolute;
-// TODO:   top: 0;
-// TODO:   bottom: 0;
-// TODO:   left: 0;
-// TODO:   right: 0;
-// TODO:
-// TODO:   .tutorial {
-// TODO:     margin-bottom: 3em;
-// TODO:     img { width: 100%; }
-// TODO:   }
-// TODO:
-// TODO:   /* TYPO */
-// TODO:   @media only screen and(max-width: 600px) {
-// TODO:     body {
-// TODO:       font-size: 80%;
-// TODO:     }
-// TODO:   }
-// TODO:
-// TODO:   input, select, textarea, button {
-// TODO:     font-family: ${STYLE.bodyFont};
-// TODO:   }
-// TODO:
-// TODO:   h1, h2, h3, h4, h5, h6, h7 {
-// TODO:     font-family: ${STYLE.headerFont};
-// TODO:     font-weight: 500;
-// TODO:     margin-block-end: 2px;
-// TODO:   }
-// TODO:
-// TODO:   button {
-// TODO:     font-family: ${STYLE.bodyFont};
-// TODO:     &.pure-button i {
-// TODO:       margin-right: 0.5em;
-// TODO:     }
-// TODO:   }
-// TODO:
-// TODO:   .fa {
-// TODO:     font-family: "FontAwesome" !important;
-// TODO:   }
-// TODO:
-// TODO:   .pure-g [class *= "pure-u"] {
-// TODO:     font-family: ${STYLE.bodyFont};
-// TODO:   }
-// TODO:
-// TODO:   /* ============================== */
-// TODO:   /* SCROLLBAR */
-// TODO:   ::-webkit-scrollbar {
-// TODO:     background-color: #eee;
-// TODO:   }
-// TODO:   ::-webkit-scrollbar-thumb {
-// TODO:     /* //Instead of the line below you could use @include border-radius($radius, $vertical-radius) */
-// TODO:     border-radius: 0;
-// TODO:     background-color: #ccc;
-// TODO:   }
-// TODO:
-// TODO:   .pure-menu-list {
-// TODO:     margin: 0 50px;
-// TODO:   }
-// TODO:
-// TODO:   .pure-menu-link:hover {
-// TODO:     color: #000;
-// TODO:   }
-// TODO:
-// TODO:
-// TODO:   label span.desc {
-// TODO:     color: ${STYLE.darkGray};
-// TODO:     font-size: 0.8em;
-// TODO:     margin-left: 0.5em;
-// TODO:   }
-// TODO:   legend span.desc {
-// TODO:     color: ${STYLE.darkGray};
-// TODO:     font-size: 0.8em;
-// TODO:     margin-left: 0.5em;
-// TODO:   }
-// TODO:
-// TODO:
-// TODO:
-// TODO:   /* ======= FORM */
-// TODO:   form {
-// TODO:     div.err {
-// TODO:       color: #f44;
-// TODO:       font-size: 0.9em;
-// TODO:     }
-// TODO:     input[type="text"].err {
-// TODO:       border-color: #f44;
-// TODO:     }
-// TODO:     textarea.err {
-// TODO:       border-color: #f44;
-// TODO:     }
-// TODO:     select.err {
-// TODO:       border-color: #f44;
-// TODO:     }
-// TODO:   }
-// TODO:   /* ======= */
-// TODO:
-// TODO:   /* ======= BANNER */
-// TODO:   .banner {
-// TODO:     position: relative;
-// TODO:     z-index: 10;
-// TODO:     color: #eee;
-// TODO:     text-align: center;
-// TODO:     padding-top: 1em;
-// TODO:     padding-bottom: 1em;
-// TODO:     .banner-link {
-// TODO:       color: #000;
-// TODO:     }
-// TODO:   }
-// TODO:   /* ======= */
-// TODO:
-// TODO:   /* ======= CHEVRON */
-// TODO:   div.chevron {
-// TODO:     position: relative;
-// TODO:     color: ${STYLE.lightGray};
-// TODO:     i {
-// TODO:       position: absolute;
-// TODO:       display: inline-table;
-// TODO:       top: 0;
-// TODO:       bottom: 0;
-// TODO:       margin: auto;
-// TODO:     }
-// TODO:   }
-// TODO:   /* ======= */
-// TODO:
-// TODO:
-// TODO:   /* ======= MISC */
-// TODO:
-// TODO:   .close-button {
-// TODO:     text-align: center;
-// TODO:     margin: 0;
-// TODO:     padding: 1em;
-// TODO:     button {
-// TODO:       margin: 0 5px;
-// TODO:     }
-// TODO:   }
-// TODO:   .message {
-// TODO:     white-space: pre-wrap;
-// TODO:     margin: 0;
-// TODO:     padding: 1em;
-// TODO:   }
-// TODO:   .new-rating-form {
-// TODO:     margin: 2em 1.8em 1.8em 1.8em;
-// TODO:
-// TODO:     .radio-button {
-// TODO:       margin: 0.2em 0.3em 0.2em 0;
-// TODO:     }
-// TODO:     .form-heading {
-// TODO:       font-weight: bold;
-// TODO:       margin-top: 0.5em;
-// TODO:       margin-bottom: 0;
-// TODO:     }
-// TODO:     .rating-context-explanation {
-// TODO:       margin-top: 0.5em;
-// TODO:       margin-bottom: 0.5em;
-// TODO:       font-style: italic;
-// TODO:     }
-// TODO:     .title {
-// TODO:       margin-bottom: 0.5em;
-// TODO:     }
-// TODO:   }
-// TODO:   .optional::placeholder {
-// TODO:     color: #777;
-// TODO:   }
-// TODO:   input, textarea, select {
-// TODO:     box-shadow: none !important;
-// TODO:     border-radius: 3px !important;
-// TODO:   }
-// TODO:   .info {
-// TODO:     .landing-img {
-// TODO:       width: 70%;
-// TODO:     }
-// TODO:     h3 {
-// TODO:       margin-top: 50px;
-// TODO:     }
-// TODO:   }
-// TODO:   .license input {
-// TODO:     margin-top: 0.7em;
-// TODO:   }
-// TODO: `
-// TODO:
