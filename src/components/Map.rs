@@ -1,21 +1,16 @@
-// TODO: import React, { Component }     from "react"
+use crate::{Mdl,Msg};
+use seed::prelude::*;
+
 // TODO: import { icons }                from "vm-leaflet-icons"
 // TODO: import URLs                     from "../constants/URLs"
 // TODO: import { IDS }                  from  "../constants/Categories"
 // TODO: import STYLE                    from "./styling/Variables"
 // TODO: import { avg_rating_for_entry } from "../rating"
-// TODO: import styled                   from "styled-components";
-// TODO: import T                        from "prop-types";
-// TODO: import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
-// TODO:
-// TODO: import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
-// TODO:
-// TODO: import  "leaflet/dist/leaflet.css"
-// TODO:
+
 // TODO: const { INITIATIVE, EVENT, COMPANY } = IDS;
-// TODO:
-// TODO: class KVMMap extends Component {
-// TODO:
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+
 // TODO:   getIconById(id) {
 // TODO:     switch (id) {
 // TODO:       case INITIATIVE:
@@ -155,15 +150,23 @@
 // TODO:     URLs.TILE_SERVER_ATTR.name ? attribution = '<a class="osm attr" href=' + URLs.TILE_SERVER_ATTR.link + '>' + URLs.TILE_SERVER_ATTR.name + '</a> | '  : null
 // TODO:     attribution += '&copy; <a class="osm attr" href=' + URLs.OSM_ATTR.link + '>' + URLs.OSM_ATTR.name + '</a>'
 // TODO:
-// TODO:     return (
-// TODO:       <Wrapper>
-// TODO:         <Map
-// TODO:           ref         = 'map'
+               div![
+                 div![
+                   style! {
+                     St::Height => percent(100);
+                     St::Width => percent(100);
+                     St::Position => "absolute";
+                     St::Margin => 0;
+                     St::ZIndex => 0;
+                     St::Padding => 0;
+                     St::Top => 0;
+                     St::Left => 0;
+                   },
+                   id!["map"],
 // TODO:           center      = { center }
 // TODO:           zoom        = { zoom }
 // TODO:           zoomSnap    = { 1.0 }
-// TODO:           zoomControl = { false }
-// TODO:           className   = "map"
+                   class!["map"],
 // TODO:           worldCopyJump = { true }
 // TODO:           onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
 // TODO:           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
@@ -179,7 +182,7 @@
 // TODO:             : null
 // TODO:           }
 // TODO:           }
-// TODO:         </Map>
+                 ]
 // TODO:         {showLocateButton ?
 // TODO:           <div className="leaflet-control-container">
 // TODO:             <LocateButtonContainer className="leaflet-right">
@@ -194,44 +197,10 @@
 // TODO:             </LocateButtonContainer>
 // TODO:           </div>
 // TODO:           : null }
-// TODO:       </Wrapper>)
-// TODO:   }
-// TODO: }
-// TODO:
-// TODO: KVMMap.propTypes = {
-// TODO:   entries       : T.array,
-// TODO:   ratings       : T.object,
-// TODO:   highlight     : T.array,
-// TODO:   center        : T.object,
-// TODO:   zoom          : T.number,
-// TODO:   marker        : T.object,
-// TODO:   onClick       : T.func,
-// TODO:   onMoveend     : T.func,
-// TODO:   onZoomend     : T.func,
-// TODO:   onMarkerClick : T.func,
-// TODO:   onLocate      : T.func,
-// TODO:   showLocateButton : T.bool
-// TODO: };
-// TODO:
-// TODO: module.exports = KVMMap;
-// TODO:
-// TODO: const Wrapper = styled.div`
-// TODO:
-// TODO:   div.map {
-// TODO:     height: 100%;
-// TODO:     width: 100%;
-// TODO:     position: absolute;
-// TODO:     margin: 0;
-// TODO:     z-index: 0;
-// TODO:     padding: 0;
-// TODO:     top: 0;
-// TODO:     left: 0;
-// TODO:   }
-// TODO:   .osm.attr, .leaflet-control-attribution.leaflet-control a {
-// TODO:     color: ${ STYLE.darkGray }
-// TODO:   }
-// TODO: `;
-// TODO:
+               ]
+
+}
+
 // TODO: const LocateButtonContainer = styled.div`
 // TODO:   bottom: 95px;
 // TODO:   position: absolute;

@@ -23,4 +23,10 @@ pub use Actions::Msg;
 #[wasm_bindgen(start)]
 pub fn render() {
     seed::App::builder(reducers::update, components::App::view).build_and_start();
+    init_map()
+}
+
+#[wasm_bindgen]
+extern "C" {
+    fn init_map();
 }

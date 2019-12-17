@@ -1,4 +1,4 @@
-use crate::{Mdl,Msg, components::{Sidebar,LandingPage}};
+use crate::{Mdl,Msg, components::{Sidebar,LandingPage,Map}};
 use seed::prelude::*;
 
 // TODO: import { translate }        from "react-i18next"
@@ -8,7 +8,6 @@ use seed::prelude::*;
 
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import Modal                from "./pure/Modal"
-// TODO: import Map                  from "./Map"
 // TODO: import LandingPage          from "./LandingPage"
 // TODO: import { EDIT }             from "../constants/Form"
 // TODO: import STYLE                from "./styling/Variables"
@@ -123,7 +122,7 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:               <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
 // TODO:             </button>
 // TODO:           </HideSidebarButtonWrapper>
-                 ]
+                 ],
 
 // TODO:         <RightPanel>
 // TODO:           <div className="menu-toggle">
@@ -136,7 +135,7 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:         </RightPanel>
 // TODO:
 // TODO:         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
-// TODO:           <Map
+                   Map::view(&mdl),
 // TODO:             marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
 // TODO:             highlight={ search.highlight }
 // TODO:             center={ map.center}

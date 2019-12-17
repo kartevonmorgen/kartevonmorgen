@@ -22,6 +22,11 @@
       integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
       crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
   </head>
   <body>
     <noscript>
@@ -32,7 +37,22 @@
     <div id='app'></div>
     <script type="module">
       import init from '/pkg/kartevonmorgen.js';
+
+      window.init_map = function() {
+        map = L
+          .map('map', { zoomControl: false })
+          .setView([50.826, 10.920],7);
+        L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(map);
+        const markers = L.layerGroup();
+        markers.addTo(map);
+      };
+
       init('/pkg/kartevonmorgen_bg.wasm').catch(console.error);
+    </script>
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin="">
     </script>
   </body>
 </html>
