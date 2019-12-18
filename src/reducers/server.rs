@@ -1,4 +1,4 @@
-use crate::{Actions, Msg};
+use crate::{Actions, Msg, WebAPI};
 use seed::prelude::*;
 use std::collections::HashMap;
 
@@ -18,12 +18,6 @@ pub struct Mdl {
 
 pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
     match action {
-        // TODO:
-        // TODO:   const { payload } = action;
-        // TODO:
-        // TODO:   let o = {};
-        // TODO:
-        // TODO:   switch (action.type) {
         // TODO:     case T.SERVER_INFO_RESULT:
         // TODO:       return {
         // TODO:         ...state,
@@ -128,18 +122,11 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:         ...state,
         // TODO:         loadingSearch: true
         // TODO:       }
-        // TODO:
-        // TODO:
-        // TODO:     case T.NO_SEARCH_RESULTS:
-        // TODO:     case T.SEARCH_ADDRESS_RESULT:
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         loadingSearch: false
-        // TODO:       }
-        // TODO:
-        // TODO:     default:
-        // TODO:       return state;
-        // TODO:   }
+        Msg::Server(Actions::server::Msg::NO_SEARCH_RESULTS)
+        | Msg::Server(Actions::server::Msg::SEARCH_ADDRESS_RESULT(_)) => {
+            state.loadingSearch = false;
+        }
+
         Msg::Server(Actions::server::Msg::SEARCH_RESULT_ENTRIES(res)) => {}
 
         _ => {

@@ -1,4 +1,7 @@
-use crate::{Mdl,Msg, components::{Sidebar,LandingPage,Map}};
+use crate::{
+    components::{LandingPage, Map, Sidebar},
+    Mdl, Msg,
+};
 use seed::prelude::*;
 
 // TODO: import { translate }        from "react-i18next"
@@ -8,7 +11,6 @@ use seed::prelude::*;
 
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import Modal                from "./pure/Modal"
-// TODO: import LandingPage          from "./LandingPage"
 // TODO: import { EDIT }             from "../constants/Form"
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
@@ -48,19 +50,9 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:                     return dispatch(Actions.showInfo(id));
 // TODO:                 }
 // TODO:               }}
-// TODO:               onChange={ (city) => {
-// TODO:                 dispatch(Actions.setCitySearchText(city));
-// TODO:                 if (city) {
-// TODO:                   return dispatch(Actions.searchCity())
-// TODO:                 }
-// TODO:               }}
 // TODO:               content={ view.right }
-// TODO:               searchText={ search.city }
 // TODO:               loadingSearch={ server.loadingSearch }
 // TODO:               searchError={ search.error }
-// TODO:               cities={ search.cities }
-// TODO:               onEscape={ () => { return dispatch(Actions.setCitySearchText('')); }}
-// TODO:               onSelection={ this.onLandingPageCitySelection.bind(this) }
 // TODO:               onLogin={ data => {
 // TODO:                 var password, email;
 // TODO:                 email = data.email, password = data.password;
@@ -182,21 +174,6 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:   categoryIsEnabled(enabledCategories){
 // TODO:     return (entry) => {
 // TODO:       return entry.categories.some(cat => enabledCategories.includes(cat));
-// TODO:     }
-// TODO:   }
-// TODO:
-// TODO:   onLandingPageCitySelection(city){
-// TODO:     const { dispatch } = this.props;
-// TODO:     if (city) {
-// TODO:       dispatch(Actions.setCenter({
-// TODO:         lat: Number(city.lat),
-// TODO:         lng: Number(city.lon)
-// TODO:       }));
-// TODO:       dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
-// TODO:       dispatch(Actions.toggleLandingPage());
-// TODO:       dispatch(Actions.showSearchResults());
-// TODO:       dispatch(Actions.setSearchText(''));
-// TODO:       return dispatch(Actions.finishCitySearch());
 // TODO:     }
 // TODO:   }
 // TODO:

@@ -37,36 +37,6 @@ pub enum Msg {
     // TODO: ### ASYNC MESSAGES ###
     search,
     searchCity,
-    // TODO:     (dispatch, getState) => {
-    // TODO:       dispatch(Actions.setSearchTime(Date.now()));
-    // TODO:       const s = getState().search;
-    // TODO:       const searchFn = () => {
-    // TODO:         dispatch(Actions.setSearchTime(null));
-    // TODO:         WebAPI.searchAddressNominatim(s.city, (err, res) => {
-    // TODO:           dispatch({
-    // TODO:             type: T.SEARCH_ADDRESS_RESULT,
-    // TODO:             payload: err || res,
-    // TODO:             error: err != null
-    // TODO:           });
-    // TODO:         });
-    // TODO:       };
-    // TODO:
-    // TODO:       const triggerSearch = () => {
-    // TODO:         const { timedActions } = getState();
-    // TODO:         const lastTriggered = timedActions.searchLastTriggered;
-    // TODO:
-    // TODO:         if (lastTriggered != null) {
-    // TODO:           const duration = Date.now() - lastTriggered;
-    // TODO:           if (duration > appConst.SEARCH_DELAY) {
-    // TODO:             searchFn();
-    // TODO:           } else {
-    // TODO:             setTimeout(triggerSearch, appConst.SEARCH_DELAY);
-    // TODO:           }
-    // TODO:         }
-    // TODO:       };
-    // TODO:
-    // TODO:       setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
-    // TODO:     },
     getEntries(Vec<Id>),
     // TODO:     (dispatch, getState) => {
     // TODO:       let {
@@ -418,6 +388,8 @@ pub enum Msg {
     // TODO:   }
     // TODO: }
     SEARCH_RESULT_ENTRIES(Result<SearchResponse>),
+    SEARCH_ADDRESS_RESULT(Result<Vec<City>>),
+    NO_SEARCH_RESULTS,
 }
 
 pub fn flatten<T>(/* nestedArray */) -> Vec<T> {

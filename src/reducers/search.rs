@@ -9,12 +9,11 @@ use seed::prelude::*;
 // TODO: import { CITY_SEARCH_RESULTS_MIN_DISTANCE, CITY_SEARCH_RESULTS_MIN_IMPORTANCE } from "../constants/Search";
 
 type UnknownJsType = ();
-type City = UnknownJsType;
 
 #[derive(Debug)]
 pub struct Mdl {
     pub text: Option<String>,
-    pub city: Option<City>,
+    pub city: Option<String>,
     pub entryResults: Vec<PlaceSearchResult>,
     pub eventResults: Vec<UnknownJsType>,
     pub eventsWithoutPlace: Vec<UnknownJsType>,
@@ -24,7 +23,8 @@ pub struct Mdl {
     pub highlight: Vec<String>,
     pub invisible: Vec<PlaceSearchResult>,
     pub addresses: Vec<UnknownJsType>,
-    pub cities: Vec<UnknownJsType>,
+    pub cities: Vec<City>,
+    pub selectedCity: Option<usize>,
     pub searchByUrl: bool,
     pub showingAllEntries: bool,
     pub moreEntriesAvailable: bool,
@@ -49,6 +49,7 @@ impl Default for Mdl {
             invisible: vec![],
             addresses: vec![],
             cities: vec![],
+            selectedCity: None,
             searchByUrl: true,
             showingAllEntries: false,
             moreEntriesAvailable: false,
@@ -63,7 +64,7 @@ pub fn oneForEachPlace(/* cities */) {
     // TODO:     index2 < index1
     // TODO:   ))
     // TODO: return filtered
-    unimplemented!()
+    todo!()
 }
 
 pub fn isCity(/* x */) -> bool {
@@ -71,17 +72,16 @@ pub fn isCity(/* x */) -> bool {
     // TODO:   (x["class"] === 'place' && (x.type === 'city' || x.type === 'village')) ||
     // TODO:   (x["class"] === 'boundary' && x.type === 'administrative')
     // TODO: )
-    unimplemented!()
+    todo!()
 }
 
 pub fn isImportantSearchResult(/* x */) -> bool {
     // TODO: ( x.importance >= CITY_SEARCH_RESULTS_MIN_IMPORTANCE )
-    unimplemented!()
+    todo!()
 }
 
 pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
-    use Actions::client::Msg as C;
-    use Actions::server::Msg as S;
+    use Actions::{client::Msg as C, server::Msg as S};
     match action {
         // TODO:
         // TODO:   switch (action.type) {
@@ -230,12 +230,15 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:         ...state,
         // TODO:         text: searchText || ""
         // TODO:       }
-        // TODO:
-        // TODO:     case T.SET_CITY_SEARCH_TEXT:
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         city: action.payload
-        // TODO:       }
+        Msg::Client(Actions::client::Msg::setCitySearchText(txt)) => {
+            if txt.trim().is_empty() {
+                state.city = None;
+            } else {
+                state.city = Some(txt.clone());
+                orders.send_msg(Msg::Server(Actions::server::Msg::searchCity));
+            }
+        }
+
         Msg::Server(Actions::server::Msg::SEARCH_RESULT_ENTRIES(Ok(payload))) => {
             state.entryResults = payload.visible.clone();
             state.invisible = payload.invisible.clone();
@@ -334,6 +337,60 @@ pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
         // TODO:
         // TODO:     default:
         // TODO:       return state;
+        Msg::Server(Actions::server::Msg::searchCity) => {
+            // TODO: dispatch(Actions.setSearchTime(Date.now()));
+            // TODO: const s = getState().search;
+            // TODO: const searchFn = () => {
+            // TODO:   dispatch(Actions.setSearchTime(null));
+            if let Some(txt) = &state.city {
+                orders.perform_cmd(WebAPI::searchAddressNominatim(txt));
+            }
+            // TODO: };
+            // TODO:
+            // TODO: const triggerSearch = () => {
+            // TODO:   const { timedActions } = getState();
+            // TODO:   const lastTriggered = timedActions.searchLastTriggered;
+            // TODO:
+            // TODO:   if (lastTriggered != null) {
+            // TODO:     const duration = Date.now() - lastTriggered;
+            // TODO:     if (duration > appConst.SEARCH_DELAY) {
+            // TODO:       searchFn();
+            // TODO:     } else {
+            // TODO:       setTimeout(triggerSearch, appConst.SEARCH_DELAY);
+            // TODO:     }
+            // TODO:   }
+            // TODO: };
+            // TODO:
+            // TODO: setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
+        }
+        Msg::Server(Actions::server::Msg::SEARCH_ADDRESS_RESULT(res)) => {
+            match res {
+                Ok(cities) => {
+                    state.cities = cities.clone();
+                }
+                Err(_) => {
+                    // TODO: handle err
+                }
+            }
+        }
+        Msg::Client(Actions::client::Msg::ChangeSelectedCity(direction)) => {
+            let newSelection : usize = match state.selectedCity {
+                None => {
+                    0
+                }
+                Some(selectedCity) => {
+                    if (selectedCity as isize + direction) > 0 {
+                        (selectedCity as isize + direction) as usize
+                    } else {
+                        0
+                    }
+                }
+            };
+            if(state.cities.len() > newSelection){
+                state.selectedCity = Some(newSelection);
+            }
+
+        }
         _ => {
             // do nothing
         }

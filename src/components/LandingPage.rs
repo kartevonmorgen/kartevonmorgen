@@ -1,10 +1,12 @@
-use crate::{Mdl,Msg, components::pure::LandingExplain as Explain};
+use crate::{
+    components::pure::{CityList, LandingExplain as Explain},
+    Actions, Mdl, Msg,
+};
 use seed::prelude::*;
 
 // TODO: import { translate }        from "react-i18next";
 
 // TODO: import logo                 from "../img/logo.png";
-// TODO: import CityList             from "./pure/CityList";
 // TODO: import Info                 from "./pure/Info";
 // TODO: import Contact              from "./pure/Contact";
 // TODO: import Imprint              from "./pure/Imprint";
@@ -19,53 +21,46 @@ use seed::prelude::*;
 
 pub fn view(mdl: &Mdl) -> Node<Msg> {
 
-// TODO:   state = {
-// TODO:     selectedCity : 0,
-// TODO:   }
-// TODO:
             let content : Option<String> = None;
             let loggedIn = false;
-// TODO:     const { content, searchText, searchError, cities, onSelection, onEscape,
+            let searchText = &mdl.search.city;
+            let selectedCityIdx = mdl.search.selectedCity.unwrap_or(0);
+            let currentCity = mdl.search.cities.get(selectedCityIdx).cloned();
+            let searchError = false;
+            let loadingSearch = false;
+
+// TODO:     const { content, searchError,
 // TODO:       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, loadingSearch } = this.props;
 // TODO:     const onClick = this.props.onMenuItemClick;
 // TODO:     var t = (key) => {
 // TODO:       return this.props.t("landingPage." + key);
 // TODO:     };
-// TODO:
-// TODO:     const onChangeSelectedCity = (direction) => {
-// TODO:       const newSelection = (this.state.selectedCity + direction) > 0 ? (this.state.selectedCity + direction) : 0;
-// TODO:       if(cities.length - 1 >= newSelection){
-// TODO:         this.setState({ selectedCity: newSelection })
-// TODO:       }
-// TODO:     }
-// TODO:
-// TODO:     const onKeyUp = ev => {
-// TODO:       ev.preventDefault();
-// TODO:       switch (ev.key) {
-// TODO:         case "Escape":
-// TODO:           onEscape();
-// TODO:           break;
-// TODO:         case "Enter":
-// TODO:           onSelection(cities[this.state.selectedCity]);
-// TODO:           break;
-// TODO:         case "ArrowDown":
-// TODO:           onChangeSelectedCity(1);
-// TODO:           break;
-// TODO:         case "ArrowUp":
-// TODO:           onChangeSelectedCity(-1);
-// TODO:           break;
-// TODO:       }
-// TODO:     }
-// TODO:
-// TODO:     const onPlaceSearch = ev => {
-// TODO:       const target = ev.target;
-// TODO:       const v = target != null ? target.value : void 0;
-// TODO:       if (v == null) {
-// TODO:         return;
-// TODO:       }
-// TODO:       onChange(v);
-// TODO:     }
-// TODO:
+
+            let onKeyUp = move |ev:web_sys::KeyboardEvent|{
+               ev.prevent_default();
+               match &*ev.key() {
+                "Escape" => {
+                    Msg::Client(Actions::client::Msg::setCitySearchText("".to_string()))
+                }
+                "Enter" => {
+                    if let Some(city) = currentCity {
+                        Msg::Client(Actions::client::Msg::onLandingPageCitySelection(city))
+                    } else {
+                        Msg::Client(Actions::client::Msg::Nop)
+                    }
+                }
+                "ArrowDown" => {
+                    Msg::Client(Actions::client::Msg::ChangeSelectedCity(1))
+                }
+                "ArrowUp" => {
+                    Msg::Client(Actions::client::Msg::ChangeSelectedCity(-1))
+                }
+                _=> {
+                    Msg::Client(Actions::client::Msg::Nop)
+                }
+               }
+            };
+
 // TODO:     let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
 // TODO:       : t("subscribeToBbox.new-link");
 // TODO:
@@ -308,33 +303,49 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                        div![ class!["pure-g pure-form"],
                          input![
                            class!["pure-u-1"],
-                           // TODO: onChange    = {onPlaceSearch}
-                           // TODO: onKeyUp     = {onKeyUp}
+                           input_ev(Ev::Input,|txt|Msg::Client(Actions::client::Msg::setCitySearchText(txt))),
+                           keyboard_ev(Ev::KeyUp, onKeyUp),
                            attrs!{
-                             // TODO: value = {searchText || ''}
+                             At::Value => if let Some(txt) = searchText { txt } else { "" };
                              At::Type => "text";
                              At::Placeholder => "Which place would you like to discover?"; //TODO: {t("city-search.placeholder")}
                            }
                          ],
                          div![ class!["pure-u-1"],
-// TODO:                   { searchText && !loadingSearch
-// TODO:                     ? (searchError
-// TODO:                       ? <div className="error">
-// TODO:                         <span className="errorText">{t("city-search.error")}</span>&nbsp;&nbsp;
-// TODO:                         <a onClick={() => onClick('map')} href="#" className="link">
-// TODO:                           {t("city-search.show-map")}
-// TODO:
-// TODO:                         </a>
-// TODO:                       </div>
-// TODO:                       : cities && cities.length > 0
-// TODO:                         ? <CityList cities={cities} onClick={onSelection} selectedCity={this.state.selectedCity} selectedColor="#000"/>
-// TODO:                         : <div className="error">{t("city-search.no-results")}&nbsp;&nbsp;
-// TODO:                           <a onClick={() => onClick('map')} href="#" className="link">
-// TODO:                             {t("city-search.show-map")}
-// TODO:                           </a></div>
-// TODO:                     )
-// TODO:                     : null
-// TODO:                   }
+                            if searchText.is_some() && !loadingSearch {
+                                if searchError {
+                                    div![ class!["error"],
+                                        span![ class!["errorText"], /* TODO: {t("city-search.error")} */ ],
+                                        //TODO: "&nbsp;&nbsp;",
+                                        a![
+                                            attrs!{ At::Href =>"#"; },
+                                            class!["link"],
+                                            // TODO: onClick={() => onClick('map')}
+                                            // TODO: {t("city-search.show-map")}
+                                        ]
+                                    ]
+                                } else {
+                                    if !mdl.search.cities.is_empty() {
+                                        CityList::view(
+                                            &mdl.search.cities,
+                                            &mdl.search.selectedCity,
+                                            Actions::client::Msg::onLandingPageCitySelection
+                                        )
+                                        .map_message(Msg::Client)
+                                    }  else {
+                                        div![ class!["error"],
+                                            // TODO: t("city-search.no-results")
+                                            // TODO: "&nbsp;&nbsp;",
+                                            a![
+                                                attrs!{ At::Href =>"#"; },
+                                                class!["link"],
+                                                // TODO: onClick={() => onClick('map')}
+                                                // TODO: {t("city-search.show-map")}
+                                            ]
+                                        ]
+                                    }
+                                }
+                            } else { empty!() }
                          ]
                        ]
                      ]

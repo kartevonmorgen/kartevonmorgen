@@ -91,27 +91,17 @@ pub fn searchEntries(
 // TODO:         .end(jsonCallback(cb));
 // TODO:     }
 // TODO:   },
-// TODO:
-// TODO:   searchAddressNominatim: (addr, cb) => {
-// TODO:     if (addr == null) {
-// TODO:       addr = '';
-// TODO:     }
-// TODO:     request
-// TODO:       .get('/search')
-// TODO:       .use(saPrefix(NOMINATIM.link))
-// TODO:       .query({
-// TODO:         q: addr
-// TODO:       })
-// TODO:       .query({
-// TODO:         format: 'json'
-// TODO:       })
-// TODO:       .query({
-// TODO:         addressdetails: 1
-// TODO:       })
-// TODO:       .set('Accept', 'application/json')
-// TODO:       .end(jsonCallback(cb));
-// TODO:   },
-// TODO:
+
+pub fn searchAddressNominatim(addr: &str) -> impl Future<Item = Msg, Error = Msg> {
+    let url = format!(
+        "{}/search?q={}&format=json&addressdetails=1",
+        NOMINATIM::link,
+        addr
+    );
+    Request::new(url)
+        .fetch_json_data(|d| Msg::Server(Actions::server::Msg::SEARCH_ADDRESS_RESULT(d)))
+}
+
 // TODO:   searchGeolocation: (latlng, cb) => {
 // TODO:
 // TODO:     if (latlng == null) {

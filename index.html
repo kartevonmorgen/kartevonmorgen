@@ -39,7 +39,7 @@
       import init from '/pkg/kartevonmorgen.js';
 
       window.init_map = function() {
-        map = L
+        const map = L
           .map('map', { zoomControl: false })
           .setView([50.826, 10.920],7);
         L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(map);

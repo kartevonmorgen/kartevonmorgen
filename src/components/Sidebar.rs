@@ -1,4 +1,4 @@
-use crate::{Mdl,Msg};
+use crate::{Mdl, Msg};
 use seed::prelude::*;
 
 // TODO: import { translate }        from "react-i18next";

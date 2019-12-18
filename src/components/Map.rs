@@ -1,4 +1,4 @@
-use crate::{Mdl,Msg};
+use crate::{Mdl, Msg};
 use seed::prelude::*;
 
 // TODO: import { icons }                from "vm-leaflet-icons"

@@ -1,3 +1,5 @@
+use crate::entities::*;
+
 // TODO: import GeoLocation   from "../GeoLocation";
 // TODO: import mapConst      from "../constants/Map";
 // TODO: import serverActions from "./server";
@@ -149,4 +151,19 @@ pub enum Msg {
     // TODO:     dispatch(Actions.setZoom(coordinates.zoom));
     // TODO:   }
     // TODO: }
+    onLandingPageCitySelection(City),
+    // TODO: if (city) {
+    // TODO:   dispatch(Actions.setCenter({
+    // TODO:     lat: Number(city.lat),
+    // TODO:     lng: Number(city.lon)
+    // TODO:   }));
+    // TODO:   dispatch(Actions.setZoom(mapConst.CITY_DEFAULT_ZOOM));
+    // TODO:   dispatch(Actions.toggleLandingPage());
+    // TODO:   dispatch(Actions.showSearchResults());
+    // TODO:   dispatch(Actions.setSearchText(''));
+    // TODO:   dispatch(Actions.finishCitySearch());
+    // TODO: }
+    ChangeSelectedCity(isize),
+    /// No operation
+    Nop,
 }
