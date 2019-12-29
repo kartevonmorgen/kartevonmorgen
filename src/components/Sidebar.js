@@ -23,6 +23,8 @@ import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 import ScrollableDiv        from "./pure/ScrollableDiv";
 
+const converDateToTimestamp = (date) => new window.Date(date).getTime();
+
 class Sidebar extends Component {
 
   entryContent = null;
@@ -53,6 +55,7 @@ class Sidebar extends Component {
       .concat(search.eventsWithoutPlace);
 
     const entry = entries[search.current] || null;
+    const isEventForEdit = entry && entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 
     var content;
     switch (view.left) {
@@ -114,7 +117,7 @@ class Sidebar extends Component {
         break;
 
       case V.ENTRY:
-        if (!entry) {
+        if (!entry) { 
           content = (<Message iconClass={ "spinner" } message={ t("loading-message") } />)
         } else {
 
@@ -139,7 +142,10 @@ class Sidebar extends Component {
                 onEdit={ onEdit }
                 onBack={ onBack }
               />
-              { !isEvent ?
+
+          {/* Temp solution for hide rating */}
+
+          {/*    { !isEvent ?
                 <Ratings
                   entry={ entry }
                   ratings={ (entry ? entry.ratings || [] : []).map(id => {
@@ -147,14 +153,15 @@ class Sidebar extends Component {
                   })}
                   onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
                 />
-              : ''}
+              : ''}*/}
+
               { !isEvent ?
                 <SidebarFooter
-                    changed = {entry.created}
-                    version = {entry.version}
-                    title = {entry.title}
-                />
-              : ''}
+                  changed = {entry.created}
+                  version = {entry.version}
+                  title = {entry.title}
+                /> :
+                ''}
             </ScrollableEntryDetailsWrapper>
           );
         }
@@ -164,11 +171,13 @@ class Sidebar extends Component {
       case V.NEW:
         content = (
           <EntryForm
-            isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null}
-            license={ entries[search.current] ? entries[search.current].license : null}
+            isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null }
+            isEvent={ isEventForEdit }
+            formStartEndDate={ { startDate: entry ? entry.start : null, endDate: entry ? entry.end : null } }
+            license={ entries[search.current] ? entries[search.current].license : null }
             dispatch={ dispatch }
-            onSubmit={ data => {
-              return dispatch(Actions.saveEntry(
+            onSubmit={ data => (
+              dispatch(Actions.saveEntry(
                 {
                   id: form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null,
                   title: data.title,
@@ -185,10 +194,12 @@ class Sidebar extends Component {
                   version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
                   categories: [data.category],
                   image_url: data.image_url,
-                  image_link_url: data.image_link_url
+                  image_link_url: data.image_link_url,
+                  end: data.end && converDateToTimestamp(data.end),
+                  start: data.start && converDateToTimestamp(data.start),
                 }
-              ));
-            }}
+              ))
+            )}
           />
         );
         break;
@@ -253,7 +264,7 @@ class Sidebar extends Component {
             subscriptionExists={ user.subscriptionExists }
             dispatch={ dispatch }
             bbox={ map.bbox }
-            email={ user.email }
+            username={ user.username }
             mapCenter={ map.center }
           />
         );
@@ -386,7 +397,6 @@ const AddEntryButton = styled.nav`
 
 const ResultWrapper = styled(ScrollableDiv)`
   background: #f7f7f7;
-
    /* city list only for sidebar, not landing page TODO: where to put this? */
   .city-list ul {
     background: #f7f7f7;
