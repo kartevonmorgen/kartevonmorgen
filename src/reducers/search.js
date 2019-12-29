@@ -11,7 +11,7 @@ const initialState = {
   eventsWithoutPlace: [],
   error: false,
   current: null,
-  categories: MAIN_IDS.filter((c) => c !== IDS.EVENT),
+  categories: MAIN_IDS /*events always enabled since 01.01.2020  .filter((c) => c !== IDS.EVENT)*/,
   highlight: [],
   invisible: [],
   addresses: [],

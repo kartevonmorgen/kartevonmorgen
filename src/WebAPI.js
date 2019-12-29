@@ -5,6 +5,7 @@ import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
 import CATEGORY_IDS from "./constants/Categories";
 
 const prefix = saPrefix(OFDB_API.link);
+const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn';
 
 const jsonCallback = (cb) => (err, res) => {
   if (err) {
@@ -68,12 +69,50 @@ module.exports = {
     req.end(jsonCallback(cb));
   },
 
-  getEvent: (id, cb) => {
+  createNewEvent: (newEvent, callBack) => {
     request
-      .get('/events/' + id)
+      .post('/events')
       .use(prefix)
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .set({ 'Accept': 'application/json', 'Authorization': `Bearer ${ FALANSTER_TOKEN }` })
+      .send(newEvent)
+      .end((err, res) => {
+        if (err) {
+          callBack(err);
+        } else {
+          callBack(null, res.text.replace(/"/g, ""));
+        }
+      });
+  },
+
+  editEvent: (event, callBack) => {
+    request
+      .put('/events/' + event.id)
+      .use(prefix)
+      .set({ 'Accept': 'application/json', 'Authorization': `Bearer ${ FALANSTER_TOKEN }` })
+      .send(event)
+      .end((err, res) => {
+        if (err) {
+          callBack(err);
+        } else {
+          callBack(null, res.text);
+        }
+      });
+  },
+
+  getEvent: (ids = [], cb) => {
+    if (!Array.isArray(ids)) {
+      ids = [ids];
+    }
+
+    if (ids.length < 1) {
+      cb(new Error("no IDs were passed"));
+    } else {
+      request
+        .get('/events/' + ids.join(','))
+        .use(prefix)
+        .set('Accept', 'application/json')
+        .end(jsonCallback(cb));
+    }
   },
 
   searchAddressTilehosting: (addr, cb) => {
