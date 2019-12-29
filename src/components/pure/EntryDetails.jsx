@@ -46,16 +46,14 @@ const EntryDetails = props => {
             onClick = {onBack}
             aboveImage={hasImage}
           />
-          { !isEvent ? 
-            <NavButtonWhite
-              keyName = "edit"
-              buttonRight = { true }
-              icon = "pencil-alt"
-              text = ""
-              onClick = {onEdit}
-              aboveImage={hasImage}
-            />
-          : "" }
+        <NavButtonWhite
+          keyName = "edit"
+          buttonRight = { true }
+          icon = "pencil-alt"
+          text = ""
+          onClick = {onEdit}
+          aboveImage={hasImage}
+        />
         </Navbar>
         {
           hasImage ?
