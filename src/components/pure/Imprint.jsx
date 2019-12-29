@@ -11,7 +11,7 @@ const Imprint = () =>
   <div className="info">
     <h3>{t("contact")}</h3>
     <p>
-      <FontAwesomeIcon icon="globe-africa" /> <a target="_blank" href = { URLs.PROTOTYPE.link } >{ URLs.PROTOTYPE.name }</a>
+      <FontAwesomeIcon icon="globe-africa" /> <a target="_blank" href = { URLs.APP.link } >{ URLs.APP.name }</a>
       <br />
       <FontAwesomeIcon icon={['fab', 'facebook']} /> <a target="_blank" href = { URLs.FACEBOOK.link } >{ URLs.FACEBOOK.name }</a>
       <br />
@@ -25,7 +25,7 @@ const Imprint = () =>
         <br />
         {t("representedByChair")} Helmut Wolman
         <br />
-        Görreshof 180, 53347 Alfter
+        Knipsgasse 43, 54337 Alfter
         <br />
         <a target="_blank" href = "http://ideenhochdrei.org">Ideenhochdrei.org</a>
         <br />
@@ -38,9 +38,7 @@ const Imprint = () =>
         <br />
         Helmut Wolman
         <br />
-        Turley-Platz 9
-        <br />
-        68167 Mannheim
+        Tel: 0049 15734448245
         <br />
         <a href = "mailto:helmut.wolman@kartevonmorgen.org">
           helmut.wolman@kartevonmorgen.org
@@ -49,10 +47,10 @@ const Imprint = () =>
       <h4 className="imprint-heading">{t("heading3")}</h4>
         {t("kvmTeamRepresentedBy")}
         <br />
-        T. Thao Tran
+        Louisa Pieper
         <br />
-        <a href = "mailto:thao.tran@kartevonmorgen.org">
-          thao.tran@kartevonmorgen.org
+        <a href = "mailto:Louisa@kartevonmorgen.org">
+          Louisa@kartevonmorgen.org
         </a>
 
       <h4 className="imprint-heading">{t("heading4")}</h4>
@@ -63,7 +61,7 @@ const Imprint = () =>
         </a>
 
       <h4 className="imprint-heading">{t("heading5")}</h4>
-        Lisa Tegtmeier
+        Laura Leichtle & Lisa Tegtmeier
         <br />
         <a target="_blank" href = "http://www.lisategtmeier.de">
          www.lisategtmeier.de
