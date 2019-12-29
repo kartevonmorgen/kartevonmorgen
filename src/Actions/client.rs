@@ -1,4 +1,4 @@
-use crate::{i18n, entities::*};
+use crate::{i18n, entities::*, constants::PanelView::PanelView};
 
 // TODO: import GeoLocation   from "../GeoLocation";
 // TODO: import mapConst      from "../constants/Map";
@@ -10,7 +10,6 @@ type Category = String;
 type Feature = String;
 type RatingContext = String;
 type RatingId = String;
-type Info = String;
 type BBox = String;
 type Url = String;
 type MapCenter = String;
@@ -26,9 +25,9 @@ pub enum Msg {
     enableSearchCategory(Category),      // TODO: ENABLE_SEARCH_CATEGORY
     disableSearchCategory(Category),     // TODO: DISABLE_SEARCH_CATEGORY
     toggleMenu,                          // TODO: TOGGLE_MENU
+    toggleLandingPage,                   // TODO: TOGGLE_MENU
     showMenu,                            // TODO: SHOW_MENU
     showSearchResults,                   // TODO: SHOW_SEARCH_RESULTS
-    toggleLandingPage,                   // TODO: TOGGLE_MENU
     showImprint,                         // TODO: SHOW_IMPRINT
     showPrivacyStatement,                // TODO: SHOW_PRIVACY
     cancelNew,                           // TODO: CANCEL_NEW
@@ -43,7 +42,7 @@ pub enum Msg {
     showResultList,                      // TODO: SHOW_SEARCH_RESULTS
     explainRatingContext(RatingContext), // TODO: EXPLAIN_RATING_CONTEXT
     showNewRating(RatingId),             // TODO: SHOW_NEW_RATING
-    showInfo(Info),                      // TODO: SHOW_INFO
+    showInfo(Option<PanelView>),         // TODO: SHOW_INFO
     showSubscribeToBbox,                 // TODO: SHOW_SUBSCRIBE_TO_BBOX
     logout,                              // TODO: LOGOUT
     setCenter(CenterOrEntryId),          // TODO: SET_MAP_CENTER

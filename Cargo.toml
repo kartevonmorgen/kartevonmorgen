@@ -14,6 +14,7 @@ license = "AGPL-3.0"
 crate-type = ["cdylib"]
 
 [dependencies]
+base64 = "0.11"
 futures = "0.1"
 ofdb-boundary = { version = "*", features = ["extra-derive"] }
 seed = "0.5"

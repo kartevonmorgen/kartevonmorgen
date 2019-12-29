@@ -1,8 +1,11 @@
 use crate::{
+    Actions,
     components::{LandingPage, Map, Sidebar},
     Mdl, Msg,
 };
 use seed::prelude::*;
+
+const PINCLOUD_PNG: &'static [u8] = include_bytes!("../img/pincloud.png");
 
 // TODO: import { translate }        from "react-i18next"
 // TODO: import NotificationsSystem  from "reapop";
@@ -28,28 +31,27 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
                div![ class!["app"],
 
 // TODO:         <NotificationsSystem theme={theme}/>
-// TODO:         {
-// TODO:           view.menu ?
-                      LandingPage::view(&mdl),
-// TODO:               onMenuItemClick={ id => {
-// TODO:                 switch (id) {
-// TODO:                   case 'map':
-// TODO:                     return dispatch(Actions.toggleLandingPage());
+                   if mdl.view.menu {
+                      LandingPage::view(&mdl,|id|{
+                        match id {
+                           "map" => Msg::Client(Actions::client::Msg::toggleLandingPage),
 // TODO:                   case 'new':
 // TODO:                     dispatch(Actions.toggleLandingPage());
 // TODO:                     return dispatch(Actions.showNewEntry());
-// TODO:                   case 'landing':
-// TODO:                     dispatch(Actions.showInfo(null));
-// TODO:                     return dispatch(Actions.toggleLandingPage());
+                            "landing" => {
+                                Msg::Client(Actions::client::Msg::showInfo(None))
+                                //Msg::Client(Actions::client::Msg::toggleLandingPage)
+                            },
 // TODO:                   case V.LOGOUT:
 // TODO:                     dispatch(Actions.logout());
 // TODO:                     return dispatch(Actions.showInfo(V.LOGOUT));
 // TODO:                   case V.SUBSCRIBE_TO_BBOX:
 // TODO:                     return dispatch(Actions.showSubscribeToBbox());
-// TODO:                   default:
-// TODO:                     return dispatch(Actions.showInfo(id));
-// TODO:                 }
-// TODO:               }}
+                           _=>
+                            //Msg::Client(Actions::client::Msg::showInfo(Some(id.to_string())))
+                            Msg::Client(Actions::client::Msg::Nop)
+                        }
+                      })
 // TODO:               content={ view.right }
 // TODO:               loadingSearch={ server.loadingSearch }
 // TODO:               searchError={ search.error }
@@ -69,8 +71,9 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:                 return dispatch(Actions.deleteAccount());
 // TODO:               }}
 // TODO:             />
-// TODO:             : ""
-// TODO:         }
+                   } else {
+                        empty!()
+                   },
 // TODO:         {
 // TODO:           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
 // TODO:         }
@@ -116,16 +119,61 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:           </HideSidebarButtonWrapper>
                  ],
 
-// TODO:         <RightPanel>
-// TODO:           <div className="menu-toggle">
-// TODO:             <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
-// TODO:               <span className="pincloud">
-// TODO:                 <MenuFontAwesomeIcon icon={'bars'} />
-// TODO:               </span>
-// TODO:             </button>
-// TODO:           </div>
-// TODO:         </RightPanel>
-// TODO:
+                 div![
+                   style!{
+                      St::Position => "absolute";
+                      St::Top => px(15);
+                      St::Right => 0;
+                      St::Background => "#fff";
+                      // TODO: St::Color: ${STYLE.coal};
+                   },
+
+                   div![ class!["menu-toggle"],
+                     button![
+                        simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::toggleMenu)),
+                        style!{
+                          St::Outline => "none";
+                          St::Position => "relative";
+                          St::ZIndex => 1;
+                          St::Top => 0;
+                          St::Right => 0;
+                          St::FontSize => pt(15);
+                          St::TextTransform => "uppercase";
+                          St::TextAlign => "right";
+// TODO:                  St::color: ${STYLE.darkGray};
+                          St::Background => "#fff";
+                          St::BorderRadius => "0.2em 0 0 0.2em";
+                          St::Border => "none";
+                          St::Padding => em(0.2);
+                          St::BoxShadow => "0 1px 3px 0.2px rgba(0,0,0,0.5)";
+// TODO:                  &:hover {
+// TODO:                    color: ${STYLE.coal};
+// TODO:                    box-shadow: 0 1px 3px 0.2px #000;
+// TODO:                  }
+                        },
+                       span![
+                        class!["pincloud"],
+                        style!{
+                            St::Display => "inline-block";
+                            St::Width => em(3.5);
+                            St::Height => em(1.2);
+                            St::BackgroundPosition => "left";
+                            St::BackgroundImage => format!("url(data:image/png;base64,{})", base64::encode(PINCLOUD_PNG));
+                            St::BackgroundRepeat => "no-repeat";
+                            St::BackgroundSize => percent(50);
+                        },
+                        i![
+                            class!["fa", "fa-bars"],
+                            style!{
+                                St::PaddingRight => rem(0.45);
+                                St::MarginRight => em(0.3);
+                            }
+                        ]
+                       ]
+                     ]
+                   ]
+                 ],
+
 // TODO:         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
                    Map::view(&mdl),
 // TODO:             marker={ (view.left === V.EDIT || view.left === V.NEW) ? map.marker : null}
@@ -245,11 +293,6 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:   to { opacity: 1; }
 // TODO: `
 // TODO:
-// TODO: import pincloud from "../img/pincloud.png";
-// TODO:
-// TODO: const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
-// TODO:   padding-right: .45rem;
-// TODO: `;
 // TODO:
 // TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
 // TODO:   margin-right: 0.3em;
@@ -288,47 +331,6 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO:     }
 // TODO:     .main-categories {
 // TODO:       height: 2.1em;
-// TODO:     }
-// TODO:   }
-// TODO: `
-// TODO:
-// TODO: const RightPanel = styled.div `
-// TODO:   position: absolute;
-// TODO:   top: 15px;
-// TODO:   right: 0;
-// TODO:   background: #fff;
-// TODO:   color: ${STYLE.coal};
-// TODO:
-// TODO:   .menu-toggle button {
-// TODO:     outline: none;
-// TODO:     position: relative;
-// TODO:     z-index: 1;
-// TODO:     top: 0;
-// TODO:     right: 0;
-// TODO:     font-size: 15pt;
-// TODO:     text-transform: uppercase;
-// TODO:     text-align: right;
-// TODO:     color: ${STYLE.darkGray};
-// TODO:     background: #fff;
-// TODO:     border-radius: 0.2em 0 0 0.2em;
-// TODO:     border: none;
-// TODO:     padding: 0.2em;
-// TODO:     box-shadow: 0 1px 3px 0.2px rgba(0,0,0,0.5);
-// TODO:     &:hover {
-// TODO:       color: ${STYLE.coal};
-// TODO:       box-shadow: 0 1px 3px 0.2px #000;
-// TODO:     }
-// TODO:     .pincloud {
-// TODO:       display: inline-block;
-// TODO:       width: 3.5em;
-// TODO:       height: 1.2em;
-// TODO:       background-position: left;
-// TODO:       background-image: url(${pincloud});
-// TODO:       background-repeat: no-repeat;
-// TODO:       background-size: 50%;
-// TODO:     }
-// TODO:     i {
-// TODO:       margin-right: 0.3em;
 // TODO:     }
 // TODO:   }
 // TODO: `

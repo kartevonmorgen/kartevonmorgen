@@ -10,8 +10,8 @@ type UnknownJsType = ();
 #[derive(Debug)]
 pub struct Mdl {
     pub menu: bool,
-    pub left: V,
-    pub right: Option<UnknownJsType>,
+    pub left: Option<V>,
+    pub right: Option<V>,
     pub modal: Option<V>,
     pub waiting_for_search_results: bool,
     pub explainRatingContext: Option<UnknownJsType>,
@@ -25,7 +25,7 @@ impl Default for Mdl {
     fn default() -> Self {
         Mdl {
             menu: false,
-            left: V::RESULT,
+            left: Some(V::RESULT),
             right: None,
             modal: None,
             waiting_for_search_results: true,
@@ -39,41 +39,29 @@ impl Default for Mdl {
 }
 
 pub fn update(action: &Msg, state: &mut Mdl, orders: &mut impl Orders<Msg>) {
+
     match action {
-        // TODO:
-        // TODO:   const { payload } = action;
-        // TODO:   const m = !state.menu;
-        // TODO:   let newView = V[payload];
-        // TODO:
-        // TODO:   switch (action.type) {
-        // TODO:     case T.TOGGLE_MENU:
-        // TODO:       if (state.modal != null) {
-        // TODO:         return state;
-        // TODO:       }
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         menu: m,
-        // TODO:         right: m ? state.right : null,
-        // TODO:         left: m ? null : state.left
-        // TODO:       }
-        // TODO:
-        // TODO:     case T.SHOW_MENU:
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         menu: true,
-        // TODO:         right: null
-        // TODO:       }
-        // TODO:
-        // TODO:     case T.SHOW_INFO:
-        // TODO:       if (newView === void 0) {
-        // TODO:         newView = null;
-        // TODO:       }
-        // TODO:       return {
-        // TODO:         ...state,
-        // TODO:         menu: newView !== null,
-        // TODO:         right: newView
-        // TODO:       }
-        // TODO:
+                     Msg::Client(Actions::client::Msg::toggleMenu) |
+                     Msg::Client(Actions::client::Msg::toggleLandingPage) => {
+                        let m = !state.menu;
+                        // TODO: let newView = V[payload];
+                        if state.modal.is_none() {
+                            state.menu = m;
+                            if !m { state.right = None; }
+                            if m { state.left = None; }
+                        }
+                     }
+
+                     Msg::Client(Actions::client::Msg::showMenu) => {
+                         state.menu = true;
+                         state.right = None;
+                     }
+
+                     Msg::Client(Actions::client::Msg::showInfo(info)) => {
+                        state.menu = info.is_some();
+                        state.right = *info;
+                     }
+
         // TODO:     case T.SHOW_SUBSCRIBE_TO_BBOX:
         // TODO:       return {
         // TODO:         ...state,

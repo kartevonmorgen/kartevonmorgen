@@ -1,7 +1,7 @@
 use crate::{
     i18n::{self, Translator},
     components::pure::{CityList, LandingExplain as Explain},
-    Actions, Mdl, Msg, constants::URLs
+    Actions, Mdl, Msg, constants::{URLs,PanelView::PanelView as V}
 };
 use seed::prelude::*;
 
@@ -12,11 +12,12 @@ use seed::prelude::*;
 // TODO: import PrivacyStatement     from "./pure/PrivacyStatement";
 // TODO: import Register             from "./pure/Register";
 // TODO: import Login                from "./pure/Login";
-// TODO: import V                    from "../constants/PanelView";
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import pincloud             from "../img/pincloud.png";
 
-pub fn view(mdl: &Mdl) -> Node<Msg> {
+pub fn view<F>(mdl: &Mdl, onClick: F) -> Node<Msg>
+    where F: Fn(&str) -> Msg
+{
 
             let content : Option<String> = None;
             let loggedIn = false;
@@ -29,7 +30,6 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 
             // TODO: const { content, searchError,
             // TODO:   onChange, onRegister, onLogin, loggedIn, onDeleteAccount, loadingSearch } = this.props;
-            // TODO: const onClick = this.props.onMenuItemClick;
 
             let t = |key| {
                 mdl.t(&format!("landingPage.{}", key))
@@ -70,7 +70,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                  t("subscribeToBbox.message"),
                  br![],
                  a![
-                    // TODO: onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)}
+                    simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::SUBSCRIBE_TO_BBOX)))),
                     attrs!{ At::Href =>"#"; },
                     subscriptionLink
                  ], "."
@@ -232,7 +232,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                      div![ class!["logo-wrapper", "pure-u-11-24", "pure-u-md-1-3"],
                        div![ class!["logo"],
                          a![
-                           // TODO: onClick={() => onClick('landing')}
+                           simple_ev(Ev::Click, onClick("landing")),
                            attrs!{ At::Href => "#"; },
                            img![class!["logo","pure-img"], attrs!{ /* TODO: At::Src =>{logo}; */ } ]
                          ]
@@ -240,7 +240,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                      ],
                      div![ class!["menu-wrapper", "pure-u-1", "pure-u-md-2-3"],
                        div![ class!["language-wrapper"],
-                         a![ 
+                         a![
                            simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::SetLocale(i18n::Lang::De))),
                            attrs!{ At::Href => "#"; },
                            class![
@@ -274,37 +274,37 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                          ul![ class!["pure-g", "menu-items-wrapper"],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                               // TODO: onClick={() => onClick('map')}
+                               simple_ev(Ev::Click, onClick("map")),
                                t("menu.map")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                                // TODO: onClick= {() => onClick(V.INFO)}
+                                simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::INFO)))),
                                 t("menu.infos")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                               // TODO: onClick = {() => onClick(V.CONTACT)}
+                                simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::CONTACT)))),
                                t("menu.contact")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                               // TODO: onClick={() => onClick(V.DONATE)}
+                                simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::DONATE)))),
                                 t("menu.donate")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                            if loggedIn {
                                a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                                 // TODO: onClick = {() => onClick(V.LOGOUT)}
+                                 simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::LOGOUT)))),
                                  t("menu.logout")
                                ]
                            } else {
                                a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
-                                 // TODO: onClick = {() => onClick(V.LOGIN)}
+                                 simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::LOGIN)))),
                                  t("menu.login")
                                ]
                              }
@@ -341,7 +341,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                                         a![
                                             attrs!{ At::Href =>"#"; },
                                             class!["link"],
-                                            // TODO: onClick={() => onClick('map')}
+                                            simple_ev(Ev::Click, onClick("map")),
                                             t("city-search.show-map")
                                         ]
                                     ]
@@ -360,7 +360,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                                             a![
                                                 attrs!{ At::Href =>"#"; },
                                                 class!["link"],
-                                                // TODO: onClick={() => onClick('map')}
+                                                simple_ev(Ev::Click, onClick("map")),
                                                 t("city-search.show-map")
                                             ]
                                         ]
@@ -428,13 +428,13 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                      a![
                         class!["smallLink"],
                         attrs!{ At::Href => "#"; },
-                        //onClick={() => onClick(V.IMPRINT)}>
+                        simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::IMPRINT)))),
                         t("footer.imprint")
                      ],
                      a![
                         class!["smallLink"],
                         attrs!{ At::Href => "#"; },
-                        // onClick={() => onClick(V.PRIVACY_STATEMENT)}>{
+                        simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::showInfo(Some(V::PRIVACY_STATEMENT)))),
                         t("footer.privacyStatement")
                      ],
                    ],
