@@ -1,4 +1,4 @@
-use crate::entities::*;
+use crate::{i18n, entities::*};
 
 // TODO: import GeoLocation   from "../GeoLocation";
 // TODO: import mapConst      from "../constants/Map";
@@ -166,4 +166,6 @@ pub enum Msg {
     ChangeSelectedCity(isize),
     /// No operation
     Nop,
+    FetchLocale(i18n::Lang),
+    SetLocale(i18n::Lang),
 }

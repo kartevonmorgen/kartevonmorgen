@@ -6,6 +6,7 @@ use crate::{
         URLs::{NOMINATIM, OFDB_API, TH_GEOCODER},
     },
     entities::*,
+    i18n,
     Actions, Msg,
 };
 use futures::Future;
@@ -335,6 +336,11 @@ pub fn searchAddressNominatim(addr: &str) -> impl Future<Item = Msg, Error = Msg
 // TODO:       .end(cb);
 // TODO:   }
 // TODO: };
+
+pub fn fetch_locale(lang: i18n::Lang) -> impl Future<Item = Msg, Error = Msg> {
+    let url = format!("/locales/translation-{}.json", lang.alpha_2());
+    Request::new(url).fetch_json_data(move |d| Msg::Server(Actions::server::Msg::LocaleResult(lang, d)))
+}
 
 const fn bbox_to_slice(bbox: &BBox) -> [f64; 4] {
     [

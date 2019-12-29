@@ -1,10 +1,9 @@
 use crate::{
+    i18n::{self, Translator},
     components::pure::{CityList, LandingExplain as Explain},
-    Actions, Mdl, Msg,
+    Actions, Mdl, Msg, constants::URLs
 };
 use seed::prelude::*;
-
-// TODO: import { translate }        from "react-i18next";
 
 // TODO: import logo                 from "../img/logo.png";
 // TODO: import Info                 from "./pure/Info";
@@ -13,9 +12,7 @@ use seed::prelude::*;
 // TODO: import PrivacyStatement     from "./pure/PrivacyStatement";
 // TODO: import Register             from "./pure/Register";
 // TODO: import Login                from "./pure/Login";
-// TODO: import URLs                 from "../constants/URLs";
 // TODO: import V                    from "../constants/PanelView";
-// TODO: import i18n                 from "../i18n";
 // TODO: import STYLE                from "./styling/Variables"
 // TODO: import pincloud             from "../img/pincloud.png";
 
@@ -28,13 +25,15 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
             let currentCity = mdl.search.cities.get(selectedCityIdx).cloned();
             let searchError = false;
             let loadingSearch = false;
+            let user = &mdl.user;
 
-// TODO:     const { content, searchError,
-// TODO:       onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, loadingSearch } = this.props;
-// TODO:     const onClick = this.props.onMenuItemClick;
-// TODO:     var t = (key) => {
-// TODO:       return this.props.t("landingPage." + key);
-// TODO:     };
+            // TODO: const { content, searchError,
+            // TODO:   onChange, onRegister, onLogin, loggedIn, onDeleteAccount, loadingSearch } = this.props;
+            // TODO: const onClick = this.props.onMenuItemClick;
+
+            let t = |key| {
+                mdl.t(&format!("landingPage.{}", key))
+            };
 
             let onKeyUp = move |ev:web_sys::KeyboardEvent|{
                ev.prevent_default();
@@ -61,15 +60,19 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                }
             };
 
-// TODO:     let subscriptionLink = user.subscriptionExists ? t("subscribeToBbox.edit-link")
-// TODO:       : t("subscribeToBbox.new-link");
-// TODO:
+             let subscriptionLink = if user.subscriptionExists {
+                t("subscribeToBbox.edit-link")
+             } else {
+                t("subscribeToBbox.new-link")
+             };
              let loginInfo = div![ class!["login-info"],
-               p![ /* TODO: {t("subscribeToBbox.message")} */ br![],
+               p![
+                 t("subscribeToBbox.message"),
+                 br![],
                  a![
                     // TODO: onClick={() => onClick(V.SUBSCRIBE_TO_BBOX)}
                     attrs!{ At::Href =>"#"; },
-                    // TODO: {subscriptionLink}
+                    subscriptionLink
                  ], "."
                ]
              ];
@@ -237,57 +240,72 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                      ],
                      div![ class!["menu-wrapper", "pure-u-1", "pure-u-md-2-3"],
                        div![ class!["language-wrapper"],
-// TODO:                 <a onClick={() => {i18n.changeLanguage('de');}} href="#"
-// TODO:                   className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}>de</a>
-// TODO:                 {" "}
-// TODO:                 <a onClick={() => {i18n.changeLanguage('en');}} href="#"
-// TODO:                   className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}>en</a>
-// TODO:                 {" "}
-// TODO:                 <a onClick={() => {i18n.changeLanguage('es');}} href="#"
-// TODO:                   className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}>es</a>
+                         a![ 
+                           simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::SetLocale(i18n::Lang::De))),
+                           attrs!{ At::Href => "#"; },
+                           class![
+                               "language-link",
+                               if mdl.view.current_lang == i18n::Lang::De { "selected" } else { "unselected" }
+                           ],
+                           "de"
+                         ],
+                         " ",
+                         a![
+                           simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::SetLocale(i18n::Lang::En))),
+                           attrs!{ At::Href => "#"; },
+                           class![
+                               "language-link",
+                               if mdl.view.current_lang == i18n::Lang::En { "selected" } else { "unselected" }
+                           ],
+                           "en"
+                         ],
+                         " ",
+                         a![
+                           simple_ev(Ev::Click, Msg::Client(Actions::client::Msg::SetLocale(i18n::Lang::Es))),
+                           attrs!{ At::Href => "#"; },
+                           class![
+                               "language-link",
+                               if mdl.view.current_lang == i18n::Lang::Es { "selected" } else { "unselected" }
+                           ],
+                           "es"
+                         ]
                        ],
                        div![ class!["menu","pure-menu", "pure-menu-horizontal"],
                          ul![ class!["pure-g", "menu-items-wrapper"],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                // TODO: onClick={() => onClick('map')}
-                               // TODO: {t("menu.map")}
-                               "Map"
+                               t("menu.map")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                 // TODO: onClick= {() => onClick(V.INFO)}
-                                // TODO: {t("menu.infos")}
-                                "About us"
+                                t("menu.infos")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                // TODO: onClick = {() => onClick(V.CONTACT)}
-                               // TODO: {t("menu.contact")}
-                               "Contact"
+                               t("menu.contact")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                              a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                // TODO: onClick={() => onClick(V.DONATE)}
-                               // TODO: {t("menu.donate")}
-                                "Donate"
+                                t("menu.donate")
                              ]
                            ],
                            li![ class!["pure-u-1-3", "pure-u-md-1-5", "menu-item"],
                            if loggedIn {
                                a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                  // TODO: onClick = {() => onClick(V.LOGOUT)}
-                                 // TODO: {t("menu.logout")}
-                                 "Logout"
+                                 t("menu.logout")
                                ]
                            } else {
                                a![ class!["pure-menu-link"], attrs!{ At::Href => "#"; },
                                  // TODO: onClick = {() => onClick(V.LOGIN)}
-                                 // TODO: {t("menu.login")}
-                                 "Login"
+                                 t("menu.login")
                                ]
                              }
                            ]
@@ -298,7 +316,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                  ],
                  div![ class!["search", if content.is_some() { "" } else { "start" }],
                    div![ class!["landing-content"],
-                     h1![ "Mapping for Good" /* TODO: t("slogan") */ ],
+                     h1![ t("slogan") ],
                      div![ class!["place-search"],
                        div![ class!["pure-g pure-form"],
                          input![
@@ -308,20 +326,23 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                            attrs!{
                              At::Value => if let Some(txt) = searchText { txt } else { "" };
                              At::Type => "text";
-                             At::Placeholder => "Which place would you like to discover?"; //TODO: {t("city-search.placeholder")}
+                             At::Placeholder => t("city-search.placeholder");
                            }
                          ],
                          div![ class!["pure-u-1"],
                             if searchText.is_some() && !loadingSearch {
                                 if searchError {
                                     div![ class!["error"],
-                                        span![ class!["errorText"], /* TODO: {t("city-search.error")} */ ],
+                                        span![
+                                            class!["errorText"],
+                                            t("city-search.error")
+                                        ],
                                         //TODO: "&nbsp;&nbsp;",
                                         a![
                                             attrs!{ At::Href =>"#"; },
                                             class!["link"],
                                             // TODO: onClick={() => onClick('map')}
-                                            // TODO: {t("city-search.show-map")}
+                                            t("city-search.show-map")
                                         ]
                                     ]
                                 } else {
@@ -334,13 +355,13 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                                         .map_message(Msg::Client)
                                     }  else {
                                         div![ class!["error"],
-                                            // TODO: t("city-search.no-results")
+                                            t("city-search.no-results"),
                                             // TODO: "&nbsp;&nbsp;",
                                             a![
                                                 attrs!{ At::Href =>"#"; },
                                                 class!["link"],
                                                 // TODO: onClick={() => onClick('map')}
-                                                // TODO: {t("city-search.show-map")}
+                                                t("city-search.show-map")
                                             ]
                                         ]
                                     }
@@ -374,22 +395,59 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
                     ]
                  ],
                  div![ class!["footer"],
-                   h3![ "Tomorrow starts today" /* TODO: t("footer.heading")} */ ],
+                   h3![ t("footer.heading") ],
                    p![
-// TODO:             {t("footer.contact")}<a target="_blank" href={URLs.MAIL.link}>{URLs.MAIL.name}</a>
-// TODO:             <br />
-// TODO:             {t("footer.social-media")}<a target="_blank" href={URLs.FACEBOOK.link}>{URLs.FACEBOOK.name}</a>
-// TODO:             <br />
-// TODO:             {t("footer.open-source")}<a target="_blank" href={URLs.REPOSITORY.link}>{URLs.REPOSITORY.name}</a>
+                     t("footer.contact"),
+                     a![
+                        attrs!{
+                            At::Target => "_blank";
+                            At::Href => URLs::MAIL::link;
+                        },
+                        URLs::MAIL::name
+                     ],
+                     br![],
+                     t("footer.social-media"),
+                     a![
+                        attrs!{
+                            At::Target => "_blank";
+                            At::Href => URLs::FACEBOOK::link;
+                        },
+                        URLs::FACEBOOK::name
+                     ],
+                     br![],
+                     t("footer.open-source"),
+                     a![
+                        attrs!{
+                            At::Target => "_blank";
+                            At::Href => URLs::REPOSITORY::link;
+                        },
+                        URLs::REPOSITORY::name
+                     ]
                    ],
                    p![
-// TODO:             <a className="smallLink" href="#" onClick={() => onClick(V.IMPRINT)}>{t("footer.imprint")}</a>
-// TODO:             <a className="smallLink" href="#" onClick={() => onClick(V.PRIVACY_STATEMENT)}>{t("footer.privacyStatement")}</a>
+                     a![
+                        class!["smallLink"],
+                        attrs!{ At::Href => "#"; },
+                        //onClick={() => onClick(V.IMPRINT)}>
+                        t("footer.imprint")
+                     ],
+                     a![
+                        class!["smallLink"],
+                        attrs!{ At::Href => "#"; },
+                        // onClick={() => onClick(V.PRIVACY_STATEMENT)}>{
+                        t("footer.privacyStatement")
+                     ],
                    ],
                    p![
-// TODO:             {user.email != null ? <a onClick={onDeleteAccount} href="#">
-// TODO:               Account löschen
-// TODO:             </a> : ""}
+                     if user.email.is_some() {
+                        a![
+                          // onClick={onDeleteAccount}
+                          attrs!{ At::Href => "#"; },
+                          "Account löschen" // TODO: i18n
+                        ]
+                     } else {
+                        empty!()
+                     }
                    ]
                  ]
                ]

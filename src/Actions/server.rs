@@ -1,4 +1,4 @@
-use crate::entities::*;
+use crate::{i18n,entities::*};
 use seed::fetch::FailReason;
 
 // TODO: import { NUM_ENTRIES_TO_FETCH }   from "../constants/Search";
@@ -390,6 +390,7 @@ pub enum Msg {
     SEARCH_RESULT_ENTRIES(Result<SearchResponse>),
     SEARCH_ADDRESS_RESULT(Result<Vec<City>>),
     NO_SEARCH_RESULTS,
+    LocaleResult(i18n::Lang, Result<serde_json::Map<String, serde_json::Value>>)
 }
 
 pub fn flatten<T>(/* nestedArray */) -> Vec<T> {
