@@ -255,7 +255,7 @@ class LandingPage extends Component {
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
-                    <a onClick= {() => onClick(V.INFO)} href="#" className="pure-menu-link">
+                    <a onClick= {() => onClick(V.INFO)} href="blog.vonmorgen.org" className="pure-menu-link">
                       {t("menu.infos")}
                     </a>
                   </li>
@@ -265,7 +265,7 @@ class LandingPage extends Component {
                     </a>
                   </li>
                   <li className="pure-u-1-3 pure-u-md-1-5 menu-item">
-                    <a onClick={() => onClick(V.DONATE)} href="#" className="pure-menu-link">
+                    <a onClick={() => onClick(V.DONATE)} href="blog.vonmorgen.org/spenden" className="pure-menu-link">
                       {t("menu.donate")}
                     </a>
                   </li>
