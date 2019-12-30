@@ -1,12 +1,13 @@
-use crate::{Mdl, Msg};
+use crate::{Mdl, Msg,
+    constants::{
+        PanelView::PanelView as V,
+        Form::{ EDIT, RATING },
+        Categories::IDS
+    },
+    components::{SearchBar, pure::{ScrollableDiv,ResultList}}
+};
 use seed::prelude::*;
 
-// TODO: import { translate }        from "react-i18next";
-// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import { initialize }       from "redux-form";
-
-// TODO: import V                    from "../constants/PanelView"
-// TODO: import ResultList           from "./pure/ResultList"
 // TODO: import SubscribeToBbox      from "./pure/SubscribeToBbox"
 // TODO: import Ratings              from "./pure/Ratings"
 // TODO: import EntryDetails         from "./pure/EntryDetails"
@@ -15,13 +16,9 @@ use seed::prelude::*;
 // TODO: import Message              from "./pure/Message"
 // TODO: import SidebarFooter        from "./pure/SidebarFooter"
 // TODO: import CityList             from "./pure/CityList"
-// TODO: import { EDIT, RATING }     from "../constants/Form"
 // TODO: import Actions              from "../Actions"
 // TODO: import STYLE                from "./styling/Variables"
-// TODO: import { IDS }              from "../constants/Categories"
 // TODO: import NavButton            from "./pure/NavButton";
-// TODO: import SearchBar            from "./SearchBar"
-// TODO: import ScrollableDiv        from "./pure/ScrollableDiv";
 
 pub fn view(mdl: &Mdl) -> Node<Msg> {
 
@@ -44,8 +41,7 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:   render(){
 // TODO:     const { view, search, user, server, resultEntries, entries,
 // TODO:       ratings, dispatch, map, form, t, showAddEntryButton,
-// TODO:       showSearchBar, onTagClick, tagsClickable } = this.props;
-// TODO:     const { waiting_for_search_results } = view;
+// TODO:        onTagClick, tagsClickable } = this.props;
 // TODO:     const { explainRatingContext, selectedContext } = view;
 // TODO:     const invisibleEntries = search.invisible
 // TODO:       .filter(e => entries[e.id])
@@ -53,27 +49,68 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:       .concat(search.eventsWithoutPlace);
 // TODO:
 // TODO:     const entry = entries[search.current] || null;
-// TODO:
+
+             let showSearchBar = true;
+             let showAddEntryButton = true;
+             let GroupHeader = style!{
+                // TODO: border-top: 3px solid ${STYLE.lightGray};
+                // TODO: padding: 0.5em 1em 0.5em 1em;
+                // TODO: margin: 0;
+                // TODO: background: #eaeaea;
+                // TODO: color: #666;
+            };
+
              let content =
              match mdl.view.left {
-// TODO:       case V.RESULT:
-// TODO:         content = (
-// TODO:           <ResultWrapper className="result">
-// TODO:             <ResultList
-// TODO:               waiting={ waiting_for_search_results }
+                Some(V::RESULT) => {
+                   div![ class!["result"],
+                          ScrollableDiv::style(),
+                          style!{
+                            St::Background => "#f7f7f7";
+                          },
+// TODO:                   /* city list only for sidebar, not landing page TODO: where to put this? */
+// TODO:                  .city-list ul {
+// TODO:                    background: #f7f7f7;
+// TODO:                    li {
+// TODO:                      padding: 0.2em;
+// TODO:                      padding-left: 0.7em;
+// TODO:                      padding-right: 0.7em;
+// TODO:                      line-height: 0.9;
+// TODO:                      border-left: 5px solid transparent;
+// TODO:                      &:hover {
+// TODO:                        background: #fff;
+// TODO:                        border-left: 5px solid ${STYLE.darkGray};
+// TODO:                        div.chevron {
+// TODO:                          color: ${STYLE.darkGray};
+// TODO:                        }
+// TODO:                      }
+// TODO:                      span {
+// TODO:                        &.state {
+// TODO:                          color: #555;
+// TODO:                        }
+// TODO:                        &.country {
+// TODO:                          color: #888;
+// TODO:                        }
+// TODO:                        &.prefix {
+// TODO:                          color: #888;
+// TODO:                        }
+// TODO:                      }
+// TODO:                    }
+// TODO:                  }
+// TODO:                `
+                     ResultList::view(&mdl),
 // TODO:               entries={ resultEntries }
 // TODO:               ratings={ ratings }
 // TODO:               highlight={ search.highlight}
 // TODO:               moreEntriesAvailable={ search.moreEntriesAvailable }
 // TODO:               onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
 // TODO:               dispatch={dispatch}
-// TODO:             />
 // TODO:             {
 // TODO:               (search.cities.length > 0) ?
 // TODO:                 <div>
-// TODO:                   <GroupHeader>
+// TODO:                   div![ GroupHeader,
 // TODO:                     { t("search-results.cities") }
-// TODO:                   </GroupHeader>
+// TODO:                   ]
 // TODO:                   <CityList
 // TODO:                     cities={ search.cities.slice(0, 5) }
 // TODO:                     onClick={ city => {
@@ -91,9 +128,9 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:             {
 // TODO:               (invisibleEntries && invisibleEntries.length) ?
 // TODO:                 <div>
-// TODO:                   <GroupHeader>
+// TODO:                   div![ GroupHeader,
 // TODO:                     { t("search-results.results-out-of-bbox") }
-// TODO:                   </GroupHeader>
+// TODO:                   ]
 // TODO:                   <ResultList
 // TODO:                     entries={ invisibleEntries }
 // TODO:                     ratings={ ratings }
@@ -102,16 +139,14 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:                     onMouseEnter={ id => { return dispatch(Actions.highlight(id)); }}
 // TODO:                     onMouseLeave={ id => { return dispatch(Actions.highlight()); }}
 // TODO:                     dispatch={ dispatch }
-// TODO:                     waiting={ waiting_for_search_results }
 // TODO:                     moreEntriesAvailable={ search.moreEntriesAvailable }
 // TODO:                     onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
 // TODO:                   />
 // TODO:                 </div>
 // TODO:                 : ""
 // TODO:             }
-// TODO:           </ResultWrapper>
-// TODO:         );
-// TODO:         break;
+                   ]
+               }
 // TODO:
 // TODO:       case V.ENTRY:
 // TODO:         if (!entry) {
@@ -131,6 +166,11 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 // TODO:           content = (
 // TODO:             <ScrollableEntryDetailsWrapper>
+// TODO:                const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
+// TODO:                  height: 100%;
+// TODO:                  display: flex;
+// TODO:                  flex-direction: column;
+// TODO:                `
 // TODO:               <EntryDetails
 // TODO:                 entry={ entry }
 // TODO:                 isEvent={ isEvent }
@@ -258,161 +298,69 @@ pub fn view(mdl: &Mdl) -> Node<Msg> {
 // TODO:           />
 // TODO:         );
 // TODO:         break;
-// TODO:
+
                 _=> {
                     div![]
                 }
              };
 
-// TODO:     return(
                div![
                  style!{
                     St::Display => "flex";
                     St::FlexDirection => "column";
                     St::Height => percent(100);
                  },
-
-// TODO:         {
-// TODO:           showSearchBar
-// TODO:           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
-// TODO:             <SearchBar
-// TODO:                 searchText={search.text}
-// TODO:                 categories={search.categories}
-// TODO:                 type="integrated"
-// TODO:                 disabled={view.left === V.EDIT || view.left === V.NEW}
-// TODO:                 toggleCat={ c => {
-// TODO:                   if(search.categories.includes(c)){
-// TODO:                     dispatch(Actions.disableSearchCategory(c));
-// TODO:                   } else {
-// TODO:                     dispatch(Actions.enableSearchCategory(c));
-// TODO:                   }
-// TODO:                   return dispatch(Actions.search());
-// TODO:                 }}
-// TODO:                 onChange={txt => {
-// TODO:                   if (txt == null) {
-// TODO:                     txt = "";
-// TODO:                   }
-// TODO:                   dispatch(Actions.setSearchText(txt));
-// TODO:                   return dispatch(Actions.search());
-// TODO:                 }}
-// TODO:                 onEscape={ () => {
-// TODO:                   return dispatch(Actions.setSearchText(''));
-// TODO:                 }}
-// TODO:                 onEnter={ () => {}}      // currently not used, TODO
-// TODO:                 loading={ server.loadingSearch }
-// TODO:               />
-// TODO:           </div>
-// TODO:           : ""
-// TODO:         }
-// TODO:         {
-                   content
-// TODO:         }
-// TODO:         {
-// TODO:           (view.left === V.RESULT) && showAddEntryButton
-// TODO:           ? <AddEntryButton>
-// TODO:               <NavButton
-// TODO:                 key = "back"
-// TODO:                 classname = "pure-u-1"
-// TODO:                 icon = "plus"
-// TODO:                 text = {t("resultlist.addEntry")}
-// TODO:                 onClick = {() => {
-// TODO:                   dispatch(Actions.showNewEntry());
-// TODO:                 }}
-// TODO:               />
-// TODO:             </AddEntryButton>
-// TODO:           : ""
-// TODO:         }
+                 if showSearchBar {
+                    div![
+                        class!["search", if mdl.view.left == Some(V::RESULT) { "open" } else { "closed" } ],
+                        SearchBar::view(&mdl)
+                   ]
+                 } else {
+                    empty!()
+                 },
+                 content,
+                 if (mdl.view.left == Some(V::RESULT)) && showAddEntryButton {
+                    nav![
+                        style!{
+                          St::ZIndex => 10;
+                          St::Padding => 0;
+                          St::Margin => 0;
+                          // TODO: background: ${STYLE.coal};
+                          St::TextAlign => "center";
+                          St::Bottom => 0;
+                          // TODO: li {
+                          // TODO:   cursor: pointer;
+                          // TODO:   box-sizing: border-box;
+                          // TODO:   font-weight: normal;
+                          // TODO:   padding: 0.3em;
+                          // TODO:   font-size: 1.2em;
+                          // TODO:   border: none;
+                          // TODO:   color: ${STYLE.lightGray};
+                          // TODO:   background: transparent;
+                          // TODO:   border-top: 4px solid transparent;
+                          // TODO:   border-bottom: 4px solid transparent;
+                          // TODO:   &:hover {
+                          // TODO:     color: #fff;
+                          // TODO:     border-bottom: 4px solid #fff;
+                          // TODO:   }
+                          // TODO:   i {
+                          // TODO:     margin-right: 0.5em;
+                          // TODO:   }
+                          // TODO: }
+                        }
+                        // TODO: <NavButton
+                        // TODO:   key = "back"
+                        // TODO:   classname = "pure-u-1"
+                        // TODO:   icon = "plus"
+                        // TODO:   text = {t("resultlist.addEntry")}
+                        // TODO:   onClick = {() => {
+                        // TODO:     dispatch(Actions.showNewEntry());
+                        // TODO:   }}
+                        // TODO: />
+                    ]
+                  } else {
+                      empty!()
+                  }
                ]
 }
 
-// TODO: const ScrollableEntryDetailsWrapper = styled(ScrollableDiv)`
-// TODO:   height: 100%;
-// TODO:   display: flex;
-// TODO:   flex-direction: column;
-// TODO: `
-// TODO:
-// TODO: Sidebar.propTypes = {
-// TODO:   view:           PropTypes.object.isRequired,
-// TODO:   search:         PropTypes.object.isRequired,
-// TODO:   map:            PropTypes.object.isRequired,
-// TODO:   user:           PropTypes.object,
-// TODO:   form:           PropTypes.object,
-// TODO:   resultEntries:  PropTypes.array,
-// TODO:   entries:        PropTypes.object.isRequired,
-// TODO:   ratings:        PropTypes.object,
-// TODO:   dispatch:       PropTypes.func,
-// TODO:   t:              PropTypes.func.isRequired
-// TODO: }
-// TODO:
-// TODO: export default Sidebar
-// TODO:
-// TODO:
-// TODO: const GroupHeader = styled.div `
-// TODO:   border-top: 3px solid ${STYLE.lightGray};
-// TODO:   padding: 0.5em 1em 0.5em 1em;
-// TODO:   margin: 0;
-// TODO:   background: #eaeaea;
-// TODO:   color: #666;
-// TODO: `
-// TODO:
-// TODO: const AddEntryButton = styled.nav`
-// TODO:   z-index: 10;
-// TODO:   padding: 0;
-// TODO:   margin: 0;
-// TODO:   background: ${STYLE.coal};
-// TODO:   text-align: center;
-// TODO:   bottom: 0;
-// TODO:   li {
-// TODO:     cursor: pointer;
-// TODO:     box-sizing: border-box;
-// TODO:     font-weight: normal;
-// TODO:     padding: 0.3em;
-// TODO:     font-size: 1.2em;
-// TODO:     border: none;
-// TODO:     color: ${STYLE.lightGray};
-// TODO:     background: transparent;
-// TODO:     border-top: 4px solid transparent;
-// TODO:     border-bottom: 4px solid transparent;
-// TODO:     &:hover {
-// TODO:       color: #fff;
-// TODO:       border-bottom: 4px solid #fff;
-// TODO:     }
-// TODO:     i {
-// TODO:       margin-right: 0.5em;
-// TODO:     }
-// TODO:   }
-// TODO: `;
-// TODO:
-// TODO: const ResultWrapper = styled(ScrollableDiv)`
-// TODO:   background: #f7f7f7;
-// TODO:
-// TODO:    /* city list only for sidebar, not landing page TODO: where to put this? */
-// TODO:   .city-list ul {
-// TODO:     background: #f7f7f7;
-// TODO:     li {
-// TODO:       padding: 0.2em;
-// TODO:       padding-left: 0.7em;
-// TODO:       padding-right: 0.7em;
-// TODO:       line-height: 0.9;
-// TODO:       border-left: 5px solid transparent;
-// TODO:       &:hover {
-// TODO:         background: #fff;
-// TODO:         border-left: 5px solid ${STYLE.darkGray};
-// TODO:         div.chevron {
-// TODO:           color: ${STYLE.darkGray};
-// TODO:         }
-// TODO:       }
-// TODO:       span {
-// TODO:         &.state {
-// TODO:           color: #555;
-// TODO:         }
-// TODO:         &.country {
-// TODO:           color: #888;
-// TODO:         }
-// TODO:         &.prefix {
-// TODO:           color: #888;
-// TODO:         }
-// TODO:       }
-// TODO:     }
-// TODO:   }
-// TODO: `

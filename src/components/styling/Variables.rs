@@ -1,17 +1,17 @@
-// TODO: const grayBlue   = "rgb(100,  122,  133)";
-// TODO: const blue       = "rgb(0,    153,  173)";
-// TODO: const green      = "rgb(151,  191,  13 )";
-// TODO: const yellow     = "rgb(255,  221,  0  )";
-// TODO: const pink       = "rgb(229,  98,   146)";
-// TODO: const berry      = "rgb(170,  56,   108)";
-// TODO: const coal       = "rgb(26,   26,   26)";
-// TODO: const anthracite = "rgb(45,   45,   45)";
-// TODO: const darkGray   = "rgb(102,  102,  102)";
-// TODO: const gray       = "rgb(136,  136,  136)";
-// TODO: const lightGray  = "rgb(221,  221,  221)";
-// TODO: const teal       = "rgb(0,    152,  137)";
-// TODO: const yellowText = "rgb(214,  201,  0  )";
-// TODO:
+pub const grayBlue   : &str = "rgb(100,  122,  133)";
+pub const blue       : &str = "rgb(0,    153,  173)";
+pub const green      : &str = "rgb(151,  191,  13 )";
+pub const yellow     : &str = "rgb(255,  221,  0  )";
+pub const pink       : &str = "rgb(229,  98,   146)";
+pub const berry      : &str = "rgb(170,  56,   108)";
+pub const coal       : &str = "rgb(26,   26,   26)";
+pub const anthracite : &str = "rgb(45,   45,   45)";
+pub const darkGray   : &str = "rgb(102,  102,  102)";
+pub const gray       : &str = "rgb(136,  136,  136)";
+pub const lightGray  : &str = "rgb(221,  221,  221)";
+pub const teal       : &str = "rgb(0,    152,  137)";
+pub const yellowText : &str = "rgb(214,  201,  0  )";
+
 // TODO: const rating_contexts = {
 // TODO:   "diversity": green,      // GREEN
 // TODO:   "renewable": yellow,      // YELLOW
@@ -21,31 +21,8 @@
 // TODO:   "solidarity": blue,     // BLUE
 // TODO:   "default": lightGray
 // TODO: }
-// TODO:
-// TODO: const bodyFont= `"Rubik", sans-serif`;
-// TODO: const headerFont= `"Rubik", sans-serif`;
-// TODO:
-// TODO:
-// TODO: module.exports = {
-// TODO:   grayBlue,
-// TODO:   blue,
-// TODO:   green,
-// TODO:   yellow,
-// TODO:   pink,
-// TODO:   berry,
-// TODO:   coal,
-// TODO:   anthracite,
-// TODO:   lightGray,
-// TODO:   darkGray,
-// TODO:   yellowText,
-// TODO:
-// TODO:   company:    teal,
-// TODO:   initiative: green,
-// TODO:   event:      pink,
-// TODO:   otherCategory: lightGray,
-// TODO:
-// TODO:   rating_contexts,
-// TODO:
-// TODO:   bodyFont,
-// TODO:   headerFont
-// TODO: };
+
+pub const company : &str = teal;
+pub const initiative: &str = green;
+pub const event: &str = pink;
+pub const otherCategory: &str = lightGray;

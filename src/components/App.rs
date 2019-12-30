@@ -1,6 +1,6 @@
 use crate::{
     Actions,
-    components::{LandingPage, Map, Sidebar},
+    components::{LandingPage, Map, Sidebar, styling::Variables as STYLE},
     Mdl, Msg,
 };
 use seed::prelude::*;
@@ -15,7 +15,6 @@ const PINCLOUD_PNG: &'static [u8] = include_bytes!("../img/pincloud.png");
 // TODO: import V                    from "../constants/PanelView"
 // TODO: import Modal                from "./pure/Modal"
 // TODO: import { EDIT }             from "../constants/Form"
-// TODO: import STYLE                from "./styling/Variables"
 // TODO: import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 // TODO: import mapConst             from "../constants/Map"
 
@@ -74,9 +73,12 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
                    } else {
                         empty!()
                    },
-// TODO:         {
-// TODO:           view.modal != null ? <Modal view={view} dispatch={dispatch} /> : ""
-// TODO:         }
+                   if mdl.view.modal.is_some() {
+                        // TODO: <Modal view={view} dispatch={dispatch} />
+                        empty!()
+                   } else {
+                        empty!()
+                   },
                  div![
                     style!{
                         St::Display => "flex";
@@ -84,39 +86,113 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
                         St::Height => percent(100);
                     },
 
-// TODO:           <SwipeableLeftPanel className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
-// TODO:             onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+                   div![ // TODO: className={"left " + (view.showLeftPanel && !view.menu ? 'opened' : 'closed')}
+                        // TODO: onSwipedLeft={ () => this.swipedLeftOnPanel() }>
+                        // TODO: make it swipeable => see "react-swipeable"
+                        if mdl.view.menu {
+                            // closed
+                            style!{
+                                St::Width => 0;
+                            }
+                        } else {
+                            // opened
+                            style!{
+                                St::Width => percent(90);
+                                St::MaxWidth => px(380);
+                            }
+                        },
+                        style!{
+                          St::Position => "relative";
+                          St::Height => percent(100);
+                          St::ZIndex => 2;
+                          St::Order => -1;
+                          St::OverflowY => "hidden";
+                          St::Float => "left";
+                          St::BackgroundColor => "#fff";
+                          St::BoxShadow => "1px 1px 5px rgba(0,0,0,.5)";
+                          // TODO: .content {
+                          // TODO:   width: 100%;
+                          // TODO:   box-sizing: border-box;
+                          // TODO:   padding-bottom: 1rem;
+                          // TODO:   display: flex;
+                          // TODO:   flex-direction: column;
+                          // TODO: }
+                          // TODO: &.opened {
+                          // TODO:   .menu {
+                          // TODO:     width: 100%;
+                          // TODO:   }
+                          // TODO: }
+                          // TODO: .search {
+                          // TODO:   &.closed {
+                          // TODO:     display: none;
+                          // TODO:   }
+                          // TODO:   .main-categories {
+                          // TODO:     height: 2.1em;
+                          // TODO:   }
+                          // TODO: }
+                      },
                       Sidebar::view(&mdl),
-// TODO:               view={ view }
-// TODO:               search={ search }
-// TODO:               map={ map }
-// TODO:               server={ server }
-// TODO:               user={ user }
-// TODO:               form={ form }
-// TODO:               entries={entries}
-// TODO:               resultEntries={ visibleEntries }
-// TODO:               ratings={ ratings }
-// TODO:               // LeftPanelentries={ server.entries } never used…?
-// TODO:               dispatch={ dispatch }
-// TODO:               t={ t }
-// TODO:               showAddEntryButton={ true }
-// TODO:               showSearchBar={ true }
-// TODO:               onTagClick={ this.onTagClick }
-// TODO:               tagsClickable={ true }
-// TODO:             />
-// TODO:           </SwipeableLeftPanel>
-// TODO:           <HideSidebarButtonWrapper>
-// TODO:             <button
-// TODO:               onClick={ () => {
-// TODO:                 if (view.showLeftPanel) {
-// TODO:                   return dispatch(Actions.hideLeftPanel());
-// TODO:                 } else {
-// TODO:                   return dispatch(Actions.showLeftPanel());
-// TODO:                 }
-// TODO:               }}>
-// TODO:               <ToggleLeftSidebarIcon icon={"caret-" + (view.showLeftPanel ? 'left' : 'right')} />
-// TODO:             </button>
-// TODO:           </HideSidebarButtonWrapper>
+                        // TODO: view={ view }
+                        // TODO: search={ search }
+                        // TODO: map={ map }
+                        // TODO: server={ server }
+                        // TODO: user={ user }
+                        // TODO: form={ form }
+                        // TODO: entries={entries}
+                        // TODO: resultEntries={ visibleEntries }
+                        // TODO: ratings={ ratings }
+                        // TODO: // LeftPanelentries={ server.entries } never used…?
+                        // TODO: showAddEntryButton={ true }
+                        // TODO: showSearchBar={ true }
+                        // TODO: onTagClick={ this.onTagClick }
+                        // TODO: tagsClickable={ true }
+                   ],
+                   div![
+                    style!{
+                        St::Position => "relative";
+                        St::ZIndex => 2;
+                        St::Height => 0;
+                    },
+                    button![
+                        // TODO: onClick={ () => {
+                        // TODO:   if (view.showLeftPanel) {
+                        // TODO:     return dispatch(Actions.hideLeftPanel());
+                        // TODO:   } else {
+                        // TODO:     return dispatch(Actions.showLeftPanel());
+                        // TODO:   }
+                        // TODO: }}>
+                       style!{
+                            St::Position => "relative";
+                            St::Padding => "10px 3px 10px 7px";
+                            St::Top => px(72);
+                            St::FontSize => pt(13);
+                            // TODO:   color: ${STYLE.darkGray};
+                            // TODO:   background: #fff;
+                            St::Border => "none";
+                            St::BorderLeft => format!("1px solid {}", STYLE::lightGray);
+                            St::BorderRadius => "0 0.2em 0.2em 0";
+                            St::BoxShadow => "2px 1px 4px 0 rgba(0,0,0,.4)";
+                            // TODO:   &:hover {
+                            // TODO:     color: ${STYLE.coal};
+                            // TODO:     box-shadow: px 2px 2px 0.3px #000;
+                            // TODO:   }
+                       },
+                       i![
+                        class![
+                            "fa",
+                            if mdl.view.showLeftPanel {
+                                "fa-caret-left"
+                            } else {
+                                "fa-caret-right"
+                            }
+                        ],
+                        style!{
+                            St::MarginRight => em(0.3);
+                            St::Width => em(0.7);
+                        }
+                       ]
+                     ]
+                   ]
                  ],
 
                  div![
@@ -125,7 +201,7 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
                       St::Top => px(15);
                       St::Right => 0;
                       St::Background => "#fff";
-                      // TODO: St::Color: ${STYLE.coal};
+                      St::Color => STYLE::coal;
                    },
 
                    div![ class!["menu-toggle"],
@@ -140,16 +216,16 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
                           St::FontSize => pt(15);
                           St::TextTransform => "uppercase";
                           St::TextAlign => "right";
-// TODO:                  St::color: ${STYLE.darkGray};
+                          St::Color => STYLE::darkGray;
                           St::Background => "#fff";
                           St::BorderRadius => "0.2em 0 0 0.2em";
                           St::Border => "none";
                           St::Padding => em(0.2);
                           St::BoxShadow => "0 1px 3px 0.2px rgba(0,0,0,0.5)";
-// TODO:                  &:hover {
-// TODO:                    color: ${STYLE.coal};
-// TODO:                    box-shadow: 0 1px 3px 0.2px #000;
-// TODO:                  }
+                          // TODO: &:hover {
+                          // TODO:   color: ${STYLE.coal};
+                          // TODO:   box-shadow: 0 1px 3px 0.2px #000;
+                          // TODO: }
                         },
                        span![
                         class!["pincloud"],
@@ -291,71 +367,4 @@ pub fn view(mdl: &Mdl) -> impl View<Msg> {
 // TODO: const fadein = keyframes`
 // TODO:   from { opacity: 0; }
 // TODO:   to { opacity: 1; }
-// TODO: `
-// TODO:
-// TODO:
-// TODO: const ToggleLeftSidebarIcon = styled(FontAwesomeIcon) `
-// TODO:   margin-right: 0.3em;
-// TODO:   width: 0.7em;
-// TODO: `
-// TODO:
-// TODO: const SwipeableLeftPanel = styled(Swipeable)`
-// TODO:   position: relative;
-// TODO:   height: 100%;
-// TODO:   z-index: 2;
-// TODO:   order: -1;
-// TODO:   overflow-y: hidden;
-// TODO:   float: left;
-// TODO:   background-color: #fff;
-// TODO:   box-shadow: 1px 1px 5px rgba(0,0,0,.5);
-// TODO:   .content {
-// TODO:     width: 100%;
-// TODO:     box-sizing: border-box;
-// TODO:     padding-bottom: 1rem;
-// TODO:     display: flex;
-// TODO:     flex-direction: column;
-// TODO:   }
-// TODO:   &.closed {
-// TODO:     width: 0;
-// TODO:   }
-// TODO:   &.opened {
-// TODO:     max-width: 380px;
-// TODO:     width: 90%;
-// TODO:     .menu {
-// TODO:       width: 100%;
-// TODO:     }
-// TODO:   }
-// TODO:   .search {
-// TODO:     &.closed {
-// TODO:       display: none;
-// TODO:     }
-// TODO:     .main-categories {
-// TODO:       height: 2.1em;
-// TODO:     }
-// TODO:   }
-// TODO: `
-// TODO:
-// TODO: const HideSidebarButtonWrapper = styled.div `
-// TODO:   position: relative;
-// TODO:   z-index: 2;
-// TODO:   height: 0;
-// TODO:   >button {
-// TODO:     position: relative;
-// TODO:     padding: 10px 3px 10px 7px;
-// TODO:     top: 72px;
-// TODO:     font-size: 13pt;
-// TODO:     color: ${STYLE.darkGray};
-// TODO:     background: #fff;
-// TODO:     border: none;
-// TODO:     border-left: 1px solid ${STYLE.lightGray};
-// TODO:     border-radius: 0 0.2em 0.2em 0;
-// TODO:     box-shadow: 2px 1px 4px 0 rgba(0,0,0,.4);
-// TODO:     &:hover {
-// TODO:       color: ${STYLE.coal};
-// TODO:       box-shadow: px 2px 2px 0.3px #000;
-// TODO:     }
-// TODO:     i {
-// TODO:       margin-right: 0.3em;
-// TODO:     }
-// TODO:   }
 // TODO: `

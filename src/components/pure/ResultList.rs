@@ -1,17 +1,13 @@
-// TODO: import React                from "react"
-// TODO: import ReactDOM             from "react-dom"
-// TODO: import { translate }        from "react-i18next";
-// TODO: import PropTypes            from "prop-types";
-// TODO: import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-// TODO: import styled               from "styled-components";
+use crate::{Mdl, Msg, i18n::Translator};
+use seed::prelude::*;
+
 // TODO: import Actions              from "../../Actions" //TODO: remove dependency
 // TODO: import Flower               from "../Flower";
 // TODO: import NavButton            from "./NavButton";
 // TODO: import EventTimes           from "./EventTimes";
-// TODO: import i18n                 from "../../i18n";
 // TODO: import { NAMES, IDS }       from "../../constants/Categories"
 // TODO: import STYLE                from "../styling/Variables"
-// TODO:
+
 // TODO: const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
 // TODO:   var css_class = highlight ? 'highlight-entry ' : '';
 // TODO:   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
@@ -68,56 +64,93 @@
 // TODO:     return (<Description>{description}</Description>);
 // TODO:   }
 // TODO: }
-// TODO:
-// TODO: const ResultList = props => {
-// TODO:
-// TODO:   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
-// TODO:
-// TODO:   let results = entries.map( e =>
-// TODO:     <ResultListElement
-// TODO:       entry        = { e            }
-// TODO:       ratings      = { (e.ratings || []).map(id => ratings[id])}
-// TODO:       key          = { e.id         }
-// TODO:       highlight    = { highlight.indexOf(e.id) >= 0 }
-// TODO:       onClick      = { (id, center) => {
-// TODO:         if (center) {
-// TODO:           dispatch(Actions.setCurrentEntry(id, center))
-// TODO:         }
-// TODO:       }}
-// TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
-// TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
-// TODO:       t            = { t } />);
-// TODO:
-// TODO:   if(moreEntriesAvailable && !waiting){
-// TODO:     results.push(
-// TODO:       <ListElement key="show-more-entries">
-// TODO:         <div>
-// TODO:           <a onClick = { onMoreEntriesClick } href="#">
-// TODO:             {t("resultlist.showMoreEntries")}
-// TODO:           </a>
-// TODO:         </div>
-// TODO:       </ListElement>
-// TODO:     );
-// TODO:   }
-// TODO:
-// TODO:   return (
-// TODO:   <Wrapper>
-// TODO:     <div className= "result-list">
-// TODO:     {
-// TODO:       (results.length > 0)
-// TODO:         ? <ul>{results}</ul>
-// TODO:         : (waiting ?
-// TODO:         <p className= "loading">
-// TODO:           <span>{t("resultlist.entriesLoading")}</span>
-// TODO:         </p>
-// TODO:         : <p className= "no-results">
-// TODO:             <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
-// TODO:           </p>)
-// TODO:     }
-// TODO:     </div>
-// TODO:   </Wrapper>)
-// TODO: }
-// TODO:
+
+pub fn view(mdl: &Mdl) -> Node<Msg> {
+
+        // TODO:  const { entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick } = props
+
+        let waiting = mdl.view.waiting_for_search_results;
+        let results : Vec<_> = mdl.server.entries.iter().map(|e|{
+            // TODO:     <ResultListElement
+            // TODO:       entry        = { e            }
+            // TODO:       ratings      = { (e.ratings || []).map(id => ratings[id])}
+            // TODO:       key          = { e.id         }
+            // TODO:       highlight    = { highlight.indexOf(e.id) >= 0 }
+            // TODO:       onClick      = { (id, center) => {
+            // TODO:         if (center) {
+            // TODO:           dispatch(Actions.setCurrentEntry(id, center))
+            // TODO:         }
+            // TODO:       }}
+            // TODO:       onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+            // TODO:       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+            // TODO:       t            = { t } />);
+            empty!()
+           }).collect();
+
+            // TODO:   if(moreEntriesAvailable && !waiting){
+            // TODO:     results.push(
+            // TODO:       <ListElement key="show-more-entries">
+            // TODO:         <div>
+            // TODO:           <a onClick = { onMoreEntriesClick } href="#">
+            // TODO:             {t("resultlist.showMoreEntries")}
+            // TODO:           </a>
+            // TODO:         </div>
+            // TODO:       </ListElement>
+            // TODO:     );
+            // TODO:   }
+
+           div![
+             style!{
+                St::BoxSizing => "border-box";
+             },
+             div![ class!["result-list"],
+                if !results.is_empty() {
+                   ul![
+                        style!{
+                            St::ListStyle => "none";
+                            St::Margin => 0;
+                            St::Padding => 0;
+                        },
+                        results
+                   ]
+                } else {
+                    if waiting {
+                        p![
+                            class!["loading"],
+                            style!{
+                                St::Margin => "20px 0 0 0";
+                                St::Padding => em(1);
+                                St::FontSize => em(0.9);
+                            },
+                            span![
+                                style!{
+                                    St::MarginLeft => em(0.5);
+                                },
+                                mdl.t("resultlist.entriesLoading")
+                            ]
+                        ]
+                    } else {
+                        p![
+                            class!["no-results"],
+                            style!{
+                                St::Margin => 0;
+                                St::Padding => em(1);
+                                St::FontSize => em(0.9);
+                            },
+                            i![ class!["far","frown"] ],
+                            span![
+                                style!{
+                                    St::MarginLeft => em(0.5);
+                                },
+                                mdl.t("resultlist.noEntriesFound")
+                            ]
+                        ]
+                    }
+                }
+             ]
+           ]
+}
+
 // TODO: const getTruncatedTitle = (title, maxCharacters) => {
 // TODO:   if (title) {
 // TODO:     if (title.length > maxCharacters + 5) {
@@ -139,20 +172,6 @@
 // TODO:   }
 // TODO:   return description;
 // TODO: }
-// TODO:
-// TODO: ResultList.propTypes = {
-// TODO:   dispatch:             PropTypes.func.isRequired,
-// TODO:   waiting:              PropTypes.bool.isRequired,
-// TODO:   entries:              PropTypes.array.isRequired,
-// TODO:   ratings:              PropTypes.object.isRequired,
-// TODO:   highlight:            PropTypes.array.isRequired,
-// TODO:   moreEntriesAvailable: PropTypes.bool.isRequired,
-// TODO:   onMoreEntriesClick:   PropTypes.func.isRequired,
-// TODO:   t:                    PropTypes.func.isRequired,
-// TODO:   onClick:              PropTypes.func
-// TODO: }
-// TODO:
-// TODO: module.exports = translate("translation")(ResultList)
 // TODO:
 // TODO: const OuterWrapper = styled.div`
 // TODO:   display: flex;
@@ -331,35 +350,4 @@
 // TODO:
 // TODO: const FlowerWrapper = styled.div `
 // TODO:   margin: 22px 10px 0 10px;
-// TODO: `
-// TODO:
-// TODO: const Wrapper = styled.div `
-// TODO:   box-sizing: border-box;
-// TODO:
-// TODO:   .result-list {
-// TODO:     p {
-// TODO:       &.no-results {
-// TODO:         margin: 0;
-// TODO:         padding: 1em;
-// TODO:         font-size: 0.9em;
-// TODO:         span {
-// TODO:           margin-left: 0.5em;
-// TODO:         }
-// TODO:       }
-// TODO:       &.loading {
-// TODO:         margin: 20px 0 0 0;
-// TODO:         padding: 1em;
-// TODO:         font-size: 0.9em;
-// TODO:         span {
-// TODO:           margin-left: 0.5em;
-// TODO:         }
-// TODO:       }
-// TODO:     }
-// TODO:     ul {
-// TODO:       list-style: none;
-// TODO:       margin: 0;
-// TODO:       padding: 0;
-// TODO:
-// TODO:     }
-// TODO:   }
 // TODO: `
