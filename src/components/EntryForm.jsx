@@ -3,13 +3,13 @@ import { connect }          from 'react-redux'
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
          
-import 'react-day-picker/lib/style.css';
+import 'react-datepicker/dist/react-datepicker.min.css';
 
 import Actions              from "../Actions";
 import validation           from "../util/validation";
@@ -23,11 +23,13 @@ import ScrollableDiv        from "./pure/ScrollableDiv";
 import NavButtonWrapper     from "./pure/NavButtonWrapper";
 
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
-  <DayPickerInput
+  <DatePicker
     {...props}
-    value={ input.value ? convertToDateForPicker(input.value) : '' }
+    selected={ input.value ? convertToDateForPicker(input.value) : '' }
+    showTimeSelect
+    timeFormat="HH:mm"
     inputProps={{ ...input, readOnly: true }}
-    onDayChange={(day) => input.onChange(day)}
+    onChange={(day) => input.onChange(day)}
     dayPickerProps={{
       disabledDays : {
         before: new window.Date(), after: endDate ? endDate : (initEndDate ? initEndDate : '')
@@ -38,11 +40,13 @@ const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
 
 const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => {
   return (
-    <DayPickerInput
+    <DatePicker
       {...props}
-      value={input.value ? convertToDateForPicker(input.value) : ''}
+      selected={input.value ? convertToDateForPicker(input.value) : ''}
+      showTimeSelect
+      timeFormat="HH:mm"
       inputProps={{ ...input, readOnly: true }}
-      onDayChange={(day) => input.onChange(day)}
+      onChange={(day) => input.onChange(day)}
       dayPickerProps={{
         disabledDays: {
           before: startDate ? startDate : (initStartDate ? initStartDate : new window.Date())
