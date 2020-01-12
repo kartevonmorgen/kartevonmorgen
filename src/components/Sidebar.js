@@ -26,7 +26,7 @@ import ScrollableDiv        from "./pure/ScrollableDiv";
 const converDateToTimestamp = (date) => { 
 	var result = new window.Date(date).getTime();
 	if (result > 99999999999) {
-		result = Math.trunc(result / 1000)
+		result = Math.trunc(result / 1000) - (new window.Date().getTimezoneOffset() * 60)
 	}
 	return result;
 }

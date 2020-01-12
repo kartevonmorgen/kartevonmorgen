@@ -25,7 +25,7 @@ import NavButtonWrapper     from "./pure/NavButtonWrapper";
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
     {...props}
-    selected={ input.value ? input.value > 99999999999 ? input.value : (input.value * 1000) : '' }
+    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000 ) : '' }
     showTimeSelect
     timeFormat="HH:mm"
     dateFormat="dd.MM.yyyy HH:mm"
@@ -39,7 +39,7 @@ const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => 
   return (
     <DatePicker
       {...props}
-      selected={input.value ? input.value > 99999999999 ? input.value : (input.value * 1000) : ''}
+      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000) : ''}
       showTimeSelect
       timeFormat="HH:mm"
       dateFormat="dd.MM.yyyy HH:mm"
