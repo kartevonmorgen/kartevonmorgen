@@ -23,7 +23,13 @@ import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 import ScrollableDiv        from "./pure/ScrollableDiv";
 
-const converDateToTimestamp = (date) => new window.Date(date).getTime();
+const converDateToTimestamp = (date) => { 
+	var result = new window.Date(date).getTime();
+	if (result > 99999999999) {
+		result = Math.trunc(result / 1000)
+	}
+	return result;
+}
 
 class Sidebar extends Component {
 
@@ -169,14 +175,12 @@ class Sidebar extends Component {
           <EntryForm
             isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null }
             isEvent={ isEventForEdit }
-            formStartEndDate={ { startDate: entry ? entry.start : null, endDate: entry ? entry.end : null } }
+            formStartEndDate={ { startDate: entry ? (entry.start * 1000) : null, endDate: entry ? (entry.end * 1000) : null } }
             license={ entries[search.current] ? entries[search.current].license : null }
             dispatch={ dispatch }
             onSubmit={ data => {
-              return dispatch(Actions.saveEntry(
-                form[EDIT.id] ? {
-                  id: form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null,
-                  title: data.title,
+            	var dataToSend = { 
+				  title: data.title,
                   description: data.description,
                   tags: data.tags ? data.tags.split(',') : null,
                   homepage: data.homepage,
@@ -191,28 +195,13 @@ class Sidebar extends Component {
                   categories: [data.category],
                   image_url: data.image_url,
                   image_link_url: data.image_link_url,
-                  end: data.end && converDateToTimestamp(data.end) / (converDateToTimestamp(data.end) > 99999999999 ? 1000 : 1),
-                  start: data.start && converDateToTimestamp(data.start) / (converDateToTimestamp(data.start) > 99999999999 ? 1000 : 1),
-                } : {
-                  title: data.title,
-                  description: data.description,
-                  tags: data.tags ? data.tags.split(',') : null,
-                  homepage: data.homepage,
-                  telephone: data.telephone,
-                  lat: Number(data.lat),
-                  lng: Number(data.lng),
-                  street: data.street,
-                  city: data.city,
-                  email: data.email,
-                  zip: data.zip,
-                  version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
-                  categories: [data.category],
-                  image_url: data.image_url,
-                  image_link_url: data.image_link_url,
-                  end: data.end && converDateToTimestamp(data.end)/1000,
-                  start: data.start && converDateToTimestamp(data.start)/1000,
-                }
-              ));
+                  end: data.end && converDateToTimestamp(data.end),
+                  start: data.start && converDateToTimestamp(data.start)
+				};
+				if (form[EDIT.id]) {
+					dataToSend.id = form[EDIT.id].kvm_flag_id;
+				}
+              return dispatch(Actions.saveEntry(dataToSend));
             }}
           />
         );
