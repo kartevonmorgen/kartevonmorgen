@@ -25,16 +25,13 @@ import NavButtonWrapper     from "./pure/NavButtonWrapper";
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
     {...props}
-    selected={ input.value ? convertToDateForPicker(input.value) : '' }
+    selected={ input.value ? input.value > 99999999999 ? input.value : (input.value * 1000) : '' }
     showTimeSelect
     timeFormat="HH:mm"
-    inputProps={{ ...input, readOnly: true }}
+    dateFormat="dd.MM.yyyy HH:mm"
     onChange={(day) => input.onChange(day)}
-    dayPickerProps={{
-      disabledDays : {
-        before: new window.Date(), after: endDate ? endDate : (initEndDate ? initEndDate : '')
-      },
-      showOverlay: false }}
+    minDate={new window.Date()}
+    maxDate={endDate ? endDate : (initEndDate ? initEndDate : '')}
   />
 );
 
@@ -42,16 +39,13 @@ const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => 
   return (
     <DatePicker
       {...props}
-      selected={input.value ? convertToDateForPicker(input.value) : ''}
+      selected={input.value ? input.value > 99999999999 ? input.value : (input.value * 1000) : ''}
       showTimeSelect
       timeFormat="HH:mm"
-      inputProps={{ ...input, readOnly: true }}
+      dateFormat="dd.MM.yyyy HH:mm"
       onChange={(day) => input.onChange(day)}
-      dayPickerProps={{
-        disabledDays: {
-          before: startDate ? startDate : (initStartDate ? initStartDate : new window.Date())
-        },
-        showOverlay: false }}
+      minDate={startDate ? startDate : (initStartDate ? initStartDate : new window.Date())}
+      popperPlacement="bottom-end"
     />
   );
 };
@@ -74,6 +68,8 @@ class Form extends Component {
   };
 
   handleFromChange = (from) => {
+  	console.log('new from date:' + from);
+  	console.log(from);
     this.setState({ startDate: from });
   };
 
@@ -144,6 +140,7 @@ class Form extends Component {
                         name="start"
                         component={ renderDatePickerStart }
                         placeholder="Start date"
+                        className="pure-input-1"
                         initEndDate={ initEndDate }
                         endDate={ endDate }
                         onChange={ this.handleFromChange }
@@ -159,6 +156,7 @@ class Form extends Component {
                       <FieldElement
                         name="end"
                         component={ renderDatePickerEnd }
+                        className="pure-input-1"
                         initStartDate={ initStartDate }
                         startDate={ startDate }
                         placeholder="End date"
