@@ -51,7 +51,7 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-  searchEvents: (text, bbox, start, end, cb) => {
+  searchEvents: (txt, bbox, start, end, cb) => {
     if (bbox == null) {
       bbox = [];
     }
@@ -62,7 +62,7 @@ module.exports = {
       .use(prefix)
       .set('Accept', 'application/json');
     if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
-    if(text && text.length > 0) req.query('text=' + text)
+    if(txt && txt.length > 0) req.query({text: txt.trim()})
     if(start) req.query(start ? ('start_min=' + start) : "")
     if(end) req.query(end ? ('start_max=' + end) : "")
 
