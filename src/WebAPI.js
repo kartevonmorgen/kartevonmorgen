@@ -51,11 +51,7 @@ module.exports = {
       .end(jsonCallback(cb));
   },
 
-<<<<<<< HEAD
   searchEvents: (text, bbox, start, end, cb) => {
-=======
-  searchEvents: (tags, bbox, start, end, cb) => {
->>>>>>> refs/remotes/origin/master
     if (bbox == null) {
       bbox = [];
     }

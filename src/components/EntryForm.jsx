@@ -3,14 +3,10 @@ import { connect }          from 'react-redux'
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
-import DayPickerInput from 'react-day-picker/DayPickerInput';
 import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
-         initialize, formValueSelector,  }       from "redux-form";
-         
-import 'react-day-picker/lib/style.css';
          initialize, formValueSelector,  }       from "redux-form";
          
 import 'react-datepicker/dist/react-datepicker.min.css';
@@ -25,41 +21,6 @@ import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
 import ScrollableDiv        from "./pure/ScrollableDiv";
 import NavButtonWrapper     from "./pure/NavButtonWrapper";
-
-const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
-  <DayPickerInput
-    {...props}
-    value={ input.value ? convertToDateForPicker(input.value) : '' }
-    inputProps={{ ...input, readOnly: true }}
-    onDayChange={(day) => input.onChange(day)}
-    dayPickerProps={{
-      disabledDays : {
-        before: new window.Date(), after: endDate ? endDate : (initEndDate ? initEndDate : '')
-      },
-      showOverlay: false }}
-  />
-);
-
-const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => {
-  return (
-    <DayPickerInput
-      {...props}
-      value={input.value ? convertToDateForPicker(input.value) : ''}
-      inputProps={{ ...input, readOnly: true }}
-      onDayChange={(day) => input.onChange(day)}
-      dayPickerProps={{
-        disabledDays: {
-          before: startDate ? startDate : (initStartDate ? initStartDate : new window.Date())
-        },
-        showOverlay: false }}
-    />
-  );
-};
-
-function convertToDateForPicker(date) {
-  const d = new window.Date(date);
-  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-}
 
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
@@ -107,16 +68,13 @@ class Form extends Component {
   };
 
   handleFromChange = (from) => {
+  	console.log('new from date:' + from);
+  	console.log(from);
     this.setState({ startDate: from });
   };
 
   handleToChange = (to) => {
     this.setState({ endDate: to });
-  };
-  state = {
-    isEventEntry: false,
-    startDate: '',
-    endDate: '',
   };
 
   render() {
@@ -172,46 +130,6 @@ class Form extends Component {
                 <FieldElement
                   name="title"
                   component={errorMessage} />
-
-                {(isEventEntry || isEvent ) && (
-
-                  <RangeDates>
-
-                    <Date>
-                      <FieldElement
-                        name="start"
-                        component={ renderDatePickerStart }
-                        placeholder="Start date"
-                        initEndDate={ initEndDate }
-                        endDate={ endDate }
-                        onChange={ this.handleFromChange }
-                      />
-
-                      <FieldElement
-                        name="start"
-                        component={errorMessage}
-                      />
-                    </Date>
-
-                    <Date>
-                      <FieldElement
-                        name="end"
-                        component={ renderDatePickerEnd }
-                        initStartDate={ initStartDate }
-                        startDate={ startDate }
-                        placeholder="End date"
-                        onChange={ this.handleToChange }
-                      />
-
-                      <FieldElement
-                        name="end"
-                        component={errorMessage}
-                      />
-                    </Date>
-
-                  </RangeDates>
-
-                )}
 
                 {(isEventEntry || isEvent ) && (
 
