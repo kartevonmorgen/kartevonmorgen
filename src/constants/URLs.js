@@ -34,12 +34,12 @@ module.exports = {
     link: "https://kartevonmorgen.org"
   },
   PROTOTYPE: {
-    name: "prototyp.kartevonmorgen.org",
-    link: "https://prototyp.kartevonmorgen.org"
+    name: "mobile.kartevonmorgen.org",
+    link: "https://mobile.kartevonmorgen.org"
   },
   REPOSITORY: {
-    name: "github.com/flosse/kartevonmorgen",
-    link: "https://github.com/flosse/kartevonmorgen"
+    name: "github.com/kartevonmorgen/",
+    link: "https://github.com/kartevonmorgen/"
   },
   FACEBOOK: {
     name: "facebook.com/vonmorgen",

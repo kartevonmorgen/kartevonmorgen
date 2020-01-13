@@ -25,6 +25,14 @@ import ScrollableDiv        from "./pure/ScrollableDiv";
 
 const converDateToTimestamp = (date) => new window.Date(date).getTime();
 
+const converDateToTimestamp = (date) => { 
+    var result = new window.Date(date).getTime();
+    if (result > 99999999999) {
+        result = Math.trunc(result / 1000) - (new window.Date().getTimezoneOffset() * 60)
+    }
+    return result;
+}
+
 class Sidebar extends Component {
 
   entryContent = null;
@@ -35,10 +43,14 @@ class Sidebar extends Component {
     if( nextProps.view.left !== this.props.view.left ) return true
     if( nextProps.view.left === this.props.view.left === V.ENTRY && nextProps.search.highlight === this.props.search.highlight ) return false
     // if( nextProps.view.left === V.RESULT
-    //     && Object.keys(nextProps.search.entryResults).join() === Object.keys(this.props.search.entryResults).join()
-    //     && Object.keys(nextProps.search.invisible).join() === Object.keys(this.props.search.invisible).join()
-    //     && Object.keys(nextProps.search.eventResults).join() === Object.keys(this.props.search.eventResults).join()
-    //     && Object.keys(nextProps.search.eventsWithoutPlace).join() === Object.keys(this.props.search.eventsWithoutPlace).join()
+    // && Object.keys(nextProps.search.entryResults).join() ===
+    // Object.keys(this.props.search.entryResults).join()
+    // && Object.keys(nextProps.search.invisible).join() ===
+    // Object.keys(this.props.search.invisible).join()
+    // && Object.keys(nextProps.search.eventResults).join() ===
+    // Object.keys(this.props.search.eventResults).join()
+    // && Object.keys(nextProps.search.eventsWithoutPlace).join() ===
+    // Object.keys(this.props.search.eventsWithoutPlace).join()
     // ) return false
     return true
   }
@@ -211,8 +223,20 @@ class Sidebar extends Component {
                   image_link_url: data.image_link_url,
                   end: data.end && converDateToTimestamp(data.end)/1000,
                   start: data.start && converDateToTimestamp(data.start)/1000,
+                  image_link_url: data.image_link_url,
+                  end: data.end && converDateToTimestamp(data.end),
+                  start: data.start && converDateToTimestamp(data.start)
+                };
+                if (form[EDIT.id]) {
+                    dataToSend.id = form[EDIT.id].kvm_flag_id;
+                  image_link_url: data.image_link_url,
+                  end: data.end && converDateToTimestamp(data.end),
+                  start: data.start && converDateToTimestamp(data.start)
+                };
+                if (form[EDIT.id]) {
+                    dataToSend.id = form[EDIT.id].kvm_flag_id;
                 }
-              ));
+              return dispatch(Actions.saveEntry(dataToSend));
             }}
           />
         );

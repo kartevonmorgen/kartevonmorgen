@@ -122,12 +122,10 @@ class LandingPage extends Component {
 
           <p>
             {t("donate.paragraph3.text1")}
-            {" "}<a href="http://bildungsagenten.org/solidargemeinschaftvonmorgen">{t("donate.paragraph3.form-link")}</a>)
+            {" "}<a href="https://blog.vonmorgen.org/genossenschaft/">{t("donate.paragraph3.form-link")}</a>)
             {t("donate.paragraph3.text2")}
           </p>
-          <iframe src="https://app.box.com/embed/s/yae4jb2g0awtqkxj3cb98jyd4uld9hza"
-            width="800" height="550" frameBorder="0">
-          </iframe>
+    
           <p>
             {t("donate.paragraph3.text3")}
             {" "}<a target="_blank" href = {URLs.DONATE.link}>{URLs.DONATE.name}</a> <br/>

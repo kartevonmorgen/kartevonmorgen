@@ -32,11 +32,11 @@ module.exports = ({serverVersion}) =>
         <p>{t("text1.7")}</p>
     <img className="landing-img" src={team1}/><br /><br />
       <h3>{t("heading2")}</h3>
-        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/'>{t("text2.goalLink")}</a><br />
-        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/2/'>{t("text2.ratingsLink")}</a><br />
-        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/'>{t("text2.regionalpilotLink")}</a><br />
-        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/3/#Widget_zum_Einbetten'>{t("text2.embedMapLink")}</a><br />
-        <a target="_blank" href='http://bildungsagenten.org/kartevonmorgen/4/'>{t("text2.joinLink")}</a><br />
+        <a target="_blank" href='https://blog.vonmorgen.org/'>{t("text2.goalLink")}</a><br />
+        <a target="_blank" href='https://blog.vonmorgen.org/die-positivfaktoren/'>{t("text2.ratingsLink")}</a><br />
+        <a target="_blank" href='https://blog.vonmorgen.org/piloten/'>{t("text2.regionalpilotLink")}</a><br />
+        <a target="_blank" href='https://blog.vonmorgen.org/iframes'>{t("text2.embedMapLink")}</a><br />
+        <a target="_blank" href='https://blog.vonmorgen.org/regionalpilotin-werden/'>{t("text2.joinLink")}</a><br />
         <p>
         <br />
         <FontAwesomeIcon icon={['fab', 'facebook']} />&nbsp;
@@ -63,7 +63,7 @@ module.exports = ({serverVersion}) =>
         <h3>{t("heading4")}</h3>
             <p>
                 {t("text4")}<br />
-                <a target="_blank" href="http://bildungsagenten.org">www.bildungsagenten.org</a>
+                <a target="_blank" href="https://bildung.vonmorgen.org">www.bildung.vonmorgen.org</a>
             </p>
 
         <img className="landing-img" src={slider} />

@@ -4,12 +4,16 @@ import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
          
 import 'react-day-picker/lib/style.css';
+         initialize, formValueSelector,  }       from "redux-form";
+         
+import 'react-datepicker/dist/react-datepicker.min.css';
 
 import Actions              from "../Actions";
 import validation           from "../util/validation";
@@ -57,6 +61,39 @@ function convertToDateForPicker(date) {
   return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 }
 
+const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
+  <DatePicker
+    {...props}
+    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000 ) : '' }
+    showTimeSelect
+    timeFormat="HH:mm"
+    dateFormat="dd.MM.yyyy HH:mm"
+    onChange={(day) => input.onChange(day)}
+    minDate={new window.Date()}
+    maxDate={endDate ? endDate : (initEndDate ? initEndDate : '')}
+  />
+);
+
+const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => {
+  return (
+    <DatePicker
+      {...props}
+      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000) : ''}
+      showTimeSelect
+      timeFormat="HH:mm"
+      dateFormat="dd.MM.yyyy HH:mm"
+      onChange={(day) => input.onChange(day)}
+      minDate={startDate ? startDate : (initStartDate ? initStartDate : new window.Date())}
+      popperPlacement="bottom-end"
+    />
+  );
+};
+
+function convertToDateForPicker(date) {
+  const d = new window.Date(date);
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+}
+
 class Form extends Component {
   state = {
     isEventEntry: false,
@@ -75,6 +112,11 @@ class Form extends Component {
 
   handleToChange = (to) => {
     this.setState({ endDate: to });
+  };
+  state = {
+    isEventEntry: false,
+    startDate: '',
+    endDate: '',
   };
 
   render() {
@@ -155,6 +197,48 @@ class Form extends Component {
                       <FieldElement
                         name="end"
                         component={ renderDatePickerEnd }
+                        initStartDate={ initStartDate }
+                        startDate={ startDate }
+                        placeholder="End date"
+                        onChange={ this.handleToChange }
+                      />
+
+                      <FieldElement
+                        name="end"
+                        component={errorMessage}
+                      />
+                    </Date>
+
+                  </RangeDates>
+
+                )}
+
+                {(isEventEntry || isEvent ) && (
+
+                  <RangeDates>
+
+                    <Date>
+                      <FieldElement
+                        name="start"
+                        component={ renderDatePickerStart }
+                        placeholder="Start date"
+                        className="pure-input-1"
+                        initEndDate={ initEndDate }
+                        endDate={ endDate }
+                        onChange={ this.handleFromChange }
+                      />
+
+                      <FieldElement
+                        name="start"
+                        component={errorMessage}
+                      />
+                    </Date>
+
+                    <Date>
+                      <FieldElement
+                        name="end"
+                        component={ renderDatePickerEnd }
+                        className="pure-input-1"
                         initStartDate={ initStartDate }
                         startDate={ startDate }
                         placeholder="End date"
