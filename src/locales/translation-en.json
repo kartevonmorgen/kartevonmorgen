@@ -173,6 +173,9 @@
     "maxNumCharactersComment": "out of max. 500 characters",
     "minNumCharactersComment": "characters, min: 10"
   },
+  "commentForm": {
+    "newCommentFor": "New comment for"
+  },
   "subscribeToBbox": {
     "changeSubscription": {
       "heading": "Your subscription",

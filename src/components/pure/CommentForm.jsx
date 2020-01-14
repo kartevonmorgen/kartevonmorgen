@@ -10,46 +10,6 @@ import STYLE                            from "../styling/Variables";
 import ScrollableDiv                    from "./ScrollableDiv";
 import NavButtonWrapper                 from "./NavButtonWrapper";
 
-const errorMessage = ({meta}) =>
-  meta.error && meta.touched
-    ? <div className="err">{meta.error}</div>
-    : null
-
-const IntroText = styled.div`
-  margin-bottom: 10px;
-  color: ${STYLE.darkGray};
-`
-
-const Aspect = styled.div`
-  margin: 10px 0;
-`
-
-const AspectLabel = styled.label`
-  font-weight: bold;
-`
-
-const AspectExplanation = styled.div`
-  margin-top: 5px;
-  color: ${STYLE.darkGray};
-`
-
-const Form = styled.form`
-  margin: 1.8em;
-`
-
-const CommentFormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
-
-const StyledScrollableDiv = styled(ScrollableDiv)`
-  flex-grow: 1;
-`
-
-const StyledNavButtonWrapper = styled(NavButtonWrapper)`
-  height: 68px;
-`
 
 const CommentForm = props => {
 
@@ -70,13 +30,7 @@ const CommentForm = props => {
           className = "new-rating-form"
           action    = 'javascript:void();' >
 
-          <h3>{ t("ratingForm.newRatingFor") + " " + entryTitle}</h3>
-          <IntroText>
-            { t("ratingForm.introText") + " "}
-            <a href="http://bildungsagenten.org/kartevonmorgen/2/">
-            { t("ratingForm.moreInfoLink") }
-            </a>
-          </IntroText>
+          <h3>{ t("commentForm.newCommentFor") + " " + entryTitle}</h3>
           { props.error &&
             <div className= "err">
               {t("ratingForm.savingError") + ":" + props.error.message}
@@ -87,69 +41,8 @@ const CommentForm = props => {
               <Field name="license" component={errorMessage} />
             </div>
           }
-          <div>
-            {t("ratingForm.chooseContext") + ": "}
-          </div>
+          <hr />
           <div className= "pure-form">
-            <fieldset>
-              <Aspect>
-                <Aspect>
-                  <AspectLabel>
-                    <Field name="context" className="radio-button" component="input" type="radio" value="diversity" />
-                    {" " + t("ratings.contextName.diversity")}
-                  </AspectLabel>
-                  <AspectExplanation>
-                    { t("ratings.contextExplanation.diversity") }
-                  </AspectExplanation>
-                </Aspect>
-              </Aspect>
-              <Aspect>
-                <AspectLabel>
-                  <Field name="context" className="radio-button" component="input" type="radio" value="renewable" />
-                  {" " + t("ratings.contextName.renewable")}
-                </AspectLabel>
-                <AspectExplanation>
-                  { t("ratings.contextExplanation.renewable") }
-                </AspectExplanation>
-              </Aspect>
-              <Aspect>
-                <AspectLabel>
-                  <Field name="context" className="radio-button" component="input" type="radio" value="fairness" />
-                  {" " + t("ratings.contextName.fairness")}
-                </AspectLabel>
-                <AspectExplanation>
-                  { t("ratings.contextExplanation.fairness") }
-                </AspectExplanation>
-              </Aspect>
-              <Aspect>
-                <AspectLabel>
-                  <Field name="context" className="radio-button" component="input" type="radio" value="humanity" />
-                  {" " + t("ratings.contextName.humanity")}
-                </AspectLabel>
-                <AspectExplanation>
-                  { t("ratings.contextExplanation.humanity") }
-                </AspectExplanation>
-              </Aspect>
-              <Aspect>
-                <AspectLabel>
-                  <Field name="context" className="radio-button" component="input" type="radio" value="solidarity" />
-                  {" " + t("ratings.contextName.solidarity")}
-                </AspectLabel>
-                <AspectExplanation>
-                  { t("ratings.contextExplanation.solidarity") }
-                </AspectExplanation>
-              </Aspect>
-              <Aspect>
-                <AspectLabel>
-                  <Field name="context" className="radio-button" component="input" type="radio" value="transparency" />
-                  {" " + t("ratings.contextName.transparency")}
-                </AspectLabel>
-                <AspectExplanation>
-                  { t("ratings.contextExplanation.transparency") }
-                </AspectExplanation>
-              </Aspect>
-              <Field name="context" component={errorMessage} />
-            </fieldset>
             <fieldset>
               <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.title")} />
               <Field name="title" component={errorMessage} />
@@ -204,6 +97,44 @@ const CommentForm = props => {
       </StyledNavButtonWrapper>
     </CommentFormWrapper>)
 }
+
+
+const errorMessage = ({meta}) =>
+  meta.error && meta.touched
+    ? <div className="err">{meta.error}</div>
+    : null
+
+const Aspect = styled.div`
+  margin: 10px 0;
+`
+
+const AspectLabel = styled.label`
+  font-weight: bold;
+`
+
+const AspectExplanation = styled.div`
+  margin-top: 5px;
+  color: ${STYLE.darkGray};
+`
+
+const Form = styled.form`
+  margin: 1.8em;
+`
+
+const CommentFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const StyledScrollableDiv = styled(ScrollableDiv)`
+  flex-grow: 1;
+`
+
+const StyledNavButtonWrapper = styled(NavButtonWrapper)`
+  height: 68px;
+`
+
 
 module.exports = reduxForm({
   validate  : validation.ratingForm,
