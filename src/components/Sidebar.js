@@ -12,6 +12,7 @@ import Ratings              from "./pure/Ratings"
 import EntryDetails         from "./pure/EntryDetails"
 import EntryForm            from "./EntryForm"
 import RatingForm           from "./pure/RatingForm"
+import CommentForm          from "./pure/CommentForm"
 import Message              from "./pure/Message"
 import SidebarFooter        from "./pure/SidebarFooter"
 import CityList             from "./pure/CityList"
@@ -236,6 +237,41 @@ class Sidebar extends Component {
                 comment: data.comment,
                 source: data.source
               }));
+            }}
+            onCancel={ () => {
+              dispatch(initialize(RATING.id, {}, RATING.fields));
+              dispatch(Actions.cancelRating());
+            }}
+            contextToExplain={ explainRatingContext }
+            selectedContext={ selectedContext }
+            changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
+          />
+        );
+        break;
+
+      case V.NEW_COMMENT:
+        const kvm_flag_comment_id = form[RATING.id] ? form[RATING.id].kvm_flag_comment_id : null;
+        var ref;
+        content = (
+          <CommentForm
+            ref={ 'rating' }
+            entryid={ kvm_flag_comment_id }
+            entryTitle={
+              form[RATING.id]
+                ? entries[form[RATING.id].kvm_flag_comment_id]
+                  ? entries[form[RATING.id].kvm_flag_comment_id].title
+                  : null
+                : null
+            }
+            onSubmit={ data => {
+              // return dispatch(Actions.createComment({
+              //   entry: form[RATING.id] ? form[RATING.id].kvm_flag_comment_id : null,
+              //   title: data.title,
+              //   context: data.context,
+              //   value: data.value,
+              //   comment: data.comment,
+              //   source: data.source
+              // }));
             }}
             onCancel={ () => {
               dispatch(initialize(RATING.id, {}, RATING.fields));
