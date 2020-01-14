@@ -173,6 +173,9 @@
     "maxNumCharactersComment": "statt max. 500 Zeichen",
     "minNumCharactersComment": "von mind. 10 Zeichen"
   },
+  "commentForm": {
+    "newCommentFor": "Neues Kommentar für"
+  },
   "subscribeToBbox": {
     "changeSubscription": {
       "heading": "Dein Abonnement",

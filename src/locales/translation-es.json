@@ -149,7 +149,7 @@
     }
   },
   "ratingForm": {
-    "newRatingFor": "Neue Bewertung für",
+    "newRatingFor": "Nueva valoración para",
     "introText": "Los factores positivos determinan la visibilidad de una entrada en el mapa de mañana. Cuanto mayor sea la proporción de aspectos positivos de una organización, mayor será el pin en los resultados de búsqueda.",
     "moreInfoLink": "más información",
     "savingError": "La clasificación no se ha podido guardar",
@@ -172,6 +172,9 @@
     "commentTooShort": "Demasiado poco texto",
     "maxNumCharactersComment": " máx. 500 caracteres",
     "minNumCharactersComment": "von Mínimo 10 caracteres"
+  },
+  "commentForm": {
+    "newCommentFor": "Nuevo comentario para"
   },
   "subscribeToBbox": {
     "changeSubscription": {
