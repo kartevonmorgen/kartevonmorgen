@@ -22,8 +22,12 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 wasm-bindgen = "0.2"
 web-sys = "0.3"
+uuid = { version = "*", default-featurs = false, features = ["v4", "wasm-bindgen"] }
 
 [patch.crates-io.ofdb-boundary]
+git = "https://github.com/kartevonmorgen/openfairdb"
+
+[patch.crates-io.ofdb-entities]
 git = "https://github.com/kartevonmorgen/openfairdb"
 
 [build-dependencies]
