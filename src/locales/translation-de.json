@@ -216,7 +216,7 @@
 		},
 		"subscribeToBbox" : {
 			"message" : "Du bist eingeloggt. Wenn du magst kannst du ",
-			"new-link" : "über Änderungen in deiner Stadt auf dem Laufenden bleiben",
+			"new-link" : "über Änderungen in deiner Region auf dem Laufenden bleiben",
 			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
 		},
 		"donate" : {
