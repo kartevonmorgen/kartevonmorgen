@@ -148,7 +148,7 @@ const SourceWrapper = styled.div`
 `
 
 const AdditionalCommentButtonWrapper = styled.div`
-  text-align: center;
+  text-align: right;
   height: 20px;
   margin: 0.42em 0;
   font-size: 0.8em;
