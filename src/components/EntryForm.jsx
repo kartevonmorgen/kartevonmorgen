@@ -8,7 +8,7 @@ import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
-         
+
 import 'react-datepicker/dist/react-datepicker.min.css';
 
 import Actions              from "../Actions";
@@ -116,7 +116,7 @@ class Form extends Component {
                   <option value={IDS.COMPANY}>{t("category." + NAMES[IDS.COMPANY])}</option>
                   <option disabled={ isEdit } value={IDS.EVENT}>{t("category." + NAMES[IDS.EVENT])}</option>
                 </FieldElement>
-                 
+
                 <FieldElement name="category" component={errorMessage} />
 
                 <FieldElement
@@ -180,7 +180,6 @@ class Form extends Component {
                   name="tags"
                   required={true}
                   className="pure-input-1"
-                  component="input"
                   placeholder={t("tags")}
                   component={SelectTags}
                 />
@@ -428,7 +427,7 @@ const OptionalFieldText = styled.div`
   color: #777;
   margin-bottom: 4px;
 `;
-  
+
 const FieldsetLegend = styled.legend`
   font-weight: 500 !important;
 `;
