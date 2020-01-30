@@ -29,8 +29,12 @@ const CommentForm = props => {
           action    = 'javascript:void();' >
 
           <h3>{ t("commentForm.newCommentFor") + " " + entryTitle }</h3>
-          <h4>{ t("ratings.contextName." + ratingContext) }</h4>
-          <hr />
+          <IntroText>
+            { t("ratingForm.introText") + " "}
+            <a href="http://bildungsagenten.org/kartevonmorgen/2/">
+            { t("ratingForm.moreInfoLink") }
+            </a>
+          </IntroText>
           { props.error &&
             <div className= "err">
               {t("ratingForm.savingError") + ":" + props.error.message}
@@ -41,6 +45,17 @@ const CommentForm = props => {
               <Field name="license" component={errorMessage} />
             </div>
           }
+          <div>
+            {t("commentForm.chooseContext") + ": "}
+          </div>
+          <Aspect>
+            <AspectLabel>
+              { t("ratings.contextName." + ratingContext) }
+            </AspectLabel>
+            <AspectExplanation>
+              { t("ratings.contextExplanation." + ratingContext) }
+            </AspectExplanation>
+          </Aspect>
           <div className= "pure-form">
             <fieldset>
               <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.title")} />
@@ -102,6 +117,11 @@ const errorMessage = ({meta}) =>
   meta.error && meta.touched
     ? <div className="err">{meta.error}</div>
     : null
+
+const IntroText = styled.div`
+  margin-bottom: 10px;
+  color: ${STYLE.darkGray};
+`
 
 const Aspect = styled.div`
   margin: 10px 0;
