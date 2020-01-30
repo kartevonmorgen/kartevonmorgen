@@ -255,17 +255,17 @@ class Sidebar extends Component {
         let payload = form.comment.kvm_flag_id;
         content = (
           <CommentForm
-            entryid={ payload.entryId }
+            entryId={ payload.entryId }
             entryTitle={ payload.entryTitle }
             onSubmit={ data => {
-              // return dispatch(Actions.createComment({
-              //   entry: form[RATING.id] ? form[RATING.id].kvm_flag_comment_id : null,
-              //   title: data.title,
-              //   context: data.context,
-              //   value: data.value,
-              //   comment: data.comment,
-              //   source: data.source
-              // }));
+              return dispatch(Actions.createRating({
+                entry: payload.entryId,
+                title: data.title,
+                context: payload.ratingContext,
+                value: data.value,
+                comment: data.comment,
+                source: data.source
+              }));
             }}
             onCancel={ () => {
               dispatch(initialize(RATING.id, {}, RATING.fields));

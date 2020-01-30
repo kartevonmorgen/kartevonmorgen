@@ -157,5 +157,5 @@ const StyledNavButtonWrapper = styled(NavButtonWrapper)`
 
 module.exports = reduxForm({
   validate  : validation.ratingForm,
-  form      : "rating"
+  form      : "comment"
 })(translate("translation")(CommentForm))
