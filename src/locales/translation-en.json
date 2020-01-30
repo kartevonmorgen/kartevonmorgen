@@ -174,7 +174,8 @@
     "minNumCharactersComment": "characters, min: 10"
   },
   "commentForm": {
-    "newCommentFor": "New comment for"
+    "newCommentFor": "New comment for",
+    "save": "comment"
   },
   "subscribeToBbox": {
     "changeSubscription": {

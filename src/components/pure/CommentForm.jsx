@@ -91,7 +91,7 @@ const CommentForm = props => {
             props.handleSubmit();
           }}
           icon = "save"
-          text = { t("ratingForm.save") }
+          text = { t("commentForm.save") }
         />
       </StyledNavButtonWrapper>
     </CommentFormWrapper>)
