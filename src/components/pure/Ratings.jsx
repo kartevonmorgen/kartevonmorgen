@@ -79,7 +79,11 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
           { g.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
 
           <AdditionalCommentButtonWrapper>
-            <AdditionalCommentButton onClick={() => { onComment(context) }}>
+            <AdditionalCommentButton onClick={() => { onComment({
+                entryId: entry.id,
+                entryTitle: entry.title,
+                ratingContext: context
+              }) }}>
               { t("newComment") }
             </AdditionalCommentButton>
           </AdditionalCommentButtonWrapper>

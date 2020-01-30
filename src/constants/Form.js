@@ -27,6 +27,15 @@ module.exports = {
     ]
   },
 
+  COMMENT: {
+    id: "comment",
+    fields: [
+      "context",
+      "value",
+      "comment"
+    ]
+  },
+
   LOGIN: {
     id: "login",
     fields: [

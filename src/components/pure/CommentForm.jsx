@@ -16,9 +16,7 @@ const CommentForm = props => {
   const {
     entryId,
     entryTitle,
-    contextToExplain,
-    changeContext,
-    selectedContext,
+    ratingContext,
     t,
     onCancel
   } = props;
@@ -30,7 +28,9 @@ const CommentForm = props => {
           className = "new-rating-form"
           action    = 'javascript:void();' >
 
-          <h3>{ t("commentForm.newCommentFor") + " " + entryTitle}</h3>
+          <h3>{ t("commentForm.newCommentFor") + " " + entryTitle }</h3>
+          <h4>{ t("ratings.contextName." + ratingContext) }</h4>
+          <hr />
           { props.error &&
             <div className= "err">
               {t("ratingForm.savingError") + ":" + props.error.message}
@@ -41,7 +41,6 @@ const CommentForm = props => {
               <Field name="license" component={errorMessage} />
             </div>
           }
-          <hr />
           <div className= "pure-form">
             <fieldset>
               <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.title")} />
