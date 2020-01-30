@@ -174,7 +174,8 @@
     "minNumCharactersComment": "von mind. 10 Zeichen"
   },
   "commentForm": {
-    "newCommentFor": "Neues Kommentar für"
+    "newCommentFor": "Neues Kommentar für",
+    "save": "vermerken"
   },
   "subscribeToBbox": {
     "changeSubscription": {
