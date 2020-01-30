@@ -214,7 +214,7 @@ class Sidebar extends Component {
         break;
 
       case V.NEW_RATING:
-        const kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
+        var kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
         var ref;
         content = (
           <RatingForm
@@ -249,19 +249,13 @@ class Sidebar extends Component {
         break;
 
       case V.NEW_COMMENT:
-        const kvm_flag_comment_id = form[RATING.id] ? form[RATING.id].kvm_flag_comment_id : null;
+        var kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
         var ref;
+        let payload = form.comment.kvm_flag_id;
         content = (
           <CommentForm
-            ref={ 'rating' }
-            entryid={ kvm_flag_comment_id }
-            entryTitle={
-              form[RATING.id]
-                ? entries[form[RATING.id].kvm_flag_comment_id]
-                  ? entries[form[RATING.id].kvm_flag_comment_id].title
-                  : null
-                : null
-            }
+            entryid={ payload.entryId }
+            entryTitle={ payload.entryTitle }
             onSubmit={ data => {
               // return dispatch(Actions.createComment({
               //   entry: form[RATING.id] ? form[RATING.id].kvm_flag_comment_id : null,
@@ -276,9 +270,7 @@ class Sidebar extends Component {
               dispatch(initialize(RATING.id, {}, RATING.fields));
               dispatch(Actions.cancelRating());
             }}
-            contextToExplain={ explainRatingContext }
-            selectedContext={ selectedContext }
-            changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
+            ratingContext={ payload.ratingContext }
           />
         );
         break;
