@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import Select, { Creatable }  from 'react-select';
+import { Creatable }  from 'react-select';
+import {connect} from 'react-redux'
 import request from "superagent/lib/client";
 import { translate } from "react-i18next";
-import normalize from "../util/normalize";
+
 import { OFDB_API }  from "../constants/URLs"
 
+import normalize from "../util/normalize";
+
 class SelectTags extends Component {
-  
+
   constructor(props) {
     super(props);
 
@@ -14,9 +17,9 @@ class SelectTags extends Component {
       allOptions: [],
       options: []
     };
-    
+
     //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select
-    
+
     request
       .get( OFDB_API.link +'/tags/')
       .accept('json')
@@ -31,7 +34,7 @@ class SelectTags extends Component {
               "value": response.body[i],
               "label": response.body[i]
             }
-          } 
+          }
           this.setState({
             allOptions: options
           })
@@ -47,14 +50,14 @@ class SelectTags extends Component {
     let res
     if(input.length < 2){
       res = []
-    } 
+    }
     else {
       let searchString = input.toLowerCase().trim();
       res = this.state.allOptions.filter(function(d) {
         return d.label.match( searchString );
       });
     }
-    
+
     res = res.slice(0, 30)
     this.setState({
       options: res
@@ -68,7 +71,7 @@ class SelectTags extends Component {
     if(!value) return null
     if( typeof value !== "string") return value
 
-    return value.split(',').map( val => {      
+    return value.split(',').map( val => {
       return {value: val, label: val }
     })
   }
@@ -85,7 +88,7 @@ class SelectTags extends Component {
     for (let i = 0; i < val.length; i++) {
       const normalized = normalize.tags(val[i].value)
       if ( normalized==false ) continue
-      
+
       const isNew = (i == (val.length -1) && event.action == "create-option")
       if (isNew ) if (currentTagsArray.indexOf(normalized) != -1 ) return false
 
@@ -123,4 +126,25 @@ class SelectTags extends Component {
 }
 
 
-module.exports = translate('translation')(SelectTags)
+const mapStateToProps = ({search}, ownProps) => {
+  const tokens = search.text.split(' ').filter(t => t.length)
+  const tags = tokens.filter(t => t.startsWith('#')).map(t => {
+    // remove all '#' signs from the beginning
+    while(t.charAt(0) === '#') {
+      t = t.substr(1)
+    }
+
+    return t
+  })
+    .filter(t => t.length)
+
+  return {
+    ...ownProps,
+    input: {
+      ...ownProps.input,
+      value: tags.join()
+    }
+  }
+}
+
+module.exports = translate('translation')(connect(mapStateToProps, null)(SelectTags))
