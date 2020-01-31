@@ -93,7 +93,7 @@
 	},
 	"register":{
 		"heading":"Sign up",
-		"genericError":"Error while signing up. This email-address seems to already be in use.",
+		"genericError":"Error while signing up. This email-address seems to be already in use.",
 		"email":"email-address",
 		"password1":"password",
 		"password2":"repeat password",

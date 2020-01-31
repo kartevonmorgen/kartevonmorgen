@@ -127,7 +127,7 @@
 		    "solidarity":"Solidarität"
 		},
 		"contextExplanation":{
-			"diversity": "Ökologische Vielfalt, Bio, wenige Zusatzstoffe etc.",
+		    "diversity": "Ökologische Vielfalt, Artgerechte Haltung, Bio, wenige Zusatzstoffe etc.",
 		    "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy etc.",
 		    "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
 		    "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
@@ -216,7 +216,7 @@
 		},
 		"subscribeToBbox" : {
 			"message" : "Du bist eingeloggt. Wenn du magst kannst du ",
-			"new-link" : "über Änderungen in deiner Stadt auf dem Laufenden bleiben",
+			"new-link" : "über Änderungen in deiner Region auf dem Laufenden bleiben",
 			"edit-link" : "deinen abonnierten Kartenausschnitt ändern oder abbestellen"
 		},
 		"donate" : {
