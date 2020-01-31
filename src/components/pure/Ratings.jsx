@@ -244,6 +244,12 @@ const RatingListForContext = styled.ul`
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+
+  & li:not(:first-child) {
+    border-left: solid 0.3em #d8d8d8;
+    padding-left: 1.1em;
+    margin-left: 1.1em;
+  }
 `
 
 const RatingContextHeading = styled.h5`
