@@ -225,11 +225,3 @@ const LeafWrapper = styled.div`
   top: -3px;
   padding: 0 !important;
 `
-
-const Link = styled.a`
-  color: ${STYLE.darkGray};
-  &:hover {
-    text-decoration: none;
-    color: #000;
-  }
-`
