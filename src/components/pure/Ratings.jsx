@@ -84,7 +84,8 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
             <AdditionalCommentButton onClick={() => { onComment({
                 entryId: entry.id,
                 entryTitle: entry.title,
-                ratingContext: context
+                ratingContext: context,
+                ratingList: g
               }) }}>
               { t("newComment") }
             </AdditionalCommentButton>
