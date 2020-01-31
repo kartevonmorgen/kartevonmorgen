@@ -27,7 +27,7 @@ const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
     {...props}
     locale={en_GB}
-    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000 ) : '' }
+    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000 ) : '' }
     showTimeSelect
     timeFormat="HH:mm"
     dateFormat="dd.MM.yyyy HH:mm"
@@ -42,7 +42,7 @@ const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => 
     <DatePicker
       {...props}
       locale={en_GB}
-      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000) : ''}
+      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000) : ''}
       showTimeSelect
       timeFormat="HH:mm"
       dateFormat="dd.MM.yyyy HH:mm"
