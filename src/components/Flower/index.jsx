@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Leaf from "./FlowerLeaf"
-import { rating_groups } from "../../rating"
+import { rating_groups } from "../../rating_groups"
 import Tooltip from "react-tooltip"
 import T from "prop-types"
 import styled     from "styled-components"
