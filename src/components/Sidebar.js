@@ -23,10 +23,11 @@ import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 import ScrollableDiv        from "./pure/ScrollableDiv";
 
-const converDateToTimestamp = (date) => { 
-    var result = new window.Date(date).getTime();
+const converDateToTimestamp = (date) => {
+    var dateObj = new window.Date(date);
+    var result = dateObj.getTime();
     if (result > 99999999999) {
-        result = Math.trunc(result / 1000) - (new window.Date().getTimezoneOffset() * 60)
+        result = Math.trunc(result / 1000) - (dateObj.getTimezoneOffset() * 60)
     }
     return result;
 }
