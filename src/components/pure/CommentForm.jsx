@@ -55,7 +55,7 @@ const CommentForm = props => {
               { t("ratings.contextName." + ratingContext) }
             </AspectLabel>
             <RatingListForContext>
-              { ratingList.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
+              { ratingList.map(r => <li key={r.id}>{Rating(r, t, true)}</li>) }
             </RatingListForContext>
           </Aspect>
           <div className= "pure-form">

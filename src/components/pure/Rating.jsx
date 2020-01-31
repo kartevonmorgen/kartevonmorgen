@@ -13,7 +13,8 @@ const rating_value_key = (value) => {
   }
 }
 
-const Rating = (rating, t) => {
+
+const Rating = (rating, t, hideSource = false) => {
 
   const source = rating.source ? rating.source : ''
   const match = source.match(/(?:(?:https?|ftp):\/\/)?[a-z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF/\-?=%.]+\.[\w/\-?=%#&_.]+[\w?&%/#]+/i)
@@ -33,7 +34,9 @@ const Rating = (rating, t) => {
       <RatingCommentList>
         {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
       </RatingCommentList>
-      <SourceWrapper>{ sourceSpan() }</SourceWrapper>
+      { hideSource ? '' :
+        <SourceWrapper>{ sourceSpan() }</SourceWrapper>
+      }
     </RatingWrapper>
   )
 }
