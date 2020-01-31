@@ -1,6 +1,7 @@
 import React      from "react";
-import styled     from "styled-components";
 import i18n       from "../../i18n";
+import styled     from "styled-components";
+import STYLE      from "../styling/Variables";
 
 
 const rating_value_key = (value) => {
@@ -71,6 +72,14 @@ const RatingTitleWrapper = styled.div`
 const SourceWrapper = styled.div`
   color: #AAA;
   text-align: right;
+`
+
+const Link = styled.a`
+  color: ${STYLE.darkGray};
+  &:hover {
+    text-decoration: none;
+    color: #000;
+  }
 `
 
 module.exports = Rating;
