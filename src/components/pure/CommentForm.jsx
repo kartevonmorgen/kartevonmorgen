@@ -3,6 +3,7 @@ import { reduxForm, Field }             from "redux-form";
 import styled                           from "styled-components";
 import { translate }                    from "react-i18next";
 
+import Rating                           from "./Rating";
 import { RATING }                       from "../../constants/Form";
 import validation                       from "../../util/validation";
 import NavButton                        from "./NavButton";
@@ -17,6 +18,7 @@ const CommentForm = props => {
     entryId,
     entryTitle,
     ratingContext,
+    ratingList,
     t,
     onCancel
   } = props;
@@ -52,9 +54,9 @@ const CommentForm = props => {
             <AspectLabel>
               { t("ratings.contextName." + ratingContext) }
             </AspectLabel>
-            <AspectExplanation>
-              { t("ratings.contextExplanation." + ratingContext) }
-            </AspectExplanation>
+            <RatingListForContext>
+              { ratingList.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
+            </RatingListForContext>
           </Aspect>
           <div className= "pure-form">
             <fieldset>
@@ -131,9 +133,12 @@ const AspectLabel = styled.label`
   font-weight: bold;
 `
 
-const AspectExplanation = styled.div`
-  margin-top: 5px;
-  color: ${STYLE.darkGray};
+const RatingListForContext = styled.ul`
+  margin-left: 0.5em;
+  margin-top: 0.6em;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
 `
 
 const Form = styled.form`

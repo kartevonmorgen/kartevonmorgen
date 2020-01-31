@@ -272,6 +272,7 @@ class Sidebar extends Component {
               dispatch(Actions.cancelRating());
             }}
             ratingContext={ payload.ratingContext }
+            ratingList={ payload.ratingList }
           />
         );
         break;
