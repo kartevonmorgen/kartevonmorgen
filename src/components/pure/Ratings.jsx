@@ -5,6 +5,8 @@ import FlowerLeaf from "../Flower/FlowerLeaf";
 import Rating     from "./Rating";
 import i18n       from "../../i18n";
 import STYLE      from "../styling/Variables";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment } from '@fortawesome/free-regular-svg-icons'
 
 const context_order = (id) => {
   switch(id) {
@@ -80,16 +82,17 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
         <RatingListForContext>
           { g.map(r => <li key={r.id}>{Rating(r, t_r)}</li>) }
 
-          <AdditionalCommentButtonWrapper>
-            <AdditionalCommentButton onClick={() => { onComment({
+          <AdditionalCommentLink onClick={() => { onComment({
                 entryId: entry.id,
                 entryTitle: entry.title,
                 ratingContext: context,
                 ratingList: g
               }) }}>
-              { t("newComment") }
-            </AdditionalCommentButton>
-          </AdditionalCommentButtonWrapper>
+              <FontAwesomeIcon icon={faComment} />&nbsp;
+              <span>
+                { t("newComment") }
+              </span>
+          </AdditionalCommentLink>
 
         </RatingListForContext>
       </RatingContextWrapper>)
@@ -131,15 +134,18 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
 }
 
 
-const AdditionalCommentButtonWrapper = styled.div`
-  text-align: right;
+const AdditionalCommentLink = styled.a`
+  float: right;
   height: 20px;
   margin: 0.42em 0;
   font-size: 0.8em;
-`
-
-const AdditionalCommentButton = styled.button`
-  float: none;
+  cursor: pointer;
+  &:hover {
+    color: #000;
+  }
+  &:hover span {
+    text-decoration: underline;
+  }
 `
 
 module.exports = Ratings;
