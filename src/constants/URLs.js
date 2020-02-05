@@ -11,6 +11,9 @@ const OFDB_API_LINK = (() => {
     case APP_STAGES.LOCAL:
       return "https://api.ofdb.io/";
 
+    case APP_STAGES.BETA:
+      return "https://api.ofdb.io/";
+
     case APP_STAGES.NIGHTLY:
       return "https://nightly.ofdb.io/";
 
