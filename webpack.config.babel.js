@@ -101,6 +101,23 @@ let htmlPluginOptions = {
   pack_for_nightly : (process.env.NODE_ENV === APP_STAGES.NIGHTLY)
 };
 
+const serverStage = (processStage, stage) => {
+    htmlPluginOptions.minify = {
+      removeComments        : true,
+      collapseWhitespace    : true,
+      conservativeCollapse  : false,
+      minifyJS              : true,
+      minifyCSS             : true,
+    };
+
+    // Enable React optimizations.
+    plugins.push(new webpack.DefinePlugin({
+      'process.env.STAGE'     : JSON.stringify(processStage),
+      __DEVTOOLS__  : false,
+      __STAGE__     : JSON.stringify(stage)
+    }));
+}
+
 switch (process.env.NODE_ENV) {
   case APP_STAGES.LOCAL:
     plugins.push(new webpack.DefinePlugin({
@@ -111,38 +128,15 @@ switch (process.env.NODE_ENV) {
    break;
 
   case APP_STAGES.NIGHTLY:
-    htmlPluginOptions.minify = {
-      removeComments        : true,
-      collapseWhitespace    : true,
-      conservativeCollapse  : false,
-      minifyJS              : true,
-      minifyCSS             : true,
-    };
-
-    // Enable React optimizations.
-    plugins.push(new webpack.DefinePlugin({
-      'process.env.STAGE'     : JSON.stringify('nightly'),
-      __DEVTOOLS__  : false,
-      __STAGE__     : JSON.stringify(APP_STAGES.NIGHTLY)
-    }));
+    serverStage('nightly', APP_STAGES.NIGHTLY);
     break;
 
-  default:
-    // production
-    htmlPluginOptions.minify = {
-      removeComments        : true,
-      collapseWhitespace    : true,
-      conservativeCollapse  : false,
-      minifyJS              : true,
-      minifyCSS             : true,
-    };
+  case APP_STAGES.BETA:
+    serverStage('beta', APP_STAGES.BETA);
+    break;
 
-    // Enable React optimizations.
-    plugins.push(new webpack.DefinePlugin({
-      'process.env.STAGE'     : JSON.stringify('production'),
-      __DEVTOOLS__  : false,
-      __STAGE__     : JSON.stringify(APP_STAGES.PRODUCTION)
-    }));
+  default: // production
+    serverStage('production', APP_STAGES.PRODUCTION);
 }
 
 plugins.push(new HTMLPlugin({
