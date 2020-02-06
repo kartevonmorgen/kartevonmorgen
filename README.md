@@ -79,6 +79,18 @@ OFDB_API: {
 Don't forget to skip those changes later when comitting or revert them before
 starting a local server instance as described next!
 
+
+#### Remote OpenFairDB server with deployment to another URL than www.kartevonmorgen.org
+
+running 
+
+```sh
+npm run pack-beta
+```
+
+will automatically use https://api.ofdb.io as API url (instead kartevonmorgen.org/api - which will only work when also deploying to production).
+
+
 #### Local OpenFairDB server
 
 The alternative is to run [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) server locally.
