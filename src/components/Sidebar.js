@@ -12,6 +12,7 @@ import Ratings              from "./pure/Ratings"
 import EntryDetails         from "./pure/EntryDetails"
 import EntryForm            from "./EntryForm"
 import RatingForm           from "./pure/RatingForm"
+import CommentForm          from "./pure/CommentForm"
 import Message              from "./pure/Message"
 import SidebarFooter        from "./pure/SidebarFooter"
 import CityList             from "./pure/CityList"
@@ -23,10 +24,11 @@ import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 import ScrollableDiv        from "./pure/ScrollableDiv";
 
-const converDateToTimestamp = (date) => { 
-    var result = new window.Date(date).getTime();
+const converDateToTimestamp = (date) => {
+    var dateObj = new window.Date(date);
+    var result = dateObj.getTime();
     if (result > 99999999999) {
-        result = Math.trunc(result / 1000) - (new window.Date().getTimezoneOffset() * 60)
+        result = Math.trunc(result / 1000) - (dateObj.getTimezoneOffset() * 60)
     }
     return result;
 }
@@ -159,6 +161,7 @@ class Sidebar extends Component {
                     return ratings[id];
                   })}
                   onRate={ id => { return dispatch(Actions.showNewRating(id)); }}
+                  onComment={ context => { return dispatch(Actions.showNewComment(context)); }}
                 />
               : ''}
               { !isEvent ?
@@ -212,7 +215,7 @@ class Sidebar extends Component {
         break;
 
       case V.NEW_RATING:
-        const kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
+        var kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
         var ref;
         content = (
           <RatingForm
@@ -242,6 +245,34 @@ class Sidebar extends Component {
             contextToExplain={ explainRatingContext }
             selectedContext={ selectedContext }
             changeContext={ ratingContext => { return dispatch(Actions.explainRatingContext(ratingContext)); }}
+          />
+        );
+        break;
+
+      case V.NEW_COMMENT:
+        var kvm_flag_id = form[RATING.id] ? form[RATING.id].kvm_flag_id : null;
+        var ref;
+        let payload = form.comment.kvm_flag_id;
+        content = (
+          <CommentForm
+            entryId={ payload.entryId }
+            entryTitle={ payload.entryTitle }
+            onSubmit={ data => {
+              return dispatch(Actions.createRating({
+                entry: payload.entryId,
+                title: data.title,
+                context: payload.ratingContext,
+                value: data.value,
+                comment: data.comment,
+                source: data.source
+              }));
+            }}
+            onCancel={ () => {
+              dispatch(initialize(RATING.id, {}, RATING.fields));
+              dispatch(Actions.cancelRating());
+            }}
+            ratingContext={ payload.ratingContext }
+            ratingList={ payload.ratingList }
           />
         );
         break;

@@ -10,6 +10,7 @@ import { reduxForm,
          initialize, formValueSelector,  }       from "redux-form";
 
 import 'react-datepicker/dist/react-datepicker.min.css';
+import en_GB from "date-fns/locale/en-GB";
 
 import Actions              from "../Actions";
 import validation           from "../util/validation";
@@ -25,7 +26,8 @@ import NavButtonWrapper     from "./pure/NavButtonWrapper";
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
     {...props}
-    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000 ) : '' }
+    locale={en_GB}
+    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000 ) : '' }
     showTimeSelect
     timeFormat="HH:mm"
     dateFormat="dd.MM.yyyy HH:mm"
@@ -39,7 +41,8 @@ const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => 
   return (
     <DatePicker
       {...props}
-      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date().getTimezoneOffset() * 60)) * 1000) : ''}
+      locale={en_GB}
+      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000) : ''}
       showTimeSelect
       timeFormat="HH:mm"
       dateFormat="dd.MM.yyyy HH:mm"

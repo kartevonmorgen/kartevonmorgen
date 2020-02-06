@@ -59,6 +59,17 @@ npm run pack
 
 The result can be found in `dist/`.
 
+#### Deployment to another URL than www.kartevonmorgen.org
+
+running 
+
+```sh
+npm run pack-beta
+```
+
+will automatically use https://api.ofdb.io as API url (instead kartevonmorgen.org/api - which will only work when also deploying to production).
+
+
 ### Development
 
 You may either use a remote instance of the OpenFairDB server or start your
@@ -78,6 +89,7 @@ OFDB_API: {
 
 Don't forget to skip those changes later when comitting or revert them before
 starting a local server instance as described next!
+
 
 #### Local OpenFairDB server
 

@@ -85,6 +85,11 @@ const Actions = {
     payload: id
   }),
 
+  showNewComment: (context) => ({
+    type: T.SHOW_NEW_COMMENT,
+    payload: context
+  }),
+
   showInfo: (key) => ({
     type: T.SHOW_INFO,
     payload: key

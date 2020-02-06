@@ -9,6 +9,7 @@
     "watch-test": "karma start --auto-watch --no-single-run",
     "pack": "NODE_ENV=production webpack -p --progress",
     "pack-nightly": "NODE_ENV=nightly webpack --progress",
+    "pack-beta": "NODE_ENV=beta webpack -p --progress",
     "start": "NODE_ENV=development webpack-dev-server --progress --host 0.0.0.0 --hot --https"
   },
   "repository": {

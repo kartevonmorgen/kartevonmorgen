@@ -96,6 +96,21 @@ const reducer = formReducer.plugin({
     default:
       return state;
     }
+  },
+
+  comment: (state={}, action={}) => {
+
+    const { payload } = action;
+
+    switch (action.type) {
+    case T.SHOW_NEW_COMMENT:
+      return {
+        ...state,
+        kvm_flag_id: payload,
+      };
+    default:
+      return state;
+    }
   }
 
 });

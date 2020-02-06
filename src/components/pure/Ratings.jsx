@@ -2,6 +2,7 @@ import React      from "react";
 import styled     from "styled-components";
 import Flower     from "../Flower";
 import FlowerLeaf from "../Flower/FlowerLeaf";
+import Rating     from "./Rating";
 import i18n       from "../../i18n";
 import STYLE      from "../styling/Variables";
 
@@ -42,9 +43,10 @@ const rating_groups = (ratings=[]) => {
   return groups_sorted;
 }
 
-const t = (key) => i18n.t("ratings." + key)
+const t_r = (key) => i18n.t(key)
+const t = (key) => t_r("ratings." + key)
 
-const Ratings = ({ entry, ratings, onRate }) => {
+const Ratings = ({ entry, ratings, onRate, onComment }) => {
   const groups = rating_groups(ratings);
 
   const ratingElements = groups.map(g => {
@@ -54,7 +56,7 @@ const Ratings = ({ entry, ratings, onRate }) => {
     const leafHeight = 35;
     const headingColor =
       context !== "renewable"
-        ? STYLE.rating_contexts[context] 
+        ? STYLE.rating_contexts[context]
         : STYLE.yellowText;
 
     return (
@@ -76,7 +78,19 @@ const Ratings = ({ entry, ratings, onRate }) => {
           </svg>
         </LeafWrapper>
         <RatingListForContext>
-          { g.map(r => <li key={r.id}>{Rating(r, t)}</li>) }
+          { g.map(r => <li key={r.id}>{Rating(r, t_r)}</li>) }
+
+          <AdditionalCommentButtonWrapper>
+            <AdditionalCommentButton onClick={() => { onComment({
+                entryId: entry.id,
+                entryTitle: entry.title,
+                ratingContext: context,
+                ratingList: g
+              }) }}>
+              { t("newComment") }
+            </AdditionalCommentButton>
+          </AdditionalCommentButtonWrapper>
+
         </RatingListForContext>
       </RatingContextWrapper>)
   });
@@ -116,64 +130,17 @@ const Ratings = ({ entry, ratings, onRate }) => {
   }
 }
 
-const Comment = (comment) =>
-  <div className="comment">
-    { comment.text }
-  </div>
 
-const RatingWrapper = styled.div`
-  font-size: 0.9em;
-  overflow: hidden;
-`
-
-const RatingTitle = styled.span`
-  margin-left: 0.3em;
-  font-weight: bold;
-`
-
-const RatingTitleWrapper = styled.div`
-  max-width: 288px;
-`
-
-const SourceWrapper = styled.div`
-  color: #AAA;
+const AdditionalCommentButtonWrapper = styled.div`
   text-align: right;
+  height: 20px;
+  margin: 0.42em 0;
+  font-size: 0.8em;
 `
 
-const rating_value_key = (value) => {
-  switch(value){
-    case -1: return "minusOne";
-    case 0: return "zero";
-    case 1: return "one";
-    case 2: return "two";
-    default: return "invalidRatingValue";
-  }
-}
-
-const Rating = (rating, t) => {
-
-  const source = rating.source ? rating.source : ''
-  const match = source.match(/(?:(?:https?|ftp):\/\/)?[a-z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF/\-?=%.]+\.[\w/\-?=%#&_.]+[\w?&%/#]+/i)
-
-  const before = match ? source.substring(0,match.index) : ''
-  const after = match ? source.substring( match.index+match[0].length, source.length)  : ''
-  let href = match ? match[0]  : ''
-  if(href.indexOf('http') !== 0)  href = 'http://' + href
-
-  let sourceSpan = () => { return match ? <span> {before} <Link target="_blank" href={href}>{t('sourceWebsite')}</Link> {after}</span> : <span>{source}</span>}
-
-  return (
-    <RatingWrapper>
-      <RatingTitleWrapper>
-        <span>{t("valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
-      </RatingTitleWrapper>
-      <RatingCommentList>
-        {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
-      </RatingCommentList>
-      <SourceWrapper>{ sourceSpan() }</SourceWrapper>
-    </RatingWrapper>
-  )
-}
+const AdditionalCommentButton = styled.button`
+  float: none;
+`
 
 module.exports = Ratings;
 
@@ -219,8 +186,15 @@ const RatingList = styled.ul`
 const RatingListForContext = styled.ul`
   margin-left: 0.5em;
   margin-top: 0.6em;
+  margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+
+  & li:not(:first-child) {
+    border-left: solid 0.3em #d8d8d8;
+    padding-left: 1.1em;
+    margin-left: 1.1em;
+  }
 `
 
 const RatingContextHeading = styled.h5`
@@ -228,14 +202,6 @@ const RatingContextHeading = styled.h5`
   border-bottom: 1px solid #ddd;
   margin-bottom: 0.5em;
   width: 83%;
-`
-
-const RatingCommentList = styled.ul`
-  margin-left: 1.2em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  list-style: none;
-  padding-left: 0;
 `
 
 const RatingCount = styled.span`
@@ -258,12 +224,4 @@ const LeafWrapper = styled.div`
   right: 0;
   top: -3px;
   padding: 0 !important;
-`
-
-const Link = styled.a`
-  color: ${STYLE.darkGray};
-  &:hover {
-    text-decoration: none;
-    color: #000;
-  }
 `

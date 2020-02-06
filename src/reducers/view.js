@@ -56,7 +56,7 @@ module.exports = (state=initialState, action={}) => {
         left: V.SUBSCRIBE_TO_BBOX
       }
 
-    case T.SUBSCRIBE_TO_BBOX_RESULT: 
+    case T.SUBSCRIBE_TO_BBOX_RESULT:
       return {
         ...state,
         left: V.RESULT
@@ -111,6 +111,12 @@ module.exports = (state=initialState, action={}) => {
         left: V.NEW_RATING,
         explainRatingContext: null,
         selectedContext: null
+      }
+    case T.SHOW_NEW_COMMENT:
+      return {
+        ...state,
+        menu: false,
+        left: V.NEW_COMMENT
       }
     case T.EDIT_CURRENT_ENTRY:
       if (!action.error) {

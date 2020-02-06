@@ -4,6 +4,7 @@ module.exports = {
   APP_STAGES: {
     LOCAL: 'development',
     NIGHTLY: 'nightly',
+    BETA: 'beta',
     PRODUCTION: 'production'
   },
   NEW_ENTRY_LICENSE: LICENSES.CC0,
