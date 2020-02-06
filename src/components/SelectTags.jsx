@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import update from "immutability-helper";
 import { Creatable }  from 'react-select';
 import {connect} from 'react-redux'
 import request from "superagent/lib/client";
@@ -15,7 +16,8 @@ class SelectTags extends Component {
 
     this.state = {
       allOptions: [],
-      options: []
+      options: [],
+      tagsFromSearch: null
     };
 
     //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select
@@ -40,6 +42,10 @@ class SelectTags extends Component {
           })
         }
       });
+  }
+
+  componentDidMount() {
+    this.setState({tagsFromSearch: this.props.tagsFromSearch})
   }
 
   onInputChange(input) {
@@ -67,33 +73,79 @@ class SelectTags extends Component {
 
   valueToArray() {
     const value = this.props.input.value
+    const {tagsFromSearch} = this.state
 
-    if(!value) return null
-    if( typeof value !== "string") return value
+    const createOptions = (input) => (input.split(',').map(val => ({label: val, value: val})))
 
-    return value.split(',').map( val => {
-      return {value: val, label: val }
-    })
+    if(!value) {
+      if(!tagsFromSearch) {
+        return null
+      }
+      return createOptions(tagsFromSearch)
+    }
+
+    if( typeof value !== "string") {
+      if(!tagsFromSearch) {
+        return value
+      }
+      createOptions(tagsFromSearch).concat(value)
+    }
+
+    if(!tagsFromSearch) {
+      return createOptions(value)
+    }
+
+    return createOptions(value)
   }
 
   valueToString(cb,newValue,event) {
-
     const val = newValue  // ? newValue : this.props.input.value
     if( typeof val === "string" ) return val
 
-    const currentTagsArray = this.props.input.value.split(',')
+    const {tagsFromSearch} = this.state
+    const tagsFromSearchArray = tagsFromSearch ? tagsFromSearch.split(',') : []
 
+    let tagsString = this.props.input.value
+    if (tagsFromSearch) {
+      if (tagsString.length) {
+        tagsString = [tagsFromSearch, tagsString].join()
+      }
+      else {
+        tagsString = tagsFromSearch
+      }
+    }
 
+    const currentTagsArray = tagsString.split(',')
+
+    const newTagsFromSearchArray = []
     let arr = []
     for (let i = 0; i < val.length; i++) {
       const normalized = normalize.tags(val[i].value)
-      if ( normalized==false ) continue
+      if ( normalized===false ) continue
 
-      const isNew = (i == (val.length -1) && event.action == "create-option")
-      if (isNew ) if (currentTagsArray.indexOf(normalized) != -1 ) return false
+      const isNew = (i === (val.length -1) && event.action === "create-option")
+      if (isNew) {
+        if (currentTagsArray.indexOf(normalized) !== -1 ) {
+          return false
+        }
+      }
+
+      const tagsFromSearchArrayIdx = tagsFromSearchArray.indexOf(normalized)
+      if (event.action === "remove-value" &&  tagsFromSearchArrayIdx !== -1) {
+        newTagsFromSearchArray.push(normalized)
+
+        continue
+      }
 
       arr.push( normalized )
     }
+
+    this.setState((prevState) => {
+      return update(prevState, {
+        tagsFromSearch: {$set: newTagsFromSearchArray.length ? newTagsFromSearchArray.join() : null}
+      })
+    })
+
     cb( arr.join(',') );
   }
 
@@ -102,7 +154,6 @@ class SelectTags extends Component {
   }
 
   render(){
-
     return(
       <Creatable
         {...this.props}
@@ -114,7 +165,6 @@ class SelectTags extends Component {
         placeholder={this.props.t("entryForm.tags")}
         noOptionsMessage={() => this.props.t("entryForm.noTagSuggestion") }
         formatCreateLabel={(inputValue) => this.props.t("entryForm.newTag")+" "+normalize.tags(inputValue) }
-
         onInputChange={this.onInputChange.bind(this)}
         onChange={ (value,event) => {this.valueToString( this.props.input.onChange, value, event ) } }
         onBlur={event => event.preventDefault()}
@@ -126,7 +176,14 @@ class SelectTags extends Component {
 }
 
 
-const mapStateToProps = ({search}, ownProps) => {
+const mapStateToProps = ({search}) => {
+  // if history is null
+  if(!search.history) {
+    return {
+      tagsFromSearch: null
+    }
+  }
+
   const tokens = search.history.split(' ').filter(t => t.length)
   const tags = tokens.filter(t => t.startsWith('#')).map(t => {
     // remove all '#' signs from the beginning
@@ -136,14 +193,11 @@ const mapStateToProps = ({search}, ownProps) => {
 
     return t
   })
-    .filter(t => t.length)
+    .filter(t => normalize.tags(t))
+    .map(t => normalize.tags(t))
 
   return {
-    ...ownProps,
-    input: {
-      ...ownProps.input,
-      value: tags.join()
-    }
+    tagsFromSearch: tags.join()
   }
 }
 
