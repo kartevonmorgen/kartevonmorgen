@@ -80,6 +80,12 @@ module.exports = (state = initialState, action = {}) => {
         text: action.payload
       }
 
+    case T.RESTORE_SEARCH_TEXT:
+      return {
+        ...state,
+        text: state.history
+      }
+
     case T.UPDATE_STATE_FROM_URL:
       const searchText = parseUrl(action.payload).params.search;
 
