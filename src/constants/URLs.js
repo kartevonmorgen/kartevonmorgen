@@ -53,15 +53,15 @@ module.exports = {
     link: "mailto:info@kartevonmorgen.org"
   },
   OSM_ATTR: {
-    name: "OpenStreetMap",
+    name: "OpenStreetMap Contributors",
     link: "https://osm.org/copyright"
   },
   TILE_SERVER: {
-    link: "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
+    link: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   },
   TILE_SERVER_ATTR: {
-    name: "Wikimedia",
-    link: "https://wikimediafoundation.org/wiki/Maps_Terms_of_Use"
+    name: "Fix",
+    link: "https://www.openstreetmap.org/fixthemap"
   },
   OFDB_API: {
     link: OFDB_API_LINK
