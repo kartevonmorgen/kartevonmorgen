@@ -162,6 +162,15 @@ const Actions = {
       });
     },
 
+  // tags are comma joint string
+  setTags: (tags) =>
+    (dispatch) => (
+      dispatch({
+        type: T.SET_TAGS,
+        payload: tags
+      })
+    ),
+
   updateStateFromURL: (hash) => {
     return {
       type: T.UPDATE_STATE_FROM_URL,
