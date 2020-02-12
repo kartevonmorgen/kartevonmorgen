@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import update from "immutability-helper";
 import { Creatable }  from 'react-select';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
 import request from "superagent/lib/client";
 import { translate } from "react-i18next";
+
+import {setTags} from '../Actions/client'
 
 import { OFDB_API }  from "../constants/URLs"
 
@@ -46,6 +49,7 @@ class SelectTags extends Component {
 
   componentDidMount() {
     this.setState({tagsFromSearch: this.props.tagsFromSearch})
+    this.props.setTags(this.props.tagsFromSearch)
   }
 
   onInputChange(input) {
@@ -201,4 +205,8 @@ const mapStateToProps = ({search}) => {
   }
 }
 
-module.exports = translate('translation')(connect(mapStateToProps, null)(SelectTags))
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({setTags}, dispatch)
+}
+
+module.exports = translate('translation')(connect(mapStateToProps, mapDispatchToProps)(SelectTags))
