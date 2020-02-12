@@ -49,7 +49,10 @@ class SelectTags extends Component {
 
   componentDidMount() {
     this.setState({tagsFromSearch: this.props.tagsFromSearch})
-    this.props.setTags(this.props.tagsFromSearch)
+
+    // tags is a string of comma joint tags
+    const tags = [this.props.tagsFromSearch, this.props.input.value].filter(t => t && t.length).join()
+    this.props.setTags(tags)
   }
 
   onInputChange(input) {
