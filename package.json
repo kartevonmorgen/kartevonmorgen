@@ -7,10 +7,10 @@
     "pretest": "npm run lint",
     "test": "karma start",
     "watch-test": "karma start --auto-watch --no-single-run",
-    "pack": "NODE_ENV=production webpack -p --progress",
-    "pack-nightly": "NODE_ENV=nightly webpack --progress",
-    "pack-beta": "NODE_ENV=beta webpack -p --progress",
-    "start": "NODE_ENV=development webpack-dev-server --progress --host 0.0.0.0 --hot --https"
+    "pack": "cross-env NODE_ENV=production webpack -p --progress",
+    "pack-nightly": "cross-env NODE_ENV=nightly webpack --progress",
+    "pack-beta": "cross-env NODE_ENV=beta webpack -p --progress",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --host 0.0.0.0 --hot --https"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "es6-promise": "^4.2.8",
     "i18next": "^10.6.0",
     "i18next-browser-languagedetector": "^2.2.3",
+    "immutability-helper": "^3.0.1",
     "leaflet": "^1.6.0",
     "museo": "^0.1.0",
     "normalize.css": "^8.0.1",
@@ -54,6 +55,7 @@
     "reapop": "^2.1.0",
     "reapop-theme-wybo": "^1.0.2",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.6",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -79,6 +81,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
+    "cross-env": "^7.0.0",
     "css-loader": "^3.3.2",
     "debug": "^4.1.0",
     "es5-shim": "^4.5.13",
