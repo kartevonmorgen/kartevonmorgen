@@ -63,6 +63,10 @@ const createActionsFromState = (state) => {
         }
         break;
 
+      case RoutingUsecases.SHOW_NEW_ENTRY:
+        actions.push(Actions.showNewEntry())
+        break;
+
       case RoutingUsecases.CHANGE_CENTER:
         lat = parseFloat(lat);
         lng = parseFloat(lng); 

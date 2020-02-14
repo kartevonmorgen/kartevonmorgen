@@ -19,7 +19,7 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories } = params;
+    var { zoom, entry, search, tags, left, categories, addentry } = params;
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -55,6 +55,11 @@ module.exports = (state=initialState, action={}) => {
       }
       if (zoom) {
         routingUsecases.push(RoutingUsecases.CHANGE_ZOOM);
+      }
+      if (addentry) {
+        if (addentry === 'event') {
+          routingUsecases.push(RoutingUsecases.SHOW_NEW_ENTRY)
+        }
       }
 
       return {

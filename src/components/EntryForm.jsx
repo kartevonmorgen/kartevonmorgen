@@ -71,8 +71,8 @@ class Form extends Component {
   };
 
   handleFromChange = (from) => {
-  	console.log('new from date:' + from);
-  	console.log(from);
+  	// console.log('new from date:' + from);
+  	// console.log(from);
     this.setState({ startDate: from });
   };
 
