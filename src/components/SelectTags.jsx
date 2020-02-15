@@ -52,7 +52,8 @@ class SelectTags extends Component {
 
     // tags is a string of comma joint tags
     const tags = [this.props.tagsFromSearch, this.props.input.value].filter(t => t && t.length).join()
-    this.props.setTags(tags)
+    const uniqueTags = tags.split(',').filter((a, b) => tags.indexOf(a) === b).join()
+    this.props.setTags(uniqueTags)
   }
 
   onInputChange(input) {
