@@ -8,6 +8,7 @@ import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
+import lodashGet from 'lodash/get'
 
 import 'react-datepicker/dist/react-datepicker.min.css';
 import en_GB from "date-fns/locale/en-GB";
@@ -64,6 +65,10 @@ class Form extends Component {
     startDate: '',
     endDate: '',
   };
+
+  componentDidMount() {
+    this.setState({isEventEntry: this.props.category=== IDS.EVENT})
+  }
 
   handleCategoryChange = (event) => {
     const category = event.target.value;
@@ -349,9 +354,9 @@ class Form extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({form}) => {
   return {
-    lng: state.lng.lng
+    category: lodashGet(form, 'edit.values.category', IDS.EVENT)
   }
 }
 
@@ -363,7 +368,7 @@ Form.propTypes = {
   tags: T.array
 };
 
-module.exports = reduxForm({
+module.exports = connect(mapStateToProps)(reduxForm({
   form            : EDIT.id,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],
@@ -376,7 +381,7 @@ module.exports = reduxForm({
       ));
       return new Promise((resolve, reject) => resolve());
   }
-})(translate('translation')(Form));
+})(translate('translation')(Form)));
 
 const StyledNavButtonWrapper = styled(NavButtonWrapper)`
   height: 68px;
