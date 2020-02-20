@@ -1,4 +1,5 @@
 import T                          from "../constants/ActionTypes";
+import C                          from "../constants/Categories"
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
 import appConst                   from "../constants/App";
@@ -170,6 +171,18 @@ const Actions = {
         payload: tags
       })
     ),
+
+  // set categories on the editing dropdown
+  setCategory: (category) =>
+    (dispatch) => {
+      const categoryIdArray = Object.keys(C.NAMES).filter(k => C.NAMES[k] === category)
+      const categoryId = categoryIdArray.length ? categoryIdArray[0] : C.IDS.EVENT
+
+      return dispatch({
+        type: T.SET_CATEGORY,
+        payload: categoryId
+      })
+    },
 
   updateStateFromURL: (hash) => {
     return {

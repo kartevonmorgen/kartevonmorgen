@@ -37,6 +37,14 @@ const reducer = formReducer.plugin({
             tags: action.payload,
           }
         }
+      case T.SET_CATEGORY:
+        return {
+          ...state,
+          values: {
+            ...state.values,
+            category: action.payload,
+          }
+        }
       case T.SET_MARKER:
         if (action.manual) {
           return {
