@@ -67,7 +67,7 @@ class Form extends Component {
   };
 
   componentDidMount() {
-    this.setState({isEventEntry: this.props.category=== IDS.EVENT})
+    this.setState({isEventEntry: this.props.category === IDS.EVENT})
   }
 
   handleCategoryChange = (event) => {
@@ -356,7 +356,7 @@ class Form extends Component {
 
 const mapStateToProps = ({form}) => {
   return {
-    category: lodashGet(form, 'edit.values.category', IDS.EVENT)
+    category: lodashGet(form, 'edit.values.category', null)
   }
 }
 
