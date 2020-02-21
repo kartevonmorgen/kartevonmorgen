@@ -9,7 +9,7 @@ import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
 import lodashGet from 'lodash/get'
-import moment from 'moment';
+import moment, {min} from 'moment'
 
 import 'react-datepicker/dist/react-datepicker.min.css';
 import en_GB from "date-fns/locale/en-GB";
@@ -26,19 +26,38 @@ import ScrollableDiv        from "./pure/ScrollableDiv";
 import NavButtonWrapper     from "./pure/NavButtonWrapper";
 
 
-const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
-  <DatePicker
-    {...props}
-    locale={en_GB}
-    selected={ input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000 ) : '' }
-    showTimeSelect
-    timeFormat="HH:mm"
-    dateFormat="dd.MM.yyyy HH:mm"
-    onChange={(day) => input.onChange(day)}
-    minDate={new window.Date()}
-    maxDate={endDate ? endDate : (initEndDate ? initEndDate : '')}
-  />
-);
+const renderDatePickerStart = ({input, initEndDate, endDate, ...props}) => {
+  const minDate = moment()
+  const minTime = moment()
+
+  console.log("mintime", minTime)
+
+  const isDateSelected = !!input.value
+  let selectedDate = new window.Date()
+  if (isDateSelected) {
+    selectedDate = moment(input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000))
+  }
+
+  if (isDateSelected && selectedDate.isAfter(new window.Date(), 'day')) {
+    minTime.set({hour: 0, minute: 0})
+  }
+
+  return (
+    <DatePicker
+      {...props}
+      locale={en_GB}
+      selected={isDateSelected ? selectedDate.toDate() : ''}
+      showTimeSelect
+      timeFormat="HH:mm"
+      dateFormat="dd.MM.yyyy HH:mm"
+      onChange={(day) => input.onChange(day)}
+      minDate={minDate.toDate()}
+      maxDate={endDate ? endDate : (initEndDate ? initEndDate : '')}
+      minTime={minTime.toDate()}
+      maxTime={moment().set({hour: 23, minute: 30}).toDate()}
+    />
+  )
+}
 
 const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => {
   const hasStartDate = !!startDate
