@@ -9,6 +9,7 @@ import { reduxForm,
          Field,
          initialize, formValueSelector,  }       from "redux-form";
 import lodashGet from 'lodash/get'
+import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.min.css';
 import en_GB from "date-fns/locale/en-GB";
@@ -23,6 +24,7 @@ import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
 import ScrollableDiv        from "./pure/ScrollableDiv";
 import NavButtonWrapper     from "./pure/NavButtonWrapper";
+
 
 const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
   <DatePicker
@@ -39,16 +41,57 @@ const renderDatePickerStart = ({ input, initEndDate, endDate, ...props }) => (
 );
 
 const renderDatePickerEnd = ({ input, initStartDate, startDate,  ...props }) => {
+  const hasStartDate = !!startDate
+  let firstDate = moment()
+  if (hasStartDate) {
+    firstDate = moment(startDate)
+  } else if(initStartDate) {
+    firstDate = moment(initStartDate)
+  }
+
+  const isDateSelected = !!input.value
+  let selectedDate = new window.Date()
+  if (isDateSelected) {
+    selectedDate = moment(input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000))
+  }
+
+  let minDate = firstDate.clone()
+  let minTime = moment()
+
+  // show all times
+  if (!hasStartDate && !isDateSelected) {
+    minTime = moment(firstDate).clone().add(30, 'minutes')
+  } else if (hasStartDate && !isDateSelected) {
+    minTime = moment(firstDate).clone().add(30, 'minutes')
+  } else if (hasStartDate && isDateSelected) {
+    if(selectedDate.isSame(firstDate, 'day')){
+      minTime = moment(firstDate).clone().add(30, 'minutes')
+      if (selectedDate.isSameOrBefore(firstDate)) {
+        selectedDate = firstDate.clone().add(30, 'minute')
+        if (selectedDate.isAfter(firstDate, 'day')) {
+          minDate.add(1, 'day')
+        }
+      }
+    } else if (selectedDate.isBefore(firstDate, 'day')) {
+      selectedDate = firstDate.clone().add(30, 'minute')
+      minTime = moment(firstDate).clone().add(30, 'minutes')
+    } else if (selectedDate.isAfter(firstDate, 'day')) {
+      minTime.set({hour: 0, minutes: 0})
+    }
+  }
+
   return (
     <DatePicker
       {...props}
       locale={en_GB}
-      selected={input.value ? input.value > 99999999999 ? input.value : ((input.value + (new window.Date(input.value * 1000).getTimezoneOffset() * 60)) * 1000) : ''}
+      selected={isDateSelected ? selectedDate.toDate() : ''}
       showTimeSelect
       timeFormat="HH:mm"
       dateFormat="dd.MM.yyyy HH:mm"
       onChange={(day) => input.onChange(day)}
-      minDate={startDate ? startDate : (initStartDate ? initStartDate : new window.Date())}
+      minDate={minDate.toDate()}
+      minTime={minTime.toDate()}
+      maxTime={firstDate.clone().hours(23).minutes(30).toDate()}
       popperPlacement="bottom-end"
     />
   );
