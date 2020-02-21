@@ -36,6 +36,7 @@
     "i18next-browser-languagedetector": "^2.2.3",
     "immutability-helper": "^3.0.1",
     "leaflet": "^1.6.0",
+    "moment": "^2.24.0",
     "museo": "^0.1.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.6.2",
