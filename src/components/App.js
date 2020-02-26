@@ -175,21 +175,14 @@ class Main extends Component {
   }
 
   filterVisibleEntries(entries, search){
-  	var curEntry = {};
-  	curEntry[search.current] = entries[search.current];
-  	console.log(curEntry);
   	var val = search.entryResults.filter(e => entries[e.id])
       .map(e => entries[e.id])
       .filter(this.categoryIsEnabled(search.categories))
       .concat(search.eventResults)
       .slice(0, NUM_ENTRIES_TO_SHOW);
     if (search.current && entries[search.current] && !val.find(e => e.id == search.current)) {
-    	console.log(search.current);
-    	console.log(val.map(e => e.id));
     	val = val.concat(entries[search.current]);
-    	console.log('APPENDED CURRENT');
     }
-    console.log(val);
     return val;
   }
 
