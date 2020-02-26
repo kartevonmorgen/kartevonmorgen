@@ -21,7 +21,7 @@ const createActionsFromState = (state) => {
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
-  const { entry, event, zoom, center, search, tags, view, left, categories } = params;
+  const { entry, event, zoom, center, search, tags, view, left, categories, addentry } = params;
   const user_id = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
@@ -31,7 +31,6 @@ const createActionsFromState = (state) => {
   for (let usecase of routingUsecases){
     switch(usecase){
       case RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY: 
-        console.log("route: left visibility:", left);
         if (left && left == "hide"){
           actions.push(Actions.hideLeftPanel());
         } else {
@@ -39,13 +38,11 @@ const createActionsFromState = (state) => {
         }
         break;
       case RoutingUsecases.NO_ROUTING: 
-        console.log("route: nothing");
         if(getState().view.left != V.SUBSCRIBE_TO_BBOX){
           actions.push(Actions.showSearchResults());
         }
         break;
       case RoutingUsecases.SHOW_ENTRY: 
-        console.log("route: entry");
         actions.push(Actions.showMap());
         actions.push(Actions.getEntries([entry]));
         actions.push(Actions.getEvent(entry));
@@ -61,6 +58,11 @@ const createActionsFromState = (state) => {
         if(!zoom) {
           actions.push(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         }
+        break;
+
+      case RoutingUsecases.SHOW_NEW_ENTRY:
+        actions.push(Actions.showNewEntry())
+        actions.push(Actions.setCategory(addentry))
         break;
 
       case RoutingUsecases.CHANGE_CENTER:

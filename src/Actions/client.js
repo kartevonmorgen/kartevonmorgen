@@ -1,4 +1,5 @@
 import T                          from "../constants/ActionTypes";
+import C                          from "../constants/Categories"
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
 import appConst                   from "../constants/App";
@@ -10,6 +11,14 @@ const Actions = {
     type: T.SET_SEARCH_TEXT,
     payload: txt
   }),
+
+  restoreSearchText: () => ({type: T.RESTORE_SEARCH_TEXT}),
+
+  restoreSearch: () =>
+    (dispatch) => {
+      dispatch(Actions.restoreSearchText())
+      dispatch(serverActions.Actions.search())
+    },
 
   setCitySearchText: (txt) => ({
     type: T.SET_CITY_SEARCH_TEXT,
@@ -51,7 +60,13 @@ const Actions = {
   toggleLandingPage   : () => ({ type: T.TOGGLE_MENU }),
   showImprint         : () => ({ type: T.SHOW_IMPRINT }),
   showPrivacyStatement: () => ({ type: T.SHOW_PRIVACY_STATEMENT }),
-  cancelNew           : () => ({ type: T.CANCEL_NEW }),
+
+  cancelNew           : () =>
+    (dispatch) => {
+      dispatch(Actions.restoreSearch())
+      dispatch({ type: T.CANCEL_NEW })
+    },
+
   cancelEdit          : () => ({ type: T.CANCEL_EDIT }),
   cancelRating        : () => ({ type: T.CANCEL_RATING }),
   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO }),
@@ -146,6 +161,27 @@ const Actions = {
         type: T.EDIT_CURRENT_ENTRY,
         payload: currentEntry
       });
+    },
+
+  // tags are comma joint string
+  setTags: (tags) =>
+    (dispatch) => (
+      dispatch({
+        type: T.SET_TAGS,
+        payload: tags
+      })
+    ),
+
+  // set categories on the editing dropdown
+  setCategory: (category) =>
+    (dispatch) => {
+      const categoryIdArray = Object.keys(C.NAMES).filter(k => C.NAMES[k] === category)
+      const categoryId = categoryIdArray.length ? categoryIdArray[0] : C.IDS.EVENT
+
+      return dispatch({
+        type: T.SET_CATEGORY,
+        payload: categoryId
+      })
     },
 
   updateStateFromURL: (hash) => {
