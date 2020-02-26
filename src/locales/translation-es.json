@@ -14,6 +14,8 @@
     "licenseAccepted": "He leído las condiciones y las acepto",
     "license": "Licencia",
     "title": "Título",
+    "start": "Inicio",
+    "end": "Final",
     "description": "Descripción",
     "tags": "Palabras clave",
     "newTag": "Nuevo:",
