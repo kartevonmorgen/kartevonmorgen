@@ -380,14 +380,6 @@ module.exports = reduxForm({
   form            : EDIT.id,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],
-   onSubmitFail: errors => {if (errors.license && Object.keys(errors).length == 1){
-   		var box = document.getElementsByName('license')[0];
-   		var ele = box.parentNode;
-   		while (ele && ele.nodeName != 'FORM') {
-   			ele = ele.parentNode;
-   		}
-   		ele.parentNode.scrollTo(0, box.offsetTop - 100);
-    }},
   asyncValidate: function(values, dispatch) {
     dispatch(Actions.geocodeAndSetMarker(
           (values.street ? values.street + ' ' : '')
