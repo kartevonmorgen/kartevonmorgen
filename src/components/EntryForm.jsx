@@ -148,15 +148,6 @@ class Form extends Component {
     this.setState({ endDate: to });
   };
  
-  componentDidUpdate(props, state) {
-  	if (props && props.submitFailed && props.formSyncErrors && props.formSyncErrors.license && Object.keys(props.formSyncErrors).length == 1) {
-  		var ele = document.getElementsByName('license');
-  		var div = document.getElementById('entryFormScrollableDiv');
-  		if (ele && ele.length > 0 && ele[0] && div) {
-  			div.scrollTo(0,ele[0].offsetTop);
-  		}
-	}
-  }
 
   render() {
     const { isEdit, isEvent, formStartEndDate, license, dispatch, handleSubmit} = this.props;
@@ -447,7 +438,15 @@ module.exports = connect(mapStateToProps)(reduxForm({
   form            : EDIT.id,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],
-  asyncValidate: function(values, dispatch) {
+    onSubmitFail: (errors, dispatch, submitError) => {
+	if (errors.license && Object.keys(errors).length == 1){
+  		var ele = document.getElementsByName('license');
+  		var div = document.getElementById('entryFormScrollableDiv');
+  		if (ele && ele.length > 0 && ele[0] && div) {
+  			div.scrollTo(0, ele[0].offsetTop - 100);
+  		}
+    }},
+    asyncValidate: function(values, dispatch) {
     dispatch(Actions.geocodeAndSetMarker(
           (values.street ? values.street + ' ' : '')
           .concat(
