@@ -29,14 +29,6 @@ const reducer = formReducer.plugin({
           },
           kvm_flag_id: action.payload.id
         }
-      case T.SET_TAGS:
-        return {
-          ...state,
-          values: {
-            ...state.values,
-            tags: action.payload,
-          }
-        }
       case T.SET_MARKER:
         if (action.manual) {
           return {
