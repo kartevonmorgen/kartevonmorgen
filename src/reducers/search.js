@@ -5,7 +5,6 @@ import { CITY_SEARCH_RESULTS_MIN_DISTANCE, CITY_SEARCH_RESULTS_MIN_IMPORTANCE } 
 
 const initialState = {
   text: null,
-  history: null,
   city: null,
   entryResults: [],
   eventResults: [],
@@ -76,7 +75,6 @@ module.exports = (state = initialState, action = {}) => {
     case T.SET_SEARCH_TEXT:
       return {
         ...state,
-        history: state.text,
         text: action.payload
       }
 
