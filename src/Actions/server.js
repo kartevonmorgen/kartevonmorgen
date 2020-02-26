@@ -1,29 +1,29 @@
-import T from "../constants/ActionTypes"
-import {NUM_ENTRIES_TO_FETCH} from "../constants/Search"
-import WebAPI from "../WebAPI"
-import {EDIT, RATING, LOGIN, REGISTER} from "../constants/Form"
-import {NEW_ENTRY_LICENSE} from "../constants/App"
-import {initialize, stopSubmit} from "redux-form"
-import mapConst from "../constants/Map"
-import appConst from "../constants/App"
-import {notificationSettings} from "../constants/view"
-import LICENSES from "../constants/Licenses"
-import {MAIN_IDS, IDS} from "../constants/Categories"
-import i18n from "../i18n"
-import {getMidnightUnixtime} from "../util/datetime"
-import {notify} from "reapop"
+import T                          from "../constants/ActionTypes";
+import { NUM_ENTRIES_TO_FETCH }   from "../constants/Search";
+import WebAPI                     from "../WebAPI";
+import { EDIT, RATING, LOGIN, REGISTER } from "../constants/Form";
+import { NEW_ENTRY_LICENSE }      from "../constants/App";
+import { initialize, stopSubmit } from "redux-form";
+import mapConst                   from "../constants/Map";
+import appConst                   from "../constants/App";
+import { notificationSettings }   from "../constants/view";
+import LICENSES                   from "../constants/Licenses";
+import { MAIN_IDS, IDS }          from "../constants/Categories";
+import i18n                       from "../i18n";
+import { getMidnightUnixtime }    from "../util/datetime";
+import { notify }                 from "reapop";
 
 const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
-)
+);
 
 const getLicenseForEntry = currentLicense => {
   if (currentLicense && currentLicense == LICENSES.ODBL) {
-    return currentLicense
+    return currentLicense;
   } else {
-    return NEW_ENTRY_LICENSE
+    return NEW_ENTRY_LICENSE;
   }
-}
+};
 
 const Actions = {
 
@@ -35,133 +35,133 @@ const Actions = {
   search: () =>
     (dispatch, getState) => {
 
-      dispatch(Actions.setSearchTime(Date.now()))
+      dispatch(Actions.setSearchTime(Date.now()));
 
       const searchFn = () => {
-        dispatch(Actions.setSearchTime(null))
-        // console.log("SEARCH\n");
-        const {search, map} = getState()
-        var cats = search.categories
-        const sw = map.bbox._southWest
-        const ne = map.bbox._northEast
-        const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
+        dispatch(Actions.setSearchTime(null));
+        console.log("SEARCH\n");
+        const { search, map } = getState();
+        var cats = search.categories;
+        const sw = map.bbox._southWest;
+        const ne = map.bbox._northEast;
+        const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
 
         if (search.text == null || !search.text.trim().endsWith("#")) {
 
-          if (!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)) {
+          if(!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)){
             dispatch({
               type: T.NO_SEARCH_RESULTS
-            })
+            });
           } else {
-            if (cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)) {
+            if(cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)){
               WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_ENTRIES,
                   payload: err || res,
                   error: err != null,
                   noList: search.text == null
-                })
+                });
                 const entries =
                   Array.isArray(res != null ? res.visible : void 0)
                     ? Array.isArray(res.invisible)
-                    ? res.visible.concat(res.invisible)
-                    : res.visible
+                      ? res.visible.concat(res.invisible)
+                      : res.visible
                     : res != null
-                    ? res.invisible
-                    : void 0
+                      ? res.invisible
+                      : void 0;
 
-                const ids = entries ? entries.map(e => e.id) : null
+                const ids = entries ? entries.map(e => e.id) : null;
                 if (ids && (Array.isArray(ids)) && ids.length > 0) {
-                  dispatch(Actions.getEntries(ids))
+                  dispatch(Actions.getEntries(ids));
                 } else {
                   dispatch({
                     type: T.NO_SEARCH_RESULTS
-                  })
+                  });
                 }
-              })
+              });
             }
 
-            if (cats.includes(IDS.EVENT)) {
-              WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+            if(cats.includes(IDS.EVENT)){
+              WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS,
                   payload: err || res,
                   error: err != null
-                })
-              })
+                });
+              });
 
               // search events without place:
-              WebAPI.searchEvents(search.text, null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+              WebAPI.searchEvents(search.text, null, getMidnightUnixtime(Date.now()/1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
                   payload: err || res,
                   error: err != null
-                })
-              })
+                });
+              });
             }
           }
 
           if (search.text != null) {
-            const address = search.text.replace(/#/g, "")
+            const address = search.text.replace(/#/g, "");
             WebAPI.searchAddressNominatim(address, (err, res) => {
               dispatch({
                 type: T.SEARCH_ADDRESS_RESULT,
                 payload: err || res,
                 error: err != null
-              })
-            })
+              });
+            });
           }
         }
-      }
+      };
 
       const triggerSearch = () => {
-        const {timedActions} = getState()
-        const lastTriggered = timedActions.searchLastTriggered
+        const { timedActions } = getState();
+        const lastTriggered = timedActions.searchLastTriggered;
 
         if (lastTriggered != null) {
-          const duration = Date.now() - lastTriggered
+          const duration = Date.now() - lastTriggered;
           if (duration > appConst.SEARCH_DELAY) {
-            searchFn()
+            searchFn();
           } else {
-            setTimeout(triggerSearch, appConst.SEARCH_DELAY)
+            setTimeout(triggerSearch, appConst.SEARCH_DELAY);
           }
         }
-      }
+      };
 
-      setTimeout(triggerSearch, appConst.SEARCH_DELAY + 5)
+      setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
 
     },
 
   searchCity: () =>
     (dispatch, getState) => {
-      dispatch(Actions.setSearchTime(Date.now()))
-      const s = getState().search
+      dispatch(Actions.setSearchTime(Date.now()));
+      const s = getState().search;
       const searchFn = () => {
-        dispatch(Actions.setSearchTime(null))
+        dispatch(Actions.setSearchTime(null));
         WebAPI.searchAddressNominatim(s.city, (err, res) => {
           dispatch({
             type: T.SEARCH_ADDRESS_RESULT,
             payload: err || res,
             error: err != null
-          })
-        })
-      }
+          });
+        });
+      };
 
       const triggerSearch = () => {
-        const {timedActions} = getState()
-        const lastTriggered = timedActions.searchLastTriggered
+        const { timedActions } = getState();
+        const lastTriggered = timedActions.searchLastTriggered;
 
         if (lastTriggered != null) {
-          const duration = Date.now() - lastTriggered
+          const duration = Date.now() - lastTriggered;
           if (duration > appConst.SEARCH_DELAY) {
-            searchFn()
+            searchFn();
           } else {
-            setTimeout(triggerSearch, appConst.SEARCH_DELAY)
+            setTimeout(triggerSearch, appConst.SEARCH_DELAY);
           }
         }
-      }
+      };
 
-      setTimeout(triggerSearch, appConst.SEARCH_DELAY + 5)
+      setTimeout(triggerSearch, appConst.SEARCH_DELAY+5);
     },
 
   getEntries: (ids = []) =>
@@ -169,33 +169,33 @@ const Actions = {
       let {
         fetchedAllEntries,
         moreEntriesAvailable
-      } = getState().search
+      } = getState().search;
       dispatch({
         type: T.SET_MORE_ENTRIES_AVAILABLE,
         payload: !fetchedAllEntries && (ids.length > NUM_ENTRIES_TO_FETCH)
-      })
-      ids = ids.slice(0, NUM_ENTRIES_TO_FETCH)
+      });
+      ids = ids.slice(0, NUM_ENTRIES_TO_FETCH);
 
-      const entries = getState().server.entries
-      const fetch_ids_entries = ids.filter((x) => entries[x] == null)
+      const entries = getState().server.entries;
+      const fetch_ids_entries = ids.filter((x) => entries[x] == null);
       if (fetch_ids_entries.length > 0) {
         WebAPI.getEntries(ids, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,
             payload: err || res,
             error: err != null
-          })
+          });
           if (!err) {
             const {
               ratings
-            } = getState().server
-            const ids = flatten(res.map(e => e.ratings))
-            const fetch_ids_ratings = ids.filter((x) => ratings[x] == null)
+            } = getState().server;
+            const ids = flatten(res.map(e => e.ratings));
+            const fetch_ids_ratings = ids.filter((x) => ratings[x] == null);
             if (fetch_ids_ratings.length > 0) {
-              dispatch(Actions.getRatings(fetch_ids_ratings))
+              dispatch(Actions.getRatings(fetch_ids_ratings));
             }
           }
-        })
+        });
       } else {
         const entr = Object.keys(entries).map((key) => entries[key])
         dispatch({
@@ -211,10 +211,10 @@ const Actions = {
       WebAPI.getEvent(id, (err, res) => {
         dispatch({
           type: T.SEARCH_RESULT_EVENTS,
-          payload: err || [res],
+          payload: err || [ res ],
           error: err != null
-        })
-      })
+        });
+      });
     },
 
   getRatings: (ids = []) =>
@@ -224,8 +224,8 @@ const Actions = {
           type: T.RATINGS_RESULT,
           payload: err || res,
           error: err != null
-        })
-      })
+        });
+      });
     },
 
   getAllCategories: () =>
@@ -235,8 +235,8 @@ const Actions = {
           type: T.CATEGORIES_RESULT,
           payload: err || res,
           error: err != null
-        })
-      })
+        });
+      });
     },
 
   getServerInfo: () =>
@@ -246,8 +246,8 @@ const Actions = {
           type: T.SERVER_INFO_RESULT,
           payload: err || res,
           error: err != null
-        })
-      })
+        });
+      });
     },
 
   subscribeToBbox: (bbox, changeExistingBbox) =>
@@ -257,24 +257,24 @@ const Actions = {
           dispatch({
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: err
-          })
+          });
 
 
           dispatch(notify({
             ...notificationSettings,
             message: i18n.t("growler.genericError"),
             status: "error"
-          }))
+          }));
         } else {
           dispatch({
             type: T.SUBSCRIBE_TO_BBOX_RESULT,
             payload: res
-          })
+          });
           dispatch(notify({
             ...notificationSettings,
             message: changeExistingBbox ? i18n.t("growler.subscriptionChanged") : i18n.t("growler.subscriptionAdded"),
             status: "success"
-          }))
+          }));
           dispatch({
             type: 'UPDATE_SUBSCRIPTION_INFO',
             subscriptionExists: true
@@ -291,13 +291,13 @@ const Actions = {
             ...notificationSettings,
             message: i18n.t("growler.genericError"),
             status: "error"
-          }))
+          }));
         } else {
           dispatch(notify({
             ...notificationSettings,
             message: i18n.t("growler.unsubscribingSuccessfull"),
             status: "success"
-          }))
+          }));
           dispatch({
             type: 'UPDATE_SUBSCRIPTION_INFO',
             subscriptionExists: false
@@ -306,67 +306,67 @@ const Actions = {
       })
     },
 
-  saveEntry: (entry) =>
+ saveEntry: (entry) =>
     (dispatch, getState) => {
-      let saveFunc
-      let getEntityRequest
-      const isEvent = entry.categories[0] === IDS.EVENT
-      const entryExists = (entry != null ? entry.id : void 0)
-      entry.license = getLicenseForEntry(entry.license)
+      let saveFunc;
+      let getEntityRequest;
+      const isEvent = entry.categories[0] === IDS.EVENT;
+      const entryExists = (entry != null ? entry.id : void 0);
+      entry.license = getLicenseForEntry(entry.license);
 
       if (isEvent) {
-        entry.created_by = 'test@test.com'
-        saveFunc = entryExists ? WebAPI.editEvent : WebAPI.createNewEvent
-        getEntityRequest = WebAPI.getEvent
+        entry.created_by = 'test@test.com';
+        saveFunc = entryExists ? WebAPI.editEvent : WebAPI.createNewEvent;
+        getEntityRequest = WebAPI.getEvent;
       } else {
-        saveFunc = entryExists ? WebAPI.saveEntry : WebAPI.saveNewEntry
-        getEntityRequest = WebAPI.getEntries
+        saveFunc = entryExists ? WebAPI.saveEntry : WebAPI.saveNewEntry;
+        getEntityRequest = WebAPI.getEntries;
       }
 
       saveFunc(entry, (err, res) => {
         if (err) {
           dispatch(stopSubmit(EDIT.id, {
             _error: err
-          }))
+          }));
           dispatch(notify({
             ...notificationSettings,
             message: i18n.t("growler.genericError"),
             status: "error"
-          }))
+          }));
         } else {
-          const id = (entry != null ? entry.id : void 0) || res
+          const id = (entry != null ? entry.id : void 0) || res;
 
           getEntityRequest([id], (err, res) => {
-            isEvent ? res.categories = entry.categories : res
+            isEvent ? res.categories = entry.categories : res;
 
-            dispatch(initialize(EDIT.id, {}, EDIT.fields))
+            dispatch(initialize(EDIT.id, {}, EDIT.fields));
             if (!err) {
               dispatch(notify({
                 ...notificationSettings,
                 message: i18n.t("growler.entrySaved"),
                 status: "success"
-              }))
+              }));
 
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 payload: id,
-              })
+              });
 
-              if (!entryExists) {
+              if(!entryExists){
                 dispatch({
                   type: T.NEW_ENTRY_RESULT,
                   payload: isEvent ? res : res[0]
-                })
+                });
               } else {
                 dispatch({
                   type: T.SAVED_ENTRY_RESULT,
                   payload: isEvent ? res : res[0]
-                })
+                });
               }
             }
-          })
+          });
         }
-      })
+      });
     },
 
   createRating: (rating) =>
@@ -374,35 +374,35 @@ const Actions = {
       const r = {
         ...rating,
         value: Number.parseInt(rating.value)
-      }
+      };
       WebAPI.createRating(r, (err, res) => {
         if (err) {
           dispatch(stopSubmit(RATING.id, {
             _error: err
-          }))
+          }));
         } else {
           WebAPI.getEntries([r.entry], (err, res) => {
             dispatch({
               type: T.ENTRIES_RESULT,
               payload: err || res,
               error: err != null
-            })
+            });
             if (!err && res && res.length == 1) {
               dispatch({
                 type: T.SET_CURRENT_ENTRY,
                 payload: res[0].id,
-              })
-              dispatch(Actions.getRatings(res[0].ratings))
+              });
+              dispatch(Actions.getRatings(res[0].ratings));
               dispatch(notify({
                 ...notificationSettings,
                 message: i18n.t("growler.ratingSaved"),
                 status: "success"
-              }))
-              dispatch(initialize(RATING.id, {}, RATING.fields))
+              }));
+              dispatch(initialize(RATING.id, {}, RATING.fields));
             }
-          })
+          });
         }
-      })
+      });
     },
 
   setMarker: (latlng) =>
@@ -411,14 +411,14 @@ const Actions = {
         type: T.SET_MARKER,
         payload: latlng,
         manual: true
-      })
+      });
       WebAPI.searchGeolocation(latlng, (err, res) => {
         dispatch({
           type: T.MARKER_ADDRESS_RESULT,
           payload: err || res,
           error: err != null
-        })
-      })
+        });
+      });
     },
 
   geocodeAndSetMarker: (address) =>
@@ -435,14 +435,14 @@ const Actions = {
                 },
                 manual: false,
                 error: err != null
-              })
+              });
               dispatch({
                 type: T.SET_ZOOM,
                 payload: parseFloat(mapConst.ENTRY_DEFAULT_ZOOM)
-              })
+              });
             }
           }
-        })
+        });
       }
     },
 
@@ -450,7 +450,7 @@ const Actions = {
     (dispatch, getState) => {
       dispatch({
         type: T.LOGIN_SUBMITTING
-      })
+      });
       WebAPI.login({
         email,
         password
@@ -458,15 +458,15 @@ const Actions = {
         if (err) {
           dispatch(stopSubmit(LOGIN.id, {
             _error: err
-          }))
+          }));
         } else {
           WebAPI.getUser(email, (err, res) => {
             dispatch({
               type: T.LOGIN_RESULT,
               payload: err || res,
               error: err != null
-            })
-          })
+            });
+          });
           WebAPI.getBboxSubscriptions((err, res) => {
             if (!err) {
               dispatch({
@@ -474,16 +474,16 @@ const Actions = {
                 subscriptionExists: res.body.length > 0
               })
             }
-          })
+          });
         }
-      })
+      });
     },
 
   register: (email, password) =>
     (dispatch, getState) => {
       dispatch({
         type: T.REGISTER_SUBMITTING
-      })
+      });
       WebAPI.register({
         email,
         password,
@@ -491,15 +491,15 @@ const Actions = {
         if (err) {
           dispatch(stopSubmit(REGISTER.id, {
             _error: err
-          }))
+          }));
         } else {
           dispatch({
             type: T.REGISTER_RESULT,
             result: res,
             email: email
-          })
+          });
         }
-      })
+      });
     },
 
   confirmEmail: (user_id) =>
@@ -525,26 +525,26 @@ const Actions = {
         if (!err) {
           dispatch({
             type: T.LOGOUT
-          })
+          });
         }
-      })
+      });
     },
 
   highlight: (id) => {
     if (id == null) {
-      id = []
+      id = [];
     }
     if (!Array.isArray(id)) {
-      id = [id]
+      id = [id];
     }
     return {
       type: T.HIGHLIGHT_ENTRIES,
       payload: id
-    }
+    };
   }
 }
 
 module.exports = {
   Actions: Actions,
   getLicenseForEntry: getLicenseForEntry
-}
+};

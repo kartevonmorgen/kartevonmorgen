@@ -11,14 +11,6 @@ const Actions = {
     payload: txt
   }),
 
-  restoreSearchText: () => ({type: T.RESTORE_SEARCH_TEXT}),
-
-  restoreSearch: () =>
-    (dispatch) => {
-      dispatch(Actions.restoreSearchText())
-      dispatch(serverActions.Actions.search())
-    },
-
   setCitySearchText: (txt) => ({
     type: T.SET_CITY_SEARCH_TEXT,
     payload: txt
@@ -59,13 +51,7 @@ const Actions = {
   toggleLandingPage   : () => ({ type: T.TOGGLE_MENU }),
   showImprint         : () => ({ type: T.SHOW_IMPRINT }),
   showPrivacyStatement: () => ({ type: T.SHOW_PRIVACY_STATEMENT }),
-
-  cancelNew           : () =>
-    (dispatch) => {
-      dispatch(Actions.restoreSearch())
-      dispatch({ type: T.CANCEL_NEW })
-    },
-
+  cancelNew           : () => ({ type: T.CANCEL_NEW }),
   cancelEdit          : () => ({ type: T.CANCEL_EDIT }),
   cancelRating        : () => ({ type: T.CANCEL_RATING }),
   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO }),
