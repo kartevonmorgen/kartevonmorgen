@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
          Field,
-         initialize, formValueSelector,  }       from "redux-form";
+         initialize, formValueSelector, getFormSyncErrors}       from "redux-form";
          
 import 'react-datepicker/dist/react-datepicker.min.css';
 import en_GB from "date-fns/locale/en-GB";
@@ -79,9 +79,19 @@ class Form extends Component {
   handleToChange = (to) => {
     this.setState({ endDate: to });
   };
+ 
+  componentDidUpdate(props, state) {
+  	if (props && props.submitFailed && props.formSyncErrors && props.formSyncErrors.license && Object.keys(props.formSyncErrors).length == 1) {
+  		var ele = document.getElementsByName('license');
+  		var div = document.getElementById('entryFormScrollableDiv');
+  		if (ele && ele.length > 0 && ele[0] && div) {
+  			div.scrollTo(0,ele[0].offsetTop);
+  		}
+	}
+  }
 
   render() {
-    const { isEdit, isEvent, formStartEndDate, license, dispatch, handleSubmit } = this.props;
+    const { isEdit, isEvent, formStartEndDate, license, dispatch, handleSubmit} = this.props;
     const { isEventEntry } = this.state;
     const { startDate } = this.state;
     const { endDate } = this.state;
@@ -94,7 +104,7 @@ class Form extends Component {
 
     return (
     <FormWrapper>
-      <ScrollableDiv>
+      <ScrollableDiv id="entryFormScrollableDiv">
         <AddEntryForm
           action    = 'javascript:void();' >
 
@@ -301,11 +311,13 @@ class Form extends Component {
                   <FieldsetTitle>{t("license")}</FieldsetTitle>
                 </FieldsetLegend>
                 <div className= "pure-g license">
-                  <label className= "pure-u-2-24">
+                  <label className= "pure-u-2-24"
+                       	onClick={function(event){event.preventDefault();document.getElementsByName('license')[0].click(event);return false;}}>
                     <FontAwesomeIcon icon={['fab', 'creative-commons']} />
                   </label>
-                  <div className= "pure-u-2-24 pure-controls">
-                    <FieldElement name="license" component="input" type="checkbox" />
+                  <div className= "pure-u-2-24 pure-controls"
+                	onClick={function(event){event.preventDefault();document.getElementsByName('license')[0].click(event);return false;}}>
+                    <FieldElement name="license" component="input" type="checkbox" onClick={function(event){event.stopPropagation();}} />
                   </div>
                   <div className= "pure-u-20-24">
                     <FieldElement name="license" component={errorMessage} />
@@ -368,6 +380,14 @@ module.exports = reduxForm({
   form            : EDIT.id,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],
+   onSubmitFail: errors => {if (errors.license && Object.keys(errors).length == 1){
+   		var box = document.getElementsByName('license')[0];
+   		var ele = box.parentNode;
+   		while (ele && ele.nodeName != 'FORM') {
+   			ele = ele.parentNode;
+   		}
+   		ele.parentNode.scrollTo(0, box.offsetTop - 100);
+    }},
   asyncValidate: function(values, dispatch) {
     dispatch(Actions.geocodeAndSetMarker(
           (values.street ? values.street + ' ' : '')

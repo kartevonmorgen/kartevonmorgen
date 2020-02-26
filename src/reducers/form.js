@@ -8,7 +8,7 @@ const reducer = formReducer.plugin({
   edit: (state={}, action={}) => {
 
     switch (action.type) {
-
+	  
       case T.SHOW_NEW_ENTRY:
         return {
           ...state,

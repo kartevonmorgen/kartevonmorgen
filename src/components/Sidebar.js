@@ -182,6 +182,8 @@ class Sidebar extends Component {
           <EntryForm
             isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null }
             isEvent={ isEventForEdit }
+            formSyncErrors={ form[EDIT.id].syncErrors }
+            formSubmitFailed = { form[EDIT.id].submitFailed }
             formStartEndDate={ { startDate: entry ? (entry.start * 1000) : null, endDate: entry ? (entry.end * 1000) : null } }
             license={ entries[search.current] ? entries[search.current].license : null }
             dispatch={ dispatch }
