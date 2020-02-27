@@ -57,7 +57,7 @@ module.exports = (state=initialState, action={}) => {
         routingUsecases.push(RoutingUsecases.CHANGE_ZOOM);
       }
       if (addentry) {
-        if (addentry === 'event') {
+        if (Object.keys(Categories.NAMES).filter(c => Categories.NAMES[c] === addentry).length) {
           routingUsecases.push(RoutingUsecases.SHOW_NEW_ENTRY)
         }
       }
