@@ -30,8 +30,6 @@ const renderDatePickerStart = ({input, initEndDate, endDate, ...props}) => {
   const minDate = moment()
   const minTime = moment()
 
-  console.log("mintime", minTime)
-
   const isDateSelected = !!input.value
   let selectedDate = new window.Date()
   if (isDateSelected) {
@@ -138,8 +136,6 @@ class Form extends Component {
   };
 
   handleFromChange = (from) => {
-  	// console.log('new from date:' + from);
-  	// console.log(from);
     this.setState({ startDate: from });
   };
 
@@ -148,16 +144,22 @@ class Form extends Component {
   };
 
   render() {
-    const { isEdit, isEvent, formStartEndDate, license, dispatch, handleSubmit } = this.props;
+    const { isEdit, isEvent, formStartEndDate, descriptionLength, license, dispatch, handleSubmit } = this.props;
     const { isEventEntry } = this.state;
     const { startDate } = this.state;
     const { endDate } = this.state;
     const initStartDate = formStartEndDate.startDate ? new window.Date(formStartEndDate.startDate) : '';
     const initEndDate = formStartEndDate.endDate ? new window.Date(formStartEndDate.endDate) : '';
+    // TODO: use process.env.ENTRY_DESCRIPTION_WARN_LIMIT instead of hard code
+    const isDescriptionTooLong = descriptionLength > 250
 
-    var t = (key) => {
+    const t = (key) => {
       return this.props.t("entryForm." + key);
     };
+
+    const getDescriptionWarnMessage = () => (
+      t("descriptionTooLong") + ": " + descriptionLength + " " + t("maxNumCharactersDescription")
+    )
 
     return (
     <FormWrapper>
@@ -244,6 +246,7 @@ class Form extends Component {
                 )}
 
                 <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
+                {isDescriptionTooLong && <div className="err">{getDescriptionWarnMessage()}</div>}
                 <FieldElement name="description" component={errorMessage} />
 
                 <FieldElement
@@ -418,7 +421,8 @@ class Form extends Component {
 
 const mapStateToProps = ({form}) => {
   return {
-    category: lodashGet(form, 'edit.values.category', null)
+    category: lodashGet(form, 'edit.values.category', null),
+    descriptionLength: lodashGet(form, 'edit.values.description', '').length
   }
 }
 
@@ -427,7 +431,8 @@ Form.propTypes = {
   isEdit : T.string,
   license: T.string,
   dispatch: T.func,
-  tags: T.array
+  tags: T.array,
+  descriptionLength: T.number
 };
 
 module.exports = connect(mapStateToProps)(reduxForm({
