@@ -29,11 +29,12 @@ const entryForm = (data) => {
   if (data.description == null) {
     errors.description = t("requiredField");
   } else {
-    if (!((l = data.description.length) <= 250)) {
-      if (errors.description == null) {
-        errors.description = t("descriptionTooLong") + ": " + l + " " + t("maxNumCharactersDescription");
-      }
-    }
+    // 250 is hard coded however a more dynamic number from .env is more desired (ENTRY_DESCRIPTION_WARN_LIMIT)
+    // if (!((l = data.description.length) <= 250)) {
+    //   if (errors.description == null) {
+    //     errors.description = t("descriptionTooLong") + ": " + l + " " + t("maxNumCharactersDescription");
+    //   }
+    // }
     if (!((l = data.description.length) >= 10)) {
       if (errors.description == null) {
         errors.description =  t("descriptionTooShort") + ": " + l + " " + t("maxNumCharactersDescription");
