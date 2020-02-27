@@ -1,4 +1,4 @@
-import React                  from "react";
+import React, {useState}                  from "react";
 import styled                 from "styled-components";
 import T                      from "prop-types";
 import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome'
@@ -71,6 +71,24 @@ const getRoutePlannerLink = (entry) => {
 };
 
 const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => {
+  // TODO: make the length of brief description dynamic from .env
+  // TODO: be careful it should be consistent with the hard limit from EntryForm
+  const briefDescriptionLength = 250
+  const isDescriptionTooLong = entry.description.length > briefDescriptionLength
+
+  const [showFulldescription, setShowMoreDescription] = useState(false)
+
+  const getDescription = () => {
+    const {description} = entry
+
+    if (isDescriptionTooLong && !showFulldescription) {
+      // the extra space is to separate the read-more link from the actual description
+      return description.substr(0, briefDescriptionLength) + ' '
+    }
+
+    return description
+  }
+
   if (!entry) {
     return(
       <LoadingEntryMessage>
@@ -89,7 +107,13 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
         </EntryCategory>
         <EntryTitle>{entry.title}</EntryTitle>
         { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
-        <EntryDescription>{entry.description}</EntryDescription>
+        <EntryDescription>
+          {getDescription()}
+          {
+            isDescriptionTooLong && !showFulldescription &&
+            <FlatButon onClick={() => setShowMoreDescription(true)}>Read more...</FlatButon>
+          }
+        </EntryDescription>
         <EntryDetailsOtherData>{[
           ((entry.organizer) ?
           <div key="organizer">
@@ -233,4 +257,15 @@ const TagLink = styled.a `
     color: ${props => props.clickable ? '#fff' : ''};
     background-color: ${props => props.clickable ? '#333' : ''};
   }
+`
+
+const FlatButon = styled.button`
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  cursor: pointer;
 `
