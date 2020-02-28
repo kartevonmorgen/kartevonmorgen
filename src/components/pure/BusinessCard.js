@@ -220,6 +220,7 @@ const EntryCategory = styled.div`
 
 const EntryDescription = styled.p`
   color: ${STYLE.darkGray};
+  white-space: pre-line;
 `;
 
 const EntryDetailsOtherData = styled.div`
