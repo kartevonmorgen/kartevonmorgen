@@ -157,10 +157,6 @@ class Form extends Component {
       return this.props.t("entryForm." + key);
     };
 
-    const getDescriptionWarnMessage = () => (
-      t("descriptionTooLong") + ": " + descriptionLength + " " + t("maxNumCharactersDescription")
-    )
-
     return (
     <FormWrapper>
       <ScrollableDiv>
@@ -246,7 +242,7 @@ class Form extends Component {
                 )}
 
                 <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
-                {isDescriptionTooLong && <div className="err">{getDescriptionWarnMessage()}</div>}
+                {isDescriptionTooLong && <div className="err">{t("keepDescriptionShort")}</div>}
                 <FieldElement name="description" component={errorMessage} />
 
                 <FieldElement
