@@ -21,7 +21,7 @@ const StyledScrollableDiv = styled.div`
 `
 
 const ScrollableDiv = (props) => {
-  return <StyledScrollableDiv className={props.className}>{props.children}</StyledScrollableDiv>;
+  return <StyledScrollableDiv className={props.className} id={props.id}>{props.children}</StyledScrollableDiv>;
 }
 
 export default ScrollableDiv;
