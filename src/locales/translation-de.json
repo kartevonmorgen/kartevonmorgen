@@ -17,7 +17,7 @@
     "start": "Beginn",
     "end": "Ende",
     "description": "Beschreibung",
-    "keepDescriptionShort": "Fass dich kurz! Nutzer wollen nicht so viel lesen. Max. 250 Zeichen sind standardmäßig sichtbar.",
+    "keepDescriptionShort": "Fasse dich kurz! Nutzer wollen nicht so viel lesen. Max. 250 Zeichen sind standardmäßig sichtbar.",
     "tags": "Stichworte",
     "newTag": "Neu:",
     "noTagSuggestion": "Tippen für Vorschläge.",
