@@ -17,7 +17,7 @@
     "start": "Inicio",
     "end": "Final",
     "description": "Descripción",
-    "keepDescriptionShort": "¡Que sea breve! A los usuarios no les gusta leer tanto. Por defecto, se pueden ver un máximo de 250 caracteres",
+    "keepDescriptionShort": "¡Que sea breve! A los usuarios no les gusta leer tanto. Por defecto, se pueden ver un máximo de 250 caracteres.",
     "tags": "Palabras clave",
     "newTag": "Nuevo:",
     "noTagSuggestion": "Escriba sus sugerencias.",
