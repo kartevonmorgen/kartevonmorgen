@@ -83,7 +83,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
 
     if (isDescriptionTooLong && !showFulldescription) {
       // the extra space is to separate the read-more link from the actual description
-      return description.substr(0, briefDescriptionLength) + ' '
+      return description.substr(0, briefDescriptionLength) + '... '
     }
 
     return description
@@ -111,7 +111,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
           {getDescription()}
           {
             isDescriptionTooLong && !showFulldescription &&
-            <FlatButon onClick={() => setShowMoreDescription(true)}>Read more...</FlatButon>
+            <FlatButon onClick={() => setShowMoreDescription(true)}>{i18n.t("entryDetails.readMore")}</FlatButon>
           }
         </EntryDescription>
         <EntryDetailsOtherData>{[
