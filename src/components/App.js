@@ -496,6 +496,10 @@ const StyledApp = styled.div `
       color: #f44;
       font-size: 0.9em;
     }
+    div.warn {
+      color: #ff9966;
+      font-size: 0.9em;
+    }
     input[type="text"].err {
       border-color: #f44;
     }

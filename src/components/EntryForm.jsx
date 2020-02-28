@@ -242,7 +242,7 @@ class Form extends Component {
                 )}
 
                 <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
-                {isDescriptionTooLong && <div className="err">{t("keepDescriptionShort")}</div>}
+                {isDescriptionTooLong && <div className="warn">{t("keepDescriptionShort")}</div>}
                 <FieldElement name="description" component={errorMessage} />
 
                 <FieldElement
