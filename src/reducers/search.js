@@ -80,6 +80,12 @@ module.exports = (state = initialState, action = {}) => {
         text: action.payload
       }
 
+    case T.BACKUP_SEARCH_TEXT:
+      return {
+        ...state,
+        history: state.text,
+      }
+
     case T.RESTORE_SEARCH_TEXT:
       return {
         ...state,

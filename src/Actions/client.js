@@ -12,6 +12,8 @@ const Actions = {
     payload: txt
   }),
 
+  backupSearchText: () => ({type: T.BACKUP_SEARCH_TEXT}),
+
   restoreSearchText: () => ({type: T.RESTORE_SEARCH_TEXT}),
 
   restoreSearch: () =>
