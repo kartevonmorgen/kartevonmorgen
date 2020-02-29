@@ -1,10 +1,12 @@
-import React          from "react";
+import React, {useEffect}          from "react";
+import {connect}      from "react-redux"
 import styled         from "styled-components";
 import { translate }  from "react-i18next";
 
 import BusinessCard   from "./BusinessCard";
 import NavButtonWhite from "./NavButtonWhite";
 import EntryImage     from "./EntryImage";
+import Actions from "../../Actions"
 
 const LoadingEntryMessage = styled.div`
   margin: 3em 2em !important;
@@ -24,6 +26,9 @@ const Entry = styled.div`
 `
 
 const EntryDetails = props => {
+  useEffect(() => {
+    props.backupSearchText()
+  }, [])
 
   const { entry, t, isEvent, onBack, onEdit, onTag, tagsClickable } = props;
   const hasImage = entry ? (entry.image_url ? true : false) : false;
@@ -74,4 +79,10 @@ const EntryDetails = props => {
   }
 }
 
-module.exports = translate('translation')(EntryDetails)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    backupSearchText: () => dispatch(Actions.backupSearchText())
+  }
+}
+
+module.exports = connect(null, mapDispatchToProps)(translate('translation')(EntryDetails))
