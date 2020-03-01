@@ -304,6 +304,24 @@ class Form extends Component {
                 <OptionalLegend>
                   <FieldsetTitle>{t("contact")}</FieldsetTitle>
                 </OptionalLegend>
+
+                {
+                  this.state.isEventEntry &&
+                  <div className= "pure-g">
+                    <OptionalFieldLabel className= "pure-u-2-24">
+                      <FontAwesomeIcon icon="user" />
+                    </OptionalFieldLabel>
+                    <div className= "pure-u-22-24">
+                      <FieldElement
+                        name="organizer"
+                        className="pure-input-1 optional"
+                        component="input"
+                        placeholder="Organizer" />
+                      <FieldElement name="organizer" component={errorMessage} />
+                    </div>
+                  </div>
+                }
+
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
                     <FontAwesomeIcon icon="globe-africa" />

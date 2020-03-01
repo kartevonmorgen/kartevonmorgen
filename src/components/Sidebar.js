@@ -193,6 +193,7 @@ class Sidebar extends Component {
                   title: data.title,
                   description: data.description,
                   tags: data.tags ? data.tags.split(',') : null,
+                  organizer: data.organizer,
                   homepage: data.homepage,
                   telephone: data.telephone,
                   lat: Number(data.lat),
