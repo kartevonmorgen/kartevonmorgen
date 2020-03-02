@@ -316,7 +316,7 @@ class Form extends Component {
                         name="organizer"
                         className="pure-input-1 optional"
                         component="input"
-                        placeholder="Organizer" />
+                        placeholder={t("contactPerson")} />
                       <FieldElement name="organizer" component={errorMessage} />
                     </div>
                   </div>
