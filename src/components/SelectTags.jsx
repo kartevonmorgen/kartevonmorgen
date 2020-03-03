@@ -26,7 +26,7 @@ class SelectTags extends Component {
     //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select
 
     request
-      .get( OFDB_API.link +'/tags/')
+      .get( OFDB_API.link +'/entries/most-popular-tags?min_count=4')
       .accept('json')
       .end((err, response) => {
         if (err) {
@@ -36,8 +36,8 @@ class SelectTags extends Component {
           let options = []
           for (var i = 0; i < response.body.length; i++) {
             options[i] = {
-              "value": response.body[i],
-              "label": response.body[i]
+              "value": response.body[i][0],
+              "label": response.body[i][0]
             }
           }
           this.setState({
