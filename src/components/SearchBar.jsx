@@ -6,6 +6,7 @@ import styled, { keyframes }               from "styled-components";
 import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 import STYLE                               from "./styling/Variables"
 import { SpinLoader }                      from 'react-loaders-spinners';
+import { Creatable }  from 'react-select';
 
 const CategoryButtons = ({ disabled, active, onToggle, t }) => {
 
@@ -86,13 +87,25 @@ class SearchBar extends React.Component {
           </div>
 
           <SearchInput
-            onChange    = { this.onChange }
-            disabled    = { disabled }
-            onKeyUp     = { this.onKeyUp }
-            onFocus     = { this.onFocus }
-            value       = { searchText || '' }
-            className   = "pure-u-1"
-            placeholder = { t("searchbar.placeholder") } />
+            styles={{
+              control: (provided, state) => ({
+                ...provided,
+                border: 'none',
+                boxShadow: 'none'
+              }),
+              menu: (provided, state) => ({
+                ...provided,
+                width: '85%'
+              })
+            }}
+            // onChange    = { this.onChange }
+            // disabled    = { disabled }
+            // onKeyUp     = { this.onKeyUp }
+            // onFocus     = { this.onFocus }
+            // value       = { searchText || '' }
+            // className   = {"pure-u-1"}
+            placeholder = { t("searchbar.placeholder") }
+          />
         </div>
       </Bar>)
   }
@@ -193,16 +206,13 @@ const MainCategories = styled.div `
   }
 `
 
-const SearchInput = styled.input `
-  ::placeholder{
-    color: #aaa;
-  }
-  border: 1px solid rgba(0,0,0,0.1) !important;
-  border-radius: 0px !important;
-  font-size: 1.1em !important;
-  line-height: 1.7em !important;
-  font-weight: 300;
-  padding-left: 3.1em !important;
+const SearchInput = styled(Creatable) `
+  font-size: 1em !important;
+  line-height: 1em !important;
+  font-weight: 100;
+  padding-left: 2.7em !important;
+  padding-right: 0.5em !important;
+  z-index: 999 !important;
 `;
 
 
