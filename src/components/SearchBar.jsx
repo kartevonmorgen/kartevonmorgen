@@ -6,7 +6,8 @@ import styled, { keyframes }               from "styled-components";
 import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 import STYLE                               from "./styling/Variables"
 import { SpinLoader }                      from 'react-loaders-spinners';
-import { Creatable }  from 'react-select';
+
+import SearchInput from "./pure/SearchInput"
 
 const CategoryButtons = ({ disabled, active, onToggle, t }) => {
 
@@ -32,29 +33,6 @@ CategoryButtons.propTypes = {
 };
 
 class SearchBar extends React.Component {
-
-  onChange = (ev) => {
-    var ref, v;
-    if ((v = (ref = ev.target) != null ? ref.value : void 0) == null) {
-      return;
-    }
-    this.props.onChange(v);
-  }
-
-  onFocus = (ev) => {
-    ev.target.select();
-  }
-
-  onKeyUp = (ev) => {
-    ev.preventDefault();
-    switch (ev.key) {
-      case "Escape":
-        this.props.onEscape();
-        break;
-      case "Enter":
-        this.props.onEnter();
-    }
-  }
 
   render() {
 
@@ -98,13 +76,8 @@ class SearchBar extends React.Component {
                 width: '85%'
               })
             }}
-            // onChange    = { this.onChange }
-            // disabled    = { disabled }
-            // onKeyUp     = { this.onKeyUp }
-            // onFocus     = { this.onFocus }
-            // value       = { searchText || '' }
-            // className   = {"pure-u-1"}
-            placeholder = { t("searchbar.placeholder") }
+            onChange    = { this.props.onChange }
+            searchText       = { searchText || '' }
           />
         </div>
       </Bar>)
@@ -205,16 +178,6 @@ const MainCategories = styled.div `
     background: ${STYLE.company};
   }
 `
-
-const SearchInput = styled(Creatable) `
-  font-size: 1em !important;
-  line-height: 1em !important;
-  font-weight: 100;
-  padding-left: 2.7em !important;
-  padding-right: 0.5em !important;
-  z-index: 999 !important;
-`;
-
 
 const Bar = styled.div `
 
