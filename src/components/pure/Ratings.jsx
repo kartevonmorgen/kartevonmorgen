@@ -90,9 +90,9 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
 
         { ratingsInTopics(contextRatings).map(topicRatings =>
           <RatingTopicWrapper>
-            { topicRatings.map(rating =>
+            { topicRatings.map( (rating, index) =>
               <li key={rating.id}>
-                {Rating(rating, t_r)}
+                {Rating(rating, t_r, {hideTitle: (index!=0)} )}
               </li>
             ) }
             <AdditionalCommentLink onClick={() => { onComment({
