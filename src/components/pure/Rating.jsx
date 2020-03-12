@@ -14,28 +14,31 @@ const rating_value_key = (value) => {
   }
 }
 
+// displayOptions
+//   hideSource: do not show Source if set to true
+//   hideTitle: do not show Title if set to true
+const Rating = (rating, t, displayOptions = {}) => {
 
-const Rating = (rating, t, hideSource = false) => {
-
+  // Display links appropriately
   const source = rating.source ? rating.source : ''
   const match = source.match(/(?:(?:https?|ftp):\/\/)?[a-z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF/\-?=%.]+\.[\w/\-?=%#&_.]+[\w?&%/#]+/i)
-
   const before = match ? source.substring(0,match.index) : ''
   const after = match ? source.substring( match.index+match[0].length, source.length)  : ''
   let href = match ? match[0]  : ''
   if(href.indexOf('http') !== 0)  href = 'http://' + href
-
   let sourceSpan = () => { return match ? <span> {before} <Link target="_blank" href={href}>{t('ratings.sourceWebsite')}</Link> {after}</span> : <span>{source}</span>}
 
   return (
     <RatingWrapper>
-      <RatingTitleWrapper>
-        <span>{t("ratings.valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
-      </RatingTitleWrapper>
+      { displayOptions.hideTitle ? '' :
+        <RatingTitleWrapper>
+          <span>{t("ratings.valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
+        </RatingTitleWrapper>
+      }
       <RatingCommentList>
         {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
       </RatingCommentList>
-      { hideSource ? '' :
+      { displayOptions.hideSource ? '' :
         <SourceWrapper>{ sourceSpan() }</SourceWrapper>
       }
     </RatingWrapper>
