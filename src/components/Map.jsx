@@ -7,10 +7,12 @@ import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
 import T                        from "prop-types";
 import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
+import { Fab, Action } from 'react-tiny-fab'
 
 import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
 
 import  "leaflet/dist/leaflet.css"
+import 'react-tiny-fab/dist/styles.css'
 
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
@@ -180,6 +182,14 @@ class KVMMap extends Component {
           }
           }
         </Map>
+        <Fab
+          event="click"
+          icon={<ShareIcon icon="share-square" color="black"/>}
+          position={{bottom: 116, right: -23, zIndex: 0}}
+          mainButtonStyles={{
+            width: 30, height: 30, borderRadius: "4px", background: "#fff"
+          }}
+        />
         {showLocateButton ?
           <div className="leaflet-control-container">
             <LocateButtonContainer className="leaflet-right">
@@ -214,6 +224,12 @@ KVMMap.propTypes = {
 };
 
 module.exports = KVMMap;
+
+const MB = p => (
+  <button type="button" className="rtf--mb" {...p}>
+    {p.children}
+  </button>
+);
 
 const Wrapper = styled.div`
 
@@ -254,6 +270,11 @@ const LocateButton = styled.a `
   height: 30px !important;
   line-height: 30px !important;
 `;
+
+const ShareIcon = styled(FontAwesomeIcon)`
+  width: 12px;
+  height: 12px;
+`
 
 const LocateIcon = styled(FontAwesomeIcon)`
   width: 12px;

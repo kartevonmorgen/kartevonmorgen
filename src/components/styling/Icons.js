@@ -13,6 +13,7 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faExclamationTriangle').definition
   ,require('@fortawesome/free-solid-svg-icons/faEnvelope').definition
   ,require('@fortawesome/free-solid-svg-icons/faGlobeAfrica').definition
+  ,require('@fortawesome/free-solid-svg-icons/faShareSquare').definition
   ,require('@fortawesome/free-solid-svg-icons/faLocationArrow').definition
   ,require('@fortawesome/free-solid-svg-icons/faLink').definition
   ,require('@fortawesome/free-solid-svg-icons/faMapMarker').definition
