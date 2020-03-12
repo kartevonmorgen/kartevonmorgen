@@ -27,7 +27,7 @@ const context_order = (id) => {
   }
 };
 
-const rating_groups = (ratings=[]) => {
+const ratingsInContexts = (ratings=[]) => {
   var groups = {};
   ratings
     .filter(r => typeof r !== "undefined" && r !== null)
@@ -45,15 +45,23 @@ const rating_groups = (ratings=[]) => {
   return groups_sorted;
 }
 
+const ratingsInTopics = (ratings=[]) => {
+  return ratings
+    // extract topics (unique titles)
+    .map(rating => rating.title)
+    .filter( (element,index,array) => index == array.indexOf(element) )
+    // group ratings after their topic
+    .map(topic => ratings.filter(rating => rating.title == topic))
+    .filter(group => group.length > 0)
+  }
+
 const t_r = (key) => i18n.t(key)
 const t = (key) => t_r("ratings." + key)
 
 const Ratings = ({ entry, ratings, onRate, onComment }) => {
-  const groups = rating_groups(ratings);
-
-  const ratingElements = groups.map(g => {
-    const context = g[0].context;
-    const l = g.length;
+  const ratingElements = ratingsInContexts(ratings).map(contextRatings => {
+    const context = contextRatings[0].context;
+    const l = contextRatings.length;
     const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
     const leafHeight = 35;
     const headingColor =
@@ -79,22 +87,27 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
             </g>
           </svg>
         </LeafWrapper>
-        <RatingListForContext>
-          { g.map(r => <li key={r.id}>{Rating(r, t_r)}</li>) }
 
-          <AdditionalCommentLink onClick={() => { onComment({
+        { ratingsInTopics(contextRatings).map(topicRatings =>
+          <RatingTopicWrapper>
+            { topicRatings.map(rating =>
+              <li key={rating.id}>
+                {Rating(rating, t_r)}
+              </li>
+            ) }
+            <AdditionalCommentLink onClick={() => { onComment({
                 entryId: entry.id,
                 entryTitle: entry.title,
                 ratingContext: context,
-                ratingList: g
+                ratingList: topicRatings
               }) }}>
               <FontAwesomeIcon icon={faComment} />&nbsp;
               <span>
                 { t("newComment") }
               </span>
-          </AdditionalCommentLink>
-
-        </RatingListForContext>
+            </AdditionalCommentLink>
+          </RatingTopicWrapper>
+        ) }
       </RatingContextWrapper>)
   });
 
@@ -135,7 +148,8 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
 
 
 const AdditionalCommentLink = styled.a`
-  float: right;
+  text-align: right;
+  display: block;
   height: 20px;
   margin: 0.42em 0;
   font-size: 0.8em;
@@ -189,7 +203,7 @@ const RatingList = styled.ul`
   padding:     0;
 `
 
-const RatingListForContext = styled.ul`
+const RatingTopicWrapper = styled.ul`
   margin-left: 0.5em;
   margin-top: 0.6em;
   margin-bottom: 0;
