@@ -214,6 +214,7 @@ const RatingTopicWrapper = styled.ul`
     border-left: solid 0.3em #d8d8d8;
     padding-left: 1.1em;
     margin-left: 1.1em;
+    margin-top: 0.5em;
   }
 `
 
