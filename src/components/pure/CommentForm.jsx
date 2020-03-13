@@ -11,9 +11,16 @@ import STYLE                            from "../styling/Variables";
 import ScrollableDiv                    from "./ScrollableDiv";
 import NavButtonWrapper                 from "./NavButtonWrapper";
 
+class CommentForm extends React.Component {
 
-const CommentForm = props => {
+// New comments get the parent's title in a fixed manner
+componentWillMount() {
+  this.setState((state, props) => {
+    return {title: props.ratingList[0].title};
+  });
+}
 
+render() {
   const {
     entryId,
     entryTitle,
@@ -21,7 +28,7 @@ const CommentForm = props => {
     ratingList,
     t,
     onCancel
-  } = props;
+  } = this.props;
 
   return (
     <CommentFormWrapper>
@@ -37,12 +44,12 @@ const CommentForm = props => {
             { t("ratingForm.moreInfoLink") }
             </a>
           </IntroText>
-          { props.error &&
+          { this.props.error &&
             <div className= "err">
-              {t("ratingForm.savingError") + ":" + props.error.message}
+              {t("ratingForm.savingError") + ":" + this.props.error.message}
             </div>
           }
-          { (!props.error) && props.submitFailed &&
+          { (!this.props.error) && this.props.submitFailed &&
             <div className="err">{t("ratingForm.valuesError")}
               <Field name="license" component={errorMessage} />
             </div>
@@ -63,10 +70,9 @@ const CommentForm = props => {
             </RatingListForContext>
           </Aspect>
           <div className= "pure-form">
-            <fieldset>
-              <Field name="title" className="pure-input-1" type="text" component="input" placeholder={t("ratingForm.title")} />
-              <Field name="title" component={errorMessage} />
-            </fieldset>
+            <HiddenField>
+              <Field name="title" component="input" type="text" props={{value: this.state.title, autoFocus: true}} autofocus='true' />
+            </HiddenField>
             <fieldset>
               <Field name="comment" className="pure-input-1" component="textarea" placeholder={t("ratingForm.comment")} />
               <Field name="comment" component={errorMessage} />
@@ -109,13 +115,14 @@ const CommentForm = props => {
           keyName = "save"
           classname = "pure-u-1-2"
           onClick = { () => {
-            props.handleSubmit();
+            this.props.handleSubmit();
           }}
           icon = "save"
           text = { t("commentForm.save") }
         />
       </StyledNavButtonWrapper>
     </CommentFormWrapper>)
+}
 }
 
 
@@ -143,6 +150,17 @@ const RatingListForContext = styled.ul`
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+`
+
+const HiddenField = styled.label`
+  .pure-form &,
+  .pure-form & > input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 0;
+    display: block;
+  }
 `
 
 const Form = styled.form`
