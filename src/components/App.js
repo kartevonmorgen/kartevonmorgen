@@ -591,4 +591,3 @@ const StyledApp = styled.div `
     margin-top: 0.7em;
   }
 `
-
