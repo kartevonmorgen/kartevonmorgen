@@ -61,13 +61,13 @@ render() {
             <AspectLabel>
               { t("ratings.contextName." + ratingContext) }
             </AspectLabel>
-            <RatingListForContext>
+            <RatingTopicWrapper>
               { ratingList.map( (rating, index) =>
                 <li key={rating.id}>
                   {Rating(rating, t, {hideSource: true, hideTitle: (index!=0)} )}
                 </li>
               ) }
-            </RatingListForContext>
+            </RatingTopicWrapper>
           </Aspect>
           <div className= "pure-form">
             <HiddenField>
@@ -144,12 +144,19 @@ const AspectLabel = styled.label`
   font-weight: bold;
 `
 
-const RatingListForContext = styled.ul`
+const RatingTopicWrapper = styled.ul`
   margin-left: 0.5em;
   margin-top: 0.6em;
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+
+  & li:not(:first-child) {
+    border-left: solid 0.3em #d8d8d8;
+    padding-left: 1.1em;
+    margin-left: 1.1em;
+    margin-top: 0.5em;
+  }
 `
 
 const HiddenField = styled.label`
