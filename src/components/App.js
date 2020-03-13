@@ -604,4 +604,3 @@ const StyledApp = styled.div `
  .hidden {
  display: none;
 `
-
