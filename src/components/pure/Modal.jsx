@@ -13,17 +13,15 @@ import i18n                 from "../../i18n";
 const t = (key) => i18n.t("modal." + key)
 
 const getIframeCode = (url) => (
-  `
-  <div style="text-align: center;"> 
-  <iframe style="display: inline-block; border: none" src=" 
-  ${url}
-  " width="100%" height="580"> 
-  <a href="https://kartevonmorgen.org/" target="_blank">zur karte</a>
-  </iframe></div> <p style="text-align: right;">
-  <a href="https://kartevonmorgen.org" 
-  target="_blank" rel="noreferrer noopener" aria-label=" (öffnet in neuem Tab)">
-  Große Karte öffnen</a></p> 
-  `
+  `<div style="text-align: center;"> 
+<iframe style="display: inline-block; border: none" src=" 
+${url}
+" width="100%" height="580"> 
+<a href="https://kartevonmorgen.org/" target="_blank">zur karte</a>
+</iframe></div> <p style="text-align: right;">
+<a href="https://kartevonmorgen.org" 
+target="_blank" rel="noreferrer noopener" aria-label=" (öffnet in neuem Tab)">
+Große Karte öffnen</a></p>`
 )
 
 
@@ -74,20 +72,24 @@ module.exports = ({view, dispatch}) => {
         </Modal>
       );
     case V.EMBED:
+      const iframeCode = getIframeCode(url)
       return (
         <Modal className = 'modal'>
           <Message
             // iconClass = "info-circle"
             message = {
               <SyntaxHighlighter language="javascript" style={docco}>
-                {getIframeCode(url)}
+                {iframeCode}
               </SyntaxHighlighter>
             }
             cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.closeModal()) }
             actionButtonLabel = "Copy"
             actionButtonIcon = "copy"
-            onAction = { () => copy('this is me!') }
+            onAction = { () => {
+              copy(iframeCode)
+              dispatch(Actions.showNotification("Iframe code copied to clipboard!", "success"))
+            }}
             optionalActionComponent={
               <a href="http://blog.vonmorgen.org/iframes/" style={{textDecoration: 'none'}}>
                 Find out more about sharing options
