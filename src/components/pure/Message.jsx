@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Message = ({
+  optionalActionComponent,
   actionButtonLabel,
   cancelButtonLabel,
   actionButtonIcon,
@@ -42,6 +43,7 @@ const Message = ({
       { message }
       <div className = "close-button">
         { cancelButton }
+        { optionalActionComponent }
         { actionButton }
       </div>
     </Dialog>
@@ -52,7 +54,8 @@ Message.propTypes = {
   onCancel: T.func,
   onAction: T.func,
   actionButtonLabel: T.string,
-  cancelButtonLabel: T.string
+  cancelButtonLabel: T.string,
+  optionalActionComponent: T.node
 };
 
 module.exports = Message;

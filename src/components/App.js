@@ -548,6 +548,8 @@ const StyledApp = styled.div `
   /* ======= MISC */
 
   .close-button {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     margin: 0;
     padding: 1em;

@@ -1,5 +1,8 @@
 import React                from "react";
 import styled,{ keyframes } from "styled-components";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import copy                 from 'copy-to-clipboard';
 
 import Message              from "./Message";
 import Actions              from "../../Actions"; //TODO: remove dependency
@@ -9,7 +12,24 @@ import i18n                 from "../../i18n";
 
 const t = (key) => i18n.t("modal." + key)
 
+const getIframeCode = (url) => (
+  `
+  <div style="text-align: center;"> 
+  <iframe style="display: inline-block; border: none" src=" 
+  ${url}
+  " width="100%" height="580"> 
+  <a href="https://kartevonmorgen.org/" target="_blank">zur karte</a>
+  </iframe></div> <p style="text-align: right;">
+  <a href="https://kartevonmorgen.org" 
+  target="_blank" rel="noreferrer noopener" aria-label=" (öffnet in neuem Tab)">
+  Große Karte öffnen</a></p> 
+  `
+)
+
+
 module.exports = ({view, dispatch}) => {
+
+  const url = window.location.href
 
   switch (view.modal) {
     case V.LOCATE:
@@ -58,12 +78,21 @@ module.exports = ({view, dispatch}) => {
         <Modal className = 'modal'>
           <Message
             // iconClass = "info-circle"
-            message = { "   " + t("events.text") }
+            message = {
+              <SyntaxHighlighter language="javascript" style={docco}>
+                {getIframeCode(url)}
+              </SyntaxHighlighter>
+            }
             cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.closeModal()) }
             actionButtonLabel = "Copy"
             actionButtonIcon = "copy"
-            onAction = { () => window.open(DONATE.link, '_blank').focus() }
+            onAction = { () => copy('this is me!') }
+            optionalActionComponent={
+              <a href="http://blog.vonmorgen.org/iframes/" style={{textDecoration: 'none'}}>
+                Find out more about sharing options
+              </a>
+            }
           />
         </Modal>
       );
@@ -90,4 +119,5 @@ const Modal = styled.div `
   bottom: 0;
   background-color: rgba(0,0,0,0.3);
   animation: fadein 500ms;
+  // border: solid 1.5em rgba(#000, 0.2)
 `
