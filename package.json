@@ -33,6 +33,7 @@
     "acorn": "^6.4.0",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.4",
+    "cross-env": "^7.0.2",
     "es6-promise": "^4.2.8",
     "font-awesome": "^4.7.0",
     "i18next": "^10.6.0",
