@@ -1,7 +1,6 @@
 import React  from "react";
 import T      from "prop-types";
 import styled from "styled-components";
-import STYLE  from "../styling/Variables"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -38,7 +37,7 @@ const Message = ({
     <Dialog>
       <FontAwesomeIconElement
         icon={ iconClass }
-        pulse={ iconClass ==='spinner' ? true : false }
+        pulse={ iconClass === 'spinner' }
       />
       { message }
       <div className = "close-button">
@@ -67,4 +66,6 @@ const Dialog = styled.div `
   background-color: #fff;
   position: relative;
   max-width: 600px;
+  padding: 0.75em;
+  text-align: justify;
 `

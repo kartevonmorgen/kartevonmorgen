@@ -67,7 +67,7 @@ class KVMMap extends Component {
   }
 
   render() {
-    const {showNotification} = this.props;
+    const {showNotification, showEmbedModal} = this.props;
     const url = window.location.href
 
     var markers = [];
@@ -215,6 +215,7 @@ class KVMMap extends Component {
           </div>
           <div style={{paddingTop: 30}}>
             <ActionButon
+              onClick={() => showEmbedModal()}
               style={{
                 backgroundColor: 'white',
                 height: 30,
@@ -263,7 +264,8 @@ KVMMap.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  showNotification: (message, status) => (dispatch(Actions.showNotification(message, status)))
+  showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
+  showEmbedModal: () => (dispatch(Actions.showEmbedModal()))
 })
 
 module.exports = connect(null, mapDispatchToProps)(KVMMap);

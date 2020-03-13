@@ -232,6 +232,18 @@ module.exports = (state=initialState, action={}) => {
         ...state,
         modal: null
       }
+
+    case T.CLOSE_MODAL:
+      return {
+        ...state,
+        modal: null
+      }
+
+    case T.SHOW_EMBED_MODAL:
+      return {
+        ...state,
+        modal: action.payload
+      }
     case T.OWN_POSITION_RESULT:
 
       if (action.payload) {

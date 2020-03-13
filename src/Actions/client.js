@@ -5,7 +5,8 @@ import C                          from "../constants/Categories"
 import {notificationSettings}     from "../constants/view"
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
-import appConst                   from "../constants/App";
+import appConst                   from "../constants/App"
+import V                          from "../constants/PanelView"
 import serverActions              from "./server";
 
 const Actions = {
@@ -87,6 +88,21 @@ const Actions = {
       }))
     )
   },
+
+  showEmbedModal: () =>
+    (dispatch) => {
+      dispatch({
+        type: T.SHOW_EMBED_MODAL,
+        payload: V.EMBED
+      })
+    },
+
+  closeModal: () =>
+    (dispatch) => {
+      dispatch({
+        type: T.CLOSE_MODAL
+      })
+    },
 
   hideLeftPanelOnMobile: () =>
     (dispatch) => {

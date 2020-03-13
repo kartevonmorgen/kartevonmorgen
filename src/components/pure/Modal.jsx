@@ -12,7 +12,6 @@ const t = (key) => i18n.t("modal." + key)
 module.exports = ({view, dispatch}) => {
 
   switch (view.modal) {
-
     case V.LOCATE:
       return (
         <Modal className= 'modal'>
@@ -21,7 +20,7 @@ module.exports = ({view, dispatch}) => {
             message = {"  " + t("locate.inProgress")}
             cancelButtonLabel = {t("locate.cancel")}
             onCancel = { () => dispatch(Actions.cancelOwnPosition()) }
-            />
+          />
         </Modal>
       );
 
@@ -36,7 +35,7 @@ module.exports = ({view, dispatch}) => {
             actionButtonLabel = {t("locate.tryAgain")}
             actionButtonIcon = "sync-alt"
             onAction = { () => dispatch(Actions.showOwnPosition15minutes()) }
-            />
+          />
         </Modal>
       );
 
@@ -51,7 +50,21 @@ module.exports = ({view, dispatch}) => {
             actionButtonLabel = {t("events.donate")}
             actionButtonIcon = "external-link"
             onAction = { () => window.open(DONATE.link, '_blank').focus() }
-            />
+          />
+        </Modal>
+      );
+    case V.EMBED:
+      return (
+        <Modal className = 'modal'>
+          <Message
+            // iconClass = "info-circle"
+            message = { "   " + t("events.text") }
+            cancelButtonLabel = {t("events.close")}
+            onCancel = { () => dispatch(Actions.closeModal()) }
+            actionButtonLabel = "Copy"
+            actionButtonIcon = "copy"
+            onAction = { () => window.open(DONATE.link, '_blank').focus() }
+          />
         </Modal>
       );
     default:
