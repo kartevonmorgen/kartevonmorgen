@@ -1,6 +1,7 @@
 import React, { Component }     from "react"
 import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
 import { IDS }                  from  "../constants/Categories"
@@ -67,6 +68,7 @@ class KVMMap extends Component {
 
   render() {
     const {showNotification} = this.props;
+    const url = window.location.href
 
     var markers = [];
 
@@ -194,20 +196,22 @@ class KVMMap extends Component {
           }}
         >
           <div style={{paddingTop: 10}}>
-            <ActionButon
-              onClick={() => showNotification("Link copied to clipboard successfully!", "success")}
-              style={{
-                backgroundColor: 'white',
-                height: 30,
-                width: 90,
-                borderRadius: "4px",
-                marginRight: 8,
-                color: "black",
-              }}
-            >
-              <ActionIcon icon="link" color="black"/>
-              <div><ActionText>Copy Link</ActionText></div>
-            </ActionButon>
+            <CopyToClipboard text={url}>
+              <ActionButon
+                onClick={() => showNotification("Link copied to clipboard successfully!", "success")}
+                style={{
+                  backgroundColor: 'white',
+                  height: 30,
+                  width: 90,
+                  borderRadius: "4px",
+                  marginRight: 8,
+                  color: "black",
+                }}
+              >
+                <ActionIcon icon="link" color="black"/>
+                <div><ActionText>Copy Link</ActionText></div>
+              </ActionButon>
+            </CopyToClipboard>
           </div>
           <div style={{paddingTop: 30}}>
             <ActionButon
@@ -263,12 +267,6 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 module.exports = connect(null, mapDispatchToProps)(KVMMap);
-
-const MB = p => (
-  <button type="button" className="rtf--mb" {...p}>
-    {p.children}
-  </button>
-);
 
 const Wrapper = styled.div`
 
