@@ -1,5 +1,7 @@
 import React, { Component }     from "react"
+import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
+import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
 import { IDS }                  from  "../constants/Categories"
 import STYLE                    from "./styling/Variables"
@@ -7,7 +9,7 @@ import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
 import T                        from "prop-types";
 import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
-import { Fab, Action } from 'react-tiny-fab'
+import { Fab, Action as ActionButon } from 'react-tiny-fab'
 
 import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
 
@@ -64,6 +66,7 @@ class KVMMap extends Component {
   }
 
   render() {
+    const {showNotification} = this.props;
 
     var markers = [];
 
@@ -191,7 +194,8 @@ class KVMMap extends Component {
           }}
         >
           <div style={{paddingTop: 10}}>
-            <Action
+            <ActionButon
+              onClick={() => showNotification("Link copied to clipboard successfully!", "success")}
               style={{
                 backgroundColor: 'white',
                 height: 30,
@@ -203,10 +207,10 @@ class KVMMap extends Component {
             >
               <ActionIcon icon="link" color="black"/>
               <div><ActionText>Copy Link</ActionText></div>
-            </Action>
+            </ActionButon>
           </div>
           <div style={{paddingTop: 30}}>
-            <Action
+            <ActionButon
               style={{
                 backgroundColor: 'white',
                 height: 30,
@@ -218,7 +222,7 @@ class KVMMap extends Component {
             >
               <ActionIcon icon="code" color="black"/>
               <div><ActionText>Embed</ActionText></div>
-            </Action>
+            </ActionButon>
           </div>
         </Fab>
         {showLocateButton ?
@@ -254,7 +258,11 @@ KVMMap.propTypes = {
   showLocateButton : T.bool
 };
 
-module.exports = KVMMap;
+const mapDispatchToProps = (dispatch) => ({
+  showNotification: (message, status) => (dispatch(Actions.showNotification(message, status)))
+})
+
+module.exports = connect(null, mapDispatchToProps)(KVMMap);
 
 const MB = p => (
   <button type="button" className="rtf--mb" {...p}>

@@ -1,5 +1,8 @@
+import {notify}                   from "reapop"
+
 import T                          from "../constants/ActionTypes";
 import C                          from "../constants/Categories"
+import {notificationSettings}     from "../constants/view"
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
 import appConst                   from "../constants/App";
@@ -74,6 +77,16 @@ const Actions = {
   cancelWait          : () => ({ type: T.CANCEL_WAIT_IO }),
   showLeftPanel       : () => ({ type: T.SHOW_LEFT_PANEL }),
   hideLeftPanel       : () => ({ type: T.HIDE_LEFT_PANEL }),
+
+  showNotification: (message, status) => (dispatch) => {
+    return (
+      dispatch(notify({
+        ...notificationSettings,
+        message,
+        status,
+      }))
+    )
+  },
 
   hideLeftPanelOnMobile: () =>
     (dispatch) => {
