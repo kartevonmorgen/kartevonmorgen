@@ -16,6 +16,7 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faShareSquare').definition
   ,require('@fortawesome/free-solid-svg-icons/faLocationArrow').definition
   ,require('@fortawesome/free-solid-svg-icons/faLink').definition
+  ,require('@fortawesome/free-solid-svg-icons/faCode').definition
   ,require('@fortawesome/free-solid-svg-icons/faMapMarker').definition
   ,require('@fortawesome/free-solid-svg-icons/faMapMarkerAlt').definition
   ,require('@fortawesome/free-solid-svg-icons/faPlus').definition

@@ -189,7 +189,38 @@ class KVMMap extends Component {
           mainButtonStyles={{
             width: 30, height: 30, borderRadius: "4px", background: "#fff"
           }}
-        />
+        >
+          <div style={{paddingTop: 10}}>
+            <Action
+              style={{
+                backgroundColor: 'white',
+                height: 30,
+                width: 90,
+                borderRadius: "4px",
+                marginRight: 8,
+                color: "black",
+              }}
+            >
+              <ActionIcon icon="link" color="black"/>
+              <div><ActionText>Copy Link</ActionText></div>
+            </Action>
+          </div>
+          <div style={{paddingTop: 30}}>
+            <Action
+              style={{
+                backgroundColor: 'white',
+                height: 30,
+                width: 90,
+                borderRadius: "4px",
+                marginRight: 8,
+                color: "black",
+              }}
+            >
+              <ActionIcon icon="code" color="black"/>
+              <div><ActionText>Embed</ActionText></div>
+            </Action>
+          </div>
+        </Fab>
         {showLocateButton ?
           <div className="leaflet-control-container">
             <LocateButtonContainer className="leaflet-right">
@@ -274,6 +305,16 @@ const LocateButton = styled.a `
 const ShareIcon = styled(FontAwesomeIcon)`
   width: 12px;
   height: 12px;
+`
+const ActionIcon = styled(FontAwesomeIcon)`
+  width: 12px;
+  height: 12px;
+  color: "black";
+  margin-right: 5px;
+`
+
+const ActionText = styled.span`
+  font-size: 0.75rem;
 `
 
 const LocateIcon = styled(FontAwesomeIcon)`
