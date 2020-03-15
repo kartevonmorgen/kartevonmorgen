@@ -36,10 +36,12 @@ const Message = ({
   }
   return (
     <Dialog>
-      <FontAwesomeIconElement
-        icon={ iconClass }
-        pulse={ iconClass === 'spinner' }
-      />
+      { iconClass &&
+        <FontAwesomeIconElement
+          icon={ iconClass }
+          pulse={ iconClass === 'spinner' }
+        />
+      }
       { message }
       <div className = "close-button">
         { cancelButton }
@@ -65,7 +67,9 @@ const FontAwesomeIconElement = styled(FontAwesomeIcon)`
 `
 
 const Dialog = styled.div `
-  margin: 3em 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4em;
   background-color: #fff;
   position: relative;
   max-width: 600px;
