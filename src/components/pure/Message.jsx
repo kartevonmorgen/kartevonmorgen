@@ -69,7 +69,7 @@ const FontAwesomeIconElement = styled(FontAwesomeIcon)`
 const Dialog = styled.div `
   margin-left: auto;
   margin-right: auto;
-  margin-top: 4em;
+  margin-top: 8px;
   background-color: #fff;
   position: relative;
   max-width: 600px;
