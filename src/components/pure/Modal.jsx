@@ -17,9 +17,9 @@ const getIframeCode = (url) => (
 <iframe style="display: inline-block; border: none" src=" 
 ${url}
 " width="100%" height="580"> 
-<a href="https://kartevonmorgen.org/" target="_blank">zur karte</a>
+<a href="${url}" target="_blank">zur karte</a>
 </iframe></div> <p style="text-align: right;">
-<a href="https://kartevonmorgen.org" 
+<a href="${url}" 
 target="_blank" rel="noreferrer noopener" aria-label=" (öffnet in neuem Tab)">
 Große Karte öffnen</a></p>`
 )
