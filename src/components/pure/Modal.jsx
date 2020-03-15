@@ -84,15 +84,15 @@ module.exports = ({view, dispatch}) => {
             }
             cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.closeModal()) }
-            actionButtonLabel = "Copy"
+            actionButtonLabel = {i18n.t('copy')}
             actionButtonIcon = "copy"
             onAction = { () => {
               copy(iframeCode)
-              dispatch(Actions.showNotification("Iframe code copied to clipboard!", "success"))
+              dispatch(Actions.showNotification(i18n.t('growler.iframeCopied'), "success"))
             }}
             optionalActionComponent={
               <a href="http://blog.vonmorgen.org/iframes/" style={{textDecoration: 'none'}}>
-                Find out more about sharing options
+                {t('embed.findOutMore')}
               </a>
             }
           />

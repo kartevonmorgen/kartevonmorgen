@@ -423,7 +423,9 @@
     "subscriptionAdded": "You subscribed to a map section.",
     "unsubscribingSuccessfull": "You unsubscribed from the map section",
     "entrySaved": "Entry has been saved.",
-    "ratingSaved": "Rating has been saved."
+    "ratingSaved": "Rating has been saved.",
+    "linkCopied": "Link copied to clipboard successfully!",
+    "iframeCopied": "Iframe copied to clipboard successfully!"
   },
   "contact": {
     "heading": "Contact",
@@ -464,6 +466,11 @@
       "text": "Events are not yet supported at the moment. \n\n Whether it's a conference, workshop or festival - they are part of the von morgen map. We are also planning an event calendar that displays and exports the results. \n\n To make this feature available soon, take part in our fund-raising campaign on www.betterplace.org!",
       "close": "Close",
       "donate": "Donate"
+    },
+    "embed": {
+      "findOutMore": "Find out more about sharing options"
     }
-  }
+  },
+  "share": "Share",
+  "copy": "Copy"
 }

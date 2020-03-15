@@ -423,7 +423,8 @@
     "subscriptionAdded": "Kartenausschnitt wurde abonniert.",
     "unsubscribingSuccessfull": "Abonnement wurde abbestellt",
     "entrySaved": "Eintrag wurde gespeichert.",
-    "ratingSaved": "Bewertung wurde gespeichert."
+    "ratingSaved": "Bewertung wurde gespeichert.",
+    "linkCopied": "Link erfolgreich in die Zwischenablage kopiert!"
   },
   "contact": {
     "heading": "Kontakt",
@@ -464,6 +465,11 @@
       "text": "Events werden zur Zeit noch nicht unterstützt.\n\n Ob Tagung, Konferenz oder Festival - auf der Karte von morgen sollen auch bald Events eingetragen werden. Wir planen außerdem einen Veranstaltungskalender, der die Ergebnisse anzeigt und exportiert.\n\n Helfe mit, damit diese Funktion schon bald verfügbar ist und beteilige Dich an der Spendenaktion auf betterplace.org!",
       "close": "schließen",
       "donate": "spenden"
+    },
+    "embed": {
+      "findOutMore": "Mehr über das Teilen und Einbetten von Karten"
     }
-  }
+  },
+  "share": "Teilen",
+  "copy": "Kopieren"
 }

@@ -2,6 +2,7 @@ import React, { Component, Fragment }     from "react"
 import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { translate } from "react-i18next";
 import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
 import { IDS }                  from  "../constants/Categories"
@@ -67,7 +68,7 @@ class KVMMap extends Component {
   }
 
   render() {
-    const {showNotification, showEmbedModal} = this.props;
+    const {showNotification, showEmbedModal, t} = this.props;
     const url = window.location.href
 
     var markers = [];
@@ -190,7 +191,7 @@ class KVMMap extends Component {
         <Fab
           event="click"
           icon={
-            <ShareIcon data-tip="Share" data-for="shareButton" icon="share-square" color="black"/>
+            <ShareIcon data-tip={t('share')} data-for="shareButton" icon="share-square" color="black"/>
           }
           position={{bottom: 116, right: -23, zIndex: 0}}
           mainButtonStyles={{
@@ -200,7 +201,7 @@ class KVMMap extends Component {
           <div style={{paddingTop: 10}}>
             <CopyToClipboard text={url}>
               <ActionButon
-                onClick={() => showNotification("Link copied to clipboard successfully!", "success")}
+                onClick={() => showNotification(t('growler.linkCopied'), "success")}
                 style={{
                   backgroundColor: 'white',
                   height: 30,
@@ -211,7 +212,7 @@ class KVMMap extends Component {
                 }}
               >
                 <ActionIcon icon="link" color="black"/>
-                <div><ActionText>Copy Link</ActionText></div>
+                <div><ActionText>{t('copy')}</ActionText></div>
               </ActionButon>
             </CopyToClipboard>
           </div>
@@ -271,7 +272,7 @@ const mapDispatchToProps = (dispatch) => ({
   showEmbedModal: () => (dispatch(Actions.showEmbedModal()))
 })
 
-module.exports = connect(null, mapDispatchToProps)(KVMMap);
+module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));
 
 const Wrapper = styled.div`
 

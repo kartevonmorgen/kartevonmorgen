@@ -423,7 +423,8 @@
     "subscriptionAdded": "Se ha suscrito la sección de mapas.",
     "unsubscribingSuccessfull": "Se canceló la suscripción",
     "entrySaved": "Se ha grabado la entrada.",
-    "ratingSaved": "La evaluación fue guardada."
+    "ratingSaved": "La evaluación fue guardada.",
+    "linkCopied": "El enlace se ha copiado en el portapapeles"
   },
   "contact": {
     "heading": "Contacto",
@@ -464,6 +465,11 @@
       "text": "Si se trata de una conferencia, conferencia o festival - el mapa de mañana pronto incluirá eventos. También estamos planeando un calendario de eventos que mostrará y exportará los resultados. Ayuda a que esta función esté disponible pronto y participa en la campaña de recaudación de fondos en betterplace.org!",
       "close": "terminar",
       "donate": "donar"
+    },
+    "embed": {
+      "findOutMore": "Más información sobre las opciones para compartir"
     }
-  }
+  },
+  "share": "Compartir",
+  "copy": "Copiar"
 }
