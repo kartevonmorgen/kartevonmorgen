@@ -1,4 +1,4 @@
-import React, { Component }     from "react"
+import React, { Component, Fragment }     from "react"
 import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -11,7 +11,7 @@ import styled                   from "styled-components";
 import T                        from "prop-types";
 import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 import { Fab, Action as ActionButon } from 'react-tiny-fab'
-
+import ReactTooltip from        'react-tooltip'
 import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
 
 import  "leaflet/dist/leaflet.css"
@@ -189,7 +189,9 @@ class KVMMap extends Component {
         </Map>
         <Fab
           event="click"
-          icon={<ShareIcon icon="share-square" color="black"/>}
+          icon={
+            <ShareIcon data-tip="Share" data-for="shareButton" icon="share-square" color="black"/>
+          }
           position={{bottom: 116, right: -23, zIndex: 0}}
           mainButtonStyles={{
             width: 30, height: 30, borderRadius: "4px", background: "#fff"
@@ -230,6 +232,7 @@ class KVMMap extends Component {
             </ActionButon>
           </div>
         </Fab>
+        <ReactTooltip id="shareButton" type="light" place="left" effect="solid"/>
         {showLocateButton ?
           <div className="leaflet-control-container">
             <LocateButtonContainer className="leaflet-right">
