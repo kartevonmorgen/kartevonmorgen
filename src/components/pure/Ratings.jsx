@@ -208,6 +208,7 @@ const RatingTopicWrapper = styled.ul`
     padding-left: 1.1em;
     margin-left: 1.1em;
     margin-top: 0.5em;
+    border-bottom: solid 1px #d8d8d8;
   }
 `
 
