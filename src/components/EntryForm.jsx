@@ -3,6 +3,7 @@ import { connect }          from 'react-redux'
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
+import classNames            from "classnames";
 import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm,
@@ -266,7 +267,7 @@ class Form extends Component {
                   <FieldsetTitle>{t("location")}</FieldsetTitle>
                 </FieldsetLegend>
 
-                <div className= "pure-g">
+                <div className={classNames("pure-g", "hidden")}>
                   <div className= "pure-u-12-24">
                     <FieldElement name="country" className="pure-input-1" component="input" placeholder={"Country"} />
                     <FieldElement name="country" component={errorMessage} />

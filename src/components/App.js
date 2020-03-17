@@ -600,5 +600,8 @@ const StyledApp = styled.div `
   .license input {
     margin-top: 0.7em;
   }
+  
+ .hidden {
+ display: none;
 `
 
