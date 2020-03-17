@@ -267,11 +267,22 @@ class Form extends Component {
                 </FieldsetLegend>
 
                 <div className= "pure-g">
-                  <div className= "pure-u-15-24">
+                  <div className= "pure-u-12-24">
+                    <FieldElement name="country" className="pure-input-1" component="input" placeholder={t("city")} />
+                    <FieldElement name="country" component={errorMessage} />
+                  </div>
+                  <div className= "pure-u-12-24">
+                    <FieldElement name="state" className="pure-input-1" component="input" placeholder={t("zip")} />
+                    <FieldElement name="state" component={errorMessage} />
+                  </div>
+                </div>
+
+                <div className= "pure-g">
+                  <div className= "pure-u-12-24">
                     <FieldElement name="city" className="pure-input-1" component="input" placeholder={t("city")} />
                     <FieldElement name="city" component={errorMessage} />
                   </div>
-                  <div className= "pure-u-9-24">
+                  <div className= "pure-u-12-24">
                     <FieldElement name="zip" className="pure-input-1" component="input" placeholder={t("zip")} />
                     <FieldElement name="zip" component={errorMessage} />
                   </div>

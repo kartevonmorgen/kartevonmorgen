@@ -1,4 +1,4 @@
-import React  from "react";
+import React, {Fragment} from "react"
 import styled from "styled-components";
 
 const AddressLine = styled.div`
@@ -13,11 +13,23 @@ const AddressLine = styled.div`
   }   
 `
 
-module.exports = ({street, zip, city}) =>
+module.exports = ({street, zip, city, state, country}) =>
   <AddressLine className = "pure-u-22-24">
-    {street ? <span>{street}</span> : null}
-    {street && (zip || city)?
+    {street && <span>{street}</span>}
+    {street && (zip || city) ?
       <span className = "delimiter">, </span> : null}
-    {zip  ? <span>{zip} </span>: null}
-    {city ? <span>{city}</span> : null}
+    {zip  && <span>{zip} </span>}
+    {city && <span>{city}</span>}
+    {state &&
+      <Fragment>
+        <span className = "delimiter">, </span>
+        <span>{state}</span>
+      </Fragment>
+    }
+    {country &&
+    <Fragment>
+      <span className = "delimiter">, </span>
+      <span>{country}</span>
+    </Fragment>
+    }
   </AddressLine>

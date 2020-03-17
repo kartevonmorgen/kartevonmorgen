@@ -200,6 +200,8 @@ class Sidebar extends Component {
                   lng: Number(data.lng),
                   street: data.street,
                   city: data.city,
+                  country: data.country,
+                  state: data.state,
                   email: data.email,
                   zip: data.zip,
                   version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,

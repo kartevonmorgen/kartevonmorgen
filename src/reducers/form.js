@@ -75,6 +75,8 @@ const reducer = formReducer.plugin({
             ...state,
             values: {
               ...state.values,
+              country: addr.country || '',
+              state: addr.state || '',
               street: (addr.road ? addr.road : '').concat((addr.house_number ? ' ' + addr.house_number : '')),
               zip: addr.postcode ? addr.postcode : '',
               city: addr.city ? addr.city : addr.town ? addr.town : addr.village ? addr.village : ''
