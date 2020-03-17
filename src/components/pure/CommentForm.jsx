@@ -64,7 +64,7 @@ render() {
             <RatingTopicWrapper>
               { ratingList.map( (rating, index) =>
                 <li key={rating.id}>
-                  {Rating(rating, t, {hideSource: true, hideTitle: (index!=0)} )}
+                  {Rating(rating, t, {hideSource: false, hideTitle: (index!=0)} )}
                 </li>
               ) }
             </RatingTopicWrapper>

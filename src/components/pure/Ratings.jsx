@@ -196,13 +196,6 @@ const HeadingWrapper = styled.div`
   margin-top: 2em;
 `;
 
-const RatingList = styled.ul`
-  list-style:  none;
-  margin:      0;
-  margin-left: 0;
-  padding:     0;
-`
-
 const RatingTopicWrapper = styled.ul`
   margin-left: 0.5em;
   margin-top: 0.6em;

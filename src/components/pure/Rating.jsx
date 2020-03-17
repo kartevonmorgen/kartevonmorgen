@@ -18,6 +18,7 @@ const rating_value_key = (value) => {
 //   hideSource: do not show Source if set to true
 //   hideTitle: do not show Title if set to true
 const Rating = (rating, t, displayOptions = {}) => {
+  const comment = rating.comments[0];
 
   // Display links appropriately
   const source = rating.source ? rating.source : ''
@@ -31,13 +32,16 @@ const Rating = (rating, t, displayOptions = {}) => {
   return (
     <RatingWrapper>
       { displayOptions.hideTitle ? '' :
-        <RatingTitleWrapper>
+        <TitleWrapper>
           <span>{t("ratings.valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
-        </RatingTitleWrapper>
+        </TitleWrapper>
       }
-      <RatingCommentList>
-        {(rating.comments || []).filter(c => typeof c !== "undefined" && c !== null).map(c => <li key={c.id}>{Comment(c)}</li>)}
-      </RatingCommentList>
+      <CommentWrapper className="comment" key={comment.id}>
+        { comment.text }
+        <div>
+          {displayOptions.hideTitle ? t("ratings.valueName." + rating_value_key(rating.value)) : ''}
+        </div>
+      </CommentWrapper>
       { displayOptions.hideSource ? '' :
         <SourceWrapper>{ sourceSpan() }</SourceWrapper>
       }
@@ -45,17 +49,16 @@ const Rating = (rating, t, displayOptions = {}) => {
   )
 }
 
-const Comment = (comment) =>
-<div className="comment">
-  { comment.text }
-</div>
-
-const RatingCommentList = styled.ul`
+const CommentWrapper = styled.div`
   margin-left: 1.2em;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   list-style: none;
   padding-left: 0;
+
+  & div {
+    text-align: right;
+  }
 `
 
 const RatingWrapper = styled.div`
@@ -68,7 +71,7 @@ const RatingTitle = styled.span`
   font-weight: bold;
 `
 
-const RatingTitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   max-width: 288px;
 `
 
