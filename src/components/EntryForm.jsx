@@ -268,11 +268,11 @@ class Form extends Component {
 
                 <div className= "pure-g">
                   <div className= "pure-u-12-24">
-                    <FieldElement name="country" className="pure-input-1" component="input" placeholder={t("city")} />
+                    <FieldElement name="country" className="pure-input-1" component="input" placeholder={"Country"} />
                     <FieldElement name="country" component={errorMessage} />
                   </div>
                   <div className= "pure-u-12-24">
-                    <FieldElement name="state" className="pure-input-1" component="input" placeholder={t("zip")} />
+                    <FieldElement name="state" className="pure-input-1" component="input" placeholder={"State"} />
                     <FieldElement name="state" component={errorMessage} />
                   </div>
                 </div>
