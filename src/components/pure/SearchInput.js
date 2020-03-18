@@ -1,39 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
+import {connect} from 'react-redux'
 import styled from 'styled-components'
 import {Creatable} from "react-select"
 import {translate} from "react-i18next"
-import request from "superagent/lib/client"
-
-import {OFDB_API} from "../../constants/URLs"
+import isEqual from "lodash/isEqual"
 
 
 const SearchInput = (props) => {
 
-  const {t, searchText} = props
+  const {t} = props
 
   const [allOptions, setAllOptions] = useState([])
   const [options, setOptions] = useState([])
+  const prevAllTags = useRef([])
 
   useEffect(() => {
-    request
-      .get(OFDB_API.link + '/entries/most-popular-tags?min_count=4')
-      .accept('json')
-      .end((err, response) => {
-        if (err) {
-          console.error(err)
-        }
-        if (response.body) {
-          // the first element is the tag, and the second one is the number of usage
-          const options = response.body.map((tag) => ({
-            'value': `#${tag[0]}`,
-            'label': `#${tag[0]}`
-          }))
+    if (!isEqual(prevAllTags.current, props.allTags)) {
+      prevAllTags.current = props.allTags
 
-          setAllOptions(options)
-          setOptions(options.slice(0, 5))
-        }
-      })
-  }, [])
+      const options = props.allTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
+
+      setAllOptions(options)
+      setOptions(options.slice(0, 5))
+    }
+  }, [props.allTags])
 
 
   const filterOptions = (input) => {
@@ -109,7 +99,13 @@ const SearchInput = (props) => {
   )
 }
 
-export default translate('translation')(SearchInput)
+const mapStateToProps = ({search}) => {
+  return {
+    allTags: search.tags.map(tagPair => tagPair[0])
+  }
+}
+
+export default translate('translation')(connect(mapStateToProps)(SearchInput))
 
 const Recommender = styled(Creatable)`
   font-size: 1em !important;
