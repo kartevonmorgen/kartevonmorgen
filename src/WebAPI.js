@@ -3,6 +3,7 @@ import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
 import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
 import CATEGORY_IDS from "./constants/Categories";
+import {NUMBER_TAGS_TO_FETCH} from "./constants/Search";
 
 const prefix = saPrefix(OFDB_API.link);
 const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn';
@@ -113,6 +114,30 @@ module.exports = {
         .set('Accept', 'application/json')
         .end(jsonCallback(cb));
     }
+  },
+
+  countTags: (cb) => {
+    request
+      .get('/count/tags')
+      .use(saPrefix(OFDB_API.link))
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb));
+  },
+
+  getTags: (page, cb) => {
+    const offset = page * NUMBER_TAGS_TO_FETCH
+    const limit = NUMBER_TAGS_TO_FETCH
+
+    request
+      .get('/entries/most-popular-tags')
+      .use(saPrefix(OFDB_API.link))
+      .query({
+        'min-count': 1,
+        offset,
+        limit,
+      })
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb));
   },
 
   searchAddressTilehosting: (addr, cb) => {

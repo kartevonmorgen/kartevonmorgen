@@ -1,3 +1,4 @@
+import update from "immutability-helper";
 import T from "../constants/ActionTypes";
 import parseUrl from "../util/parseUrl";
 import { MAIN_IDS, IDS } from "../constants/Categories";
@@ -17,6 +18,7 @@ const initialState = {
   invisible: [],
   addresses: [],
   cities: [],
+  tags: [],
   searchByUrl: true,
   showingAllEntries: false,
   moreEntriesAvailable: false
@@ -207,6 +209,11 @@ module.exports = (state = initialState, action = {}) => {
         cities: [],
         city: ""
       }
+
+    case T.FETCH_TAGS:
+      return update(state, {
+        tags: {$set: [...state.tags, ...action.payload].sort((a, b) => (b[1] - a[1]))}
+      })
 
     default:
       return state;

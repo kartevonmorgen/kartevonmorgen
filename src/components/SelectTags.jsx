@@ -23,28 +23,6 @@ class SelectTags extends Component {
       tagsFromSearch: null
     };
 
-    //TODO: List of Tags should probably be loaded with the WebAPI or use Async react-select
-
-    request
-      .get( OFDB_API.link +'/entries/most-popular-tags?min_count=4')
-      .accept('json')
-      .end((err, response) => {
-        if (err) {
-          console.error(err);
-        }
-        if (response.body) {
-          let options = []
-          for (var i = 0; i < response.body.length; i++) {
-            options[i] = {
-              "value": response.body[i][0],
-              "label": response.body[i][0]
-            }
-          }
-          this.setState({
-            allOptions: options
-          })
-        }
-      });
   }
 
   componentDidMount() {
@@ -54,6 +32,10 @@ class SelectTags extends Component {
     const tags = [this.props.tagsFromSearch, this.props.input.value].filter(t => t && t.length).join().split(',')
     const uniqueTags = tags.filter((a, b) => tags.indexOf(a) === b).join()
     this.props.setTags(uniqueTags)
+
+    this.setState({
+      allOptions: this.props.allTags.map(tag => ({label: tag, value: tag}))
+    })
   }
 
   onInputChange(input) {
@@ -188,7 +170,8 @@ const mapStateToProps = ({search}) => {
   // if history is null
   if(!search.history) {
     return {
-      tagsFromSearch: null
+      tagsFromSearch: null,
+      allTags: search.tags.map((tagPair) => tagPair[0])
     }
   }
 
@@ -204,8 +187,10 @@ const mapStateToProps = ({search}) => {
     .filter(t => normalize.tags(t))
     .map(t => normalize.tags(t))
 
+
   return {
-    tagsFromSearch: tags.join()
+    tagsFromSearch: tags.join(),
+    allTags: search.tags.map((tagPair) => tagPair[0])
   }
 }
 

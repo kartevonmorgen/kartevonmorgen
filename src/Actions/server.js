@@ -3,6 +3,7 @@ import {NUM_ENTRIES_TO_FETCH} from "../constants/Search"
 import WebAPI from "../WebAPI"
 import {EDIT, RATING, LOGIN, REGISTER} from "../constants/Form"
 import {NEW_ENTRY_LICENSE} from "../constants/App"
+import {NUMBER_TAGS_TO_FETCH} from "../constants/Search"
 import {initialize, stopSubmit} from "redux-form"
 import mapConst from "../constants/Map"
 import appConst from "../constants/App"
@@ -31,6 +32,31 @@ const Actions = {
     type: T.SET_SEARCH_TIME,
     payload: time
   }),
+
+  fetchTags: () =>
+    (dispatch) => {
+      WebAPI.countTags((err, count) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+
+        const numbersShouldTry = Math.ceil(count / NUMBER_TAGS_TO_FETCH)
+        for (let i = 0; i !== numbersShouldTry; i++) {
+          WebAPI.getTags(i, (err, tags) => {
+            if (err) {
+              console.log(err)
+              return
+            }
+
+            dispatch({
+              type: T.FETCH_TAGS,
+              payload: tags
+            })
+          })
+        }
+      })
+    },
 
   search: () =>
     (dispatch, getState) => {

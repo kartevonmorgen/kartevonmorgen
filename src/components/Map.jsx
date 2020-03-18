@@ -56,6 +56,8 @@ class KVMMap extends Component {
       map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
     }
+
+    this.props.fetchTags()
   }
 
   getMapCoordinates(){
@@ -269,7 +271,8 @@ KVMMap.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
-  showEmbedModal: () => (dispatch(Actions.showEmbedModal()))
+  showEmbedModal: () => (dispatch(Actions.showEmbedModal())),
+  fetchTags: () => (dispatch(Actions.fetchTags()))
 })
 
 module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));
