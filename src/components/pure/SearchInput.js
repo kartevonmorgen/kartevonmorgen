@@ -109,9 +109,10 @@ export default translate('translation')(connect(mapStateToProps)(SearchInput))
 
 const Recommender = styled(Creatable)`
   font-size: 1em !important;
-  line-height: 0.85em !important;
+  line-height: 1em !important;
   font-weight: 100;
   padding-left: 2.7em !important;
   padding-right: 0.5em !important;
   z-index: 999 !important;
+  margin-top: 2px;
 `
