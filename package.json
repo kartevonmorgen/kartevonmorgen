@@ -33,8 +33,11 @@
     "@types/react": "^16.9.23",
     "acorn": "^6.4.0",
     "babel-polyfill": "^6.26.0",
+<<<<<<< HEAD
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.3.1",
+=======
+>>>>>>> branch 'master' of https://github.com/kartevonmorgen/kartevonmorgen.git
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
     "es6-promise": "^4.2.8",
@@ -49,7 +52,10 @@
     "prop-types": "^15.6.2",
     "purecss": "^1.0.1",
     "react": "^16.13.0",
+<<<<<<< HEAD
     "react-copy-to-clipboard": "^5.0.2",
+=======
+>>>>>>> branch 'master' of https://github.com/kartevonmorgen/kartevonmorgen.git
     "react-datepicker": "^2.10.1",
     "react-dom": "^16.13.0",
     "react-i18next": "^7.13.0",
