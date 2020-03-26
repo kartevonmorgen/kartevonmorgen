@@ -2,6 +2,7 @@ import React, {useState}                  from "react";
 import styled                 from "styled-components";
 import T                      from "prop-types";
 import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome'
+import moment                 from 'moment'
 
 import STYLE                  from "../styling/Variables"
 import AddressLine            from "./AddressLine";
@@ -10,6 +11,7 @@ import EventRegistrationInfo  from "./EventRegistrationInfo";
 import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 import { NAMES }              from "../../constants/Categories"
 import i18n                   from "../../i18n";
+import OpeningHours from "./OpeningHours"
 
 const Tags = (tags=[], onClick, clickable) =>
   <TagsWrapper key="tags">
@@ -114,12 +116,15 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
             <FlatButon onClick={() => setShowMoreDescription(true)}>{i18n.t("entryDetails.readMore")}</FlatButon>
           }
         </EntryDescription>
+
+        <Hr />
+
         <EntryDetailsOtherData>{[
           ((entry.organizer) ?
-          <div key="organizer">
-            <FontAwesomeIconElement icon="user" />
-            { entry.organizer }
-          </div> : null),
+            <div key="organizer">
+              <FontAwesomeIconElement icon="user" />
+              { entry.organizer }
+            </div> : null),
           ((entry.homepage && entry.registration !== "homepage") ?
             <div key="hp">
               <FontAwesomeIconElement icon="globe-africa" />
@@ -138,22 +143,29 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
             </div>
             : null),
           ((entry.street && entry.zip && entry.city) ?
-            <div key="addr">
-              <div key="addr" className="address pure-g">
-                <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
-                <AddressWrapper className="pure-u-22-24">
-                  <AddressLine { ...entry } />
-                </AddressWrapper>
-              </div>
-              <div key="route">
-                <FontAwesomeIconElement icon="route" />
-                { getRoutePlannerLink(entry) }
-            </div></div>
+            <React.Fragment>
+              <div key="addr">
+                <div key="addr" className="address pure-g">
+                  <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
+                  <AddressWrapper className="pure-u-22-24">
+                    <AddressLine { ...entry } />
+                  </AddressWrapper>
+                </div>
+                <div key="route">
+                  <FontAwesomeIconElement icon="route" />
+                  { getRoutePlannerLink(entry) }
+                </div></div>
+              <Hr />
+            </React.Fragment>
             : null),
+          (<OpeningHours oh="Tu 00:15-04:15" />),
+          (<Hr />),
           (entry.tags && entry.tags.filter(t => t !="").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
             : null)
-        ]}</EntryDetailsOtherData>
+        ]}
+
+        </EntryDetailsOtherData>
         {
           (isEvent && entry.registration) ?
             <EventRegistrationInfo
@@ -269,4 +281,14 @@ const FlatButon = styled.button`
   /*input has OS specific font-family*/
   color: #069;
   cursor: pointer;
+`
+
+const Hr  = styled.hr`
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
 `
