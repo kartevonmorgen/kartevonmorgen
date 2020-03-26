@@ -1,8 +1,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(
-   require('@fortawesome/free-solid-svg-icons/faBars').definition
+  require('@fortawesome/free-solid-svg-icons/faBars').definition
   ,require('@fortawesome/free-solid-svg-icons/faBan').definition
+  ,require('@fortawesome/free-solid-svg-icons/faClock').definition
   ,require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition
   ,require('@fortawesome/free-solid-svg-icons/faChevronDown').definition
   ,require('@fortawesome/free-solid-svg-icons/faChevronRight').definition

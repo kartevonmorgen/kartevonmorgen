@@ -367,6 +367,16 @@ class Form extends Component {
                     <FieldElement name="telephone" component={errorMessage} />
                   </div>
                 </div>
+
+                <div className= "pure-g">
+                  <OptionalFieldLabel className= "pure-u-2-24">
+                    <FontAwesomeIcon icon="clock" />
+                  </OptionalFieldLabel>
+                  <div className= "pure-u-22-24">
+                    <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder="Opening Hours" />
+                    <FieldElement name="opening_hours" component={errorMessage} />
+                  </div>
+                </div>
               </Fieldset>
 
               <Fieldset>
