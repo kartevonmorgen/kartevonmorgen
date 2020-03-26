@@ -378,6 +378,7 @@ class Form extends Component {
                     <a
                       className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
                       href="https://projets.pavie.info/yohours"
+                      rel="noopener noreferrer"
                       target="_blank"
                     >
                       Generate Your Hours!
