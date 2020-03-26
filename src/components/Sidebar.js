@@ -196,6 +196,7 @@ class Sidebar extends Component {
                   organizer: data.organizer,
                   homepage: data.homepage,
                   telephone: data.telephone,
+                  opening_hours: data.opening_hours,
                   lat: Number(data.lat),
                   lng: Number(data.lng),
                   street: data.street,
