@@ -81,10 +81,10 @@ const OpeningHours = (props) => {
         {
           calendar.map(day => (
             <CalendarRow className="pure-u-1-1">
-              <div className="pure-u-7-24">
-                {day.name}
+              <div className="pure-u-1-3">
+                {`${day.name}:`}
               </div>
-              <div className="pure-u-17-24">
+              <div className="pure-u-2-3">
                 {
                   getOpeningHoursString(day.intervals)
                 }
