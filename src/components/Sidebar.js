@@ -189,32 +189,32 @@ class Sidebar extends Component {
             license={ entries[search.current] ? entries[search.current].license : null }
             dispatch={ dispatch }
             onSubmit={ data => {
-                var dataToSend = { 
-                  title: data.title,
-                  description: data.description,
-                  tags: data.tags ? data.tags.split(',') : null,
-                  organizer: data.organizer,
-                  homepage: data.homepage,
-                  telephone: data.telephone,
-                  opening_hours: data.opening_hours,
-                  lat: Number(data.lat),
-                  lng: Number(data.lng),
-                  street: data.street,
-                  city: data.city,
-                  country: data.country,
-                  state: data.state,
-                  email: data.email,
-                  zip: data.zip,
-                  version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
-                  categories: [data.category],
-                  image_url: data.image_url,
-                  image_link_url: data.image_link_url,
-                  end: data.end && converDateToTimestamp(data.end),
-                  start: data.start && converDateToTimestamp(data.start)
-                };
-                if (form[EDIT.id]) {
-                    dataToSend.id = form[EDIT.id].kvm_flag_id;
-                }
+              var dataToSend = {
+                title: data.title,
+                description: data.description,
+                tags: data.tags ? data.tags.split(',') : null,
+                organizer: data.organizer,
+                homepage: data.homepage,
+                telephone: data.telephone,
+                opening_hours: data.opening_hours,
+                lat: Number(data.lat),
+                lng: Number(data.lng),
+                street: data.street,
+                city: data.city,
+                country: data.country,
+                state: data.state,
+                email: data.email,
+                zip: data.zip,
+                version: ((form[EDIT.id] ? form[EDIT.id].values ? form[EDIT.id].values.version : null : null) || 0) + 1,
+                categories: [data.category],
+                image_url: data.image_url,
+                image_link_url: data.image_link_url,
+                end: data.end && converDateToTimestamp(data.end),
+                start: data.start && converDateToTimestamp(data.start)
+              };
+              if (form[EDIT.id]) {
+                dataToSend.id = form[EDIT.id].kvm_flag_id;
+              }
               return dispatch(Actions.saveEntry(dataToSend));
             }}
           />

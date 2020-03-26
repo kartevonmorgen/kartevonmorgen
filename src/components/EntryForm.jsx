@@ -375,6 +375,13 @@ class Form extends Component {
                   <div className= "pure-u-22-24">
                     <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder="Opening Hours" />
                     <FieldElement name="opening_hours" component={errorMessage} />
+                    <a
+                      className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
+                      href="https://projets.pavie.info/yohours"
+                      target="_blank"
+                    >
+                      Generate Your Hours!
+                    </a>
                   </div>
                 </div>
               </Fieldset>
