@@ -41,12 +41,27 @@ const OpeningHours = (props) => {
     if (startMoment.isSame(endMoment, 'day')){
       calendar[startMoment.day()].intervals.push([startMoment, endMoment])
     } else {
+      // we are in the situation of a long continues interval like 24/7
       // from end of today
-      calendar[startMoment.day()].intervals.push([startMoment, startMoment.clone().set({hour: 24, minute: 0}), unknown, comment])
+      calendar[startMoment.day()].intervals.push([startMoment, startMoment.clone().set({hour: 23, minute: 59}), unknown, comment])
+
+      // if there are days between start and end consider them
+      const middleDayMoment = startMoment.clone().set({hour: 0, minute: 0}).add(1, 'day')
+      while (middleDayMoment.isBefore(endMoment, 'day')) {
+        calendar[middleDayMoment.day()].intervals.push([
+          middleDayMoment.clone(),
+          middleDayMoment.clone().set({hour: 23, minute: 59}),
+          unknown,
+          comment
+        ])
+
+        middleDayMoment.add(1, 'day')
+      }
+
       // continues from the midnight of the tomorrow
       // if it's not on the next week
       if (endMoment.day() !== 0) {
-        calendar[endMoment.day()].intervals.push([endMoment.clone().set({hour: 0, minute: 0}), endMoment, unknown, comment])
+        calendar[endMoment.day()].intervals.push([middleDayMoment, endMoment, unknown, comment])
       }
     }
   }
