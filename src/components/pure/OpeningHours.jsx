@@ -7,6 +7,7 @@ import isString from 'lodash/isString'
 
 import i18n from "../../i18n"
 import styled from "styled-components"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 
 const OpeningHours = (props) => {
@@ -88,26 +89,29 @@ const OpeningHours = (props) => {
   }
 
   return (
-    <div>
-      <SectionTitle>
+    <div className="pure-g">
+      <FontAwesomeIconElement className="pure-u-1-24" icon="clock" />
+      <SectionTitle className="pure-u-21-24">
         Opening Hours
       </SectionTitle>
-      <Calendar className="pure-g">
-        {
-          calendar.map(day => (
-            <CalendarRow className="pure-u-1-1">
-              <div className="pure-u-1-3">
-                {`${day.name}:`}
-              </div>
-              <div className="pure-u-2-3">
-                {
-                  getOpeningHoursString(day.intervals)
-                }
-              </div>
-            </CalendarRow>
-          ))
-        }
-      </Calendar>
+      <div className="pure-u-1-1">
+        <Calendar >
+          {
+            calendar.map(day => (
+              <CalendarRow className="pure-u-1-1">
+                <div className="pure-u-1-3">
+                  {`${day.name}:`}
+                </div>
+                <div className="pure-u-2-3">
+                  {
+                    getOpeningHoursString(day.intervals)
+                  }
+                </div>
+              </CalendarRow>
+            ))
+          }
+        </Calendar>
+      </div>
     </div>
   )
 }
@@ -128,3 +132,8 @@ const Calendar = styled.div`
 const CalendarRow = styled.div`
   margin-top: 0.25em;
 `
+const FontAwesomeIconElement = styled(FontAwesomeIcon)`
+  margin-right: 12px;
+  height: 16px !important;
+  width: 16px !important;
+`;
