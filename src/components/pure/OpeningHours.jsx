@@ -24,7 +24,7 @@ const OpeningHours = (props) => {
   }
 
   moment.locale(i18n.language)
-  const calendar = moment.weekdays().map(day => ({name: day, intervals: []}))
+  const calendar = moment.weekdays(true).map(day => ({name: day, intervals: []}))
 
   const startOfWeek = moment().startOf('week').toDate()
   const endOfWeek = moment().endOf('week').toDate()
