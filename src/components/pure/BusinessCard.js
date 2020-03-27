@@ -158,8 +158,12 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
               <Hr />
             </React.Fragment>
             : null),
-          (<OpeningHours oh="Tu 00:15-04:15" />),
-          (<Hr />),
+          (entry.opening_hours &&
+            <React.Fragment>
+              <OpeningHours oh={entry.opening_hours} />
+              <Hr />
+            </React.Fragment>
+          ),
           (entry.tags && entry.tags.filter(t => t !="").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
             : null)
