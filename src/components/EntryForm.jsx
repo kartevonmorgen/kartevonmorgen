@@ -368,23 +368,27 @@ class Form extends Component {
                   </div>
                 </div>
 
-                <div className= "pure-g">
-                  <OptionalFieldLabel className= "pure-u-2-24">
-                    <FontAwesomeIcon icon="clock" />
-                  </OptionalFieldLabel>
-                  <div className= "pure-u-22-24">
-                    <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder={t("openingHours")} />
-                    <FieldElement name="opening_hours" component={errorMessage} />
-                    <a
-                      className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
-                      href="https://projets.pavie.info/yohours"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      Generate Your Hours!
-                    </a>
+
+                { !this.state.isEventEntry &&
+                  <div className= "pure-g">
+                    <OptionalFieldLabel className= "pure-u-2-24">
+                      <FontAwesomeIcon icon="clock" />
+                    </OptionalFieldLabel>
+                    <div className= "pure-u-22-24">
+                      <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder={t("openingHours")} />
+                      <FieldElement name="opening_hours" component={errorMessage} />
+                      <a
+                        className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
+                        href="https://projets.pavie.info/yohours"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        Generate Your Hours!
+                      </a>
+                    </div>
                   </div>
-                </div>
+                }
+
               </Fieldset>
 
               <Fieldset>
