@@ -25,7 +25,8 @@ const OpeningHours = (props) => {
   }
 
   moment.locale(i18n.language)
-  const calendar = moment.weekdays(true).map(day => ({name: day, intervals: []}))
+  const localeWeekDays = moment.weekdays(true)
+  const calendar = moment.weekdays(false).map(day => ({idx: localeWeekDays.indexOf(day),name: day, intervals: []}))
 
   const startOfWeek = moment().startOf('week').toDate()
   const endOfWeek = moment().endOf('week').toDate()
@@ -97,7 +98,7 @@ const OpeningHours = (props) => {
       <div className="pure-u-1-1">
         <Calendar >
           {
-            calendar.map(day => (
+            calendar.sort((day1, day2) => day1.idx - day2.idx).map(day => (
               <CalendarRow className="pure-u-1-1">
                 <div className="pure-u-1-3">
                   {`${day.name}:`}
