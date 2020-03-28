@@ -29,6 +29,7 @@
     "city": "Stadt",
     "zip": "PLZ",
     "email": "Email-Adresse",
+    "openingHours": "Öffnungszeiten",
     "clickOnMap": "oder auf Karte klicken...",
     "contact": "Kontakt (optional)",
     "entryImage": "Titelbild (optional)",

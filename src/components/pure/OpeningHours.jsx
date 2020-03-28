@@ -93,7 +93,7 @@ const OpeningHours = (props) => {
     <div className="pure-g">
       <FontAwesomeIconElement className="pure-u-1-24" icon="clock" />
       <SectionTitle className="pure-u-21-24">
-        Opening Hours
+        {i18n.t("entryForm.openingHours")}
       </SectionTitle>
       <div className="pure-u-1-1">
         <Calendar >
