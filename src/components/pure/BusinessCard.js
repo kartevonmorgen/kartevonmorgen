@@ -2,7 +2,6 @@ import React, {useState}                  from "react";
 import styled                 from "styled-components";
 import T                      from "prop-types";
 import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome'
-import moment                 from 'moment'
 
 import STYLE                  from "../styling/Variables"
 import AddressLine            from "./AddressLine";

@@ -29,6 +29,7 @@
     "city": "Ciudad",
     "zip": "Código postal",
     "email": "Correo electrónico",
+    "openingHours": "Horario de apertura",
     "clickOnMap": "o haga clic en el mapa....",
     "contact": "Contacto (opcional)",
     "entryImage": "Imagen de portada (opcional)",
