@@ -60,7 +60,8 @@
     "acceptLicense": "Se requiere la aprobación de la licencia",
     "invalidLicenseAgreement": "Consentimiento no válido",
     "invalidURL": "URL no válida",
-    "httpMissing": "\"http://\" o \"https://\" falta)"
+    "httpMissing": "\"http://\" o \"https://\" falta)",
+    "generateHours": "Generar horario de apertura!"
   },
   "entryDetails": {
     "loadingEntry": "La entrada está cargada...",
