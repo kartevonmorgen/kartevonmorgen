@@ -383,7 +383,7 @@ class Form extends Component {
                         rel="noopener noreferrer"
                         target="_blank"
                       >
-                        Generate Your Hours!
+                        {t("generateHours")}
                       </a>
                     </div>
                   </div>
