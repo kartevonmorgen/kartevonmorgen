@@ -12,25 +12,34 @@ const SearchInput = (props) => {
 
   const [allOptions, setAllOptions] = useState([])
   const [options, setOptions] = useState([])
+  const [prominentOptions, setProminentOptions] = useState([])
   const prevAllTags = useRef([])
+
+  useEffect(() => {
+    const prominentOptions = props.prominentTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
+
+    setProminentOptions(prominentOptions)
+    setOptions(prominentOptions)
+  }, [props.prominentTags])
 
   useEffect(() => {
     if (!isEqual(prevAllTags.current, props.allTags)) {
       prevAllTags.current = props.allTags
-
       const options = props.allTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
 
       setAllOptions(options)
-      setOptions(options.slice(0, 5))
     }
   }, [props.allTags])
 
 
   const filterOptions = (input) => {
     const searchString = input.toLowerCase().trim();
-    const res = allOptions.filter(function(d) {
-      return d.label.match( searchString );
-    });
+    if (searchString.length === 0) {
+      setOptions(prominentOptions)
+      return
+    }
+
+    const res = allOptions.filter(d => d.label.match(searchString));
 
     const newOptions = res.slice(0, 5)
 
@@ -101,7 +110,8 @@ const SearchInput = (props) => {
 
 const mapStateToProps = ({search}) => {
   return {
-    allTags: search.tags.map(tagPair => tagPair[0])
+    allTags: search.tags.map(tagPair => tagPair[0]),
+    prominentTags: search.prominentTags
   }
 }
 
