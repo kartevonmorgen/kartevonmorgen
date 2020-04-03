@@ -57,6 +57,7 @@ class KVMMap extends Component {
       this.props.onMoveend(this.getMapCoordinates())
     }
 
+    this.props.fetchProminentTags()
     this.props.fetchTags()
   }
 
@@ -272,7 +273,8 @@ KVMMap.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
   showEmbedModal: () => (dispatch(Actions.showEmbedModal())),
-  fetchTags: () => (dispatch(Actions.fetchTags()))
+  fetchTags: () => (dispatch(Actions.fetchTags())),
+  fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
 })
 
 module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));

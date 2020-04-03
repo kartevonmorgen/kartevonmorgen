@@ -470,9 +470,9 @@ const StyledApp = styled.div `
     /* //Instead of the line below you could use @include border-radius($radius, $vertical-radius) */
     border-radius: 0;
     background-color: #ccc;
-  }
+  }server
 
-  .pure-menu-list {
+  .pure-menu-serverlist {
     margin: 0 50px;
   }
 

@@ -33,6 +33,21 @@ const Actions = {
     payload: time
   }),
 
+  fetchProminentTags: () =>
+    (dispatch) => {
+    console.log("prominent tags")
+      WebAPI.getProminentTags((prominentTags, err) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        dispatch({
+          type: T.FETCH_PROMINENT_TAGS,
+          payload: prominentTags
+        })
+      })
+    },
+
   fetchTags: () =>
     (dispatch) => {
       WebAPI.countTags((err, count) => {
