@@ -93,5 +93,9 @@ module.exports = {
   JOB_ADS: {
     name: "www.betterplace.org/de/organisations/vonmorgen",
     link: "https://www.betterplace.org/de/organisations/vonmorgen"
+  },
+  ENTRY_HISTORY: {
+    name: "OpenFairDB",
+    link: "https://openfairdb.org/entries",
   }
 };

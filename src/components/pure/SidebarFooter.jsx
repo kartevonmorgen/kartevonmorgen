@@ -1,19 +1,34 @@
-import React          from "react"
-import { translate }  from "react-i18next";
-import styled         from "styled-components";
-import STYLE          from "../styling/Variables"
+import React            from "react";
+import {connect}        from "react-redux";
+
+import { translate }    from "react-i18next";
+import styled           from "styled-components";
+
+import ReactTooltip     from "react-tooltip";
+
+import STYLE            from "../styling/Variables"
+import {getHistoryLink}  from '../../util/constructUrl'
 
 const Footer = props => {
 
-  const { changed, t } = props;
+  const { entryId, changed, t, isEvent } = props;
 
-  const now = Date.now()
-  const edited = new Date(changed*1000)
-  const diffDate = Math.round((now-edited)/(1000*60*60*24))
-  const fullDate = edited.toLocaleString()
-  const fullDateString = t("entryDetails.lastEdit") + " " + ((diffDate < 1)
-    ? t("entryDetails.today")
-    : diffDate + " " + t("entryDetails.daysAgo") )
+  const getDateStrings = (changed) => {
+    const now = Date.now()
+    const edited = new Date(changed*1000)
+    const diffDate = Math.round((now-edited)/(1000*60*60*24))
+    const fullDate = edited.toLocaleString()
+    const fullDateString = t("entryDetails.lastEdit") + " " + ((diffDate < 1)
+      ? t("entryDetails.today")
+      : diffDate + " " + t("entryDetails.daysAgo") )
+
+    return [fullDate, fullDateString]
+  }
+
+  let [fullDate, fullDateString] = [null, null]
+  if (!isEvent) {
+    [fullDate, fullDateString] = getDateStrings(changed)
+  }
 
   const subject = t("entryDetails.reportSubject")
   const body = "%0D%0A"
@@ -24,14 +39,41 @@ const Footer = props => {
   return(
     <FooterWrapper>
       <MetaFoot>
+        <HistoryLink
+          data-tip="archiveLink"
+          data-for="archiveLink"
+          href={getHistoryLink(entryId)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <b>{t("entryDetails.viewHistory")}</b>
+        </HistoryLink>
+        <ReactTooltip id="archiveLink" type="warning" place="top">
+          {t("entryDetails.viewHistoryTooltip")}
+        </ReactTooltip>
+
         <a href={mailToString}><b>{t("entryDetails.reportLink")}</b></a>
-        <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
+        {
+          !isEvent &&
+          <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
+        }
       </MetaFoot>
     </FooterWrapper>
   )
 }
 
-const MetaFooter = translate('translation')(Footer)
+
+const mapStateToProps = ({search}) => ({
+  entryId: search.current
+})
+
+const MetaFooter = translate('translation')(connect(mapStateToProps)(Footer))
+
+const HistoryLink = styled.a`
+  display: block;
+  // text-align: center;
+  margin-bottom: 8px;
+`
 
 const FooterWrapper = styled.div`
   background-color: #f9f9f9;

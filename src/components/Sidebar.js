@@ -165,13 +165,12 @@ class Sidebar extends Component {
                   onComment={ context => { return dispatch(Actions.showNewComment(context)); }}
                 />
               : ''}
-              { !isEvent ?
-                <SidebarFooter
-                    changed = {entry.created}
-                    version = {entry.version}
-                    title = {entry.title}
-                />
-              : ''}
+              <SidebarFooter
+                isEvent={isEvent}
+                changed = {entry.created}
+                version = {entry.version}
+                title = {entry.title}
+              />
             </ScrollableEntryDetailsWrapper>
           );
         }

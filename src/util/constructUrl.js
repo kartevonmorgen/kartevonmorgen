@@ -1,10 +1,13 @@
 import mapConst   from "../constants/Map"
+import {ENTRY_HISTORY}   from "../constants/URLs"
 
 const searchTextToUrlQuery = (text) => {
   let query = "search=" 
     + encodeURIComponent(text.replace(/^\s/, "").replace(/\s+/g, " "));
   return query;
 }
+
+export const getHistoryLink = (entryId) => (`${ENTRY_HISTORY.link}/${entryId}`)
 
 export default (entry, center, zoom, searchText, showLeft, categories) => {
   let params = [];
