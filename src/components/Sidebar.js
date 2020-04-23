@@ -146,7 +146,7 @@ class Sidebar extends Component {
 
           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
           content = (
-            <ScrollableEntryDetailsWrapper>
+            <ScrollableEntryDetailsWrapper id="ScrollableEntryDetailsWrapper">
               <EntryDetails
                 entry={ entry }
                 isEvent={ isEvent }

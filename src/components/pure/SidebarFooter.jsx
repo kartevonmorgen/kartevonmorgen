@@ -1,4 +1,4 @@
-import React            from "react";
+import React, {useState, useEffect}            from "react";
 import {connect}        from "react-redux";
 
 import { translate }    from "react-i18next";
@@ -13,6 +13,12 @@ const Footer = props => {
 
   const { entryId, changed, t, isEvent } = props;
 
+  const [isScrollable, setIsScrollable] = useState(false)
+
+  useEffect(() => {
+    setIsScrollable(getIsScrollable())
+  }, [entryId])
+
   const getDateStrings = (changed) => {
     const now = Date.now()
     const edited = new Date(changed*1000)
@@ -23,6 +29,11 @@ const Footer = props => {
       : diffDate + " " + t("entryDetails.daysAgo") )
 
     return [fullDate, fullDateString]
+  }
+
+  const getIsScrollable = () => {
+    const sidebar = document.getElementById("ScrollableEntryDetailsWrapper")
+    return sidebar.scrollHeight > sidebar.clientHeight
   }
 
   let [fullDate, fullDateString] = [null, null]
@@ -37,7 +48,7 @@ const Footer = props => {
   const mailToString = `mailto:report@kartevonmorgen.org?subject=${subject}&body=${body}`
 
   return(
-    <FooterWrapper>
+    <FooterWrapper isScrollable={isScrollable}>
       <MetaFoot>
         <HistoryLink
           data-tip="archiveLink"
@@ -76,6 +87,13 @@ const HistoryLink = styled.a`
 `
 
 const FooterWrapper = styled.div`
+  ${
+  ({isScrollable}) => !isScrollable && `
+      position: absolute;
+   `}
+
+  bottom: 0;
+  width: 100%;
   background-color: #f9f9f9;
   border-top: 1px solid ${STYLE.lightGray};
 `
