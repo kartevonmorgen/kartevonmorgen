@@ -95,7 +95,11 @@ module.exports = {
     link: "https://www.betterplace.org/de/organisations/vonmorgen"
   },
   ENTRY_HISTORY: {
-    name: "OpenFairDB",
+    name: "EntryOpenFairDB",
     link: "https://openfairdb.org/entries",
+  },
+  EVENT_HISTORY: {
+    name: "EventOpenFairDB",
+    link: "https://openfairdb.org/events"
   }
 };

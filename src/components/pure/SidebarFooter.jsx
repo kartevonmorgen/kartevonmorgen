@@ -12,6 +12,7 @@ import {getHistoryLink}  from '../../util/constructUrl'
 const Footer = props => {
 
   const { entryId, changed, t, isEvent } = props;
+  const type = isEvent ? 'event' : 'entry'
 
   const [isScrollable, setIsScrollable] = useState(false)
 
@@ -33,7 +34,8 @@ const Footer = props => {
 
   const getIsScrollable = () => {
     const sidebar = document.getElementById("ScrollableEntryDetailsWrapper")
-    return sidebar.scrollHeight > sidebar.clientHeight
+    const footer = document.getElementById("EntryFooter")
+    return sidebar.scrollHeight > sidebar.clientHeight + footer.scrollHeight
   }
 
   let [fullDate, fullDateString] = [null, null]
@@ -48,12 +50,12 @@ const Footer = props => {
   const mailToString = `mailto:report@kartevonmorgen.org?subject=${subject}&body=${body}`
 
   return(
-    <FooterWrapper isScrollable={isScrollable}>
+    <FooterWrapper isScrollable={isScrollable} id="EntryFooter">
       <MetaFoot>
         <HistoryLink
           data-tip="archiveLink"
           data-for="archiveLink"
-          href={getHistoryLink(entryId)}
+          href={getHistoryLink(entryId, type)}
           target="_blank"
           rel="noopener noreferrer"
         >
