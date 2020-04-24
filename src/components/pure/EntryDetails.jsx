@@ -41,7 +41,7 @@ const EntryDetails = props => {
   }
   else {
     return (
-      <Entry>
+      <Entry id="EntryDetail">
         <Navbar className="menu-top">
           <NavButtonWhite
             keyName = "back"

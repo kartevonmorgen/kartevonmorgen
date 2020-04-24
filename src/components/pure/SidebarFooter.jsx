@@ -34,8 +34,9 @@ const Footer = props => {
 
   const getIsScrollable = () => {
     const sidebar = document.getElementById("ScrollableEntryDetailsWrapper")
+    const entryDetail = document.getElementById("EntryDetail")
     const footer = document.getElementById("EntryFooter")
-    return sidebar.scrollHeight > sidebar.clientHeight + footer.scrollHeight
+    return entryDetail.scrollHeight + footer.scrollHeight > sidebar.clientHeight
   }
 
   let [fullDate, fullDateString] = [null, null]
