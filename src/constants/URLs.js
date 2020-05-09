@@ -101,5 +101,12 @@ module.exports = {
   EVENT_HISTORY: {
     name: "EventOpenFairDB",
     link: "https://openfairdb.org/events"
+  },
+  PROMINENT_TAGS: {
+    link: "https://blog.vonmorgen.org/prominent-tags/"
+  },
+  CORS_PROXY: {
+    // this is used to bypass cors, one of it's use cases is to fetch prominent tags
+    link: "https://cors-anywhere.herokuapp.com"
   }
 };

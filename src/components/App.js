@@ -472,7 +472,7 @@ const StyledApp = styled.div `
     background-color: #ccc;
   }
 
-  .pure-menu-list {
+  .pure-menu-serverlist {
     margin: 0 50px;
   }
 
