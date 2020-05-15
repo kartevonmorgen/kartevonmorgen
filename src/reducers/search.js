@@ -18,6 +18,7 @@ const initialState = {
   invisible: [],
   addresses: [],
   cities: [],
+  prominentTags: [], // the default tags shown in the search input
   tags: [],
   searchByUrl: true,
   showingAllEntries: false,
@@ -209,6 +210,11 @@ module.exports = (state = initialState, action = {}) => {
         cities: [],
         city: ""
       }
+
+    case T.FETCH_PROMINENT_TAGS:
+      return update(state, {
+        prominentTags: {$set: [...action.payload]}
+      })
 
     case T.FETCH_TAGS:
       return update(state, {

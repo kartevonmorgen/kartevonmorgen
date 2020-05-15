@@ -1,7 +1,7 @@
 import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
-import { OFDB_API, TH_GEOCODER, NOMINATIM } from "./constants/URLs"
+import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS } from "./constants/URLs"
 import CATEGORY_IDS from "./constants/Categories";
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search";
 
@@ -122,6 +122,32 @@ module.exports = {
       .use(saPrefix(OFDB_API.link))
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
+  },
+
+  getProminentTags: (cb) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open("GET", `${CORS_PROXY.link}/${PROMINENT_TAGS.link}`)
+
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === XMLHttpRequest.DONE) {
+        var status = xhr.status;
+        if (status === 0 || (status >= 200 && status < 400)) {
+          // The request has been completed successfully
+          const el = document.createElement('html')
+          el.innerHTML = xhr.responseText
+
+          const prominentTags = el.querySelector("#post-6714 > div > p").textContent
+            .split('#').filter(t => t.length)
+
+          cb(prominentTags)
+        } else {
+          // Oh no! There has been an error with the request!
+          cb([], "could not fetch prominent tags")
+        }
+      }
+    };
+
+    xhr.send()
   },
 
   getTags: (page, cb) => {
