@@ -157,6 +157,7 @@ class Sidebar extends Component {
               />
               { !isEvent ?
                 <Ratings
+                  id="Ratings"
                   entry={ entry }
                   ratings={ (entry ? entry.ratings || [] : []).map(id => {
                     return ratings[id];
