@@ -34,9 +34,20 @@ const Footer = props => {
 
   const getIsScrollable = () => {
     const sidebar = document.getElementById("ScrollableEntryDetailsWrapper")
-    const entryDetail = document.getElementById("EntryDetail")
-    const footer = document.getElementById("EntryFooter")
-    return entryDetail.scrollHeight + footer.scrollHeight > sidebar.clientHeight
+
+    const sidebarElements = ["EntryDetail", "RatingWrapper", "EntryFooter"]
+
+    let scrollThreshold = 0
+    sidebarElements.map((id) => {
+      const element = document.getElementById(id)
+      if (element) {
+        scrollThreshold += element.scrollHeight
+      } else {
+        console.log("no element ")
+      }
+    })
+
+    return !isEvent || scrollThreshold > sidebar.clientHeight
   }
 
   let [fullDate, fullDateString] = [null, null]

@@ -113,7 +113,7 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
 
   if(entry){
     return(
-      <RatingsWrapper>
+      <RatingsWrapper id="RatingWrapper">
         <FlowerWrapper>
           <Flower ratings={ratings} radius={40} showTooltip={true} />
         </FlowerWrapper>
