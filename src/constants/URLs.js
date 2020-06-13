@@ -93,5 +93,20 @@ module.exports = {
   JOB_ADS: {
     name: "www.betterplace.org/de/organisations/vonmorgen",
     link: "https://www.betterplace.org/de/organisations/vonmorgen"
+  },
+  ENTRY_HISTORY: {
+    name: "EntryOpenFairDB",
+    link: "https://openfairdb.org/entries",
+  },
+  EVENT_HISTORY: {
+    name: "EventOpenFairDB",
+    link: "https://openfairdb.org/events"
+  },
+  PROMINENT_TAGS: {
+    link: "https://blog.vonmorgen.org/prominent-tags/"
+  },
+  CORS_PROXY: {
+    // this is used to bypass cors, one of it's use cases is to fetch prominent tags
+    link: "https://cors-anywhere.herokuapp.com"
   }
 };

@@ -146,7 +146,7 @@ class Sidebar extends Component {
 
           const isEvent = entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
           content = (
-            <ScrollableEntryDetailsWrapper>
+            <ScrollableEntryDetailsWrapper id="ScrollableEntryDetailsWrapper">
               <EntryDetails
                 entry={ entry }
                 isEvent={ isEvent }
@@ -157,6 +157,7 @@ class Sidebar extends Component {
               />
               { !isEvent ?
                 <Ratings
+                  id="Ratings"
                   entry={ entry }
                   ratings={ (entry ? entry.ratings || [] : []).map(id => {
                     return ratings[id];
@@ -165,13 +166,12 @@ class Sidebar extends Component {
                   onComment={ context => { return dispatch(Actions.showNewComment(context)); }}
                 />
               : ''}
-              { !isEvent ?
-                <SidebarFooter
-                    changed = {entry.created}
-                    version = {entry.version}
-                    title = {entry.title}
-                />
-              : ''}
+              <SidebarFooter
+                isEvent={isEvent}
+                changed = {entry.created}
+                version = {entry.version}
+                title = {entry.title}
+              />
             </ScrollableEntryDetailsWrapper>
           );
         }

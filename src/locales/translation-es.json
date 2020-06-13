@@ -67,6 +67,8 @@
     "loadingEntry": "La entrada está cargada...",
     "back": "reverso",
     "homepagePlaceholder": "Página de inicio",
+    "viewHistory": "Ver el historial o archivar esta entrada",
+    "viewHistoryTooltip": "Tendrás que volver a entrar en openfairdb.org",
     "reportLink": "Informar de esta entrada",
     "reportSubject": "Informar de esta entrada",
     "reportBody": "Con la entrada {enlace} hay el siguiente problema:",

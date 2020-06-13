@@ -67,6 +67,8 @@
     "loadingEntry": "loading entry...",
     "back": "back",
     "homepagePlaceholder": "Website",
+    "viewHistory": "View history or archive this entry",
+    "viewHistoryTooltip": "You will have to login again on openfairdb.org",
     "reportLink": "Report this entry",
     "reportSubject": "Report entry",
     "reportBody": "This entry {link} is problematic because:",
