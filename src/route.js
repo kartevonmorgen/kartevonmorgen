@@ -72,27 +72,22 @@ const createActionsFromState = (state) => {
         if (!(isNaN(lat) || isNaN(lng))
           && ((lat.toFixed(4) != map.center.lat.toFixed(4)) 
           || (lng.toFixed(4) != map.center.lng.toFixed(4)))) {
-          console.log("route center: ", lat, lng);
           actions.push(Actions.showSearchResults());
           actions.push(Actions.setCenter({lat, lng}));
         }
         break;
       case RoutingUsecases.CHANGE_ZOOM: 
         if(!isNaN(zoomValue) && zoomValue != map.zoom){
-          console.log("route: zoom", zoomValue, map.zoom);
           actions.push(Actions.setZoom(zoomValue));
         }
         break;
       case RoutingUsecases.CHANGE_SEARCH: 
-        console.log(`route: search=${search}, tags=${tags}`);
         actions.push(Actions.search());
         break;
       case RoutingUsecases.CONFIRM_EMAIL: 
-        console.log("route: confirmEmail");
         actions.push(Actions.confirmEmail(user_id));
         break;
       case RoutingUsecases.CHANGE_SEARCH_CATEGORIES:
-        console.log("route: categories");
         const allCats_IDS = Object.values(IDS);
         const enabledCats_IDS = searchState.categories;
         const catsToEnable_Names = categories.split(",");
