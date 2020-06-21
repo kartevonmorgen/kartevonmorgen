@@ -11,7 +11,7 @@
     "iHaveRead": "Ich habe die",
     "creativeCommonsLicense": "Bestimmungen der Creative-Commons Lizenz CC0",
     "openDatabaseLicense": "Bestimmungen der OpenDatabase Lizenz",
-    "licenseAccepted": "gelesen und akzeptiere sie",
+    "licenseAccepted": "gelesen und akzeptiere sie.",
     "license": "Lizenz",
     "title": "Titel",
     "start": "Beginn",
@@ -21,7 +21,7 @@
     "tags": "Stichworte",
     "newTag": "Neu:",
     "noTagSuggestion": "Tippen für Vorschläge.",
-    "tagsLoading": "Vorschläge werden geladen…",
+    "tagsLoading": "Vorschläge werden geladen...",
     "contactPerson": "Kontaktperson",
     "homepage": "Homepage",
     "phone": "Telefon",
@@ -41,7 +41,7 @@
     "editEntryHeading": "Eintrag bearbeiten",
     "newEntryHeading": "Neuer Eintrag",
     "savingError": "Der Eintrag konnte nicht gespeichert werden",
-    "valueError": "Bitte überprüfen Sie ihre Eingaben.",
+    "valueError": "Bitte überprüfe deine Eingaben.",
     "requiredField": "Pflichtangabe",
     "titleTooLong": "Zu langer Titel",
     "titleTooShort": "Zu kurzer Titel",
@@ -60,7 +60,7 @@
     "acceptLicense": "Lizenzzustimmung ist nötig",
     "invalidLicenseAgreement": "Ungültige Zustimmung",
     "invalidURL": "Ungültige URL",
-    "httpMissing": "\"http://\" oder \"https://\" fehlt)",
+    "httpMissing": "\"http://\" oder \"https://\" fehlt",
     "generateHours": "Öffnungszeiten konfigurieren!"
   },
   "entryDetails": {
@@ -72,7 +72,7 @@
     "reportLink": "Diesen Eintrag melden",
     "reportSubject": "Eintrag melden",
     "reportBody": "Mit dem Eintrag {link} gibt es folgendes Problem:",
-    "readMore": "Leer más...",
+    "readMore": "Mehr lesen...",
     "lastEdit": "Letzte Änderung:",
     "today": "heute",
     "daysAgo": "Tage her",
@@ -137,12 +137,12 @@
       "solidarity": "Solidarität"
     },
     "contextExplanation": {
-      "diversity": "Ökologische Vielfalt, Artgerechte Haltung, Bio, wenige Zusatzstoffe etc.",
-      "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy etc.",
+      "diversity": "Ökologische Vielfalt, Artgerechte Haltung, Bio, wenige Zusatzstoffe, etc.",
+      "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy, etc.",
       "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
       "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
-      "transparency": "Sind Produktions-, Finanzierungs- und Handelsketten öffentlich nachvollziehbar? ",
-      "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel etc."
+      "transparency": "Sind Produktions-, Finanzierungs- und Handelsketten öffentlich nachvollziehbar?",
+      "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel, etc."
     },
     "valueName": {
       "minusOne": "von gestern",
@@ -166,7 +166,7 @@
     "chooseContext": "Wähle einen Aspekt der Nachhaltigkeit für deine Bewertung",
     "title": "Überschrift",
     "comment": "Kommentar/Erklärung",
-    "reference": "Quelle (z.B. einen Link oder 'ich arbeite da' etc.)",
+    "reference": "Quelle (z.B. einen Link oder 'ich arbeite da', etc.)",
     "ratingHeading": "Bewertung",
     "cancel": "abbrechen",
     "save": "bewerten",
@@ -191,7 +191,7 @@
     "changeSubscription": {
       "heading": "Dein Abonnement",
       "text1": "Du hast einen Kartenausschnitt abonniert und wirst bei neuen Einträgen und Änderungen in diesem Bereich per Email benachrichtigt.",
-      "text2": "Wenn du den abonnierten Kartenausschnitt ändern möchtest navigiere zu dem Kartenausschnitt der dich interessiert und klicke dann auf \"ändern\""
+      "text2": "Wenn du den abonnierten Kartenausschnitt ändern möchtest, navigiere zu dem Kartenausschnitt der dich interessiert und klicke dann auf \"ändern\"."
     },
     "newSubscription": {
       "heading": "Kartenausschnitt abonnieren",
@@ -269,17 +269,17 @@
       },
       "confirm-email-error": {
         "message": "Ups! Es gab einen Fehler beim Bestätigen deiner Email-Adresse. Bitte probiere, dich mit einem neuen Benutzernamen erneut zu ",
-        "link": "registrieren"
+        "link": "registrieren."
       },
       "email-confirmed": {
         "text1": "Deine Email-Adresse wurde bestätigt.",
         "text2": "Du kannst dich jetzt ",
-        "link": "anmelden"
+        "link": "anmelden."
       },
       "logged-out": "Du bist ausgeloggt."
     },
     "join": {
-      "heading": " Werde Teil unseres Teams",
+      "heading": "Werde Teil unseres Teams",
       "paragraph1": "Wir sind ein deutschlandweites Team und immer auf der Suche nach neuen Mitgliedern! Unsere aktuellen Ausschreibungen findest du hier:",
       "paragraph2": "Wir suchen Regional- und Themenpilot *innen: als direkte*r Ansprechpartner*in vor Ort, sicherst du die Qualität der Karteneinträge, organisierst z.B. Aktionen und Workshops und zeigst deine Stadt von ihrer besten Seite!",
       "paragraph3": "Du hast Fragen oder Interesse? Wir freuen uns von dir zu hören:"
@@ -389,7 +389,7 @@
       "4": "Auf unserer Website kannst du andere darauf aufmerksam machen – und dich so für einen von Menschen gestalteten Ort einsetzen, der dir persönlich am Herzen liegt.",
       "5": "Wir sind auf der Suche nach vielfältigen Ideen, Initiativen und Unternehmen, die den aktuellen sozialen, ökologischen und ökonomischen Umbrüchen alternativ entgegen wirken. Diese möchten wir vernetzten und ihnen möchten wir einen gemeinsamen Online-Auftritt und damit eine erhöhte Aufmerksamkeit ermöglichen.",
       "6": "Nach dem Wiki-Prinzip können alle Nutzer*innen, Initiativen und Unternehmen sich und andere auf der Karte eintragen und so ihre Mitmenschen erreichen. Doch von morgen ist mehr als eine Onlineplattform: Regionalpilot*innen sichern vor Ort die Qualität der Karteneinträge und haben neben einer redaktionellen Funktion die Aufgabe durch Bildungsveranstaltungen und Aktionen den regionalen Austausch zwischen Bürger*innen, Initiativen und Unternehmen zu stärken.",
-      "7": "von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Guten tun, wo es Gutes gibt."
+      "7": "von morgen fragt nach Werten, die unsere Gesellschaft fundieren und bewegen. Wir zeigen Menschen, die Gutes tun, wo es Gutes gibt."
     },
     "heading2": "Hintergründe und Visionen",
     "text2": {
@@ -415,7 +415,7 @@
     "placeholder": "Wonach suchst du? (# für Tags)"
   },
   "resultlist": {
-    "showMoreEntries": "mehr Einträge anzeigen...",
+    "showMoreEntries": "Mehr Einträge anzeigen...",
     "entriesLoading": "Einträge werden geladen...",
     "noEntriesFound": "Es konnten keine Einträge gefunden werden.",
     "addEntry": "Eintrag hinzufügen"
@@ -425,7 +425,7 @@
     "genericError": "Ups! Es ist ein Fehler aufgetreten...",
     "subscriptionChanged": "Abonnement wurde geändert.",
     "subscriptionAdded": "Kartenausschnitt wurde abonniert.",
-    "unsubscribingSuccessfull": "Abonnement wurde abbestellt",
+    "unsubscribingSuccessfull": "Abonnement wurde abbestellt.",
     "entrySaved": "Eintrag wurde gespeichert.",
     "ratingSaved": "Bewertung wurde gespeichert.",
     "linkCopied": "Link erfolgreich in die Zwischenablage kopiert!"
