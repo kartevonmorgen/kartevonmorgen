@@ -11,7 +11,7 @@
     "iHaveRead": "I have read and accept the Terms of the ",
     "creativeCommonsLicense": "Creative-Commons License CC0",
     "openDatabaseLicense": "OpenDatabase License",
-    "licenseAccepted": "",
+    "licenseAccepted": ".",
     "license": "License",
     "title": "Title",
     "start": "Start",
@@ -21,7 +21,7 @@
     "tags": "Tags",
     "newTag": "New:",
     "noTagSuggestion": "Type for sugestions.",
-    "tagsLoading": "Loading suggestions…",
+    "tagsLoading": "Loading suggestions...",
     "contactPerson": "Contact person",
     "homepage": "Homepage",
     "phone": "Phone",
@@ -137,11 +137,11 @@
       "solidarity": "Solidarity"
     },
     "contextExplanation": {
-      "diversity": "Ecological diversity, organic certifications, few additives etc.",
-      "renewable": "Environmental protection, short transport routes, efficient/ low use of resources and energy, circular economy etc.",
+      "diversity": "Ecological diversity, animal welfare, organic certifications, few additives, etc.",
+      "renewable": "Environmental protection, short transport routes, efficient/ low use of resources and energy, circular economy, etc.",
       "fairness": "Safe, inclusive, fair and appropriate working conditions throughout the entire value chain.",
       "humanity": "Do all participants have room for their own ideas, further development and cultural diversity? Are there rights to participate and democratic processes?",
-      "transparency": "Are production, financing and retail-chains publicly comprehensible? ",
+      "transparency": "Are production, financing and retail-chains publicly comprehensible?",
       "solidarity": "Cooperative working, sustainable and ethical financing and investments, in consideration of all consumer budgets, etc."
     },
     "valueName": {
@@ -166,7 +166,7 @@
     "chooseContext": "Choose a sustainability criteria to rate",
     "title": "Title",
     "comment": "Comment/Explanation",
-    "reference": "Reference (e.g. a link or \"I work there.\" etc.)",
+    "reference": "Reference (e.g. a link or \"I work there.\", etc.)",
     "ratingHeading": "Rating",
     "cancel": "cancel",
     "save": "save rating",
@@ -180,7 +180,7 @@
     "commentTooLong": "Comment too long",
     "commentTooShort": "Comment too short",
     "maxNumCharactersComment": "out of max. 500 characters",
-    "minNumCharactersComment": "characters, min: 10"
+    "minNumCharactersComment": "characters, minimum 10"
   },
   "commentForm": {
     "chooseContext": "Add your rating to the following sustainability criterion of this entry",
@@ -191,7 +191,7 @@
     "changeSubscription": {
       "heading": "Your subscription",
       "text1": "You have subscribed to a map section and will be notified by email of new entries and changes within this area.",
-      "text2": "If you want to change the subscribed map section, navigate to the map section you are interested in and then click on \"change\""
+      "text2": "If you want to change the subscribed map section, navigate to the map section you are interested in and then click on \"change\"."
     },
     "newSubscription": {
       "heading": "Subscribe to map section",
@@ -225,7 +225,7 @@
     "slogan": "Mapping for Good",
     "city-search": {
       "placeholder": "Which place would you like to discover?",
-      "error": "Error while searching for cities",
+      "error": "Error while searching for cities.",
       "no-results": "Could not find any city with that name.",
       "show-map": "Show map..."
     },
@@ -273,13 +273,13 @@
       },
       "email-confirmed": {
         "text1": "Your email address has been confirmed.",
-        "text2": "You can now",
+        "text2": "You can now ",
         "link": "log in."
       },
       "logged-out": "You're logged out."
     },
     "join": {
-      "heading": "Become a part of our team.",
+      "heading": "Become a part of our team",
       "paragraph1": "We are a team across Germany and are always looking for new team members! You can find our current openings here:",
       "paragraph2": "We are looking for local scouts, that are experts to their regions or are familiar with topics of the sustainable conversation: as our direct contact locally, you will ensure the quality of the map entries, organize events and workshops and show your city from its best side!",
       "paragraph3": "Do you have any questions or did we spark your interest? We look forward to hear from you:"
@@ -330,10 +330,10 @@
     },
     "chapter5": {
       "heading": "Our team",
-      "text": "Das Team von morgen ist so bunt wie der Wandel. Ehemalige entwicklungspolitische Freiwillige, Studierende, Wandelgestalter*innen und Stipendiaten - Menschen, die sich ehrenamtlich für die Gesellschaft von morgen einsetzen wollen.",
       "new-members": "We are always looking for new members!",
       "graphic-design": "Graphic Design",
       "software-development": "Software Development",
+      "business-finance": "Project Development",
       "pr-marketing": "PR & Marketing",
       "communication-marketing": "Communication & Marketing",
       "thao": "Content & Communication",
@@ -403,8 +403,8 @@
     "text3": "We want to set a good example and therefore develop the software transparently and openly. The source code of this project can be found under:",
     "heading4": "Workshops and events von morgen",
     "text4": "Together with our partner, the non-profit association Ideen³ e. V. and the \"Ideenwerkstatt Bildungsagenten\", we offer workshops on various topics to support the socio-ecological transformation.",
-    "clientVersion": "Version dieses Clients:",
-    "serverVersion": "Version des Servers:"
+    "clientVersion": "Version of this client:",
+    "serverVersion": "Version of the server:"
   },
   "category": {
     "initiative": "Initiative",
@@ -418,18 +418,17 @@
     "showMoreEntries": "Show more entries...",
     "entriesLoading": "Entries are loaded...",
     "noEntriesFound": "No entries found.",
-    "addEntry": "add a new entry"
+    "addEntry": "Add a new entry"
   },
   "growler": {
     "INFO FOR TRANSLATORS": "Growler is the green or red bar that appears at the top of the screen for example when saving an entry",
     "genericError": "Ops! An error has occurred...",
     "subscriptionChanged": "You subscription has been changed.",
     "subscriptionAdded": "You subscribed to a map section.",
-    "unsubscribingSuccessfull": "You unsubscribed from the map section",
+    "unsubscribingSuccessfull": "You unsubscribed from the map section.",
     "entrySaved": "Entry has been saved.",
     "ratingSaved": "Rating has been saved.",
-    "linkCopied": "Link copied to clipboard successfully!",
-    "iframeCopied": "Iframe copied to clipboard successfully!"
+    "linkCopied": "Link copied to clipboard successfully!"
   },
   "contact": {
     "heading": "Contact",
@@ -472,7 +471,7 @@
       "donate": "Donate"
     },
     "embed": {
-      "findOutMore": "Find out more about sharing options"
+      "findOutMore": "Find out more about map sharing and embedding options"
     }
   },
   "share": "Share",
