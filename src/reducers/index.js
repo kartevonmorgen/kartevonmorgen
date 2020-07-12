@@ -5,6 +5,7 @@ import view                from "./view";
 import server              from "./server";
 import url                 from "./url";
 import user                from "./user";
+import customizations      from "./customization"
 import timedActions        from "./timedActions";
 import { reducer as notificationsReducer } from 'reapop';
 import { combineReducers } from "redux";
@@ -18,5 +19,6 @@ module.exports = combineReducers({
   server,
   url,
   user,
+  customizations,
   timedActions,
 });

@@ -44,4 +44,10 @@ store.dispatch(Actions.updateStateFromURL);
 store.dispatch(Actions.setZoom(mapConst.DEFAULT_ZOOM));
 route();
 
-ReactDOM.render(Wrapper, rootElement);
+
+// before render is an array of functions mainly initializers like customizers
+// the entry point is the customization folder
+export default (beforeRenderHooks) => {
+  beforeRenderHooks.map(hook => hook())
+  ReactDOM.render(Wrapper, rootElement);
+}

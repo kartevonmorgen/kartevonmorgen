@@ -421,13 +421,23 @@ class Form extends Component {
                   <FieldsetTitle>{t("license")}</FieldsetTitle>
                 </FieldsetLegend>
                 <div className= "pure-g license">
-                  <label className= "pure-u-2-24"
-                       	onClick={function(event){event.preventDefault();document.getElementsByName('license')[0].click(event);return false;}}>
-                    <FontAwesomeIcon icon={['fab', 'creative-commons']} />
+                  <label className="pure-u-2-24"
+                    onClick={function (event) {
+                         event.preventDefault()
+                         document.getElementsByName('license')[0].click(event)
+                         return false
+                       }}>
+                    <FontAwesomeIcon icon={['fab', 'creative-commons']}/>
                   </label>
-                  <div className= "pure-u-2-24 pure-controls"
-                	onClick={function(event){event.preventDefault();document.getElementsByName('license')[0].click(event);return false;}}>
-                    <FieldElement name="license" component="input" type="checkbox" onClick={function(event){event.stopPropagation();}} />
+                  <div className="pure-u-2-24 pure-controls"
+                    onClick={function (event) {
+                         event.preventDefault()
+                         document.getElementsByName('license')[0].click(event)
+                         return false
+                       }}>
+                    <FieldElement name="license" component="input" type="checkbox" onClick={function (event) {
+                      event.stopPropagation()
+                    }}/>
                   </div>
                   <div className= "pure-u-20-24">
                     <FieldElement name="license" component={errorMessage} />
@@ -494,11 +504,11 @@ module.exports = connect(mapStateToProps)(reduxForm({
   asyncBlurFields : ['street', 'zip', 'city'],
     onSubmitFail: (errors, dispatch, submitError) => {
 	if (errors.license && Object.keys(errors).length == 1){
-  		var ele = document.getElementsByName('license');
-  		var div = document.getElementById('entryFormScrollableDiv');
-  		if (ele && ele.length > 0 && ele[0] && div) {
-  			div.scrollTo(0, ele[0].offsetTop - 100);
-  		}
+    var ele = document.getElementsByName('license');
+    var div = document.getElementById('entryFormScrollableDiv');
+    if (ele && ele.length > 0 && ele[0] && div) {
+        div.scrollTo(0, ele[0].offsetTop - 100);
+    }
     }},
     asyncValidate: function(values, dispatch) {
     dispatch(Actions.geocodeAndSetMarker(
