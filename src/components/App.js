@@ -24,7 +24,7 @@ import mapConst             from "../constants/Map"
 class Main extends Component {
 
   render(){
-    const { dispatch, search, view, server, map, form, url, user, t } = this.props;
+    const { dispatch, customizations, search, view, server, map, form, url, user, t } = this.props;
     const { entries, ratings } = server;
 
     this.changeUrlAccordingToState(url);
@@ -108,8 +108,8 @@ class Main extends Component {
               // LeftPanelentries={ server.entries } never used…?
               dispatch={ dispatch }
               t={ t }
-              showAddEntryButton={ true }
-              showSearchBar={ true }
+              showAddEntryButton={ customizations.showSearchBar }
+              showSearchBar={ customizations.showSearchBar }
               onTagClick={ this.onTagClick }
               tagsClickable={ true }
             />

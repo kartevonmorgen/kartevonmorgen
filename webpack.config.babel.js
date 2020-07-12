@@ -8,7 +8,7 @@ let plugins = [];
 const config = {
   mode: "development",
   entry: {
-    app: ['babel-polyfill', path.join(__dirname, "src/index.js")],
+    app: ['babel-polyfill', path.join(__dirname, "src/customizations/default/index.js")],
     businesscard_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/businesscard/index.js")],
     map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")],
     mapAndEntryList_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/mapAndEntryList/index.js")]
@@ -84,7 +84,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js"],
+    extensions: [".jsx", ".js", ".json"],
     alias: {
       // This is a quick fix:
       // Without pointing to the minified leaflet file

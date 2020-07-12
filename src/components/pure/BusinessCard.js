@@ -163,7 +163,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
               <Hr />
             </React.Fragment>
           ),
-          (entry.tags && entry.tags.filter(t => t !="").length > 0
+          (entry.tags && entry.tags.filter(t => t !== "").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
             : null)
         ]}

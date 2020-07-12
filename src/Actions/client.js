@@ -11,6 +11,11 @@ import serverActions              from "./server";
 
 const Actions = {
 
+  setCustomizations: (customizations) => ({
+    type: T.SET_CUSTOMIZATIONS,
+    payload: customizations
+  }),
+
   setSearchText: (txt) => ({
     type: T.SET_SEARCH_TEXT,
     payload: txt
