@@ -57,8 +57,8 @@ class Sidebar extends Component {
 
   render(){
     const { view, search, user, server, resultEntries, entries,
-      ratings, dispatch, map, form, t, showAddEntryButton,
-      showSearchBar, onTagClick, tagsClickable } = this.props;
+      ratings, dispatch, map, form, t, customizations,
+      onTagClick, tagsClickable } = this.props;
     const { waiting_for_search_results } = view;
     const { explainRatingContext, selectedContext } = view;
     const invisibleEntries = search.invisible
@@ -322,7 +322,7 @@ class Sidebar extends Component {
     return(
       <SidebarComponent>
         {
-          showSearchBar
+          customizations.searchBar.show
           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
             <SearchBar
                 searchText={search.text}
@@ -357,7 +357,7 @@ class Sidebar extends Component {
           content
         }
         {
-          (view.left === V.RESULT) && showAddEntryButton
+          (view.left === V.RESULT) && customizations.addEntryButton.show
           ? <AddEntryButton>
               <NavButton
                 key = "back"
@@ -367,6 +367,7 @@ class Sidebar extends Component {
                 onClick = {() => {
                   dispatch(Actions.showNewEntry());
                 }}
+                style={customizations.addEntryButton.style}
               />
             </AddEntryButton>
           : ""
