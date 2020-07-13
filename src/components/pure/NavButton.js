@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import STYLE    from "../styling/Variables";
 
 const NavigationButton = styled.li`
-  color: #00f;
   cursor: pointer;
   box-sizing: border-box;
   font-weight: normal;
@@ -28,10 +27,11 @@ const Icon = styled(FontAwesomeIcon)`
   margin-right: 10px !important;
 `
 
-const NavButton = ({ keyName, classname, icon, text, onClick }) =>
+const NavButton = ({ keyName, classname, icon, text, onClick, style }) =>
   <NavigationButton
     key = { keyName }
     className = { classname }
+    style={style}
     onClick = { onClick }>
     <Icon icon={ icon } />{ text }
   </NavigationButton>

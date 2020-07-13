@@ -1,21 +1,12 @@
-import update from "immutability-helper"
+import _ from 'lodash'
 import T from "../constants/ActionTypes";
+import defaultCustomization from "../customizations/default/config"
 
 
-const initialState = {
-  "showSearchBar": true,
-  "showAddEntryButton": true
-}
-
-module.exports = (state=initialState, action={}) => {
+module.exports = (state=defaultCustomization, action={}) => {
   switch (action.type) {
     case T.SET_CUSTOMIZATIONS:
-      return update(
-        state, {
-          showSearchBar: {$set: action.payload.showSearchBar},
-          showAddEntryButton: {$set: action.payload.showAddEntryButton},
-        }
-      )
+      return _.cloneDeep(action.payload)
     default:
       return state
   }

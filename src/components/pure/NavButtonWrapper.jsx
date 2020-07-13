@@ -6,6 +6,7 @@ const Nav = styled.nav`
   z-index: 10;
   background: ${STYLE.coal};
   text-align: center;
+  height: auto;
 `
 
 const NavButtonWrapper = ({ children, className }) =>

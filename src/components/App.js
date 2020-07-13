@@ -108,8 +108,8 @@ class Main extends Component {
               // LeftPanelentries={ server.entries } never used…?
               dispatch={ dispatch }
               t={ t }
-              showAddEntryButton={ customizations.showSearchBar }
-              showSearchBar={ customizations.showSearchBar }
+              showAddEntryButton={ customizations.addEntryButton.show }
+              showSearchBar={ customizations.searchBar.show }
               onTagClick={ this.onTagClick }
               tagsClickable={ true }
             />
