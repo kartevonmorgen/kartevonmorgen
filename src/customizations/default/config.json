@@ -1,6 +1,10 @@
 {
+  "fonts": {
+    "bodyFont": null,
+    "headerFont": null
+  },
   "searchBar": {
-    "show": true
+    "show": false
   },
   "addEntryButton": {
     "show": true,
