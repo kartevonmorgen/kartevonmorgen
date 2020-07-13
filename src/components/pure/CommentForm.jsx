@@ -186,7 +186,7 @@ const StyledScrollableDiv = styled(ScrollableDiv)`
 `
 
 const StyledNavButtonWrapper = styled(NavButtonWrapper)`
-  height: 68px;
+  height: auto;
 `
 
 

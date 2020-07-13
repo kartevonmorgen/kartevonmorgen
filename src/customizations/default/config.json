@@ -1,4 +1,24 @@
 {
-  "showSearchBar": false,
-  "showAddEntryButton": false
+  "searchBar": {
+    "show": true
+  },
+  "addEntryButton": {
+    "show": true,
+    "style": {
+      "color": null,
+      "backgroundColor": null
+    }
+  },
+  "saveButton": {
+    "style": {
+      "color": null,
+      "backgroundColor":  null
+    }
+  },
+  "cancelButton": {
+    "style": {
+      "color": null,
+      "backgroundColor": null
+    }
+  }
 }

@@ -149,6 +149,8 @@ class Form extends Component {
   render() {
     const { isEdit, isEvent, formStartEndDate, descriptionLength, license, dispatch, handleSubmit } = this.props;
 
+    const {saveButtonCustomization, cancelButtonCustomization} = this.props;
+
     const { isEventEntry } = this.state;
     const { startDate } = this.state;
     const { endDate } = this.state;
@@ -467,6 +469,7 @@ class Form extends Component {
             }}
             icon = "ban"
             text = { t("cancel") }
+            style={cancelButtonCustomization}
           />
           <NavButton
             keyName = "save"
@@ -476,16 +479,19 @@ class Form extends Component {
             }}
             icon = "save"
             text = { t("save") }
+            style={saveButtonCustomization}
           />
         </StyledNavButtonWrapper>
       </FormWrapper>)
   }
 }
 
-const mapStateToProps = ({form}) => {
+const mapStateToProps = ({form, customizations}) => {
   return {
     category: lodashGet(form, 'edit.values.category', null),
-    descriptionLength: lodashGet(form, 'edit.values.description', '').length
+    descriptionLength: lodashGet(form, 'edit.values.description', '').length,
+    saveButtonCustomization: customizations.saveButton.style,
+    cancelButtonCustomization: customizations.cancelButton.style,
   }
 }
 
@@ -522,7 +528,7 @@ module.exports = connect(mapStateToProps)(reduxForm({
 })(translate('translation')(Form)));
 
 const StyledNavButtonWrapper = styled(NavButtonWrapper)`
-  height: 68px;
+  height: auto;
 `
 
 const AddEntryForm = styled.form`
