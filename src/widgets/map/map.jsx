@@ -4,6 +4,7 @@ import EntryDetails  from "../../components/pure/EntryDetails";
 import URLs          from "../../constants/URLs";
 import i18n          from "../../i18n";
 import Map           from "../../components/Map";
+import STYLE         from "../../components/styling/Variables"
 
 const MoreInfoLink = styled.a`
   position: absolute;
@@ -13,7 +14,7 @@ const MoreInfoLink = styled.a`
   left: 0;
   padding: 6px 25px;
   font-size: 0.8em;
-  font-family: "Rubik", sans-serif;
+  font-family: ${STYLE.bodyFont};
   border-top-right-radius: 2px;
 `;
 
