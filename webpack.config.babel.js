@@ -9,6 +9,7 @@ const config = {
   mode: "development",
   entry: {
     app: ['babel-polyfill', path.join(__dirname, "src/index.js")],
+    renn: ['babel-polyfill', path.join(__dirname, "src/renn.js")],
     businesscard_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/businesscard/index.js")],
     map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")],
     mapAndEntryList_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/mapAndEntryList/index.js")]
@@ -144,6 +145,12 @@ plugins.push(new HTMLPlugin({
   ...htmlPluginOptions,
   filename: "index.html",
   chunks: ["app"]
+}));
+
+plugins.push(new HTMLPlugin({
+  ...htmlPluginOptions,
+  filename: "renn.html",
+  chunks: ["renn"]
 }));
 
 plugins.push(new HTMLPlugin({

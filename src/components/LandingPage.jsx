@@ -27,7 +27,7 @@ class LandingPage extends Component {
   render() {
 
     const { content, searchText, searchError, cities, onSelection, onEscape,
-      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, loadingSearch } = this.props;
+      onChange, onRegister, onLogin, loggedIn, user, onDeleteAccount, loadingSearch, fonts } = this.props;
     const onClick = this.props.onMenuItemClick;
     var t = (key) => {
       return this.props.t("landingPage." + key);
@@ -224,7 +224,7 @@ class LandingPage extends Component {
     }
 
     return (
-      <LandingWrapper className="landing">
+      <LandingWrapper fonts={fonts} className="landing">
         <div className = "banner">
           <div className = "content pure-g">
             <div className = "logo-wrapper pure-u-11-24 pure-u-md-1-3">
@@ -381,7 +381,7 @@ const LandingWrapper = styled.div`
   z-index: 1001;
   background-color: rgba(0,0,0,0.7);
   h1, h3 {
-    font-family: ${STYLE.headerFont};
+    font-family: ${props => props.fonts.headerFont || STYLE.headerFont};
     font-weight: 500;
   }
   h3 {

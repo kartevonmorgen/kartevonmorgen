@@ -32,12 +32,13 @@ class Main extends Component {
     const loggedIn = user.email ? true : false;
 
     return (
-      <StyledApp className="app">
-        <GlobalStyle />
+      <StyledApp fonts={customizations.fonts} className="app">
+        <GlobalStyle fonts={customizations.fonts}/>
         <NotificationsSystem theme={theme}/>
         {
           view.menu ?
             <LandingPage
+              fonts={customizations.fonts}
               onMenuItemClick={ id => {
                 switch (id) {
                   case 'map':
@@ -276,11 +277,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6, h7 {
-    font-family: ${STYLE.headerFont};
+    font-family: ${props => props.fonts.headerFont || STYLE.headerFont};
   }
 
   html, button, input, select, textarea {
-    font-family: ${STYLE.bodyFont};
+    font-family: ${props => props.fonts.bodyFont || STYLE.bodyFont};
   }
 `;
 
@@ -436,17 +437,17 @@ const StyledApp = styled.div `
   }
 
   input, select, textarea, button {
-    font-family: ${STYLE.bodyFont};
+    font-family: ${props => props.fonts.bodyFont || STYLE.bodyFont};
   }
 
   h1, h2, h3, h4, h5, h6, h7 {
-    font-family: ${STYLE.headerFont};
+    font-family: ${props => props.fonts.headerFont || STYLE.headerFont};
     font-weight: 500;
     margin-block-end: 2px;
   }
 
   button {
-    font-family: ${STYLE.bodyFont};
+    font-family: ${props => props.fonts.bodyFont || STYLE.bodyFont};
     &.pure-button i {
       margin-right: 0.5em;
     }
@@ -464,7 +465,7 @@ const StyledApp = styled.div `
   }
 
   .pure-g [class *= "pure-u"] {
-    font-family: ${STYLE.bodyFont};
+    font-family: ${props => props.fonts.bodyFont || STYLE.bodyFont};
   }
 
   /* ============================== */

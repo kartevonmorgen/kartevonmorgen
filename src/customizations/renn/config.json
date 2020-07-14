@@ -1,0 +1,28 @@
+{
+  "fonts": {
+    "bodyFont": "\"Roboto\",arial,sans-serif",
+    "headerFont": "\"Roboto\",arial,sans-serif"
+  },
+  "searchBar": {
+    "show": false
+  },
+  "addEntryButton": {
+    "show": true,
+    "style": {
+      "color": null,
+      "backgroundColor": null
+    }
+  },
+  "saveButton": {
+    "style": {
+      "color": null,
+      "backgroundColor":  null
+    }
+  },
+  "cancelButton": {
+    "style": {
+      "color": null,
+      "backgroundColor": null
+    }
+  }
+}
