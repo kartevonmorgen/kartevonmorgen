@@ -1,5 +1,3 @@
-import store from "../../Store"
-
 const grayBlue   = "rgb(100,  122,  133)";
 const blue       = "rgb(0,    153,  173)";
 const green      = "rgb(151,  191,  13 )";
@@ -15,9 +13,6 @@ const teal       = "rgb(0,    152,  137)";
 const yellowText = "rgb(214,  201,  0  )";
 
 
-const state = store.getState()
-
-
 const rating_contexts = {
   "diversity": green,      // GREEN
   "renewable": yellow,      // YELLOW
@@ -28,9 +23,8 @@ const rating_contexts = {
   "default": lightGray
 }
 
-const bodyFont= state.customizations.fonts.bodyFont || `"Rubik", sans-serif`;
-const headerFont= state.customizations.fonts.headerFont ||`"Rubik", sans-serif`;
-
+let bodyFont = `"Rubik", sans-serif`;
+let headerFont= `"Rubik", sans-serif`;
 
 module.exports = {
   grayBlue,
