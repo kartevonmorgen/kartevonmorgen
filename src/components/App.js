@@ -1,14 +1,15 @@
 import "./styling/Stylesheets"
 import "./styling/Icons"
 
-import React, { Component } from "react"
-import T                    from "prop-types"
-import { translate }        from "react-i18next"
-import NotificationsSystem  from "reapop";
-import theme                from "reapop-theme-wybo";
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import Swipeable            from 'react-swipeable'
-import styled, { keyframes, createGlobalStyle } from "styled-components";
+import React, { Component }           from "react"
+import T                              from "prop-types"
+import { translate }                  from "react-i18next"
+import NotificationsSystem            from "reapop";
+import theme                          from "reapop-theme-wybo";
+import { FontAwesomeIcon }            from '@fortawesome/react-fontawesome'
+import Swipeable                      from 'react-swipeable'
+import styled, { createGlobalStyle }  from "styled-components";
+import isString from "lodash/isString"
 
 import V                    from "../constants/PanelView"
 import Actions              from "../Actions"
@@ -24,7 +25,12 @@ import mapConst             from "../constants/Map"
 class Main extends Component {
 
   render(){
-    const { dispatch, customizations, search, view, server, map, form, url, user, t } = this.props;
+    const { dispatch, customizations, search, view, server, map, form, url, user, t, lng } = this.props;
+    let language = "de";
+    if (isString(lng)) {
+      language = lng.split("-")[0]
+    }
+
     const { entries, ratings } = server;
 
     this.changeUrlAccordingToState(url);
@@ -134,6 +140,23 @@ class Main extends Component {
                 <MenuFontAwesomeIcon icon={'bars'} />
               </span>
             </button>
+          </div>
+          <div className="container">
+            <u>
+              {
+                customizations.burgerMenu.links.map(item => (
+                  <li>
+                    <a href={item.link}>
+                      {
+                        item.translation.hasOwnProperty(language) ?
+                          item.translation[language] :
+                          item.translation['de']
+                      }
+                    </a>
+                  </li>
+                ))
+              }
+            </u>
           </div>
         </RightPanel>
 
@@ -285,12 +308,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Create the keyframes
-const fadein = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`
-
 import pincloud from "../img/pincloud.png";
 
 const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -344,6 +361,50 @@ const RightPanel = styled.div `
   right: 0;
   background: #fff;
   color: ${STYLE.coal};
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  // .menu-toggle {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: flex-end;
+  // }
+  
+  .container {
+    z-index: 1;
+    background-color: #fff;
+    color: ${STYLE.darkGray};
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 0.2em;
+    border: none;
+    box-shadow: 0 1px 3px 0.2px rgba(0,0,0,0.5);
+  }
+  
+  .container u {
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  .container li {
+    margin-bottom: 7px;
+  }
+  
+  .container li:last-child {
+    margin-bottom: 0px;
+  }
+  
+  .container a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .menu-toggle {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   .menu-toggle button {
     outline: none;
