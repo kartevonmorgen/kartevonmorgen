@@ -24,5 +24,26 @@
       "color": null,
       "backgroundColor": null
     }
+  },
+  "burgerMenu": {
+    "showTranslationOptions": true,
+    "links": [
+      {
+        "link": "https://www.w3schools.com/",
+        "translation": {
+          "de": "the german text",
+          "en": "the english text",
+          "es": "the spanish text"
+        }
+      },
+      {
+        "link": "https://www.w3schools.com/",
+        "translation": {
+          "de": "the german text",
+          "en": "the english text",
+          "es": "the spanish text"
+        }
+      }
+    ]
   }
 }
