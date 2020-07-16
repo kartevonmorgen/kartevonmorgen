@@ -153,6 +153,11 @@ class Main extends Component {
                           item.translation['de']
                       }
                     </a>
+                    {
+                      item.icon && (
+                        <FontAwesomeIcon className="icon" icon={item.icon}/>
+                      )
+                    }
                   </li>
                 ))
               }
@@ -390,6 +395,12 @@ const RightPanel = styled.div `
 
   .container li {
     margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container .icon {
+    margin-left: 25px;
   }
   
   .container li:last-child {

@@ -29,6 +29,11 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faSpinner').definition
   ,require('@fortawesome/free-solid-svg-icons/faSave').definition
   ,require('@fortawesome/free-solid-svg-icons/faUser').definition
+  ,require('@fortawesome/free-solid-svg-icons/faHome').definition
+  ,require('@fortawesome/free-solid-svg-icons/faUserFriends').definition
+  ,require('@fortawesome/free-solid-svg-icons/faColumns').definition
+  ,require('@fortawesome/free-solid-svg-icons/faHeadset').definition
+  ,require('@fortawesome/free-solid-svg-icons/faUsers').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 
