@@ -2,6 +2,7 @@ import "./styling/Stylesheets"
 import "./styling/Icons"
 
 import React, { Component }           from "react"
+import update                         from 'immutability-helper';
 import T                              from "prop-types"
 import { translate }                  from "react-i18next"
 import NotificationsSystem            from "reapop";
@@ -24,8 +25,20 @@ import mapConst             from "../constants/Map"
 
 class Main extends Component {
 
+  state = {
+    openRightPanel: false,
+  }
+
+  toggleRightPanel = () => (
+    this.setState(prevState => update(
+      prevState, {openRightPanel: {$set: !prevState.openRightPanel}})
+    )
+  )
+
   render(){
     const { dispatch, customizations, search, view, server, map, form, url, user, t, lng } = this.props;
+    const {openRightPanel} = this.state;
+
     let language = "de";
     if (isString(lng)) {
       language = lng.split("-")[0]
@@ -135,34 +148,36 @@ class Main extends Component {
         </LeftPanelAndHideSidebarButton>
         <RightPanel>
           <div className="menu-toggle">
-            <button onClick={()=>{ return dispatch(Actions.toggleMenu()); }} >
+            <button onClick={this.toggleRightPanel} >
               <span className="pincloud">
                 <MenuFontAwesomeIcon icon={'bars'} />
               </span>
             </button>
           </div>
-          <div className="container">
-            <u>
-              {
-                customizations.burgerMenu.links.map(item => (
-                  <li>
-                    <a target="_blank" rel="noopener noreferrer" href={item.link} >
+          { openRightPanel &&
+            (<div className="container">
+              <u>
+                {
+                  customizations.burgerMenu.links.map(item => (
+                    <li>
+                      <a target="_blank" rel="noopener noreferrer" href={item.link} >
+                        {
+                          item.translation.hasOwnProperty(language) ?
+                            item.translation[language] :
+                            item.translation['de']
+                        }
+                      </a>
                       {
-                        item.translation.hasOwnProperty(language) ?
-                          item.translation[language] :
-                          item.translation['de']
+                        item.icon && (
+                          <FontAwesomeIcon className="icon" icon={item.icon}/>
+                        )
                       }
-                    </a>
-                    {
-                      item.icon && (
-                        <FontAwesomeIcon className="icon" icon={item.icon}/>
-                      )
-                    }
-                  </li>
-                ))
-              }
-            </u>
-          </div>
+                    </li>
+                  ))
+                }
+              </u>
+            </div>)
+          }
         </RightPanel>
 
         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
