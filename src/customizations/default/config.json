@@ -29,20 +29,49 @@
     "showTranslationOptions": true,
     "links": [
       {
-        "link": "https://www.w3schools.com/",
+        "link": "https://kartevonmorgen.org/",
         "translation": {
-          "de": "the german text1",
-          "en": "the english text1",
-          "es": "the spanish text1"
-        }
+          "en": "Home",
+          "de": "Startseite",
+          "es": "Inicio"
+        },
+        "icon": "home"
       },
       {
-        "link": "https://www.w3schools.com/",
+        "link": "https://blog.vonmorgen.org/piloten/",
         "translation": {
-          "de": "the german text2",
-          "en": "the english text2",
-          "es": "the spanish text2"
-        }
+          "en": "Join",
+          "de": "Mitmachen",
+          "es": "Unirse"
+        },
+        "icon": "user-friends"
+      },
+      {
+        "link": "https://openfairdb.org/",
+        "translation": {
+          "en": "Login for Pilots",
+          "de": "Login für Piloten",
+          "es": "Iniciar sesión para pilotos"
+        },
+        "icon": "columns"
+      },
+      {
+        "link": "https://blog.vonmorgen.org/kontakt/",
+        "translation": {
+          "en": "Contact",
+          "de": "Kontakt",
+          "es": "Contacto"
+        },
+        "icon": "headset"
+      },
+      {
+        "link": "https://blog.vonmorgen.org/",
+        "translation": {
+          "en": "About us",
+          "de": "Über uns",
+          "es": "Sobre nosotros"
+        },
+        "icon": "users"
       }
     ]
   }
