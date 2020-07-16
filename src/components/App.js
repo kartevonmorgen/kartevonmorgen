@@ -146,7 +146,7 @@ class Main extends Component {
               {
                 customizations.burgerMenu.links.map(item => (
                   <li>
-                    <a href={item.link}>
+                    <a target="_blank" rel="noopener noreferrer" href={item.link} >
                       {
                         item.translation.hasOwnProperty(language) ?
                           item.translation[language] :
