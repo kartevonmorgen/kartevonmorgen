@@ -36,7 +36,8 @@
           "de": "Startseite",
           "es": "Inicio"
         },
-        "icon": "home"
+        "icon": "home",
+        "policy": "self"
       },
       {
         "link": "https://blog.vonmorgen.org/piloten/",
@@ -45,7 +46,8 @@
           "de": "Mitmachen",
           "es": "Unirse"
         },
-        "icon": "user-friends"
+        "icon": "user-friends",
+        "policy": "newTab"
       },
       {
         "link": "https://openfairdb.org/",
@@ -54,7 +56,8 @@
           "de": "Login für Piloten",
           "es": "Iniciar sesión para pilotos"
         },
-        "icon": "columns"
+        "icon": "columns",
+        "policy": "newTab"
       },
       {
         "link": "https://blog.vonmorgen.org/kontakt/",
@@ -63,7 +66,8 @@
           "de": "Kontakt",
           "es": "Contacto"
         },
-        "icon": "headset"
+        "icon": "headset",
+        "policy": "newTab"
       },
       {
         "link": "https://blog.vonmorgen.org/",
@@ -72,8 +76,18 @@
           "de": "Über uns",
           "es": "Sobre nosotros"
         },
-        "icon": "users"
+        "icon": "users",
+        "policy": "newTab"
       }
-    ]
+    ],
+    "languageSelectors": {
+      "selected": {
+        "color": "#95be0b"
+      },
+      "unselected": {
+        "color": "#555",
+        "hover": "#000"
+      }
+    }
   }
 }

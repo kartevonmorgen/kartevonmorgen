@@ -23,6 +23,7 @@ import STYLE                from "./styling/Variables"
 import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
 import {getIcon}           from "../customizations/icons"
+import i18n from "../i18n"
 
 
 class Main extends Component {
@@ -148,10 +149,9 @@ class Main extends Component {
             </button>
           </HideSidebarButtonWrapper>
         </LeftPanelAndHideSidebarButton>
-        <RightPanel customizations={customizations}>
+        <RightPanel customizations={customizations.burgerMenu}>
           <div className="menu-toggle">
             <button className="toggleButton" onClick={this.toggleRightPanel} >
-              {/*<div className="panelIcon"/>*/}
               <img
                 alt="right panel icon"
                 className="panelIcon"
@@ -166,7 +166,7 @@ class Main extends Component {
                 {
                   customizations.burgerMenu.links.map(item => (
                     <li>
-                      <a target="_blank" rel="noopener noreferrer" href={item.link} >
+                      <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link} >
                         {
                           item.translation.hasOwnProperty(language) ?
                             item.translation[language] :
@@ -182,6 +182,32 @@ class Main extends Component {
                   ))
                 }
               </u>
+
+              <div className="language-wrapper">
+                <a
+                  onClick={() => {i18n.changeLanguage('de');}}
+                  href="#"
+                  className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}
+                >
+                  de
+                </a>
+                {" "}
+                <a
+                  onClick={() => {i18n.changeLanguage('en');}}
+                  href="#"
+                  className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}
+                >
+                  en
+                </a>
+                {" "}
+                <a
+                  onClick={() => {i18n.changeLanguage('es');}}
+                  href="#"
+                  className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}
+                >
+                  es
+                </a>
+              </div>
             </div>)
           }
         </RightPanel>
@@ -431,6 +457,26 @@ const RightPanel = styled.div `
     color: inherit;
   }
 
+  .container .language-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+  }
+  
+  .container .language-link {
+    margin: 3pt;
+    &.selected {
+      color: ${props => props.customizations.languageSelectors.selected.color};
+      pointer-events: none;
+    }
+    &.unselected {
+      color: ${props => props.customizations.languageSelectors.unselected.color};
+      &:hover {
+        color: ${props => props.customizations.languageSelectors.unselected.hover};
+      }
+    }
+  }
+  
   .menu-toggle {
     display: flex;
     justify-content: flex-end;
