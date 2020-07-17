@@ -78,6 +78,16 @@
         },
         "icon": "users",
         "policy": "newTab"
+      },
+      {
+        "link": "https://blog.vonmorgen.org/datenschutzerklarung/",
+        "translation": {
+          "en": "Privacy",
+          "de": "Datenschutzerklärung",
+          "es": "Declaración de privacidad"
+        },
+        "icon": "user-shield",
+        "policy": "newTab"
       }
     ],
     "languageSelectors": {
