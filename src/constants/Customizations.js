@@ -1,6 +1,5 @@
 const customizations = {
-  DEFAULT: 'DEFAULT',
-  CUSTOMIZED: 'CUSTOMIZED'
+  DEFAULT: 'default',
 }
 
 export default customizations

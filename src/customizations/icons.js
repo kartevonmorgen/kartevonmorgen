@@ -23,6 +23,8 @@ const customizations = {
 }
 
 const urls = (type, customization=CUSTOMIZATIONS.DEFAULT) => {
+
+
   const {
     companyImgUrl,
     companyRetinaImgUrl,
@@ -32,9 +34,14 @@ const urls = (type, customization=CUSTOMIZATIONS.DEFAULT) => {
     eventRetinaImgUrl,
     unknownImgUrl,
     unknownRetinaImgUrl,
+    burgerImgUrl,
   } =  customizations[customization]
 
   switch (type) {
+    case 'burger':
+      return {
+        iconUrl: burgerImgUrl
+      }
     case 'company':
       return {
         iconUrl: companyImgUrl,
@@ -64,13 +71,10 @@ const create = (opt={}, customization=CUSTOMIZATIONS.DEFAULT) => {
   return new NewIcon(urls(type, customization));
 };
 
+const getIcon = (opt={}, customization=CUSTOMIZATIONS.DEFAULT) => (create(opt, customization))
+
 module.exports = {
   create,
   Icon,
-  icons: {
-    company    : create('company'),
-    initiative : create('initiative'),
-    event      : create('event'),
-    unknown    : create('unknown')
-  }
+  getIcon,
 };

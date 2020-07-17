@@ -22,6 +22,8 @@ import { EDIT }             from "../constants/Form"
 import STYLE                from "./styling/Variables"
 import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
+import {getIcon}           from "../customizations/icons"
+
 
 class Main extends Component {
 
@@ -146,12 +148,16 @@ class Main extends Component {
             </button>
           </HideSidebarButtonWrapper>
         </LeftPanelAndHideSidebarButton>
-        <RightPanel>
+        <RightPanel customizations={customizations}>
           <div className="menu-toggle">
-            <button onClick={this.toggleRightPanel} >
-              <span className="pincloud">
-                <MenuFontAwesomeIcon icon={'bars'} />
-              </span>
+            <button className="toggleButton" onClick={this.toggleRightPanel} >
+              {/*<div className="panelIcon"/>*/}
+              <img
+                alt="right panel icon"
+                className="panelIcon"
+                src={getIcon('burger', customizations.name).options.iconUrl}
+              />
+              <MenuFontAwesomeIcon icon={'bars'} />
             </button>
           </div>
           { openRightPanel &&
@@ -328,8 +334,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-import pincloud from "../img/pincloud.png";
-
 const MenuFontAwesomeIcon = styled(FontAwesomeIcon)`
   padding-right: .45rem;
 `;
@@ -432,7 +436,11 @@ const RightPanel = styled.div `
     justify-content: flex-end;
   }
 
-  .menu-toggle button {
+  .menu-toggle .toggleButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     outline: none;
     position: relative;
     z-index: 1;
@@ -451,14 +459,9 @@ const RightPanel = styled.div `
       color: ${STYLE.coal};
       box-shadow: 0 1px 3px 0.2px #000;
     }
-    .pincloud {
-      display: inline-block;
-      width: 3.5em;
-      height: 1.2em;
-      background-position: left;
-      background-image: url(${pincloud});
-      background-repeat: no-repeat;
-      background-size: 50%;
+    .panelIcon {
+      height: 25px;
+      margin-right: 8px;
     }
     i {
       margin-right: 0.3em;
