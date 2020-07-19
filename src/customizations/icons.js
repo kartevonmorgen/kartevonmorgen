@@ -23,7 +23,9 @@ const customizations = {
 }
 
 const urls = (type, customization=CUSTOMIZATIONS.DEFAULT) => {
-
+  if (!customizations[customization]) {
+    throw `customization is undefined: ${customization}, ${customizations}`
+  }
 
   const {
     companyImgUrl,
