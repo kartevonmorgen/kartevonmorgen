@@ -4,8 +4,14 @@
     "bodyFont": null,
     "headerFont": null
   },
+  "circleMarkers": {
+    "company": "rgb(0,    152,  137)",
+    "initiative": "rgb(151,  191,  13 )",
+    "event": "rgb(229,  98,   146)",
+    "otherCategory": "rgb(221,  221,  221)"
+  },
   "searchBar": {
-    "show": false
+    "show": true
   },
   "addEntryButton": {
     "show": true,

@@ -18,7 +18,7 @@ const MoreInfoLink = styled.a`
   border-top-right-radius: 2px;
 `;
 
-module.exports = ({marker, size, center, zoom, category, highlight, 
+module.exports = ({customizations, marker, size, center, zoom, category, highlight,
   entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
   <div>
     <Map
