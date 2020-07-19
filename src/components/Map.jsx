@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { translate } from "react-i18next";
 import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
-import { IDS }                  from  "../constants/Categories"
+import { IDS, NAMES }                  from  "../constants/Categories"
 import STYLE                    from "./styling/Variables"
 import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
@@ -14,6 +14,7 @@ import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 import { Fab, Action as ActionButon } from 'react-tiny-fab'
 import ReactTooltip from        'react-tooltip'
 import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
+import {getIcon}                from '../customizations/icons'
 
 import  "leaflet/dist/leaflet.css"
 import 'react-tiny-fab/dist/styles.css'
@@ -22,14 +23,14 @@ const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 class KVMMap extends Component {
 
-  getIconById(id) {
+  getIconById(customizationName, id) {
     switch (id) {
       case INITIATIVE:
-        return icons.initiative;
+        return getIcon(NAMES[id], customizationName) || icons.initiative;
       case EVENT:
-        return icons.event;
+        return getIcon(NAMES[id], customizationName) || icons.event;
       case COMPANY:
-        return icons.company;
+        return getIcon(NAMES[id], customizationName) || icons.company;
       default:
         return icons.unknown;
     }
@@ -114,7 +115,7 @@ class KVMMap extends Component {
                 key       = { e.id }
                 onClick   = { () => { onMarkerClick(e.id) }}
                 position  = {{ lat: e.lat, lng: e.lng }}
-                icon      = { this.getIconById(e.categories[0]) }
+                icon      = { this.getIconById(customizations.name, e.categories[0]) }
                 opacity   = { opacity }
               >
                 <SmallTooltip direction='bottom' offset={[0, 2]}><h3>{e.title}</h3></SmallTooltip>
@@ -189,7 +190,7 @@ class KVMMap extends Component {
           />
           { markers }
           { marker
-            ? <Marker position = { marker } icon = { this.getIconById(parseInt(this.props.category)) } />
+            ? <Marker position = { marker } icon = { this.getIconById(customizations.name, parseInt(this.props.category)) } />
             : null
           }
           }
