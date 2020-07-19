@@ -35,16 +35,16 @@ class KVMMap extends Component {
     }
   }
 
-  getCategoryColorById(id){
+  getCategoryColorById(palette, id){
     switch (id) {
       case INITIATIVE:
-        return STYLE.initiative;
+        return palette.initiative || STYLE.initiative;
       case EVENT:
-        return STYLE.event;
+        return palette.event || STYLE.event;
       case COMPANY:
-        return STYLE.company;
+        return palette.company || STYLE.company;
       default:
-        return STYLE.otherCategory;
+        return palette.otherCategory || STYLE.otherCategory;
     }
   }
 
@@ -71,11 +71,6 @@ class KVMMap extends Component {
   }
 
   render() {
-    const {showNotification, showEmbedModal, t} = this.props;
-    const url = window.location.href
-
-    var markers = [];
-
     const {
       entries,
       center,
@@ -87,8 +82,16 @@ class KVMMap extends Component {
       onMarkerClick,
       ratings,
       showLocateButton,
-      highlight
+      highlight,
+      customizations,
+      showNotification,
+      showEmbedModal,
+      t
     } = this.props;
+
+    const url = window.location.href
+
+    var markers = [];
 
     if (entries && entries.length > 0 ) {
       entries.forEach(e => {
@@ -134,7 +137,7 @@ class KVMMap extends Component {
                 radius    = { 9 }
                 color     = { "#fff" }
                 weight    = { 0.7 }
-                fillColor = { this.getCategoryColorById(e.categories[0]) }
+                fillColor = { this.getCategoryColorById(customizations.circleMarkers, e.categories[0]) }
                 fillOpacity = { opacity }
               >
                 <SmallTooltip direction='bottom' offset={[0, 10]}><h3>{e.title}</h3></SmallTooltip>
