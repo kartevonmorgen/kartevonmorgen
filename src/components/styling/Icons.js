@@ -35,6 +35,7 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faHeadset').definition
   ,require('@fortawesome/free-solid-svg-icons/faUsers').definition
   ,require('@fortawesome/free-solid-svg-icons/faUserShield').definition
+  ,require('@fortawesome/free-solid-svg-icons/faToolbox').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 

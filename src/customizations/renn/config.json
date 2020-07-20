@@ -1,49 +1,79 @@
 {
+  "name": "renn",
   "fonts": {
-    "bodyFont": "\"Roboto\",arial,sans-serif",
-    "headerFont": "\"Roboto\",arial,sans-serif"
+    "bodyFont": "arial, helvetica, sans-serif",
+    "headerFont": "verdana,arial,helvetica,sans-serif"
+  },
+  "circleMarkers": {
+    "company": "#ec6607",
+    "initiative": "#aaaa00",
+    "event": "#009ee3",
+    "otherCategory": "rgb(221,  221,  221)"
   },
   "searchBar": {
-    "show": false
+    "show": true
   },
   "addEntryButton": {
     "show": true,
     "style": {
-      "color": null,
-      "backgroundColor": null
+      "color": "white",
+      "backgroundColor": "#009ee3"
     }
   },
   "saveButton": {
     "style": {
-      "color": null,
-      "backgroundColor":  null
+      "color": "white",
+      "backgroundColor":  "#aaaa00"
     }
   },
   "cancelButton": {
     "style": {
-      "color": null,
-      "backgroundColor": null
+      "color": "white",
+      "backgroundColor": "#af0834"
     }
   },
   "burgerMenu": {
     "showTranslationOptions": true,
     "links": [
       {
-        "link": "https://www.w3schools.com/",
+        "link": "https://nachhaltiger-warenkorb.de",
         "translation": {
-          "de": "the german text",
-          "en": "the english text",
-          "es": "the spanish text"
-        }
+          "en": "Home",
+          "de": "Startseite",
+          "es": "Inicio"
+        },
+        "icon": "home",
+        "policy": "self"
       },
       {
-        "link": "https://www.w3schools.com/",
+        "link": "https://nachhaltiger-warenkorb.de",
         "translation": {
-          "de": "the german text",
-          "en": "the english text",
-          "es": "the spanish text"
-        }
+          "en": "Toolbox of Change",
+          "de": "Werkzeugkasten des Wandels",
+          "es": "Caja de herramientas de cambio"
+        },
+        "icon": "toolbox",
+        "policy": "self"
+      },
+      {
+        "link": "https://blog.vonmorgen.org/",
+        "translation": {
+          "en": "About us",
+          "de": "Über uns",
+          "es": "Sobre nosotros"
+        },
+        "icon": "users",
+        "policy": "newTab"
       }
-    ]
+    ],
+    "languageSelectors": {
+      "selected": {
+        "color": "#aaaa00"
+      },
+      "unselected": {
+        "color": "#009ee3",
+        "hover": "#000"
+      }
+    }
   }
 }
