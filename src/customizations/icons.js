@@ -2,6 +2,8 @@ import L                      from "leaflet";
 
 import CUSTOMIZATIONS from     '../constants/Customizations'
 import defaultUrls from './default/icons'
+import rennUrls from './renn/icons'
+
 
 const Icon = L.Icon.extend({
   options: {
@@ -20,6 +22,7 @@ const shadowOptions = {
 
 const customizations = {
   [CUSTOMIZATIONS.DEFAULT]: defaultUrls,
+  [CUSTOMIZATIONS.RENN]: rennUrls
 }
 
 const urls = (type, customization=CUSTOMIZATIONS.DEFAULT) => {
