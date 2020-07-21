@@ -38,19 +38,19 @@
       {
         "link": "https://nachhaltiger-warenkorb.de",
         "translation": {
-          "en": "Home",
-          "de": "Startseite",
-          "es": "Inicio"
+          "en": "Nachhaltiger Warenkorb",
+          "de": "Nachhaltiger Warenkorb",
+          "es": "Nachhaltiger Warenkorb"
         },
         "icon": "home",
         "policy": "self"
       },
       {
-        "link": "https://nachhaltiger-warenkorb.de",
+        "link": "http://www.werkzeugkasten-wandel.de",
         "translation": {
-          "en": "Toolbox of Change",
+          "en": "Werkzeugkasten des Wandels",
           "de": "Werkzeugkasten des Wandels",
-          "es": "Caja de herramientas de cambio"
+          "es": "Werkzeugkasten des Wandels"
         },
         "icon": "toolbox",
         "policy": "self"
@@ -58,9 +58,9 @@
       {
         "link": "https://blog.vonmorgen.org/",
         "translation": {
-          "en": "About us",
-          "de": "Über uns",
-          "es": "Sobre nosotros"
+          "en": "About Map of Tomorrow",
+          "de": "Über die Karte von morgen",
+          "es": "Sobre el mapa de mañana"
         },
         "icon": "users",
         "policy": "newTab"
