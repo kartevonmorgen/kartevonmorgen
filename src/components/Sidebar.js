@@ -327,6 +327,7 @@ class Sidebar extends Component {
             <SearchBar
                 searchText={search.text}
                 categories={search.categories}
+                categoryChooser={customizations.categoryChooser}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
                 toggleCat={ c => {

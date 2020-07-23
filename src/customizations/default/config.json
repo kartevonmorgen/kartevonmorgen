@@ -13,6 +13,9 @@
   "searchBar": {
     "show": true
   },
+  "categoryChooser": {
+    "show": true
+  },
   "addEntryButton": {
     "show": true,
     "style": {

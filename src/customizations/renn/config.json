@@ -1,23 +1,26 @@
 {
   "name": "renn",
   "fonts": {
-    "bodyFont": "arial, helvetica, sans-serif",
-    "headerFont": "verdana,arial,helvetica,sans-serif"
+    "bodyFont": "'Noto Sans', Arial, Helvetica, sans-serif",
+    "headerFont": "'Noto Serif', Georgia, serif"
   },
   "circleMarkers": {
-    "company": "#ec6607",
-    "initiative": "#aaaa00",
-    "event": "#009ee3",
+    "company": "#006aac",
+    "initiative": "#006aac",
+    "event": "#006aac",
     "otherCategory": "rgb(221,  221,  221)"
   },
   "searchBar": {
     "show": true
   },
+  "categoryChooser": {
+    "show": false
+  },
   "addEntryButton": {
     "show": true,
     "style": {
       "color": "white",
-      "backgroundColor": "#009ee3"
+      "backgroundColor": "#006aac"
     }
   },
   "saveButton": {
@@ -42,7 +45,7 @@
           "de": "Nachhaltiger Warenkorb",
           "es": "Nachhaltiger Warenkorb"
         },
-        "icon": "home",
+        "icon": "shopping-basket",
         "policy": "self"
       },
       {
@@ -52,7 +55,7 @@
           "de": "Werkzeugkasten des Wandels",
           "es": "Werkzeugkasten des Wandels"
         },
-        "icon": "toolbox",
+        "icon": "lightbulb",
         "policy": "self"
       },
       {
