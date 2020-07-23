@@ -36,20 +36,20 @@ class SearchBar extends React.Component {
 
   render() {
 
-    const { categories, disabled, toggleCat, searchText, t, loading } = this.props;
+    const { categoryChooser, categories, disabled, toggleCat, searchText, t, loading } = this.props;
 
 
     return (
       <Bar
         className = "SearchBar pure-g" integrated={this.props.type==="integrated"} standalone= {this.props.type==="standalone"} >
-        <MainCategories className = "main-categories pure-u-1 pure-g" standalone= {this.props.type==="standalone"}>
+        {categoryChooser.show && (<MainCategories className = "main-categories pure-u-1 pure-g" standalone= {this.props.type==="standalone"}>
           <CategoryButtons
             active    = { categories }
             disabled  = { disabled   }
             onToggle  = { toggleCat  }
             t         = { t }
           />
-        </MainCategories>
+        </MainCategories>)}
 
         <div className = "pure-u-1">
           <div onClick = { this.props.onLenseClick } className = "search-icon">

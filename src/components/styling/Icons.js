@@ -36,6 +36,8 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faUsers').definition
   ,require('@fortawesome/free-solid-svg-icons/faUserShield').definition
   ,require('@fortawesome/free-solid-svg-icons/faToolbox').definition
+  ,require('@fortawesome/free-solid-svg-icons/faShoppingBasket').definition
+  ,require('@fortawesome/free-solid-svg-icons/faLightbulb').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 
