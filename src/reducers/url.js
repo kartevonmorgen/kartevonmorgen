@@ -1,3 +1,4 @@
+import isObject from "lodash/isObject"
 import T from "../constants/ActionTypes";
 import parseUrl from "../util/parseUrl";
 import constructUrl from "../util/constructUrl";
@@ -73,10 +74,12 @@ module.exports = (state=initialState, action={}) => {
       break;
 
     case T.SET_MAP_CENTER:
-      center = center = {
-        lat: parseFloat(action.payload.lat),
-        lng: parseFloat(action.payload.lng)
-      };
+      if (isObject(action.paylaod)) {
+        center = {
+          lat: parseFloat(action.payload.lat),
+          lng: parseFloat(action.payload.lng)
+        };
+      }
       break;
 
     case T.SET_ZOOM:
@@ -85,6 +88,9 @@ module.exports = (state=initialState, action={}) => {
 
     case T.SET_CURRENT_ENTRY:
       entry = action.payload;
+      console.log(`in reducer the params are: `, params)
+      console.log('center str is: ', centerStr, center)
+
       break;
 
     case T.SET_CENTER_IN_URL:
