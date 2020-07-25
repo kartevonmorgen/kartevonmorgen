@@ -13,7 +13,6 @@ import { I18nextProvider }   from 'react-i18next';
 import { Provider, connect } from "react-redux";
 import { APP_STAGES }        from "./constants/App";
 
-import "babel-polyfill";
 
 console.log("APP STAGE:", __STAGE__);
 if (__STAGE__ === APP_STAGES.LOCAL) {
