@@ -54,7 +54,7 @@ const Actions = {
 
   showNewEntry: () =>
     (dispatch) => {
-      dispatch(Actions.setSearchText(''));
+      // dispatch(Actions.setSearchText(''));
       dispatch(serverActions.Actions.search());
       dispatch({
         type: T.SHOW_NEW_ENTRY
@@ -69,7 +69,7 @@ const Actions = {
 
   cancelNew           : () =>
     (dispatch) => {
-      dispatch(Actions.restoreSearch())
+      // dispatch(Actions.restoreSearch())
       dispatch({ type: T.CANCEL_NEW })
     },
 
