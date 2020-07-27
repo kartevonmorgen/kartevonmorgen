@@ -340,7 +340,7 @@ class Sidebar extends Component {
               onChange={txt => {
                   txt = txt || ""
 
-                  const unchangeableTagsStr = search.unchangeableTags.reduce((tagsStr, tag) => (`${tagsStr} #${tag}`), '')
+                  const unchangeableTagsStr = search.unchangeableTags.map(tag => `#${tag}`).join(' ')
                   // do not erase unchangeable tags
                   if (!txt.startsWith(unchangeableTagsStr)) {
                     return
