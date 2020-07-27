@@ -338,10 +338,15 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-                onChange={txt => {
-                  if (txt == null) {
-                    txt = "";
+              onChange={txt => {
+                  txt = txt || ""
+
+                  const unchangeableTagsStr = search.unchangeableTags.reduce((tagsStr, tag) => (`${tagsStr} #${tag}`), '')
+                  // do not erase unchangeable tags
+                  if (!txt.startsWith(unchangeableTagsStr)) {
+                    return
                   }
+
                   dispatch(Actions.setSearchText(txt));
                   return dispatch(Actions.search());
                 }}
