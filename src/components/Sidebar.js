@@ -69,6 +69,8 @@ class Sidebar extends Component {
     const entry = entries[search.current] || null;
     const isEventForEdit = entry && entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 
+    const unchangeableTagsStr = search.unchangeableTags.map(tag => `#${tag}`).join(' ')
+
     var content;
     switch (view.left) {
       case V.RESULT:
@@ -325,7 +327,8 @@ class Sidebar extends Component {
           showSearchBar
           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
             <SearchBar
-                searchText={search.text}
+                searchText={search.text.startsWith(unchangeableTagsStr) ? search.text.substr(unchangeableTagsStr.length) : search.text}
+                unchangeableTagsStr={unchangeableTagsStr}
                 categories={search.categories}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
@@ -338,13 +341,7 @@ class Sidebar extends Component {
                   return dispatch(Actions.search());
                 }}
               onChange={txt => {
-                  txt = txt || ""
-
-                  const unchangeableTagsStr = search.unchangeableTags.map(tag => `#${tag}`).join(' ')
-                  // do not erase unchangeable tags
-                  if (!txt.startsWith(unchangeableTagsStr)) {
-                    return
-                  }
+                  txt = txt ? `${unchangeableTagsStr}${txt}`: unchangeableTagsStr
 
                   dispatch(Actions.setSearchText(txt));
                   return dispatch(Actions.search());
