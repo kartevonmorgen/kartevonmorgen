@@ -327,7 +327,7 @@ class Sidebar extends Component {
           showSearchBar
           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
             <SearchBar
-                searchText={search.text.startsWith(unchangeableTagsStr) ? search.text.substr(unchangeableTagsStr.length).trim() : search.text}
+                searchText={search.text.startsWith(unchangeableTagsStr) ? search.text.substr(unchangeableTagsStr.length).trimStart() : search.text}
                 unchangeableTagsStr={unchangeableTagsStr}
                 categories={search.categories}
                 type="integrated"
