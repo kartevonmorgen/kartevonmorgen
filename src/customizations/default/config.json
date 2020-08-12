@@ -36,6 +36,7 @@
     }
   },
   "burgerMenu": {
+    "show": true,
     "showTranslationOptions": true,
     "links": [
       {

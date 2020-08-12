@@ -149,24 +149,26 @@ class Main extends Component {
             </button>
           </HideSidebarButtonWrapper>
         </LeftPanelAndHideSidebarButton>
-        <RightPanel customizations={customizations.burgerMenu}>
-          <div className="menu-toggle">
-            <button className="toggleButton" onClick={this.toggleRightPanel} >
-              <img
-                alt="right panel icon"
-                className="panelIcon"
-                src={getIcon('burger', customizations.name).options.iconUrl}
-              />
-              <MenuFontAwesomeIcon icon={'bars'} />
-            </button>
-          </div>
-          { openRightPanel &&
+
+        { customizations.burgerMenu.show &&
+          <RightPanel customizations={customizations.burgerMenu}>
+            <div className="menu-toggle">
+              <button className="toggleButton" onClick={this.toggleRightPanel}>
+                <img
+                  alt="right panel icon"
+                  className="panelIcon"
+                  src={getIcon('burger', customizations.name).options.iconUrl}
+                />
+                <MenuFontAwesomeIcon icon={'bars'}/>
+              </button>
+            </div>
+            {openRightPanel &&
             (<div className="container">
               <u>
                 {
                   customizations.burgerMenu.links.map(item => (
                     <li>
-                      <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link} >
+                      <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link}>
                         {
                           item.translation.hasOwnProperty(language) ?
                             item.translation[language] :
@@ -185,7 +187,9 @@ class Main extends Component {
 
               <div className="language-wrapper">
                 <a
-                  onClick={() => {i18n.changeLanguage('de');}}
+                  onClick={() => {
+                    i18n.changeLanguage('de');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}
                 >
@@ -193,7 +197,9 @@ class Main extends Component {
                 </a>
                 {" "}
                 <a
-                  onClick={() => {i18n.changeLanguage('en');}}
+                  onClick={() => {
+                    i18n.changeLanguage('en');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}
                 >
@@ -201,7 +207,9 @@ class Main extends Component {
                 </a>
                 {" "}
                 <a
-                  onClick={() => {i18n.changeLanguage('es');}}
+                  onClick={() => {
+                    i18n.changeLanguage('es');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}
                 >
@@ -209,9 +217,9 @@ class Main extends Component {
                 </a>
               </div>
             </div>)
-          }
-        </RightPanel>
-
+            }
+          </RightPanel>
+        }
         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
           <Map
             customizations={customizations}
