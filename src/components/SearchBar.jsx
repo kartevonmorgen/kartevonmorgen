@@ -18,7 +18,8 @@ const CategoryButtons = ({ disabled, active, onToggle, t }) => {
         key       = { c }
         disabled  = { disabled }
         onClick   = { () => { onToggle(c) }}
-        className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
+        className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}
+      >
         { t("category." + NAMES[c]) + " " }
       </button>);
   });
