@@ -62,6 +62,15 @@ class KVMMap extends Component {
     this.props.fetchTags()
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const markersElements = document.getElementsByClassName("leaflet-interactive")
+    if (markersElements) {
+      for (let markerElement of markersElements) {
+        markerElement.setAttribute("tabindex", "0")
+      }
+    }
+  }
+
   getMapCoordinates(){
     const m = this.refs.map.leafletElement
     return {
@@ -112,6 +121,8 @@ class KVMMap extends Component {
             if( marker ) opacity = 0.3;
             markers.push(
               <Marker
+                alt={e.title}
+                title={e.title}
                 key       = { e.id }
                 onClick   = { () => { onMarkerClick(e.id) }}
                 position  = {{ lat: e.lat, lng: e.lng }}
@@ -131,6 +142,7 @@ class KVMMap extends Component {
 
             markers.push(
               <CircleMarker
+                alt={e.title}
                 onClick   = { () => { onMarkerClick(e.id) }}
                 key       = { e.id }
                 center    = {{ lat: e.lat, lng: e.lng }}
