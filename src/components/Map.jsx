@@ -1,4 +1,4 @@
-import React, { Component, Fragment }     from "react"
+import React, { Component }     from "react"
 import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -13,8 +13,11 @@ import T                        from "prop-types";
 import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 import { Fab, Action as ActionButon } from 'react-tiny-fab'
 import ReactTooltip from        'react-tooltip'
+import {divIcon, point as leafletPoint} from "leaflet"
 import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
+// import DivIcon from 'react-leaflet-div-icon';
 import {getIcon}                from '../customizations/icons'
+// import {isEqual, sortBy}                from 'lodash'
 
 import  "leaflet/dist/leaflet.css"
 import 'react-tiny-fab/dist/styles.css'
@@ -62,14 +65,24 @@ class KVMMap extends Component {
     this.props.fetchTags()
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const markersElements = document.getElementsByClassName("leaflet-interactive")
-    if (markersElements) {
-      for (let markerElement of markersElements) {
-        markerElement.setAttribute("tabindex", "0")
-      }
-    }
-  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   if (!isEqual(prevProps.entries, this.props.entries)) {
+  //     const markersElements = document.getElementsByClassName("leaflet-interactive")
+  //     const sortedEntries = sortBy(this.props.entries, "id")
+  //     if (markersElements) {
+  //       for (var i = 0; i !== markersElements.length; i++) {
+  //         const markerElement = markersElements[i]
+  //         const entry = sortedEntries[i]
+  //         // markerElement.setAttribute("id", entry.id)
+  //         markerElement.setAttribute("tabindex", "0")
+  //         markerElement.addEventListener("click", (e) => {
+  //           e.preventDefault()
+  //           console.log(e.target)
+  //         })
+  //       }
+  //     }
+  //   }
+  // }
 
   getMapCoordinates(){
     const m = this.refs.map.leafletElement
@@ -98,6 +111,8 @@ class KVMMap extends Component {
       showEmbedModal,
       t
     } = this.props;
+
+    // const entries = sortBy(this.props.entries, "id")
 
     const url = window.location.href
 
@@ -140,40 +155,52 @@ class KVMMap extends Component {
             if( marker ) opacity = 0.3;
 
 
+            const markerColor = this.getCategoryColorById(customizations.circleMarkers, e.categories[0])
             markers.push(
-              <CircleMarker
+              <Marker
                 alt={e.title}
-                onClick   = { () => { onMarkerClick(e.id) }}
+                title={e.title}
+                icon={divIcon({
+                  iconSize: leafletPoint(20, 20),
+                  html: `
+                  <svg height="20" width="20">
+                     <circle
+                       cx="10"
+                       cy="10"
+                       r="9"
+                       stroke="white"
+                       stroke-width="0.7"
+                       fill="${markerColor}"
+                       opacity=${opacity}
+                     />
+                  </svg>
+                `
+                })}
                 key       = { e.id }
-                center    = {{ lat: e.lat, lng: e.lng }}
-                opacity   = { 1 }
-                radius    = { 9 }
-                color     = { "#fff" }
-                weight    = { 0.7 }
-                fillColor = { this.getCategoryColorById(customizations.circleMarkers, e.categories[0]) }
-                fillOpacity = { opacity }
+                onClick   = { () => { onMarkerClick(e.id) }}
+                position  = {{ lat: e.lat, lng: e.lng }}
               >
                 <SmallTooltip direction='bottom' offset={[0, 10]}><h3>{e.title}</h3></SmallTooltip>
-              </CircleMarker>
+              </Marker>
             );
           }
 
-          if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
-
-            let yOffset = 10
-            if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
-
-            markers.push(
-              <CircleMarker
-                onClick   = { () => { onMarkerClick(e.id) }}
-                key       = { e.id + "-highlight"}
-                center    = {{ lat: e.lat, lng: e.lng }}
-                opacity   = { 0 }
-                fillOpacity = { 0 }
-              >
-                <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
-              </CircleMarker>);
-          }
+          // if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+          //
+          //   let yOffset = 10
+          //   if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
+          //
+          //   markers.push(
+          //     <CircleMarker
+          //       onClick   = { () => { onMarkerClick(e.id) }}
+          //       key       = { e.id + "-highlight"}
+          //       center    = {{ lat: e.lat, lng: e.lng }}
+          //       opacity   = { 0 }
+          //       fillOpacity = { 0 }
+          //     >
+          //       <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
+          //     </CircleMarker>);
+          // }
         }
       });
     }

@@ -745,5 +745,12 @@ const StyledApp = styled.div `
   }
   
  .hidden {
- display: none;
+    display: none;
+  }
+  
+  /* ======= leaflet */
+  .leaflet-div-icon {
+    background: none;
+    border: none;
+  }
 `
