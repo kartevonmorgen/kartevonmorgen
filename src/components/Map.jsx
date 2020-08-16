@@ -14,10 +14,8 @@ import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 import { Fab, Action as ActionButon } from 'react-tiny-fab'
 import ReactTooltip from        'react-tooltip'
 import {divIcon, point as leafletPoint} from "leaflet"
-import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
-// import DivIcon from 'react-leaflet-div-icon';
+import { Map, TileLayer, Marker, Tooltip } from "react-leaflet"
 import {getIcon}                from '../customizations/icons'
-// import {isEqual, sortBy}                from 'lodash'
 
 import  "leaflet/dist/leaflet.css"
 import 'react-tiny-fab/dist/styles.css'
