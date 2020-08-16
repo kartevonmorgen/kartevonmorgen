@@ -291,6 +291,19 @@ class Main extends Component {
 
   escFunction(event){
     if(event.keyCode === 27) { //ESC
+      // regarding the issue 726 of accessibility, end user should be able to focus on restults in search results
+      // however the number of result might be too long. the conclusion of what to focus on the list by Tab
+      // and navigate trough list by arrow keys. but found out arrow keys are reserved since the list is scrollable
+      // so once the client gets on the list with pressing tabs, the focus moves through results in the sidebar
+      // and hence the list might be long, the client when presses the Escape key ->
+      // >- the focus moves to the next logical element which for now is the "Add new entry button"
+      // Escape is pressed for the second time, the map resets
+
+      if (document.activeElement.parentElement.id === "result-list") {
+        document.getElementById("add-entry-button").focus()
+        return
+      }
+
       const { view, dispatch}  = this.props
       if(view.menu) return dispatch(Actions.toggleLandingPage())
       if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());

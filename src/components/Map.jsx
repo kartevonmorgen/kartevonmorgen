@@ -137,6 +137,7 @@ class KVMMap extends Component {
             markers.push(
               <Marker
                 alt={e.title}
+                keyboard={false}
                 title={e.title}
                 key       = { e.id }
                 onClick   = { () => { onMarkerClick(e.id) }}
@@ -159,6 +160,7 @@ class KVMMap extends Component {
             markers.push(
               <Marker
                 alt={e.title}
+                keyboard={false}
                 title={e.title}
                 icon={divIcon({
                   iconSize: leafletPoint(20, 20),
@@ -231,7 +233,6 @@ class KVMMap extends Component {
           { marker
             ? <Marker position = { marker } icon = { this.getIconById(customizations.name, parseInt(this.props.category)) } />
             : null
-          }
           }
         </Map>
         <Fab

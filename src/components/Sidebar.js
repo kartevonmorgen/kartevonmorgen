@@ -366,6 +366,7 @@ class Sidebar extends Component {
           (view.left === V.RESULT) && customizations.addEntryButton.show
           ? <AddEntryButton>
               <NavButton
+                id="add-entry-button"
                 key = "back"
                 classname = "pure-u-1"
                 icon = "plus"
@@ -419,7 +420,7 @@ const GroupHeader = styled.div `
   color: #666;
 `
 
-const AddEntryButton = styled.nav`
+const AddEntryButton = styled.div`
   z-index: 10;
   padding: 0;
   margin: 0;
