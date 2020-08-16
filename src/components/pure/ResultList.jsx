@@ -13,7 +13,7 @@ import { NAMES, IDS }       from "../../constants/Categories"
 import STYLE                from "../styling/Variables"
 import {Action} from "react-tiny-fab"
 
-const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, t}) => {
+const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, onMouseEnter, onMouseLeave, onFocus, onBlur, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
@@ -25,7 +25,12 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
       key           = { entry.id }
       className     = { css_class }
       tabIndex = {0}
-      onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
+      onKeyPress       = { (ev) => {
+        ev.preventDefault()
+        if (ev.key === "Enter") {
+          onPressEnter(entry.id, {lat: entry.lat, lng: entry.lng})
+        }
+      }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }}
       onFocus = {(ev) => {ev.preventDefault(); onFocus(entry.id)}}
@@ -85,6 +90,11 @@ const ResultList = props => {
       key          = { e.id         }
       highlight    = { highlight.indexOf(e.id) >= 0 }
       onClick      = { (id, center) => {
+        if (center) {
+          dispatch(Actions.setCurrentEntry(id, center))
+        }
+      }}
+      onPressEnter= { (id, center) => {
         if (center) {
           dispatch(Actions.setCurrentEntry(id, center))
         }
