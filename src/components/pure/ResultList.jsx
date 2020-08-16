@@ -25,6 +25,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
       key           = { entry.id }
       className     = { css_class }
       tabIndex = {0}
+      onClick = {() => {onClick(entry.id, {lat: entry.lat, lng: entry.lng})}}
       onKeyPress       = { (ev) => {
         ev.preventDefault()
         if (ev.key === "Enter") {
