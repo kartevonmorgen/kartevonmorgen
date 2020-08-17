@@ -35,16 +35,16 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
       onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }}
       onFocus = {(ev) => {ev.preventDefault(); onFocus(entry.id)}}
-      onBlur = {(ev) => {ev.preventDefault(); console.log("blur"); onBlur(entry.id)}}
-      >
+      onBlur = {(ev) => {ev.preventDefault(); onBlur(entry.id)}}
+    >
       <OuterWrapper>
         <TitleCategoryDescriptionsAndFlower>
           <TitleCategoryAndDescription>
-            <span className="category">
+            <span role="search result category" className="category">
               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
-            <div>
-              <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
+            <div role="entry title">
+              <EntryTitle role="entry header" aria-label={`entry title for ${title}`} id={entry.id} className="title">{title}</EntryTitle>
             </div>
             { getBody(isEvent, description, entry.city, entry.organizer) }
           </TitleCategoryAndDescription>
@@ -57,8 +57,12 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
         {
           entry.tags && !isEvent && (entry.tags.length > 0)
             ? <TagsWrapper>
-              <ul >
-                { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
+              <ul role="list of tags" aria-label="tags">
+                {
+                  entry.tags.slice(0, 5).map((t, index) =>
+                    (t !== '') ? <Tag role="tag" aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
+                  )
+                }
               </ul>
             </TagsWrapper>
             : null
@@ -71,12 +75,12 @@ const getBody = (isEvent, description, city, organizer) => {
   if (isEvent) {
     return (
       <EventBody>
-        <div>{city}</div>
-        <div>{organizer}</div>
+        <div role="city for entry" aria-label={city}>{city}</div>
+        <div role="organizer for entry" aria-label={organizer}>{organizer}</div>
       </EventBody>
     );
   } else {
-    return (<Description>{description}</Description>);
+    return (<Description role="description of entry" aria-label={description}>{description}</Description>);
   }
 }
 
@@ -343,7 +347,7 @@ const TagsWrapper = styled.div`
   }
 `
 
-const Tag = styled.div `
+const Tag = styled.span `
   line-height: 14px;
   font-size: 0.75em;
   display: inline-block;

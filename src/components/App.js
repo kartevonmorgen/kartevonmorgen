@@ -138,6 +138,7 @@ class Main extends Component {
           </SwipeableLeftPanel>
           <HideSidebarButtonWrapper>
             <button
+              aria-label="open close button for left sidebar"
               onClick={ () => {
                 if (view.showLeftPanel) {
                   return dispatch(Actions.hideLeftPanel());
