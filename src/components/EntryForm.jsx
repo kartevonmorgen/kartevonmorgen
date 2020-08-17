@@ -319,7 +319,7 @@ class Form extends Component {
                       />
                       <FieldElement aria-label="latitude error" name="lat" component={errorMessage} />
                     </div>
-                    <div className= "pure-u-2-24"></div>
+                    <div className= "pure-u-2-24" />
                     <div className= "pure-u-11-24">
                       <FieldElement
                         aria-label="longitude"
