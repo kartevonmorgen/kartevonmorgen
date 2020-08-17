@@ -72,7 +72,7 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
     return (
       <RatingContextWrapper key={context}>
         <RatingContextHeading>
-          <span style={{ color: headingColor }} >
+          <span tabIndex={0} style={{ color: headingColor }} >
             { t("contextName." + context) }
           </span>
         </RatingContextHeading>
@@ -95,12 +95,26 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
                 {Rating(rating, t_r, {hideTitle: (index!=0)} )}
               </li>
             ) }
-            <AdditionalCommentLink onClick={() => { onComment({
+            <AdditionalCommentLink
+              tabIndex={0}
+              onClick={() => { onComment({
                 entryId: entry.id,
                 entryTitle: entry.title,
                 ratingContext: context,
                 ratingList: topicRatings
-              }) }}>
+              })}}
+              onKeyPress={(ev) => {
+                ev.preventDefault()
+                if (ev.key === "Enter") {
+                  onComment({
+                    entryId: entry.id,
+                    entryTitle: entry.title,
+                    ratingContext: context,
+                    ratingList: topicRatings
+                  })
+                }
+              }}
+            >
               <FontAwesomeIcon icon={faComment} />&nbsp;
               <span>
                 { t("newComment") }

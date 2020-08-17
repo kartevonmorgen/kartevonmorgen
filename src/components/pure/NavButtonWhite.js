@@ -29,10 +29,11 @@ const NavigationButton = styled.button`
   }
 `;
 
-const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) => {
+const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage, ariaLabel }) => {
   const button = buttonRight ? 
     <NavigationButtonWrapperRight>
       <NavigationButton
+        aria-label={ariaLabel}
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>
@@ -43,6 +44,7 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) =>
     : 
     <NavigationButtonWrapper>
       <NavigationButton
+        aria-label={ariaLabel}
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>

@@ -44,7 +44,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
             <div role="entry title">
-              <EntryTitle role="entry header" aria-label={`entry title for ${title}`} id={entry.id} className="title">{title}</EntryTitle>
+              <EntryTitle role="entry header" tabIndex={0} id={entry.id} className="title">{title}</EntryTitle>
             </div>
             { getBody(isEvent, description, entry.city, entry.organizer) }
           </TitleCategoryAndDescription>
@@ -60,7 +60,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
               <ul role="list of tags" aria-label="tags">
                 {
                   entry.tags.slice(0, 5).map((t, index) =>
-                    (t !== '') ? <Tag role="tag" aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
+                    (t !== '') ? <Tag role="tag" tabIndex={0} aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
                   )
                 }
               </ul>
@@ -75,12 +75,12 @@ const getBody = (isEvent, description, city, organizer) => {
   if (isEvent) {
     return (
       <EventBody>
-        <div role="city for entry" aria-label={city}>{city}</div>
-        <div role="organizer for entry" aria-label={organizer}>{organizer}</div>
+        <div role="city for entry" tabIndex={0}>{city}</div>
+        <div role="organizer for entry" tabIndex={0}>{organizer}</div>
       </EventBody>
     );
   } else {
-    return (<Description role="description of entry" aria-label={description}>{description}</Description>);
+    return (<Description role="description of entry" tabIndex={0}>{description}</Description>);
   }
 }
 

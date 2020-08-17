@@ -14,7 +14,7 @@ const AddressLine = styled.div`
 `
 
 module.exports = ({street, zip, city, state, country}) =>
-  <AddressLine className = "pure-u-22-24">
+  <AddressLine role="address" tabIndex={0} className = "pure-u-22-24">
     {street && <span>{street}</span>}
     {street && (zip || city) ?
       <span className = "delimiter">, </span> : null}
