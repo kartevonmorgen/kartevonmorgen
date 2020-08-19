@@ -13,7 +13,7 @@ import { NAMES, IDS }       from "../../constants/Categories"
 import STYLE                from "../styling/Variables"
 import {Action} from "react-tiny-fab"
 
-const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, onMouseEnter, onMouseLeave, onFocus, onBlur, t}) => {
+const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
@@ -24,7 +24,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
     <ListElement
       key           = { entry.id }
       className     = { css_class }
-      tabIndex = {0}
+      tabIndex = {tabIndex}
       onClick = {() => {onClick(entry.id, {lat: entry.lat, lng: entry.lng})}}
       onKeyPress       = { (ev) => {
         ev.preventDefault()
@@ -44,7 +44,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
             <div role="entry title">
-              <EntryTitle role="entry header" tabIndex={0} id={entry.id} className="title">{title}</EntryTitle>
+              <EntryTitle role="entry header" id={entry.id} className="title">{title}</EntryTitle>
             </div>
             { getBody(isEvent, description, entry.city, entry.organizer) }
           </TitleCategoryAndDescription>
@@ -60,7 +60,7 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, on
               <ul role="list of tags" aria-label="tags">
                 {
                   entry.tags.slice(0, 5).map((t, index) =>
-                    (t !== '') ? <Tag role="tag" tabIndex={0} aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
+                    (t !== '') ? <Tag role="tag" aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
                   )
                 }
               </ul>
@@ -75,12 +75,12 @@ const getBody = (isEvent, description, city, organizer) => {
   if (isEvent) {
     return (
       <EventBody>
-        <div role="city for entry" tabIndex={0}>{city}</div>
-        <div role="organizer for entry" tabIndex={0}>{organizer}</div>
+        <div>{city}</div>
+        <div>{organizer}</div>
       </EventBody>
     );
   } else {
-    return (<Description role="description of entry" tabIndex={0}>{description}</Description>);
+    return (<Description>{description}</Description>);
   }
 }
 
@@ -88,8 +88,9 @@ const ResultList = props => {
 
   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
 
-  let results = entries.map( e =>
+  let results = entries.map( (e, i) =>
     <ResultListElement
+      tabIndex     = {i ? -1 : 2}
       entry        = { e            }
       ratings      = { (e.ratings || []).map(id => ratings[id])}
       key          = { e.id         }
@@ -112,7 +113,7 @@ const ResultList = props => {
 
   if(moreEntriesAvailable && !waiting){
     results.push(
-      <ListElement tabIndex={0} key="show-more-entries">
+      <ListElement>
         <div>
           <a onClick = { onMoreEntriesClick } href="#">
             {t("resultlist.showMoreEntries")}
