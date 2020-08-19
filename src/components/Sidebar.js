@@ -366,6 +366,7 @@ class Sidebar extends Component {
           (view.left === V.RESULT) && customizations.addEntryButton.show
           ? <AddEntryButton>
               <NavButton
+                tabIndex={3}
                 id="add-entry-button"
                 key = "back"
                 classname = "pure-u-1"

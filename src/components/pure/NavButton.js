@@ -27,8 +27,9 @@ const Icon = styled(FontAwesomeIcon)`
   margin-right: 10px !important;
 `
 
-const NavButton = ({ keyName, classname, icon, text, onClick, style, id }) =>
+const NavButton = ({ keyName, classname, icon, text, onClick, style, id, tabIndex }) =>
   <NavigationButton
+    tabIndex={tabIndex || 0}
     id={id}
     key = { keyName }
     className = { classname }
