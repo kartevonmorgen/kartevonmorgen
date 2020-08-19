@@ -49,11 +49,11 @@ const ratingsInTopics = (ratings=[]) => {
   return ratings
     // extract topics (unique titles)
     .map(rating => rating.title)
-    .filter( (element,index,array) => index == array.indexOf(element) )
+    .filter( (element,index,array) => index === array.indexOf(element) )
     // group ratings after their topic
-    .map(topic => ratings.filter(rating => rating.title == topic))
+    .map(topic => ratings.filter(rating => rating.title === topic))
     .filter(group => group.length > 0)
-  }
+}
 
 const t_r = (key) => i18n.t(key)
 const t = (key) => t_r("ratings." + key)
@@ -62,7 +62,7 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
   const ratingElements = ratingsInContexts(ratings).map(contextRatings => {
     const context = contextRatings[0].context;
     const l = contextRatings.length;
-    const count = l + " " + (l == 1 ? t("rating") : t("ratings"));
+    const count = l + " " + (l === 1 ? t("rating") : t("ratings"));
     const leafHeight = 35;
     const headingColor =
       context !== "renewable"
@@ -136,8 +136,8 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
           <AdditionalRatingButtonWrapper>
             { entry.ratings && entry.ratings.length > 0
               ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>
-                  { t("newRating") }
-                </AdditionalRatingButton>
+                { t("newRating") }
+              </AdditionalRatingButton>
               : ""
             }
           </AdditionalRatingButtonWrapper>
