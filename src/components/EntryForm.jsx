@@ -465,6 +465,7 @@ class Form extends Component {
                          return false
                        }}>
                     <FieldElement
+                      id="license-agreement-checkbox"
                       aria-label="accept licence"
                       name="license"
                       component="input"

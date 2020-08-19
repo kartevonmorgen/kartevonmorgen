@@ -291,7 +291,9 @@ class Main extends Component {
     }
   }
 
-  escFunction(event){
+  onKeydown(event){
+    const { view, dispatch}  = this.props
+
     if(event.keyCode === 38) { // Up Arrow
       const {activeElement} = document
       if (activeElement.parentElement.id === "result-list") {
@@ -302,7 +304,7 @@ class Main extends Component {
       }
     }
 
-    if(event.keyCode === 40) {
+    if(event.keyCode === 40) { // Down Arrow
       const {activeElement} = document
       if (activeElement.parentElement.id === "result-list") {
         const {nextElementSibling} = activeElement
@@ -313,8 +315,6 @@ class Main extends Component {
     }
 
     if(event.keyCode === 27) { //ESC
-      const { view, dispatch}  = this.props
-
       // if a form is opened for editing or adding a new entry close it
       if(view.left === V.NEW || view.left === V.EDIT) {
         dispatch(initialize(EDIT.id, {}, EDIT.fields));
@@ -334,10 +334,16 @@ class Main extends Component {
         return dispatch(Actions.search())
       }
     }
+
+    if(event.ctrlKey && event.keyCode === 13) { // ctrl + enter
+      if(view.left === V.NEW || view.left === V.EDIT) {
+        document.getElementById("license-agreement-checkbox").focus()
+      }
+    }
   }
 
   componentDidMount(){
-    document.addEventListener("keydown", (e) => this.escFunction(e), false);
+    document.addEventListener("keydown", (e) => this.onKeydown(e), false);
   }
 
   componentWillUnmount(){
