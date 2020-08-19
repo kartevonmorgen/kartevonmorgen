@@ -24,6 +24,7 @@ import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
 import {getIcon}           from "../customizations/icons"
 import i18n from "../i18n"
+import {initialize} from "redux-form"
 
 
 class Main extends Component {
@@ -313,6 +314,14 @@ class Main extends Component {
 
     if(event.keyCode === 27) { //ESC
       const { view, dispatch}  = this.props
+
+      // if a form is opened for editing or adding a new entry close it
+      if(view.left === V.NEW || view.left === V.EDIT) {
+        dispatch(initialize(EDIT.id, {}, EDIT.fields));
+        dispatch(view.left === V.EDIT ? Actions.cancelEdit() : Actions.cancelNew());
+        return
+      }
+
       if(view.menu) return dispatch(Actions.toggleLandingPage())
       if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
       if(view.left === V.ENTRY) {
