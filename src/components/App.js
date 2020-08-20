@@ -296,11 +296,11 @@ class Main extends Component {
     const { view, dispatch, map}  = this.props
     const {zoom} = map
 
-    if(event.keyCode === 107) { // +
+    if(event.ctrlKey && event.keyCode === 107) { // +
       dispatch(Actions.setZoom(zoom+1))
     }
 
-    if(event.keyCode === 109) { // -
+    if(event.ctrlKey && event.keyCode === 109) { // -
       dispatch(Actions.setZoom(zoom-1))
 
     }
