@@ -293,7 +293,17 @@ class Main extends Component {
   }
 
   onKeydown(event){
-    const { view, dispatch}  = this.props
+    const { view, dispatch, map}  = this.props
+    const {zoom} = map
+
+    if(event.keyCode === 107) { // +
+      dispatch(Actions.setZoom(zoom+1))
+    }
+
+    if(event.keyCode === 109) { // -
+      dispatch(Actions.setZoom(zoom-1))
+
+    }
 
     if(event.keyCode === 38) { // Up Arrow
       const {activeElement} = document
