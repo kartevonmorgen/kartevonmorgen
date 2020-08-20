@@ -493,6 +493,7 @@ class Form extends Component {
         </ScrollableDiv>
         <StyledNavButtonWrapper className="menu pure-g">
           <NavButton
+            tabIndex={0}
             keyName = "cancel"
             classname = "pure-u-1-2"
             onClick = {() => {
@@ -504,6 +505,7 @@ class Form extends Component {
             style={cancelButtonCustomization}
           />
           <NavButton
+            tabIndex={0}
             keyName = "save"
             classname = "pure-u-1-2"
             onClick = { () => {

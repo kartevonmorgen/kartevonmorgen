@@ -15,7 +15,7 @@ const CategoryButtons = ({ disabled, active, onToggle, t }) => {
     const act = [].indexOf.call(active || [], c) >= 0;
     return (
       <button
-        tabIndex={7+i}
+        tabIndex={16+i}
         key       = { c }
         disabled  = { disabled }
         onClick   = { () => { onToggle(c) }}

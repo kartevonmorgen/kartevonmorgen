@@ -139,6 +139,7 @@ class Main extends Component {
           </SwipeableLeftPanel>
           <HideSidebarButtonWrapper>
             <button
+              tabIndex={-1}
               aria-label="open close button for left sidebar"
               onClick={ () => {
                 if (view.showLeftPanel) {
@@ -153,7 +154,7 @@ class Main extends Component {
         </LeftPanelAndHideSidebarButton>
         <RightPanel customizations={customizations.burgerMenu}>
           <div className="menu-toggle">
-            <button className="toggleButton" onClick={this.toggleRightPanel} >
+            <button tabIndex={15} className="toggleButton" onClick={this.toggleRightPanel} >
               <img
                 alt="right panel icon"
                 className="panelIcon"

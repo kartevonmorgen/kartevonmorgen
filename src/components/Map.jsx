@@ -57,6 +57,12 @@ class KVMMap extends Component {
       //map.fireLeafletEvent('load', map)
       map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
+
+      document.getElementsByClassName("map leaflet-container")[0].setAttribute("tabindex", "7")
+      document.getElementsByClassName("leaflet-control-zoom-out")[0].setAttribute("tabindex", "8")
+      document.getElementsByClassName("leaflet-control-zoom-in")[0].setAttribute("tabindex", "9")
+      document.getElementsByClassName("rtf--mb")[0].setAttribute("tabindex", "12")
+
     }
 
     this.props.fetchProminentTags()
@@ -212,6 +218,7 @@ class KVMMap extends Component {
     return (
       <Wrapper>
         <Map
+          attributionControl={false}
           ref         = 'map'
           center      = { center }
           zoom        = { zoom }
@@ -234,6 +241,7 @@ class KVMMap extends Component {
           }
         </Map>
         <Fab
+          aria-lable="sharing button"
           event="click"
           icon={
             <ShareIcon data-tip={t('share')} data-for="shareButton" icon="share-square" color="black"/>
@@ -244,8 +252,9 @@ class KVMMap extends Component {
           }}
         >
           <div style={{paddingTop: 10}}>
-            <CopyToClipboard text={url}>
+            <CopyToClipboard tabIndex={13} text={url}>
               <ActionButon
+                aira-lable="copy URL"
                 onClick={() => showNotification(t('growler.linkCopied'), "success")}
                 style={{
                   backgroundColor: 'white',
@@ -263,6 +272,8 @@ class KVMMap extends Component {
           </div>
           <div style={{paddingTop: 30}}>
             <ActionButon
+              tabIndex={14}
+              aria-label="get embedding code"
               onClick={() => showEmbedModal()}
               style={{
                 backgroundColor: 'white',
@@ -284,6 +295,7 @@ class KVMMap extends Component {
             <LocateButtonContainer className="leaflet-right">
               <LocateButtonInnerContainer className = "leaflet-control-locate leaflet-bar leaflet-control">
                 <LocateButton
+                  tabIndex = {10}
                   className   = "leaflet-bar-part leaflet-bar-part-single" //"locate-icon"
                   onClick     = { this.props.onLocate }
                   title       = "Zeige meine Position" >
