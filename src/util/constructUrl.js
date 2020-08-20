@@ -16,7 +16,7 @@ export const getHistoryLink = (entryId, type) => {
   }
 }
 
-export default (entry, center, zoom, searchText, showLeft, categories, unchangeableTags) => {
+export default (entry, center, zoom, searchText, showLeft, categories, fixTags) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
@@ -41,8 +41,8 @@ export default (entry, center, zoom, searchText, showLeft, categories, unchangea
     params.push("left=" + (showLeft ? "show" : "hide"));
   }
 
-  if (unchangeableTags) {
-    params.push("unchangeableTags=" + unchangeableTags.join())
+  if (fixTags) {
+    params.push("fixTags=" + fixTags.join())
   }
 
   return "#/?" + params.join("&");

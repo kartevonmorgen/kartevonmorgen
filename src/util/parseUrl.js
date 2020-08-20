@@ -51,8 +51,8 @@ const parseSearchParams = (searchString) => {
     if (pairSplit.length >= 1 && pairSplit[0].length >= 1) {
       p[decodeURIComponent(pairSplit[0])] = decodeURIComponent(pairSplit[1]) || '';
     }
-    if (p.unchangeableTags) {
-      p.unchangeableTags = p.unchangeableTags.split(',')
+    if (p.fixTags) {
+      p.fixTags = p.fixTags.split(',')
     }
 
     return p;

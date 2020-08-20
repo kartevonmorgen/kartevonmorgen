@@ -69,7 +69,7 @@ class Sidebar extends Component {
     const entry = entries[search.current] || null;
     const isEventForEdit = entry && entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 
-    const unchangeableTagsStr = search.unchangeableTags.map(tag => `#${tag}`).join(' ')
+    const fixTagsStr = search.fixTags.map(tag => `#${tag}`).join(' ')
 
     var content;
     switch (view.left) {
@@ -327,8 +327,8 @@ class Sidebar extends Component {
           showSearchBar
           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
             <SearchBar
-                searchText={search.text.startsWith(unchangeableTagsStr) ? search.text.substr(unchangeableTagsStr.length).trimStart() : search.text}
-                unchangeableTagsStr={unchangeableTagsStr}
+                searchText={search.text.startsWith(fixTagsStr) ? search.text.substr(fixTagsStr.length).trimStart() : search.text}
+                fixTagsStr={fixTagsStr}
                 categories={search.categories}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
@@ -341,7 +341,7 @@ class Sidebar extends Component {
                   return dispatch(Actions.search());
                 }}
               onChange={txt => {
-                  txt = txt ? `${unchangeableTagsStr}${txt}`: unchangeableTagsStr
+                  txt = txt ? `${fixTagsStr}${txt}`: fixTagsStr
 
                   dispatch(Actions.setSearchText(txt));
                   return dispatch(Actions.search());
