@@ -20,7 +20,7 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories, addentry, fixTags } = params;
+    var { zoom, entry, search, tags, left, categories, addentry, fixedTags } = params;
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -121,6 +121,6 @@ module.exports = (state=initialState, action={}) => {
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left, categories, fixTags)
+    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags)
   }
 };
