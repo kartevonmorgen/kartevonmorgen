@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect }          from 'react-redux'
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
@@ -6,9 +6,7 @@ import styled               from "styled-components";
 import classNames            from "classnames";
 import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import { reduxForm,
-         Field,
-         initialize, formValueSelector, getFormSyncErrors}       from "redux-form";
+import { reduxForm, Field, initialize}       from "redux-form";
          
 import lodashGet from 'lodash/get'
 import moment, {min} from 'moment'
@@ -164,10 +162,10 @@ class Form extends Component {
     };
 
     return (
-    <FormWrapper>
-      <ScrollableDiv id="entryFormScrollableDiv">
-        <AddEntryForm
-          action    = 'javascript:void();' >
+      <FormWrapper>
+        <ScrollableDiv id="entryFormScrollableDiv">
+          <AddEntryForm
+            action    = 'javascript:void();' >
 
             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
 
@@ -379,6 +377,9 @@ class Form extends Component {
                     <div className= "pure-u-22-24">
                       <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder={t("openingHours")} />
                       <FieldElement name="opening_hours" component={errorMessage} />
+                    </div>
+                    <div className= "pure-u-2-24"/>
+                    <div className= "pure-u-22-24">
                       <a
                         className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
                         href="https://projets.pavie.info/yohours"
@@ -390,7 +391,67 @@ class Form extends Component {
                     </div>
                   </div>
                 }
+              </Fieldset>
+              <Fieldset>
+                <OptionalLegend>
+                  <FieldsetTitle>Links</FieldsetTitle>
+                </OptionalLegend>
 
+                {[...Array(5).keys()].map(i => (
+                  <Fragment>
+                    <OptionalFieldText>#{i+1}</OptionalFieldText>
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="link"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_url_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder="URL"
+                        />
+                        <FieldElement name={`link_url_${i}`} component={errorMessage}/>
+                      </div>
+                    </div>
+
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="marker"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_title_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder="Title"/>
+                      </div>
+                    </div>
+
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="align-justify"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_description_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder="Description"/>
+                      </div>
+                    </div>
+
+                    <Hr/>
+                  </Fragment>
+                ))}
+                <div className="pure-g">
+                  <div className="pure-u-2-24"/>
+                  <button
+                    className={classNames("pure-button", "button-secondary", "pure-u-22-24")}
+                  >
+                    <FontAwesomeIcon icon="plus"/>
+                  </button>
+                </div>
               </Fieldset>
 
               <Fieldset>
@@ -572,6 +633,8 @@ const Fieldset = styled.fieldset`
 `;
 
 const OptionalFieldLabel = styled.label`
+  display: felx;
+  align-items: center;
   color: #777;
 `;
 
@@ -608,6 +671,13 @@ const RangeDates = styled.div`
     transform: translateX(-50%);
   }
 `;
+
+const Hr = styled.hr`
+  background-color: #e5e5e5;
+  border-width: 0;
+  height: 1px;
+  width: 150px;
+`
 
 const Date = styled.div`
   display: flex;

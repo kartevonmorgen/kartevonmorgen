@@ -24,13 +24,29 @@ import NavButton            from "./pure/NavButton";
 import SearchBar            from "./SearchBar"
 import ScrollableDiv        from "./pure/ScrollableDiv";
 
-const converDateToTimestamp = (date) => {
-    var dateObj = new window.Date(date);
-    var result = dateObj.getTime();
-    if (result > 99999999999) {
-        result = Math.trunc(result / 1000) - (dateObj.getTimezoneOffset() * 60)
-    }
-    return result;
+const convertDateToTimestamp = (date) => {
+  var dateObj = new window.Date(date);
+  var result = dateObj.getTime();
+  if (result > 99999999999) {
+    result = Math.trunc(result / 1000) - (dateObj.getTimezoneOffset() * 60)
+  }
+  return result;
+}
+
+const getFormCustomLinks = (data) => {
+  // get the from data and returns the array of the custom links
+  const n_links = Object.keys(data).filter(field => field.startsWith('link_url')).length
+
+  const customLinks = []
+  for (let i = 0; i !== n_links; i++) {
+    customLinks.push({
+      url: data[`link_url_${i}`],
+      title: data[`link_title_${i}`],
+      description: data[`link_description_${i}`],
+    })
+  }
+
+  return customLinks
 }
 
 class Sidebar extends Component {
@@ -209,8 +225,9 @@ class Sidebar extends Component {
                 categories: [data.category],
                 image_url: data.image_url,
                 image_link_url: data.image_link_url,
-                end: data.end && converDateToTimestamp(data.end),
-                start: data.start && converDateToTimestamp(data.start)
+                end: data.end && convertDateToTimestamp(data.end),
+                start: data.start && convertDateToTimestamp(data.start),
+                links: getFormCustomLinks(data)
               };
               if (form[EDIT.id]) {
                 dataToSend.id = form[EDIT.id].kvm_flag_id;

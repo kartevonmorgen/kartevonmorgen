@@ -96,6 +96,20 @@ const entryForm = (data) => {
       errors.image_link_url = t("invalidURL");
     }
   }
+
+  // the errors for extra links
+  // if a description or title is provided, the url is mandatory
+  Object.keys(data).map(field => {
+    if ((field.startsWith("link_title") || field.startsWith("link_description")) && data[field]) {
+      const fieldParts = field.split('_')
+      fieldParts[1] = 'url'
+      const urlField = fieldParts.join('_')
+      if (!data[urlField]) {
+        errors[urlField] = t("requiredField");
+      }
+    }
+  })
+
   return errors;
 };
 
