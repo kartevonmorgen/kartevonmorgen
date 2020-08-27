@@ -40,6 +40,7 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faLightbulb').definition
   ,require('@fortawesome/free-solid-svg-icons/faMarker').definition
   ,require('@fortawesome/free-solid-svg-icons/faAlignJustify').definition
+  ,require('@fortawesome/free-solid-svg-icons/faMinus').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 

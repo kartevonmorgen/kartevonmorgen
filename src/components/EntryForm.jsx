@@ -7,7 +7,8 @@ import classNames            from "classnames";
 import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import { reduxForm, Field, initialize}       from "redux-form";
-         
+
+import update from 'immutability-helper'
 import lodashGet from 'lodash/get'
 import moment, {min} from 'moment'
 
@@ -124,6 +125,7 @@ class Form extends Component {
     isEventEntry: false,
     startDate: '',
     endDate: '',
+    numberOfCustomLinks: 1,
   };
 
   componentDidMount() {
@@ -397,8 +399,8 @@ class Form extends Component {
                   <FieldsetTitle>Links</FieldsetTitle>
                 </OptionalLegend>
 
-                {[...Array(5).keys()].map(i => (
-                  <Fragment>
+                {[...Array(this.state.numberOfCustomLinks).keys()].map(i => (
+                  <Fragment key={`link_${i}`}>
                     <OptionalFieldText>#{i+1}</OptionalFieldText>
                     <div className="pure-g">
                       <OptionalFieldLabel className="pure-u-2-24">
@@ -437,7 +439,9 @@ class Form extends Component {
                           name={`link_description_${i}`}
                           className="pure-input-1 optional"
                           component="input"
-                          placeholder="Description"/>
+                          placeholder="Description"
+                        />
+                        <FieldElement name={`link_description_${i}`} component={errorMessage}/>
                       </div>
                     </div>
 
@@ -447,9 +451,29 @@ class Form extends Component {
                 <div className="pure-g">
                   <div className="pure-u-2-24"/>
                   <button
-                    className={classNames("pure-button", "button-secondary", "pure-u-22-24")}
+                    className={classNames("pure-button", "button-secondary", "pure-u-11-24")}
+                    onClick={() => this.setState(prevState => update(
+                      prevState,
+                      {numberOfCustomLinks: {$set: prevState.numberOfCustomLinks + 1}}
+                    ))}
                   >
                     <FontAwesomeIcon icon="plus"/>
+                  </button>
+                  <button
+                    className={classNames("pure-button", "button-warning", "pure-u-11-24")}
+                    onClick={() => {
+                      if (this.state.numberOfCustomLinks === 1) {
+                        return
+                      }
+
+                      this.setState(prevState => update(
+                        prevState,
+                        {numberOfCustomLinks: {$set: prevState.numberOfCustomLinks - 1}})
+                      )
+
+                    }}
+                  >
+                    <FontAwesomeIcon icon="minus"/>
                   </button>
                 </div>
               </Fieldset>

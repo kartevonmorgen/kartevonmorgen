@@ -1,3 +1,4 @@
+import validUrl from 'valid-url'
 import i18n from "../i18n";
 
 const entryForm = (data) => {
@@ -99,14 +100,25 @@ const entryForm = (data) => {
 
   // the errors for extra links
   // if a description or title is provided, the url is mandatory
+  const createLinkUrl = (relativeField) => {
+    const fieldParts = relativeField.split('_')
+    fieldParts[1] = 'url'
+    return fieldParts.join('_')
+  }
   Object.keys(data).map(field => {
     if ((field.startsWith("link_title") || field.startsWith("link_description")) && data[field]) {
-      const fieldParts = field.split('_')
-      fieldParts[1] = 'url'
-      const urlField = fieldParts.join('_')
+      const urlField = createLinkUrl(field)
       if (!data[urlField]) {
         errors[urlField] = t("requiredField");
       }
+    }
+
+    if (field.startsWith("link_url") && data[field] && !validUrl.isWebUri(data[field])) {
+      errors[field] = t("invalidURL")
+    }
+
+    if (field.startsWith('link_description') && data[field].length > 30) {
+      errors[field] = t("descriptionTooLong")
     }
   })
 

@@ -39,6 +39,10 @@ const getFormCustomLinks = (data) => {
 
   const customLinks = []
   for (let i = 0; i !== n_links; i++) {
+    if (!data[`link_url_${i}`]) {
+      continue
+    }
+
     customLinks.push({
       url: data[`link_url_${i}`],
       title: data[`link_title_${i}`],
