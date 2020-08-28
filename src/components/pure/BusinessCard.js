@@ -170,7 +170,6 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
           <Hr />,
           (entry.custom &&
             <CustomLinks customLinks={entry.custom}/>),
-          <Hr />,
         ]}
 
         </EntryDetailsOtherData>

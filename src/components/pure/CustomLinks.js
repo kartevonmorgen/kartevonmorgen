@@ -50,7 +50,7 @@ const CustomLinks = (props) => {
 
 
 const IconLink = styled.a`
-  font-size: 42px;
+  font-size: 40px;
   color: grey;
   display: flex;
   align-items: center;
