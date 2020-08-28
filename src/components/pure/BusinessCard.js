@@ -167,9 +167,9 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
           (entry.tags && entry.tags.filter(t => t !== "").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
             : null),
-          <Hr />,
+          <Hr key="business_hr_2"/>,
           (entry.custom &&
-            <CustomLinks customLinks={entry.custom}/>),
+            <CustomLinks key="custom_links" customLinks={entry.custom}/>),
         ]}
 
         </EntryDetailsOtherData>

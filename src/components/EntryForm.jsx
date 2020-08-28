@@ -167,8 +167,7 @@ class Form extends Component {
     return (
       <FormWrapper>
         <ScrollableDiv id="entryFormScrollableDiv">
-          <AddEntryForm
-            action    = 'javascript:void();' >
+          <AddEntryForm>
 
             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
 

@@ -202,7 +202,7 @@ class Sidebar extends Component {
         content = (
           <EntryForm
             numberOfCustomLinks={
-              entries[form[EDIT.id].kvm_flag_id].custom ? entries[form[EDIT.id].kvm_flag_id].custom.length : undefined
+              form[EDIT.id].kvm_flag_id && entries[form[EDIT.id].kvm_flag_id].custom ? entries[form[EDIT.id].kvm_flag_id].custom.length : undefined
             }
             isEdit={ form[EDIT.id] ? form[EDIT.id].kvm_flag_id : null }
             isEvent={ isEventForEdit }
