@@ -46,6 +46,10 @@ library.add(
 
   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition
   ,require('@fortawesome/free-brands-svg-icons/faFacebook').definition
+  ,require('@fortawesome/free-brands-svg-icons/faInstagram').definition
+  ,require('@fortawesome/free-brands-svg-icons/faTwitter').definition
+  ,require('@fortawesome/free-brands-svg-icons/faWhatsapp').definition
+  ,require('@fortawesome/free-brands-svg-icons/faTelegram').definition
   ,require('@fortawesome/free-brands-svg-icons/faCreativeCommons').definition
 
   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition
