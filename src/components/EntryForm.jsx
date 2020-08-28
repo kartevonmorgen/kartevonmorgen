@@ -129,7 +129,10 @@ class Form extends Component {
   };
 
   componentDidMount() {
-    this.setState({isEventEntry: this.props.category === IDS.EVENT})
+    this.setState({
+      isEventEntry: this.props.category === IDS.EVENT,
+      numberOfCustomLinks: this.props.numberOfCustomLinks || 1
+    })
   }
 
   handleCategoryChange = (event) => {
@@ -151,9 +154,7 @@ class Form extends Component {
 
     const {saveButtonCustomization, cancelButtonCustomization} = this.props;
 
-    const { isEventEntry } = this.state;
-    const { startDate } = this.state;
-    const { endDate } = this.state;
+    const { isEventEntry, startDate, endDate } = this.state;
     const initStartDate = formStartEndDate.startDate ? new window.Date(formStartEndDate.startDate) : '';
     const initEndDate = formStartEndDate.endDate ? new window.Date(formStartEndDate.endDate) : '';
     // TODO: use process.env.ENTRY_DESCRIPTION_WARN_LIMIT instead of hard code
@@ -445,10 +446,10 @@ class Form extends Component {
                       </div>
                     </div>
 
-                    <Hr/>
+                    {this.state.numberOfCustomLinks !== i+1 && <Hr/>}
                   </Fragment>
                 ))}
-                <div className="pure-g">
+                <div style={{marginTop: 10}} className="pure-g">
                   <div className="pure-u-2-24"/>
                   <button
                     className={classNames("pure-button", "button-secondary", "pure-u-11-24")}
@@ -517,7 +518,7 @@ class Form extends Component {
                     <FontAwesomeIcon icon={['fab', 'creative-commons']}/>
                   </label>
                   <div className="pure-u-2-24 pure-controls"
-                    onClick={function (event) {
+                       onClick={function (event) {
                          event.preventDefault()
                          document.getElementsByName('license')[0].click(event)
                          return false
