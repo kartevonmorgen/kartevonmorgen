@@ -17,7 +17,7 @@ const getIconNameFromUrl = (url) => {
   const {hostname} = new URL(url)
   const website = hostname.replace(/^(www\.)/,"");
   if (!siteToIconMapper.hasOwnProperty(website)) {
-    return "link"
+    return false
   }
 
   return ["fab", siteToIconMapper[website]]
@@ -33,14 +33,17 @@ const CustomLinks = (props) => {
           const icon = getIconNameFromUrl(customLink.url)
 
           return (
-            <IconLinkWrapper className="pure-u-1-4" key={`custom-link-${i}`}>
+            <LinkContainer className="pure-u-1-4" key={`custom-link-${i}`}>
               <IconLink
                 title={customLink.title}
                 href={customLink.url}
               >
-                <FontAwesomeIcon icon={icon}/>
+                { icon ?
+                  <FontAwesomeIcon icon={icon}/> :
+                  <LinkTitle>{customLink.title}</LinkTitle>
+                }
               </IconLink>
-            </IconLinkWrapper>
+            </LinkContainer>
           )
         })
       }
@@ -49,16 +52,20 @@ const CustomLinks = (props) => {
 }
 
 
+const LinkTitle = styled.span`
+  color: grey;
+  font-size: 15px;
+`
+
 const IconLink = styled.a`
-  font-size: 40px;
+  font-size: 20px;
   color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-const IconLinkWrapper = styled.div`
-  width: 50px;
+const LinkContainer = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
