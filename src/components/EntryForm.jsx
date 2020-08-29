@@ -167,7 +167,7 @@ class Form extends Component {
     return (
       <FormWrapper>
         <ScrollableDiv id="entryFormScrollableDiv">
-          <AddEntryForm>
+          <AddEntryForm action="javascript:void(0);">
 
             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
 
@@ -305,7 +305,7 @@ class Form extends Component {
                       <FieldElement name="lat" className="pure-input-1" component="input" readOnly={true}/>
                       <FieldElement name="lat" component={errorMessage} />
                     </div>
-                    <div className= "pure-u-2-24"></div>
+                    <div className= "pure-u-2-24"/>
                     <div className= "pure-u-11-24">
                       <FieldElement name="lng" className="pure-input-1" component="input" readOnly={true} />
                       <FieldElement name="lng" component={errorMessage} />
