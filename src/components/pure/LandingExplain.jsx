@@ -25,6 +25,13 @@ const teamArray = [
     position: ["landingExplain.chapter5.software-development"]
   },
   {
+    name: "Navid Kalaei",
+    color: "green",
+    homepage: "https://www.linkedin.com/in/navid-kalaei/",
+    image: require("../../img/team/Navid.jpg"),
+    position: ["landingExplain.chapter5.software-development"]
+  },
+  {
     name: "Lisa Stehr",
     color: "green",
     image: require("../../img/team/Lisa.jpg"),
