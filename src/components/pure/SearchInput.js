@@ -81,6 +81,7 @@ const SearchInput = (props) => {
 
   return (
     <Recommender
+      createOptionPosition="first"
       delimeter=" "
       formatCreateLabel={(inputValue) => (inputValue)}
       filterOption={(option) => true}
