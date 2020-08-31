@@ -113,8 +113,18 @@ const entryForm = (data) => {
       }
     }
 
-    if (field.startsWith("link_url") && data[field] && !validUrl.isWebUri(data[field])) {
-      errors[field] = t("invalidURL")
+    if (field.startsWith("link_url")) {
+      if (data[field] && !validUrl.isWebUri(data[field])) {
+        errors[field] = t("invalidURL")
+      } else {
+        const filedNumber = parseInt(field.split('_')[2])
+        for (let i = 0; i !== filedNumber; i++) {
+          if (data[`link_url_${i}`] === data[field]) {
+            errors[field] = t("invalidURL")
+            break
+          }
+        }
+      }
     }
 
     if (field.startsWith('link_description') && data[field].length > 30) {
