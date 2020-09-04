@@ -18,7 +18,7 @@
     "end": "Ende",
     "description": "Beschreibung",
     "keepDescriptionShort": "Fasse dich kurz! Nutzer wollen nicht so viel lesen. Max. 250 Zeichen sind standardmäßig sichtbar.",
-    "tags": "Stichworte",
+    "tags": "Suchworte, die zu diesem Eintrag führen",
     "newTag": "Neu:",
     "noTagSuggestion": "Tippen für Vorschläge.",
     "tagsLoading": "Vorschläge werden geladen...",
@@ -61,7 +61,7 @@
     "invalidLicenseAgreement": "Ungültige Zustimmung",
     "invalidURL": "Ungültige URL",
     "httpMissing": "\"http://\" oder \"https://\" fehlt",
-    "generateHours": "Öffnungszeiten konfigurieren!"
+    "generateHours": "Finde das richtige Format für deine Zeit!"
   },
   "entryDetails": {
     "loadingEntry": "Eintrag wird geladen...",
