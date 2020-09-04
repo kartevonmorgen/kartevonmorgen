@@ -396,7 +396,7 @@ class Form extends Component {
               </Fieldset>
               <Fieldset>
                 <OptionalLegend>
-                  <FieldsetTitle>Links</FieldsetTitle>
+                  <FieldsetTitle>{t("links")}</FieldsetTitle>
                 </OptionalLegend>
 
                 {[...Array(this.state.numberOfCustomLinks).keys()].map(i => (

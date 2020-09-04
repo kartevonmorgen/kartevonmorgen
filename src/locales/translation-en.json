@@ -61,7 +61,8 @@
     "invalidLicenseAgreement": "Invalid License Agreement",
     "invalidURL": "Invalid URL",
     "httpMissing": "\"http://\" or \"https://\" missing",
-    "generateHours": "Generate Your Hours!"
+    "generateHours": "Generate Your Hours!",
+    "links":  "links"
   },
   "entryDetails": {
     "loadingEntry": "loading entry...",
