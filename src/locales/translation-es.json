@@ -61,7 +61,11 @@
     "invalidLicenseAgreement": "Consentimiento no válido",
     "invalidURL": "URL no válida",
     "httpMissing": "falta \"http://\" o \"https://\")",
-    "generateHours": "¡Configura el horario de apertura!"
+    "generateHours": "¡Configura el horario de apertura!",
+    "links":  "Links y Social Media",
+    "linkUrl": "Link URL",
+    "linkTitle": "Link Título (opcional)",
+    "linkDescription": "Link Descripción (opcional)",
   },
   "entryDetails": {
     "loadingEntry": "Cargando entrada...",
