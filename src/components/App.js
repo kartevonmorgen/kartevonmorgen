@@ -712,7 +712,7 @@ const StyledApp = styled.div `
       margin: 0.2em 0.3em 0.2em 0;
     }
     .form-heading {
-      font-weight: bold;
+      font-weight: 500 !important;
       margin-top: 0.5em;
       margin-bottom: 0;
     }
