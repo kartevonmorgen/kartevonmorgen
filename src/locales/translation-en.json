@@ -18,9 +18,9 @@
     "end": "End",
     "description": "Description",
     "keepDescriptionShort": "Keept it short! Users don't like to read that much. Max. 250 characters are visible by default.",
-    "tags": "Tags to find this place",
+    "tags": "Tags",
     "newTag": "New:",
-    "noTagSuggestion": "Type for suggestions.",
+    "noTagSuggestion": "Type for sugestions.",
     "tagsLoading": "Loading suggestions...",
     "contactPerson": "Contact person",
     "homepage": "Homepage",
@@ -61,7 +61,7 @@
     "invalidLicenseAgreement": "Invalid License Agreement",
     "invalidURL": "Invalid URL",
     "httpMissing": "\"http://\" or \"https://\" missing",
-    "generateHours": "Find out the right format for your time"
+    "generateHours": "Generate Your Hours!"
   },
   "entryDetails": {
     "loadingEntry": "loading entry...",
