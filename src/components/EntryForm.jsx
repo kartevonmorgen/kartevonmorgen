@@ -411,7 +411,7 @@ class Form extends Component {
                           name={`link_url_${i}`}
                           className="pure-input-1 optional"
                           component="input"
-                          placeholder="URL"
+                          placeholder={t("linkUrl")}
                         />
                         <FieldElement name={`link_url_${i}`} component={errorMessage}/>
                       </div>
@@ -426,7 +426,7 @@ class Form extends Component {
                           name={`link_title_${i}`}
                           className="pure-input-1 optional"
                           component="input"
-                          placeholder="Title"/>
+                          placeholder={t("linkTitle")}/>
                       </div>
                     </div>
 
@@ -439,7 +439,7 @@ class Form extends Component {
                           name={`link_description_${i}`}
                           className="pure-input-1 optional"
                           component="input"
-                          placeholder="Description"
+                          placeholder={t("linkDescription")}
                         />
                         <FieldElement name={`link_description_${i}`} component={errorMessage}/>
                       </div>
