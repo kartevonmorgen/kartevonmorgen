@@ -65,7 +65,7 @@
     "links":  "Links y Social Media",
     "linkUrl": "Link URL",
     "linkTitle": "Link Título (opcional)",
-    "linkDescription": "Link Descripción (opcional)",
+    "linkDescription": "Link Descripción (opcional)"
   },
   "entryDetails": {
     "loadingEntry": "Cargando entrada...",
