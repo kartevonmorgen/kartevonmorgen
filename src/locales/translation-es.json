@@ -62,10 +62,10 @@
     "invalidURL": "URL no válida",
     "httpMissing": "falta \"http://\" o \"https://\")",
     "generateHours": "¡Configura el horario de apertura!",
-    "links":  "Links y Social Media",
-    "linkUrl": "Link URL",
-    "linkTitle": "Link Título (opcional)",
-    "linkDescription": "Link Descripción (opcional)"
+    "links":  "Enlaces y redes sociales",
+    "linkUrl": "URL del enlace",
+    "linkTitle": "Título del enlace (opcional)",
+    "linkDescription": "Descripción del enlace (opcional)"
   },
   "entryDetails": {
     "loadingEntry": "Cargando entrada...",
