@@ -7,7 +7,7 @@ import { IDS, NAMES } from "./constants/Categories";
 import RoutingUsecases from "./constants/RoutingUsecases";
 
 export default (event) => {
-  // console.log(`URL CHANGE FROM BROWSER: "${getState().url.hash}" --> "${window.location.hash}"`);
+  console.log(`URL CHANGE FROM BROWSER: "${getState().url.hash}" --> "${window.location.hash}"`);
   dispatch(Actions.updateStateFromURL(window.location.hash));
   const actions = createActionsFromState(getState());
   for (let a of actions) {
