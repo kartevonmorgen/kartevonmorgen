@@ -145,7 +145,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
             </div>
             : null),
           ((entry.street && entry.zip && entry.city) ?
-            <React.Fragment key="address">
+            <React.Fragment>
               <div key="addr">
                 <div key="addr" className="address pure-g">
                   <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
@@ -161,7 +161,7 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
             </React.Fragment>
             : null),
           (entry.opening_hours &&
-            <React.Fragment key="openinghours">
+            <React.Fragment>
               <OpeningHours oh={entry.opening_hours} />
               <Hr />
             </React.Fragment>

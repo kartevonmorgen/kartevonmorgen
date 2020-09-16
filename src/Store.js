@@ -1,6 +1,6 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk    from "redux-thunk"; // lets us dispatch() functions
-// import logger   from "redux-logger";
+import logger   from "redux-logger";
 
 import reducers from "./reducers";
 
@@ -11,7 +11,7 @@ import { createStore, applyMiddleware } from "redux";
 import { APP_STAGES } from "./constants/App";
 
 if (__STAGE__ === APP_STAGES.LOCAL) {
-  // middlewares.push(logger);
+  middlewares.push(logger);
 }
 
 // https://github.com/zalmoxisus/redux-devtools-extension

@@ -99,7 +99,7 @@ const OpeningHours = (props) => {
         <Calendar >
           {
             calendar.sort((day1, day2) => day1.idx - day2.idx).map(day => (
-              <CalendarRow key={day.name} className="pure-u-1-1">
+              <CalendarRow className="pure-u-1-1">
                 <div className="pure-u-1-3">
                   {`${day.name}:`}
                 </div>
@@ -119,7 +119,7 @@ const OpeningHours = (props) => {
 
 export default OpeningHours
 
-OpeningHours.propTypes = {
+OpeningHours.PropTypes = {
   oh: PropTypes.string  // the open hours string see issue #383
 }
 

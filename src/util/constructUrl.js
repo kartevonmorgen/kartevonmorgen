@@ -20,8 +20,7 @@ export default (entry, center, zoom, searchText, showLeft, categories) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
-  }
-  if (center) {
+  } else if (center) {
     params.push("center=" + center.lat.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES)
       + "," +  center.lng.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES));
   }
@@ -32,10 +31,9 @@ export default (entry, center, zoom, searchText, showLeft, categories) => {
     params.push("categories=" + categories);
   }
   // if ((entry && entry != "NONE") {
-  if (searchText) {
+  if (!(entry && entry != "NONE") && searchText) {
     params.push(searchTextToUrlQuery(searchText));
   }
-
   if (showLeft != null) {
     params.push("left=" + (showLeft ? "show" : "hide"));
   }
