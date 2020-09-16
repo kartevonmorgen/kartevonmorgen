@@ -74,7 +74,7 @@ module.exports = (state=initialState, action={}) => {
       break;
 
     case T.SET_MAP_CENTER:
-      if (isObject(action.payload)) {
+      if (isObject(action.paylaod)) {
         center = {
           lat: parseFloat(action.payload.lat),
           lng: parseFloat(action.payload.lng)
