@@ -3,7 +3,7 @@ import styled   from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import STYLE    from "../styling/Variables";
 
-const NavigationButton = styled.li`
+const NavigationButton = styled.button`
   cursor: pointer;
   box-sizing: border-box;
   font-weight: normal;
@@ -27,13 +27,17 @@ const Icon = styled(FontAwesomeIcon)`
   margin-right: 10px !important;
 `
 
-const NavButton = ({ keyName, classname, icon, text, onClick, style }) =>
+const NavButton = ({ keyName, classname, icon, text, onClick, style, id, tabIndex }) =>
   <NavigationButton
+    tabIndex={tabIndex || 0}
+    id={id}
     key = { keyName }
     className = { classname }
     style={style}
-    onClick = { onClick }>
-    <Icon icon={ icon } />{ text }
+    onClick = { onClick }
+  >
+    <Icon icon={ icon } />
+    { text }
   </NavigationButton>
 
 module.exports = NavButton

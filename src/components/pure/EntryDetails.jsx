@@ -44,6 +44,7 @@ const EntryDetails = props => {
       <Entry id="EntryDetail">
         <Navbar className="menu-top">
           <NavButtonWhite
+            ariaLabel="back"
             keyName = "back"
             buttonRight = { false }
             icon = "chevron-left"
@@ -51,14 +52,15 @@ const EntryDetails = props => {
             onClick = {onBack}
             aboveImage={hasImage}
           />
-        <NavButtonWhite
-          keyName = "edit"
-          buttonRight = { true }
-          icon = "pencil-alt"
-          text = ""
-          onClick = {onEdit}
-          aboveImage={hasImage}
-        />
+          <NavButtonWhite
+            ariaLabel="edit"
+            keyName = "edit"
+            buttonRight = { true }
+            icon = "pencil-alt"
+            text = ""
+            onClick = {onEdit}
+            aboveImage={hasImage}
+          />
         </Navbar>
         {
           hasImage ?

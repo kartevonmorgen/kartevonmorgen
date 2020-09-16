@@ -11,8 +11,9 @@ import EventTimes           from "./EventTimes";
 import i18n                 from "../../i18n";
 import { NAMES, IDS }       from "../../constants/Categories"
 import STYLE                from "../styling/Variables"
+import {Action} from "react-tiny-fab"
 
-const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, onMouseLeave, t}) => {
+const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
   css_class = css_class + NAMES[entry.categories && entry.categories[0]];
   const isEvent = (entry.categories && entry.categories[0] === IDS.EVENT);
@@ -23,17 +24,27 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
     <ListElement
       key           = { entry.id }
       className     = { css_class }
-      onClick       = { (ev) => { onClick(entry.id, {lat: entry.lat, lng: entry.lng}) }}
+      tabIndex = {tabIndex}
+      onClick = {() => {onClick(entry.id, {lat: entry.lat, lng: entry.lng})}}
+      onKeyPress       = { (ev) => {
+        ev.preventDefault()
+        if (ev.key === "Enter") {
+          onPressEnter(entry.id, {lat: entry.lat, lng: entry.lng})
+        }
+      }}
       onMouseEnter  = { (ev) => { ev.preventDefault(); onMouseEnter(entry.id) }}
-      onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }} >
+      onMouseLeave  = { (ev) => { ev.preventDefault(); onMouseLeave(entry.id) }}
+      onFocus = {(ev) => {ev.preventDefault(); onFocus(entry.id)}}
+      onBlur = {(ev) => {ev.preventDefault(); onBlur(entry.id)}}
+    >
       <OuterWrapper>
         <TitleCategoryDescriptionsAndFlower>
           <TitleCategoryAndDescription>
-            <span className="category">
+            <span role="search result category" className="category">
               { t("category." + NAMES[entry.categories && entry.categories[0]]) }
             </span>
-            <div>
-              <EntryTitle id={entry.id} className="title">{title}</EntryTitle>
+            <div role="entry title">
+              <EntryTitle role="entry header" id={entry.id} className="title">{title}</EntryTitle>
             </div>
             { getBody(isEvent, description, entry.city, entry.organizer) }
           </TitleCategoryAndDescription>
@@ -46,8 +57,12 @@ const ResultListElement = ({highlight, entry, ratings, onClick, onMouseEnter, on
         {
           entry.tags && !isEvent && (entry.tags.length > 0)
             ? <TagsWrapper>
-              <ul >
-                { entry.tags.slice(0, 5).map((t, index) => (t !== '') ? <Tag key={index}>#{t}</Tag> : null) }
+              <ul role="list of tags" aria-label="tags">
+                {
+                  entry.tags.slice(0, 5).map((t, index) =>
+                    (t !== '') ? <Tag role="tag" aria-label={`tag ${t}`} key={index}>#{t}</Tag> : null
+                  )
+                }
               </ul>
             </TagsWrapper>
             : null
@@ -73,8 +88,9 @@ const ResultList = props => {
 
   const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
 
-  let results = entries.map( e =>
+  let results = entries.map( (e, i) =>
     <ResultListElement
+      tabIndex     = {i ? -1 : 2}
       entry        = { e            }
       ratings      = { (e.ratings || []).map(id => ratings[id])}
       key          = { e.id         }
@@ -84,13 +100,20 @@ const ResultList = props => {
           dispatch(Actions.setCurrentEntry(id, center))
         }
       }}
-      onMouseEnter = { (id) => { dispatch(Actions.highlight(e.id)) }}
+      onPressEnter= { (id, center) => {
+        if (center) {
+          dispatch(Actions.setCurrentEntry(id, center))
+        }
+      }}
+      onMouseEnter = { (id) => { dispatch(Actions.highlight(id)) }}
       onMouseLeave = { (id) => { dispatch(Actions.highlight()) }}
+      onFocus = {(id) => {dispatch(Actions.highlight(id))}}
+      onBlur={(id) => {dispatch(Actions.highlight())}}
       t            = { t } />);
 
   if(moreEntriesAvailable && !waiting){
     results.push(
-      <ListElement key="show-more-entries">
+      <ListElement>
         <div>
           <a onClick = { onMoreEntriesClick } href="#">
             {t("resultlist.showMoreEntries")}
@@ -101,21 +124,21 @@ const ResultList = props => {
   }
     
   return (
-  <Wrapper>
-    <div className= "result-list">
-    {
-      (results.length > 0)
-        ? <ul>{results}</ul>
-        : (waiting ?
-        <p className= "loading">
-          <span>{t("resultlist.entriesLoading")}</span>
-        </p>
-        : <p className= "no-results">
-            <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
-          </p>)
-    }
-    </div>
-  </Wrapper>)
+    <Wrapper>
+      <div className= "result-list">
+        {
+          (results.length > 0)
+            ? <ul id="result-list">{results}</ul>
+            : (waiting ?
+              <p className= "loading">
+                <span>{t("resultlist.entriesLoading")}</span>
+              </p>
+              : <p className= "no-results">
+                <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
+              </p>)
+        }
+      </div>
+    </Wrapper>)
 }
 
 const getTruncatedTitle = (title, maxCharacters) => {
@@ -213,11 +236,17 @@ const ListElement = styled.li `
   &:hover {
     background: #fff;
   }
+  &:focus {
+    background: #fff;
+  }
   &.event {
     &.current-entry {
       border-left: 5px solid ${STYLE.event};
     }
     &:hover {
+      border-left: 5px solid ${STYLE.event};
+    }
+    &:focus {
       border-left: 5px solid ${STYLE.event};
     }
     span.category {
@@ -231,6 +260,9 @@ const ListElement = styled.li `
     &:hover {
       border-left: 5px solid ${STYLE.company};
     }
+    &:focus {
+      border-left: 5px solid ${STYLE.company};
+    }
     span.category {
       color: ${STYLE.company};
     }
@@ -240,6 +272,9 @@ const ListElement = styled.li `
       border-left: 5px solid ${STYLE.initiative};
     }
     &:hover {
+      border-left: 5px solid ${STYLE.initiative};
+    }
+    &:focus {
       border-left: 5px solid ${STYLE.initiative};
     }
     span.category {
@@ -313,7 +348,7 @@ const TagsWrapper = styled.div`
   }
 `
 
-const Tag = styled.div `
+const Tag = styled.span `
   line-height: 14px;
   font-size: 0.75em;
   display: inline-block;

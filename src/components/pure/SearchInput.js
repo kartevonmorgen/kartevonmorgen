@@ -81,6 +81,8 @@ const SearchInput = (props) => {
 
   return (
     <Recommender
+      tabIndex={1}
+      autoFocus
       delimeter=" "
       formatCreateLabel={(inputValue) => (inputValue)}
       filterOption={(option) => true}

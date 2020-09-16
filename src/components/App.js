@@ -24,6 +24,7 @@ import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
 import {getIcon}           from "../customizations/icons"
 import i18n from "../i18n"
+import {initialize} from "redux-form"
 
 
 class Main extends Component {
@@ -138,6 +139,8 @@ class Main extends Component {
           </SwipeableLeftPanel>
           <HideSidebarButtonWrapper>
             <button
+              tabIndex={-1}
+              aria-label="open close button for left sidebar"
               onClick={ () => {
                 if (view.showLeftPanel) {
                   return dispatch(Actions.hideLeftPanel());
@@ -153,7 +156,7 @@ class Main extends Component {
         { customizations.burgerMenu.show &&
           <RightPanel customizations={customizations.burgerMenu}>
             <div className="menu-toggle">
-              <button className="toggleButton" onClick={this.toggleRightPanel}>
+              <button tabIndex={15} className="toggleButton" onClick={this.toggleRightPanel}>
                 <img
                   alt="right panel icon"
                   className="panelIcon"
@@ -297,9 +300,47 @@ class Main extends Component {
     }
   }
 
-  escFunction(event){
+  onKeydown(event){
+    const { view, dispatch, map}  = this.props
+    const {zoom} = map
+
+    if(event.altKey && event.keyCode === 107) { // +
+      dispatch(Actions.setZoom(zoom+1))
+    }
+
+    if(event.altKey && event.keyCode === 109) { // -
+      dispatch(Actions.setZoom(zoom-1))
+
+    }
+
+    if(event.keyCode === 38) { // Up Arrow
+      const {activeElement} = document
+      if (activeElement.parentElement.id === "result-list") {
+        const {previousElementSibling} = activeElement
+        if (previousElementSibling) {
+          previousElementSibling.focus()
+        }
+      }
+    }
+
+    if(event.keyCode === 40) { // Down Arrow
+      const {activeElement} = document
+      if (activeElement.parentElement.id === "result-list") {
+        const {nextElementSibling} = activeElement
+        if (nextElementSibling) {
+          nextElementSibling.focus()
+        }
+      }
+    }
+
     if(event.keyCode === 27) { //ESC
-      const { view, dispatch}  = this.props
+      // if a form is opened for editing or adding a new entry close it
+      if(view.left === V.NEW || view.left === V.EDIT) {
+        dispatch(initialize(EDIT.id, {}, EDIT.fields));
+        dispatch(view.left === V.EDIT ? Actions.cancelEdit() : Actions.cancelNew());
+        return
+      }
+
       if(view.menu) return dispatch(Actions.toggleLandingPage())
       if(!view.showLeftPanel) return dispatch(Actions.showLeftPanel());
       if(view.left === V.ENTRY) {
@@ -312,10 +353,16 @@ class Main extends Component {
         return dispatch(Actions.search())
       }
     }
+
+    if(event.ctrlKey && event.keyCode === 13) { // ctrl + enter
+      if(view.left === V.NEW || view.left === V.EDIT) {
+        document.getElementById("license-agreement-checkbox").focus()
+      }
+    }
   }
 
   componentDidMount(){
-    document.addEventListener("keydown", (e) => this.escFunction(e), false);
+    document.addEventListener("keydown", (e) => this.onKeydown(e), false);
   }
 
   componentWillUnmount(){
@@ -753,5 +800,12 @@ const StyledApp = styled.div `
   }
   
  .hidden {
- display: none;
+    display: none;
+  }
+
+  /* ======= leaflet */
+  .leaflet-div-icon {
+    background: none;
+    border: none;
+  }
 `

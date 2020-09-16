@@ -16,6 +16,7 @@ import moment, {min} from 'moment'
 import 'react-datepicker/dist/react-datepicker.min.css';
 import en_GB from "date-fns/locale/en-GB";
 
+import {pink} from './styling/Variables';
 import Actions              from "../Actions";
 import validation           from "../util/validation";
 import NavButton            from "./pure/NavButton";
@@ -26,6 +27,7 @@ import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
 import ScrollableDiv        from "./pure/ScrollableDiv";
 import NavButtonWrapper     from "./pure/NavButtonWrapper";
+
 
 
 const renderDatePickerStart = ({input, initEndDate, endDate, ...props}) => {
@@ -167,6 +169,7 @@ class Form extends Component {
     <FormWrapper>
       <ScrollableDiv id="entryFormScrollableDiv">
         <AddEntryForm
+          role="form"
           action    = 'javascript:void();' >
 
             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
@@ -178,22 +181,23 @@ class Form extends Component {
             }
             { (!this.props.error) && this.props.submitFailed &&
               <div className="err"> { t("valueError") }
-                <FieldElement name="license" component={errorMessage} />
+                <FieldElement aria-label="license error" name="license" component={errorMessage} />
               </div>
             }
 
             <div className= "pure-form">
               <Fieldset>
-                <FieldElement className="pure-input-1" name="category" disabled={ isEdit && isEvent } component="select" onChange={this.handleCategoryChange}>
-                  <option value={-1}>- {t("chooseCategory")} -</option>
+                <FieldElement aria-label="category" className="pure-input-1" name="category" disabled={ isEdit && isEvent } component="select" onChange={this.handleCategoryChange}>
+                  <option value={-1}>{t("chooseCategory")}</option>
                   <option value={IDS.INITIATIVE}>{t("category." + NAMES[IDS.INITIATIVE])}</option>
                   <option value={IDS.COMPANY}>{t("category." + NAMES[IDS.COMPANY])}</option>
                   <option disabled={ isEdit } value={IDS.EVENT}>{t("category." + NAMES[IDS.EVENT])}</option>
                 </FieldElement>
 
-                <FieldElement name="category" component={errorMessage} />
+                <FieldElement aria-label="category error" name="category" component={errorMessage} />
 
                 <FieldElement
+                  aria-label="title"
                   name="title"
                   required={true}
                   className="pure-input-1"
@@ -202,6 +206,7 @@ class Form extends Component {
                   placeholder={t("title")} />
 
                 <FieldElement
+                  aria-label="title error"
                   name="title"
                   component={errorMessage} />
 
@@ -247,11 +252,12 @@ class Form extends Component {
 
                 )}
 
-                <FieldElement name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
+                <FieldElement aria-label="description" name="description" className="pure-input-1" component="textarea" placeholder={t("description")}  />
                 {isDescriptionTooLong && <div className="warn">{t("keepDescriptionShort")}</div>}
-                <FieldElement name="description" component={errorMessage} />
+                <FieldElement aria-label="description error" name="description" component={errorMessage} />
 
                 <FieldElement
+                  aria-label="tags"
                   name="tags"
                   required={true}
                   className="pure-input-1"
@@ -259,6 +265,7 @@ class Form extends Component {
                   component={SelectTags}
                 />
                 <FieldElement
+                  aria-label="tags error"
                   name="tags"
                   component={errorMessage}
                 />
@@ -266,7 +273,7 @@ class Form extends Component {
 
               <Fieldset>
                 <FieldsetLegend>
-                  <FieldsetTitle>{t("location")}</FieldsetTitle>
+                  <FieldsetTitle aria-label="location section">{t("location")}</FieldsetTitle>
                 </FieldsetLegend>
 
                 <div className={classNames("pure-g", "hidden")}>
@@ -302,13 +309,27 @@ class Form extends Component {
                   </label>
                   <div className= "pure-u-22-24 pure-g">
                     <div className= "pure-u-11-24">
-                      <FieldElement name="lat" className="pure-input-1" component="input" readOnly={true}/>
-                      <FieldElement name="lat" component={errorMessage} />
+                      <FieldElement
+                        aria-label="latitude"
+                        name="lat"
+                        className="pure-input-1"
+                        component="input"
+                        readOnly={true}
+                        placeholder="Latitude"
+                      />
+                      <FieldElement aria-label="latitude error" name="lat" component={errorMessage} />
                     </div>
-                    <div className= "pure-u-2-24"></div>
+                    <div className= "pure-u-2-24" />
                     <div className= "pure-u-11-24">
-                      <FieldElement name="lng" className="pure-input-1" component="input" readOnly={true} />
-                      <FieldElement name="lng" component={errorMessage} />
+                      <FieldElement
+                        aria-label="longitude"
+                        name="lng"
+                        className="pure-input-1"
+                        component="input"
+                        readOnly={true}
+                        placeholder="longitude"
+                      />
+                      <FieldElement aria-label="longitude error" name="lng" component={errorMessage} />
                     </div>
                   </div>
                 </div>
@@ -316,7 +337,7 @@ class Form extends Component {
 
               <Fieldset>
                 <OptionalLegend>
-                  <FieldsetTitle>{t("contact")}</FieldsetTitle>
+                  <FieldsetTitle aria-label="contact section">{t("contact")}</FieldsetTitle>
                 </OptionalLegend>
 
                 {
@@ -327,6 +348,7 @@ class Form extends Component {
                     </OptionalFieldLabel>
                     <div className= "pure-u-22-24">
                       <FieldElement
+                        aria-label="organizer"
                         name="organizer"
                         className="pure-input-1 optional"
                         component="input"
@@ -342,6 +364,7 @@ class Form extends Component {
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
                     <FieldElement
+                      aria-label="homepage"
                       name="homepage"
                       className="pure-input-1 optional"
                       component="input"
@@ -355,8 +378,8 @@ class Form extends Component {
                     <FontAwesomeIcon icon="envelope" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement name="email" type="email" className="pure-input-1 optional" component="input" placeholder={t("email")} />
-                    <FieldElement name="email" component={errorMessage} />
+                    <FieldElement aria-label="email" name="email" type="email" className="pure-input-1 optional" component="input" placeholder={t("email")} />
+                    <FieldElement aria-label="email error" name="email" component={errorMessage} />
                   </div>
                 </div>
 
@@ -365,8 +388,8 @@ class Form extends Component {
                     <FontAwesomeIcon icon="phone" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
-                    <FieldElement name="telephone" component={errorMessage} />
+                    <FieldElement aria-label="telephone" name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
+                    <FieldElement aria-label="telephone error" name="telephone" component={errorMessage} />
                   </div>
                 </div>
 
@@ -377,10 +400,14 @@ class Form extends Component {
                       <FontAwesomeIcon icon="clock" />
                     </OptionalFieldLabel>
                     <div className= "pure-u-22-24">
-                      <FieldElement name="opening_hours" className="pure-input-1 optional" component="input" placeholder={t("openingHours")} />
-                      <FieldElement name="opening_hours" component={errorMessage} />
+                      <FieldElement aria-label="opening hours string" name="opening_hours" className="pure-input-1 optional" component="input" placeholder={t("openingHours")} />
+                      <FieldElement aria-label="opening hours error" name="opening_hours" component={errorMessage} />
+                      {/*for the accessibility the element with focus should be destiguishable*/}
+                      {/*on google chrome elements get a blue border and since it happened to be*/}
+                      {/*the same with the primary color of pure css, a pink border (contrast) is considered*/}
                       <a
-                        className={classNames("pure-u-1-1", "pure-button", "button-secondary")}
+                        aria-label="link to an automatic opening hours string generator."
+                        className={classNames("pure-u-1-1", "pure-button", "button-secondary", "opening-hours-generator")}
                         href="https://projets.pavie.info/yohours"
                         rel="noopener noreferrer"
                         target="_blank"
@@ -403,8 +430,8 @@ class Form extends Component {
                     <FontAwesomeIcon icon="camera" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement name="image_url" className="pure-input-1 optional" component="input" placeholder={t("imageUrl")} />
-                    <FieldElement name="image_url" component={errorMessage} />
+                    <FieldElement aira-label="cover image url" name="image_url" className="pure-input-1 optional" component="input" placeholder={t("imageUrl")} />
+                    <FieldElement aria-label="cover image url error" name="image_url" component={errorMessage} />
                   </div>
                 </div>
                 <div className= "pure-g">
@@ -412,8 +439,8 @@ class Form extends Component {
                     <FontAwesomeIcon icon="link" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement name="image_link_url" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
-                    <FieldElement name="image_link_url" component={errorMessage} />
+                    <FieldElement aria-label="link behind the cover image" name="image_link_url" className="pure-input-1 optional" component="input" placeholder={t("imageLink")} />
+                    <FieldElement aria-label="link behind the cover image error" name="image_link_url" component={errorMessage} />
                   </div>
                 </div>
               </Fieldset>
@@ -437,18 +464,23 @@ class Form extends Component {
                          document.getElementsByName('license')[0].click(event)
                          return false
                        }}>
-                    <FieldElement name="license" component="input" type="checkbox" onClick={function (event) {
-                      event.stopPropagation()
-                    }}/>
+                    <FieldElement
+                      id="license-agreement-checkbox"
+                      aria-label="accept licence"
+                      name="license"
+                      component="input"
+                      type="checkbox"
+                      onClick={(event) => {event.stopPropagation()}}
+                    />
                   </div>
                   <div className= "pure-u-20-24">
-                    <FieldElement name="license" component={errorMessage} />
+                    <FieldElement aria-label="license agreement error" name="license" component={errorMessage} />
                     {t("iHaveRead") + " "}
                     { license == LICENSES.ODBL
-                      ? <a target="_blank" href={URLs.ODBL_LICENSE.link}>
+                      ? <a aria-label="link to open database license" target="_blank" href={URLs.ODBL_LICENSE.link}>
                         {t("openDatabaseLicense")}
                       </a>
-                      : <a target="_blank" href={URLs.CC_LICENSE.link}>
+                      : <a aria-label="link to creative common license" target="_blank" href={URLs.CC_LICENSE.link}>
                         {t("creativeCommonsLicense")}
                       </a>
                     } {" " + t("licenseAccepted")}
@@ -461,6 +493,7 @@ class Form extends Component {
         </ScrollableDiv>
         <StyledNavButtonWrapper className="menu pure-g">
           <NavButton
+            tabIndex={0}
             keyName = "cancel"
             classname = "pure-u-1-2"
             onClick = {() => {
@@ -472,6 +505,7 @@ class Form extends Component {
             style={cancelButtonCustomization}
           />
           <NavButton
+            tabIndex={0}
             keyName = "save"
             classname = "pure-u-1-2"
             onClick = { () => {
@@ -535,6 +569,12 @@ const AddEntryForm = styled.form`
   margin: 2em 1.6em 0;
   select {
     height: 2.5em;
+  }
+  
+  .opening-hours-generator {
+    &:focus {
+      border: 2px solid ${pink}
+    }
   }
 `
 const FieldsetTitle = styled.span`

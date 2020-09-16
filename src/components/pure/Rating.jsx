@@ -33,10 +33,10 @@ const Rating = (rating, t, displayOptions = {}) => {
     <RatingWrapper>
       { displayOptions.hideTitle ? '' :
         <TitleWrapper>
-          <span>{t("ratings.valueName." + rating_value_key(rating.value))}:</span><RatingTitle>{rating.title}</RatingTitle>
+          <span tabIndex={0}>{t("ratings.valueName." + rating_value_key(rating.value))}:</span><RatingTitle tabIndex={0}>{rating.title}</RatingTitle>
         </TitleWrapper>
       }
-      <CommentWrapper className="comment" key={comment.id}>
+      <CommentWrapper tabIndex={0} className="comment" key={comment.id}>
         { comment.text }
         <div>
           {displayOptions.hideTitle ? t("ratings.valueName." + rating_value_key(rating.value)) : ''}

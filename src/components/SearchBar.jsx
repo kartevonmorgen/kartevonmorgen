@@ -11,14 +11,16 @@ import SearchInput from "./pure/SearchInput"
 
 const CategoryButtons = ({ disabled, active, onToggle, t }) => {
 
-  const buttons = MAIN_IDS.map((c) => {
+  const buttons = MAIN_IDS.map((c, i) => {
     const act = [].indexOf.call(active || [], c) >= 0;
     return (
       <button
+        tabIndex={16+i}
         key       = { c }
         disabled  = { disabled }
         onClick   = { () => { onToggle(c) }}
-        className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}>
+        className = { NAMES[c] + " " + CSS_CLASS_SIZE[c] + (act ? " active" : "")}
+      >
         { t("category." + NAMES[c]) + " " }
       </button>);
   });

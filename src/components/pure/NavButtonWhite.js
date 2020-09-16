@@ -12,12 +12,14 @@ const NavigationButtonWrapperRight = styled.div`
   text-align: right;
 `;
 
-const NavigationButton = styled.span`
+const NavigationButton = styled.button`
   color: ${props => props.aboveImage ? "#fff" : "#888"};
   cursor: pointer;
   padding: 4px 7px;
   border-radius: 2px;
   filter: ${props => props.aboveImage ? "drop-shadow(1px 1px 1px rgba(0,0,0,0.5))" : "none"};
+  background: none;
+  border: none;
 
   :hover {
     color: #000;
@@ -27,10 +29,11 @@ const NavigationButton = styled.span`
   }
 `;
 
-const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) => {
+const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage, ariaLabel }) => {
   const button = buttonRight ? 
     <NavigationButtonWrapperRight>
       <NavigationButton
+        aria-label={ariaLabel}
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>
@@ -41,6 +44,7 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage }) =>
     : 
     <NavigationButtonWrapper>
       <NavigationButton
+        aria-label={ariaLabel}
         key = { keyName }
         onClick = { onClick }
         aboveImage = { aboveImage }>

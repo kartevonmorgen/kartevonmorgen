@@ -1,4 +1,4 @@
-import React, { Component, Fragment }     from "react"
+import React, { Component }     from "react"
 import {connect}                from "react-redux"
 import { icons }                from "vm-leaflet-icons"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -13,7 +13,8 @@ import T                        from "prop-types";
 import { FontAwesomeIcon }      from '@fortawesome/react-fontawesome'
 import { Fab, Action as ActionButon } from 'react-tiny-fab'
 import ReactTooltip from        'react-tooltip'
-import { Map, TileLayer, Marker, CircleMarker, Tooltip } from "react-leaflet"
+import {divIcon, point as leafletPoint} from "leaflet"
+import { Map, TileLayer, Marker, Tooltip } from "react-leaflet"
 import {getIcon}                from '../customizations/icons'
 
 import  "leaflet/dist/leaflet.css"
@@ -56,11 +57,36 @@ class KVMMap extends Component {
       //map.fireLeafletEvent('load', map)
       map.leafletElement.addControl(L.control.zoom({position: 'bottomright'}))
       this.props.onMoveend(this.getMapCoordinates())
+
+      document.getElementsByClassName("map leaflet-container")[0].setAttribute("tabindex", "7")
+      document.getElementsByClassName("leaflet-control-zoom-out")[0].setAttribute("tabindex", "8")
+      document.getElementsByClassName("leaflet-control-zoom-in")[0].setAttribute("tabindex", "9")
+      document.getElementsByClassName("rtf--mb")[0].setAttribute("tabindex", "12")
+
     }
 
     this.props.fetchProminentTags()
     this.props.fetchTags()
   }
+
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   if (!isEqual(prevProps.entries, this.props.entries)) {
+  //     const markersElements = document.getElementsByClassName("leaflet-interactive")
+  //     const sortedEntries = sortBy(this.props.entries, "id")
+  //     if (markersElements) {
+  //       for (var i = 0; i !== markersElements.length; i++) {
+  //         const markerElement = markersElements[i]
+  //         const entry = sortedEntries[i]
+  //         // markerElement.setAttribute("id", entry.id)
+  //         markerElement.setAttribute("tabindex", "0")
+  //         markerElement.addEventListener("click", (e) => {
+  //           e.preventDefault()
+  //           console.log(e.target)
+  //         })
+  //       }
+  //     }
+  //   }
+  // }
 
   getMapCoordinates(){
     const m = this.refs.map.leafletElement
@@ -90,6 +116,8 @@ class KVMMap extends Component {
       t
     } = this.props;
 
+    // const entries = sortBy(this.props.entries, "id")
+
     const url = window.location.href
 
     var markers = [];
@@ -112,6 +140,9 @@ class KVMMap extends Component {
             if( marker ) opacity = 0.3;
             markers.push(
               <Marker
+                alt={e.title}
+                keyboard={false}
+                title={e.title}
                 key       = { e.id }
                 onClick   = { () => { onMarkerClick(e.id) }}
                 position  = {{ lat: e.lat, lng: e.lng }}
@@ -129,39 +160,53 @@ class KVMMap extends Component {
             if( marker ) opacity = 0.3;
 
 
+            const markerColor = this.getCategoryColorById(customizations.circleMarkers, e.categories[0])
             markers.push(
-              <CircleMarker
-                onClick   = { () => { onMarkerClick(e.id) }}
+              <Marker
+                alt={e.title}
+                keyboard={false}
+                title={e.title}
+                icon={divIcon({
+                  iconSize: leafletPoint(20, 20),
+                  html: `
+                  <svg height="20" width="20">
+                     <circle
+                       cx="10"
+                       cy="10"
+                       r="9"
+                       stroke="white"
+                       stroke-width="0.7"
+                       fill="${markerColor}"
+                       opacity=${opacity}
+                     />
+                  </svg>
+                `
+                })}
                 key       = { e.id }
-                center    = {{ lat: e.lat, lng: e.lng }}
-                opacity   = { 1 }
-                radius    = { 9 }
-                color     = { "#fff" }
-                weight    = { 0.7 }
-                fillColor = { this.getCategoryColorById(customizations.circleMarkers, e.categories[0]) }
-                fillOpacity = { opacity }
+                onClick   = { () => { onMarkerClick(e.id) }}
+                position  = {{ lat: e.lat, lng: e.lng }}
               >
                 <SmallTooltip direction='bottom' offset={[0, 10]}><h3>{e.title}</h3></SmallTooltip>
-              </CircleMarker>
+              </Marker>
             );
           }
 
-          if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
-
-            let yOffset = 10
-            if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
-
-            markers.push(
-              <CircleMarker
-                onClick   = { () => { onMarkerClick(e.id) }}
-                key       = { e.id + "-highlight"}
-                center    = {{ lat: e.lat, lng: e.lng }}
-                opacity   = { 0 }
-                fillOpacity = { 0 }
-              >
-                <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
-              </CircleMarker>);
-          }
+          // if(highlight.length > 0 && highlight.indexOf(e.id) == 0){
+          //
+          //   let yOffset = 10
+          //   if(e.ratings && e.ratings.length > 0 && avg_rating && avg_rating > 0) yOffset = 2
+          //
+          //   markers.push(
+          //     <CircleMarker
+          //       onClick   = { () => { onMarkerClick(e.id) }}
+          //       key       = { e.id + "-highlight"}
+          //       center    = {{ lat: e.lat, lng: e.lng }}
+          //       opacity   = { 0 }
+          //       fillOpacity = { 0 }
+          //     >
+          //       <SmallTooltip permanent={true} direction='bottom' offset={[0, yOffset]}><h3>{e.title}</h3></SmallTooltip>
+          //     </CircleMarker>);
+          // }
         }
       });
     }
@@ -173,6 +218,7 @@ class KVMMap extends Component {
     return (
       <Wrapper>
         <Map
+          attributionControl={false}
           ref         = 'map'
           center      = { center }
           zoom        = { zoom }
@@ -193,9 +239,9 @@ class KVMMap extends Component {
             ? <Marker position = { marker } icon = { this.getIconById(customizations.name, parseInt(this.props.category)) } />
             : null
           }
-          }
         </Map>
         <Fab
+          aria-lable="sharing button"
           event="click"
           icon={
             <ShareIcon data-tip={t('share')} data-for="shareButton" icon="share-square" color="black"/>
@@ -206,8 +252,9 @@ class KVMMap extends Component {
           }}
         >
           <div style={{paddingTop: 10}}>
-            <CopyToClipboard text={url}>
+            <CopyToClipboard tabIndex={13} text={url}>
               <ActionButon
+                aira-lable="copy URL"
                 onClick={() => showNotification(t('growler.linkCopied'), "success")}
                 style={{
                   backgroundColor: 'white',
@@ -225,6 +272,8 @@ class KVMMap extends Component {
           </div>
           <div style={{paddingTop: 30}}>
             <ActionButon
+              tabIndex={14}
+              aria-label="get embedding code"
               onClick={() => showEmbedModal()}
               style={{
                 backgroundColor: 'white',
@@ -246,6 +295,7 @@ class KVMMap extends Component {
             <LocateButtonContainer className="leaflet-right">
               <LocateButtonInnerContainer className = "leaflet-control-locate leaflet-bar leaflet-control">
                 <LocateButton
+                  tabIndex = {10}
                   className   = "leaflet-bar-part leaflet-bar-part-single" //"locate-icon"
                   onClick     = { this.props.onLocate }
                   title       = "Zeige meine Position" >

@@ -29,10 +29,10 @@ const EntryImage = ({ image_url, image_link_url }) => {
     <ImageWrapper>
       { image_link_url ?
         <a href={ image_link_url } target="_blank">
-          <Image src={image_url} style={ backgroundImageStyle }></Image>
+          <Image role="image" aria-label="cover image of entry" src={image_url} style={ backgroundImageStyle }/>
         </a>
         :
-        <Image src={image_url} style={ backgroundImageStyle }></Image>
+        <Image role="image" aria-label="cover image of entry" src={image_url} style={ backgroundImageStyle } />
       }
     </ImageWrapper>
   );

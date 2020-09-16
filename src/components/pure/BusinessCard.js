@@ -19,7 +19,7 @@ const Tags = (tags=[], onClick, clickable) =>
         .filter(t => t != "")
         .map( (t,index) =>
           <Tag key={index}>
-            <TagLink onClick={ () => onClick(t) } clickable={clickable}>#{t}</TagLink>
+            <TagLink tabIndex={0} onClick={ () => onClick(t) } clickable={clickable}>#{t}</TagLink>
           </Tag>
         )}
     </TagList>
@@ -105,17 +105,17 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
     return (
       <EntryDetailPage hasImage={hasImage}>
         <EntryCategory category={categoryName}>
-          <span>
+          <span tabIndex={0}>
             { i18n.t("category." + categoryName) }
           </span>
         </EntryCategory>
-        <EntryTitle>{entry.title}</EntryTitle>
+        <EntryTitle tabIndex={0}>{entry.title}</EntryTitle>
         { isEvent ? <EventTimes start={ entry.start } end={ entry.end } showTimes={ true }/> : "" }
-        <EntryDescription>
+        <EntryDescription tabIndex={0}>
           {getDescription()}
           {
             isDescriptionTooLong && !showFulldescription &&
-            <FlatButon onClick={() => setShowMoreDescription(true)}>{i18n.t("entryDetails.readMore")}</FlatButon>
+            <FlatButon tabIndex={0} onClick={() => setShowMoreDescription(true)}>{i18n.t("entryDetails.readMore")}</FlatButon>
           }
         </EntryDescription>
 
