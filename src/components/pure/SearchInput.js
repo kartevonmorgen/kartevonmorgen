@@ -8,7 +8,7 @@ import isEqual from "lodash/isEqual"
 
 const SearchInput = (props) => {
 
-  const {t} = props
+  const {t, fixedTagsStr} = props
 
   const [allOptions, setAllOptions] = useState([])
   const [options, setOptions] = useState([])
@@ -101,7 +101,7 @@ const SearchInput = (props) => {
       onChange={handleChange}
       onKeyDown={props.onKeyDown}
       options={options}
-      placeholder={t("searchbar.placeholder")}
+      placeholder={fixedTagsStr || t("searchbar.placeholder")}
       inputValue={props.searchText}
       value={[]}
     />

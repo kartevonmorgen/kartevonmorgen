@@ -16,11 +16,12 @@ export const getHistoryLink = (entryId, type) => {
   }
 }
 
-export default (entry, center, zoom, searchText, showLeft, categories) => {
+export default (entry, center, zoom, searchText, showLeft, categories, fixedTags) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
-  } else if (center) {
+  }
+  if (center) {
     params.push("center=" + center.lat.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES)
       + "," +  center.lng.toFixed(mapConst.NUM_DECIMALS_FOR_COORDINATES));
   }
@@ -30,13 +31,19 @@ export default (entry, center, zoom, searchText, showLeft, categories) => {
   if (categories) {
     params.push("categories=" + categories);
   }
+
   // if ((entry && entry != "NONE") {
-  if (!(entry && entry != "NONE") && searchText) {
+  if (searchText) {
     params.push(searchTextToUrlQuery(searchText));
   }
+
   if (showLeft != null) {
     params.push("left=" + (showLeft ? "show" : "hide"));
   }
-  
+
+  if (fixedTags) {
+    params.push("fixedTags=" + fixedTags.join())
+  }
+
   return "#/?" + params.join("&");
 }

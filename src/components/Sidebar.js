@@ -69,6 +69,8 @@ class Sidebar extends Component {
     const entry = entries[search.current] || null;
     const isEventForEdit = entry && entry.categories && entry.categories.length > 0 && entry.categories[0] === IDS.EVENT;
 
+    const fixedTagsStr = search.fixedTags.map(tag => `#${tag}`).join(' ')
+
     var content;
     switch (view.left) {
       case V.RESULT:
@@ -137,7 +139,7 @@ class Sidebar extends Component {
             dispatch(Actions.setCurrentEntry(null, null));
             dispatch(Actions.showSearchResults());
             dispatch(Actions.setCenterInUrl(map.center));
-            dispatch(Actions.restoreSearch());
+            // dispatch(Actions.restoreSearch());
           };
 
           const onEdit = () => {
@@ -325,7 +327,8 @@ class Sidebar extends Component {
           customizations.searchBar.show
           ? <div className={"search " + ((view.left === V.RESULT) ? 'open' : 'closed')}>
             <SearchBar
-                searchText={search.text}
+                searchText={search.text.startsWith(fixedTagsStr) ? search.text.substr(fixedTagsStr.length).trimStart() : search.text}
+                fixedTagsStr={fixedTagsStr}
                 categories={search.categories}
                 categoryChooser={customizations.categoryChooser}
                 type="integrated"
@@ -338,10 +341,9 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-                onChange={txt => {
-                  if (txt == null) {
-                    txt = "";
-                  }
+              onChange={txt => {
+                  txt = txt ? `${fixedTagsStr} ${txt}`: fixedTagsStr
+
                   dispatch(Actions.setSearchText(txt));
                   return dispatch(Actions.search());
                 }}

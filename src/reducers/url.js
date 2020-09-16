@@ -1,3 +1,4 @@
+import isObject from "lodash/isObject"
 import T from "../constants/ActionTypes";
 import parseUrl from "../util/parseUrl";
 import constructUrl from "../util/constructUrl";
@@ -19,7 +20,7 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories, addentry } = params;
+    var { zoom, entry, search, tags, left, categories, addentry, fixedTags } = params;
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -73,10 +74,12 @@ module.exports = (state=initialState, action={}) => {
       break;
 
     case T.SET_MAP_CENTER:
-      center = center = {
-        lat: parseFloat(action.payload.lat),
-        lng: parseFloat(action.payload.lng)
-      };
+      if (isObject(action.payload)) {
+        center = {
+          lat: parseFloat(action.payload.lat),
+          lng: parseFloat(action.payload.lng)
+        };
+      }
       break;
 
     case T.SET_ZOOM:
@@ -85,6 +88,7 @@ module.exports = (state=initialState, action={}) => {
 
     case T.SET_CURRENT_ENTRY:
       entry = action.payload;
+
       break;
 
     case T.SET_CENTER_IN_URL:
@@ -117,6 +121,6 @@ module.exports = (state=initialState, action={}) => {
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left, categories)
+    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags)
   }
 };

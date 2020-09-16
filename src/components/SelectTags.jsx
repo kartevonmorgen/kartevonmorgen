@@ -168,14 +168,14 @@ class SelectTags extends Component {
 
 const mapStateToProps = ({search}) => {
   // if history is null
-  if(!search.history) {
+  if(!search.text) {
     return {
       tagsFromSearch: null,
       allTags: search.tags.map((tagPair) => tagPair[0])
     }
   }
 
-  const tokens = search.history.split(' ').filter(t => t.length)
+  const tokens = search.text.split(' ').filter(t => t.length)
   const tags = tokens.filter(t => t.startsWith('#')).map(t => {
     // remove all '#' signs from the beginning
     while(t.charAt(0) === '#') {

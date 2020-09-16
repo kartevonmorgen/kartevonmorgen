@@ -59,7 +59,7 @@ const Actions = {
 
   showNewEntry: () =>
     (dispatch) => {
-      dispatch(Actions.setSearchText(''));
+      // dispatch(Actions.setSearchText(''));
       dispatch(serverActions.Actions.search());
       dispatch({
         type: T.SHOW_NEW_ENTRY
@@ -74,7 +74,7 @@ const Actions = {
 
   cancelNew           : () =>
     (dispatch) => {
-      dispatch(Actions.restoreSearch())
+      // dispatch(Actions.restoreSearch())
       dispatch({ type: T.CANCEL_NEW })
     },
 
@@ -178,16 +178,16 @@ const Actions = {
   setCurrentEntry: (id, center) =>
     (dispatch, getState) => {
       dispatch(Actions.highlight(id ? [id] : []));
-      dispatch({
-        type: T.SET_CURRENT_ENTRY,
-        payload: id,
-      });
       if(id && center && center.lat && center.lng){
         dispatch(Actions.setZoom(mapConst.ENTRY_DEFAULT_ZOOM));
         dispatch(Actions.setCenter(center));
       } else if (id) {
         dispatch(Actions.setCenter(id));
       }
+      dispatch({
+        type: T.SET_CURRENT_ENTRY,
+        payload: id,
+      });
     },
 
   editCurrentEntry: () =>

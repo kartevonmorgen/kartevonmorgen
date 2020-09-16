@@ -36,12 +36,15 @@ class SearchBar extends React.Component {
 
   render() {
 
-    const { categoryChooser, categories, disabled, toggleCat, searchText, t, loading } = this.props;
+    const { categoryChooser, categories, disabled, toggleCat, searchText, t, loading, fixedTagsStr  } = this.props;
 
 
     return (
       <Bar
-        className = "SearchBar pure-g" integrated={this.props.type==="integrated"} standalone= {this.props.type==="standalone"} >
+        className="SearchBar pure-g"
+        integrated={this.props.type==="integrated"}
+        standalone= {this.props.type==="standalone"}
+      >
         {categoryChooser.show && (<MainCategories className = "main-categories pure-u-1 pure-g" standalone= {this.props.type==="standalone"}>
           <CategoryButtons
             active    = { categories }
@@ -78,6 +81,7 @@ class SearchBar extends React.Component {
             }}
             onChange    = { this.props.onChange }
             searchText       = { searchText || '' }
+            fixedTagsStr = {fixedTagsStr}
           />
         </div>
       </Bar>)
@@ -87,6 +91,7 @@ class SearchBar extends React.Component {
 SearchBar.propTypes = {
   type        : T.oneOf(["standalone","integrated",""]),
   searchText  : T.string,
+  fixedTagsStr: T.string,
   categories  : T.array,
   disabled    : T.bool,
   toggleCat   : T.func,

@@ -18,6 +18,7 @@ const initialState = {
   invisible: [],
   addresses: [],
   cities: [],
+  fixedTags: [], //https://github.com/kartevonmorgen/kartevonmorgen/issues/667
   prominentTags: [], // the default tags shown in the search input
   tags: [],
   searchByUrl: true,
@@ -96,11 +97,23 @@ module.exports = (state = initialState, action = {}) => {
       }
 
     case T.UPDATE_STATE_FROM_URL:
-      const searchText = parseUrl(action.payload).params.search;
+      const parsedUrl = parseUrl(action.payload)
+      const {fixedTags} = parsedUrl.params
+
+      let searchText = parsedUrl.params.search || "";
+
+      if (fixedTags) {
+        const fixedTagsStr = fixedTags.map(tag => `#${tag}`).join(' ')
+
+        if (!searchText.startsWith(fixedTagsStr)) {
+          searchText = `${fixedTagsStr} ${searchText}`
+        }
+      }
 
       return {
         ...state,
-        text: searchText || ""
+        text: searchText || "",
+        fixedTags: fixedTags || []
       }
 
     case T.SET_CITY_SEARCH_TEXT:
@@ -118,7 +131,6 @@ module.exports = (state = initialState, action = {}) => {
         }
       }
       return state;
-      break;
 
     case T.SEARCH_RESULT_EVENTS:
       if (!action.error) {
