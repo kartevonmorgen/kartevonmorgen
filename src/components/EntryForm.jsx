@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect }          from 'react-redux'
 import { translate        } from "react-i18next";
 import T                    from "prop-types";
@@ -6,10 +6,9 @@ import styled               from "styled-components";
 import classNames            from "classnames";
 import DatePicker from 'react-datepicker';
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import { reduxForm,
-         Field,
-         initialize, formValueSelector, getFormSyncErrors}       from "redux-form";
-         
+import { reduxForm, Field, initialize}       from "redux-form";
+
+import update from 'immutability-helper'
 import lodashGet from 'lodash/get'
 import moment, {min} from 'moment'
 
@@ -128,10 +127,14 @@ class Form extends Component {
     isEventEntry: false,
     startDate: '',
     endDate: '',
+    numberOfCustomLinks: 1,
   };
 
   componentDidMount() {
-    this.setState({isEventEntry: this.props.category === IDS.EVENT})
+    this.setState({
+      isEventEntry: this.props.category === IDS.EVENT,
+      numberOfCustomLinks: this.props.numberOfCustomLinks || 1
+    })
   }
 
   handleCategoryChange = (event) => {
@@ -153,9 +156,7 @@ class Form extends Component {
 
     const {saveButtonCustomization, cancelButtonCustomization} = this.props;
 
-    const { isEventEntry } = this.state;
-    const { startDate } = this.state;
-    const { endDate } = this.state;
+    const { isEventEntry, startDate, endDate } = this.state;
     const initStartDate = formStartEndDate.startDate ? new window.Date(formStartEndDate.startDate) : '';
     const initEndDate = formStartEndDate.endDate ? new window.Date(formStartEndDate.endDate) : '';
     // TODO: use process.env.ENTRY_DESCRIPTION_WARN_LIMIT instead of hard code
@@ -168,9 +169,7 @@ class Form extends Component {
     return (
     <FormWrapper>
       <ScrollableDiv id="entryFormScrollableDiv">
-        <AddEntryForm
-          role="form"
-          action    = 'javascript:void();' >
+        <AddEntryForm role="form"   action='javascript:void();' >
 
             <h3>{isEdit ? t("editEntryHeading") :  t("newEntryHeading")}</h3>
 
@@ -405,6 +404,9 @@ class Form extends Component {
                       {/*for the accessibility the element with focus should be destiguishable*/}
                       {/*on google chrome elements get a blue border and since it happened to be*/}
                       {/*the same with the primary color of pure css, a pink border (contrast) is considered*/}
+                    </div>
+                    <div className= "pure-u-2-24"/>
+                    <div className= "pure-u-22-24">
                       <a
                         aria-label="link to an automatic opening hours string generator."
                         className={classNames("pure-u-1-1", "pure-button", "button-secondary", "opening-hours-generator")}
@@ -417,7 +419,89 @@ class Form extends Component {
                     </div>
                   </div>
                 }
+              </Fieldset>
+              <Fieldset>
+                <OptionalLegend>
+                  <FieldsetTitle>{t("links")}</FieldsetTitle>
+                </OptionalLegend>
 
+                {[...Array(this.state.numberOfCustomLinks).keys()].map(i => (
+                  <Fragment key={`link_${i}`}>
+                    <OptionalFieldText>#{i+1}</OptionalFieldText>
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="link"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_url_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder={t("linkUrl")}
+                        />
+                        <FieldElement name={`link_url_${i}`} component={errorMessage}/>
+                      </div>
+                    </div>
+
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="marker"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_title_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder={t("linkTitle")}/>
+                      </div>
+                    </div>
+
+                    <div className="pure-g">
+                      <OptionalFieldLabel className="pure-u-2-24">
+                        <FontAwesomeIcon icon="align-justify"/>
+                      </OptionalFieldLabel>
+                      <div className="pure-u-22-24">
+                        <FieldElement
+                          name={`link_description_${i}`}
+                          className="pure-input-1 optional"
+                          component="input"
+                          placeholder={t("linkDescription")}
+                        />
+                        <FieldElement name={`link_description_${i}`} component={errorMessage}/>
+                      </div>
+                    </div>
+
+                    {this.state.numberOfCustomLinks !== i+1 && <Hr/>}
+                  </Fragment>
+                ))}
+                <div style={{marginTop: 10}} className="pure-g">
+                  <div className="pure-u-2-24"/>
+                  <button
+                    className={classNames("pure-button", "button-secondary", "pure-u-11-24")}
+                    onClick={() => this.setState(prevState => update(
+                      prevState,
+                      {numberOfCustomLinks: {$set: prevState.numberOfCustomLinks + 1}}
+                    ))}
+                  >
+                    <FontAwesomeIcon icon="plus"/>
+                  </button>
+                  <button
+                    className={classNames("pure-button", "button-warning", "pure-u-11-24")}
+                    onClick={() => {
+                      if (this.state.numberOfCustomLinks === 1) {
+                        return
+                      }
+
+                      this.setState(prevState => update(
+                        prevState,
+                        {numberOfCustomLinks: {$set: prevState.numberOfCustomLinks - 1}})
+                      )
+
+                    }}
+                  >
+                    <FontAwesomeIcon icon="minus"/>
+                  </button>
+                </div>
               </Fieldset>
 
               <Fieldset>
@@ -459,7 +543,7 @@ class Form extends Component {
                     <FontAwesomeIcon icon={['fab', 'creative-commons']}/>
                   </label>
                   <div className="pure-u-2-24 pure-controls"
-                    onClick={function (event) {
+                       onClick={function (event) {
                          event.preventDefault()
                          document.getElementsByName('license')[0].click(event)
                          return false
@@ -570,7 +654,7 @@ const AddEntryForm = styled.form`
   select {
     height: 2.5em;
   }
-  
+
   .opening-hours-generator {
     &:focus {
       border: 2px solid ${pink}
@@ -612,6 +696,8 @@ const Fieldset = styled.fieldset`
 `;
 
 const OptionalFieldLabel = styled.label`
+  display: felx;
+  align-items: center;
   color: #777;
 `;
 
@@ -648,6 +734,13 @@ const RangeDates = styled.div`
     transform: translateX(-50%);
   }
 `;
+
+const Hr = styled.hr`
+  background-color: #e5e5e5;
+  border-width: 0;
+  height: 1px;
+  width: 150px;
+`
 
 const Date = styled.div`
   display: flex;

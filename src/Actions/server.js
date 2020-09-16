@@ -35,7 +35,6 @@ const Actions = {
 
   fetchProminentTags: () =>
     (dispatch) => {
-    console.log("prominent tags")
       WebAPI.getProminentTags((prominentTags, err) => {
         if (err) {
           console.error(err)

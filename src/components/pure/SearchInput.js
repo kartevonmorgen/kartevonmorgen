@@ -81,6 +81,7 @@ const SearchInput = (props) => {
 
   return (
     <Recommender
+      createOptionPosition="first"
       tabIndex={1}
       autoFocus
       delimeter=" "

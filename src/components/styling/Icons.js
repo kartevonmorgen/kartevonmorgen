@@ -38,11 +38,18 @@ library.add(
   ,require('@fortawesome/free-solid-svg-icons/faToolbox').definition
   ,require('@fortawesome/free-solid-svg-icons/faShoppingBasket').definition
   ,require('@fortawesome/free-solid-svg-icons/faLightbulb').definition
+  ,require('@fortawesome/free-solid-svg-icons/faMarker').definition
+  ,require('@fortawesome/free-solid-svg-icons/faAlignJustify').definition
+  ,require('@fortawesome/free-solid-svg-icons/faMinus').definition
 
   ,require('@fortawesome/free-regular-svg-icons/faFrown').definition
 
   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition
   ,require('@fortawesome/free-brands-svg-icons/faFacebook').definition
+  ,require('@fortawesome/free-brands-svg-icons/faInstagram').definition
+  ,require('@fortawesome/free-brands-svg-icons/faTwitter').definition
+  ,require('@fortawesome/free-brands-svg-icons/faWhatsapp').definition
+  ,require('@fortawesome/free-brands-svg-icons/faTelegram').definition
   ,require('@fortawesome/free-brands-svg-icons/faCreativeCommons').definition
 
   ,require('@fortawesome/free-brands-svg-icons/faGithub').definition

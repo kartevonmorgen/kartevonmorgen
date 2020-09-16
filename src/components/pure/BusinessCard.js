@@ -7,6 +7,7 @@ import STYLE                  from "../styling/Variables"
 import AddressLine            from "./AddressLine";
 import EventTimes             from "./EventTimes";
 import EventRegistrationInfo  from "./EventRegistrationInfo";
+import CustomLinks            from "./CustomLinks"
 import { ROUTEPLANNERS }      from "../../constants/URLs.js"
 import { NAMES }              from "../../constants/Categories"
 import i18n                   from "../../i18n";
@@ -168,7 +169,10 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
           ),
           (entry.tags && entry.tags.filter(t => t !== "").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
-            : null)
+            : null),
+          <Hr key="business_hr_2"/>,
+          (entry.custom &&
+            <CustomLinks key="custom_links" customLinks={entry.custom}/>),
         ]}
 
         </EntryDetailsOtherData>

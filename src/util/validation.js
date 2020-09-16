@@ -1,3 +1,4 @@
+import validUrl from 'valid-url'
 import i18n from "../i18n";
 
 const entryForm = (data) => {
@@ -96,6 +97,41 @@ const entryForm = (data) => {
       errors.image_link_url = t("invalidURL");
     }
   }
+
+  // the errors for extra links
+  // if a description or title is provided, the url is mandatory
+  const createLinkUrl = (relativeField) => {
+    const fieldParts = relativeField.split('_')
+    fieldParts[1] = 'url'
+    return fieldParts.join('_')
+  }
+  Object.keys(data).map(field => {
+    if ((field.startsWith("link_title") || field.startsWith("link_description")) && data[field]) {
+      const urlField = createLinkUrl(field)
+      if (!data[urlField]) {
+        errors[urlField] = t("requiredField");
+      }
+    }
+
+    if (field.startsWith("link_url")) {
+      if (data[field] && !validUrl.isWebUri(data[field])) {
+        errors[field] = t("invalidURL")
+      } else {
+        const filedNumber = parseInt(field.split('_')[2])
+        for (let i = 0; i !== filedNumber; i++) {
+          if (data[`link_url_${i}`] === data[field]) {
+            errors[field] = t("invalidURL")
+            break
+          }
+        }
+      }
+    }
+
+    if (field.startsWith('link_description') && data[field].length > 30) {
+      errors[field] = t("descriptionTooLong")
+    }
+  })
+
   return errors;
 };
 

@@ -19,7 +19,7 @@ import Map                  from "./Map"
 import Sidebar              from "./Sidebar"
 import LandingPage          from "./LandingPage"
 import { EDIT }             from "../constants/Form"
-import STYLE                from "./styling/Variables"
+import STYLE, {pink}                from "./styling/Variables"
 import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
 import mapConst             from "../constants/Map"
 import {getIcon}           from "../customizations/icons"
@@ -649,6 +649,13 @@ const StyledApp = styled.div `
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(66, 184, 221); /* this is a light blue */
+  }
+  
+  .button-warning {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: ${pink}
   }
 
   .fa {

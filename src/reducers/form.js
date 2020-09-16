@@ -1,5 +1,4 @@
 import T            from "../constants/ActionTypes";
-import C            from "../constants/Categories";
 
 import { reducer as formReducer } from "redux-form";
 
@@ -19,7 +18,7 @@ const reducer = formReducer.plugin({
         };
 
       case T.EDIT_CURRENT_ENTRY:
-        return {
+        const newState = {
           ...state,
           values: {
             ...action.payload,
@@ -29,6 +28,20 @@ const reducer = formReducer.plugin({
           },
           kvm_flag_id: action.payload.id
         }
+
+        delete newState.values.custom
+
+        if (action.payload.custom) {
+          action.payload.custom.map((customLink, i) => {
+            newState.values[`link_url_${i}`] = customLink.url
+            newState.values[`link_title_${i}`] = customLink.title || ""
+            newState.values[`link_description_${i}`] = customLink.description || ""
+
+            return null
+          })
+        }
+
+        return newState
       case T.SET_TAGS:
         return {
           ...state,
@@ -106,13 +119,13 @@ const reducer = formReducer.plugin({
     const { payload } = action;
 
     switch (action.type) {
-    case T.SHOW_NEW_RATING:
-      return {
-        ...state,
-        kvm_flag_id: payload,
-      };
-    default:
-      return state;
+      case T.SHOW_NEW_RATING:
+        return {
+          ...state,
+          kvm_flag_id: payload,
+        };
+      default:
+        return state;
     }
   },
 
@@ -121,13 +134,13 @@ const reducer = formReducer.plugin({
     const { payload } = action;
 
     switch (action.type) {
-    case T.SHOW_NEW_COMMENT:
-      return {
-        ...state,
-        kvm_flag_id: payload,
-      };
-    default:
-      return state;
+      case T.SHOW_NEW_COMMENT:
+        return {
+          ...state,
+          kvm_flag_id: payload,
+        };
+      default:
+        return state;
     }
   }
 
