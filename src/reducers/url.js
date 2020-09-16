@@ -88,6 +88,8 @@ module.exports = (state=initialState, action={}) => {
 
     case T.SET_CURRENT_ENTRY:
       entry = action.payload;
+      console.log(`in reducer the params are: `, params)
+      console.log('center str is: ', centerStr, center)
 
       break;
 
