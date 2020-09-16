@@ -137,7 +137,7 @@ class Sidebar extends Component {
             dispatch(Actions.setCurrentEntry(null, null));
             dispatch(Actions.showSearchResults());
             dispatch(Actions.setCenterInUrl(map.center));
-            // dispatch(Actions.restoreSearch());
+            dispatch(Actions.restoreSearch());
           };
 
           const onEdit = () => {

@@ -293,6 +293,7 @@ class Main extends Component {
 
   changeUrlAccordingToState(urlState){
     if (urlState.hash !== window.location.hash) {
+      console.log("URL CHANGE FROM APP: " + window.location.hash + " --> " + urlState.hash);
       window.history.pushState(null, null, window.location.pathname + urlState.hash);
     }
   }
