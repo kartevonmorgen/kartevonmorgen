@@ -103,11 +103,11 @@ module.exports = (state = initialState, action = {}) => {
       let searchText = parsedUrl.params.search || "";
 
       if (unchangeableTags) {
-        const unchangeableTagsStr = unchangeableTags.map(tag => `#${tag}`).join(' ')
+        const unchangeableTagsStr = unchangeableTags.reduce((concatenatedTags, tag) => {
+          return `${concatenatedTags} #${tag}`
+        }, '')
 
-        if (!searchText.startsWith(unchangeableTagsStr)) {
-          searchText = `${unchangeableTagsStr} ${searchText}`
-        }
+        searchText = `${unchangeableTagsStr} ${searchText}`
       }
 
       return {
@@ -131,6 +131,7 @@ module.exports = (state = initialState, action = {}) => {
         }
       }
       return state;
+      break;
 
     case T.SEARCH_RESULT_EVENTS:
       if (!action.error) {

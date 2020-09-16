@@ -31,7 +31,6 @@ export default (entry, center, zoom, searchText, showLeft, categories, unchangea
   if (categories) {
     params.push("categories=" + categories);
   }
-
   // if ((entry && entry != "NONE") {
   if (searchText) {
     params.push(searchTextToUrlQuery(searchText));
