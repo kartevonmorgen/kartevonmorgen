@@ -75,7 +75,10 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
   // TODO: make the length of brief description dynamic from .env
   // TODO: be careful it should be consistent with the hard limit from EntryForm
   const briefDescriptionLength = 250
-  const isDescriptionTooLong = entry.description.length > briefDescriptionLength
+  let isDescriptionTooLong = false
+  if (entry && entry.description) {
+    isDescriptionTooLong = entry.description.length > briefDescriptionLength
+  }
 
   const [showFulldescription, setShowMoreDescription] = useState(false)
 

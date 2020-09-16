@@ -149,24 +149,26 @@ class Main extends Component {
             </button>
           </HideSidebarButtonWrapper>
         </LeftPanelAndHideSidebarButton>
-        <RightPanel customizations={customizations.burgerMenu}>
-          <div className="menu-toggle">
-            <button className="toggleButton" onClick={this.toggleRightPanel} >
-              <img
-                alt="right panel icon"
-                className="panelIcon"
-                src={getIcon('burger', customizations.name).options.iconUrl}
-              />
-              <MenuFontAwesomeIcon icon={'bars'} />
-            </button>
-          </div>
-          { openRightPanel &&
+
+        { customizations.burgerMenu.show &&
+          <RightPanel customizations={customizations.burgerMenu}>
+            <div className="menu-toggle">
+              <button className="toggleButton" onClick={this.toggleRightPanel}>
+                <img
+                  alt="right panel icon"
+                  className="panelIcon"
+                  src={getIcon('burger', customizations.name).options.iconUrl}
+                />
+                <MenuFontAwesomeIcon icon={'bars'}/>
+              </button>
+            </div>
+            {openRightPanel &&
             (<div className="container">
               <u>
                 {
                   customizations.burgerMenu.links.map(item => (
                     <li>
-                      <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link} >
+                      <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link}>
                         {
                           item.translation.hasOwnProperty(language) ?
                             item.translation[language] :
@@ -185,7 +187,9 @@ class Main extends Component {
 
               <div className="language-wrapper">
                 <a
-                  onClick={() => {i18n.changeLanguage('de');}}
+                  onClick={() => {
+                    i18n.changeLanguage('de');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("de")) ? " selected" : " unselected")}
                 >
@@ -193,7 +197,9 @@ class Main extends Component {
                 </a>
                 {" "}
                 <a
-                  onClick={() => {i18n.changeLanguage('en');}}
+                  onClick={() => {
+                    i18n.changeLanguage('en');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("en")) ? " selected" : " unselected")}
                 >
@@ -201,7 +207,9 @@ class Main extends Component {
                 </a>
                 {" "}
                 <a
-                  onClick={() => {i18n.changeLanguage('es');}}
+                  onClick={() => {
+                    i18n.changeLanguage('es');
+                  }}
                   href="#"
                   className={"language-link" + ((i18n.language.includes("es")) ? " selected" : " unselected")}
                 >
@@ -209,9 +217,9 @@ class Main extends Component {
                 </a>
               </div>
             </div>)
-          }
-        </RightPanel>
-
+            }
+          </RightPanel>
+        }
         <Swipeable onSwipedRight={ (e, deltaX) => this.swipedRightOnMap(e, deltaX) } className="center">
           <Map
             customizations={customizations}
@@ -420,7 +428,7 @@ const RightPanel = styled.div `
   //   flex-direction: column;
   //   justify-content: flex-end;
   // }
-  
+
   .container {
     z-index: 1;
     background-color: #fff;
@@ -432,7 +440,7 @@ const RightPanel = styled.div `
     border: none;
     box-shadow: 0 1px 3px 0.2px rgba(0,0,0,0.5);
   }
-  
+
   .container u {
     text-decoration: none;
     list-style-type: none;
@@ -443,15 +451,15 @@ const RightPanel = styled.div `
     display: flex;
     justify-content: space-between;
   }
-  
+
   .container .icon {
     margin-left: 25px;
   }
-  
+
   .container li:last-child {
     margin-bottom: 0px;
   }
-  
+
   .container a {
     text-decoration: none;
     color: inherit;
@@ -462,7 +470,7 @@ const RightPanel = styled.div `
     justify-content: space-around;
     margin-top: 8px;
   }
-  
+
   .container .language-link {
     margin: 3pt;
     &.selected {
@@ -476,7 +484,7 @@ const RightPanel = styled.div `
       }
     }
   }
-  
+
   .menu-toggle {
     display: flex;
     justify-content: flex-end;
