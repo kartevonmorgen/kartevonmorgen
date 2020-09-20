@@ -27,7 +27,7 @@ function normalizeCoordinate(bbox, idx) {
 
 module.exports = {
 
-  searchEntries: (txt, cats, bbox, cb) => {
+  searchEntries: (txt, cats, bbox, orgTag, cb) => {
 
     if (txt == null) {
       txt = '';
@@ -44,10 +44,11 @@ module.exports = {
       .get('/search')
       .use(prefix)
       .query({
-        text: txt.trim()
+        text: txt.trim(),
+        categories: cats.length > 0 ? cats.join(',') : "",
+        bbox: bbox.join(','),
+        org_tag: orgTag
       })
-      .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
-      .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
       .end(jsonCallback(cb));
   },

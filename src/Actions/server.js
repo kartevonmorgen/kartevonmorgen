@@ -79,9 +79,8 @@ const Actions = {
 
       const searchFn = () => {
         dispatch(Actions.setSearchTime(null))
-        // console.log("SEARCH\n");
         const {search, map} = getState()
-        var cats = search.categories
+        const {categories: cats, orgTag} = search
         const sw = map.bbox._southWest
         const ne = map.bbox._northEast
         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
@@ -94,7 +93,7 @@ const Actions = {
             })
           } else {
             if (cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)) {
-              WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
+              WebAPI.searchEntries(search.text, cats, bbox, orgTag,(err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_ENTRIES,
                   payload: err || res,
