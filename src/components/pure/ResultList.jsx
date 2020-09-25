@@ -1,17 +1,13 @@
 import React                from "react"
-import ReactDOM             from "react-dom"
 import { translate }        from "react-i18next";
 import PropTypes            from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
-import Actions              from "../../Actions" //TODO: remove dependency
+import Actions              from "../../Actions"
 import Flower               from "../Flower";
-import NavButton            from "./NavButton";
 import EventTimes           from "./EventTimes";
-import i18n                 from "../../i18n";
 import { NAMES, IDS }       from "../../constants/Categories"
 import STYLE                from "../styling/Variables"
-import {Action} from "react-tiny-fab"
 
 const ResultListElement = ({highlight, entry, ratings, onClick, onPressEnter, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex, t}) => {
   var css_class = highlight ? 'highlight-entry ' : '';
@@ -86,7 +82,17 @@ const getBody = (isEvent, description, city, organizer) => {
 
 const ResultList = props => {
 
-  const { dispatch, waiting, entries, ratings, highlight, onClick, moreEntriesAvailable, onMoreEntriesClick, t} = props
+  const {
+    dispatch,
+    waiting,
+    entries,
+    ratings,
+    highlight,
+    moreEntriesAvailable,
+    onMoreEntriesClick,
+    t,
+    zoom
+  } = props
 
   let results = entries.map( (e, i) =>
     <ResultListElement
@@ -122,19 +128,40 @@ const ResultList = props => {
       </ListElement>
     );
   }
-    
+
   return (
     <Wrapper>
-      <div className= "result-list">
+      <div className="result-list">
         {
-          (results.length > 0)
-            ? <ul id="result-list">{results}</ul>
-            : (waiting ?
-              <p className= "loading">
+          (results.length > 0) ?
+            (
+              <React.Fragment>
+                <ul id="result-list">{results}</ul>
+                {results.length <= 20 && zoom &&
+                <ZoomButton
+                  className="pure-button pure-button-primary"
+                  onClick={() => dispatch(Actions.setZoom(zoom/2))}
+                >
+                  Zoom out
+                </ZoomButton>
+                }
+              </React.Fragment>
+            ) :
+            (waiting ?
+              <p className="loading">
                 <span>{t("resultlist.entriesLoading")}</span>
-              </p>
-              : <p className= "no-results">
-                <FontAwesomeIcon icon={['far', 'frown']} /> <span>{t("resultlist.noEntriesFound")}</span>
+              </p> :
+              <p className="no-results">
+                <FontAwesomeIcon icon={['far', 'frown']}/>
+                <span>{t("resultlist.noEntriesFound")}</span>
+                {zoom &&
+                <ZoomButton
+                  className="pure-button pure-button-primary"
+                  onClick={() => dispatch(Actions.setZoom(zoom/2))}
+                >
+                  Zoom out
+                </ZoomButton>
+                }
               </p>)
         }
       </div>
@@ -172,7 +199,8 @@ ResultList.propTypes = {
   moreEntriesAvailable: PropTypes.bool.isRequired,
   onMoreEntriesClick:   PropTypes.func.isRequired,
   t:                    PropTypes.func.isRequired,
-  onClick:              PropTypes.func
+  onClick:              PropTypes.func,
+  zoom:                 PropTypes.number.isRequired,
 }
 
 module.exports = translate("translation")(ResultList)
@@ -397,4 +425,12 @@ const Wrapper = styled.div `
 
     }
   }
+`
+
+const ZoomButton = styled.button`
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  align-text: center;
 `
