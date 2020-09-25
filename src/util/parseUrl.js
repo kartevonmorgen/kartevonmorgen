@@ -1,3 +1,5 @@
+import isString from 'lodash/isString'
+
 export default (original) => {
 
   const url = getHashUrl(original);
@@ -51,7 +53,7 @@ const parseSearchParams = (searchString) => {
     if (pairSplit.length >= 1 && pairSplit[0].length >= 1) {
       p[decodeURIComponent(pairSplit[0])] = decodeURIComponent(pairSplit[1]) || '';
     }
-    if (p.fixedTags) {
+    if (isString(p.fixedTags)) {
       p.fixedTags = p.fixedTags.split(',')
     }
 
