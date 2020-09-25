@@ -104,6 +104,7 @@ class Sidebar extends Component {
               moreEntriesAvailable={ search.moreEntriesAvailable }
               onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
               dispatch={dispatch}
+              zoom={map.zoom}
             />
             {
               (search.cities.length > 0) ?
