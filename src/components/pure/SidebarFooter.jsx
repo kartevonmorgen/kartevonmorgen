@@ -64,6 +64,12 @@ const Footer = props => {
   return(
     <FooterWrapper isScrollable={isScrollable} id="EntryFooter">
       <MetaFoot>
+        <a href={mailToString}><b>{t("entryDetails.reportLink")}</b></a>
+        {
+          !isEvent &&
+          <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
+        }
+
         <HistoryLink
           data-tip="archiveLink"
           data-for="archiveLink"
@@ -71,17 +77,11 @@ const Footer = props => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <b>{t("entryDetails.viewHistory")}</b>
+          {t("entryDetails.viewHistory")}
         </HistoryLink>
         <ReactTooltip id="archiveLink" type="warning" place="top">
           {t("entryDetails.viewHistoryTooltip")}
         </ReactTooltip>
-
-        <a href={mailToString}><b>{t("entryDetails.reportLink")}</b></a>
-        {
-          !isEvent &&
-          <span><a title={fullDate}>{fullDateString} // v{props.version}</a></span>
-        }
       </MetaFoot>
     </FooterWrapper>
   )
@@ -98,6 +98,7 @@ const HistoryLink = styled.a`
   display: block;
   // text-align: center;
   margin-bottom: 8px;
+  margin-top: 8px;
 `
 
 const FooterWrapper = styled.div`
