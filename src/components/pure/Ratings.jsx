@@ -128,9 +128,6 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
   if(entry){
     return(
       <RatingsWrapper id="RatingWrapper">
-        <FlowerWrapper>
-          <Flower ratings={ratings} radius={40} showTooltip={true} />
-        </FlowerWrapper>
         <HeadingWrapper>
           <h3>{t("heading")}</h3>
           <AdditionalRatingButtonWrapper>
@@ -142,6 +139,9 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
             }
           </AdditionalRatingButtonWrapper>
         </HeadingWrapper>
+        <FlowerWrapper>
+          <Flower ratings={ratings} radius={40} showTooltip={true} />
+        </FlowerWrapper>
         { entry.ratings && entry.ratings.length > 0
           ? <div>
             { ratingElements }
@@ -181,6 +181,7 @@ module.exports = Ratings;
 const RatingsWrapper = styled.div`
   flex-grow: 1;
   margin: 1.8em;
+  margin-top: 0;
   color: #333;
 `
 
@@ -207,7 +208,7 @@ const FirstRatingButton = styled.button`
 
 const HeadingWrapper = styled.div`
   position: relative;
-  margin-top: 2em;
+  margin-top: 0.5em;
 `;
 
 const RatingTopicWrapper = styled.ul`
