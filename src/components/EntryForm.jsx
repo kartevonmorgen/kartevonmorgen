@@ -409,7 +409,7 @@ class Form extends Component {
                     <div className= "pure-u-22-24">
                       <a
                         aria-label="link to an automatic opening hours string generator."
-                        className={classNames("pure-u-1-1", "pure-button", "button-secondary", "opening-hours-generator")}
+                        className={classNames("pure-u-1-1", "opening-hours-generator")}
                         href="https://projets.pavie.info/yohours"
                         rel="noopener noreferrer"
                         target="_blank"
@@ -656,6 +656,7 @@ const AddEntryForm = styled.form`
   }
 
   .opening-hours-generator {
+  margin-top: 8px;
     &:focus {
       border: 2px solid ${pink}
     }
