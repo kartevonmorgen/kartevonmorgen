@@ -25,7 +25,7 @@ const Aspect = styled.div`
 `
 
 const AspectLabel = styled.label`
-  font-weight: bold;
+  font-weight: 500 !important;
 `
 
 const AspectExplanation = styled.div`
