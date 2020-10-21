@@ -359,16 +359,11 @@ class Form extends Component {
 
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
-                    <FontAwesomeIcon icon="globe-africa" />
+                    <FontAwesomeIcon icon="phone" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement
-                      aria-label="homepage"
-                      name="homepage"
-                      className="pure-input-1 optional"
-                      component="input"
-                      placeholder={t("homepage")} />
-                    <FieldElement name="homepage" component={errorMessage} />
+                    <FieldElement aria-label="telephone" name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
+                    <FieldElement aria-label="telephone error" name="telephone" component={errorMessage} />
                   </div>
                 </div>
 
@@ -384,14 +379,18 @@ class Form extends Component {
 
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
-                    <FontAwesomeIcon icon="phone" />
+                    <FontAwesomeIcon icon="globe-africa" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement aria-label="telephone" name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
-                    <FieldElement aria-label="telephone error" name="telephone" component={errorMessage} />
+                    <FieldElement
+                      aria-label="homepage"
+                      name="homepage"
+                      className="pure-input-1 optional"
+                      component="input"
+                      placeholder={t("homepage")} />
+                    <FieldElement name="homepage" component={errorMessage} />
                   </div>
                 </div>
-
 
                 { !this.state.isEventEntry &&
                   <div className= "pure-g">

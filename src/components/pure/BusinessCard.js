@@ -128,23 +128,23 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
               <FontAwesomeIconElement icon="user" />
               { entry.organizer }
             </div> : null),
-          ((entry.homepage && entry.registration !== "homepage") ?
-            <div key="hp">
-              <FontAwesomeIconElement icon="globe-africa" />
-              { getHomepageLink(entry, t) }
-            </div> : null),
-          ((entry.email && entry.registration !== "email") ?
-            <div key="mail">
-              <FontAwesomeIconElement icon="envelope" />
-              { getMailLink(entry) }
-            </div>
-            : null),
           ((entry.telephone && entry.registration !== "telephone")
             ?
             <div key="tel">
               <FontAwesomeIconElement icon="phone" />{ getTelLink(entry) }
             </div>
             : null),
+          ((entry.email && entry.registration !== "email") ?
+            <div key="mail">
+              <FontAwesomeIconElement icon="envelope" />
+              { getMailLink(entry) }
+            </div>
+            : null),
+          ((entry.homepage && entry.registration !== "homepage") ?
+            <div key="hp">
+              <FontAwesomeIconElement icon="globe-africa" />
+              { getHomepageLink(entry, t) }
+            </div> : null),
           ((entry.street && entry.zip && entry.city) ?
             <React.Fragment key="address">
               <div key="addr">
@@ -161,6 +161,8 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
               <Hr />
             </React.Fragment>
             : null),
+          (entry.custom &&
+            <CustomLinks key="custom_links" customLinks={entry.custom}/>),
           (entry.opening_hours &&
             <React.Fragment key="openinghours">
               <OpeningHours oh={entry.opening_hours} />
@@ -171,8 +173,6 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
             ? Tags(entry.tags, onTag, tagsClickable)
             : null),
           <Hr key="business_hr_2"/>,
-          (entry.custom &&
-            <CustomLinks key="custom_links" customLinks={entry.custom}/>),
         ]}
 
         </EntryDetailsOtherData>
