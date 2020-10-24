@@ -72,7 +72,7 @@ const Actions = {
       })
     },
 
-  search: () =>
+  search: (all=false) =>
     (dispatch, getState) => {
 
       dispatch(Actions.setSearchTime(Date.now()))
@@ -81,12 +81,13 @@ const Actions = {
         dispatch(Actions.setSearchTime(null))
         // console.log("SEARCH\n");
         const {search, map} = getState()
-        var cats = search.categories
+        const searchTerm = all ? null : search.text
+        var cats = all ? Object.values(IDS) : search.categories
         const sw = map.bbox._southWest
         const ne = map.bbox._northEast
         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
 
-        if (search.text == null || !search.text.trim().endsWith("#")) {
+        if (searchTerm == null || !searchTerm.trim().endsWith("#")) {
 
           if (!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)) {
             dispatch({
@@ -94,12 +95,12 @@ const Actions = {
             })
           } else {
             if (cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)) {
-              WebAPI.searchEntries(search.text, cats, bbox, (err, res) => {
+              WebAPI.searchEntries(searchTerm, cats, bbox, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_ENTRIES,
                   payload: err || res,
                   error: err != null,
-                  noList: search.text == null
+                  noList: searchTerm == null
                 })
                 const entries =
                   Array.isArray(res != null ? res.visible : void 0)
@@ -122,7 +123,7 @@ const Actions = {
             }
 
             if (cats.includes(IDS.EVENT)) {
-              WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+              WebAPI.searchEvents(searchTerm, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS,
                   payload: err || res,
@@ -131,7 +132,7 @@ const Actions = {
               })
 
               // search events without place:
-              WebAPI.searchEvents(search.text, null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+              WebAPI.searchEvents(searchTerm, null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
                   payload: err || res,
@@ -141,8 +142,8 @@ const Actions = {
             }
           }
 
-          if (search.text != null) {
-            const address = search.text.replace(/#/g, "")
+          if (searchTerm != null) {
+            const address = searchTerm.replace(/#/g, "")
             WebAPI.searchAddressNominatim(address, (err, res) => {
               dispatch({
                 type: T.SEARCH_ADDRESS_RESULT,
@@ -174,6 +175,8 @@ const Actions = {
 
   fetchAllEntries: () =>
     (dispatch, getState) => {
+    
+    
       // const {map} = getState()
       // const cats = Object.values(IDS)
       // const sw = map.bbox._southWest

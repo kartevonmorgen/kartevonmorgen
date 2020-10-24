@@ -136,11 +136,11 @@ class Form extends Component {
       numberOfCustomLinks: this.props.numberOfCustomLinks || 1
     })
 
-    this.props.dispatch(Actions.fetchAllEntries())
+    this.props.dispatch(Actions.search(true))
   }
 
   componentWillUnmount() {
-    console.log("form unmounted")
+    this.props.dispatch(Actions.search(false))
   }
 
   handleCategoryChange = (event) => {
