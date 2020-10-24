@@ -88,8 +88,8 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
           </svg>
         </LeafWrapper>
 
-        { ratingsInTopics(contextRatings).map(topicRatings =>
-          <RatingTopicWrapper>
+        { ratingsInTopics(contextRatings).map((topicRatings, i) =>
+          <RatingTopicWrapper key={`rating-topic-wrapper-${i}`}>
             { topicRatings.map( (rating, index) =>
               <li key={rating.id}>
                 {Rating(rating, t_r, {hideTitle: (index!=0)} )}

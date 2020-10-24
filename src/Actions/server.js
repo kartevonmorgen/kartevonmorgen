@@ -172,6 +172,57 @@ const Actions = {
 
     },
 
+  fetchAllEntries: () =>
+    (dispatch, getState) => {
+      // const {map} = getState()
+      // const cats = Object.values(IDS)
+      // const sw = map.bbox._southWest
+      // const ne = map.bbox._northEast
+      // const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
+      //
+      // WebAPI.searchEntries("", cats, bbox, (err, res) => {
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_ENTRIES,
+      //     payload: err || res,
+      //     error: err != null,
+      //     noList: null
+      //   })
+      //   const entries =
+      //     Array.isArray(res != null ? res.visible : void 0)
+      //       ? Array.isArray(res.invisible)
+      //         ? res.visible.concat(res.invisible)
+      //         : res.visible
+      //       : res != null
+      //         ? res.invisible
+      //         : void 0
+      //
+      //   const ids = entries ? entries.map(e => e.id) : null
+      //   if (ids && (Array.isArray(ids)) && ids.length > 0) {
+      //     dispatch(Actions.getEntries(ids))
+      //   }
+      // })
+      //
+      // // todo: the calls are synchronized. make it async
+      // WebAPI.searchEvents("", bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+      //   debugger
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_EVENTS,
+      //     payload: err || res,
+      //     error: err != null
+      //   })
+      // })
+      //
+      // // search events without place:
+      // WebAPI.searchEvents("", null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+      //   debugger
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
+      //     payload: err || res,
+      //     error: err != null
+      //   })
+      // })
+    },
+
   searchCity: () =>
     (dispatch, getState) => {
       dispatch(Actions.setSearchTime(Date.now()))
