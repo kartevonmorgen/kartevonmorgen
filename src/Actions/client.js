@@ -162,9 +162,10 @@ const Actions = {
   },
 
   setZoom: (zoom) => {
+    zoom = Math.round(parseFloat(zoom) * 100) / 100 //round to 2 decimals
     return {
       type: T.SET_ZOOM,
-      payload: parseFloat(zoom)
+      payload: zoom
     };
   },
 
