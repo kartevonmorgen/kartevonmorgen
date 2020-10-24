@@ -296,7 +296,7 @@ class Main extends Component {
 
   changeUrlAccordingToState(urlState){
     if (urlState.hash !== window.location.hash) {
-      window.history.pushState(null, null, window.location.pathname + urlState.hash);
+      history.replaceState(null, null, window.location.pathname + urlState.hash);
     }
   }
 

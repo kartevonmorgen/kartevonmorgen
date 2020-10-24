@@ -429,6 +429,7 @@ const Wrapper = styled.div `
 
 const ZoomButton = styled.button`
   display: block;
+  margin-left: 8px;
   margin-top: 15px;
   margin-bottom: 15px;
   width: 100%;
