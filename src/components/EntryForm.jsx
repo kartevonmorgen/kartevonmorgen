@@ -345,23 +345,20 @@ class Form extends Component {
                   <FieldsetTitle aria-label="contact section">{t("contact")}</FieldsetTitle>
                 </OptionalLegend>
 
-                {
-                  this.state.isEventEntry &&
-                  <div className= "pure-g">
-                    <OptionalFieldLabel className= "pure-u-2-24">
-                      <FontAwesomeIcon icon="user" />
-                    </OptionalFieldLabel>
-                    <div className= "pure-u-22-24">
-                      <FieldElement
-                        aria-label="organizer"
-                        name="organizer"
-                        className="pure-input-1 optional"
-                        component="input"
-                        placeholder={t("contactPerson")} />
-                      <FieldElement name="organizer" component={errorMessage} />
-                    </div>
+                <div className= "pure-g">
+                  <OptionalFieldLabel className= "pure-u-2-24">
+                    <FontAwesomeIcon icon="user" />
+                  </OptionalFieldLabel>
+                  <div className= "pure-u-22-24">
+                    <FieldElement
+                      aria-label="organizer"
+                      name="organizer"
+                      className="pure-input-1 optional"
+                      component="input"
+                      placeholder={t("contactPerson")} />
+                    <FieldElement name="organizer" component={errorMessage} />
                   </div>
-                }
+                </div>
 
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
