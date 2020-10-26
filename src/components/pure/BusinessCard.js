@@ -161,16 +161,18 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
               <Hr />
             </React.Fragment>
             : null),
-          <Hr key="horizontal-separator"/>,
-          (entry.custom &&
-            <CustomLinks key="custom_links" customLinks={entry.custom}/>),
+          (entry.custom && (
+            <React.Fragment key="custom_links">
+              <CustomLinks customLinks={entry.custom}/>
+              <Hr/>
+            </React.Fragment>
+          )),
           (entry.opening_hours &&
             <React.Fragment key="openinghours">
               <OpeningHours oh={entry.opening_hours} />
               <Hr />
             </React.Fragment>
           ),
-          <Hr key="horizontal-separator-2"/>,
           (entry.tags && entry.tags.filter(t => t !== "").length > 0
             ? Tags(entry.tags, onTag, tagsClickable)
             : null),
