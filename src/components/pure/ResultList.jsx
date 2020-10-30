@@ -138,12 +138,14 @@ const ResultList = props => {
               <React.Fragment>
                 <ul id="result-list">{results}</ul>
                 {results.length <= 20 && zoom &&
-                <ZoomButton
-                  className="pure-button pure-button-primary"
-                  onClick={() => dispatch(Actions.setZoom(zoom/2))}
-                >
-                  Zoom out
-                </ZoomButton>
+                  <div className="pure-g">
+                    <ZoomButton
+                      className="pure-button pure-button-primary pure-u-1-1"
+                      onClick={() => dispatch(Actions.setZoom(zoom/2))}
+                    >
+                      Zoom out
+                    </ZoomButton>
+                  </div>
                 }
               </React.Fragment>
             ) :
@@ -155,12 +157,14 @@ const ResultList = props => {
                 <FontAwesomeIcon icon={['far', 'frown']}/>
                 <span>{t("resultlist.noEntriesFound")}</span>
                 {zoom &&
-                <ZoomButton
-                  className="pure-button pure-button-primary"
-                  onClick={() => dispatch(Actions.setZoom(zoom/2))}
-                >
-                  Zoom out
-                </ZoomButton>
+                <div className="pure-g">
+                  <ZoomButton
+                    className="pure-button pure-button-primary pure-u-1-1"
+                    onClick={() => dispatch(Actions.setZoom(zoom/2))}
+                  >
+                    Zoom out
+                  </ZoomButton>
+                </div>
                 }
               </p>)
         }
