@@ -59,6 +59,8 @@ const CustomLinks = (props) => {
 
           return l1.title.length - l2.title.length
         }
+
+        return -1
       }
 
       if (l2.icon) {
@@ -97,7 +99,7 @@ const CustomLinks = (props) => {
                   </IconContainer>
                 }
                 {link.title &&
-                  <LinkTitle>{link.title}</LinkTitle>
+                  <LinkTitle hasIcon={!!link.icon}>{link.title}</LinkTitle>
                 }
               </IconLink>
             </LinkContainer>
@@ -116,6 +118,7 @@ const IconContainer = styled.div`
 const LinkTitle = styled.span`
   color: grey;
   font-size: 15px;
+  padding-left: ${props => props.hasIcon ? "0px" : "28px"};
 `
 
 const IconLink = styled.a`
@@ -127,7 +130,7 @@ const IconLink = styled.a`
 `
 
 const LinkContainer = styled.div`
-  height: ${props => props.link.icon ? "45px" : "30px"};
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: ${props => !props.link.title ? "center" : "left"};
