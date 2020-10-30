@@ -123,10 +123,10 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
         <Hr />
 
         <EntryDetailsOtherData>{[
-          ((entry.organizer) ?
+          ((entry.organizer || entry.contact_name) ?
             <div key="organizer">
               <FontAwesomeIconElement icon="user" />
-              { entry.organizer }
+              { entry.organizer || entry.contact_name }
             </div> : null),
           ((entry.telephone && entry.registration !== "telephone")
             ?
