@@ -4,6 +4,7 @@ import WebAPI from "../WebAPI"
 import {EDIT, RATING, LOGIN, REGISTER} from "../constants/Form"
 import {NEW_ENTRY_LICENSE} from "../constants/App"
 import {NUMBER_TAGS_TO_FETCH} from "../constants/Search"
+import {EDIT as EDIT_PANEL, NEW as NEW_PANEL} from "../constants/PanelView"
 import {initialize, stopSubmit} from "redux-form"
 import mapConst from "../constants/Map"
 import appConst from "../constants/App"
@@ -72,15 +73,17 @@ const Actions = {
       })
     },
 
-  search: (all=false) =>
+  search: (all=null) =>
     (dispatch, getState) => {
-
       dispatch(Actions.setSearchTime(Date.now()))
 
       const searchFn = () => {
         dispatch(Actions.setSearchTime(null))
         // console.log("SEARCH\n");
-        const {search, map} = getState()
+        const {search, map, view} = getState()
+        if (all !== false) {
+          all = all || view.left === NEW_PANEL || view.left === EDIT_PANEL
+        }
         const searchTerm = all ? null : search.text
         var cats = all ? Object.values(IDS) : search.categories
         const sw = map.bbox._southWest
