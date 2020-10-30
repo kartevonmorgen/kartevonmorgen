@@ -219,7 +219,6 @@ class Sidebar extends Component {
                 title: data.title,
                 description: data.description,
                 tags: data.tags ? data.tags.split(',') : null,
-                organizer: data.organizer,
                 homepage: data.homepage,
                 telephone: data.telephone,
                 opening_hours: data.opening_hours,
@@ -239,6 +238,13 @@ class Sidebar extends Component {
                 start: data.start && convertDateToTimestamp(data.start),
                 links: getFormCustomLinks(data)
               };
+              if (data.organizer) {
+                dataToSend.organizer = data.organizer
+              }
+              if (data.contact_name) {
+                dataToSend.contact_name = data.contact_name
+              }
+
               if (form[EDIT.id]) {
                 dataToSend.id = form[EDIT.id].kvm_flag_id;
               }

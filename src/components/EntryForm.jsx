@@ -352,7 +352,7 @@ class Form extends Component {
                   <div className= "pure-u-22-24">
                     <FieldElement
                       aria-label="organizer"
-                      name="organizer"
+                      name={isEvent ? "organizer" : "contact_name"}
                       className="pure-input-1 optional"
                       component="input"
                       placeholder={t("contactPerson")} />
