@@ -218,7 +218,6 @@ class KVMMap extends Component {
     return (
       <Wrapper>
         <Map
-          attributionControl={false}
           ref         = 'map'
           center      = { center }
           zoom        = { zoom }
