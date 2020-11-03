@@ -130,18 +130,20 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
       <RatingsWrapper id="RatingWrapper">
         <HeadingWrapper>
           <h3>{t("heading")}</h3>
-          <AdditionalRatingButtonWrapper>
-            { entry.ratings && entry.ratings.length > 0
-              ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>
-                { t("newRating") }
-              </AdditionalRatingButton>
-              : ""
-            }
-          </AdditionalRatingButtonWrapper>
         </HeadingWrapper>
         <FlowerWrapper>
           <Flower ratings={ratings} radius={40} showTooltip={true} />
         </FlowerWrapper>
+        <AdditionalRatingButtonWrapper>
+          {entry.ratings && entry.ratings.length > 0
+            ? <AdditionalRatingButton onClick={() => {
+              onRate(entry.id)
+            }}>
+              {t("newRating")}
+            </AdditionalRatingButton>
+            : ""
+          }
+        </AdditionalRatingButtonWrapper>
         { entry.ratings && entry.ratings.length > 0
           ? <div>
             { ratingElements }
@@ -186,11 +188,13 @@ const RatingsWrapper = styled.div`
 `
 
 const AdditionalRatingButtonWrapper = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
-  height: 20px;
-  font-size: 0.8em;
+  height: 30px;
+  font-size: 0.9em;
+  margin-bottom: 16px;
+  margin-top: 16px;
 `
 
 const AdditionalRatingButton = styled.button`
@@ -208,7 +212,7 @@ const FirstRatingButton = styled.button`
 
 const HeadingWrapper = styled.div`
   position: relative;
-  margin-top: 0.5em;
+  margin-top: 0.3em;
 `;
 
 const RatingTopicWrapper = styled.ul`
