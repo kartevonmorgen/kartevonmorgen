@@ -236,14 +236,10 @@ class Sidebar extends Component {
                 image_link_url: data.image_link_url,
                 end: data.end && convertDateToTimestamp(data.end),
                 start: data.start && convertDateToTimestamp(data.start),
-                links: getFormCustomLinks(data)
+                links: getFormCustomLinks(data),
+                organizer: data.organizer,
+                contact_name: data.contact_name
               };
-              if (data.organizer) {
-                dataToSend.organizer = data.organizer
-              }
-              if (data.contact_name) {
-                dataToSend.contact_name = data.contact_name
-              }
 
               if (form[EDIT.id]) {
                 dataToSend.id = form[EDIT.id].kvm_flag_id;
