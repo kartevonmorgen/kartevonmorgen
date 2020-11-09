@@ -135,6 +135,12 @@ class Form extends Component {
       isEventEntry: this.props.category === IDS.EVENT,
       numberOfCustomLinks: this.props.numberOfCustomLinks || 1
     })
+
+    this.props.dispatch(Actions.search(true))
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(Actions.search(false))
   }
 
   handleCategoryChange = (event) => {
@@ -339,36 +345,28 @@ class Form extends Component {
                   <FieldsetTitle aria-label="contact section">{t("contact")}</FieldsetTitle>
                 </OptionalLegend>
 
-                {
-                  this.state.isEventEntry &&
-                  <div className= "pure-g">
-                    <OptionalFieldLabel className= "pure-u-2-24">
-                      <FontAwesomeIcon icon="user" />
-                    </OptionalFieldLabel>
-                    <div className= "pure-u-22-24">
-                      <FieldElement
-                        aria-label="organizer"
-                        name="organizer"
-                        className="pure-input-1 optional"
-                        component="input"
-                        placeholder={t("contactPerson")} />
-                      <FieldElement name="organizer" component={errorMessage} />
-                    </div>
-                  </div>
-                }
-
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
-                    <FontAwesomeIcon icon="globe-africa" />
+                    <FontAwesomeIcon icon="user" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
                     <FieldElement
-                      aria-label="homepage"
-                      name="homepage"
+                      aria-label="organizer"
+                      name={isEvent ? "organizer" : "contact_name"}
                       className="pure-input-1 optional"
                       component="input"
-                      placeholder={t("homepage")} />
-                    <FieldElement name="homepage" component={errorMessage} />
+                      placeholder={t("contactPerson")} />
+                    <FieldElement name="organizer" component={errorMessage} />
+                  </div>
+                </div>
+
+                <div className= "pure-g">
+                  <OptionalFieldLabel className= "pure-u-2-24">
+                    <FontAwesomeIcon icon="phone" />
+                  </OptionalFieldLabel>
+                  <div className= "pure-u-22-24">
+                    <FieldElement aria-label="telephone" name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
+                    <FieldElement aria-label="telephone error" name="telephone" component={errorMessage} />
                   </div>
                 </div>
 
@@ -384,14 +382,18 @@ class Form extends Component {
 
                 <div className= "pure-g">
                   <OptionalFieldLabel className= "pure-u-2-24">
-                    <FontAwesomeIcon icon="phone" />
+                    <FontAwesomeIcon icon="globe-africa" />
                   </OptionalFieldLabel>
                   <div className= "pure-u-22-24">
-                    <FieldElement aria-label="telephone" name="telephone" className="pure-input-1 optional" component="input" placeholder={t("phone")} />
-                    <FieldElement aria-label="telephone error" name="telephone" component={errorMessage} />
+                    <FieldElement
+                      aria-label="homepage"
+                      name="homepage"
+                      className="pure-input-1 optional"
+                      component="input"
+                      placeholder={t("homepage")} />
+                    <FieldElement name="homepage" component={errorMessage} />
                   </div>
                 </div>
-
 
                 { !this.state.isEventEntry &&
                   <div className= "pure-g">
@@ -409,7 +411,7 @@ class Form extends Component {
                     <div className= "pure-u-22-24">
                       <a
                         aria-label="link to an automatic opening hours string generator."
-                        className={classNames("pure-u-1-1", "pure-button", "button-secondary", "opening-hours-generator")}
+                        className={classNames("pure-u-1-1", "opening-hours-generator")}
                         href="https://projets.pavie.info/yohours"
                         rel="noopener noreferrer"
                         target="_blank"
@@ -656,6 +658,7 @@ const AddEntryForm = styled.form`
   }
 
   .opening-hours-generator {
+  margin-top: 8px;
     &:focus {
       border: 2px solid ${pink}
     }

@@ -104,6 +104,7 @@ class Sidebar extends Component {
               moreEntriesAvailable={ search.moreEntriesAvailable }
               onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
               dispatch={dispatch}
+              zoom={map.zoom}
             />
             {
               (search.cities.length > 0) ?
@@ -218,7 +219,6 @@ class Sidebar extends Component {
                 title: data.title,
                 description: data.description,
                 tags: data.tags ? data.tags.split(',') : null,
-                organizer: data.organizer,
                 homepage: data.homepage,
                 telephone: data.telephone,
                 opening_hours: data.opening_hours,
@@ -236,8 +236,11 @@ class Sidebar extends Component {
                 image_link_url: data.image_link_url,
                 end: data.end && convertDateToTimestamp(data.end),
                 start: data.start && convertDateToTimestamp(data.start),
-                links: getFormCustomLinks(data)
+                links: getFormCustomLinks(data),
+                organizer: data.organizer,
+                contact_name: data.contact_name
               };
+
               if (form[EDIT.id]) {
                 dataToSend.id = form[EDIT.id].kvm_flag_id;
               }
