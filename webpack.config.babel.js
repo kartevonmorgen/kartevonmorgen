@@ -48,6 +48,14 @@ const config = {
         ],
       },
       {
+        test:   /\.tsx?$/,
+        loader: "ts-loader",
+        include: [
+          path.resolve(__dirname, "src"),
+        ],
+        exclude: /node_modules/
+      },
+      {
         test:   /\.css$/,
         use: [
           "style-loader",
@@ -86,7 +94,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".jsx", ".tsx", ".js", ".ts", ".json"],
     alias: {
       // This is a quick fix:
       // Without pointing to the minified leaflet file
