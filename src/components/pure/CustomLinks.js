@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import styled from "styled-components";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
@@ -67,21 +68,46 @@ const CustomLinks = (props) => {
         return 1
       }
 
-      return l1.title.length - l2.title.length
+      if (!l1.title && !l2.title){
+        return l1.url.length - l2.url.length
+      }
+      if(l1.title && !l2.title) {
+        return -1
+      }
+      if(!l1.title && l2.title) {
+        return 1
+      }
+      if(l1.title && l2.title) {
+        return l1.title.length - l2.title.length
+      }
     })
 
     setCustomLinks(richedLinks)
   }, [links])
 
+
+  const renderText = ({icon, title, url}) => {
+    if (!title) {
+      if (icon) {
+        return null
+      }
+
+      return <LinkTitle hasIcon={!!icon}>{`${url.substring(0, 25)} ...`}</LinkTitle>
+    }
+
+    return <LinkTitle hasIcon={!!icon}>{title}</LinkTitle>
+  }
+
   return (
     <div className="pure-g">
       {
         customLinks.map((link, i) => {
+          const isFullLine = !link.icon || !!link.title
           return (
             <LinkContainer
               className={classNames({
-                "pure-u-1-5": !link.title,
-                "pure-u-1-1": !!link.title,
+                "pure-u-1-1": isFullLine,
+                "pure-u-1-5": !isFullLine,
               })}
               key={`custom-link-${i}`}
               link={link}
@@ -98,9 +124,7 @@ const CustomLinks = (props) => {
                     }
                   </IconContainer>
                 }
-                {link.title &&
-                  <LinkTitle hasIcon={!!link.icon}>{link.title}</LinkTitle>
-                }
+                {renderText(link)}
               </IconLink>
             </LinkContainer>
           )
@@ -108,6 +132,14 @@ const CustomLinks = (props) => {
       }
     </div>
   )
+}
+
+CustomLinks.defaultProps = {
+  customLinks: []
+}
+
+CustomLinks.propTypes = {
+  customLinks: PropTypes.array
 }
 
 
@@ -133,7 +165,7 @@ const LinkContainer = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: ${props => !props.link.title ? "center" : "left"};
+  justify-content: ${props => (!props.link.title && props.link.icon) ? "center" : "left"};
 `
 
 export default CustomLinks
