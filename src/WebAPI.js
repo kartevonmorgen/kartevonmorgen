@@ -1,11 +1,12 @@
 import request from "superagent/lib/client";
 import saPrefix from "superagent-prefix";
 import { TILEHOSTING_API_KEY } from "./constants/App";
-import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS } from "./constants/URLs"
+import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES } from "./constants/URLs"
 import CATEGORY_IDS from "./constants/Categories";
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search";
 
 const prefix = saPrefix(OFDB_API.link);
+const publicResources = saPrefix(PUBLIC_RESOURCES.link)
 const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn';
 
 const jsonCallback = (cb) => (err, res) => {
@@ -427,5 +428,19 @@ module.exports = {
       .set('Accept', 'application/json')
       .use(prefix)
       .end(cb);
+  },
+
+  getDropdowns: (name, cb) => {
+    request
+      .get(`/customizations/dropdowns/${name}.dropdown.json`)
+      .set('Accept', 'application/json')
+      .use(publicResources)
+      .end((err, res) => {
+        if (err) {
+          return null
+        }
+
+        cb(res.body)
+      })
   }
 };

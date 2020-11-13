@@ -1,0 +1,41 @@
+{
+  "categories": {
+    "Alltag": {
+      "Nachhaltig essen": "Cafe / Restaurant",
+      "Gute Lebensmittel": "bio Lebensmittel",
+      "Faire Kleidung": "#fairfashion Kleidung",
+      "Ressourcen sparend einkaufen": "umsonstladen #secondhand"
+    },
+    "Engagement": {
+      "Aktiv fürs Klima": "Klimaschutz",
+      "Bildung von morgen": "Bildung Schulevonmorgen",
+      "Nachhaltig wohnen": "Wohnprojekt Lebensgemeinschaft Ökodorf"
+    }
+  },
+  "region": {
+    "Europe": {
+      "coordination": [50.625,0.132],
+      "zoom": 4,
+      "style": {
+        "bold": true,
+        "underline": false,
+        "fontSize": 20,
+        "italic": true
+      },
+      "countries": {
+        "Germany": {
+          "coordination": [],
+          "zoom": 11,
+          "cities": {
+            "Berlin": {
+              "coordination": [],
+              "zoom": 11
+            },
+            "München": {},
+            "Köln":  {}
+          }
+        }
+      }
+    }
+  }
+}

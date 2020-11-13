@@ -5,7 +5,7 @@ import config from "./config"
 
 
 const beforeRenderHooks = [
-  () => store.dispatch(Actions.setCustomizations(config))
+  () => store.dispatch(Actions.setCustomizations(config)),
 ]
 
 

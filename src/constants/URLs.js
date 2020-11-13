@@ -15,13 +15,28 @@ const OFDB_API_LINK = (() => {
       return "https://api.ofdb.io/";
 
     case APP_STAGES.NIGHTLY:
-      return "https://nightly.ofdb.io/";
+      return "https://api.ofdb.io/";
 
     default:
       // production
       return "https://kartevonmorgen.org/api/";
   }
 })() + API_VERSION;
+
+
+const PUBLIC_RESOURSES = (() => {
+  switch (__STAGE__) {
+    case APP_STAGES.LOCAL:
+      return "./public/"
+    case APP_STAGES.NIGHTLY:
+      return "https://test.kartevonmorgen.org/public/"
+    case APP_STAGES.BETA:
+      return "https://beta.kartevonmorgen.org/public/"
+    default:
+      return "https://kartevonmorgen.org/public/";
+  }
+})()
+
 
 module.exports = {
   CC_LICENSE: {
@@ -108,5 +123,8 @@ module.exports = {
   CORS_PROXY: {
     // this is used to bypass cors, one of it's use cases is to fetch prominent tags
     link: "https://cors-anywhere.herokuapp.com"
+  },
+  PUBLIC_RESOURCES: {
+    link: PUBLIC_RESOURSES
   }
 };
