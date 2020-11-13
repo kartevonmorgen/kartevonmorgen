@@ -151,7 +151,13 @@ const BusinessCard = ({ entry, hasImage, t, isEvent, onTag, tagsClickable }) => 
                 <div key="addr" className="address pure-g">
                   <FontAwesomeIconElement className="pure-u-2-24" icon="map-marker-alt" />
                   <AddressWrapper className="pure-u-22-24">
-                    <AddressLine { ...entry } />
+                    <AddressLine
+                      street={entry.street}
+                      zip={entry.zip}
+                      city={entry.city}
+                      state={entry.state}
+                      country={entry.country}
+                    />
                   </AddressWrapper>
                 </div>
                 <div key="route">
