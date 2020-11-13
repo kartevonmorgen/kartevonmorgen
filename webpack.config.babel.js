@@ -1,6 +1,7 @@
 import path        from "path"
 import webpack     from "webpack"
 import HTMLPlugin  from 'html-webpack-plugin'
+import CopyPlugin  from 'copy-webpack-plugin'
 import { APP_STAGES } from "./src/constants/App"
 
 let plugins = [];
@@ -179,6 +180,18 @@ plugins.push(new HTMLPlugin({
   filename: "mapAndEntryList.html",
   chunks: ["mapAndEntryList_widget"]
 }));
+
+plugins.push(
+  new webpack.IgnorePlugin(/\.dropdown\.json$/)
+)
+
+plugins.push(
+  new CopyPlugin({
+    patterns: [
+      {from: "**/*.dropdown.json", to: "public/customizations/dropdowns/[name].[ext]"}
+    ]
+  })
+)
 
 config.plugins = plugins;
 module.exports = config;
