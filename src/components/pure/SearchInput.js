@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import {Creatable} from "react-select"
+import Creatable from "react-select/creatable"
 import {translate} from "react-i18next"
 import isEqual from "lodash/isEqual"
 

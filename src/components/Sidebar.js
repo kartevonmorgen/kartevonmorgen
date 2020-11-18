@@ -358,6 +358,7 @@ class Sidebar extends Component {
                 fixedTagsStr={fixedTagsStr}
                 categories={search.categories}
                 categoryChooser={customizations.categoryChooser}
+                dropdownOptions={customizations.dropdowns}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
                 toggleCat={ c => {

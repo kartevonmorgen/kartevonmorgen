@@ -1,0 +1,216 @@
+{
+  "categories": [
+    {
+      "label": "Show All",
+      "value": "",
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Alltag",
+      "options": [
+        {
+          "label": "Nachhaltig essen",
+          "value": "Cafe / Restaurant",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": false,
+            "fontSize": 20
+          }
+        },
+        {
+          "label": "Gute Lebensmittel",
+          "value": "bio Lebensmittel",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": false,
+            "fontSize": 20
+          }
+        },
+        {
+          "label": "Faire Kleidung",
+          "value": "#fairfashion Kleidung",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": false,
+            "fontSize": 20
+          }
+        },
+        {
+          "label": "Ressourcen sparen,d einkaufen",
+          "value": "umsonstladen #secondhand",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": false,
+            "fontSize": 20
+          }
+        }
+      ]
+    },
+    {
+      "label": "Engagement",
+      "options": [
+        {
+          "label": "Aktiv fürs Klima",
+          "value": "Klimaschutz",
+          "styles": {
+            "bold": true,
+            "underline": true,
+            "italic": false,
+            "fontSize": 20
+          }
+        },
+        {
+          "label": "Bildung von morgen",
+          "value": "Bildung Schulevonmorgen",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": true,
+            "fontSize": 20
+          }
+        },
+        {
+          "label": "Nachhaltig wohnen",
+          "value": "Wohnprojekt Lebensgemeinschaft Ökodorf",
+          "styles": {
+            "bold": false,
+            "underline": false,
+            "italic": false,
+            "fontSize": 20
+          }
+        }
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "label": "Europe",
+      "value": "europe",
+      "type": "continent",
+      "zoom": 4,
+      "styles": {
+        "bold": true,
+        "underline": true,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Germany",
+      "value": "germany",
+      "type": "country",
+      "zoom": 4,
+      "styles": {
+        "bold": true,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Berlin",
+      "value": "berlin",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "München",
+      "value": "münchen",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Köln",
+      "value": "köln",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": true,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "France",
+      "value": "france",
+      "type": "country",
+      "zoom": 4,
+      "styles": {
+        "bold": true,
+        "underline": false,
+        "italic": true,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Paris",
+      "value": "paris",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "UK",
+      "value": "uk",
+      "type": "country",
+      "zoom": 4,
+      "styles": {
+        "bold": true,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "London",
+      "value": "london",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    },
+    {
+      "label": "Bristol",
+      "value": "Bristol",
+      "type": "city",
+      "zoom": 11,
+      "styles": {
+        "bold": false,
+        "underline": false,
+        "italic": false,
+        "fontSize": 20
+      }
+    }
+  ]
+}

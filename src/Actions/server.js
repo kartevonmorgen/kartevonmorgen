@@ -48,6 +48,10 @@ const Actions = {
       })
     },
 
+  setDropdowns: (name) => (dispatch) => {
+    WebAPI.getDropdowns(name, (dropdowns) => (dispatch({type: T.SET_DROPDOWNS, payload: dropdowns})))
+  },
+
   fetchTags: () =>
     (dispatch) => {
       WebAPI.countTags((err, count) => {

@@ -136,8 +136,15 @@ switch (process.env.NODE_ENV) {
       __DEVTOOLS__  : false,
       __STAGE__     : JSON.stringify(APP_STAGES.LOCAL)
     }));
-   plugins.push(new webpack.HotModuleReplacementPlugin());
-   break;
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {from: "**/*.dropdown.json", to: "public/customizations/dropdowns/[name].[ext]"}
+        ]
+      })
+    )
+    break;
 
   case APP_STAGES.NIGHTLY:
     serverStage('nightly', APP_STAGES.NIGHTLY);
@@ -183,14 +190,6 @@ plugins.push(new HTMLPlugin({
 
 plugins.push(
   new webpack.IgnorePlugin(/\.dropdown\.json$/)
-)
-
-plugins.push(
-  new CopyPlugin({
-    patterns: [
-      {from: "**/*.dropdown.json", to: "public/customizations/dropdowns/[name].[ext]"}
-    ]
-  })
 )
 
 config.plugins = plugins;
