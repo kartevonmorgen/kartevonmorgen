@@ -16,7 +16,7 @@ export const getHistoryLink = (entryId, type) => {
   }
 }
 
-export default (entry, center, zoom, searchText, showLeft, categories, fixedTags) => {
+export default (entry, center, zoom, searchText, showLeft, categories, fixedTags, dropdowns) => {
   let params = [];
   if (entry && entry != "NONE") {
     params.push("entry=" + entry);
@@ -43,6 +43,10 @@ export default (entry, center, zoom, searchText, showLeft, categories, fixedTags
 
   if (fixedTags) {
     params.push("fixedTags=" + fixedTags.join())
+  }
+
+  if (dropdowns) {
+    params.push("dropdowns=" + dropdowns)
   }
 
   return "#/?" + params.join("&");
