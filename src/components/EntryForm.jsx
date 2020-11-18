@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect }          from 'react-redux'
-import { translate        } from "react-i18next";
+import { translate } from "react-i18next";
 import T                    from "prop-types";
 import styled               from "styled-components";
 import classNames            from "classnames";

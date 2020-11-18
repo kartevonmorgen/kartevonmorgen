@@ -2,12 +2,13 @@ import { translate }                       from "react-i18next";
 import React                               from "react";
 import T                                   from "prop-types";
 import { MAIN_IDS, CSS_CLASS_SIZE, NAMES } from "../constants/Categories";
-import styled, { keyframes }               from "styled-components";
+import styled               from "styled-components";
 import { FontAwesomeIcon }                 from '@fortawesome/react-fontawesome'
 import STYLE                               from "./styling/Variables"
 import { SpinLoader }                      from 'react-loaders-spinners';
 
 import SearchInput from "./pure/SearchInput"
+import Dropdowns from "./pure/Dropdowns"
 
 const CategoryButtons = ({ disabled, active, onToggle, t }) => {
 
@@ -37,9 +38,17 @@ CategoryButtons.propTypes = {
 class SearchBar extends React.Component {
 
   render() {
-
-    const { categoryChooser, categories, disabled, toggleCat, searchText, t, loading, fixedTagsStr  } = this.props;
-
+    const {
+      categoryChooser,
+      categories,
+      dropdownOptions,
+      disabled,
+      toggleCat,
+      searchText,
+      t,
+      loading,
+      fixedTagsStr
+    } = this.props;
 
     return (
       <Bar
@@ -59,12 +68,12 @@ class SearchBar extends React.Component {
         <div className = "pure-u-1">
           <div onClick = { this.props.onLenseClick } className = "search-icon">
             { loading ?
-                <SpinLoader
-                  height={17}
-                  width={17}
-                  thickness={3}
-                  pColor={STYLE.darkGray}
-                  sColor="white"/>
+              <SpinLoader
+                height={17}
+                width={17}
+                thickness={3}
+                pColor={STYLE.darkGray}
+                sColor="white"/>
               : <MagnifyingGlassIcon icon="search" />
             }
           </div>
@@ -86,6 +95,15 @@ class SearchBar extends React.Component {
             fixedTagsStr = {fixedTagsStr}
           />
         </div>
+
+        {
+          dropdownOptions && (
+            <Dropdowns
+              categories={dropdownOptions.categories}
+              regions={dropdownOptions.regions}
+            />
+          )
+        }
       </Bar>)
   }
 }

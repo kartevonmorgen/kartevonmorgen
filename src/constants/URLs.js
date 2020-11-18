@@ -27,7 +27,7 @@ const OFDB_API_LINK = (() => {
 const PUBLIC_RESOURSES = (() => {
   switch (__STAGE__) {
     case APP_STAGES.LOCAL:
-      return "./public/"
+      return "./public"
     case APP_STAGES.NIGHTLY:
       return "https://test.kartevonmorgen.org/public/"
     case APP_STAGES.BETA:
