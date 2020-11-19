@@ -151,7 +151,6 @@ module.exports = (state = initialState, action = {}) => {
         }
       }
       return state;
-      break;
 
     case T.SEARCH_ADDRESS_RESULT:
       if (!action.error) {
@@ -170,7 +169,6 @@ module.exports = (state = initialState, action = {}) => {
           error: true
         }
       }
-      break;
 
     case T.NEW_ENTRY_RESULT:
       if (!action.error) {
@@ -195,7 +193,6 @@ module.exports = (state = initialState, action = {}) => {
         ...state,
         current: null
       }
-      break;
 
     case T.HIGHLIGHT_ENTRIES:
       return {

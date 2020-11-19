@@ -7,6 +7,7 @@ import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
 import V                          from "../constants/PanelView"
 import serverActions              from "./server";
+import WebAPI from "../WebAPI"
 
 const Actions = {
 
@@ -175,6 +176,42 @@ const Actions = {
     };
   },
 
+  setRegion: (regionName) =>
+    (dispatch, getState) => {
+      WebAPI.searchAddressNominatim(regionName, (err, results) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        if (!results || !Array.isArray(results) || results.length === 0) {
+          // no region found
+          return
+        }
+
+        const region = results[0]
+        // coordinates, mapCenter
+        const mapCenter = {lat: 0.0, lng: 0.0}
+        const coordinates = {
+          center: {
+            lat: parseFloat(region.lat),
+            lng: parseFloat(region.lon)
+          },
+          bbox: {
+            _southWest: {
+              lat: region.boundingbox[0],
+              lng: region.boundingbox[2]
+            },
+            _northEast: {
+              lat: region.boundingbox[1],
+              lng: region.boundingbox[3]
+            }
+          }
+        }
+
+        dispatch(Actions.onMoveend(coordinates, mapCenter))
+      })
+    },
+
   setCurrentEntry: (id, center) =>
     (dispatch, getState) => {
       dispatch(Actions.highlight(id ? [id] : []));
@@ -325,7 +362,7 @@ const Actions = {
     (dispatch, getState) => {
       dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
-      if(coordinates.zoom != zoom){
+      if(coordinates.zoom !== zoom){
         dispatch(Actions.setZoom(coordinates.zoom));
       }
     }
