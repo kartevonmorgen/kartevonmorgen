@@ -54,8 +54,8 @@ const Dropdowns: FC<DropdownsProps> = (props) => {
 
   const dispatch = useDispatch()
 
-  const onChangeCategory = (selectedValue: ValueType<Option>, action: ActionMeta<Option>): void => {
-    const term: string = (selectedValue as Option).value
+  const onChangeCategory = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
+    const term: string = (value as Option).value
 
     if (action.action === 'select-option') {
       dispatch(Actions.setSearchText(term));
@@ -63,15 +63,19 @@ const Dropdowns: FC<DropdownsProps> = (props) => {
     }
   }
 
-  const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
-    console.log(action)
-    console.log(value)
+  const searchRegion = (region: string) => {
+    dispatch(Actions.setRegion(region))
   }
 
-  const onCreateRegion = (inputValue: any) => {
-    console.group("creating a new region")
-    console.log(inputValue)
-    console.groupEnd()
+  const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
+    const region: string = (value as Option).value
+    if (action.action === 'select-option') {
+      searchRegion(region)
+    }
+  }
+
+  const onCreateRegion = (inputValue: string) => {
+    searchRegion(inputValue)
   }
 
   return (
@@ -97,7 +101,6 @@ const Dropdowns: FC<DropdownsProps> = (props) => {
           options={regions}
           name="regions dropdowns"
           styles={dropdownsStyles}
-          menuIsOpen
           formatCreateLabel={(inputValue:string) => (`Search for: ${inputValue}`)}
         />
       </div>
