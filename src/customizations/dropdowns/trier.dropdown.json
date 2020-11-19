@@ -96,7 +96,6 @@
       "label": "Europe",
       "value": "europe",
       "type": "continent",
-      "zoom": 4,
       "styles": {
         "bold": true,
         "underline": true,
@@ -108,7 +107,6 @@
       "label": "Germany",
       "value": "germany",
       "type": "country",
-      "zoom": 4,
       "styles": {
         "bold": true,
         "underline": false,
@@ -120,7 +118,6 @@
       "label": "Berlin",
       "value": "berlin",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
@@ -132,7 +129,6 @@
       "label": "München",
       "value": "münchen",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
@@ -144,7 +140,6 @@
       "label": "Köln",
       "value": "köln",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
@@ -156,7 +151,6 @@
       "label": "France",
       "value": "france",
       "type": "country",
-      "zoom": 4,
       "styles": {
         "bold": true,
         "underline": false,
@@ -168,7 +162,6 @@
       "label": "Paris",
       "value": "paris",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
@@ -180,7 +173,6 @@
       "label": "UK",
       "value": "uk",
       "type": "country",
-      "zoom": 4,
       "styles": {
         "bold": true,
         "underline": false,
@@ -192,7 +184,6 @@
       "label": "London",
       "value": "london",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
@@ -204,7 +195,6 @@
       "label": "Bristol",
       "value": "Bristol",
       "type": "city",
-      "zoom": 11,
       "styles": {
         "bold": false,
         "underline": false,
