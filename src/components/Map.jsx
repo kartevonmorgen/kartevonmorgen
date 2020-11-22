@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { translate } from "react-i18next";
 import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
-import { IDS, NAMES }                  from  "../constants/Categories"
+import { IDS, NAMES }            from "../constants/Categories"
 import STYLE                    from "./styling/Variables"
 import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
