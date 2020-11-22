@@ -7,6 +7,7 @@ import Actions from '../../Actions'
 import Select, {ActionMeta, ValueType, StylesConfig, Props} from 'react-select'
 import Creatable from 'react-select/creatable'
 import {Collapse} from 'react-collapse'
+import TypeButtons, {TypeButtonsProps} from './TypeButtons'
 
 
 interface Option {
@@ -32,6 +33,10 @@ interface DropdownsProps {
   regions: RegionOption[];
 }
 
+interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
+
+}
+
 const dropdownsStyles: StylesConfig = {
   container: (base: CSSProperties): CSSProperties => ({
     ...base,
@@ -52,9 +57,9 @@ const dropdownsStyles: StylesConfig = {
   })
 }
 
-const Dropdowns: FC<DropdownsProps> = (props) => {
+const SearchFilters: FC<SearchFiltersProps> = (props) => {
   const {regions, categories} = props
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(true)
 
   const dispatch = useDispatch()
 
@@ -114,36 +119,64 @@ const Dropdowns: FC<DropdownsProps> = (props) => {
             styles={dropdownsStyles}
             isSearchable
           />
+
+          <TypeButtons
+            activeCategories={props.activeCategories}
+            disabled={props.disabled}
+            onToggle={props.onToggle}
+            type={props.type}
+            t={props.t}
+          />
         </div>
       </Collapse>
-      <button
-        className="pure-u-1-1 pure-button pure-button-primary"
-        onClick={() => setOpen(isOpen => !isOpen)}
-      >
-        {
-          isOpen ?
-            'Less Filters' :
-            'More Filters'
-        }
-      </button>
+      <CollapseTriggerContainer className="pure-g">
+        <CollapseTrigger
+          className="pure-u-1-3"
+          onClick={() => setOpen(isOpen => !isOpen)}
+          isOpen={isOpen}
+        >
+          {
+            isOpen ?
+              'Collapse Filters' :
+              'Open Filters'
+          }
+        </CollapseTrigger>
+      </CollapseTriggerContainer>
     </CollapseContainer>
   )
 }
 
 const CollapseContainer = styled.div`
   .ReactCollapse--collapse {
-    transition: height 5000ms;
+    transition: height 1000ms;
   }
 `
 
-Dropdowns.propTypes = {
+SearchFilters.propTypes = {
   categories: PropTypes.array.isRequired,
   regions: PropTypes.array.isRequired
 }
 
-Dropdowns.defaultProps = {
+SearchFilters.defaultProps = {
   categories: [],
   regions: []
 }
 
-export default Dropdowns
+const CollapseTriggerContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+interface CollapseTriggerProps {
+  isOpen: boolean;
+}
+
+const CollapseTrigger = styled.button<CollapseTriggerProps>`
+  background: none;
+  margin-top: ${props => props.isOpen ? '8px;' : '0px;'}
+  text-decoration: underline;
+  color: gray;
+  font-size: 0.8em;
+`
+
+export default SearchFilters
