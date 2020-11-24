@@ -52,7 +52,7 @@ const parseSearchParams = (searchString) => {
     if (pairSplit.length >= 1 && pairSplit[0].length > 0) {
       p[decodeURIComponent(pairSplit[0])] = decodeURIComponent(pairSplit[1]) || '';
     }
-    if (p.fixedTags) {
+    if (p.fixedTags && typeof p.fixedTags == 'string') {
       p.fixedTags = p.fixedTags.split(',')
     }
 
