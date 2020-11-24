@@ -153,7 +153,7 @@ switch (process.env.NODE_ENV) {
 
   case APP_STAGES.BETA:
     serverStage('beta', APP_STAGES.BETA);
-    // plugins.push(new BundleAnalyzerPlugin())
+    plugins.push(new BundleAnalyzerPlugin())
     break;
 
   default: // production
@@ -192,6 +192,13 @@ plugins.push(new HTMLPlugin({
 
 plugins.push(
   new webpack.IgnorePlugin(/\.dropdown\.json$/)
+)
+
+plugins.push(
+  new webpack.ContextReplacementPlugin(
+    /moment[\/\\]locale$/,
+    /de|en|es|fa/
+  )
 )
 
 config.plugins = plugins;

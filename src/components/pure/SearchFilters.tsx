@@ -2,7 +2,7 @@ import React, {FC, CSSProperties, useState} from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
-import _ from 'lodash'
+import lodashGet from 'lodash/get'
 import Actions from '../../Actions'
 import Select, {ActionMeta, ValueType, StylesConfig, Props} from 'react-select'
 import Creatable from 'react-select/creatable'
@@ -51,9 +51,9 @@ const dropdownsStyles: StylesConfig = {
   }),
   option: (base: CSSProperties, props: Props) => ({
     ...base,
-    fontWeight: _.get(props, 'data.styles.bold', false) ? 'bold' : base.fontWeight,
-    fontStyle: _.get(props, 'data.styles.italic', false) ? 'italic' : base.fontStyle,
-    textDecoration: _.get(props, 'data.styles.underline', false) ? 'underline' : base.textDecoration,
+    fontWeight: lodashGet(props, 'data.styles.bold', false) ? 'bold' : base.fontWeight,
+    fontStyle: lodashGet(props, 'data.styles.italic', false) ? 'italic' : base.fontStyle,
+    textDecoration: lodashGet(props, 'data.styles.underline', false) ? 'underline' : base.textDecoration,
   })
 }
 
