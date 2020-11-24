@@ -9,7 +9,6 @@ import Actions              from "../../Actions"; //TODO: remove dependency
 import { DONATE }           from "../../constants/URLs";
 import V                    from "../../constants/PanelView";
 import i18n                 from "../../i18n";
-import {highlight} from "redoc"
 
 
 Lowlight.registerLanguage('xml', xmlSyntax)
