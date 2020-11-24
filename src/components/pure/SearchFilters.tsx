@@ -34,7 +34,7 @@ interface DropdownsProps {
 }
 
 interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
-
+  showCategoryChooser: boolean;
 }
 
 const dropdownsStyles: StylesConfig = {
@@ -120,13 +120,14 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             isSearchable
           />
 
+          {props.showCategoryChooser &&
           <TypeButtons
             activeCategories={props.activeCategories}
             disabled={props.disabled}
             onToggle={props.onToggle}
             type={props.type}
             t={props.t}
-          />
+          />}
         </div>
       </Collapse>
       <CollapseTriggerContainer className="pure-g">
