@@ -153,7 +153,7 @@ switch (process.env.NODE_ENV) {
 
   case APP_STAGES.BETA:
     serverStage('beta', APP_STAGES.BETA);
-    plugins.push(new BundleAnalyzerPlugin())
+    // plugins.push(new BundleAnalyzerPlugin())
     break;
 
   default: // production
