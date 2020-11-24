@@ -1,14 +1,18 @@
 import React                from "react";
 import styled,{ keyframes } from "styled-components";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import copy                 from 'copy-to-clipboard';
-
+import Lowlight             from 'react-lowlight'
+import xmlSyntax           from 'highlight.js/lib/languages/xml'
+import 'highlight.js/styles/github.css'
 import Message              from "./Message";
 import Actions              from "../../Actions"; //TODO: remove dependency
 import { DONATE }           from "../../constants/URLs";
 import V                    from "../../constants/PanelView";
 import i18n                 from "../../i18n";
+import {highlight} from "redoc"
+
+
+Lowlight.registerLanguage('xml', xmlSyntax)
 
 const t = (key) => i18n.t("modal." + key)
 
@@ -77,10 +81,12 @@ module.exports = ({view, dispatch}) => {
         <Modal className = 'modal'>
           <Message
             // iconClass = "info-circle"
+            // message = {<div>{lowLight.highlight('html', iframeCode)}</div>}
             message = {
-              <SyntaxHighlighter language="javascript" style={docco}>
-                {iframeCode}
-              </SyntaxHighlighter>
+              <Lowlight
+                language="html"
+                value={iframeCode}
+              />
             }
             cancelButtonLabel = {t("events.close")}
             onCancel = { () => dispatch(Actions.closeModal()) }
