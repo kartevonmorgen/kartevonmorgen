@@ -122,3 +122,5 @@ dist
 !.vscode/extensions.json
 *.code-workspace
 
+stats.json
+
