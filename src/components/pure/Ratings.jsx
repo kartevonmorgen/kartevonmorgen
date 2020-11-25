@@ -6,7 +6,7 @@ import Rating     from "./Rating";
 import i18n       from "../../i18n";
 import STYLE      from "../styling/Variables";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-regular-svg-icons'
+import faComment from '@fortawesome/free-regular-svg-icons/faComment'
 
 const context_order = (id) => {
   switch(id) {
