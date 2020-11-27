@@ -115,22 +115,23 @@ let htmlPluginOptions = {
 };
 
 const serverStage = (processStage, stage) => {
-    htmlPluginOptions.minify = {
-      removeComments        : true,
-      collapseWhitespace    : true,
-      conservativeCollapse  : false,
-      minifyJS              : true,
-      minifyCSS             : true,
-    };
+  htmlPluginOptions.minify = {
+    removeComments: true,
+    collapseWhitespace: true,
+    conservativeCollapse: false,
+    minifyJS: true,
+    minifyCSS: true,
+  }
 
-    // Enable React optimizations.
-    plugins.push(new webpack.DefinePlugin({
-      'process.env.STAGE'     : JSON.stringify(processStage),
-      __DEVTOOLS__  : false,
-      __STAGE__     : JSON.stringify(stage)
-    }));
+  // Enable React optimizations.
+  plugins.push(new webpack.DefinePlugin({
+    'process.env.STAGE': JSON.stringify(processStage),
+    __DEVTOOLS__: false,
+    __STAGE__: JSON.stringify(stage)
+  }))
 }
 
+// TODO: make the copy plugin dynamic
 switch (process.env.NODE_ENV) {
   case APP_STAGES.LOCAL:
     plugins.push(new webpack.DefinePlugin({
@@ -141,7 +142,10 @@ switch (process.env.NODE_ENV) {
     plugins.push(
       new CopyPlugin({
         patterns: [
-          {from: "**/*.dropdown.json", to: "public/customizations/dropdowns/[name].[ext]"}
+          {
+            from: "**/trier/dropdowns/*.csv",
+            to: "public/customizations/trier/dropdowns/[name].[ext]"
+          }
         ]
       })
     )
@@ -191,7 +195,7 @@ plugins.push(new HTMLPlugin({
 }));
 
 plugins.push(
-  new webpack.IgnorePlugin(/\.dropdown\.json$/)
+  new webpack.IgnorePlugin(/\.csv$/)
 )
 
 plugins.push(
