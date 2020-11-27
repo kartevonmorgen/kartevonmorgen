@@ -1,0 +1,12 @@
+﻿label,value,headline,bold,underline,italic,fontSize
+mandtory,"mandatory except for ""show all"" and ""headlines""",,empty = false,,,20
+Show all categories,,false,false,,,20
+Alltag,,true,,,,20
+Nachhaltig essen,bio Lebensmittel,false,false,false,false,20
+Gute Lebensmitte,#bio,,,,,20
+Faire Kleidung,#fairfashion Kleidung,,,,,20
+Ressourcen sparend einkaufen,umsonstladen #secondhand,,,,,20
+Engagement,,true,,,,20
+Aktiv fürs Klima,Klimaschutz,false,true,true,false,20
+Bildung von morgen,Bildung Schulevonmorgen,,,,true,20
+Nachhaltig wohnen,Wohnprojekt Lebensgemeinschaft Ökodorf,,,,,20
