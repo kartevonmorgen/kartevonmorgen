@@ -1,4 +1,4 @@
-import React, {FC, CSSProperties, useState} from 'react'
+import React, {FC, CSSProperties} from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
@@ -35,6 +35,7 @@ interface DropdownsProps {
 
 interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
   showCategoryChooser: boolean;
+  isOpen: boolean;
 }
 
 const dropdownsStyles: StylesConfig = {
@@ -43,6 +44,11 @@ const dropdownsStyles: StylesConfig = {
     // paddingLeft: "8px",
     // paddingRight: "8px",
     marginBottom: '8px',
+  }),
+  control: (provided, state) => ({
+    ...provided,
+    border: 'none',
+    boxShadow: 'none'
   }),
   menu: (base: CSSProperties): CSSProperties => ({
     ...base,
@@ -58,8 +64,7 @@ const dropdownsStyles: StylesConfig = {
 }
 
 const SearchFilters: FC<SearchFiltersProps> = (props) => {
-  const {regions, categories} = props
-  const [isOpen, setOpen] = useState(true)
+  const {regions, categories, isOpen} = props
 
   const dispatch = useDispatch()
 
@@ -79,6 +84,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
   const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
     const region: string = (value as Option).value
     if (action.action === 'select-option') {
+      console.log(region)
       searchRegion(region)
     }
   }
@@ -88,13 +94,22 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
   }
 
   return (
-    <CollapseContainer className="pure-u-1-1" style={{margin: '8px'}}>
+    <CollapseContainer className="pure-u-1-1">
       <Collapse
         isOpened={isOpen}
         theme={{collapse: 'pure-g ReactCollapse--collapse', content: 'pure-u-1-1'}}
       >
         <div className="pure-g">
-          <Creatable
+          {props.showCategoryChooser &&
+          <TypeButtons
+            activeCategories={props.activeCategories}
+            disabled={props.disabled}
+            onToggle={props.onToggle}
+            type={props.type}
+            t={props.t}
+          />}
+
+          <StyledCreatable
             placeholder="Search a region"
             autoFocus={false}
             aria-label="region filter dropdown"
@@ -108,7 +123,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
           />
 
-          <Select
+          <StyledSelect
             placeholder="Choose a category"
             autoFocus={false}
             aria-label="category filter dropdown"
@@ -120,29 +135,8 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             isSearchable
           />
 
-          {props.showCategoryChooser &&
-          <TypeButtons
-            activeCategories={props.activeCategories}
-            disabled={props.disabled}
-            onToggle={props.onToggle}
-            type={props.type}
-            t={props.t}
-          />}
         </div>
       </Collapse>
-      <CollapseTriggerContainer className="pure-g">
-        <CollapseTrigger
-          className="pure-u-1-3"
-          onClick={() => setOpen(isOpen => !isOpen)}
-          isOpen={isOpen}
-        >
-          {
-            isOpen ?
-              'Collapse Filters' :
-              'Open Filters'
-          }
-        </CollapseTrigger>
-      </CollapseTriggerContainer>
     </CollapseContainer>
   )
 }
@@ -163,21 +157,16 @@ SearchFilters.defaultProps = {
   regions: []
 }
 
-const CollapseTriggerContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
+const StyledCreatable = styled(Creatable)`
+  margin-top: 2px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 `
 
-interface CollapseTriggerProps {
-  isOpen: boolean;
-}
-
-const CollapseTrigger = styled.button<CollapseTriggerProps>`
-  background: none;
-  margin-top: ${props => props.isOpen ? '8px;' : '0px;'}
-  text-decoration: underline;
-  color: gray;
-  font-size: 0.8em;
+const StyledSelect = styled(Select)`
+  margin-top: 2px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 `
 
 export default SearchFilters

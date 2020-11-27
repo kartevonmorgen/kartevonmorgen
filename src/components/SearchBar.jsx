@@ -1,5 +1,6 @@
-import React from "react"
+import React, {Fragment} from "react"
 import {translate} from "react-i18next"
+import update from 'immutability-helper'
 import STYLE from "./styling/Variables"
 import {SpinLoader} from 'react-loaders-spinners'
 import styled from "styled-components"
@@ -11,6 +12,10 @@ import TypeButtons from "./pure/TypeButtons"
 
 
 class SearchBar extends React.Component {
+  state = {
+    areDropdownsShown: true
+  }
+
   render() {
     const {
       categoryChooser,
@@ -40,6 +45,22 @@ class SearchBar extends React.Component {
             type={this.props.type}
           />
         }
+
+        {
+          dropdownOptions && (
+            <SearchFilters
+              showCategoryChooser={categoryChooser.show}
+              activeCategories={categories}
+              disabled={disabled}
+              onToggle={toggleCat}
+              categories={dropdownOptions.categories}
+              regions={dropdownOptions.regions}
+              t={t}
+              isOpen={this.state.areDropdownsShown}
+            />
+          )
+        }
+
         <div className="pure-u-1">
           <div onClick={this.props.onLenseClick} className="search-icon">
             {loading ?
@@ -72,17 +93,22 @@ class SearchBar extends React.Component {
 
         {
           dropdownOptions && (
-            <SearchFilters
-              showCategoryChooser={categoryChooser.show}
-              activeCategories={categories}
-              disabled={disabled}
-              onToggle={toggleCat}
-              categories={dropdownOptions.categories}
-              regions={dropdownOptions.regions}
-              t={t}
-            />
+            <CollapseTriggerContainer className="pure-u-1-1">
+              <CollapseTrigger
+                className="pure-u-1-3"
+                onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
+                isOpen={this.state.areDropdownsShown}
+              >
+                {
+                  this.state.areDropdownsShown ?
+                    'Collapse Filters' :
+                    'Open Filters'
+                }
+              </CollapseTrigger>
+            </CollapseTriggerContainer>
           )
         }
+
       </Bar>
     )
   }
@@ -160,7 +186,21 @@ const Bar = styled.div`
         margin: 0.5em 0 0 0.9em;
         display: inline-block;
         color: ${STYLE.darkGray};
-        z-index: 5;
+        // z-index: 5;
         font-size: 1.2rem;
       }
         `
+const CollapseTrigger = styled.button`
+  background: none;
+  margin-top: 8px;
+  text-decoration: underline;
+  color: gray;
+  font-size: 0.8em;
+  text-align: right;
+`
+
+const CollapseTriggerContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+`
