@@ -96,7 +96,8 @@ const SearchInput = (props) => {
         }),
         menu: (provided, state) => ({
           ...provided,
-          width: '85%'
+          width: '85%',
+          zIndex: 4
         })
       }}
       onBlur={() => {}}
@@ -126,6 +127,6 @@ const Recommender = styled(Creatable)`
   font-weight: 100;
   padding-left: 2.7em !important;
   padding-right: 0.5em !important;
-  z-index: 999 !important;
+  // z-index: 999 !important;
   margin-top: 2px;
 `
