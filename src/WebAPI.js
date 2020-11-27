@@ -1,31 +1,72 @@
-import request from "superagent/lib/client";
-import saPrefix from "superagent-prefix";
-import { TILEHOSTING_API_KEY } from "./constants/App";
-import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES } from "./constants/URLs"
-import CATEGORY_IDS from "./constants/Categories";
-import {NUMBER_TAGS_TO_FETCH} from "./constants/Search";
+import request from "superagent/lib/client"
+import saPrefix from "superagent-prefix"
+import toNumber from "lodash/toNumber"
+import {TILEHOSTING_API_KEY} from "./constants/App"
+import {OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES} from "./constants/URLs"
+import {NUMBER_TAGS_TO_FETCH} from "./constants/Search"
 import parse from 'csv-parse/lib/sync'
 
 
-const prefix = saPrefix(OFDB_API.link);
+const prefix = saPrefix(OFDB_API.link)
 const publicResources = saPrefix(PUBLIC_RESOURCES.link)
-const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn';
+const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn'
 
 const jsonCallback = (cb) => (err, res) => {
   if (err) {
-    cb(err);
+    cb(err)
   } else {
-    cb(null, res.body);
+    cb(null, res.body)
   }
-};
+}
 
 function normalizeCoordinate(bbox, idx) {
-    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
-        bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0;
+  if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
+    bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0
+  }
+  if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
+    bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0
+  }
+}
+
+const transformRecordToOption = (record) => ({
+  label: record.label,
+  value: record.value,
+  styles: {
+    bold: record.bold === "true",
+    underline: record.underline === "true",
+    italic: record.italic === "true",
+    fontSize: toNumber(record.fontSize) || 20
+  }
+})
+
+const transformCSVToOptions = (records) => {
+  const options = []
+  for (let i = 0; i < records.length; i++) {
+    const record = records[i]
+    if (record.headline === "true") {
+      const option = {
+        label: record.label,
+        options: []
+      }
+      i++
+      for (; i !== records.length; i++) {
+        const subRecord = records[i]
+        if (subRecord.headline === "true") {
+          i--
+          break
+        }
+
+        option.options.push(transformRecordToOption(subRecord))
+      }
+
+      options.push(option)
+      continue
     }
-    if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] < -180) {
-        bbox[idx] = ((bbox[idx] - 180.0) % 360.0) + 180.0;
-    }
+
+    options.push(transformRecordToOption(record))
+  }
+
+  return options
 }
 
 module.exports = {
@@ -33,16 +74,16 @@ module.exports = {
   searchEntries: (txt, cats, bbox, cb) => {
 
     if (txt == null) {
-      txt = '';
+      txt = ''
     }
     if (cats == null) {
-      cats = [];
+      cats = []
     }
     if (bbox == null) {
-      bbox = [];
+      bbox = []
     }
-    normalizeCoordinate(bbox, 1);
-    normalizeCoordinate(bbox, 3);
+    normalizeCoordinate(bbox, 1)
+    normalizeCoordinate(bbox, 3)
     request
       .get('/search')
       .use(prefix)
@@ -52,70 +93,70 @@ module.exports = {
       .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
       .query('bbox=' + bbox.join(','))
       .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .end(jsonCallback(cb))
   },
 
   searchEvents: (txt, bbox, start, end, cb) => {
     if (bbox == null) {
-      bbox = [];
+      bbox = []
     }
-    normalizeCoordinate(bbox, 1);
-    normalizeCoordinate(bbox, 3);
+    normalizeCoordinate(bbox, 1)
+    normalizeCoordinate(bbox, 3)
     let req = request
       .get('/events')
       .use(prefix)
-      .set('Accept', 'application/json');
-    if(bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
-    if(txt && txt.length > 0) req.query({text: txt.trim()})
-    if(start) req.query(start ? ('start_min=' + start) : "")
-    if(end) req.query(end ? ('start_max=' + end) : "")
+      .set('Accept', 'application/json')
+    if (bbox && bbox.length > 0) req.query('bbox=' + bbox.join(','))
+    if (txt && txt.length > 0) req.query({text: txt.trim()})
+    if (start) req.query(start ? ('start_min=' + start) : "")
+    if (end) req.query(end ? ('start_max=' + end) : "")
 
-    req.end(jsonCallback(cb));
+    req.end(jsonCallback(cb))
   },
 
   createNewEvent: (newEvent, callBack) => {
     request
       .post('/events')
       .use(prefix)
-      .set({ 'Accept': 'application/json', 'Authorization': `Bearer ${ FALANSTER_TOKEN }` })
+      .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(newEvent)
       .end((err, res) => {
         if (err) {
-          callBack(err);
+          callBack(err)
         } else {
-          callBack(null, res.text.replace(/"/g, ""));
+          callBack(null, res.text.replace(/"/g, ""))
         }
-      });
+      })
   },
 
   editEvent: (event, callBack) => {
     request
       .put('/events/' + event.id)
       .use(prefix)
-      .set({ 'Accept': 'application/json', 'Authorization': `Bearer ${ FALANSTER_TOKEN }` })
+      .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(event)
       .end((err, res) => {
         if (err) {
-          callBack(err);
+          callBack(err)
         } else {
-          callBack(null, res.text);
+          callBack(null, res.text)
         }
-      });
+      })
   },
 
   getEvent: (ids = [], cb) => {
     if (!Array.isArray(ids)) {
-      ids = [ids];
+      ids = [ids]
     }
 
     if (ids.length < 1) {
-      cb(new Error("no IDs were passed"));
+      cb(new Error("no IDs were passed"))
     } else {
       request
         .get('/events/' + ids.join(','))
         .use(prefix)
         .set('Accept', 'application/json')
-        .end(jsonCallback(cb));
+        .end(jsonCallback(cb))
     }
   },
 
@@ -124,7 +165,7 @@ module.exports = {
       .get('/count/tags')
       .use(saPrefix(OFDB_API.link))
       .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .end(jsonCallback(cb))
   },
 
   getProminentTags: (cb) => {
@@ -132,8 +173,8 @@ module.exports = {
     xhr.open("GET", `${CORS_PROXY.link}/${PROMINENT_TAGS.link}`)
 
     xhr.onreadystatechange = function () {
-      if(xhr.readyState === XMLHttpRequest.DONE) {
-        var status = xhr.status;
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        var status = xhr.status
         if (status === 0 || (status >= 200 && status < 400)) {
           // The request has been completed successfully
           const el = document.createElement('html')
@@ -148,7 +189,7 @@ module.exports = {
           cb([], "could not fetch prominent tags")
         }
       }
-    };
+    }
 
     xhr.send()
   },
@@ -166,22 +207,22 @@ module.exports = {
         limit,
       })
       .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .end(jsonCallback(cb))
   },
 
   searchAddressTilehosting: (addr, cb) => {
-    let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY);
+    let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY)
     if (addr != null && addr != "") {
       request
         .get(query)
         .set('Accept', 'application/json')
-        .end(jsonCallback(cb));
+        .end(jsonCallback(cb))
     }
   },
 
   searchAddressNominatim: (addr, cb) => {
     if (addr == null) {
-      addr = '';
+      addr = ''
     }
     request
       .get('/search')
@@ -196,7 +237,7 @@ module.exports = {
         addressdetails: 1
       })
       .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .end(jsonCallback(cb))
   },
 
   searchGeolocation: (latlng, cb) => {
@@ -205,7 +246,7 @@ module.exports = {
       latlng = {
         lat: 0.0,
         lng: 0.0
-      };
+      }
     }
 
     request
@@ -227,38 +268,38 @@ module.exports = {
         addressdetails: 1
       })
       .set('Accept', 'application/json')
-      .end(jsonCallback(cb));
+      .end(jsonCallback(cb))
   },
 
   getEntries: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
-      ids = [ids];
+      ids = [ids]
     }
 
     if (ids.length < 1) {
-      cb(new Error("no IDs were passed"));
+      cb(new Error("no IDs were passed"))
     } else {
       request
         .get('/entries/' + ids.join(','))
         .use(prefix).set('Accept', 'application/json')
-        .end(jsonCallback(cb));
+        .end(jsonCallback(cb))
     }
   },
 
   getRatings: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
-      ids = [ids];
+      ids = [ids]
     }
 
     if (ids.length < 1) {
-      cb(new Error("no IDs were passed"));
+      cb(new Error("no IDs were passed"))
     } else {
       request
         .get('/ratings/' + ids.join(','))
         .use(prefix).set('Accept', 'application/json')
-        .end(jsonCallback(cb));
+        .end(jsonCallback(cb))
     }
   },
 
@@ -270,11 +311,11 @@ module.exports = {
       .send(e)
       .end((err, res) => {
         if (err) {
-          cb(err);
+          cb(err)
         } else {
-          cb(null, res.text.replace( /"/g ,""));
+          cb(null, res.text.replace(/"/g, ""))
         }
-      });
+      })
   },
 
   saveEntry: (e, cb) => {
@@ -285,11 +326,11 @@ module.exports = {
       .send(e)
       .end((err, res) => {
         if (err) {
-          cb(err);
+          cb(err)
         } else {
-          cb(null, res.text);
+          cb(null, res.text)
         }
-      });
+      })
   },
 
   createRating: (r, cb) => {
@@ -300,11 +341,11 @@ module.exports = {
       .send(r)
       .end((err, res) => {
         if (err) {
-          cb(err);
+          cb(err)
         } else {
-          cb(null, res.text);
+          cb(null, res.text)
         }
-      });
+      })
   },
 
   getAllCategories: (cb) => {
@@ -312,7 +353,7 @@ module.exports = {
       .get('/categories/')
       .use(prefix)
       .set('Accept', 'application/json')
-      .end(cb);
+      .end(cb)
   },
 
   getServerInfo: (cb) => {
@@ -322,19 +363,19 @@ module.exports = {
       .use(prefix)
       .end((err, res) => {
         if (err) {
-          cb(err);
+          cb(err)
         } else {
           cb(null, {
             version: res.text
-          });
+          })
         }
-      });
+      })
   },
 
   register: ({
-    email,
-    password,
-  }, cb) => {
+               email,
+               password,
+             }, cb) => {
     request
       .post('/users')
       .use(prefix)
@@ -343,13 +384,13 @@ module.exports = {
         email,
         password
       })
-      .end(cb);
+      .end(cb)
   },
 
   login: ({
-    email,
-    password
-  }, cb) => {
+            email,
+            password
+          }, cb) => {
     request
       .post('/login')
       .set('Accept', 'application/json')
@@ -359,7 +400,7 @@ module.exports = {
         email,
         password
       })
-      .end(cb);
+      .end(cb)
   },
 
   getUser: (email, cb) => {
@@ -368,7 +409,7 @@ module.exports = {
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
-      .end(cb);
+      .end(cb)
   },
 
   logout: (cb) => {
@@ -377,7 +418,7 @@ module.exports = {
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
-      .end(cb);
+      .end(cb)
   },
 
   confirmEmail: (token, cb) => {
@@ -388,7 +429,7 @@ module.exports = {
       .send({
         token
       })
-      .end(cb);
+      .end(cb)
   },
 
   deleteAccount: (email, cb) => {
@@ -397,11 +438,11 @@ module.exports = {
       .set('Accept', 'application/json')
       .use(prefix)
       .withCredentials()
-      .end(cb);
+      .end(cb)
   },
 
   subscribeToBbox: (bbox, cb) => {
-    let coordinates = [bbox._southWest, bbox._northEast];
+    let coordinates = [bbox._southWest, bbox._northEast]
     request
       .post('/subscribe-to-bbox')
       .use(prefix)
@@ -409,11 +450,11 @@ module.exports = {
       .send(coordinates)
       .end((err, res) => {
         if (err) {
-          cb(err);
+          cb(err)
         } else {
-          cb(null, res.text);
+          cb(null, res.text)
         }
-      });
+      })
   },
 
   getBboxSubscriptions: (cb) => {
@@ -421,7 +462,7 @@ module.exports = {
       .get('/bbox-subscriptions')
       .set('Accept', 'application/json')
       .use(prefix)
-      .end(cb);
+      .end(cb)
   },
 
   unsubscribeFromBboxes: (cb) => {
@@ -429,7 +470,7 @@ module.exports = {
       .delete('/unsubscribe-all-bboxes')
       .set('Accept', 'application/json')
       .use(prefix)
-      .end(cb);
+      .end(cb)
   },
 
   getDropdowns: (name, cb) => {
@@ -438,28 +479,26 @@ module.exports = {
       'regions': [],
     }
 
-    Object.keys(dropdowns).map(dropdownName => (
-      request
-        .get(`/customizations/${name}/dropdowns/${dropdownName}.csv`)
-        .type('text/csv')
-        .use(publicResources)
-        .end((err, res) => {
 
-          if (err) {
-            return null
+    Promise.all(Object.keys(dropdowns).map(async (dropdownName) => {
+      try {
+        const res = await request
+          .get(`/customizations/${name}/filters/${dropdownName}.csv`)
+          .type('text/csv')
+          .use(publicResources)
+
+        const records = parse(
+          res.text, {
+            columns: true,
+            skip_empty_lines: true,
           }
+        )
 
-          const records = parse(
-            res.text, {
-              columns: true,
-              skip_empty_lines: true,
-            }
-          )
-          debugger
-          dropdowns[dropdownName] = records
-        })
-    ))
-
-    cb(dropdowns)
+        const transformed = transformCSVToOptions(records)
+        dropdowns[dropdownName] = transformed
+      } catch (e) {
+        console.error(e)
+      }
+    })).then(cb(dropdowns))
   }
-};
+}
