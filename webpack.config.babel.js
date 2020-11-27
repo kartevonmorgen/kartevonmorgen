@@ -143,8 +143,8 @@ switch (process.env.NODE_ENV) {
       new CopyPlugin({
         patterns: [
           {
-            from: "**/trier/dropdowns/*.csv",
-            to: "public/customizations/trier/dropdowns/[name].[ext]"
+            from: "**/trier/filters/*.csv",
+            to: "public/customizations/trier/filters/[name].[ext]"
           }
         ]
       })
