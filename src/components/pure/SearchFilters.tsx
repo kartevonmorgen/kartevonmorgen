@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import lodashGet from 'lodash/get'
+import isEmpty from 'lodash/isEmpty'
 import Actions from '../../Actions'
 import Select, {ActionMeta, ValueType, StylesConfig, Props} from 'react-select'
 import Creatable from 'react-select/creatable'
@@ -109,6 +110,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             t={props.t}
           />}
 
+          { !isEmpty(regions) &&
           <StyledCreatable
             placeholder="Search a region"
             autoFocus={false}
@@ -122,7 +124,9 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             styles={dropdownsStyles}
             formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
           />
+          }
 
+          {!isEmpty(categories) &&
           <StyledSelect
             placeholder="Choose a category"
             autoFocus={false}
@@ -133,7 +137,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             name="category dropdowns"
             styles={dropdownsStyles}
             isSearchable
-          />
+          />}
 
         </div>
       </Collapse>

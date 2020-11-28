@@ -145,6 +145,14 @@ switch (process.env.NODE_ENV) {
           {
             from: "**/trier/filters/*.csv",
             to: "public/customizations/trier/filters/[name].[ext]"
+          },
+          {
+            from: "**/renn/filters/*.csv",
+            to: "public/customizations/rennwk/filters/[name].[ext]"
+          },
+          {
+            from: "**/kvm/filters/*.csv",
+            to: "public/customizations/kvm/filters/[name].[ext]"
           }
         ]
       })
