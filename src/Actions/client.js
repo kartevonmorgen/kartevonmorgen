@@ -208,6 +208,7 @@ const Actions = {
           }
         }
 
+        dispatch(Actions.setZoom(13.00))
         dispatch(Actions.onMoveend(coordinates, mapCenter))
       })
     },
