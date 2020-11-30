@@ -1,4 +1,5 @@
 import React, {FC, CSSProperties} from 'react'
+import {connect} from 'react-redux'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
@@ -37,6 +38,7 @@ interface DropdownsProps {
 interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
   showCategoryChooser: boolean;
   isOpen: boolean;
+  fixedTagsStr: string;
 }
 
 const dropdownsStyles: StylesConfig = {
@@ -65,7 +67,7 @@ const dropdownsStyles: StylesConfig = {
 }
 
 const SearchFilters: FC<SearchFiltersProps> = (props) => {
-  const {regions, categories, isOpen} = props
+  const {fixedTagsStr, regions, categories, isOpen} = props
 
   const dispatch = useDispatch()
 
@@ -73,7 +75,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
     const term: string = (value as Option).value
 
     if (action.action === 'select-option') {
-      dispatch(Actions.setSearchText(term))
+      dispatch(Actions.setSearchText(`${fixedTagsStr} ${term}`))
       dispatch(Actions.search())
     }
   }
@@ -85,7 +87,6 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
   const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
     const region: string = (value as Option).value
     if (action.action === 'select-option') {
-      console.log(region)
       searchRegion(region)
     }
   }
@@ -173,4 +174,8 @@ const StyledSelect = styled(Select)`
   padding-right: 0.5em;
 `
 
-export default SearchFilters
+const mapStateToProps = ({search}: any) => ({
+  fixedTagsStr: search.fixedTags.map((tag: string) => `#${tag}`).join(' ')
+})
+
+export default connect(mapStateToProps)(SearchFilters)
