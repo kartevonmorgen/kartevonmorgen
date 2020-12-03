@@ -1,4 +1,4 @@
-import React, {FC, CSSProperties} from 'react'
+import React, {FC, CSSProperties, useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -22,7 +22,7 @@ interface OptionStyle {
   bold: boolean;
   underline: boolean;
   italic: boolean;
-  fontSize: number;
+  fontSize: number | string;
 }
 
 interface RegionOption extends Option {
@@ -30,9 +30,15 @@ interface RegionOption extends Option {
   zoom: number;
 }
 
+type Regions = RegionOption[]
+
+interface RegionsSelectorProps {
+  regions: Regions;
+}
+
 interface DropdownsProps {
   categories: Option[];
-  regions: RegionOption[];
+  regions: Regions;
 }
 
 interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
@@ -63,6 +69,7 @@ const dropdownsStyles: StylesConfig = {
     fontWeight: lodashGet(props, 'data.styles.bold', false) ? 'bold' : base.fontWeight,
     fontStyle: lodashGet(props, 'data.styles.italic', false) ? 'italic' : base.fontStyle,
     textDecoration: lodashGet(props, 'data.styles.underline', false) ? 'underline' : base.textDecoration,
+    fontSize: lodashGet(props, 'data.styles.fontSize', 0) || base.fontSize
   })
 }
 
@@ -78,21 +85,6 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
       dispatch(Actions.setSearchText(`${fixedTagsStr} ${term}`))
       dispatch(Actions.search())
     }
-  }
-
-  const searchRegion = (region: string) => {
-    dispatch(Actions.setRegion(region))
-  }
-
-  const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
-    const region: string = (value as Option).value
-    if (action.action === 'select-option') {
-      searchRegion(region)
-    }
-  }
-
-  const onCreateRegion = (inputValue: string) => {
-    searchRegion(inputValue)
   }
 
   return (
@@ -111,19 +103,9 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             t={props.t}
           />}
 
-          { !isEmpty(regions) &&
-          <StyledCreatable
-            placeholder="Search a region"
-            autoFocus={false}
-            aria-label="region filter dropdown"
-            className="pure-u-1-1"
-            onChange={onChangeRegion}
-            onCreateOption={onCreateRegion}
-            createOptionPosition="first"
-            options={regions}
-            name="regions dropdowns"
-            styles={dropdownsStyles}
-            formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
+          {!isEmpty(regions) &&
+          <RegionSelector
+            regions={regions}
           />
           }
 
@@ -145,6 +127,70 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
     </CollapseContainer>
   )
 }
+
+
+const RegionSelector: FC<RegionsSelectorProps> = (props) => {
+  const [selectedRegion, setSelectedRegion] = useState<RegionOption | undefined>(undefined)
+  const [regions, setRegions] = useState<Regions>([])
+
+  useEffect(() => {
+    setRegions(props.regions)
+  }, [props.regions])
+
+  const dispatch = useDispatch()
+
+  const searchRegion = (region: string) => {
+    dispatch(Actions.setRegion(region))
+  }
+
+  const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
+    const region: string = (value as Option).value
+    if (action.action === 'select-option') {
+      searchRegion(region)
+    }
+
+    setSelectedRegion(value as RegionOption)
+  }
+
+  const onCreateRegion = (inputValue: string) => {
+    searchRegion(inputValue)
+
+    const newRegion: RegionOption = {
+      label: inputValue,
+      value: inputValue,
+      zoom: 13,
+      styles: {
+        bold: false,
+        italic: false,
+        underline: false,
+        fontSize: 0
+      },
+      type: ""
+    }
+
+    setRegions((regions) => ([newRegion, ...regions]))
+
+    setSelectedRegion(newRegion)
+  }
+
+  return (
+    <StyledCreatable
+      placeholder="Search a region"
+      autoFocus={false}
+      aria-label="region filter dropdown"
+      className="pure-u-1-1"
+      onChange={onChangeRegion}
+      onCreateOption={onCreateRegion}
+      createOptionPosition="first"
+      options={regions}
+      name="regions dropdowns"
+      styles={dropdownsStyles}
+      formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
+      value={selectedRegion}
+    />
+  )
+}
+
 
 const CollapseContainer = styled.div`
   .ReactCollapse--collapse {
