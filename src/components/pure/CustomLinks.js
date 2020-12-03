@@ -115,6 +115,8 @@ const CustomLinks = (props) => {
               <IconLink
                 title={link.title}
                 href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {link.icon &&
                   <IconContainer>
