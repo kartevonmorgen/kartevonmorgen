@@ -115,6 +115,7 @@ class KVMMap extends Component {
       showEmbedModal,
       t
     } = this.props;
+    // console.log("on move end prop center: ", center)
 
     // const entries = sortBy(this.props.entries, "id")
 
@@ -225,7 +226,11 @@ class KVMMap extends Component {
           zoomControl = { false }
           className   = "map"
           worldCopyJump = { true }
-          onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
+          onMoveend   = { (e) => {
+            // console.log("on move end map")
+            // console.log("on move end event: ", e)
+            onMoveend(this.getMapCoordinates())
+          }}
           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
           onClick     = { (e) => { onClick(e) }} >
 
