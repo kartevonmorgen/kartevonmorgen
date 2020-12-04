@@ -139,22 +139,21 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
 
   const dispatch = useDispatch()
 
-  const searchRegion = (region: string) => {
+  const searchRegion = (region: string, zoom: number) => {
+    // console.log("search region: ", region, zoom)
     dispatch(Actions.setRegion(region))
+    // dispatch(Actions.setZoom(zoom))
   }
 
   const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
-    const region: string = (value as Option).value
+    const region: RegionOption = value as RegionOption
     if (action.action === 'select-option') {
-      searchRegion(region)
+      setSelectedRegion(region)
+      searchRegion(region.value, region.zoom)
     }
-
-    setSelectedRegion(value as RegionOption)
   }
 
   const onCreateRegion = (inputValue: string) => {
-    searchRegion(inputValue)
-
     const newRegion: RegionOption = {
       label: inputValue,
       value: inputValue,
@@ -169,8 +168,9 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
     }
 
     setRegions((regions) => ([newRegion, ...regions]))
-
     setSelectedRegion(newRegion)
+
+    searchRegion(newRegion.value, newRegion.zoom)
   }
 
   return (

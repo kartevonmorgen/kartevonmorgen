@@ -208,7 +208,7 @@ const Actions = {
           }
         }
 
-        dispatch(Actions.setZoom(13.00))
+        // console.log("on move end set region")
         dispatch(Actions.onMoveend(coordinates, mapCenter))
       })
     },
@@ -345,10 +345,13 @@ const Actions = {
 
   onMoveend: (coordinates, mapCenter) =>
     (dispatch, getState) => {
+      // console.log("called on move end map center: ", mapCenter)
+      // console.log("called on move end coordinates: ", coordinates)
 
       dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
-      if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
+      if(mapCenter.lat.toFixed(4) !== coordinates.center.lat.toFixed(4) && mapCenter.lng.toFixed(4) !== coordinates.center.lng.toFixed(4)){
+        // debugger
         dispatch(Actions.setCenter({
           lat: coordinates.center.lat,
           lng: coordinates.center.lng
