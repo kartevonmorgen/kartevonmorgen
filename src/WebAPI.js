@@ -28,16 +28,22 @@ function normalizeCoordinate(bbox, idx) {
   }
 }
 
-const transformRecordToOption = (record) => ({
-  label: record.label,
-  value: record.value,
-  styles: {
-    bold: record.bold === "true",
-    underline: record.underline === "true",
-    italic: record.italic === "true",
-    fontSize: toNumber(record.fontSize) || 20
+const transformRecordToOption = (record) => {
+  const option = {
+    ...record,
+    styles: {
+      bold: record.bold === "true",
+      underline: record.underline === "true",
+      italic: record.italic === "true",
+      fontSize: toNumber(record.fontSize) || 20
+    }
   }
-})
+
+  const keysToDelete = ['bold', 'underline', 'italic', 'fontSize']
+  keysToDelete.forEach(key => delete option[key])
+
+  return option
+}
 
 const transformCSVToOptions = (records) => {
   const options = []
@@ -221,6 +227,7 @@ module.exports = {
   },
 
   searchAddressNominatim: (addr, cb) => {
+    // console.trace()
     if (addr == null) {
       addr = ''
     }
