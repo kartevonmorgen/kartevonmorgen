@@ -39,6 +39,7 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-redux": "^7.1.11",
     "@types/react-select": "^3.0.26",
+    "@welldone-software/why-did-you-render": "^6.0.3",
     "acorn": "^6.4.1",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
