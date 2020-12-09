@@ -34,6 +34,7 @@ type Regions = RegionOption[]
 
 interface RegionsSelectorProps {
   regions: Regions;
+  fonts: Fonts;
 }
 
 interface DropdownsProps {
@@ -110,6 +111,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
           {!isEmpty(regions) &&
           <RegionSelector
             regions={regions}
+            fonts={props.fonts}
           />
           }
 
@@ -195,6 +197,10 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
       styles={dropdownsStyles}
       formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
       value={selectedRegion}
+      theme={(theme: any) => ({
+        ...theme,
+        fontFamily: props.fonts.bodyFont,
+      })}
     />
   )
 }
