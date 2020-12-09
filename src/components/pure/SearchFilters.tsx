@@ -124,7 +124,6 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             name="category dropdowns"
             styles={dropdownsStyles}
             isSearchable
-            menuIsOpen={true}
             theme={(theme: any) => ({
               ...theme,
               fontFamily: props.fonts.bodyFont,
