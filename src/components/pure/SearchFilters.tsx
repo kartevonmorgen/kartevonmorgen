@@ -41,23 +41,27 @@ interface DropdownsProps {
   regions: Regions;
 }
 
+interface Fonts {
+  bodyFont: string;
+  headerFont: string;
+}
+
 interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
   showCategoryChooser: boolean;
   isOpen: boolean;
   fixedTagsStr: string;
+  fonts: Fonts;
 }
 
 const dropdownsStyles: StylesConfig = {
   container: (base: CSSProperties): CSSProperties => ({
     ...base,
-    // paddingLeft: "8px",
-    // paddingRight: "8px",
     marginBottom: '8px',
   }),
   control: (provided, state) => ({
     ...provided,
     border: 'none',
-    boxShadow: 'none'
+    boxShadow: 'none',
   }),
   menu: (base: CSSProperties): CSSProperties => ({
     ...base,
@@ -69,7 +73,7 @@ const dropdownsStyles: StylesConfig = {
     fontWeight: lodashGet(props, 'data.styles.bold', false) ? 'bold' : base.fontWeight,
     fontStyle: lodashGet(props, 'data.styles.italic', false) ? 'italic' : base.fontStyle,
     textDecoration: lodashGet(props, 'data.styles.underline', false) ? 'underline' : base.textDecoration,
-    fontSize: lodashGet(props, 'data.styles.fontSize', 0) || base.fontSize
+    fontSize: lodashGet(props, 'data.styles.fontSize', 0) || "1.1em",
   })
 }
 
@@ -120,6 +124,11 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
             name="category dropdowns"
             styles={dropdownsStyles}
             isSearchable
+            menuIsOpen={true}
+            theme={(theme: any) => ({
+              ...theme,
+              fontFamily: props.fonts.bodyFont,
+            })}
           />}
 
         </div>
@@ -142,7 +151,7 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
   const searchRegion = (region: string, zoom: number) => {
     // console.log("search region: ", region, zoom)
     dispatch(Actions.setRegion(region))
-    // dispatch(Actions.setZoom(zoom))
+    dispatch(Actions.setZoom(13.0))
   }
 
   const onChangeRegion = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
@@ -220,8 +229,9 @@ const StyledSelect = styled(Select)`
   padding-right: 0.5em;
 `
 
-const mapStateToProps = ({search}: any) => ({
-  fixedTagsStr: search.fixedTags.map((tag: string) => `#${tag}`).join(' ')
+const mapStateToProps = ({search, customizations}: any) => ({
+  fixedTagsStr: search.fixedTags.map((tag: string) => `#${tag}`).join(' '),
+  fonts: customizations.fonts
 })
 
 export default connect(mapStateToProps)(SearchFilters)

@@ -101,7 +101,10 @@ const config = {
       // This is a quick fix:
       // Without pointing to the minified leaflet file
       // webpack includes 'leaflet-src.js'
-      leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js")
+      leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js"),
+      // for development uses only
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
     }
   },
 };

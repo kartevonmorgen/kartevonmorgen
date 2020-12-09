@@ -35,7 +35,7 @@ const transformRecordToOption = (record) => {
       bold: record.bold === "true",
       underline: record.underline === "true",
       italic: record.italic === "true",
-      fontSize: toNumber(record.fontSize) || 20
+      fontSize: toNumber(record.fontSize) || "inherit"
     }
   }
 

@@ -23,6 +23,7 @@ import 'react-tiny-fab/dist/styles.css'
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 class KVMMap extends Component {
+  static whyDidYouRender = true
 
   getIconById(customizationName, id) {
     switch (id) {
