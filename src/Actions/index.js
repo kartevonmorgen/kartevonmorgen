@@ -7,3 +7,5 @@ module.exports = {
   ...clientActions,
   ...serverActions
 }
+
+export default module.exports
