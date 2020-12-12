@@ -3,7 +3,7 @@ import { Actions }    from "./server";
 
 let serverActions = Actions;
 
-export default {
-  ...clientActions, 
+module.exports = {
+  ...clientActions,
   ...serverActions
 }
