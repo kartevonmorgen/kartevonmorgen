@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
         standalone={this.props.type === "standalone"}
       >
         {
-          categoryChooser.show && !dropdownOptions &&
+          categoryChooser.show &&
           <TypeButtons
             activeCategories={categories}
             disabled={disabled}
@@ -44,21 +44,6 @@ class SearchBar extends React.Component {
             t={t}
             type={this.props.type}
           />
-        }
-
-        {
-          dropdownOptions && (
-            <SearchFilters
-              showCategoryChooser={categoryChooser.show}
-              activeCategories={categories}
-              disabled={disabled}
-              onToggle={toggleCat}
-              categories={dropdownOptions.categories}
-              regions={dropdownOptions.regions}
-              t={t}
-              isOpen={this.state.areDropdownsShown}
-            />
-          )
         }
 
         <div className="pure-u-1">
@@ -92,7 +77,21 @@ class SearchBar extends React.Component {
         </div>
 
         {
-          dropdownOptions && (
+          (dropdownOptions && dropdownOptions.regions.length) && (
+            <SearchFilters
+              showCategoryChooser={categoryChooser.show}
+              activeCategories={categories}
+              disabled={disabled}
+              onToggle={toggleCat}
+              regions={dropdownOptions.regions}
+              t={t}
+              isOpen={this.state.areDropdownsShown}
+            />
+          )
+        }
+
+        {
+          (dropdownOptions && dropdownOptions.regions.length) && (
             <CollapseTriggerContainer className="pure-u-1-1">
               <CollapseTrigger
                 className="pure-u-1-3"

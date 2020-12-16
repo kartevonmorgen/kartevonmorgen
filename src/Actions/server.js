@@ -35,6 +35,7 @@ const Actions = {
   }),
 
   fetchProminentTags: () =>
+    // scrapes the prominent tags from wordpress
     (dispatch) => {
       WebAPI.getProminentTags((prominentTags, err) => {
         if (err) {
@@ -48,7 +49,7 @@ const Actions = {
       })
     },
 
-  setDropdowns: (name) => (dispatch) => {
+  setDropdowns: (name='kvm') => (dispatch) => {
     WebAPI.getDropdowns(name, (dropdowns) => (dispatch({type: T.SET_DROPDOWNS, payload: dropdowns})))
   },
 

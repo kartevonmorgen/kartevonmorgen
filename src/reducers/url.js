@@ -21,6 +21,7 @@ module.exports = (state=initialState, action={}) => {
   if(params){
     // TODO parse Boolean for left?
     var { zoom, entry, search, tags, left, categories, addentry, fixedTags, dropdowns } = params;
+    dropdowns = dropdowns || 'kvm'
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 

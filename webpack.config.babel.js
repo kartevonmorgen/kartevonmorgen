@@ -103,8 +103,8 @@ const config = {
       // webpack includes 'leaflet-src.js'
       leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js"),
       // for development uses only
-      'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling',
+      // 'react-dom$': 'react-dom/profiling',
+      // 'scheduler/tracing': 'scheduler/tracing-profiling',
     }
   },
 };

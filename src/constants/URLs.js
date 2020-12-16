@@ -29,11 +29,11 @@ const PUBLIC_RESOURSES = (() => {
     case APP_STAGES.LOCAL:
       return "./public"
     case APP_STAGES.NIGHTLY:
-      return "https://test.kartevonmorgen.org/public/"
+      return "https://test.kartevonmorgen.org/public"
     case APP_STAGES.BETA:
-      return "https://beta.kartevonmorgen.org/public/"
+      return "https://beta.kartevonmorgen.org/public"
     default:
-      return "https://kartevonmorgen.org/public/";
+      return "https://kartevonmorgen.org/public";
   }
 })()
 

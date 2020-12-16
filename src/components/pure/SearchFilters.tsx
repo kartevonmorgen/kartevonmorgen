@@ -38,7 +38,6 @@ interface RegionsSelectorProps {
 }
 
 interface DropdownsProps {
-  categories: Option[];
   regions: Regions;
 }
 
@@ -79,18 +78,9 @@ const dropdownsStyles: StylesConfig = {
 }
 
 const SearchFilters: FC<SearchFiltersProps> = (props) => {
-  const {fixedTagsStr, regions, categories, isOpen} = props
+  const {fixedTagsStr, regions, isOpen} = props
 
   const dispatch = useDispatch()
-
-  const onChangeCategory = (value: ValueType<Option>, action: ActionMeta<Option>): void => {
-    const term: string = (value as Option).value
-
-    if (action.action === 'select-option') {
-      dispatch(Actions.setSearchText(`${fixedTagsStr} ${term}`))
-      dispatch(Actions.search())
-    }
-  }
 
   return (
     <CollapseContainer className="pure-u-1-1">
@@ -99,39 +89,12 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
         theme={{collapse: 'pure-g ReactCollapse--collapse', content: 'pure-u-1-1'}}
       >
         <div className="pure-g">
-          {props.showCategoryChooser &&
-          <TypeButtons
-            activeCategories={props.activeCategories}
-            disabled={props.disabled}
-            onToggle={props.onToggle}
-            type={props.type}
-            t={props.t}
-          />}
-
           {!isEmpty(regions) &&
           <RegionSelector
             regions={regions}
             fonts={props.fonts}
           />
           }
-
-          {!isEmpty(categories) &&
-          <StyledSelect
-            placeholder="Choose a category"
-            autoFocus={false}
-            aria-label="category filter dropdown"
-            className="pure-u-1-1"
-            onChange={onChangeCategory}
-            options={categories}
-            name="category dropdowns"
-            styles={dropdownsStyles}
-            isSearchable
-            theme={(theme: any) => ({
-              ...theme,
-              fontFamily: props.fonts.bodyFont,
-            })}
-          />}
-
         </div>
       </Collapse>
     </CollapseContainer>
@@ -213,22 +176,14 @@ const CollapseContainer = styled.div`
 `
 
 SearchFilters.propTypes = {
-  categories: PropTypes.array.isRequired,
   regions: PropTypes.array.isRequired
 }
 
 SearchFilters.defaultProps = {
-  categories: [],
   regions: []
 }
 
 const StyledCreatable = styled(Creatable)`
-  margin-top: 2px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-`
-
-const StyledSelect = styled(Select)`
   margin-top: 2px;
   padding-left: 0.5em;
   padding-right: 0.5em;
