@@ -156,6 +156,10 @@ switch (process.env.NODE_ENV) {
           {
             from: "**/kvm/filters/*.csv",
             to: "public/customizations/kvm/filters/[name].[ext]"
+          },
+          {
+            from: "**/img/team/*",
+            to: "img/team/[name].[ext]"
           }
         ]
       })
@@ -174,6 +178,17 @@ switch (process.env.NODE_ENV) {
   default: // production
     serverStage('production', APP_STAGES.PRODUCTION);
 }
+
+plugins.push(
+  new CopyPlugin({
+    patterns: [
+      {
+        from: "src/img",
+        to: "img"
+      }
+    ]
+  })
+)
 
 plugins.push(new HTMLPlugin({
   ...htmlPluginOptions,
@@ -207,6 +222,13 @@ plugins.push(new HTMLPlugin({
 
 plugins.push(
   new webpack.IgnorePlugin(/\.csv$/)
+)
+
+plugins.push(
+  new webpack.IgnorePlugin(
+    /^((?!pincloud).)*$|^((?!favicon).)*/,
+    /img/,
+  )
 )
 
 plugins.push(

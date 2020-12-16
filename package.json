@@ -68,6 +68,7 @@
     "react-dom": "^16.13.1",
     "react-i18next": "^7.13.0",
     "react-is": "^16.13.1",
+    "react-lazy-load-image-component": "^1.5.1",
     "react-leaflet": "^2.7.0",
     "react-loaders-spinners": "^0.4.0",
     "react-lowlight": "^2.0.0",
