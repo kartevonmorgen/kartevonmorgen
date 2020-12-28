@@ -28,7 +28,7 @@ const Actions = {
   restoreSearch: () =>
     (dispatch) => {
       dispatch(Actions.restoreSearchText())
-      dispatch(serverActions.Actions.search())
+      dispatch(serverActions.search())
     },
 
   setCitySearchText: (txt) => ({
@@ -60,7 +60,7 @@ const Actions = {
   showNewEntry: () =>
     (dispatch) => {
       // dispatch(Actions.setSearchText(''));
-      dispatch(serverActions.Actions.search());
+      dispatch(serverActions.search());
       dispatch({
         type: T.SHOW_NEW_ENTRY
       });
@@ -128,7 +128,7 @@ const Actions = {
       if(Array.isArray(getState().search.invisible)){
         allIDs.push(allIDs, getState().search.invisible.map(e => e.id));
       }
-      dispatch(serverActions.Actions.getEntries(allIDs));
+      dispatch(serverActions.getEntries(allIDs));
     },
 
   showNewRating: (id) => ({
@@ -348,7 +348,7 @@ const Actions = {
       // console.log("called on move end map center: ", mapCenter)
       // console.log("called on move end coordinates: ", coordinates)
 
-      dispatch(serverActions.Actions.setSearchTime(Date.now()));
+      dispatch(serverActions.setSearchTime(Date.now()));
 
       if(mapCenter.lat.toFixed(4) !== coordinates.center.lat.toFixed(4) && mapCenter.lng.toFixed(4) !== coordinates.center.lng.toFixed(4)){
         // debugger
@@ -358,13 +358,13 @@ const Actions = {
         }));
       }
       dispatch(Actions.setBbox(coordinates.bbox));
-      dispatch(serverActions.Actions.search());
+      dispatch(serverActions.search());
 
     },
 
   onZoomend: (coordinates, zoom) =>
     (dispatch, getState) => {
-      dispatch(serverActions.Actions.setSearchTime(Date.now()));
+      dispatch(serverActions.setSearchTime(Date.now()));
 
       if(coordinates.zoom !== zoom){
         dispatch(Actions.setZoom(coordinates.zoom));

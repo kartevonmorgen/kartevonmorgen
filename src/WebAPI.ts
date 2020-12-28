@@ -1,17 +1,21 @@
+// @ts-ignore
 import request from "superagent/lib/client"
+// @ts-ignore
 import saPrefix from "superagent-prefix"
 import toNumber from "lodash/toNumber"
+// @ts-ignore
 import {TILEHOSTING_API_KEY} from "./constants/App"
+// @ts-ignore
 import {OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES} from "./constants/URLs"
+// @ts-ignore
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search"
 import parse from 'csv-parse/lib/sync'
-
 
 const prefix = saPrefix(OFDB_API.link)
 const publicResources = saPrefix(PUBLIC_RESOURCES.link)
 const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn'
 
-const jsonCallback = (cb) => (err, res) => {
+const jsonCallback = (cb: Function) => (err: any, res: { body: any }) => {
   if (err) {
     cb(err)
   } else {
@@ -19,7 +23,9 @@ const jsonCallback = (cb) => (err, res) => {
   }
 }
 
-function normalizeCoordinate(bbox, idx) {
+type TextResponse = { text: String }
+
+function normalizeCoordinate(bbox: any, idx: any) {
   if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
     bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0
   }
@@ -28,7 +34,7 @@ function normalizeCoordinate(bbox, idx) {
   }
 }
 
-const transformRecordToOption = (record) => {
+const transformRecordToOption = (record: any) => {
   const option = {
     ...record,
     styles: {
@@ -45,7 +51,7 @@ const transformRecordToOption = (record) => {
   return option
 }
 
-const transformCSVToOptions = (records) => {
+const transformCSVToOptions = (records: Array<{ headline: String, label: String }>) => {
   const options = []
   for (let i = 0; i < records.length; i++) {
     const record = records[i]
@@ -62,6 +68,7 @@ const transformCSVToOptions = (records) => {
           break
         }
 
+        // @ts-ignore
         option.options.push(transformRecordToOption(subRecord))
       }
 
@@ -75,9 +82,9 @@ const transformCSVToOptions = (records) => {
   return options
 }
 
-module.exports = {
+const WebAPI = {
 
-  searchEntries: (txt, cats, bbox, cb) => {
+  searchEntries: (txt: any, cats: any, bbox: any, cb: Function) => {
 
     if (txt == null) {
       txt = ''
@@ -102,7 +109,7 @@ module.exports = {
       .end(jsonCallback(cb))
   },
 
-  searchEvents: (txt, bbox, start, end, cb) => {
+  searchEvents: (txt: any, bbox: any, start: any, end: any, cb: Function) => {
     if (bbox == null) {
       bbox = []
     }
@@ -120,37 +127,37 @@ module.exports = {
     req.end(jsonCallback(cb))
   },
 
-  createNewEvent: (newEvent, callBack) => {
+  createNewEvent: (newEvent: Object, cb: Function) => {
     request
       .post('/events')
       .use(prefix)
       .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(newEvent)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
-          callBack(err)
+          cb(err)
         } else {
-          callBack(null, res.text.replace(/"/g, ""))
+          cb(null, res.text.replace(/"/g, ""))
         }
       })
   },
 
-  editEvent: (event, callBack) => {
+  editEvent: (event: { id: String }, cb: Function) => {
     request
       .put('/events/' + event.id)
       .use(prefix)
       .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(event)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
-          callBack(err)
+          cb(err)
         } else {
-          callBack(null, res.text)
+          cb(null, res.text)
         }
       })
   },
 
-  getEvent: (ids = [], cb) => {
+  getEvent: (ids = [], cb: Function) => {
     if (!Array.isArray(ids)) {
       ids = [ids]
     }
@@ -166,7 +173,7 @@ module.exports = {
     }
   },
 
-  countTags: (cb) => {
+  countTags: (cb: Function) => {
     request
       .get('/count/tags')
       .use(saPrefix(OFDB_API.link))
@@ -174,7 +181,7 @@ module.exports = {
       .end(jsonCallback(cb))
   },
 
-  getProminentTags: (cb) => {
+  getProminentTags: (cb: Function) => {
     const xhr = new XMLHttpRequest()
     xhr.open("GET", `${CORS_PROXY.link}/${PROMINENT_TAGS.link}`)
 
@@ -186,10 +193,13 @@ module.exports = {
           const el = document.createElement('html')
           el.innerHTML = xhr.responseText
 
-          const prominentTags = el.querySelector("#post-6714 > div > p").textContent
-            .split('#').filter(t => t.length)
-
-          cb(prominentTags)
+          const p = el.querySelector("#post-6714 > div > p");
+          if (p != null && p.textContent) {
+            const prominentTags = p.textContent.split('#').filter(t => t.length)
+            cb(prominentTags)
+          } else {
+            cb([], "could not find <p> tag")
+          }
         } else {
           // Oh no! There has been an error with the request!
           cb([], "could not fetch prominent tags")
@@ -200,23 +210,7 @@ module.exports = {
     xhr.send()
   },
 
-  getTags: (page, cb) => {
-    const offset = page * NUMBER_TAGS_TO_FETCH
-    const limit = NUMBER_TAGS_TO_FETCH
-
-    request
-      .get('/entries/most-popular-tags')
-      .use(saPrefix(OFDB_API.link))
-      .query({
-        'min-count': 1,
-        offset,
-        limit,
-      })
-      .set('Accept', 'application/json')
-      .end(jsonCallback(cb))
-  },
-
-  searchAddressTilehosting: (addr, cb) => {
+  searchAddressTilehosting: (addr: any, cb: Function) => {
     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY)
     if (addr != null && addr != "") {
       request
@@ -226,7 +220,7 @@ module.exports = {
     }
   },
 
-  searchAddressNominatim: (addr, cb) => {
+  searchAddressNominatim: (addr: any, cb: Function) => {
     // console.trace()
     if (addr == null) {
       addr = ''
@@ -247,7 +241,7 @@ module.exports = {
       .end(jsonCallback(cb))
   },
 
-  searchGeolocation: (latlng, cb) => {
+  searchGeolocation: (latlng: any, cb: Function) => {
 
     if (latlng == null) {
       latlng = {
@@ -278,7 +272,7 @@ module.exports = {
       .end(jsonCallback(cb))
   },
 
-  getEntries: (ids = [], cb) => {
+  getEntries: (ids = [], cb: Function) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -294,7 +288,7 @@ module.exports = {
     }
   },
 
-  getRatings: (ids = [], cb) => {
+  getRatings: (ids = [], cb: Function) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -310,13 +304,13 @@ module.exports = {
     }
   },
 
-  saveNewEntry: (e, cb) => {
+  saveNewEntry: (e: Object, cb: Function) => {
     request
       .post('/entries/')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(e)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
           cb(err)
         } else {
@@ -325,13 +319,13 @@ module.exports = {
       })
   },
 
-  saveEntry: (e, cb) => {
+  saveEntry: (e: { id: String }, cb: Function) => {
     request
       .put('/entries/' + e.id)
       .use(prefix)
       .set('Accept', 'application/json')
       .send(e)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
           cb(err)
         } else {
@@ -340,13 +334,13 @@ module.exports = {
       })
   },
 
-  createRating: (r, cb) => {
+  createRating: (r: Object, cb: Function) => {
     request
       .post('/ratings/')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(r)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
           cb(err)
         } else {
@@ -355,7 +349,7 @@ module.exports = {
       })
   },
 
-  getAllCategories: (cb) => {
+  getAllCategories: (cb: Function) => {
     request
       .get('/categories/')
       .use(prefix)
@@ -363,12 +357,12 @@ module.exports = {
       .end(cb)
   },
 
-  getServerInfo: (cb) => {
+  getServerInfo: (cb: Function) => {
     request
       .get('/server/version')
       .set('Accept', 'application/json')
       .use(prefix)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
           cb(err)
         } else {
@@ -379,10 +373,10 @@ module.exports = {
       })
   },
 
-  register: ({
-               email,
-               password,
-             }, cb) => {
+  register: (
+    { email, password }: { email: String, password: String },
+    cb: Function
+  ) => {
     request
       .post('/users')
       .use(prefix)
@@ -394,10 +388,10 @@ module.exports = {
       .end(cb)
   },
 
-  login: ({
-            email,
-            password
-          }, cb) => {
+  login: (
+    { email, password }: { email: String, password: String },
+    cb: Function
+  ) => {
     request
       .post('/login')
       .set('Accept', 'application/json')
@@ -410,7 +404,7 @@ module.exports = {
       .end(cb)
   },
 
-  getUser: (email, cb) => {
+  getUser: (email: String, cb: Function) => {
     request
       .get('/users/' + email)
       .set('Accept', 'application/json')
@@ -419,7 +413,7 @@ module.exports = {
       .end(cb)
   },
 
-  logout: (cb) => {
+  logout: (cb: Function) => {
     request
       .post('/logout')
       .set('Accept', 'application/json')
@@ -428,7 +422,7 @@ module.exports = {
       .end(cb)
   },
 
-  confirmEmail: (token, cb) => {
+  confirmEmail: (token: String, cb: Function) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
@@ -439,7 +433,7 @@ module.exports = {
       .end(cb)
   },
 
-  deleteAccount: (email, cb) => {
+  deleteAccount: (email: String, cb: Function) => {
     request
       .delete('/users/' + email)
       .set('Accept', 'application/json')
@@ -448,14 +442,14 @@ module.exports = {
       .end(cb)
   },
 
-  subscribeToBbox: (bbox, cb) => {
+  subscribeToBbox: (bbox: {_southWest: any,  _northEast: any}, cb: Function) => {
     let coordinates = [bbox._southWest, bbox._northEast]
     request
       .post('/subscribe-to-bbox')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(coordinates)
-      .end((err, res) => {
+      .end((err: any, res: TextResponse) => {
         if (err) {
           cb(err)
         } else {
@@ -464,7 +458,7 @@ module.exports = {
       })
   },
 
-  getBboxSubscriptions: (cb) => {
+  getBboxSubscriptions: (cb: Function) => {
     request
       .get('/bbox-subscriptions')
       .set('Accept', 'application/json')
@@ -472,7 +466,7 @@ module.exports = {
       .end(cb)
   },
 
-  unsubscribeFromBboxes: (cb) => {
+  unsubscribeFromBboxes: (cb: Function) => {
     request
       .delete('/unsubscribe-all-bboxes')
       .set('Accept', 'application/json')
@@ -480,12 +474,11 @@ module.exports = {
       .end(cb)
   },
 
-  getDropdowns: (name, cb) => {
+  getDropdowns: (name: String, cb: Function) => {
     const dropdowns = {
       'categories': [],
       'regions': [],
     }
-
 
     Promise.all(Object.keys(dropdowns).map(async (dropdownName) => {
       try {
@@ -502,10 +495,26 @@ module.exports = {
         )
 
         const transformed = transformCSVToOptions(records)
+        // @ts-ignore
         dropdowns[dropdownName] = transformed
       } catch (e) {
         console.error(e)
       }
     })).then(cb(dropdowns))
+  },
+
+  popularTags: (max: Number, input?: String) => {
+    // @ts-ignore
+    if (window.ofdb && window.ofdb.kern) {
+       // @ts-ignore
+       return window.ofdb.kern.popular_tags(max, input);
+    } else {
+      return new Promise((_resolve, reject) => {
+        reject(new Error("ofdb kern module not loaded!"));
+      });
+    }
   }
-}
+};
+
+module.exports = WebAPI
+export default WebAPI

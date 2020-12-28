@@ -1,7 +1,5 @@
 import clientActions  from "./client";
-import { Actions }    from "./server";
-
-let serverActions = Actions;
+import serverActions  from "./server";
 
 export default {
   ...clientActions, 

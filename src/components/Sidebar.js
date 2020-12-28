@@ -359,6 +359,7 @@ class Sidebar extends Component {
                 categories={search.categories}
                 categoryChooser={customizations.categoryChooser}
                 dropdownOptions={customizations.dropdowns}
+                popularTags={search.popularTags}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
                 toggleCat={ c => {
@@ -369,13 +370,15 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-              onChange={txt => {
+                onChange={txt => {
                   txt = txt ? `${fixedTagsStr} ${txt}`: fixedTagsStr
 
                   dispatch(Actions.setSearchText(txt));
+                  dispatch(Actions.fetchPopularTags(txt));
                   return dispatch(Actions.search());
                 }}
                 onEscape={ () => {
+                  dispatch(Actions.fetchPopularTags(''));
                   return dispatch(Actions.setSearchText(''));
                 }}
                 onEnter={ () => {}}      // currently not used, TODO

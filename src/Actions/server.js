@@ -19,15 +19,15 @@ const flatten = nestedArray => nestedArray.reduce(
   (a, next) => a.concat(Array.isArray(next) ? flatten(next) : next), []
 )
 
-const getLicenseForEntry = currentLicense => {
-  if (currentLicense && currentLicense == LICENSES.ODBL) {
-    return currentLicense
-  } else {
-    return NEW_ENTRY_LICENSE
-  }
-}
-
 const Actions = {
+
+  getLicenseForEntry: (currentLicense) => {
+    if (currentLicense && currentLicense == LICENSES.ODBL) {
+      return currentLicense
+    } else {
+      return NEW_ENTRY_LICENSE
+    }
+  },
 
   setSearchTime: (time) => ({
     type: T.SET_SEARCH_TIME,
@@ -53,30 +53,20 @@ const Actions = {
     WebAPI.getDropdowns(name, (dropdowns) => (dispatch({type: T.SET_DROPDOWNS, payload: dropdowns})))
   },
 
-  fetchTags: () =>
-    (dispatch) => {
-      WebAPI.countTags((err, count) => {
-        if (err) {
-          console.error(err)
-          return
-        }
-
-        const numbersShouldTry = Math.ceil(count / NUMBER_TAGS_TO_FETCH)
-        for (let i = 0; i !== numbersShouldTry; i++) {
-          WebAPI.getTags(i, (err, tags) => {
-            if (err) {
-              console.log(err)
-              return
-            }
-
-            dispatch({
-              type: T.FETCH_TAGS,
-              payload: tags
-            })
+  fetchPopularTags: (txt) => {
+    const tokens = txt.split(' ')
+    const term = tokens[tokens.length-1].trim()
+    return (dispatch) => {
+      WebAPI.popularTags(5, term)
+        .then(tags => {
+          dispatch({
+            type: T.FETCHED_POPULAR_TAGS,
+            payload: tags
           })
-        }
-      })
-    },
+        })
+        .catch(err => { console.error(err) })
+    }
+  },
 
   search: (all=null) =>
     (dispatch, getState) => {
@@ -414,7 +404,7 @@ const Actions = {
       let getEntityRequest
       const isEvent = entry.categories[0] === IDS.EVENT
       const entryExists = (entry != null ? entry.id : void 0)
-      entry.license = getLicenseForEntry(entry.license)
+      entry.license = Actions.getLicenseForEntry(entry.license)
 
       if (isEvent) {
         entry.created_by = 'test@test.com'
@@ -646,7 +636,4 @@ const Actions = {
   }
 }
 
-module.exports = {
-  Actions: Actions,
-  getLicenseForEntry: getLicenseForEntry
-}
+module.exports = Actions;
