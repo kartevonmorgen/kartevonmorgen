@@ -1,0 +1,34 @@
+[package]
+name = "kern"
+version = "0.0.0"
+authors = ["Markus Kohlhase <markus.kohlhase@slowtec.de>"]
+edition = "2018"
+publish = false
+
+[lib]
+crate-type = ["cdylib","rlib"]
+
+[dependencies]
+ofdb-seed = "*"
+ofdb-boundary = { version = "*", features = ["extra-derive"] }
+seed = "*"
+wasm-bindgen = { version = "*", features = ["serde-serialize"] }
+wasm-bindgen-futures = "*"
+
+[dev-dependencies]
+criterion = "*"
+serde_json = "*"
+wasm-bindgen-test = "*"
+
+[patch.crates-io]
+ofdb-seed = { git = "https://github.com/kartevonmorgen/ofdb-seed" }
+ofdb-boundary = { git = "https://github.com/kartevonmorgen/openfairdb" }
+
+[profile.release]
+lto = true
+opt-level = 'z'
+codegen-units = 1
+
+[[bench]]
+name = "filter_popular_tags"
+harness = false

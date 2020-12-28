@@ -23,5 +23,13 @@
      This page requires JavaScript. Please activate JavaScript in your browser.
     </noscript>
     <div id='app'></div>
+    <script type="module">
+      import init, { Kern } from '/kern.js';
+      if (init && Kern) {
+        init().then(() => {
+          window.ofdb = { kern: new Kern() };
+        });
+      }
+    </script>
   </body>
 </html>

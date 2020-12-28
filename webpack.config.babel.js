@@ -28,7 +28,8 @@ const config = {
         target: "http://localhost:6767",
         pathRewrite: {"^/api/v0" : "/api"}
       }
-    }
+    },
+    contentBase: path.join(__dirname, 'dist')
   },
   target: "web",
   cache: true,
