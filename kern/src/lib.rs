@@ -108,7 +108,8 @@ mod tests {
     use super::*;
     use wasm_bindgen_test::*;
 
-    wasm_bindgen_test::wasm_bindgen_test_configure!(run_in_browser);
+    // INFO: use the following line to run the test with a browser
+    // wasm_bindgen_test::wasm_bindgen_test_configure!(run_in_browser);
 
     mod filter_and_sort_tags {
         use super::*;
