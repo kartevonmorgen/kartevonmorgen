@@ -29,6 +29,8 @@ class SearchBar extends React.Component {
       fixedTagsStr
     } = this.props
 
+    const showFilters = dropdownOptions && !!dropdownOptions.regions.length
+
     return (
       <Bar
         className="SearchBar pure-g"
@@ -77,34 +79,31 @@ class SearchBar extends React.Component {
         </div>
 
         {
-          (dropdownOptions && dropdownOptions.regions.length) && (
-            <SearchFilters
-              showCategoryChooser={categoryChooser.show}
-              activeCategories={categories}
-              disabled={disabled}
-              onToggle={toggleCat}
-              regions={dropdownOptions.regions}
-              t={t}
-              isOpen={this.state.areDropdownsShown}
-            />
-          )
-        }
-
-        {
-          (dropdownOptions && dropdownOptions.regions.length) && (
-            <CollapseTriggerContainer className="pure-u-1-1">
-              <CollapseTrigger
-                className="pure-u-1-3"
-                onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
+          showFilters && (
+            <Fragment>
+              <SearchFilters
+                showCategoryChooser={categoryChooser.show}
+                activeCategories={categories}
+                disabled={disabled}
+                onToggle={toggleCat}
+                regions={dropdownOptions.regions}
+                t={t}
                 isOpen={this.state.areDropdownsShown}
-              >
-                {
-                  this.state.areDropdownsShown ?
-                    t('searchFilters.collapseFilters') :
-                    t('searchFilters.openFilters')
-                }
-              </CollapseTrigger>
-            </CollapseTriggerContainer>
+              />
+              <CollapseTriggerContainer className="pure-u-1-1">
+                <CollapseTrigger
+                  className="pure-u-1-3"
+                  onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
+                  isOpen={this.state.areDropdownsShown}
+                >
+                  {
+                    this.state.areDropdownsShown ?
+                      t('searchFilters.collapseFilters') :
+                      t('searchFilters.openFilters')
+                  }
+                </CollapseTrigger>
+              </CollapseTriggerContainer>
+            </Fragment>
           )
         }
 
