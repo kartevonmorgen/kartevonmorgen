@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import lodashGet from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
-import Actions from '../../Actions'
 import Select, {ActionMeta, ValueType, StylesConfig, Props} from 'react-select'
 import Creatable from 'react-select/creatable'
 import {Collapse} from 'react-collapse'
+import Actions from '../../Actions'
 import TypeButtons, {TypeButtonsProps} from './TypeButtons'
 
 
@@ -35,6 +35,7 @@ type Regions = RegionOption[]
 interface RegionsSelectorProps {
   regions: Regions;
   fonts: Fonts;
+  t: (input: any) => string;
 }
 
 interface DropdownsProps {
@@ -51,6 +52,7 @@ interface SearchFiltersProps extends DropdownsProps, TypeButtonsProps {
   isOpen: boolean;
   fixedTagsStr: string;
   fonts: Fonts;
+  t: (input: any) => string;
 }
 
 const dropdownsStyles: StylesConfig = {
@@ -73,14 +75,12 @@ const dropdownsStyles: StylesConfig = {
     fontWeight: lodashGet(props, 'data.styles.bold', false) ? 'bold' : base.fontWeight,
     fontStyle: lodashGet(props, 'data.styles.italic', false) ? 'italic' : base.fontStyle,
     textDecoration: lodashGet(props, 'data.styles.underline', false) ? 'underline' : base.textDecoration,
-    fontSize: lodashGet(props, 'data.styles.fontSize', 0) || "1.1em",
+    fontSize: lodashGet(props, 'data.styles.fontSize', 0) || '1.1em',
   })
 }
 
 const SearchFilters: FC<SearchFiltersProps> = (props) => {
-  const {fixedTagsStr, regions, isOpen} = props
-
-  const dispatch = useDispatch()
+  const {regions, isOpen, t} = props
 
   return (
     <CollapseContainer className="pure-u-1-1">
@@ -93,6 +93,7 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
           <RegionSelector
             regions={regions}
             fonts={props.fonts}
+            t={t}
           />
           }
         </div>
@@ -103,6 +104,8 @@ const SearchFilters: FC<SearchFiltersProps> = (props) => {
 
 
 const RegionSelector: FC<RegionsSelectorProps> = (props) => {
+  const {t} = props
+
   const [selectedRegion, setSelectedRegion] = useState<RegionOption | undefined>(undefined)
   const [regions, setRegions] = useState<Regions>([])
 
@@ -137,7 +140,7 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
         underline: false,
         fontSize: 0
       },
-      type: ""
+      type: ''
     }
 
     setRegions((regions) => ([newRegion, ...regions]))
@@ -148,7 +151,7 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
 
   return (
     <StyledCreatable
-      placeholder="Search a region"
+      placeholder={t("searchFilters.selectRegion")}
       autoFocus={false}
       aria-label="region filter dropdown"
       className="pure-u-1-1"
@@ -158,7 +161,7 @@ const RegionSelector: FC<RegionsSelectorProps> = (props) => {
       options={regions}
       name="regions dropdowns"
       styles={dropdownsStyles}
-      formatCreateLabel={(inputValue: string) => (`Search for: ${inputValue}`)}
+      formatCreateLabel={(inputValue: string) => (`${t("searchFilters.searchFor")}: ${inputValue}`)}
       value={selectedRegion}
       theme={(theme: any) => ({
         ...theme,

@@ -100,8 +100,8 @@ class SearchBar extends React.Component {
               >
                 {
                   this.state.areDropdownsShown ?
-                    'Collapse Filters' :
-                    'Open Filters'
+                    t('searchFilters.collapseFilters') :
+                    t('searchFilters.openFilters')
                 }
               </CollapseTrigger>
             </CollapseTriggerContainer>
