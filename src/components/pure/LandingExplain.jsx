@@ -257,7 +257,7 @@ const LandingExplain = props => {
           className="partnerLogo"
           alt="ideen"
           scrollPosition={scrollPosition}
-          src="./img/ideen.jpg"
+          src="./img/ideen.png"
         />
       </a>
       <a href="http://slowtec.de">
