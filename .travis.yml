@@ -6,7 +6,7 @@ before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 language: node_js
 node_js:
-  - "8"
+  - "14"
 notifications:
   email:
     on_success: never
