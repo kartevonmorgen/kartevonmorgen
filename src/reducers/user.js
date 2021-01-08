@@ -6,7 +6,7 @@ const initialState = {
   subscriptionExists: false
 };
 
-module.exports = (state=initialState, action={}) => {
+export default (state=initialState, action={}) => {
 
   if (action.error) {
     return state;

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   // get location (default timeout 15 seconds)
   // with fallback to high accuracy in case that low accuracy is turned off

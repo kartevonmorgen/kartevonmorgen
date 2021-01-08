@@ -10,7 +10,6 @@ import SearchInput from "./pure/SearchInput"
 import SearchFilters from "./pure/SearchFilters"
 import TypeButtons from "./pure/TypeButtons"
 
-
 class SearchBar extends React.Component {
   state = {
     areDropdownsShown: true
@@ -129,7 +128,7 @@ SearchBar.propTypes = {
   t: T.func
 }
 
-module.exports = translate('translation')(SearchBar)
+export default translate('translation')(SearchBar)
 
 const borderRadius = '0.4em'
 

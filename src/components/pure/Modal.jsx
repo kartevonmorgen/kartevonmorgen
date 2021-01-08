@@ -28,7 +28,7 @@ Große Karte öffnen</a></p>`
 )
 
 
-module.exports = ({view, dispatch}) => {
+export default ({view, dispatch}) => {
 
   const url = window.location.href
 

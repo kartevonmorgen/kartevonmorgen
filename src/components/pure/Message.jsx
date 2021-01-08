@@ -60,7 +60,7 @@ Message.propTypes = {
   optionalActionComponent: T.node
 };
 
-module.exports = Message;
+export default Message;
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
   margin: 0 10px;

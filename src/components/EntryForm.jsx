@@ -20,7 +20,7 @@ import Actions              from "../Actions";
 import validation           from "../util/validation";
 import NavButton            from "./pure/NavButton";
 import { IDS, NAMES }       from "../constants/Categories";
-import URLs                 from "../constants/URLs";
+import * as URLs            from "../constants/URLs";
 import LICENSES             from "../constants/Licenses";
 import { EDIT             } from "../constants/Form";
 import SelectTags           from './SelectTags';
@@ -624,7 +624,7 @@ Form.propTypes = {
   descriptionLength: T.number
 };
 
-module.exports = connect(mapStateToProps)(reduxForm({
+export default connect(mapStateToProps)(reduxForm({
   form            : EDIT.id,
   validate        : validation.entryForm,
   asyncBlurFields : ['street', 'zip', 'city'],

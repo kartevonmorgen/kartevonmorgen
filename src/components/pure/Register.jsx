@@ -68,7 +68,7 @@ const SubmitButton = styled.button`
   padding: 12px 30px !important;
 `
 
-module.exports = reduxForm({
-  form      : REGISTER.id,
+export default reduxForm({
+  form     : REGISTER.id,
   validate : validation.registerForm
 })(Register)

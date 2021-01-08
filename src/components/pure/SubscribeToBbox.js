@@ -94,4 +94,4 @@ const subscribeToBbox = ({subscriptionExists, dispatch, bbox, email, mapCenter})
   }
 }
 
-module.exports = subscribeToBbox
+export default subscribeToBbox

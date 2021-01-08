@@ -4,7 +4,7 @@ import T from "../constants/ActionTypes"
 import defaultCustomization from "../customizations/default/config"
 
 
-module.exports = (state=defaultCustomization, action={}) => {
+export default (state=defaultCustomization, action={}) => {
   switch (action.type) {
     case T.SET_CUSTOMIZATIONS:
       const newState = cloneDeep(action.payload)

@@ -1,8 +1,7 @@
 import "../../components/styling/Stylesheets"
 
 import React         from "react";
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
-import URLs          from "../../constants/URLs";
+import * as URLs     from "../../constants/URLs";
 import i18n          from "../../i18n";
 import Map           from "../../components/Map";
 import Sidebar       from "../../components/Sidebar";
@@ -12,9 +11,11 @@ import V             from "../../constants/PanelView";
 import { translate } from "react-i18next"
 import Actions       from "../../Actions";
 import logo          from "../../img/logo_without_slogan.png";
+
+import { FontAwesomeIcon }           from '@fortawesome/react-fontawesome'
 import styled, { createGlobalStyle } from "styled-components";
 
-module.exports = translate('translation')((props) => {
+export default translate('translation')((props) => {
   
   const { map, server, form, search, view, t, dispatch } = props;
   const { entries, ratings } = server;

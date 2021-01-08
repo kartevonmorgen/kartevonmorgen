@@ -1,5 +1,3 @@
-require('es6-promise').polyfill(); // required for redux-form
-
 import React    from "react";
 import ReactDOM from "react-dom";
 import App      from "./components/App";

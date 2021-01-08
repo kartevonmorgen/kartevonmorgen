@@ -205,7 +205,7 @@ const RatingForm = props => {
     </RatingFormWrapper>)
 }
 
-module.exports = reduxForm({
+export default reduxForm({
   validate  : validation.ratingForm,
   form      : "rating"
 })(translate("translation")(RatingForm))

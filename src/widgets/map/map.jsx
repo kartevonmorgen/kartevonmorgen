@@ -1,7 +1,7 @@
 import React         from "react";
 import styled        from "styled-components";
 import EntryDetails  from "../../components/pure/EntryDetails";
-import URLs          from "../../constants/URLs";
+import * as URLs     from "../../constants/URLs";
 import i18n          from "../../i18n";
 import Map           from "../../components/Map";
 import STYLE         from "../../components/styling/Variables"
@@ -18,7 +18,7 @@ const MoreInfoLink = styled.a`
   border-top-right-radius: 2px;
 `;
 
-module.exports = ({customizations, marker, size, center, zoom, category, highlight,
+export default ({customizations, marker, size, center, zoom, category, highlight,
   entries, onClick, onMarkerClick, onMoveend, onZoomend, loggedIn, ratings = {}}) =>
   <div>
     <Map

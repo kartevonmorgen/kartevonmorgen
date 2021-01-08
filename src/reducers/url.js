@@ -10,7 +10,7 @@ const initialState = {
   routingUsecases: []
 };
 
-module.exports = (state=initialState, action={}) => {
+export default (state=initialState, action={}) => {
 
   if (action.type == T.UPDATE_STATE_FROM_URL) {
     var params = parseUrl(action.payload).params;

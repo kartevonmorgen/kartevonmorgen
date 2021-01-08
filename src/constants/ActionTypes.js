@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   // Client
   ENABLE_SEARCH_CATEGORY: 'ENABLE_SEARCH_CATEGORY',

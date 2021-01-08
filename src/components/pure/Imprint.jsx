@@ -1,6 +1,6 @@
-import React  from "react"
-import URLs   from "../../constants/URLs"
-import i18n   from "../../i18n";
+import React     from "react"
+import * as URLs from "../../constants/URLs"
+import i18n      from "../../i18n";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -282,4 +282,4 @@ const Imprint = () =>
     </p>
   </div>
 
-module.exports = Imprint
+export default Imprint

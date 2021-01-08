@@ -1,11 +1,11 @@
 import React, { Component }     from "react"
 import {connect}                from "react-redux"
-import { icons }                from "vm-leaflet-icons"
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { translate } from "react-i18next";
-import Actions                   from "../Actions"
-import URLs                     from "../constants/URLs"
-import { IDS, NAMES }            from "../constants/Categories"
+import { icons }                from "./vm-leaflet-icons"
+import { CopyToClipboard }      from 'react-copy-to-clipboard'
+import { translate }            from "react-i18next";
+import Actions                  from "../Actions"
+import * as URLs                from "../constants/URLs"
+import { IDS, NAMES }           from "../constants/Categories"
 import STYLE                    from "./styling/Variables"
 import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
@@ -334,7 +334,7 @@ const mapDispatchToProps = (dispatch) => ({
   // fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
 })
 
-module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));
+export default connect(null, mapDispatchToProps)(translate('translation')(KVMMap));
 
 const Wrapper = styled.div`
 

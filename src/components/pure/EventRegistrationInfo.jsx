@@ -30,4 +30,4 @@ const RegistrationInfoDiv = styled.div`
   margin: 1em 0 0 0;
 `;
 
-module.exports = translate('translation')(EventRegistrationInfo)
+export default translate('translation')(EventRegistrationInfo)

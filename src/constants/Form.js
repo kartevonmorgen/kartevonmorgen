@@ -1,5 +1,4 @@
-module.exports = {
-  EDIT: {
+export const EDIT = {
     id: "edit",
     fields: [
       "title",
@@ -16,39 +15,38 @@ module.exports = {
       "license",
       "tags"
     ]
-  },
+  }
 
-  RATING: {
+export const RATING = {
     id: "rating",
     fields: [
       "context",
       "value",
       "comment"
     ]
-  },
+  }
 
-  COMMENT: {
+export const COMMENT = {
     id: "comment",
     fields: [
       "context",
       "value",
       "comment"
     ]
-  },
+  }
 
-  LOGIN: {
+export const LOGIN = {
     id: "login",
     fields: [
       "email",
       "password"
     ]
-  },
+  }
 
-  REGISTER: {
+export const REGISTER = {
     id: "register",
     fields: [
       "email",
       "password"
     ]
   }
-};

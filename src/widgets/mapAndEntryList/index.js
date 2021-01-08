@@ -9,12 +9,14 @@ import MapAndEntryList  from "./mapAndEntryList";
 import mapConst         from "../../constants/Map";
 import { I18nextProvider } from 'react-i18next';
 import i18n             from '../../i18n';
-import { dispatch }     from "../../Store";
+import Store            from  "../../Store";
 import store            from "../../Store";
 import "../../components/styling/Icons";
 import Actions          from "../../Actions";
 import route            from "../../route";
 import { APP_STAGES }   from "../../constants/App";
+
+const { dispatch } = Store
 
 console.log("APP STAGE:", __STAGE__);
 if (__STAGE__ === APP_STAGES.LOCAL) {

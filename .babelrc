@@ -1,7 +1,0 @@
-{
-  "presets": ["env", "react", "stage-0"],
-  "plugins": ["transform-decorators-legacy","transform-runtime","babel-plugin-styled-components", "babel-plugin-transform-object-rest-spread"],
-  "env": {
-    "development": { }
-  }
-}

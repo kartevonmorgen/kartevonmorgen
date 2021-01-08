@@ -146,4 +146,4 @@ const reducer = formReducer.plugin({
 
 });
 
-module.exports = reducer
+export default reducer

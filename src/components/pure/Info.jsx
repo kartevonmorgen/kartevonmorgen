@@ -1,14 +1,14 @@
-import pkg from "../../../package.json"
-import URLs from "../../constants/URLs"
-import i18n from "../../i18n"
-import React from "react"
+import pkg       from "../../../package.json"
+import * as URLs from "../../constants/URLs"
+import i18n      from "../../i18n"
+import React     from "react"
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {LazyLoadImage} from "react-lazy-load-image-component"
 
 const t = (key) => i18n.t("info." + key)
 
-module.exports = ({serverVersion}) =>
+export default ({serverVersion}) =>
   <div className="info">
     <h2>{t("heading1")}</h2>
     <p>

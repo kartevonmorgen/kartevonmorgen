@@ -14,4 +14,4 @@ const NavButtonWrapper = ({ children, className }) =>
     { children }
   </Nav>
 
-module.exports = NavButtonWrapper
+export default NavButtonWrapper

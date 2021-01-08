@@ -37,57 +37,69 @@ const PUBLIC_RESOURSES = (() => {
   }
 })()
 
-
-module.exports = {
-  CC_LICENSE: {
+export const CC_LICENSE = {
     name: "creativecommons.org/publicdomain/zero/1.0/deed.de",
     link: "https://creativecommons.org/publicdomain/zero/1.0/deed.de"
-  },
-  ODBL_LICENSE: {
+  }
+
+export const ODBL_LICENSE = {
     name: "opendatacommons.org/licenses/odbl/summary/",
     link: "https://opendatacommons.org/licenses/odbl/summary/"
-  },
-  APP: {
+  }
+
+export const APP = {
     name: "kartevonmorgen.org",
     link: "https://kartevonmorgen.org"
-  },
-  PROTOTYPE: {
+  }
+
+export const PROTOTYPE = {
     name: "mobile.kartevonmorgen.org",
     link: "https://mobile.kartevonmorgen.org"
-  },
-  REPOSITORY: {
-    name: "github.com/kartevonmorgen/",
+  }
+
+export const REPOSITORY = {
+		name: "github.com/kartevonmorgen/",
     link: "https://github.com/kartevonmorgen/"
-  },
-  FACEBOOK: {
+  }
+
+export const FACEBOOK = {
     name: "facebook.com/vonmorgen",
     link: "https://www.facebook.com/vonmorgen"
-  },
-  MAIL: {
+  }
+
+export const MAIL = {
     name: "info@kartevonmorgen.org",
     link: "mailto:info@kartevonmorgen.org"
-  },
-  OSM_ATTR: {
+  }
+
+export const  OSM_ATTR = {
     name: "OpenStreetMap Contributors",
     link: "https://osm.org/copyright"
-  },
-  TILE_SERVER: {
+  }
+
+export const TILE_SERVER = {
     link: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  },
-  TILE_SERVER_ATTR: {
+  }
+
+export const  TILE_SERVER_ATTR = {
     name: "Fix",
     link: "https://www.openstreetmap.org/fixthemap"
-  },
-  OFDB_API: {
+  }
+
+export const OFDB_API = {
     link: OFDB_API_LINK
-  },
-  TH_GEOCODER: {
+  }
+
+export const TH_GEOCODER = {
     link: "https://geocoder.tilehosting.com/q/<query>.js?key=<key>"
-  },
-  NOMINATIM: {
+  }
+
+export const  NOMINATIM= {
     link: "https://nominatim.openstreetmap.org"
-  },
-  ROUTEPLANNERS: {
+  }
+
+export const  ROUTEPLANNERS = {
+
     default: {
       name: "Graphhopper Maps",
       link: "https://graphhopper.com/maps/?point=&point={addr}&locale=de-DE&vehicle=bike&weighting=fastest&elevation=false&use_miles=false&layer=Omniscale"
@@ -100,31 +112,37 @@ module.exports = {
       name: "GeoURI",
       link: "geo:{lat},{lng}"
     }
-  },
-  DONATE: {
+  }
+
+export const DONATE = {
     name: "www.betterplace.org/de/projects/36213",
     link: "https://www.betterplace.org/de/projects/36213"
-  },
-  JOB_ADS: {
+  }
+
+export const JOB_ADS = {
     name: "www.betterplace.org/de/organisations/vonmorgen",
     link: "https://www.betterplace.org/de/organisations/vonmorgen"
-  },
-  ENTRY_HISTORY: {
+  }
+
+export const ENTRY_HISTORY = {
     name: "EntryOpenFairDB",
     link: "https://openfairdb.org/entries",
-  },
-  EVENT_HISTORY: {
+  }
+
+export const  EVENT_HISTORY = {
     name: "EventOpenFairDB",
     link: "https://openfairdb.org/events"
-  },
-  PROMINENT_TAGS: {
+  }
+
+export const  PROMINENT_TAGS = {
     link: "https://blog.vonmorgen.org/prominent-tags/"
-  },
-  CORS_PROXY: {
+  }
+
+export const  CORS_PROXY = {
     // this is used to bypass cors, one of it's use cases is to fetch prominent tags
     link: "https://cors-anywhere.herokuapp.com"
-  },
-  PUBLIC_RESOURCES: {
-    link: PUBLIC_RESOURSES
   }
-};
+
+export const  PUBLIC_RESOURCES = {
+    link: PUBLIC_RESOURSES
+}

@@ -21,7 +21,7 @@ type Props = {
 	country: string
 }
 
-module.exports = ({street, zip, city, state, country}: Props) =>
+export default ({street, zip, city, state, country}: Props) =>
   <AddressLine role="address" tabIndex={0} className = "pure-u-22-24">
     {street && <span>{street}</span>}
     {street && (zip || city) ?

@@ -1,10 +1,12 @@
-import { dispatch, getState } from "./Store";
-import Actions from "./Actions";
-import parseUrl from "./util/parseUrl";
-import V        from "./constants/PanelView";
-import mapConst from "./constants/Map";
-import { IDS, NAMES } from "./constants/Categories";
+import store           from "./Store";
+import Actions         from "./Actions";
+import parseUrl        from "./util/parseUrl";
+import V               from "./constants/PanelView";
+import mapConst        from "./constants/Map";
+import { IDS, NAMES }  from "./constants/Categories";
 import RoutingUsecases from "./constants/RoutingUsecases";
+
+const { dispatch, getState } = store;
 
 export default (event) => {
   // console.log(`URL CHANGE FROM BROWSER: "${getState().url.hash}" --> "${window.location.hash}"`);

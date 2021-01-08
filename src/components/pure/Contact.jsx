@@ -1,7 +1,7 @@
-import React  from "react";
-import URLs   from "../../constants/URLs";
-import pkg    from "../../../package.json";
-import i18n   from "../../i18n";
+import React     from "react";
+import * as URLs from "../../constants/URLs";
+import pkg       from "../../../package.json";
+import i18n      from "../../i18n";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -33,4 +33,4 @@ const Contact = () =>
   <hr />
   </div>
 
-module.exports = Contact;
+export default Contact;

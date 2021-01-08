@@ -1,4 +1,4 @@
-const rating_groups = (ratings=[]) => {
+export const rating_groups = (ratings=[]) => {
   var groups = {};
   ratings
     .filter(r => typeof r !== "undefined" && r !== null)
@@ -11,8 +11,8 @@ const rating_groups = (ratings=[]) => {
   return groups;
 };
 
-const avg_rating_for_entry = (ratings_for_entry) => {
+export const avg_rating_for_entry = (ratings_for_entry) => {
   return ratings_for_entry.reduce((acc, r) => {if(r){return acc+r.value;} else {return 0;}}, 0) / ratings_for_entry.length
 };
 
-module.exports = { rating_groups, avg_rating_for_entry };
+export default { rating_groups, avg_rating_for_entry };

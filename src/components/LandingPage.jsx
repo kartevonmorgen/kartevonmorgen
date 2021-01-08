@@ -12,8 +12,8 @@ import PrivacyStatement     from "./pure/PrivacyStatement";
 import Explain              from "./pure/LandingExplain";
 import Register             from "./pure/Register";
 import Login                from "./pure/Login";
-import URLs                 from "../constants/URLs";
-import V                    from "../constants/PanelView";
+import * as URLs            from "../constants/URLs";
+import * as V               from "../constants/PanelView";
 import i18n                 from "../i18n";
 import STYLE                from "./styling/Variables"
 import pincloud             from "../img/pincloud.png";
@@ -375,7 +375,7 @@ LandingPage.propTypes = {
   onSelection : T.func
 };
 
-module.exports = translate('translation')(LandingPage)
+export default translate('translation')(LandingPage)
 
 const LandingWrapper = styled.div`
   position: absolute;

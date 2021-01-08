@@ -266,4 +266,4 @@ const registerForm = (data) => {
   return errors;
 }
 
-module.exports = { entryForm, ratingForm, loginForm, registerForm };
+export default { entryForm, ratingForm, loginForm, registerForm };

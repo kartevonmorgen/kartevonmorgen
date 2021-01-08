@@ -6,7 +6,7 @@ import toNumber from "lodash/toNumber"
 // @ts-ignore
 import {TILEHOSTING_API_KEY} from "./constants/App"
 // @ts-ignore
-import {OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES} from "./constants/URLs"
+import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES } from "./constants/URLs"
 // @ts-ignore
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search"
 import parse from 'csv-parse/lib/sync'
@@ -517,5 +517,4 @@ const WebAPI = {
   }
 };
 
-module.exports = WebAPI
 export default WebAPI

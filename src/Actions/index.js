@@ -1,9 +1,9 @@
-import clientActions  from "./client";
-import serverActions  from "./server";
+import * as clientActions from "./client";
+export * from "./client";
+import * as serverActions from "./server";
+export * from "./server";
 
-module.exports = {
-  ...clientActions,
+export default {
+  ...clientActions, 
   ...serverActions
 }
-
-export default module.exports

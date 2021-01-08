@@ -1,20 +1,20 @@
-import path        from "path"
-import webpack     from "webpack"
-import HTMLPlugin  from 'html-webpack-plugin'
-import CopyPlugin  from 'copy-webpack-plugin'
-import  {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
-import { APP_STAGES } from "./src/constants/App"
+const path       = require('path')
+const webpack    = require("webpack")
+const HTMLPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 let plugins = [];
 
 const config = {
   mode: "development",
   entry: {
-    app: ['babel-polyfill', path.join(__dirname, "src/index.js")],
-    renn: ['babel-polyfill', path.join(__dirname, "src/renn.js")],
-    businesscard_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/businesscard/index.js")],
-    map_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/map/index.js")],
-    mapAndEntryList_widget: ['babel-polyfill', path.join(__dirname, "src/widgets/mapAndEntryList/index.js")]
+    app: [path.join(__dirname, "src/index.js")],
+    renn: [path.join(__dirname, "src/renn.js")],
+    businesscard_widget: [path.join(__dirname, "src/widgets/businesscard/index.js")],
+    map_widget: [path.join(__dirname, "src/widgets/map/index.js")],
+    mapAndEntryList_widget: [path.join(__dirname, "src/widgets/mapAndEntryList/index.js")]
   },
   output: {
     path: path.join(__dirname, 'dist/'),
@@ -38,25 +38,35 @@ const config = {
     rules: [
       {
         test:   /\.jsx?$/,
-        loader: "babel-loader",
-        // query: {
-        //   plugins: ['transform-decorators-legacy']
-        // },
-        include: [
-          path.resolve(__dirname, "src"),
-          path.resolve(__dirname, "spec"),
-          path.resolve(__dirname, "node_modules/vm-leaflet-icons"),
-          path.resolve(__dirname, "node_modules/react-tiny-fab"),
-          path.resolve(__dirname, "node_modules/superagent"),
-        ],
+        exclude: /node_modules/,
+        use: {
+          loader: "swc-loader",
+          options: {
+            jsc: {
+              parser: {
+                syntax: "ecmascript",
+                jsx: true,
+                decorators: true,
+              }
+            }
+          }
+        }
       },
       {
         test:   /\.tsx?$/,
-        loader: "ts-loader",
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: "swc-loader",
+          options: {
+            jsc: {
+              parser: {
+                syntax: "typescript",
+                tsx: true,
+                decorators: true,
+              }
+            }
+          }
+        }
       },
       {
         test:   /\.css$/,
@@ -110,22 +120,7 @@ const config = {
   },
 };
 
-let htmlPluginOptions = {
-  template : "./src/index.html",
-  title    : "Karte von morgen",
-  favicon  : "./src/img/favicon.ico",
-  inject   : 'body',
-  pack_for_nightly : (process.env.NODE_ENV === APP_STAGES.NIGHTLY)
-};
-
 const serverStage = (processStage, stage) => {
-  htmlPluginOptions.minify = {
-    removeComments: true,
-    collapseWhitespace: true,
-    conservativeCollapse: false,
-    minifyJS: true,
-    minifyCSS: true,
-  }
 
   // Enable React optimizations.
   plugins.push(new webpack.DefinePlugin({
@@ -137,10 +132,10 @@ const serverStage = (processStage, stage) => {
 
 // TODO: make the copy plugin dynamic
 switch (process.env.NODE_ENV) {
-  case APP_STAGES.LOCAL:
+  case 'development':
     plugins.push(new webpack.DefinePlugin({
       __DEVTOOLS__  : false,
-      __STAGE__     : JSON.stringify(APP_STAGES.LOCAL)
+      __STAGE__     : JSON.stringify('development')
     }));
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(
@@ -167,17 +162,17 @@ switch (process.env.NODE_ENV) {
     )
     break;
 
-  case APP_STAGES.NIGHTLY:
-    serverStage('nightly', APP_STAGES.NIGHTLY);
+  case 'nightly':
+    serverStage('nightly', 'nightly');
     break;
 
-  case APP_STAGES.BETA:
-    serverStage('beta', APP_STAGES.BETA);
+  case 'beta':
+    serverStage('beta', 'beta');
     plugins.push(new BundleAnalyzerPlugin())
     break;
 
   default: // production
-    serverStage('production', APP_STAGES.PRODUCTION);
+    serverStage('production', 'production');
 }
 
 plugins.push(
@@ -191,35 +186,31 @@ plugins.push(
   })
 )
 
-plugins.push(new HTMLPlugin({
-  ...htmlPluginOptions,
-  filename: "index.html",
-  chunks: ["app"]
-}));
+const htmls = [
+  ["index.html", "app"],
+  ["renn.html", "renn"],
+  ["businesscard.html", "businesscard_widget"]
+];
 
-plugins.push(new HTMLPlugin({
-  ...htmlPluginOptions,
-  filename: "renn.html",
-  chunks: ["renn"]
-}));
-
-plugins.push(new HTMLPlugin({
-  ...htmlPluginOptions,
-  filename: "businesscard.html",
-  chunks: ["businesscard_widget"]
-}));
-
-plugins.push(new HTMLPlugin({
-  ...htmlPluginOptions,
-  filename: "map.html",
-  chunks: ["map_widget"]
-}));
-
-plugins.push(new HTMLPlugin({
-  ...htmlPluginOptions,
-  filename: "mapAndEntryList.html",
-  chunks: ["mapAndEntryList_widget"]
-}));
+htmls.forEach(x => {
+  const opts = {
+    filename: x[0],
+    chunks: [x[1]],
+    template : "./src/index.html",
+    title    : "Karte von morgen",
+    favicon  : "./src/img/favicon.ico",
+    inject   : 'body',
+    pack_for_nightly : (process.env.NODE_ENV === 'nightly'),
+    minify : {
+      removeComments: true,
+      collapseWhitespace: true,
+      conservativeCollapse: false,
+      minifyJS: true,
+      minifyCSS: true,
+    }
+  };
+  plugins.push(new HTMLPlugin(opts))
+});
 
 plugins.push(
   new webpack.IgnorePlugin(/\.csv$/)

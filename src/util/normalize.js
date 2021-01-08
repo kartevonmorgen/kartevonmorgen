@@ -28,4 +28,4 @@ const tags = (value) => {
   return value;
 };
 
-module.exports = { url, tags };
+export default { url, tags };

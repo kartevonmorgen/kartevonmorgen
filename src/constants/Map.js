@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   DEFAULT_ZOOM: 7,
   CITY_DEFAULT_ZOOM: 13,
   ENTRY_DEFAULT_ZOOM: 15,

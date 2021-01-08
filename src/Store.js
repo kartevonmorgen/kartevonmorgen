@@ -18,6 +18,7 @@ if (__STAGE__ === APP_STAGES.LOCAL) {
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
+
 const store = createStore(reducers, /* preloadedState, */ composeEnhancers(
   applyMiddleware(...middlewares),
   // other store enhancers if any
@@ -31,4 +32,4 @@ if (module.hot) {
   });
 }
 
-module.exports = store
+export default store

@@ -7,7 +7,7 @@ import styled,{ createGlobalStyle } from "styled-components";
 import { FontAwesomeIcon }          from '@fortawesome/react-fontawesome'
 
 import BusinessCard                 from "../../components/pure/BusinessCard";
-import URLs                         from "../../constants/URLs";
+import * as URLs                    from "../../constants/URLs";
 import i18n                         from "../../i18n";
 import STYLE                        from "../../components/styling/Variables"
 
@@ -34,7 +34,7 @@ const Card = ({ entry }) =>
     </MoreInfoLink> : ""}
   </div>
 
-module.exports = Card
+export default Card
 
 const GlobalStyle = createGlobalStyle`
   

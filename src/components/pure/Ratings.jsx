@@ -1,10 +1,10 @@
-import React      from "react";
-import styled     from "styled-components";
-import Flower     from "../Flower";
-import FlowerLeaf from "../Flower/FlowerLeaf";
-import Rating     from "./Rating";
-import i18n       from "../../i18n";
-import STYLE      from "../styling/Variables";
+import React       from "react";
+import styled      from "styled-components";
+import * as Flower from "../Flower";
+import FlowerLeaf  from "../Flower/FlowerLeaf";
+import Rating      from "./Rating";
+import i18n        from "../../i18n";
+import STYLE       from "../styling/Variables";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faComment from '@fortawesome/free-regular-svg-icons/faComment'
 
@@ -178,7 +178,7 @@ const AdditionalCommentLink = styled.a`
   }
 `
 
-module.exports = Ratings;
+export default Ratings;
 
 const RatingsWrapper = styled.div`
   flex-grow: 1;
