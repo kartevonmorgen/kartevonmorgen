@@ -419,9 +419,9 @@
     "placeholder": "Wonach suchst du? (# für Tags)"
   },
   "searchFilters": {
-    "selectRegion": "Region durchsuchen",
-    "selectCategory": "Eine Kategorie auswählen",
-    "openFilters": "Filter anzeigenl",
+    "selectRegion": "Region auswählen",
+    "selectCategory": "Kategorie auswählen",
+    "openFilters": "Filter anzeigen",
     "collapseFilters": "Filter verstecken",
     "searchFor": "Suchen nach"
   },
