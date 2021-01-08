@@ -12,7 +12,7 @@
     "pack-nightly": "npm run wasm && cross-env NODE_ENV=nightly webpack --progress",
     "pack-beta": "npm run wasm && cross-env NODE_ENV=beta webpack -p --progress",
     "start": "npm run wasm && cross-env NODE_ENV=development webpack-dev-server --progress --host 0.0.0.0 --hot --https",
-    "wasm": "wasm-pack build --release -t web -d ../dist/ kern/"
+    "wasm": "wasm-pack build --release -t web -d ../dist/ kvm-core/"
   },
   "repository": {
     "type": "git",

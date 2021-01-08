@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use kern::filter_and_sort;
+use kvm_core::filter_and_sort;
 use ofdb_seed::boundary::TagFrequency as Tag;
 use std::{fs::File, io::prelude::*};
 

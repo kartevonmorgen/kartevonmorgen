@@ -45,28 +45,28 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Check kern module
+      - name: Check kvm-core module
         uses: actions-rs/cargo@v1
         with:
           command: check
-          args: --manifest-path kern/Cargo.toml
+          args: --manifest-path kvm-core/Cargo.toml
 
-      - name: Test kern module
-        run: cd kern && wasm-pack test --node
+      - name: Test kvm-core module
+        run: cd kvm-core && wasm-pack test --node
 
-      - name: Check kern code formatting
+      - name: Check kvm-core code formatting
         id: fmt
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --manifest-path kern/Cargo.toml --all -- --check
+          args: --manifest-path kvm-core/Cargo.toml --all -- --check
 
-      - name: Check kern module for linter warnings
+      - name: Check kvm-core module for linter warnings
         id: clippy
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path kern/Cargo.toml -- -D warnings
+          args: --manifest-path kvm-core/Cargo.toml -- -D warnings
 
       - name: Cache Cargo build artefacts
         uses: actions/cache@v2
@@ -82,7 +82,7 @@ jobs:
             ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
             ${{ runner.os }}-cargo
 
-      - name: Install dependencies
+      - name: Install Node dependencies
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install

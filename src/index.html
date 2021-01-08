@@ -24,10 +24,10 @@
     </noscript>
     <div id='app'></div>
     <script type="module">
-      import init, { Kern } from '/kern.js';
-      if (init && Kern) {
+      import init, { Core } from '/kvm_core.js';
+      if (init && Core) {
         init().then(() => {
-          window.ofdb = { kern: new Kern() };
+          window.ofdb = { kvm_core: new Core() };
         });
       }
     </script>

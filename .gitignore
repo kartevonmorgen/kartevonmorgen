@@ -124,4 +124,4 @@ dist
 
 stats.json
 
-kern/target
+kvm-core/target

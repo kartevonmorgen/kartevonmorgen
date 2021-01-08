@@ -505,12 +505,12 @@ const WebAPI = {
 
   popularTags: (max: Number, input?: String) => {
     // @ts-ignore
-    if (window.ofdb && window.ofdb.kern) {
+    if (window.ofdb && window.ofdb.kvm_core) {
        // @ts-ignore
-       return window.ofdb.kern.popular_tags(max, input);
+       return window.ofdb.kvm_core.popular_tags(max, input);
     } else {
       return new Promise((_resolve, reject) => {
-        reject(new Error("ofdb kern module not loaded!"));
+        reject(new Error("KVM core module not loaded!"));
       });
     }
   }

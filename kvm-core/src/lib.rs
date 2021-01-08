@@ -11,7 +11,7 @@ const FETCH_TAGS_MAX: usize = 10_000;
 const FETCH_TAGS_STEP: usize = 1_000;
 
 #[wasm_bindgen]
-pub struct Kern {
+pub struct Core {
     api: Api,
     mdl: Rc<RefCell<Mdl>>,
 }
@@ -31,11 +31,11 @@ impl Default for Mdl {
 }
 
 #[wasm_bindgen]
-impl Kern {
+impl Core {
     #[allow(clippy::new_without_default)]
     #[wasm_bindgen(constructor)]
-    pub fn new() -> Kern {
-        Kern {
+    pub fn new() -> Core {
+        Core {
             api: Api::new(API_URL.to_string()),
             mdl: Rc::new(RefCell::new(Mdl::default())),
         }

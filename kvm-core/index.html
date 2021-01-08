@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kern usage example</title>
+    <title>KVM Core usage example</title>
     <style>
       html, body {
         font-family: sans-serif;
@@ -21,7 +21,7 @@
     </section>
     <script type="module">
 
-      import init, { Kern } from '/pkg/kern.js';
+      import init, { Core } from '/pkg/kvm_core.js';
 
       const input = document.getElementById('search');
       const tag_list = document.getElementById('tags');
@@ -30,10 +30,10 @@
 
       init().then(() => {
 
-        let kern = new Kern();
+        let core = new Core();
 
         const updateTags = function(e) {
-          kern
+          core
             .popular_tags(MAX,e.target.value)
             .then(d => {
               while (tag_list.firstChild) {
