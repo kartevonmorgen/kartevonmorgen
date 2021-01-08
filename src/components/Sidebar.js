@@ -368,7 +368,7 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-              onChange={txt => {
+                onChange={txt => {
                   txt = txt ? `${fixedTagsStr} ${txt}`: fixedTagsStr
 
                   dispatch(Actions.setSearchText(txt));

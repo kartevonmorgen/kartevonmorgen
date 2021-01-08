@@ -64,12 +64,15 @@ const SearchInput = (props) => {
     // TODO: dispatch on change
     if (!!newValue && newValue.length) {
       let newInputValue = props.searchText
-      if (newInputValue.length && newInputValue.slice(-1) === ' ') {
-        newInputValue = `${newInputValue} ${newValue[0].label}`
+      if (!newValue.value) {
+        newInputValue = ''
+      }
+      else if (newInputValue.length && newInputValue.slice(-1) === ' ') {
+        newInputValue = `${newInputValue} ${newValue[0].value}`
       } else {
         const tokens = props.searchText.trim().split(" ").filter(t => t.length)
         tokens.pop()
-        tokens.push(newValue[0].label)
+        tokens.push(newValue[0].value)
         newInputValue = tokens.join(' ')
       }
 
