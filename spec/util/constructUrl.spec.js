@@ -24,7 +24,7 @@ describe("constructUrl", () => {
     constructUrl(entry, null, null, null, null)
       .should.equal("#/?entry=abcdef");
     constructUrl(entry, center, zoom, searchText, null)
-      .should.equal("#/?entry=abcdef&zoom=10.00");
+      .should.equal("#/?entry=abcdef&center=50.100,10.100&zoom=10.00&search=solawi");
   });
 
   it("should return a hash with searchText when it is given", () => {
@@ -36,6 +36,6 @@ describe("constructUrl", () => {
     constructUrl(null, center, zoom, searchText, true)
       .should.equal("#/?center=50.100,10.100&zoom=10.00&search=solawi&left=show");
     constructUrl(null, center, zoom, searchText, false)
-      .should.equal("#/?center=50.100,10.100&zoom=10.00&search=solawi&left=hide");  
+      .should.equal("#/?center=50.100,10.100&zoom=10.00&search=solawi&left=hide");
   });
 });

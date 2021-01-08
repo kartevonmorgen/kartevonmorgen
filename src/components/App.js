@@ -173,7 +173,7 @@ class Main extends Component {
                     <li>
                       <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link}>
                         {
-                          item.translation.hasOwnProperty(language) ?
+                          Object.prototype.hasOwnProperty.call(item.translation, language) ?
                             item.translation[language] :
                             item.translation['de']
                         }
@@ -650,7 +650,7 @@ const StyledApp = styled.div `
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(66, 184, 221); /* this is a light blue */
   }
-  
+
   .button-warning {
     color: white;
     border-radius: 4px;
@@ -805,7 +805,7 @@ const StyledApp = styled.div `
   .license input {
     margin-top: 0.7em;
   }
-  
+
  .hidden {
     display: none;
   }

@@ -1,7 +1,9 @@
 import clientActions  from "./client";
 import serverActions  from "./server";
 
-export default {
-  ...clientActions, 
+module.exports = {
+  ...clientActions,
   ...serverActions
 }
+
+export default module.exports
