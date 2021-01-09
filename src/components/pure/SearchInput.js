@@ -64,7 +64,7 @@ const SearchInput = (props) => {
     // TODO: dispatch on change
     if (!!newValue && newValue.length) {
       let newInputValue = props.searchText
-      if (!newValue.value) {
+      if (!newValue[0].value) {
         newInputValue = ''
       }
       else if (newInputValue.length && newInputValue.slice(-1) === ' ') {
