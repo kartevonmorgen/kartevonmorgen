@@ -43,7 +43,7 @@ describe("Validation", () => {
         F({
           title: new Array(51).fill('a').join(''),
         }).title.should.satisfy((error) => {
-          if(error.includes("Zu kurzer Titel") || error.includes("Zu langer Titel")){
+          if(error.includes("Title too long") || error.includes("Zu langer Titel")){
             return true;
           } else {
             return false;
