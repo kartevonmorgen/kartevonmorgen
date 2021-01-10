@@ -67,7 +67,6 @@ class KVMMap extends Component {
     }
 
     // this.props.fetchProminentTags()
-    this.props.fetchTags()
   }
 
   // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -332,7 +331,6 @@ KVMMap.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
   showEmbedModal: () => (dispatch(Actions.showEmbedModal())),
-  fetchTags: () => (dispatch(Actions.fetchTags())),
   // fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
 })
 

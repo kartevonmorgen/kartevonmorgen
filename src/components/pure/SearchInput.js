@@ -1,63 +1,35 @@
-import React, {useState, useEffect, useRef} from 'react'
-import {connect} from 'react-redux'
-import styled from 'styled-components'
-import Creatable from "react-select/creatable"
-import {translate} from "react-i18next"
-import isEqual from "lodash/isEqual"
-import lodashGet from "lodash/get"
+import React         from 'react'
+import styled        from 'styled-components'
+import Select        from "react-select"
+import { translate } from "react-i18next"
 
+const SearchInput = ({
+  t,
+  fixedTagsStr,
+  onChange,
+  onKeyDown,
+  popularTags,
+  searchText,
+  prominentOptions
+}) => {
 
-const SearchInput = (props) => {
+  let options = [];
 
-  const {t, fixedTagsStr} = props
+  const tokens = searchText.split(' ')
+  const term = tokens[tokens.length-1].trim()
 
-  const [allOptions, setAllOptions] = useState([])
-  const [options, setOptions] = useState([])
-  const [prominentOptions, setProminentOptions] = useState([])
-  const prevAllTags = useRef([])
-
-  useEffect(() => {
-    // const prominentOptions = props.prominentTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
-
-    const {prominentOptions} = props
-    setProminentOptions(prominentOptions)
-    setOptions(prominentOptions)
-  }, [props.prominentOptions])
-
-  useEffect(() => {
-    if (!isEqual(prevAllTags.current, props.allTags)) {
-      prevAllTags.current = props.allTags
-      const options = props.allTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
-
-      setAllOptions(options)
-    }
-  }, [props.allTags])
-
-
-  const filterOptions = (input) => {
-    const searchString = input.toLowerCase().trim();
-    if (searchString.length === 0) {
-      setOptions(prominentOptions)
-      return
-    }
-
-    const res = allOptions.filter(d => d.label.match(searchString));
-
-    const newOptions = res.slice(0, 5)
-
-    setOptions(newOptions)
+  if (term.length === 0) {
+    options = prominentOptions
+  } else {
+    options = popularTags.map(tag => ({label: `#${tag[0]}`, value: `#${tag[0]}`}))
   }
 
   const onInputChange = (input, actionMeta) => {
-    const {action} = actionMeta
+    const { action } = actionMeta
     if (action === "input-blur" || action === "menu-close") {
       return
     }
-
-    const tokens = input.split(' ')
-    const lastToken = tokens[tokens.length-1].trim()
     onChange(input)
-    filterOptions(lastToken)
   }
 
   const handleChange = (newValue, actionMeta) => {
@@ -66,33 +38,24 @@ const SearchInput = (props) => {
       let newInputValue = props.searchText
       if (!newValue[0].value) {
         newInputValue = ''
-      }
-      else if (newInputValue.length && newInputValue.slice(-1) === ' ') {
-        newInputValue = `${newInputValue} ${newValue[0].value}`
+      } else if (newInputValue.length && newInputValue.slice(-1) === ' ') {
+        newInputValue = `${newInputValue} ${newValue[0].label}`
       } else {
-        const tokens = props.searchText.trim().split(" ").filter(t => t.length)
+        const tokens = searchText.trim().split(" ").filter(t => t.length)
         tokens.pop()
         tokens.push(newValue[0].value)
         newInputValue = tokens.join(' ')
       }
-
       onChange(newInputValue)
     }
   };
 
-  const onChange = (newInputValue) => {
-    props.onChange(newInputValue)
-  }
-
   return (
     <Recommender
-      createOptionPosition="first"
       tabIndex={1}
       autoFocus={false}
       delimeter=" "
-      formatCreateLabel={(inputValue) => (inputValue)}
       filterOption={(option) => true}
-      isMulti
       styles={{
         control: (provided, state) => ({
           ...provided,
@@ -105,28 +68,19 @@ const SearchInput = (props) => {
           zIndex: 4
         })
       }}
-      onBlur={() => {}}
       onInputChange={onInputChange}
       onChange={handleChange}
-      onKeyDown={props.onKeyDown}
+      onKeyDown={onKeyDown}
       options={options}
       placeholder={fixedTagsStr || t("searchbar.placeholder")}
-      inputValue={props.searchText}
-      value={[]}
+      inputValue={searchText}
     />
   )
 }
 
-const mapStateToProps = ({search, customizations}) => {
-  return {
-    allTags: search.tags.map(tagPair => tagPair[0]),
-    prominentOptions: lodashGet(customizations, "dropdowns.categories", [])
-  }
-}
+export default translate('translation')(SearchInput)
 
-export default translate('translation')(connect(mapStateToProps)(SearchInput))
-
-const Recommender = styled(Creatable)`
+const Recommender = styled(Select)`
   font-size: 0.9em !important;
   line-height: 1em !important;
   font-weight: 100;

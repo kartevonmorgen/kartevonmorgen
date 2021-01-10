@@ -26,9 +26,11 @@ class SearchBar extends React.Component {
       searchText,
       t,
       loading,
-      fixedTagsStr
+      fixedTagsStr,
+      popularTags
     } = this.props
 
+    const prominentOptions = dropdownOptions ? dropdownOptions.categories : []
     const showFilters = dropdownOptions && !!dropdownOptions.regions.length
 
     return (
@@ -75,6 +77,8 @@ class SearchBar extends React.Component {
             onChange={this.props.onChange}
             searchText={searchText || ''}
             fixedTagsStr={fixedTagsStr}
+            prominentOptions={prominentOptions}
+            popularTags={popularTags}
           />
         </div>
 

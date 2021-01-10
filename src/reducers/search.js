@@ -20,7 +20,7 @@ const initialState = {
   cities: [],
   fixedTags: [], //https://github.com/kartevonmorgen/kartevonmorgen/issues/667
   prominentTags: [], // the default tags shown in the search input
-  tags: [],
+  popularTags: [],
   searchByUrl: true,
   showingAllEntries: false,
   moreEntriesAvailable: false
@@ -28,7 +28,7 @@ const initialState = {
 
 const oneForEachPlace = cities =>
   {
-    const filtered =  cities.filter((city1, index1) => !cities.some((city2, index2) => 
+    const filtered =  cities.filter((city1, index1) => !cities.some((city2, index2) =>
         Math.abs(city1.lat - city2.lat) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
         Math.abs(city1.lon - city2.lon) < CITY_SEARCH_RESULTS_MIN_DISTANCE &&
         index2 < index1
@@ -225,10 +225,11 @@ module.exports = (state = initialState, action = {}) => {
         prominentTags: {$set: [...action.payload]}
       })
 
-    case T.FETCH_TAGS:
-      return update(state, {
-        tags: {$set: [...state.tags, ...action.payload].sort((a, b) => (b[1] - a[1]))}
-      })
+    case T.FETCHED_POPULAR_TAGS:
+      return {
+        ...state,
+        popularTags: action.payload
+      }
 
     default:
       return state;
