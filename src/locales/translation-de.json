@@ -418,6 +418,13 @@
   "searchbar": {
     "placeholder": "Wonach suchst du? (# für Tags)"
   },
+  "searchFilters": {
+    "selectRegion": "Region auswählen",
+    "selectCategory": "Kategorie auswählen",
+    "openFilters": "Filter anzeigen",
+    "collapseFilters": "Filter verstecken",
+    "searchFor": "Suchen nach"
+  },
   "resultlist": {
     "showMoreEntries": "Mehr Einträge anzeigen...",
     "entriesLoading": "Einträge werden geladen...",

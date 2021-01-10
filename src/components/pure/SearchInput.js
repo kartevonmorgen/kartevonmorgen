@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Creatable from "react-select/creatable"
 import {translate} from "react-i18next"
 import isEqual from "lodash/isEqual"
+import lodashGet from "lodash/get"
 
 
 const SearchInput = (props) => {
@@ -16,11 +17,12 @@ const SearchInput = (props) => {
   const prevAllTags = useRef([])
 
   useEffect(() => {
-    const prominentOptions = props.prominentTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
+    // const prominentOptions = props.prominentTags.map(tag => ({label: `#${tag}`, value: `#${tag}`}))
 
+    const {prominentOptions} = props
     setProminentOptions(prominentOptions)
     setOptions(prominentOptions)
-  }, [props.prominentTags])
+  }, [props.prominentOptions])
 
   useEffect(() => {
     if (!isEqual(prevAllTags.current, props.allTags)) {
@@ -62,12 +64,15 @@ const SearchInput = (props) => {
     // TODO: dispatch on change
     if (!!newValue && newValue.length) {
       let newInputValue = props.searchText
-      if (newInputValue.length && newInputValue.slice(-1) === ' ') {
-        newInputValue = `${newInputValue} ${newValue[0].label}`
+      if (!newValue[0].value) {
+        newInputValue = ''
+      }
+      else if (newInputValue.length && newInputValue.slice(-1) === ' ') {
+        newInputValue = `${newInputValue} ${newValue[0].value}`
       } else {
         const tokens = props.searchText.trim().split(" ").filter(t => t.length)
         tokens.pop()
-        tokens.push(newValue[0].label)
+        tokens.push(newValue[0].value)
         newInputValue = tokens.join(' ')
       }
 
@@ -112,10 +117,10 @@ const SearchInput = (props) => {
   )
 }
 
-const mapStateToProps = ({search}) => {
+const mapStateToProps = ({search, customizations}) => {
   return {
     allTags: search.tags.map(tagPair => tagPair[0]),
-    prominentTags: search.prominentTags
+    prominentOptions: lodashGet(customizations, "dropdowns.categories", [])
   }
 }
 

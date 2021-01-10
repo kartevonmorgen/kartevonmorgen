@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { translate }        from "react-i18next";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import PropTypes            from "prop-types"
 import styled               from "styled-components";
@@ -369,7 +368,7 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-              onChange={txt => {
+                onChange={txt => {
                   txt = txt ? `${fixedTagsStr} ${txt}`: fixedTagsStr
 
                   dispatch(Actions.setSearchText(txt));

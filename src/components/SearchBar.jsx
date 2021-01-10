@@ -29,6 +29,8 @@ class SearchBar extends React.Component {
       fixedTagsStr
     } = this.props
 
+    const showFilters = dropdownOptions && !!dropdownOptions.regions.length
+
     return (
       <Bar
         className="SearchBar pure-g"
@@ -36,7 +38,7 @@ class SearchBar extends React.Component {
         standalone={this.props.type === "standalone"}
       >
         {
-          categoryChooser.show && !dropdownOptions &&
+          categoryChooser.show &&
           <TypeButtons
             activeCategories={categories}
             disabled={disabled}
@@ -44,21 +46,6 @@ class SearchBar extends React.Component {
             t={t}
             type={this.props.type}
           />
-        }
-
-        {
-          dropdownOptions && (
-            <SearchFilters
-              showCategoryChooser={categoryChooser.show}
-              activeCategories={categories}
-              disabled={disabled}
-              onToggle={toggleCat}
-              categories={dropdownOptions.categories}
-              regions={dropdownOptions.regions}
-              t={t}
-              isOpen={this.state.areDropdownsShown}
-            />
-          )
         }
 
         <div className="pure-u-1">
@@ -92,20 +79,31 @@ class SearchBar extends React.Component {
         </div>
 
         {
-          dropdownOptions && (
-            <CollapseTriggerContainer className="pure-u-1-1">
-              <CollapseTrigger
-                className="pure-u-1-3"
-                onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
+          showFilters && (
+            <Fragment>
+              <SearchFilters
+                showCategoryChooser={categoryChooser.show}
+                activeCategories={categories}
+                disabled={disabled}
+                onToggle={toggleCat}
+                regions={dropdownOptions.regions}
+                t={t}
                 isOpen={this.state.areDropdownsShown}
-              >
-                {
-                  this.state.areDropdownsShown ?
-                    'Collapse Filters' :
-                    'Open Filters'
-                }
-              </CollapseTrigger>
-            </CollapseTriggerContainer>
+              />
+              <CollapseTriggerContainer className="pure-u-1-1">
+                <CollapseTrigger
+                  className="pure-u-1-3"
+                  onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
+                  isOpen={this.state.areDropdownsShown}
+                >
+                  {
+                    this.state.areDropdownsShown ?
+                      t('searchFilters.collapseFilters') :
+                      t('searchFilters.openFilters')
+                  }
+                </CollapseTrigger>
+              </CollapseTriggerContainer>
+            </Fragment>
           )
         }
 

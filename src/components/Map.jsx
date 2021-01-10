@@ -23,7 +23,7 @@ import 'react-tiny-fab/dist/styles.css'
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 class KVMMap extends Component {
-  static whyDidYouRender = true
+  static whyDidYouRender = false
 
   getIconById(customizationName, id) {
     switch (id) {
@@ -66,7 +66,7 @@ class KVMMap extends Component {
 
     }
 
-    this.props.fetchProminentTags()
+    // this.props.fetchProminentTags()
     this.props.fetchTags()
   }
 
@@ -333,7 +333,7 @@ const mapDispatchToProps = (dispatch) => ({
   showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
   showEmbedModal: () => (dispatch(Actions.showEmbedModal())),
   fetchTags: () => (dispatch(Actions.fetchTags())),
-  fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
+  // fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
 })
 
 module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));
