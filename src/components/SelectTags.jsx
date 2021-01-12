@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import update from "immutability-helper";
-import { Creatable }  from 'react-select';
+import Creatable  from 'react-select/creatable';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
 import request from "superagent/lib/client";

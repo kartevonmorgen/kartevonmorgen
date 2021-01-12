@@ -22,7 +22,6 @@ const Navbar = styled.nav`
 
 const Entry = styled.div`
   position: relative;
-  margin-bottom: 20px;
 `
 
 const EntryDetails = props => {

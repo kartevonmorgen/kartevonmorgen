@@ -6,14 +6,22 @@ const AddressLine = styled.div`
   margin-left: .52rem;
   span {
     margin-right: 0.3em;
-    
+
     &.delimiter {
       margin-left: -0.3em;
     }
-  }   
+  }
 `
 
-module.exports = ({street, zip, city, state, country}) =>
+type Props = {
+	street: string,
+	zip: string,
+	city: string,
+	state: string,
+	country: string
+}
+
+module.exports = ({street, zip, city, state, country}: Props) =>
   <AddressLine role="address" tabIndex={0} className = "pure-u-22-24">
     {street && <span>{street}</span>}
     {street && (zip || city) ?

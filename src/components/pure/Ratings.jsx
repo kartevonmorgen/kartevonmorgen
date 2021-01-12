@@ -6,7 +6,7 @@ import Rating     from "./Rating";
 import i18n       from "../../i18n";
 import STYLE      from "../styling/Variables";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-regular-svg-icons'
+import faComment from '@fortawesome/free-regular-svg-icons/faComment'
 
 const context_order = (id) => {
   switch(id) {
@@ -88,8 +88,8 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
           </svg>
         </LeafWrapper>
 
-        { ratingsInTopics(contextRatings).map(topicRatings =>
-          <RatingTopicWrapper>
+        { ratingsInTopics(contextRatings).map((topicRatings, i) =>
+          <RatingTopicWrapper key={`rating-topic-wrapper-${i}`}>
             { topicRatings.map( (rating, index) =>
               <li key={rating.id}>
                 {Rating(rating, t_r, {hideTitle: (index!=0)} )}
@@ -128,20 +128,22 @@ const Ratings = ({ entry, ratings, onRate, onComment }) => {
   if(entry){
     return(
       <RatingsWrapper id="RatingWrapper">
+        <HeadingWrapper>
+          <h3>{t("heading")}</h3>
+        </HeadingWrapper>
         <FlowerWrapper>
           <Flower ratings={ratings} radius={40} showTooltip={true} />
         </FlowerWrapper>
-        <HeadingWrapper>
-          <h3>{t("heading")}</h3>
-          <AdditionalRatingButtonWrapper>
-            { entry.ratings && entry.ratings.length > 0
-              ? <AdditionalRatingButton onClick={() => { onRate(entry.id) }}>
-                { t("newRating") }
-              </AdditionalRatingButton>
-              : ""
-            }
-          </AdditionalRatingButtonWrapper>
-        </HeadingWrapper>
+        <AdditionalRatingButtonWrapper>
+          {entry.ratings && entry.ratings.length > 0
+            ? <AdditionalRatingButton onClick={() => {
+              onRate(entry.id)
+            }}>
+              {t("newRating")}
+            </AdditionalRatingButton>
+            : ""
+          }
+        </AdditionalRatingButtonWrapper>
         { entry.ratings && entry.ratings.length > 0
           ? <div>
             { ratingElements }
@@ -181,15 +183,18 @@ module.exports = Ratings;
 const RatingsWrapper = styled.div`
   flex-grow: 1;
   margin: 1.8em;
+  margin-top: 0;
   color: #333;
 `
 
 const AdditionalRatingButtonWrapper = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
-  height: 20px;
-  font-size: 0.8em;
+  height: 30px;
+  font-size: 0.9em;
+  margin-bottom: 16px;
+  margin-top: 16px;
 `
 
 const AdditionalRatingButton = styled.button`
@@ -207,7 +212,7 @@ const FirstRatingButton = styled.button`
 
 const HeadingWrapper = styled.div`
   position: relative;
-  margin-top: 2em;
+  margin-top: 0.3em;
 `;
 
 const RatingTopicWrapper = styled.ul`

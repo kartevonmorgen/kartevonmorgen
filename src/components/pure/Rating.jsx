@@ -68,7 +68,7 @@ const RatingWrapper = styled.div`
 
 const RatingTitle = styled.span`
   margin-left: 0.3em;
-  font-weight: bold;
+  font-weight: 500 !important;
 `
 
 const TitleWrapper = styled.div`

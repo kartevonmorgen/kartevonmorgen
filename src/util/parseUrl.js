@@ -50,7 +50,7 @@ const parseSearchParams = (searchString) => {
   let pairSplit;
   return (searchString || '').replace(/^\?/, '').split('&').reduce((p, pair) => {
     pairSplit = pair.split('=');
-    if (pairSplit.length >= 1 && pairSplit[0].length >= 1) {
+    if (pairSplit.length >= 1 && pairSplit[0].length > 0) {
       p[decodeURIComponent(pairSplit[0])] = decodeURIComponent(pairSplit[1]) || '';
     }
     if (isString(p.fixedTags)) {

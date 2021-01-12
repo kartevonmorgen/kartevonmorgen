@@ -1,6 +1,8 @@
 import path        from "path"
 import webpack     from "webpack"
 import HTMLPlugin  from 'html-webpack-plugin'
+import CopyPlugin  from 'copy-webpack-plugin'
+import  {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import { APP_STAGES } from "./src/constants/App"
 
 let plugins = [];
@@ -48,6 +50,14 @@ const config = {
         ],
       },
       {
+        test:   /\.tsx?$/,
+        loader: "ts-loader",
+        include: [
+          path.resolve(__dirname, "src"),
+        ],
+        exclude: /node_modules/
+      },
+      {
         test:   /\.css$/,
         use: [
           "style-loader",
@@ -86,14 +96,17 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".jsx", ".tsx", ".js", ".ts", ".json"],
     alias: {
       // This is a quick fix:
       // Without pointing to the minified leaflet file
       // webpack includes 'leaflet-src.js'
-      leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js")
+      leaflet$: path.resolve(__dirname, "node_modules/leaflet/dist/leaflet.js"),
+      // for development uses only
+      // 'react-dom$': 'react-dom/profiling',
+      // 'scheduler/tracing': 'scheduler/tracing-profiling',
     }
-  }
+  },
 };
 
 let htmlPluginOptions = {
@@ -105,30 +118,53 @@ let htmlPluginOptions = {
 };
 
 const serverStage = (processStage, stage) => {
-    htmlPluginOptions.minify = {
-      removeComments        : true,
-      collapseWhitespace    : true,
-      conservativeCollapse  : false,
-      minifyJS              : true,
-      minifyCSS             : true,
-    };
+  htmlPluginOptions.minify = {
+    removeComments: true,
+    collapseWhitespace: true,
+    conservativeCollapse: false,
+    minifyJS: true,
+    minifyCSS: true,
+  }
 
-    // Enable React optimizations.
-    plugins.push(new webpack.DefinePlugin({
-      'process.env.STAGE'     : JSON.stringify(processStage),
-      __DEVTOOLS__  : false,
-      __STAGE__     : JSON.stringify(stage)
-    }));
+  // Enable React optimizations.
+  plugins.push(new webpack.DefinePlugin({
+    'process.env.STAGE': JSON.stringify(processStage),
+    __DEVTOOLS__: false,
+    __STAGE__: JSON.stringify(stage)
+  }))
 }
 
+// TODO: make the copy plugin dynamic
 switch (process.env.NODE_ENV) {
   case APP_STAGES.LOCAL:
     plugins.push(new webpack.DefinePlugin({
       __DEVTOOLS__  : false,
       __STAGE__     : JSON.stringify(APP_STAGES.LOCAL)
     }));
-   plugins.push(new webpack.HotModuleReplacementPlugin());
-   break;
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: "**/trier/filters/*.csv",
+            to: "public/customizations/trier/filters/[name].[ext]"
+          },
+          {
+            from: "**/renn/filters/*.csv",
+            to: "public/customizations/rennwk/filters/[name].[ext]"
+          },
+          {
+            from: "**/kvm/filters/*.csv",
+            to: "public/customizations/kvm/filters/[name].[ext]"
+          },
+          {
+            from: "**/img/team/*",
+            to: "img/team/[name].[ext]"
+          }
+        ]
+      })
+    )
+    break;
 
   case APP_STAGES.NIGHTLY:
     serverStage('nightly', APP_STAGES.NIGHTLY);
@@ -136,11 +172,23 @@ switch (process.env.NODE_ENV) {
 
   case APP_STAGES.BETA:
     serverStage('beta', APP_STAGES.BETA);
+    plugins.push(new BundleAnalyzerPlugin())
     break;
 
   default: // production
     serverStage('production', APP_STAGES.PRODUCTION);
 }
+
+plugins.push(
+  new CopyPlugin({
+    patterns: [
+      {
+        from: "src/img",
+        to: "img"
+      }
+    ]
+  })
+)
 
 plugins.push(new HTMLPlugin({
   ...htmlPluginOptions,
@@ -171,6 +219,24 @@ plugins.push(new HTMLPlugin({
   filename: "mapAndEntryList.html",
   chunks: ["mapAndEntryList_widget"]
 }));
+
+plugins.push(
+  new webpack.IgnorePlugin(/\.csv$/)
+)
+
+plugins.push(
+  new webpack.IgnorePlugin(
+    /^((?!pincloud).)*$|^((?!favicon).)*/,
+    /img/,
+  )
+)
+
+plugins.push(
+  new webpack.ContextReplacementPlugin(
+    /moment[\/\\]locale$/,
+    /de|en|es|fa/
+  )
+)
 
 config.plugins = plugins;
 module.exports = config;

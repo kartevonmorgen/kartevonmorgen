@@ -20,7 +20,8 @@ module.exports = (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories, addentry, fixedTags, orgTag } = params;
+    var { zoom, entry, search, tags, left, categories, addentry, fixedTags, orgTag, dropdowns } = params;
+    dropdowns = dropdowns || 'kvm'
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
 
@@ -61,6 +62,10 @@ module.exports = (state=initialState, action={}) => {
         if (Object.keys(Categories.NAMES).filter(c => Categories.NAMES[c] === addentry).length) {
           routingUsecases.push(RoutingUsecases.SHOW_NEW_ENTRY)
         }
+      }
+
+      if (dropdowns) {
+        routingUsecases.push(RoutingUsecases.SET_DROPDOWNS)
       }
 
       return {
@@ -121,6 +126,6 @@ module.exports = (state=initialState, action={}) => {
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags, orgTag)
+    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags, orgTag, dropdowns)
   }
 };

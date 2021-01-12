@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { translate }        from "react-i18next";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import PropTypes            from "prop-types"
 import styled               from "styled-components";
@@ -104,6 +103,7 @@ class Sidebar extends Component {
               moreEntriesAvailable={ search.moreEntriesAvailable }
               onMoreEntriesClick={ () => { return dispatch(Actions.showAllEntries()); }}
               dispatch={dispatch}
+              zoom={map.zoom}
             />
             {
               (search.cities.length > 0) ?
@@ -218,7 +218,6 @@ class Sidebar extends Component {
                 title: data.title,
                 description: data.description,
                 tags: data.tags ? data.tags.split(',') : null,
-                organizer: data.organizer,
                 homepage: data.homepage,
                 telephone: data.telephone,
                 opening_hours: data.opening_hours,
@@ -236,8 +235,11 @@ class Sidebar extends Component {
                 image_link_url: data.image_link_url,
                 end: data.end && convertDateToTimestamp(data.end),
                 start: data.start && convertDateToTimestamp(data.start),
-                links: getFormCustomLinks(data)
+                links: getFormCustomLinks(data),
+                organizer: data.organizer,
+                contact_name: data.contact_name
               };
+
               if (form[EDIT.id]) {
                 dataToSend.id = form[EDIT.id].kvm_flag_id;
               }
@@ -355,6 +357,7 @@ class Sidebar extends Component {
                 fixedTagsStr={fixedTagsStr}
                 categories={search.categories}
                 categoryChooser={customizations.categoryChooser}
+                dropdownOptions={customizations.dropdowns}
                 type="integrated"
                 disabled={view.left === V.EDIT || view.left === V.NEW}
                 toggleCat={ c => {
@@ -365,7 +368,7 @@ class Sidebar extends Component {
                   }
                   return dispatch(Actions.search());
                 }}
-              onChange={txt => {
+                onChange={txt => {
                   txt = txt ? `${fixedTagsStr} ${txt}`: fixedTagsStr
 
                   dispatch(Actions.setSearchText(txt));

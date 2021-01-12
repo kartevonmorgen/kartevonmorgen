@@ -33,7 +33,7 @@ To be able to start development you'll need the following tools:
 
 - [git](https://www.git-scm.com/)
 - [Node.js](https://nodejs.org/) version 8.x
-- [npm](https://www.npmjs.com/package/npm) version 6.x
+- [yarn](https://yarnpkg.com/getting-started/install) version 1.x
 - [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) version 0.7.x
 
 Now clone this repository:
@@ -46,7 +46,7 @@ Go to the root of it and install all the dependencies:
 
 ```sh
 cd kartevonmorgen/
-npm install
+yarn install
 ```
 
 ### Build
@@ -54,17 +54,17 @@ npm install
 To build the web application run:
 
 ```sh
-npm run pack
+yarn run pack
 ```
 
 The result can be found in `dist/`.
 
 #### Deployment to another URL than www.kartevonmorgen.org
 
-running 
+running
 
 ```sh
-npm run pack-beta
+yarn run pack-beta
 ```
 
 will automatically use https://api.ofdb.io as API url (instead kartevonmorgen.org/api - which will only work when also deploying to production).
@@ -137,7 +137,7 @@ Get the web app running:
 
 ```sh
 cd /path/to/kartevonmorgen/
-npm start
+yarn start
 ```
 
 The web app is now listening on port 8080. Open it in your browser `https://localhost:8080`.
@@ -152,7 +152,7 @@ All the tests can be found in the `spec/` folder.
 To run the tests type
 
 ```sh
-npm t
+yarn test
 ```
 
 ### Backend

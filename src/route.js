@@ -21,7 +21,7 @@ const createActionsFromState = (state) => {
   const { entries } = server;
   const { hash, routingUsecases } = url;
   const { params } = parseUrl(hash);
-  const { entry, event, zoom, center, search, tags, view, left, categories, addentry } = params;
+  const { entry, event, zoom, center, search, tags, view, left, categories, addentry, dropdowns } = params;
   const user_id = params.confirm_email;
   let [lat, lng] = center ? center.split(',') : [null, null];
   const zoomValue = Number(zoom)
@@ -30,6 +30,9 @@ const createActionsFromState = (state) => {
 
   for (let usecase of routingUsecases){
     switch(usecase){
+      case RoutingUsecases.SET_DROPDOWNS:
+        actions.push(Actions.setDropdowns(dropdowns))
+        break
       case RoutingUsecases.CHANGE_SIDEBAR_VISIBILITY: 
         if (left && left == "hide"){
           actions.push(Actions.hideLeftPanel());

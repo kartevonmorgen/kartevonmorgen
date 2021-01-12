@@ -4,7 +4,6 @@ import T                    from "prop-types";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome'
 import styled               from "styled-components";
 
-import logo                 from "../img/logo.png";
 import CityList             from "./pure/CityList";
 import Info                 from "./pure/Info";
 import Contact              from "./pure/Contact";
@@ -18,6 +17,7 @@ import V                    from "../constants/PanelView";
 import i18n                 from "../i18n";
 import STYLE                from "./styling/Variables"
 import pincloud             from "../img/pincloud.png";
+import {LazyLoadImage} from "react-lazy-load-image-component"
 
 class LandingPage extends Component {
   state = {
@@ -230,7 +230,11 @@ class LandingPage extends Component {
             <div className = "logo-wrapper pure-u-11-24 pure-u-md-1-3">
               <div className = "logo">
                 <a onClick={() => onClick('landing')} href="#">
-                  <img className="logo pure-img" src={logo} />
+                  <LazyLoadImage
+                    className="logo pure-img"
+                    alt="logo"
+                    src="./img/logo.png"
+                  />
                 </a>
               </div>
             </div>

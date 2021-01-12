@@ -4,6 +4,8 @@ import { Actions }    from "./server";
 let serverActions = Actions;
 
 module.exports = {
-  ...clientActions, 
+  ...clientActions,
   ...serverActions
 }
+
+export default module.exports

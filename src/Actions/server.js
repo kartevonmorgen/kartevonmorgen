@@ -4,6 +4,7 @@ import WebAPI from "../WebAPI"
 import {EDIT, RATING, LOGIN, REGISTER} from "../constants/Form"
 import {NEW_ENTRY_LICENSE} from "../constants/App"
 import {NUMBER_TAGS_TO_FETCH} from "../constants/Search"
+import {EDIT as EDIT_PANEL, NEW as NEW_PANEL} from "../constants/PanelView"
 import {initialize, stopSubmit} from "redux-form"
 import mapConst from "../constants/Map"
 import appConst from "../constants/App"
@@ -34,6 +35,7 @@ const Actions = {
   }),
 
   fetchProminentTags: () =>
+    // scrapes the prominent tags from wordpress
     (dispatch) => {
       WebAPI.getProminentTags((prominentTags, err) => {
         if (err) {
@@ -46,6 +48,10 @@ const Actions = {
         })
       })
     },
+
+  setDropdowns: (name='kvm') => (dispatch) => {
+    WebAPI.getDropdowns(name, (dropdowns) => (dispatch({type: T.SET_DROPDOWNS, payload: dropdowns})))
+  },
 
   fetchTags: () =>
     (dispatch) => {
@@ -72,20 +78,26 @@ const Actions = {
       })
     },
 
-  search: () =>
+  search: (all=null) =>
     (dispatch, getState) => {
 
       dispatch(Actions.setSearchTime(Date.now()))
 
       const searchFn = () => {
         dispatch(Actions.setSearchTime(null))
-        const {search, map} = getState()
-        const {categories: cats, orgTag} = search
+        // console.log("SEARCH\n");
+        const {search, map, view} = getState()
+        const {orgTag} = search
+        if (all !== false) {
+          all = all || view.left === NEW_PANEL || view.left === EDIT_PANEL
+        }
+        const searchTerm = all ? null : search.text
+        var cats = all ? Object.values(IDS) : search.categories
         const sw = map.bbox._southWest
         const ne = map.bbox._northEast
         const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
 
-        if (search.text == null || !search.text.trim().endsWith("#")) {
+        if (searchTerm == null || !searchTerm.trim().endsWith("#")) {
 
           if (!cats.includes(IDS.INITIATIVE) && !cats.includes(IDS.EVENT) && !cats.includes(IDS.COMPANY)) {
             dispatch({
@@ -93,12 +105,12 @@ const Actions = {
             })
           } else {
             if (cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)) {
-              WebAPI.searchEntries(search.text, cats, bbox, orgTag,(err, res) => {
+              WebAPI.searchEntries(searchTerm, cats, bbox, orgTag, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_ENTRIES,
                   payload: err || res,
                   error: err != null,
-                  noList: search.text == null
+                  noList: searchTerm == null
                 })
                 const entries =
                   Array.isArray(res != null ? res.visible : void 0)
@@ -121,7 +133,7 @@ const Actions = {
             }
 
             if (cats.includes(IDS.EVENT)) {
-              WebAPI.searchEvents(search.text, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+              WebAPI.searchEvents(searchTerm, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS,
                   payload: err || res,
@@ -130,7 +142,7 @@ const Actions = {
               })
 
               // search events without place:
-              WebAPI.searchEvents(search.text, null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+              WebAPI.searchEvents(searchTerm, null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
                 dispatch({
                   type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
                   payload: err || res,
@@ -140,8 +152,8 @@ const Actions = {
             }
           }
 
-          if (search.text != null) {
-            const address = search.text.replace(/#/g, "")
+          if (searchTerm != null) {
+            const address = searchTerm.replace(/#/g, "")
             WebAPI.searchAddressNominatim(address, (err, res) => {
               dispatch({
                 type: T.SEARCH_ADDRESS_RESULT,
@@ -169,6 +181,59 @@ const Actions = {
 
       setTimeout(triggerSearch, appConst.SEARCH_DELAY + 5)
 
+    },
+
+  fetchAllEntries: () =>
+    (dispatch, getState) => {
+
+
+      // const {map} = getState()
+      // const cats = Object.values(IDS)
+      // const sw = map.bbox._southWest
+      // const ne = map.bbox._northEast
+      // const bbox = [sw.lat, sw.lng, ne.lat, ne.lng]
+      //
+      // WebAPI.searchEntries("", cats, bbox, (err, res) => {
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_ENTRIES,
+      //     payload: err || res,
+      //     error: err != null,
+      //     noList: null
+      //   })
+      //   const entries =
+      //     Array.isArray(res != null ? res.visible : void 0)
+      //       ? Array.isArray(res.invisible)
+      //         ? res.visible.concat(res.invisible)
+      //         : res.visible
+      //       : res != null
+      //         ? res.invisible
+      //         : void 0
+      //
+      //   const ids = entries ? entries.map(e => e.id) : null
+      //   if (ids && (Array.isArray(ids)) && ids.length > 0) {
+      //     dispatch(Actions.getEntries(ids))
+      //   }
+      // })
+      //
+      // // todo: the calls are synchronized. make it async
+      // WebAPI.searchEvents("", bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+      //   debugger
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_EVENTS,
+      //     payload: err || res,
+      //     error: err != null
+      //   })
+      // })
+      //
+      // // search events without place:
+      // WebAPI.searchEvents("", null, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
+      //   debugger
+      //   dispatch({
+      //     type: T.SEARCH_RESULT_EVENTS_WITHOUT_PLACE,
+      //     payload: err || res,
+      //     error: err != null
+      //   })
+      // })
     },
 
   searchCity: () =>

@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { translate } from "react-i18next";
 import Actions                   from "../Actions"
 import URLs                     from "../constants/URLs"
-import { IDS, NAMES }                  from  "../constants/Categories"
+import { IDS, NAMES }            from "../constants/Categories"
 import STYLE                    from "./styling/Variables"
 import { avg_rating_for_entry } from "../rating_groups"
 import styled                   from "styled-components";
@@ -23,6 +23,7 @@ import 'react-tiny-fab/dist/styles.css'
 const { INITIATIVE, EVENT, COMPANY } = IDS;
 
 class KVMMap extends Component {
+  static whyDidYouRender = false
 
   getIconById(customizationName, id) {
     switch (id) {
@@ -65,7 +66,7 @@ class KVMMap extends Component {
 
     }
 
-    this.props.fetchProminentTags()
+    // this.props.fetchProminentTags()
     this.props.fetchTags()
   }
 
@@ -115,6 +116,7 @@ class KVMMap extends Component {
       showEmbedModal,
       t
     } = this.props;
+    // console.log("on move end prop center: ", center)
 
     // const entries = sortBy(this.props.entries, "id")
 
@@ -218,7 +220,6 @@ class KVMMap extends Component {
     return (
       <Wrapper>
         <Map
-          attributionControl={false}
           ref         = 'map'
           center      = { center }
           zoom        = { zoom }
@@ -226,7 +227,11 @@ class KVMMap extends Component {
           zoomControl = { false }
           className   = "map"
           worldCopyJump = { true }
-          onMoveend   = { (e) => { onMoveend(this.getMapCoordinates()) }}
+          onMoveend   = { (e) => {
+            // console.log("on move end map")
+            // console.log("on move end event: ", e)
+            onMoveend(this.getMapCoordinates())
+          }}
           onZoomend   = { (e) => { onZoomend(this.getMapCoordinates()) }}
           onClick     = { (e) => { onClick(e) }} >
 
@@ -328,7 +333,7 @@ const mapDispatchToProps = (dispatch) => ({
   showNotification: (message, status) => (dispatch(Actions.showNotification(message, status))),
   showEmbedModal: () => (dispatch(Actions.showEmbedModal())),
   fetchTags: () => (dispatch(Actions.fetchTags())),
-  fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
+  // fetchProminentTags: () => (dispatch(Actions.fetchProminentTags()))
 })
 
 module.exports = connect(null, mapDispatchToProps)(translate('translation')(KVMMap));

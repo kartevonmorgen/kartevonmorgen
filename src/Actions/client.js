@@ -5,9 +5,9 @@ import C                          from "../constants/Categories"
 import {notificationSettings}     from "../constants/view"
 import GeoLocation                from "../GeoLocation";
 import mapConst                   from "../constants/Map";
-import appConst                   from "../constants/App"
 import V                          from "../constants/PanelView"
 import serverActions              from "./server";
+import WebAPI from "../WebAPI"
 
 const Actions = {
 
@@ -162,9 +162,10 @@ const Actions = {
   },
 
   setZoom: (zoom) => {
+    zoom = Math.round(parseFloat(zoom) * 100) / 100 //round to 2 decimals
     return {
       type: T.SET_ZOOM,
-      payload: parseFloat(zoom)
+      payload: zoom
     };
   },
 
@@ -174,6 +175,43 @@ const Actions = {
       payload: bbox
     };
   },
+
+  setRegion: (regionName) =>
+    (dispatch, getState) => {
+      WebAPI.searchAddressNominatim(regionName, (err, results) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        if (!results || !Array.isArray(results) || results.length === 0) {
+          // no region found
+          return
+        }
+
+        const region = results[0]
+        // coordinates, mapCenter
+        const mapCenter = {lat: 0.0, lng: 0.0}
+        const coordinates = {
+          center: {
+            lat: parseFloat(region.lat),
+            lng: parseFloat(region.lon)
+          },
+          bbox: {
+            _southWest: {
+              lat: region.boundingbox[0],
+              lng: region.boundingbox[2]
+            },
+            _northEast: {
+              lat: region.boundingbox[1],
+              lng: region.boundingbox[3]
+            }
+          }
+        }
+
+        // console.log("on move end set region")
+        dispatch(Actions.onMoveend(coordinates, mapCenter))
+      })
+    },
 
   setCurrentEntry: (id, center) =>
     (dispatch, getState) => {
@@ -307,10 +345,13 @@ const Actions = {
 
   onMoveend: (coordinates, mapCenter) =>
     (dispatch, getState) => {
+      // console.log("called on move end map center: ", mapCenter)
+      // console.log("called on move end coordinates: ", coordinates)
 
       dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
-      if(mapCenter.lat.toFixed(4) != coordinates.center.lat && mapCenter.lng.toFixed(4) != coordinates.center.lng){
+      if(mapCenter.lat.toFixed(4) !== coordinates.center.lat.toFixed(4) && mapCenter.lng.toFixed(4) !== coordinates.center.lng.toFixed(4)){
+        // debugger
         dispatch(Actions.setCenter({
           lat: coordinates.center.lat,
           lng: coordinates.center.lng
@@ -325,7 +366,7 @@ const Actions = {
     (dispatch, getState) => {
       dispatch(serverActions.Actions.setSearchTime(Date.now()));
 
-      if(coordinates.zoom != zoom){
+      if(coordinates.zoom !== zoom){
         dispatch(Actions.setZoom(coordinates.zoom));
       }
     }
