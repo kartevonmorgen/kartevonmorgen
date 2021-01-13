@@ -141,12 +141,12 @@
       "solidarity": "Solidarität"
     },
     "contextExplanation": {
-      "diversity": "Ökologische Vielfalt, Artgerechte Haltung, Bio, wenige Zusatzstoffe, etc.",
-      "renewable": "Umweltschutz, kurze Transportwege, effizienter/geringer Einsatz von Rohstoffen und Energie, Circular Economy, etc.",
-      "fairness": "Sichere, inklusive, faire und angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette.",
-      "humanity": "Haben alle Beteiligten Freiraum für eigene Ideen, Weiterentwicklung und kulturelle Vielfalt? Gibt es Mitbestimmungsrechte und demokratische Prozesse?",
-      "transparency": "Sind Produktions-, Finanzierungs- und Handelsketten öffentlich nachvollziehbar?",
-      "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen nachhaltig und ethisch, zugänglich für jeden Geldbeutel, etc."
+      "diversity": "Ökologische Vielfalt, biologischer Anbau, artgerechte Haltung, wenige Zusatzstoffe, keine Chemie...",
+      "renewable": "Effizienter u. geringer Einsatz von Rohstoffen und Energie, Kreislaufwirtschaft, Umweltschutz, kurze Transportwege ...",
+      "fairness": "Menschenwürde, Sicherheit, Gleichstellung und faire sowie angemessene Arbeitsbedingungen in der gesamten Wertschöpfungskette...",
+      "humanity": "Raum für Mitbestimmung, demokratische Prozesse, eigene Ideen, persönliche Entwicklung und Inklusion sowie kulturelle Vielfalt...",
+      "solidarity": "Kooperative Arbeitsweise, Finanzierung und Investitionen im Verantwortungseigentum, faire Preise...",
+      "transparency": "Nachhaltigskietsberichterstattung, öffentlich nachvollziehbare Wertschöpfungs- und Lieferketten sowie Finanzierungsströme...",
     },
     "valueName": {
       "minusOne": "von gestern",
