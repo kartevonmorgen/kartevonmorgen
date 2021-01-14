@@ -54,7 +54,7 @@ const search = () => {
       if ((Array.isArray(res.visible)) && res.visible.length > 0) {
         const ids = res.visible.map(e => e.id)
           .slice(0, NUM_ENTRIES_TO_FETCH);
-        WebAPI.getEntries(ids, (entriesErr, entriesRes) => {
+        WebAPI.getEntries(ids, orgTag, (entriesErr, entriesRes) => {
           if(!entriesErr && entriesRes.length > 0) {
             state.entries = entriesRes;
             render();
@@ -82,7 +82,7 @@ if(zoomStr){
 if(params && Object.keys(params).length != 0){
   if(entryId){ 
     state.zoom = mapConst.ENTRY_DEFAULT_ZOOM;
-    WebAPI.getEntries([entryId], (err, res) => {
+    WebAPI.getEntries([entryId], orgTag, (err, res) => {
       state.entries = {};
       if(!err && res.length > 0) {
         state.entries = res;

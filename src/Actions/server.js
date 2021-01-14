@@ -272,7 +272,8 @@ const Actions = {
     (dispatch, getState) => {
       let {
         fetchedAllEntries,
-        moreEntriesAvailable
+        moreEntriesAvailable,
+        orgTag
       } = getState().search
       dispatch({
         type: T.SET_MORE_ENTRIES_AVAILABLE,
@@ -283,7 +284,7 @@ const Actions = {
       const entries = getState().server.entries
       const fetch_ids_entries = ids.filter((x) => entries[x] == null)
       if (fetch_ids_entries.length > 0) {
-        WebAPI.getEntries(ids, (err, res) => {
+        WebAPI.getEntries(ids, orgTag, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,
             payload: err || res,
@@ -417,6 +418,7 @@ const Actions = {
       const isEvent = entry.categories[0] === IDS.EVENT
       const entryExists = (entry != null ? entry.id : void 0)
       entry.license = getLicenseForEntry(entry.license)
+      const {orgTag} = getState().search
 
       if (isEvent) {
         entry.created_by = 'test@test.com'
@@ -440,7 +442,7 @@ const Actions = {
         } else {
           const id = (entry != null ? entry.id : void 0) || res
 
-          getEntityRequest([id], (err, res) => {
+          const getEntityRequestParams = [[id], (err, res) => {
             isEvent ? res.categories = entry.categories : res
 
             dispatch(initialize(EDIT.id, {}, EDIT.fields))
@@ -468,7 +470,12 @@ const Actions = {
                 })
               }
             }
-          })
+          }]
+
+          if (!isEvent) {
+            getEntityRequestParams.splice(1, 0, orgTag)
+          }
+          getEntityRequest(...getEntityRequestParams)
         }
       })
     },
@@ -479,13 +486,16 @@ const Actions = {
         ...rating,
         value: Number.parseInt(rating.value)
       }
+
+      const {orgTag} = getState().search
+
       WebAPI.createRating(r, (err, res) => {
         if (err) {
           dispatch(stopSubmit(RATING.id, {
             _error: err
           }))
         } else {
-          WebAPI.getEntries([r.entry], (err, res) => {
+          WebAPI.getEntries([r.entry], orgTag, (err, res) => {
             dispatch({
               type: T.ENTRIES_RESULT,
               payload: err || res,

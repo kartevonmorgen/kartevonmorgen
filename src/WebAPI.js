@@ -279,7 +279,7 @@ module.exports = {
       .end(jsonCallback(cb))
   },
 
-  getEntries: (ids = [], cb) => {
+  getEntries: (ids = [], orgTag, cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -290,7 +290,11 @@ module.exports = {
     } else {
       request
         .get('/entries/' + ids.join(','))
-        .use(prefix).set('Accept', 'application/json')
+        .use(prefix)
+        .query({
+          'org_tag': orgTag,
+        })
+        .set('Accept', 'application/json')
         .end(jsonCallback(cb))
     }
   },

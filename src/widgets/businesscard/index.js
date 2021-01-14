@@ -23,9 +23,9 @@ const render = () => {
 
 render();
 
-const entryID = parseUrl(window.location.href).params.entry;
+const {entry: entryID, orgTag} = parseUrl(window.location.href).params;
 
-WebAPI.getEntries([entryID], (err, res) => {
+WebAPI.getEntries([entryID], orgTag, (err, res) => {
   if(!err && res.length > 0) {
     store.entry = res[0];
     render();
