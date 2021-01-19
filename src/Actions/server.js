@@ -132,6 +132,7 @@ const Actions = {
               })
             }
 
+            // todo: decouple
             if (cats.includes(IDS.EVENT)) {
               WebAPI.searchEvents(searchTerm, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
                 dispatch({
