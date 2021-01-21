@@ -486,5 +486,6 @@
     }
   },
   "share": "Share",
-  "copy": "Copy"
+  "copy": "Copy",
+  "embed": "Embed"
 }

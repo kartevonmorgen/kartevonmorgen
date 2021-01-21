@@ -290,7 +290,7 @@ class KVMMap extends Component {
               }}
             >
               <ActionIcon icon="code" color="black"/>
-              <div><ActionText>Embed</ActionText></div>
+              <div><ActionText>{t('embed')}</ActionText></div>
             </ActionButon>
           </div>
         </Fab>
