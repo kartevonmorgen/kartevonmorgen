@@ -124,6 +124,4 @@ dist
 
 stats.json
 
-kvm-core/target
-
 /.project

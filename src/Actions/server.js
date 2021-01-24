@@ -51,20 +51,30 @@ export const setDropdowns = (name='kvm') => (dispatch) => {
   WebAPI.getDropdowns(name, (dropdowns) => (dispatch({type: T.SET_DROPDOWNS, payload: dropdowns})))
 }
 
-export const fetchPopularTags = (txt) => {
-  const tokens = txt.split(' ')
-  const term = tokens[tokens.length-1].trim()
-  return (dispatch) => {
-    WebAPI.popularTags(5, term)
-      .then(tags => {
-        dispatch({
-          type: T.FETCHED_POPULAR_TAGS,
-          payload: tags
-        })
+export const fetchTags = () =>
+    (dispatch) => {
+      WebAPI.countTags((err, count) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+
+        const numbersShouldTry = Math.ceil(count / NUMBER_TAGS_TO_FETCH)
+        for (let i = 0; i !== numbersShouldTry; i++) {
+          WebAPI.getTags(i, (err, tags) => {
+            if (err) {
+              console.log(err)
+              return
+            }
+
+            dispatch({
+              type: T.FETCH_TAGS,
+              payload: tags
+            })
+          })
+        }
       })
-      .catch(err => { console.error(err) })
-  }
-}
+    }
 
 export const search = (all=null) =>
   (dispatch, getState) => {

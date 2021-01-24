@@ -4,6 +4,6 @@ import * as serverActions from "./server";
 export * from "./server";
 
 export default {
-  ...clientActions, 
+  ...clientActions,
   ...serverActions
 }

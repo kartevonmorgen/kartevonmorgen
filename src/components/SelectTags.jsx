@@ -6,10 +6,11 @@ import {connect} from 'react-redux'
 import request from "superagent/lib/client";
 import { translate } from "react-i18next";
 
-import normalize from "../util/normalize";
+import {setTags} from '../Actions/client'
 
-import { setTags          } from '../Actions/client'
-import { fetchPopularTags } from '../Actions/server'
+import { OFDB_API }  from "../constants/URLs"
+
+import normalize from "../util/normalize";
 
 class SelectTags extends Component {
 
@@ -17,6 +18,7 @@ class SelectTags extends Component {
     super(props);
 
     this.state = {
+      allOptions: [],
       options: [],
       tagsFromSearch: null
     };
@@ -31,12 +33,32 @@ class SelectTags extends Component {
     const uniqueTags = tags.filter((a, b) => tags.indexOf(a) === b).join()
     this.props.setTags(uniqueTags)
 
+    this.setState({
+      allOptions: this.props.allTags.map(tag => ({label: tag, value: tag}))
+    })
   }
 
   onInputChange(input) {
-    if(input.length > 1){
-      this.props.fetchPopularTags(input)
+    this.filterOptions(input)
+  }
+
+  filterOptions(input) {
+    let res
+    if(input.length < 2){
+      res = []
     }
+    else {
+      let searchString = input.toLowerCase().trim();
+      res = this.state.allOptions.filter(function(d) {
+        return d.label.match( searchString );
+      });
+    }
+
+    res = res.slice(0, 30)
+    this.setState({
+      options: res
+    })
+
   }
 
   valueToArray() {
@@ -122,7 +144,6 @@ class SelectTags extends Component {
   }
 
   render(){
-    const options = this.props.popularTags.map(tag => ({label: tag, value: tag}))
     return(
       <Creatable
         {...this.props}
@@ -130,7 +151,7 @@ class SelectTags extends Component {
         isClearable={false}
         isMulti={true}
 
-        options={options}
+        options={this.state.options || []}
         placeholder={this.props.t("entryForm.tags")}
         noOptionsMessage={() => this.props.t("entryForm.noTagSuggestion") }
         formatCreateLabel={(inputValue) => this.props.t("entryForm.newTag")+" "+normalize.tags(inputValue) }
@@ -150,7 +171,7 @@ const mapStateToProps = ({search}) => {
   if(!search.text) {
     return {
       tagsFromSearch: null,
-      popularTags: search.popularTags.map((tagPair) => tagPair[0])
+      allTags: search.tags.map((tagPair) => tagPair[0])
     }
   }
 
@@ -169,13 +190,12 @@ const mapStateToProps = ({search}) => {
 
   return {
     tagsFromSearch: tags.join(),
-    popularTags: search.popularTags.map((tagPair) => tagPair[0])
+    allTags: search.tags.map((tagPair) => tagPair[0])
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.warn({setTags, fetchPopularTags});
-  return bindActionCreators({setTags, fetchPopularTags}, dispatch)
+  return bindActionCreators({setTags}, dispatch)
 }
 
 export default translate('translation')(connect(mapStateToProps, mapDispatchToProps)(SelectTags))

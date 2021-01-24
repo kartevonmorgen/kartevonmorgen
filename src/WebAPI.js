@@ -1,9 +1,6 @@
-// @ts-ignore
 import request from "superagent/lib/client"
-// @ts-ignore
 import saPrefix from "superagent-prefix"
 import toNumber from "lodash/toNumber"
-// @ts-ignore
 import {TILEHOSTING_API_KEY} from "./constants/App"
 // @ts-ignore
 import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES } from "./constants/URLs"
@@ -11,11 +8,12 @@ import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RE
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search"
 import parse from 'csv-parse/lib/sync'
 
+
 const prefix = saPrefix(OFDB_API.link)
 const publicResources = saPrefix(PUBLIC_RESOURCES.link)
 const FALANSTER_TOKEN = 'eyJzdWIiOiJtYXBhLWZhbGFuc3RlciIsIm5hbWUiOiJmYWxhbn'
 
-const jsonCallback = (cb: Function) => (err: any, res: { body: any }) => {
+const jsonCallback = (cb) => (err, res) => {
   if (err) {
     cb(err)
   } else {
@@ -23,9 +21,7 @@ const jsonCallback = (cb: Function) => (err: any, res: { body: any }) => {
   }
 }
 
-type TextResponse = { text: String }
-
-function normalizeCoordinate(bbox: any, idx: any) {
+function normalizeCoordinate(bbox, idx) {
   if (bbox.length > idx && bbox[idx] && (!isNaN(bbox[idx])) && bbox[idx] > 180) {
     bbox[idx] = ((bbox[idx] + 180.0) % 360.0) - 180.0
   }
@@ -34,7 +30,7 @@ function normalizeCoordinate(bbox: any, idx: any) {
   }
 }
 
-const transformRecordToOption = (record: any) => {
+const transformRecordToOption = (record) => {
   const option = {
     ...record,
     styles: {
@@ -51,7 +47,7 @@ const transformRecordToOption = (record: any) => {
   return option
 }
 
-const transformCSVToOptions = (records: Array<{ headline: String, label: String }>) => {
+const transformCSVToOptions = (records) => {
   const options = []
   for (let i = 0; i < records.length; i++) {
     const record = records[i]
@@ -68,7 +64,6 @@ const transformCSVToOptions = (records: Array<{ headline: String, label: String 
           break
         }
 
-        // @ts-ignore
         option.options.push(transformRecordToOption(subRecord))
       }
 
@@ -84,7 +79,7 @@ const transformCSVToOptions = (records: Array<{ headline: String, label: String 
 
 const WebAPI = {
 
-  searchEntries: (txt: any, cats: any, bbox: any, cb: Function) => {
+  searchEntries: (txt, cats, bbox, cb) => {
 
     if (txt == null) {
       txt = ''
@@ -110,7 +105,7 @@ const WebAPI = {
       .end(jsonCallback(cb))
   },
 
-  searchEvents: (txt: any, bbox: any, start: any, end: any, cb: Function) => {
+  searchEvents: (txt, bbox, start, end, cb) => {
     if (bbox == null) {
       bbox = []
     }
@@ -128,37 +123,37 @@ const WebAPI = {
     req.end(jsonCallback(cb))
   },
 
-  createNewEvent: (newEvent: Object, cb: Function) => {
+  createNewEvent: (newEvent, callBack) => {
     request
       .post('/events')
       .use(prefix)
       .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(newEvent)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
-          cb(err)
+          callBack(err)
         } else {
-          cb(null, res.text.replace(/"/g, ""))
+          callBack(null, res.text.replace(/"/g, ""))
         }
       })
   },
 
-  editEvent: (event: { id: String }, cb: Function) => {
+  editEvent: (event, callBack) => {
     request
       .put('/events/' + event.id)
       .use(prefix)
       .set({'Accept': 'application/json', 'Authorization': `Bearer ${FALANSTER_TOKEN}`})
       .send(event)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
-          cb(err)
+          callBack(err)
         } else {
-          cb(null, res.text)
+          callBack(null, res.text)
         }
       })
   },
 
-  getEvent: (ids = [], cb: Function) => {
+  getEvent: (ids = [], cb) => {
     if (!Array.isArray(ids)) {
       ids = [ids]
     }
@@ -174,7 +169,7 @@ const WebAPI = {
     }
   },
 
-  countTags: (cb: Function) => {
+  countTags: (cb) => {
     request
       .get('/count/tags')
       .use(saPrefix(OFDB_API.link))
@@ -182,7 +177,7 @@ const WebAPI = {
       .end(jsonCallback(cb))
   },
 
-  getProminentTags: (cb: Function) => {
+  getProminentTags: (cb) => {
     const xhr = new XMLHttpRequest()
     xhr.open("GET", `${CORS_PROXY.link}/${PROMINENT_TAGS.link}`)
 
@@ -194,13 +189,10 @@ const WebAPI = {
           const el = document.createElement('html')
           el.innerHTML = xhr.responseText
 
-          const p = el.querySelector("#post-6714 > div > p");
-          if (p != null && p.textContent) {
-            const prominentTags = p.textContent.split('#').filter(t => t.length)
-            cb(prominentTags)
-          } else {
-            cb([], "could not find <p> tag")
-          }
+          const prominentTags = el.querySelector("#post-6714 > div > p").textContent
+            .split('#').filter(t => t.length)
+
+          cb(prominentTags)
         } else {
           // Oh no! There has been an error with the request!
           cb([], "could not fetch prominent tags")
@@ -211,7 +203,23 @@ const WebAPI = {
     xhr.send()
   },
 
-  searchAddressTilehosting: (addr: any, cb: Function) => {
+  getTags: (page, cb) => {
+    const offset = page * NUMBER_TAGS_TO_FETCH
+    const limit = NUMBER_TAGS_TO_FETCH
+
+    request
+      .get('/entries/most-popular-tags')
+      .use(saPrefix(OFDB_API.link))
+      .query({
+        'min-count': 1,
+        offset,
+        limit,
+      })
+      .set('Accept', 'application/json')
+      .end(jsonCallback(cb))
+  },
+
+  searchAddressTilehosting: (addr, cb) => {
     let query = TH_GEOCODER.link.replace("<query>", addr).replace("<key>", TILEHOSTING_API_KEY)
     if (addr != null && addr != "") {
       request
@@ -221,7 +229,7 @@ const WebAPI = {
     }
   },
 
-  searchAddressNominatim: (addr: any, cb: Function) => {
+  searchAddressNominatim: (addr, cb) => {
     // console.trace()
     if (addr == null) {
       addr = ''
@@ -242,7 +250,7 @@ const WebAPI = {
       .end(jsonCallback(cb))
   },
 
-  searchGeolocation: (latlng: any, cb: Function) => {
+  searchGeolocation: (latlng, cb) => {
 
     if (latlng == null) {
       latlng = {
@@ -273,7 +281,7 @@ const WebAPI = {
       .end(jsonCallback(cb))
   },
 
-  getEntries: (ids = [], cb: Function) => {
+  getEntries: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -289,7 +297,7 @@ const WebAPI = {
     }
   },
 
-  getRatings: (ids = [], cb: Function) => {
+  getRatings: (ids = [], cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -305,13 +313,13 @@ const WebAPI = {
     }
   },
 
-  saveNewEntry: (e: Object, cb: Function) => {
+  saveNewEntry: (e, cb) => {
     request
       .post('/entries/')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(e)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -320,13 +328,13 @@ const WebAPI = {
       })
   },
 
-  saveEntry: (e: { id: String }, cb: Function) => {
+  saveEntry: (e, cb) => {
     request
       .put('/entries/' + e.id)
       .use(prefix)
       .set('Accept', 'application/json')
       .send(e)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -335,13 +343,13 @@ const WebAPI = {
       })
   },
 
-  createRating: (r: Object, cb: Function) => {
+  createRating: (r, cb) => {
     request
       .post('/ratings/')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(r)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -350,7 +358,7 @@ const WebAPI = {
       })
   },
 
-  getAllCategories: (cb: Function) => {
+  getAllCategories: (cb) => {
     request
       .get('/categories/')
       .use(prefix)
@@ -358,12 +366,12 @@ const WebAPI = {
       .end(cb)
   },
 
-  getServerInfo: (cb: Function) => {
+  getServerInfo: (cb) => {
     request
       .get('/server/version')
       .set('Accept', 'application/json')
       .use(prefix)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -374,10 +382,10 @@ const WebAPI = {
       })
   },
 
-  register: (
-    { email, password }: { email: String, password: String },
-    cb: Function
-  ) => {
+  register: ({
+               email,
+               password,
+             }, cb) => {
     request
       .post('/users')
       .use(prefix)
@@ -389,10 +397,10 @@ const WebAPI = {
       .end(cb)
   },
 
-  login: (
-    { email, password }: { email: String, password: String },
-    cb: Function
-  ) => {
+  login: ({
+            email,
+            password
+          }, cb) => {
     request
       .post('/login')
       .set('Accept', 'application/json')
@@ -405,7 +413,7 @@ const WebAPI = {
       .end(cb)
   },
 
-  getUser: (email: String, cb: Function) => {
+  getUser: (email, cb) => {
     request
       .get('/users/' + email)
       .set('Accept', 'application/json')
@@ -414,7 +422,7 @@ const WebAPI = {
       .end(cb)
   },
 
-  logout: (cb: Function) => {
+  logout: (cb) => {
     request
       .post('/logout')
       .set('Accept', 'application/json')
@@ -423,7 +431,7 @@ const WebAPI = {
       .end(cb)
   },
 
-  confirmEmail: (token: String, cb: Function) => {
+  confirmEmail: (token, cb) => {
     request
       .post('/confirm-email-address')
       .set('Accept', 'application/json')
@@ -434,7 +442,7 @@ const WebAPI = {
       .end(cb)
   },
 
-  deleteAccount: (email: String, cb: Function) => {
+  deleteAccount: (email, cb) => {
     request
       .delete('/users/' + email)
       .set('Accept', 'application/json')
@@ -443,14 +451,14 @@ const WebAPI = {
       .end(cb)
   },
 
-  subscribeToBbox: (bbox: {_southWest: any,  _northEast: any}, cb: Function) => {
+  subscribeToBbox: (bbox, cb) => {
     let coordinates = [bbox._southWest, bbox._northEast]
     request
       .post('/subscribe-to-bbox')
       .use(prefix)
       .set('Accept', 'application/json')
       .send(coordinates)
-      .end((err: any, res: TextResponse) => {
+      .end((err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -459,7 +467,7 @@ const WebAPI = {
       })
   },
 
-  getBboxSubscriptions: (cb: Function) => {
+  getBboxSubscriptions: (cb) => {
     request
       .get('/bbox-subscriptions')
       .set('Accept', 'application/json')
@@ -467,7 +475,7 @@ const WebAPI = {
       .end(cb)
   },
 
-  unsubscribeFromBboxes: (cb: Function) => {
+  unsubscribeFromBboxes: (cb) => {
     request
       .delete('/unsubscribe-all-bboxes')
       .set('Accept', 'application/json')
@@ -475,11 +483,12 @@ const WebAPI = {
       .end(cb)
   },
 
-  getDropdowns: (name: String, cb: Function) => {
+  getDropdowns: (name, cb) => {
     const dropdowns = {
       'categories': [],
       'regions': [],
     }
+
 
     Promise.all(Object.keys(dropdowns).map(async (dropdownName) => {
       try {
@@ -496,25 +505,13 @@ const WebAPI = {
         )
 
         const transformed = transformCSVToOptions(records)
-        // @ts-ignore
         dropdowns[dropdownName] = transformed
       } catch (e) {
         console.error(e)
       }
     })).then(cb(dropdowns))
-  },
-
-  popularTags: (max: Number, input?: String) => {
-    // @ts-ignore
-    if (window.ofdb && window.ofdb.kvm_core) {
-       // @ts-ignore
-       return window.ofdb.kvm_core.popular_tags(max, input);
-    } else {
-      return new Promise((_resolve, reject) => {
-        reject(new Error("KVM core module not loaded!"));
-      });
-    }
   }
 };
 
+module.exports = WebAPI
 export default WebAPI
