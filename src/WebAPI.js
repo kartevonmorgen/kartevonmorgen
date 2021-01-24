@@ -2,9 +2,7 @@ import request from "superagent/lib/client"
 import saPrefix from "superagent-prefix"
 import toNumber from "lodash/toNumber"
 import {TILEHOSTING_API_KEY} from "./constants/App"
-// @ts-ignore
-import { OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES } from "./constants/URLs"
-// @ts-ignore
+import {OFDB_API, TH_GEOCODER, NOMINATIM, CORS_PROXY, PROMINENT_TAGS, PUBLIC_RESOURCES} from "./constants/URLs"
 import {NUMBER_TAGS_TO_FETCH} from "./constants/Search"
 import parse from 'csv-parse/lib/sync'
 
@@ -77,7 +75,7 @@ const transformCSVToOptions = (records) => {
   return options
 }
 
-const WebAPI = {
+module.exports = {
 
   searchEntries: (txt, cats, bbox, orgTag, cb) => {
 
@@ -96,7 +94,7 @@ const WebAPI = {
       text: txt.trim(),
       categories: cats.length > 0 ? cats.join(',') : "",
       bbox: bbox.join(','),
-      limit: 250, // TODO: Replace with constant
+      limit: 250
     }
     if (orgTag) {
       query.org_tag = orgTag
@@ -524,6 +522,4 @@ const WebAPI = {
       }
     })).then(cb(dropdowns))
   }
-};
-
-export default WebAPI
+}

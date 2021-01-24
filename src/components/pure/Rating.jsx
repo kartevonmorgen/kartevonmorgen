@@ -88,4 +88,4 @@ const Link = styled.a`
   }
 `
 
-export default Rating;
+module.exports = Rating;

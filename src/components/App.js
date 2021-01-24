@@ -12,19 +12,19 @@ import Swipeable                      from 'react-swipeable'
 import styled, { createGlobalStyle }  from "styled-components";
 import isString from "lodash/isString"
 
-import V                       from "../constants/PanelView"
-import * as Actions            from "../Actions"
-import Modal                   from "./pure/Modal"
-import Map                     from "./Map"
-import Sidebar                 from "./Sidebar"
-import LandingPage             from "./LandingPage"
-import { EDIT }                from "../constants/Form"
-import STYLE, { pink }         from "./styling/Variables"
+import V                    from "../constants/PanelView"
+import Actions              from "../Actions"
+import Modal                from "./pure/Modal"
+import Map                  from "./Map"
+import Sidebar              from "./Sidebar"
+import LandingPage          from "./LandingPage"
+import { EDIT }             from "../constants/Form"
+import STYLE, {pink}                from "./styling/Variables"
 import { NUM_ENTRIES_TO_SHOW } from "../constants/Search"
-import mapConst                from "../constants/Map"
-import {getIcon}               from "../customizations/icons"
-import i18n                    from "../i18n"
-import {initialize}            from "redux-form"
+import mapConst             from "../constants/Map"
+import {getIcon}           from "../customizations/icons"
+import i18n from "../i18n"
+import {initialize} from "redux-form"
 
 
 class Main extends Component {
@@ -173,7 +173,7 @@ class Main extends Component {
                     <li>
                       <a target={item.policy === "newTab" ? "_blank" : ""} rel="noopener noreferrer" href={item.link}>
                         {
-                          item.translation[language] ?
+                          Object.prototype.hasOwnProperty.call(item.translation, language) ?
                             item.translation[language] :
                             item.translation['de']
                         }
@@ -397,7 +397,7 @@ Main.propTypes = {
   timedActions :  T.object.isRequired
 };
 
-export default translate('translation')(Main)
+module.exports = translate('translation')(Main)
 
 /* Moved all styles here. TODO: Move to right components */
 const GlobalStyle = createGlobalStyle`
@@ -650,7 +650,7 @@ const StyledApp = styled.div `
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(66, 184, 221); /* this is a light blue */
   }
-  
+
   .button-warning {
     color: white;
     border-radius: 4px;
@@ -805,7 +805,7 @@ const StyledApp = styled.div `
   .license input {
     margin-top: 0.7em;
   }
-  
+
  .hidden {
     display: none;
   }

@@ -76,9 +76,9 @@ const create = (opt={}, customization=CUSTOMIZATIONS.DEFAULT) => {
   return new NewIcon(urls(type, customization));
 };
 
-export const getIcon = (opt={}, customization=CUSTOMIZATIONS.DEFAULT) => (create(opt, customization))
+const getIcon = (opt={}, customization=CUSTOMIZATIONS.DEFAULT) => (create(opt, customization))
 
-export default {
+module.exports = {
   create,
   Icon,
   getIcon,

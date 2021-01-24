@@ -10,7 +10,7 @@ import timedActions        from "./timedActions";
 import { reducer as notificationsReducer } from 'reapop';
 import { combineReducers } from "redux";
 
-export default combineReducers({
+module.exports = combineReducers({
   notifications: notificationsReducer(),
   form,
   search,

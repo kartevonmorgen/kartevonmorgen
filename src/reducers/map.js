@@ -12,7 +12,7 @@ const initialState = {
   waiting_for_center_of: null
 };
 
-export default (state = initialState, action = {}) => {
+module.exports = (state = initialState, action = {}) => {
 
   var newState, point;
   const { payload } = action;

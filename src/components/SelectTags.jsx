@@ -198,4 +198,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({setTags}, dispatch)
 }
 
-export default translate('translation')(connect(mapStateToProps, mapDispatchToProps)(SelectTags))
+module.exports = translate('translation')(connect(mapStateToProps, mapDispatchToProps)(SelectTags))

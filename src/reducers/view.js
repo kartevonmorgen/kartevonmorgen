@@ -1,5 +1,5 @@
 import T from "../constants/ActionTypes";
-import * as V from "../constants/PanelView";
+import V from "../constants/PanelView";
 import C from "../constants/Categories";
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   showLeftPanel: true
 };
 
-export default (state=initialState, action={}) => {
+module.exports = (state=initialState, action={}) => {
 
   const { payload } = action;
   const m = !state.menu;

@@ -1,4 +1,5 @@
-var webpackConfig = require("./webpack.config.js");
+require("babel-core/register");
+var webpackConfig = require("./webpack.config.babel.js");
 
 webpackConfig.entry = null;
 

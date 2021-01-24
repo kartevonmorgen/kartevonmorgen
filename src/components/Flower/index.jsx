@@ -135,6 +135,9 @@ Flower.propTypes = {
   showTooltip: T.bool
 }
 
+module.exports = Flower
+
+
 export default styled(Flower)`
   float: right;
   margin-top: 0.4em;

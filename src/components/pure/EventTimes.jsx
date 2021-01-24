@@ -27,4 +27,4 @@ const EventTimes = ({ start, end, showTimes }) => {
   );
 }
 
-export default translate('translation')(EventTimes)
+module.exports = translate('translation')(EventTimes)

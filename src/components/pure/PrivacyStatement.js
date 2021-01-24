@@ -11,4 +11,4 @@ const PrivacyStatement = () =>
     <div dangerouslySetInnerHTML={{__html: t("text")}}></div>
   </div>
 
-export default PrivacyStatement
+module.exports = PrivacyStatement

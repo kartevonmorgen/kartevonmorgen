@@ -309,4 +309,4 @@ LandingExplain.propTypes = {
   onClick  : T.func
 }
 
-export default translate('translation')(trackWindowScroll(LandingExplain))
+module.exports = translate('translation')(trackWindowScroll(LandingExplain))

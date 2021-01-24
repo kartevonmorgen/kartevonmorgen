@@ -56,4 +56,4 @@ const NavButton = ({ keyName, buttonRight, icon, text, onClick, aboveImage, aria
   return(button);
 }
 
-export default NavButton
+module.exports = NavButton

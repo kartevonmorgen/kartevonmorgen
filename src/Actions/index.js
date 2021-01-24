@@ -1,9 +1,11 @@
-import * as clientActions from "./client";
-export * from "./client";
-import * as serverActions from "./server";
-export * from "./server";
+import clientActions  from "./client";
+import { Actions }    from "./server";
 
-export default {
+let serverActions = Actions;
+
+module.exports = {
   ...clientActions,
   ...serverActions
 }
+
+export default module.exports

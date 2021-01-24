@@ -86,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(translate('translation')(EntryDetails))
+module.exports = connect(null, mapDispatchToProps)(translate('translation')(EntryDetails))

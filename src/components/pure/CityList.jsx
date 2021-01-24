@@ -33,7 +33,7 @@ const CityList = ({ cities = [], onClick, selectedCity = 0, selectedColor }) =>
     )}
   </ResultList>
 
-export default CityList
+module.exports = CityList
 
 const ResultRow = styled.div`
   display: flex;

@@ -1,11 +1,11 @@
 import i18n from "react-i18next";
 import moment from 'moment'
 
-export const getDatetimeString = (unixtime) => {
+const getDatetimeString = (unixtime) => {
   return getDateString(unixtime) + ", " + getTimeString(unixtime)
 }
 
-export const getDateString = (unixtime) => {
+const getDateString = (unixtime) => {
   const d = new Date(unixtime * 1000);
   const now = new Date();
   const isInThisYear = d.getUTCFullYear() === now.getUTCFullYear();
@@ -17,7 +17,7 @@ export const getDateString = (unixtime) => {
   return s;
 }
 
-export const getTimeString = (unixtime) => {
+const getTimeString = (unixtime) => {
   const d = new Date(unixtime * 1000);
   let s = "";
   s += d.getUTCHours();
@@ -25,7 +25,7 @@ export const getTimeString = (unixtime) => {
   return s;
 }
 
-export const getMidnightUnixtime = (dayUnixtime) => {
+const getMidnightUnixtime = (dayUnixtime) => {
   const dayDateObject = new Date(dayUnixtime * 1000);
   const midnightUnixtime = (dayDateObject
     - dayDateObject.getUTCMilliseconds()
@@ -35,4 +35,4 @@ export const getMidnightUnixtime = (dayUnixtime) => {
   return midnightUnixtime;
 }
 
-export default { getDatetimeString, getTimeString, getDateString, getMidnightUnixtime };
+module.exports = { getDatetimeString, getTimeString, getDateString, getMidnightUnixtime };

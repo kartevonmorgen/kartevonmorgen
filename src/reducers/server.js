@@ -7,7 +7,7 @@ const initialState = {
   loadingSearch: false
 };
 
-export default (state=initialState, action={}) => {
+module.exports = (state=initialState, action={}) => {
 
   const { payload } = action;
 

@@ -1,4 +1,6 @@
-export const notificationSettings = {
-  position: "tc",
-  dismissAfter: 2000
+module.exports = {
+  notificationSettings: {
+    position: "tc",
+    dismissAfter: 2000
+  }
 }

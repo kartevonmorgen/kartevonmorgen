@@ -1,7 +1,6 @@
-import ActionTypes from './ActionTypes'
-const { SET_DROPDOWNS } = ActionTypes
+import {SET_DROPDOWNS} from './ActionTypes'
 
-export default {
+module.exports = {
   NO_ROUTING: "NO_ROUTING",
   SHOW_ENTRY: "SHOW_ENTRY",
   SHOW_NEW_ENTRY: "SHOW_NEW_ENTRY",

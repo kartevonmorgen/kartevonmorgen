@@ -45,7 +45,7 @@ const isCity = x =>
 
 const isImportantSearchResult = x => ( x.importance >= CITY_SEARCH_RESULTS_MIN_IMPORTANCE )
 
-export default (state = initialState, action = {}) => {
+module.exports = (state = initialState, action = {}) => {
   const p = action.payload;
 
   switch (action.type) {

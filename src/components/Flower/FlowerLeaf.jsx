@@ -71,5 +71,4 @@ Leaf.propTypes = {
   witdh   : T.number,
   tooltip : T.string
 }
-
-export default Leaf
+module.exports = Leaf

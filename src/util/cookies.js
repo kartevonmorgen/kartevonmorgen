@@ -8,4 +8,4 @@ const deleteAllCookies = () => {
   });
 }
 
-export default { deleteCookie, deleteAllCookies }
+module.exports = { deleteCookie, deleteAllCookies }

@@ -27,7 +27,7 @@ const Icon = styled(FontAwesomeIcon)`
   margin-right: 10px !important;
 `
 
-export const NavButton = ({ keyName, classname, icon, text, onClick, style, id, tabIndex }) =>
+const NavButton = ({ keyName, classname, icon, text, onClick, style, id, tabIndex }) =>
   <NavigationButton
     tabIndex={tabIndex || 0}
     id={id}
@@ -40,4 +40,4 @@ export const NavButton = ({ keyName, classname, icon, text, onClick, style, id, 
     { text }
   </NavigationButton>
 
-export default NavButton
+module.exports = NavButton

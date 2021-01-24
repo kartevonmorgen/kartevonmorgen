@@ -207,7 +207,7 @@ ResultList.propTypes = {
   zoom:                 PropTypes.number.isRequired,
 }
 
-export default translate("translation")(ResultList)
+module.exports = translate("translation")(ResultList)
 
 const OuterWrapper = styled.div`
   display: flex;

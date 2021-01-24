@@ -4,7 +4,7 @@ const initialState = {
   searchLastTriggered: null
 };
 
-export default (state=initialState, action={}) => {
+module.exports = (state=initialState, action={}) => {
 
   const { payload } = action;
 

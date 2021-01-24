@@ -24,11 +24,11 @@ const siteToThumbnailMapper = {
 const getIconNameFromUrl = (url) => {
   const {hostname} = new URL(url)
   const website = hostname.replace(/^(www\.)/,"");
-  if (siteToIconMapper[website]) {
+  if (Object.prototype.hasOwnProperty.call(siteToIconMapper, website)) {
     return ["icon", ["fab", siteToIconMapper[website]]]
   }
 
-  if (siteToThumbnailMapper[website]) {
+  if (Object.prototype.hasOwnProperty.call(siteToThumbnailMapper, website)) {
     return ["thumbnail", siteToThumbnailMapper[website]]
   }
 

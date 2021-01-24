@@ -203,7 +203,7 @@ BusinessCard.propTypes = {
   entry: T.object
 }
 
-export default BusinessCard;
+module.exports = BusinessCard;
 
 const FontAwesomeIconElement = styled(FontAwesomeIcon)`
   margin-right: 12px;
