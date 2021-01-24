@@ -90,15 +90,19 @@ module.exports = {
     }
     normalizeCoordinate(bbox, 1)
     normalizeCoordinate(bbox, 3)
+    const query = {
+      text: txt.trim(),
+      categories: cats.length > 0 ? cats.join(',') : "",
+      bbox: bbox.join(','),
+    }
+    if (orgTag) {
+      query.org_tag = orgTag
+    }
+
     request
       .get('/search')
       .use(prefix)
-      .query({
-        text: txt.trim(),
-        categories: cats.length > 0 ? cats.join(',') : "",
-        bbox: bbox.join(','),
-        org_tag: orgTag
-      })
+      .query(query)
       .set('Accept', 'application/json')
       .end(jsonCallback(cb))
   },
@@ -288,12 +292,16 @@ module.exports = {
     if (ids.length < 1) {
       cb(new Error("no IDs were passed"))
     } else {
+      const query = {}
+      if (orgTag) {
+        query.org_tag = orgTag
+      }
+
+
       request
         .get('/entries/' + ids.join(','))
         .use(prefix)
-        .query({
-          'org_tag': orgTag,
-        })
+        .query(query)
         .set('Accept', 'application/json')
         .end(jsonCallback(cb))
     }
