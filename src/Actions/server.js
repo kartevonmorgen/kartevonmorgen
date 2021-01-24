@@ -84,6 +84,7 @@ export const search = (all=null) =>
       dispatch(setSearchTime(null))
       // console.log("SEARCH\n");
       const {search, map, view} = getState()
+      const {orgTag} = search
       if (all !== false) {
         all = all || view.left === NEW_PANEL || view.left === EDIT_PANEL
       }
@@ -101,7 +102,7 @@ export const search = (all=null) =>
           })
         } else {
           if (cats.includes(IDS.INITIATIVE) || cats.includes(IDS.COMPANY)) {
-            WebAPI.searchEntries(searchTerm, cats, bbox, (err, res) => {
+            WebAPI.searchEntries(searchTerm, cats, bbox, orgTag, (err, res) => {
               dispatch({
                 type: T.SEARCH_RESULT_ENTRIES,
                 payload: err || res,
@@ -128,6 +129,7 @@ export const search = (all=null) =>
             })
           }
 
+            // todo: decouple
           if (cats.includes(IDS.EVENT)) {
             WebAPI.searchEvents(searchTerm, bbox, getMidnightUnixtime(Date.now() / 1000), null, (err, res) => {
               dispatch({
@@ -268,7 +270,8 @@ export const getEntries = (ids = []) =>
   (dispatch, getState) => {
     let {
       fetchedAllEntries,
-      moreEntriesAvailable
+      moreEntriesAvailable,
+      orgTag
     } = getState().search
     dispatch({
       type: T.SET_MORE_ENTRIES_AVAILABLE,
@@ -279,7 +282,7 @@ export const getEntries = (ids = []) =>
     const entries = getState().server.entries
     const fetch_ids_entries = ids.filter((x) => entries[x] == null)
     if (fetch_ids_entries.length > 0) {
-      WebAPI.getEntries(ids, (err, res) => {
+      WebAPI.getEntries(ids, orgTag, (err, res) => {
         dispatch({
           type: T.ENTRIES_RESULT,
           payload: err || res,
@@ -413,6 +416,7 @@ export const saveEntry = (entry) =>
     const isEvent = entry.categories[0] === IDS.EVENT
     const entryExists = (entry != null ? entry.id : void 0)
     entry.license = getLicenseForEntry(entry.license)
+    const {orgTag} = getState().search
 
     if (isEvent) {
       entry.created_by = 'test@test.com'
@@ -436,7 +440,7 @@ export const saveEntry = (entry) =>
       } else {
         const id = (entry != null ? entry.id : void 0) || res
 
-        getEntityRequest([id], (err, res) => {
+        const getEntityRequestParams = [[id], (err, res) => {
           isEvent ? res.categories = entry.categories : res
 
           dispatch(initialize(EDIT.id, {}, EDIT.fields))
@@ -464,7 +468,12 @@ export const saveEntry = (entry) =>
               })
             }
           }
-        })
+        }]
+
+        if (!isEvent) {
+          getEntityRequestParams.splice(1, 0, orgTag)
+        }
+        getEntityRequest(...getEntityRequestParams)
       }
     })
   }
@@ -475,13 +484,16 @@ export const createRating = (rating) =>
       ...rating,
       value: Number.parseInt(rating.value)
     }
+
+    const {orgTag} = getState().search
+
     WebAPI.createRating(r, (err, res) => {
       if (err) {
         dispatch(stopSubmit(RATING.id, {
           _error: err
         }))
       } else {
-        WebAPI.getEntries([r.entry], (err, res) => {
+        WebAPI.getEntries([r.entry], orgTag, (err, res) => {
           dispatch({
             type: T.ENTRIES_RESULT,
             payload: err || res,

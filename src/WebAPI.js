@@ -79,7 +79,7 @@ const transformCSVToOptions = (records) => {
 
 const WebAPI = {
 
-  searchEntries: (txt, cats, bbox, cb) => {
+  searchEntries: (txt, cats, bbox, orgTag, cb) => {
 
     if (txt == null) {
       txt = ''
@@ -92,15 +92,20 @@ const WebAPI = {
     }
     normalizeCoordinate(bbox, 1)
     normalizeCoordinate(bbox, 3)
+    const query = {
+      text: txt.trim(),
+      categories: cats.length > 0 ? cats.join(',') : "",
+      bbox: bbox.join(','),
+      limit: 250, // TODO: Replace with constant
+    }
+    if (orgTag) {
+      query.org_tag = orgTag
+    }
+
     request
       .get('/search')
       .use(prefix)
-      .query({
-        text: txt.trim()
-      })
-      .query((cats.length > 0) ? ('categories=' + cats.join(',')) : "")
-      .query('bbox=' + bbox.join(','))
-      .query('limit=250') // TODO: Replace with constant or parameter
+      .query(query)
       .set('Accept', 'application/json')
       .end(jsonCallback(cb))
   },
@@ -281,7 +286,7 @@ const WebAPI = {
       .end(jsonCallback(cb))
   },
 
-  getEntries: (ids = [], cb) => {
+  getEntries: (ids = [], orgTag, cb) => {
 
     if (!Array.isArray(ids)) {
       ids = [ids]
@@ -290,9 +295,17 @@ const WebAPI = {
     if (ids.length < 1) {
       cb(new Error("no IDs were passed"))
     } else {
+      const query = {}
+      if (orgTag) {
+        query.org_tag = orgTag
+      }
+
+
       request
         .get('/entries/' + ids.join(','))
-        .use(prefix).set('Accept', 'application/json')
+        .use(prefix)
+        .query(query)
+        .set('Accept', 'application/json')
         .end(jsonCallback(cb))
     }
   },
@@ -513,5 +526,4 @@ const WebAPI = {
   }
 };
 
-module.exports = WebAPI
 export default WebAPI

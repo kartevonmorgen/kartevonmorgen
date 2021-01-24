@@ -22,7 +22,8 @@ let state = {
   zoom: mapConst.DEFAULT_ZOOM,
   center: mapConst.DEFAULT_CENTER,
   bbox: null,
-  categories: [Categories.IDS.INITIATIVE, Categories.IDS.COMPANY]
+  categories: [Categories.IDS.INITIATIVE, Categories.IDS.COMPANY],
+  orgTag: null,
 };
 
 const render = () => {
@@ -46,13 +47,14 @@ const search = () => {
   const sw = state.bbox._southWest;
   const ne = state.bbox._northEast;
   const bbox = [sw.lat, sw.lng, ne.lat, ne.lng];
+  const {orgTag} = state
 
   if (!cats.length < 1 && (s == null || !s.trim().endsWith("#"))) {
-    WebAPI.searchEntries(s, cats, bbox, (err, res) => {
+    WebAPI.searchEntries(s, cats, bbox, orgTag, (err, res) => {
       if ((Array.isArray(res.visible)) && res.visible.length > 0) {
         const ids = res.visible.map(e => e.id)
           .slice(0, NUM_ENTRIES_TO_FETCH);
-        WebAPI.getEntries(ids, (entriesErr, entriesRes) => {
+        WebAPI.getEntries(ids, orgTag, (entriesErr, entriesRes) => {
           if(!entriesErr && entriesRes.length > 0) {
             state.entries = entriesRes;
             render();
@@ -64,11 +66,15 @@ const search = () => {
 }
 
 const { params } = parseUrl(window.location.href);
-let entryId = params.entry;
-let searchStr = params.search;
-let tagsStr = params.tags;
-let zoomStr = params.zoom;
-let centerStr = params.center;
+const {
+  entry: entryId,
+  search: tagsStr,
+  zoom: zoomStr,
+  center: centerStr,
+  orgTag
+} = params
+
+state.orgTag = orgTag
 
 if(zoomStr){
   state.zoom = parseFloat(zoomStr);
@@ -76,7 +82,7 @@ if(zoomStr){
 if(params && Object.keys(params).length != 0){
   if(entryId){ 
     state.zoom = mapConst.ENTRY_DEFAULT_ZOOM;
-    WebAPI.getEntries([entryId], (err, res) => {
+    WebAPI.getEntries([entryId], orgTag, (err, res) => {
       state.entries = {};
       if(!err && res.length > 0) {
         state.entries = res;

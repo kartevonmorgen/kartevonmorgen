@@ -487,5 +487,6 @@
     }
   },
   "share": "Teilen",
-  "copy": "Kopieren"
+  "copy": "Kopieren",
+  "embed": "Als Iframe einbetten"
 }

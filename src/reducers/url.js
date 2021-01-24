@@ -20,7 +20,7 @@ export default (state=initialState, action={}) => {
 
   if(params){
     // TODO parse Boolean for left?
-    var { zoom, entry, search, tags, left, categories, addentry, fixedTags, dropdowns } = params;
+    var { zoom, entry, search, tags, left, categories, addentry, fixedTags, orgTag, dropdowns } = params;
     dropdowns = dropdowns || 'kvm'
     var centerStr = params.center;
     var confirmEmail = params.confirm_email
@@ -63,6 +63,7 @@ export default (state=initialState, action={}) => {
           routingUsecases.push(RoutingUsecases.SHOW_NEW_ENTRY)
         }
       }
+
       if (dropdowns) {
         routingUsecases.push(RoutingUsecases.SET_DROPDOWNS)
       }
@@ -125,6 +126,6 @@ export default (state=initialState, action={}) => {
   }
   return {
     ...state,
-    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags, dropdowns)
+    hash: constructUrl(entry, center, zoom, search, left, categories, fixedTags, orgTag, dropdowns)
   }
 };

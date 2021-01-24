@@ -1,3 +1,5 @@
+import isString from 'lodash/isString'
+
 export default (original) => {
 
   const url = getHashUrl(original);
@@ -14,7 +16,6 @@ export default (original) => {
     params = {}
   }
 
-  // debugger
   const actual = path + joinSearchParams(params);
 
   return {
@@ -52,7 +53,7 @@ const parseSearchParams = (searchString) => {
     if (pairSplit.length >= 1 && pairSplit[0].length > 0) {
       p[decodeURIComponent(pairSplit[0])] = decodeURIComponent(pairSplit[1]) || '';
     }
-    if (p.fixedTags && typeof p.fixedTags == 'string') {
+    if (isString(p.fixedTags)) {
       p.fixedTags = p.fixedTags.split(',')
     }
 
