@@ -35,8 +35,6 @@ To be able to start development you'll need the following tools:
 - [Node.js](https://nodejs.org/) version 8.x
 - [yarn](https://yarnpkg.com/getting-started/install) version 1.x
 - [OpenFairDB](https://github.com/kartevonmorgen/openfairdb) version 0.7.x
-- [Rust](https://www.rust-lang.org/)
-- [wasm-pack](https://rustwasm.github.io/wasm-pack/)
 
 Now clone this repository:
 
@@ -60,32 +58,6 @@ yarn run pack
 ```
 
 The result can be found in `dist/`.
-
-#### Installing Rust & wasm-pack
-
-If you're using Ubuntu 18.04 LTS you can run
-
-```sh
-sudo apt-get install curl libssl-dev gcc
-curl https://sh.rustup.rs -sSf | sh
-```
-
-On Windows you can download the installer from [rustup.rs](https://rustup.rs).
-(But don't forget to install a
-[C++ toolchain](http://landinghub.visualstudio.com/visual-cpp-build-tools) first).
-
-#### Installing wasm-pack
-
-```sh
-curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-```
-
-or
-
-```sh
-rustup target add wasm32-unknown-unknown
-cargo install wasm-pack
-```
 
 #### Deployment to another URL than www.kartevonmorgen.org
 

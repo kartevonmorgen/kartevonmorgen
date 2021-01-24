@@ -23,13 +23,5 @@
      This page requires JavaScript. Please activate JavaScript in your browser.
     </noscript>
     <div id='app'></div>
-    <script type="module">
-      import init, { Core } from '/kvm_core.js';
-      if (init && Core) {
-        init().then(() => {
-          window.ofdb = { kvm_core: new Core() };
-        });
-      }
-    </script>
   </body>
 </html>
