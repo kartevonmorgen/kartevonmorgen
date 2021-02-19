@@ -1,6 +1,5 @@
 import React, {Fragment} from "react"
 import {translate} from "react-i18next"
-import update from 'immutability-helper'
 import STYLE from "./styling/Variables"
 import {SpinLoader} from 'react-loaders-spinners'
 import styled from "styled-components"
@@ -89,19 +88,6 @@ class SearchBar extends React.Component {
                 t={t}
                 isOpen={this.state.areDropdownsShown}
               />
-              <CollapseTriggerContainer className="pure-u-1-1">
-                <CollapseTrigger
-                  className="pure-u-1-3"
-                  onClick={() => this.setState(state => update(state, {areDropdownsShown: {$set: !state.areDropdownsShown}}))}
-                  isOpen={this.state.areDropdownsShown}
-                >
-                  {
-                    this.state.areDropdownsShown ?
-                      t('searchFilters.collapseFilters') :
-                      t('searchFilters.openFilters')
-                  }
-                </CollapseTrigger>
-              </CollapseTriggerContainer>
             </Fragment>
           )
         }
